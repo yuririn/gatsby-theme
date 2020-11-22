@@ -94,7 +94,7 @@ export const pageQuery = graphql`
 		  image
 	      category
 		  cateId
-		  tag
+		  tags
         }
       }
     }

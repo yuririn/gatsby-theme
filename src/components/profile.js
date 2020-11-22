@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Image from "../components/image"
 
-const profile = ({ location, title, children }) => {
+const profile = () => {
 
 	return (
 		<section class="c-profile p-section">

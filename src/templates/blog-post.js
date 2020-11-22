@@ -5,7 +5,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
 import Toc from "../components/toc"
-import Lifehack from "../components/lifehack"
+import Tags from "../components/tags"
+import Category from "../components/category"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -15,10 +16,11 @@ const BlogPostTemplate = ({ data, location }) => {
 
 	return (
 		<Layout location={location} title={siteTitle}>
+
 			<SEO
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
-				image={"https:://ginneko-demo.netlify.app/content/asset/" + post.frontmatter.image}
+				image={post.frontmatter.image}
 			/>
 			<article
 				className="p-section"
@@ -28,7 +30,7 @@ const BlogPostTemplate = ({ data, location }) => {
 				<header>
 					<div className={`c-article__mainvisual--` + post.frontmatter.cateId}>
 						<div className="c-article__img">
-							<Lifehack name={post.frontmatter.category} id={post.frontmatter.cateId} />
+							<Category name={post.frontmatter.categoryId} id={post.frontmatter.cateId} />
 							{post.frontmatter.image ?
 
 								<Image filename={post.frontmatter.image} alt={post.frontmatter.title} />
@@ -36,13 +38,14 @@ const BlogPostTemplate = ({ data, location }) => {
 							}
 						</div>
 					</div>
+					{/* <Img fruid={post.frontmatter.image} /> */}
 					<div class="l-container--md">
 						<h1 class="c-article__heading">{post.frontmatter.title}</h1>
 						<dl className="c-article__date">
 							<dt>公開日</dt>
 							<dd>{post.frontmatter.date}</dd>
 						</dl>
-						<p class="c-article__ganre"><Link to={'/tags/' + post.frontmatter.tag}>{post.frontmatter.tag}</Link></p>
+						<Tags tags={post.frontmatter.tags} />
 						<p class="c-article__description">{post.frontmatter.description}</p>
 						<ul class="c-snsBtns u-mblg">
 							<li class="c-snsBtns__item"><a class="c-snsBtns__item--fb" href=""><span class="c-snsBtns__label">Facebook</span><span class="c-snsBtns__num">0</span></a></li>
@@ -117,9 +120,9 @@ export const pageQuery = graphql`
 		image
 		category
 		cateId
-		tag
+		tags
 	  }
-    }
+	}
     previous: markdownRemark(id: { eq: $previousPostId }) {
       fields {
         slug

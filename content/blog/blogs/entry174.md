@@ -4,7 +4,7 @@ date: 2014-07-01
 image: entry175.jpg
 category: ['CMS']
 cateId: ['cms']
-tag: ["concrete5"]
+tags: ["concrete5"]
 description: フロントエンドエンジニアのかみーゆです！concrete5を触ってて、どうにもこうにもサイトが更新されない時があります。そんな時の対処法をご紹介します。
 ---
 

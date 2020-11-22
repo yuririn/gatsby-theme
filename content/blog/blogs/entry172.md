@@ -4,7 +4,7 @@ date: 2014-05-14
 image: entry172.jpg
 category: ['Life Hack']
 cateId: ['ginneko-tsuredure']
-tag: ["著作権"]
+tags: ["著作権"]
 description: フロントエンドエンジニアのかみーゆです。今回フリー素材で掲載許可がいるがあるので実際に調べてみました。
 catch: フロントエンドエンジニアのかみーゆです。今回フリー素材で掲載許可がいるがあるので実際に調べてみました。
 ---

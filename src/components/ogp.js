@@ -1,6 +1,5 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
 
 // 画像ファイルパスをプロパティに取るようなコンポーネントを定義
 export default ({ filename }) => (
@@ -41,8 +40,8 @@ export default ({ filename }) => (
 
 			// Imgタグでgatsby-imageで最適化された画像を表示する
 			const imageSizes = image.node.childImageSharp.sizes
-
-			return <Img sizes={imageSizes} />
+			console.log(imageSizes)
+			return <meta name="ogp:image" content={filename} />
 		}}
 	/>
 )

@@ -4,7 +4,7 @@ date: 2014-07-02
 image: entry175.jpg
 category: ['CMS']
 cateId: ['cms']
-tag: ["concrete5"]
+tags: ["concrete5"]
 description: フロントエンドエンジニアのかみーゆです！cocnrete5 TITLE属性をカスタマイズする方法をご紹介します。6系、7~8系です。
 ---
 

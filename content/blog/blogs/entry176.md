@@ -4,7 +4,7 @@ date: 2014-07-24
 image: entry175.jpg
 category: ['CMS']
 cateId: ['cms']
-tag: ["concrete5"]
+tags: ["concrete5"]
 description: フロントエンドエンジニアのかみーゆです！第一回広島でのconcrete5の勉強会をまとめです。当日は中四国でconcrete5の勉強ができるということで遠くははるばる山口からお越しいただきました。その日のスライドのまとめをUPします。
 ---
 ## モットーは初心者でもOK
