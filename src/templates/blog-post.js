@@ -18,7 +18,7 @@ const BlogPostTemplate = ({ data, location }) => {
 			<SEO
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
-				image={document.URL + "/content/asset/" + post.frontmatter.image}
+				image={"https:://ginneko-demo.netlify.app/content/asset/" + post.frontmatter.image}
 			/>
 			<article
 				className="p-section"
