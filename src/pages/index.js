@@ -4,84 +4,97 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Image from "../components/image"
+import FirstView from "../components/firstview"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+	const siteTitle = data.site.siteMetadata?.title || `Title`
+	const posts = data.allMarkdownRemark.nodes
+	console.log(posts)
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+	if (posts.length === 0) {
+		return (
+			<Layout location={location} title={siteTitle}>
+				<SEO title="All posts" />
+				<Bio />
+				<p>
+					No blog posts found. Add markdown posts to "content/blog" (or the
+					directory you specified for the "gatsby-source-filesystem" plugin in
+					gatsby-config.js).
         </p>
-      </Layout>
-    )
-  }
+			</Layout>
+		)
+	}
 
-  return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+	return (
+		<Layout location={location} title={siteTitle}>
+			<SEO title="All posts" />
+			<FirstView />
+			<div className="is-load">
+				<div className="l-container">
+					<section className="p-section">
+						<h2 className="c-heading--lg">最新記事</h2>
+						<div className="c-grid">
+							{posts.map(post => {
+								const title = post.frontmatter.title || post.fields.slug
 
-          return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
-    </Layout>
-  )
+								return (
+									<article
+										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+										itemScope
+										itemType="http://schema.org/Article"
+									>
+										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
+											{post.frontmatter.image ?
+
+												<Image filename={post.frontmatter.image} alt={post.frontmatter.title} />
+												: null
+											}
+											<div class="p-entryCard__date">
+												{post.frontmatter.date}
+											</div>
+										</Link>
+										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+										<div className="p-entryCard__footer">
+											<ul className="p-tagList">
+												<li className="p-tagList__item"><Link to={'/tags/' + post.frontmatter.tag}>{post.frontmatter.tag}</Link></li>
+											</ul>
+										</div>
+									</article>
+								)
+							})}
+						</div>
+					</section>
+					<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
+				</div>
+			</div>
+		</Layout >
+	)
 }
 
 export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
+					site {
+					siteMetadata {
+					title
+				}
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
+					nodes {
+					excerpt
         fields {
-          slug
-        }
+					slug
+				}
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
+					title
+		  date(formatString: "YYYY.MM.DD")
+		  description
+		  image
+	      category
+		  cateId
+		  tag
         }
       }
     }
