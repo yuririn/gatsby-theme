@@ -48,7 +48,7 @@ const showcategory = ({ id }) => {
 		return <Seo />
 	} else if (id == 'id-seminor') {
 		return <Seminor />
-	} else if (id == 'life-hack') {
+	} else if (id == 'ginneko-tsuredure') {
 		return <Lifehack />
 	}
 
