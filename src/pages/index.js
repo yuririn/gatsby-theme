@@ -10,7 +10,6 @@ import FirstView from "../components/firstview"
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const posts = data.allMarkdownRemark.nodes
-	console.log(posts)
 
 	if (posts.length === 0) {
 		return (
@@ -30,45 +29,43 @@ const BlogIndex = ({ data, location }) => {
 		<Layout location={location} title={siteTitle}>
 			<SEO title="All posts" />
 			<FirstView />
-			<div className="is-load">
-				<div className="l-container">
-					<section className="p-section">
-						<h2 className="c-heading--lg">最新記事</h2>
-						<div className="c-grid">
-							{posts.map(post => {
-								const title = post.frontmatter.title || post.fields.slug
+			<div className="l-container">
+				<section className="p-section">
+					<h2 className="c-heading--lg">最新記事</h2>
+					<div className="c-grid">
+						{posts.map(post => {
+							const title = post.frontmatter.title || post.fields.slug
 
-								return (
-									<article
-										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
-										itemScope
-										itemType="http://schema.org/Article"
-									>
-										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
-											{post.frontmatter.image ?
+							return (
+								<article
+									className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+									itemScope
+									itemType="http://schema.org/Article"
+								>
+									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
+										{post.frontmatter.image ?
 
-												<Image filename={post.frontmatter.image} alt={post.frontmatter.title} />
-												: null
-											}
-											<div class="p-entryCard__date">
-												{post.frontmatter.date}
-											</div>
-										</Link>
-										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
-										<div className="p-entryCard__footer">
-											<ul className="p-tagList">
-												<li className="p-tagList__item"><Link to={'/tags/' + post.frontmatter.tag}>{post.frontmatter.tag}</Link></li>
-											</ul>
+											<Image filename={post.frontmatter.image} alt={post.frontmatter.title} />
+											: null
+										}
+										<div class="p-entryCard__date">
+											{post.frontmatter.date}
 										</div>
-									</article>
-								)
-							})}
-						</div>
-					</section>
-					<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
-				</div>
+									</Link>
+									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+									<div className="p-entryCard__footer">
+										<ul className="p-tagList">
+											<li className="p-tagList__item"><Link to={'/tags/' + encodeURI(post.frontmatter.tags)}>{post.frontmatter.tags}</Link></li>
+										</ul>
+									</div>
+								</article>
+							)
+						})}
+					</div>
+				</section>
+				<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
 			</div>
-		</Layout >
+		</Layout>
 	)
 }
 

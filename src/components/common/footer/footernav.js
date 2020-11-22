@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const footernav = ({ location, title, children }) => {
+const footernav = () => {
 
 	return (
 		<div className="c-grid p-footerNav p-section">

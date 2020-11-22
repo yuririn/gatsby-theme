@@ -19,7 +19,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
-            }
+			}
+			frontmatter {
+			  tags
+			}
           }
         }
       }
@@ -56,6 +59,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			})
 		})
 	}
+
+	let tags = posts.reduce((tags, edge) => {
+		const edgeTags = edge['frontmatter']['tags'];
+		return edgeTags ? tags.concat(edgeTags) : tags;
+	}, []);
+
+	tags = Array.from(new Set(tags))
+
+
+	const tagTemplate = path.resolve(`./src/templates/tags.js`);
+	[...new Set(tags)].forEach(tag => {
+		createPage({
+			path: `/tags/${tag}/`,
+			component: tagTemplate,
+			context: {
+				tag,
+			},
+		});
+	});
+
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -40,7 +40,6 @@ export default ({ filename }) => (
 
 			// Imgタグでgatsby-imageで最適化された画像を表示する
 			const imageSizes = image.node.childImageSharp.sizes
-			console.log(imageSizes)
 			return <meta name="ogp:image" content={filename} />
 		}}
 	/>

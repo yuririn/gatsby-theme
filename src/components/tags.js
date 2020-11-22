@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 const Tag = ({ tag }) => (
-	<Link to={`/tags/${tag}/`}>{tag}</Link>
+	<Link to={`/tags/${encodeURI(tag)}/`}>{tag}</Link>
 );
 
 const Tags = ({ tags }) => (
