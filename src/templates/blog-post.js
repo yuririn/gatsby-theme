@@ -43,14 +43,7 @@ const BlogPostTemplate = ({ data, location }) => {
 							<dd>{post.frontmatter.date}</dd>
 						</dl>
 						<p class="c-article__ganre"><Link to={'/tags/' + post.frontmatter.tag}>{post.frontmatter.tag}</Link></p>
-						{
-							<div class="c-article__description">
-								{post.frontmatter.lead.map((item) => (
-									<p>{item}</p>
-								))}
-
-							</div>
-						}
+						<p class="c-article__description">{post.frontmatter.description}</p>
 						<ul class="c-snsBtns u-mblg">
 							<li class="c-snsBtns__item"><a class="c-snsBtns__item--fb" href=""><span class="c-snsBtns__label">Facebook</span><span class="c-snsBtns__num">0</span></a></li>
 							<li class="c-snsBtns__item"><a class="c-snsBtns__item--tw" href=""><span class="c-snsBtns__label">Twitter</span><span class="c-snsBtns__num">0</span></a></li>
