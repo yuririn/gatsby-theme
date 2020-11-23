@@ -22,7 +22,7 @@ const Footer = ({ title }) => {
 							<div className="c-nav__container" role="navigation">
 								<ul className="c-nav__child">
 									<li><Link className="c-nav__navLink" to="/">Home</Link></li>
-									<li><Link className="c-nav__navLink" to="/bloga">Blog</Link>
+									<li><Link className="c-nav__navLink" to="/blogs/">Blog</Link>
 										<ul>
 											<li><Link to="/category/cms">CMS</Link></li>
 											<li><Link to="/category/front-end-program">Front End</Link></li>

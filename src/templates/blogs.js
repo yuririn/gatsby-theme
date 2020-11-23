@@ -1,35 +1,25 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
-import FirstView from "../components/firstview"
 import TagList from "../components/common/tagsArchive"
 
-const BlogIndex = ({ data, location }) => {
+const blogs = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const posts = data.allMarkdownRemark.nodes
-
-	if (posts.length === 0) {
-		return (
-			<Layout location={location} title={siteTitle}>
-				<SEO title="All posts" />
-				<Bio />
-				<p>
-					No blog posts found. Add markdown posts to "content/blog" (or the
-					directory you specified for the "gatsby-source-filesystem" plugin in
-					gatsby-config.js).
-        </p>
-			</Layout>
-		)
-	}
 
 	return (
 		<Layout location={location} title={siteTitle}>
 			<SEO title="All posts" />
-			<FirstView />
+			<div class="p-pageHeader">
+				<div class="p-pageHeader__main">
+					<h1 class="p-pageHeader__heading">記事一覧</h1>
+					<p>記事一覧</p>
+				</div>
+				<img class="p-pageHeader__img" src={`https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg`} alt=""></img>
+			</div>
 			<div className="l-container">
 				<section className="p-section">
 					<h2 className="c-heading--lg">最新記事</h2>
@@ -47,7 +37,7 @@ const BlogIndex = ({ data, location }) => {
 										{post.frontmatter.hero ?
 
 											<Image filename={post.frontmatter.hero} />
-											: <Image filename={`dummy.png`} />
+											: <Image filename="dummy.png" />
 										}
 										<div class="p-entryCard__date">
 											{post.frontmatter.date}
@@ -72,7 +62,8 @@ const BlogIndex = ({ data, location }) => {
 	)
 }
 
-export default BlogIndex
+
+export default blogs
 
 export const pageQuery = graphql`
   query {
