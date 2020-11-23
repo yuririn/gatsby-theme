@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			description: 'SEOやコンテンツマーケティングに関する記事'
 		},
 		{
-			slug: 'it-seminor',
+			slug: 'it-seminar',
 			name: 'ITセミナー',
 			description: '勉強会の開催/登壇について書いてます'
 		},
