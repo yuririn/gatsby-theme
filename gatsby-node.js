@@ -22,6 +22,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			}
 			frontmatter {
 			  tags
+			  category
 			}
           }
         }
@@ -60,6 +61,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		})
 	}
 
+	//タグを取得
 	let tags = posts.reduce((tags, edge) => {
 		const edgeTags = edge['frontmatter']['tags'];
 		return edgeTags ? tags.concat(edgeTags) : tags;
@@ -67,17 +69,67 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	tags = Array.from(new Set(tags))
 
-
+	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
 		createPage({
-			path: `/tags/${tag}/`,
+			path: `/blogs/tags/${tag}/`,
 			component: tagTemplate,
 			context: {
 				tag,
 			},
 		});
 	});
+
+	const categories = [
+		{
+			slug: 'cms',
+			name: 'CMS',
+			description: 'WordPressやconcrete5などCMSの記事'
+		},
+		{
+			slug: 'front-end-program',
+			name: 'Front End',
+			description: 'HTML、CSS、JSなどの書き留めたチップス'
+		},
+		{
+			slug: 'back-end-program',
+			name: 'Back End',
+			description: 'PHP、黒い画面、DBが中心'
+		},
+		{
+			slug: 'seo',
+			name: 'Seaarch Engine Optimization',
+			description: 'SEOやコンテンツマーケティングに関する記事'
+		},
+		{
+			slug: 'it-seminor',
+			name: 'ITセミナー',
+			description: '勉強会の開催/登壇について書いてます'
+		},
+		{
+			slug: 'ginneko-tsuredure',
+			name: 'Life Hack',
+			description: 'WordPressやconcrete5などCMSの記事'
+		},
+	]
+
+	const categoyTemplate = path.resolve(`./src/templates/category.js`);
+
+	categories.forEach(cate => {
+		slug = cate.slug
+		name = cate.name
+		description = cate.description
+		createPage({
+			path: `/blogs/${cate.slug}/`,
+			component: categoyTemplate,
+			context: {
+				slug,
+				name,
+				description
+			},
+		});
+	})
 
 }
 
