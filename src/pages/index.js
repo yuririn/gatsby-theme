@@ -47,7 +47,7 @@ const BlogIndex = ({ data, location }) => {
 										{post.frontmatter.hero ?
 
 											<Image filename={post.frontmatter.hero} />
-											: null
+											: <Image filename="dummy.png" />
 										}
 										<div class="p-entryCard__date">
 											{post.frontmatter.date}

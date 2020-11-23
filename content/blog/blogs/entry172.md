@@ -5,7 +5,7 @@ hero: entry172.jpg
 category: ['Life Hack']
 cateId: ['ginneko-tsuredure']
 tags: ["著作権"]
-description: 今回フリー素材で掲載許可がいるがあるので実際に調べてみました。
+description: フロントエンドエンジニアのかみーゆです。今回フリー素材で掲載許可がいるがあるので実際に調べてみました。
 lead: ["フロントエンドエンジニアのかみーゆです。","今回フリー素材で掲載許可がいるがあるので実際に調べてみました。"]
 ---
 
