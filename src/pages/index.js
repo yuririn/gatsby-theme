@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
 import FirstView from "../components/firstview"
+import TagList from "../components/common/tagsArchive"
 
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -43,9 +44,9 @@ const BlogIndex = ({ data, location }) => {
 									itemType="http://schema.org/Article"
 								>
 									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
-										{post.frontmatter.image ?
+										{post.frontmatter.hero ?
 
-											<Image filename={post.frontmatter.image} alt={post.frontmatter.title} />
+											<Image filename={post.frontmatter.hero} />
 											: null
 										}
 										<div class="p-entryCard__date">
@@ -54,9 +55,11 @@ const BlogIndex = ({ data, location }) => {
 									</Link>
 									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
 									<div className="p-entryCard__footer">
-										<ul className="p-tagList">
-											<li className="p-tagList__item"><Link to={'/tags/' + encodeURI(post.frontmatter.tags)}>{post.frontmatter.tags}</Link></li>
-										</ul>
+										<div className="p-entryCard__footer">
+											<div className="p-entryCard__footer">
+												<TagList tags={post.frontmatter.tags} />
+											</div>
+										</div>
 									</div>
 								</article>
 							)
@@ -88,9 +91,9 @@ export const pageQuery = graphql`
 					title
 		  date(formatString: "YYYY.MM.DD")
 		  description
-		  image
 	      category
 		  cateId
+		  hero
 		  tags
         }
       }

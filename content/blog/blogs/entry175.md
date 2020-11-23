@@ -1,11 +1,12 @@
 ---
 title: cocnrete5のタイトルタグの出力をカスタマイズ
 date: 2014-07-02
-image: entry175.jpg
+hero: entry175.jpg
 category: ['CMS']
 cateId: ['cms']
 tags: ["concrete5"]
-description: フロントエンドエンジニアのかみーゆです！cocnrete5 TITLE属性をカスタマイズする方法をご紹介します。6系、7~8系です。
+description: cocnrete5 TITLE属性をカスタマイズする方法をご紹介します。6系、7~8系です。
+lead: ["フロントエンドエンジニアのかみーゆです！","cocnrete5 TITLE属性をカスタマイズする方法をご紹介します。6系、7~8系です。"]
 ---
 
 ## タイトルの表示方法の変更は簡単

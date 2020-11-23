@@ -5,15 +5,15 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
 import Toc from "../components/toc"
-import Tags from "../components/tags"
-import Category from "../components/category"
+import Category from "../components/blogs/category"
+import Description from "../components/blogs/descriotion"
+import TagsList from "../components/blogs/tagsBlog"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const { previous, next } = data
-	const decription = post.frontmatter.description
-
+	const lead = post.frontmatter.lead
 	return (
 		<Layout location={location} title={siteTitle}>
 
@@ -31,22 +31,21 @@ const BlogPostTemplate = ({ data, location }) => {
 					<div className={`c-article__mainvisual--` + post.frontmatter.cateId}>
 						<div className="c-article__img">
 							<Category name={post.frontmatter.categoryId} id={post.frontmatter.cateId} />
-							{post.frontmatter.image ?
+							{post.frontmatter.hero ?
 
-								<Image filename={post.frontmatter.image} alt={post.frontmatter.title} />
+								<Image filename={post.frontmatter.hero} />
 								: null
 							}
 						</div>
 					</div>
-					{/* <Img fruid={post.frontmatter.image} /> */}
 					<div class="l-container--md">
 						<h1 class="c-article__heading">{post.frontmatter.title}</h1>
 						<dl className="c-article__date">
 							<dt>公開日</dt>
 							<dd>{post.frontmatter.date}</dd>
 						</dl>
-						<Tags tags={post.frontmatter.tags} />
-						<p class="c-article__description">{post.frontmatter.description}</p>
+						<TagsList tags={post.frontmatter.tags} />
+						<Description texts={post.frontmatter.lead} />
 						<ul class="c-snsBtns u-mblg">
 							<li class="c-snsBtns__item"><a class="c-snsBtns__item--fb" href=""><span class="c-snsBtns__label">Facebook</span><span class="c-snsBtns__num">0</span></a></li>
 							<li class="c-snsBtns__item"><a class="c-snsBtns__item--tw" href=""><span class="c-snsBtns__label">Twitter</span><span class="c-snsBtns__num">0</span></a></li>
@@ -117,7 +116,7 @@ export const pageQuery = graphql`
         date(formatString: "YYYY.MM.DD")
         description
 		lead
-		image
+		hero
 		category
 		cateId
 		tags
