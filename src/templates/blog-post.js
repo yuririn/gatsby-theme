@@ -43,6 +43,14 @@ const BlogPostTemplate = ({ data, location }) => {
 						<dl className="c-article__date">
 							<dt>公開日</dt>
 							<dd>{post.frontmatter.date}</dd>
+							{post.frontmatter.modifieddate ?
+								<dt>更新日</dt>
+								: ''
+							}
+							{post.frontmatter.modifieddate ?
+								<dd>{post.frontmatter.modifieddate}</dd>
+								: ''
+							}
 						</dl>
 						<TagsList tags={post.frontmatter.tags} />
 						<Description texts={post.frontmatter.lead} />
@@ -120,6 +128,7 @@ export const pageQuery = graphql`
 		category
 		cateId
 		tags
+		modifieddate(formatString: "YYYY.MM.DD")
 	  }
 	}
     previous: markdownRemark(id: { eq: $previousPostId }) {
