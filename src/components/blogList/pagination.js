@@ -13,7 +13,7 @@ const Li = ({ num, current, path }) => {
 	}
 }
 
-const Prev = ({ num, current, path }) => {
+const Prev = ({ current }) => {
 	if (current === '') {
 		return (
 			<li className="c-pager--archive__prev not-work"><span>Newer</span></li>
@@ -29,14 +29,16 @@ const Prev = ({ num, current, path }) => {
 	}
 }
 
-const Next = ({ num, current, path }) => {
+const Next = ({ num, current }) => {
 	if (current === num) {
 		return (
 			<li className="c-pager--archive__next not-work"><span>Older</span></li>
 		)
 	} else {
 		return (
-			<li className="c-pager--archive__next"><Link to={`/blogs/page/${current + 1}`}>Older</Link></li>
+
+			current === '' ? <li className="c-pager--archive__next"><Link to={`/blogs/page/2`}>Older</Link></li> :
+				<li className="c-pager--archive__next"><Link to={`/blogs/page/${current + 1}`}>Older</Link></li>
 		)
 	}
 }
