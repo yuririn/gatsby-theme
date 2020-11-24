@@ -26,9 +26,7 @@ const SEO = ({ description, lang, meta, title, image }) => {
 
 	const metaDescription = description || site.siteMetadata.description
 	const defaultTitle = site.siteMetadata?.title
-	const ogImage = image || site.siteMetadata?.image
-
-	console.log(image)
+	const ogImage = `https://ginneko-demo.netlify.app${image}` || site.siteMetadata?.image
 
 	return (
 		<Helmet
