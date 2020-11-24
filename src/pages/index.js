@@ -11,6 +11,7 @@ import TagList from "../components/common/tagsArchive"
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const posts = data.allMarkdownRemark.nodes
+	let i = 0;
 
 	if (posts.length === 0) {
 		return (
@@ -35,34 +36,37 @@ const BlogIndex = ({ data, location }) => {
 					<h2 className="c-heading--lg">最新記事</h2>
 					<div className="c-grid">
 						{posts.map(post => {
-							const title = post.frontmatter.title || post.fields.slug
+							i++;
+							if (i <= 9) {
 
-							return (
-								<article
-									className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
-									itemScope
-									itemType="http://schema.org/Article"
-								>
-									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
-										{post.frontmatter.hero ?
+								return (
+									<article
+										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+										itemScope
+										itemType="http://schema.org/Article"
+									>
+										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
+											{post.frontmatter.hero ?
 
-											<Image filename={post.frontmatter.hero} />
-											: <Image filename={`dummy.png`} />
-										}
-										<div class="p-entryCard__date">
-											{post.frontmatter.date}
-										</div>
-									</Link>
-									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
-									<div className="p-entryCard__footer">
+												<Image filename={post.frontmatter.hero} />
+												: <Image filename={`dummy.png`} />
+											}
+											<div class="p-entryCard__date">
+												{post.frontmatter.date}
+											</div>
+										</Link>
+										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
 										<div className="p-entryCard__footer">
 											<div className="p-entryCard__footer">
-												<TagList tags={post.frontmatter.tags} />
+												<div className="p-entryCard__footer">
+													<TagList tags={post.frontmatter.tags} />
+												</div>
 											</div>
 										</div>
-									</div>
-								</article>
-							)
+									</article>
+								)
+							}
+
 						})}
 					</div>
 				</section>
@@ -76,27 +80,27 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-					site {
-					siteMetadata {
-					title
-				}
-    }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
-					nodes {
-					excerpt
-        fields {
+			site {
+			siteMetadata {
+				title
+			}
+		}
+		allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
+			nodes {
+				excerpt
+					fields {
 					slug
 				}
-        frontmatter {
+				frontmatter {
 					title
-		  date(formatString: "YYYY.MM.DD")
-		  description
-	      category
-		  cateId
-		  hero
-		  tags
-        }
-      }
-    }
-  }
+					date(formatString: "YYYY.MM.DD")
+					description
+					category
+					cateId
+					hero
+					tags
+					}
+				}
+			}
+		}
 `

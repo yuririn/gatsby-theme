@@ -67,27 +67,28 @@ export default blogs
 
 export const pageQuery = graphql`
   query {
-					site {
-					siteMetadata {
-					title
+			site {
+				siteMetadata {
+				title
+			}
+		}
+		allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
+
+			nodes {
+				excerpt
+				fields {
+							slug
+						}
+				frontmatter {
+							title
+				date(formatString: "YYYY.MM.DD")
+				description
+				category
+				cateId
+				hero
+				tags
 				}
-    }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
-					nodes {
-					excerpt
-        fields {
-					slug
-				}
-        frontmatter {
-					title
-		  date(formatString: "YYYY.MM.DD")
-		  description
-	      category
-		  cateId
-		  hero
-		  tags
-        }
-      }
-    }
+			}
+		}
   }
 `
