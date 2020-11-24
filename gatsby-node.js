@@ -44,17 +44,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 
 	const posts = result.data.allMarkdownRemark.nodes
-	let count = 0
-
+	const postsPerPage = 12
 	// Create blog posts pages
 	// But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
 	// `context` is available in the template as a prop and as a variable in GraphQL
 
 	if (posts.length > 0) {
+		let count = 0
 		posts.forEach((post, index) => {
 			const previousPostId = index === 0 ? null : posts[index - 1].id
 			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-			if (post.fields.slug.includes('entry')) {
+
+			//entryを含み_(下書き)以外の記事
+			if (post.fields.slug.includes('entry') && !post.fields.slug.includes('_')) {
 				console.log(post)
 				createPage({
 					path: post.fields.slug,
@@ -69,7 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 				count = count + 1
 			}
 		})
-		const postsPerPage = 12
+
 		let numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
@@ -105,6 +107,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
+		//entryを含み_(下書き)以外の記事
 		createPage({
 			path: `/blogs/tags/${tag}/`,
 			component: tagTemplate,

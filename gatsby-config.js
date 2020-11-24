@@ -15,6 +15,7 @@ module.exports = {
 
 			},
 			{
+				name: `instagram`,
 				instagram: `yurico.k`,
 			},
 			{
@@ -22,6 +23,7 @@ module.exports = {
 				instagram: `https://github.com/yuririn`,
 			}
 		],
+		pagenation: 12,
 	},
 	plugins: [
 		{
