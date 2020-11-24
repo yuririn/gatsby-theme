@@ -41,35 +41,39 @@ const SEO = ({ description, lang, meta, title, image }) => {
 					content: metaDescription,
 				},
 				{
-					property: `og: title`,
+					property: `og:title`,
 					content: title,
 				},
 				{
-					property: `og: description`,
+					property: `og:description`,
 					content: metaDescription,
 				},
 				{
-					property: `og: type`,
+					property: `og:type`,
 					content: `website`,
 				},
 				{
-					name: `og: image`,
+					name: `og:image`,
 					content: ogImage,
 				},
 				{
-					name: `twitter: card`,
-					content: `summary`,
+					name: `twitter:card`,
+					content: `summary_large_image`,
 				},
 				{
-					name: `twitter: creator`,
+					name: `thumbnail`,
+					content: ogImage,
+				},
+				{
+					name: `twitter:creator`,
 					content: site.siteMetadata?.social?.twitter || ``,
 				},
 				{
-					name: `twitter: title`,
+					name: `twitter:title`,
 					content: title,
 				},
 				{
-					name: `twitter: description`,
+					name: `twitter:description`,
 					content: metaDescription,
 				},
 			].concat(meta)}
