@@ -29,6 +29,7 @@ const SEO = ({ description, lang, meta, title, image }) => {
 	const ogImage = image || site.siteMetadata?.image
 
 	console.log(image)
+
 	return (
 		<Helmet
 			htmlAttributes={{
@@ -89,6 +90,7 @@ SEO.propTypes = {
 	lang: PropTypes.string,
 	meta: PropTypes.arrayOf(PropTypes.object),
 	title: PropTypes.string.isRequired,
+	image: PropTypes.string,
 }
 
 export default SEO

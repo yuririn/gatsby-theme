@@ -13,7 +13,7 @@ const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const { previous, next } = data
-	console.log(data)
+	const src = data.allFile.edges[0] ? data.allFile.edges[0].node.childImageSharp.fluid.src : ''
 
 	return (
 		<Layout location={location} title={siteTitle}>
@@ -21,7 +21,7 @@ const BlogPostTemplate = ({ data, location }) => {
 			<SEO
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
-				image={post.frontmatter.image}
+				image={src}
 			/>
 			<article
 				className="p-section"
