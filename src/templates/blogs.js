@@ -15,7 +15,7 @@ const blogs = ({ data, location }) => {
 	if (current !== "") current = parseInt(current)
 
 	return (
-		<Layout location={location} title="">
+		<Layout location={location} title="銀ねこアトリエ">
 			<SEO title="ブログ一覧" />
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">
