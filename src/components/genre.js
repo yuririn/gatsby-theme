@@ -44,13 +44,13 @@ const genre = () => {
 				</Link>
 				</li>
 
-				<li class="p-localNav__item c-grid__item--md6"><Link to="/blogs/it-seminor">
+				<li class="p-localNav__item c-grid__item--md6"><Link to="/blogs/it-seminar">
 
 					<div class="p-localNav__main">
 						<h3 class="p-localNav__heading">ITセミナー</h3>
 						<p class="p-localNav__content">勉強会の開催/登壇について書いてます</p>
 					</div>
-					<Image filename="genre-it-seminor.jpg" />
+					<Image filename="genre-it-seminar.jpg" />
 				</Link>
 				</li>
 				<li class="p-localNav__item c-grid__item--md6"><Link to="/blogs/ginneko-tsuredure">

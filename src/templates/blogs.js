@@ -7,14 +7,16 @@ import Image from "../components/image"
 import TagList from "../components/common/tagsArchive"
 import Pagination from "../components/blogList/pagination"
 
-const blogs = ({ data }) => {
-	const siteTitle = data.site.siteMetadata?.title || `Title`
+const blogs = ({ data, location }) => {
 	const posts = data.allMarkdownRemark.nodes
-	console.log(posts.totalCount)
+
+	const num = Math.ceil(data.allMarkdownRemark.totalCount / 12);
+	let current = location.pathname.replace(/[^0-9]/g, '')
+	if (current !== "") current = parseInt(current)
 
 	return (
-		<Layout location="" title={siteTitle}>
-			<SEO title="" />
+		<Layout location={location} title="">
+			<SEO title="ブログ一覧" />
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">
 					<h1 class="p-pageHeader__heading">記事一覧</h1>
@@ -56,9 +58,10 @@ const blogs = ({ data }) => {
 							)
 						})}
 					</div>
-					<Pagination props={data} />
 				</section>
-				<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
+				<div class="ccm-pagination-wrapper">
+					<Pagination num={num} current={current}></Pagination>
+				</div>
 			</div>
 		</Layout>
 	)
@@ -68,20 +71,26 @@ const blogs = ({ data }) => {
 export default blogs
 
 export const pageQuery = graphql`
-  query{
+	query blosQyery($limit: Int!, $skip: Int!) {
 			site {
 				siteMetadata {
 				title
 			}
 		}
-		allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
+		allMarkdownRemark(
+			limit: $limit
+			skip: $skip
+			sort: {fields: [frontmatter___date], order: DESC }
+		)
+		{
+			totalCount
 			nodes {
 				excerpt
 				fields {
-							slug
-						}
+					slug
+				}
 				frontmatter {
-							title
+				title
 				date(formatString: "YYYY.MM.DD")
 				description
 				category
@@ -90,6 +99,7 @@ export const pageQuery = graphql`
 				tags
 				}
 			}
+
 		}
   }
 `

@@ -13,6 +13,7 @@ const BlogIndex = ({ data, location }) => {
 	const posts = data.allMarkdownRemark.nodes
 	let i = 0;
 
+
 	if (posts.length === 0) {
 		return (
 			<Layout location={location} title={siteTitle}>

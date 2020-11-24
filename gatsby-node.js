@@ -1,5 +1,7 @@
 const path = require(`path`)
+const Promise = require('bluebird')
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const slash = require('slash')
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
 	const { createPage } = actions
@@ -39,7 +41,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		return
 	}
 
+
 	const posts = result.data.allMarkdownRemark.nodes
+	let count = 0
 
 	// Create blog posts pages
 	// But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -49,27 +53,44 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		posts.forEach((post, index) => {
 			const previousPostId = index === 0 ? null : posts[index - 1].id
 			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+			if (post.fields.slug.includes('entry')) {
+				createPage({
+					path: post.fields.slug,
+					component: blogPost,
+					context: {
+						id: post.id,
+						previousPostId,
+						nextPostId,
+					},
+				})
+				count = count + 1
+			}
+		})
+		const postsPerPage = 12
+		let numPages = Math.ceil(count / postsPerPage)
 
+		for (let index = 0; index < numPages; index++) {
+			console.log(index)
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
+			const pageNumber = index + 1
 			createPage({
-				path: post.fields.slug,
-				component: blogPost,
-				context: {
-					id: post.id,
-					previousPostId,
-					nextPostId,
-				},
-			})
-			createPage({
-				path: '/blogs/',
+				path: withPrefix(pageNumber),
+				// 上で作成したblogPostList変数を使用します。
 				component: blogList,
 				context: {
-					id: post.id,
-					previousPostId,
-					nextPostId,
-				},
+					limit: postsPerPage,
+					skip: index * postsPerPage,
+					current: pageNumber,
+					total: numPages,
+					hasNext: pageNumber < numPages,
+					nextPath: withPrefix(pageNumber + 1),
+					hasPrev: index > 0,
+					prevPath: withPrefix(pageNumber - 1),
+				}
 			})
-		})
+		}
 	}
+
 
 	//タグを取得
 	let tags = posts.reduce((tags, edge) => {
@@ -113,7 +134,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
-			slug: 'it-seminor',
+			slug: 'it-seminar',
 			name: 'ITセミナー',
 			description: 'WordPressやconcrete5などCMSの記事'
 		},
@@ -127,8 +148,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const categoyTemplate = path.resolve(`./src/templates/category.js`);
 
 	categories.forEach(cate => {
-		slug = cate.slug
-		name = cate.name
+		const slug = cate.slug
+		const name = cate.name
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,

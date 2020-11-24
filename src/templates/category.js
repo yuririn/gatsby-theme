@@ -97,7 +97,7 @@ export default category
 export const pageQuery = graphql`
   query($name: String) {
       allMarkdownRemark(
-						limit: 2000
+	  limit: 2000
       sort: {fields: [frontmatter___date], order: DESC }
       filter: {frontmatter: {category: { in: [$name] } } }
     ) {

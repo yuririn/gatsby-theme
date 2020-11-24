@@ -28,7 +28,7 @@ const Footer = ({ title }) => {
 											<li><Link to="/category/front-end-program">Front End</Link></li>
 											<li><Link to="/category/back-end-program">Back End</Link></li>
 											<li><Link to="/category/seo">SEO</Link></li>
-											<li><Link to="/category/it-seminor">IT Seminor</Link></li>
+											<li><Link to="/category/it-seminar">IT Seminor</Link></li>
 											<li><Link to="/category/ginneko-tsuredure">Life Hack</Link></li>
 										</ul>
 									</li>
