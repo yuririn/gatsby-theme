@@ -105,13 +105,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
-		createPage({
-			path: `/blogs/tags/${tag}/`,
-			component: tagTemplate,
-			context: {
-				tag,
-			},
-		});
+		if (post.fields.slug.includes('entry')) {
+			createPage({
+				path: `/blogs/tags/${tag}/`,
+				component: tagTemplate,
+				context: {
+					tag,
+				},
+			});
+		}
 	});
 
 	const categories = [
@@ -150,16 +152,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const categoyTemplate = path.resolve(`./src/templates/category.js`);
 
 	categories.forEach(cate => {
-		const cateSlug = cate.slug
-		const name = cate.name
-		createPage({
-			path: `/blogs/${cate.slug}/`,
-			component: categoyTemplate,
-			context: {
-				cateSlug,
-				name,
-			},
-		});
+		if (post.fields.slug.includes('entry')) {
+			const cateSlug = cate.slug
+			const name = cate.name
+			createPage({
+				path: `/blogs/${cate.slug}/`,
+				component: categoyTemplate,
+				context: {
+					cateSlug,
+					name,
+				},
+			});
+		}
 	})
 
 }
