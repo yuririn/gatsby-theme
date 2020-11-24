@@ -13,9 +13,8 @@ import { siteMetadata } from "../../gatsby-config"
 const category = ({ pageContext, data }) => {
 	const category = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
-	console.log(edges)
 	return (
-		<Layout location={`blogs/${category.slug}`} title={siteMetadata.title}>
+		<Layout location={`blogs/${category.cateSlug}`} title={siteMetadata.title}>
 			<SEO
 				title={`${category.name}に関する記事一覧`}
 				description={category.description}
@@ -26,7 +25,7 @@ const category = ({ pageContext, data }) => {
 						<h1 class="p-pageHeader__heading">{category.name}に関する記事</h1>
 						<p>{category.description}</p>
 					</div>
-					<img class="p-pageHeader__img" src={`https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-${category.slug}.jpg`} alt=""></img>
+					<img class="p-pageHeader__img" src={`https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-${category.cateSlug}.jpg`} alt=""></img>
 				</div>
 				<div className="page-template-archive">
 					<div className="l-container">
@@ -95,18 +94,18 @@ category.propTypes = {
 export default category
 
 export const pageQuery = graphql`
-  query($name: String) {
+  query($cateSlug: String) {
       allMarkdownRemark(
 	  limit: 2000
       sort: {fields: [frontmatter___date], order: DESC }
-      filter: {frontmatter: {category: { in: [$name] } } }
+      filter: {frontmatter: {cateId: { in: [$cateSlug] } } }
     ) {
 		totalCount
-      edges {
-					node {
-					fields {
-					slug
-				}
+		edges {
+			node {
+			fields {
+			slug
+		}
           frontmatter {
 			title
 			date(formatString: "YYYY.MM.DD")

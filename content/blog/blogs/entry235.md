@@ -2,7 +2,7 @@
 title: WordPressで画像をリサイズする
 date: 2015-11-19
 hero: entry211.png
-category: [CMS]
+category: ['CMS']
 cateId: ['cms']
 tags: ["WordPress"]
 description: WordPressのカスタムフィールドに登録した画像のリサイズの仕方についてメモっておきます。

@@ -13,22 +13,22 @@ import { useStaticQuery, graphql } from "gatsby"
 const SEO = ({ description, lang, meta, title, image }) => {
 	const { site } = useStaticQuery(
 		graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-			description
-			image
-          }
-        }
-      }
-    `
+		query {
+			site {
+			siteMetadata {
+				title
+				description
+			}
+			}
+		}
+		`
 	)
 
 	const metaDescription = description || site.siteMetadata.description
 	const defaultTitle = site.siteMetadata?.title
 	const ogImage = image || site.siteMetadata?.image
 
+	console.log(image)
 	return (
 		<Helmet
 			htmlAttributes={{

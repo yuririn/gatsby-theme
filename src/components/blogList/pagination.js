@@ -14,7 +14,6 @@ const Li = ({ num, current, path }) => {
 }
 
 const Prev = ({ num, current, path }) => {
-	console.log(current < num)
 	if (current === '') {
 		return (
 			<li className="c-pager--archive__prev not-work"><span>Newer</span></li>

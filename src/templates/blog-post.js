@@ -37,6 +37,7 @@ const BlogPostTemplate = ({ data, location }) => {
 								<Image filename={post.frontmatter.hero} />
 								: <Image filename="dummy.png" />
 							}
+
 						</div>
 					</div>
 					<div class="l-container--md">
@@ -108,13 +109,31 @@ export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
     $previousPostId: String
-    $nextPostId: String
+	$nextPostId: String
+	$hero: String
   ) {
     site {
       siteMetadata {
         title
       }
 	}
+	allFile(
+	filter: {
+		relativePath: {eq: $hero}
+		sourceInstanceName: {eq: "assets"}
+	}){
+        edges {
+          node {
+            name
+            relativePath
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
@@ -147,6 +166,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
       }
-    }
+	}
+
   }
 `

@@ -26,6 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			frontmatter {
 			  tags
 			  category
+			  hero
 			}
           }
         }
@@ -54,6 +55,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			const previousPostId = index === 0 ? null : posts[index - 1].id
 			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 			if (post.fields.slug.includes('entry')) {
+				console.log(post)
 				createPage({
 					path: post.fields.slug,
 					component: blogPost,
@@ -61,6 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 						id: post.id,
 						previousPostId,
 						nextPostId,
+						hero: post.frontmatter.hero
 					},
 				})
 				count = count + 1
@@ -70,7 +73,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		let numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
-			console.log(index)
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
 			const pageNumber = index + 1
 			createPage({
@@ -148,13 +150,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const categoyTemplate = path.resolve(`./src/templates/category.js`);
 
 	categories.forEach(cate => {
-		const slug = cate.slug
+		const cateSlug = cate.slug
 		const name = cate.name
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,
 			context: {
-				slug,
+				cateSlug,
 				name,
 			},
 		});
