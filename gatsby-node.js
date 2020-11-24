@@ -6,8 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	// Define a template for blog post
 	const blogPost = path.resolve(`./src/templates/blog-post.js`)
-
-	const blogs = path.resolve(`./src/templates/blogs.js`)
+	const blogList = path.resolve(`./src/templates/blogs.js`)
 
 	// Get all markdown blog posts sorted by date
 	const result = await graphql(
@@ -60,10 +59,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					nextPostId,
 				},
 			})
-
 			createPage({
 				path: '/blogs/',
-				component: blogs,
+				component: blogList,
 				context: {
 					id: post.id,
 					previousPostId,
@@ -96,28 +94,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const categories = [
 		{
 			slug: 'cms',
-			name: 'CMS',
+			name: 'Contents Managemant System',
 			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
 			slug: 'front-end-program',
 			name: 'Front End',
-			description: 'HTML、CSS、JSなどの書き留めたチップス'
+			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
 			slug: 'back-end-program',
 			name: 'Back End',
-			description: 'PHP、黒い画面、DBが中心'
+			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
 			slug: 'seo',
 			name: 'Seaarch Engine Optimization',
-			description: 'SEOやコンテンツマーケティングに関する記事'
+			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
-			slug: 'it-seminar',
+			slug: 'it-seminor',
 			name: 'ITセミナー',
-			description: '勉強会の開催/登壇について書いてます'
+			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
 			slug: 'ginneko-tsuredure',
@@ -131,14 +129,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	categories.forEach(cate => {
 		slug = cate.slug
 		name = cate.name
-		description = cate.description
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,
 			context: {
 				slug,
 				name,
-				description
 			},
 		});
 	})

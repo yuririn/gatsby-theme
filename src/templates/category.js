@@ -101,7 +101,7 @@ export const pageQuery = graphql`
       sort: {fields: [frontmatter___date], order: DESC }
       filter: {frontmatter: {category: { in: [$name] } } }
     ) {
-					totalCount
+		totalCount
       edges {
 					node {
 					fields {

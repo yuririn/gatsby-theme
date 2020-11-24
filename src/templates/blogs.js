@@ -5,14 +5,16 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
 import TagList from "../components/common/tagsArchive"
+import Pagination from "../components/blogList/pagination"
 
-const blogs = ({ data, location }) => {
+const blogs = ({ data }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const posts = data.allMarkdownRemark.nodes
+	console.log(posts.totalCount)
 
 	return (
-		<Layout location={location} title={siteTitle}>
-			<SEO title="All posts" />
+		<Layout location="" title={siteTitle}>
+			<SEO title="" />
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">
 					<h1 class="p-pageHeader__heading">記事一覧</h1>
@@ -25,7 +27,6 @@ const blogs = ({ data, location }) => {
 					<h2 className="c-heading--lg">最新記事</h2>
 					<div className="c-grid">
 						{posts.map(post => {
-							const title = post.frontmatter.title || post.fields.slug
 
 							return (
 								<article
@@ -55,6 +56,7 @@ const blogs = ({ data, location }) => {
 							)
 						})}
 					</div>
+					<Pagination props={data} />
 				</section>
 				<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
 			</div>
@@ -66,14 +68,13 @@ const blogs = ({ data, location }) => {
 export default blogs
 
 export const pageQuery = graphql`
-  query {
+  query{
 			site {
 				siteMetadata {
 				title
 			}
 		}
 		allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
-
 			nodes {
 				excerpt
 				fields {

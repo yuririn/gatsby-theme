@@ -36,39 +36,37 @@ const BlogIndex = ({ data, location }) => {
 					<h2 className="c-heading--lg">最新記事</h2>
 					<div className="c-grid">
 						{posts.map(post => {
-							i++;
-							if (i <= 9) {
 
-								return (
-									<article
-										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
-										itemScope
-										itemType="http://schema.org/Article"
-									>
-										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
-											{post.frontmatter.hero ?
+							return (
+								<article
+									className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+									itemScope
+									itemType="http://schema.org/Article"
+								>
+									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
+										{post.frontmatter.hero ?
 
-												<Image filename={post.frontmatter.hero} />
-												: <Image filename={`dummy.png`} />
-											}
-											<div class="p-entryCard__date">
-												{post.frontmatter.date}
-											</div>
-										</Link>
-										<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+											<Image filename={post.frontmatter.hero} />
+											: <Image filename={`dummy.png`} />
+										}
+										<div class="p-entryCard__date">
+											{post.frontmatter.date}
+										</div>
+									</Link>
+									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+									<div className="p-entryCard__footer">
 										<div className="p-entryCard__footer">
 											<div className="p-entryCard__footer">
-												<div className="p-entryCard__footer">
-													<TagList tags={post.frontmatter.tags} />
-												</div>
+												<TagList tags={post.frontmatter.tags} />
 											</div>
 										</div>
-									</article>
-								)
-							}
+									</div>
+								</article>
+							)
 
 						})}
 					</div>
+
 				</section>
 				<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
 			</div>
@@ -85,7 +83,10 @@ export const pageQuery = graphql`
 				title
 			}
 		}
-		allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC }) {
+		allMarkdownRemark(
+				sort: {fields: [frontmatter___date], order: DESC },
+				limit: 9
+			) {
 			nodes {
 				excerpt
 					fields {
