@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					}
 					frontmatter {
 						tags
-						cateId
+						category
 						hero
 						pagetype
 					}
@@ -46,13 +46,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 
 	const posts = result.data.allMarkdownRemark.nodes
-	const postsPerPage = 12
+	let count = 0
+
 	// Create blog posts pages
 	// But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
 	// `context` is available in the template as a prop and as a variable in GraphQL
 
 	if (posts.length > 0) {
-		let count = 0
 		posts.forEach((post, index) => {
 			const previousPostId = index === 0 ? null : posts[index - 1].id
 			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
@@ -71,6 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 		const postsPerPage = 12
 		let numPages = Math.ceil(count / postsPerPage)
+		console.log(numPages)
 
 		for (let index = 0; index < numPages; index++) {
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
@@ -105,12 +106,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
-		//entryを含み_(下書き)以外の記事
+		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/tags/${tag}/`,
 			component: tagTemplate,
 			context: {
 				tag,
+				pagetype,
 			},
 		});
 	});
@@ -153,12 +155,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	categories.forEach(cate => {
 		const cateSlug = cate.slug
 		const name = cate.name
+		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,
 			context: {
 				cateSlug,
 				name,
+				pagetype,
 			},
 		});
 	})
