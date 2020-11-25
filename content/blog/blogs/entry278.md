@@ -1,5 +1,5 @@
 ---
-title: 飼いネコが食中毒！？対処法等の備忘録
+title: 初心者コーダに贈る！超軽量高機能エディタVS Code入門2
 date: 2018-07-14
 hero: entry278.jpg
 category: ['Front End']

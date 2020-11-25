@@ -1,8 +1,9 @@
 ---
 title: たった8行！簡単PopUpWindow
 date: 2014-08-09
-category: ['Front End']
-cateId: ['front-end-program']
+pagetype: blog
+category: 'Front End'
+cateId: 'front-end-program'
 tags: ["JavaScript"]
 description: 手間がかからずたった8行で簡単にJQueryで実装できるのでメモしてます。そのかわり、素っ気ないしまったくオシャレじゃないです。ご了承ください。
 lead: ["現役フロントエンドエンジニアのかみーゆです。","手間がかからずたった8行で簡単にJQueryで実装できるのでメモしてます。そのかわり、素っ気ないしまったくオシャレじゃないです。ご了承ください。"]

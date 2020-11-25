@@ -95,26 +95,27 @@ export default category
 
 export const pageQuery = graphql`
   query($cateSlug: String) {
-      allMarkdownRemark(
-	  limit: 2000
-      sort: {fields: [frontmatter___date], order: DESC }
-      filter: {frontmatter: {cateId: { in: [$cateSlug] } } }
-    ) {
-		totalCount
-		edges {
-			node {
-			fields {
-			slug
+			allMarkdownRemark(
+			limit: 2000
+			sort: {fields: [frontmatter___date], order: DESC }
+			filter: {frontmatter: {cateId: { eq: $cateSlug } } }
+		)
+		{
+			totalCount
+			edges {
+				node {
+					fields {
+					slug
+				}
+				frontmatter {
+					title
+					date(formatString: "YYYY.MM.DD")
+					hero
+					category
+					tags
+				}
+				}
+			}
 		}
-          frontmatter {
-			title
-			date(formatString: "YYYY.MM.DD")
-			hero
-			category
-			tags
-          }
-        }
-      }
-    }
-  }
+	}
 `

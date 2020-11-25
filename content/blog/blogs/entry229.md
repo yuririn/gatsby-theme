@@ -2,8 +2,9 @@
 title: OSC 2015 ひろしまでコンクリ出展致しました
 date: 2015-09-21
 hero: entry229.jpg
-category: ['IT Seminar']
-cateId: ['it-seminar']
+pagetype: blog
+category: 'IT Seminar'
+cateId: 'it-seminar'
 tags: ["concrete5"]
 description: 勉強会OSC（オープンソースカンファレンス）にてコンクリ(concrete5)のブースを出展致しました。今回はそのレポートです。
 lead: ["フロントエンドエンジニアのかみーゆです。","勉強会OSC（オープンソースカンファレンス）にてコンクリ(concrete5)のブースを出展致しました。今回はそのレポートです。"]

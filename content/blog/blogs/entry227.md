@@ -2,8 +2,9 @@
 title: アンガーマネージメント研修を終えて
 date: 2015-08-30
 hero: entry172.jpg
-category: ['ITセミナー']
-cateId: ['it-seminar']
+pagetype: blog
+category: 'ITセミナー'
+cateId: 'it-seminar'
 tags: ["アンガーマネージメント"]
 description: 東京でWindows女子部主催のアンガーマネージメント研修に参加してきました。鉄は熱いうちに打て!!…ということで、その感想をまとめます。
 lead: ["フロントエンドエンジニアのかみーゆです。","東京でWindows女子部主催のアンガーマネージメント研修に参加してきました。鉄は熱いうちに打て!!…ということで、その感想をまとめます。"]

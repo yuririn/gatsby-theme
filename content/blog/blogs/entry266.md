@@ -2,8 +2,9 @@
 title: 初心者コーダに贈る！超軽量高機能エディタVS Code入門
 date: 2018-06-11
 hero: entry266.png
-category: ['Front end']
-cateId: ['front-end-program']
+pagetype: blog
+category: 'Front end'
+cateId: 'front-end-program'
 tags: ["VS Code"]
 description: コーディング初心者必見。2015年にリリースされたVisual Studio Codeをコーディング初心者でも快適に使う方法をまとめます。随時追記して更新します。
 lead: ["フロントエンドエンジニアのかみーゆです。","コーディング初心者必見。2015年にリリースされたVisual Studio Codeをコーディング初心者でも快適に使う方法をまとめます。随時追記して更新します。"]

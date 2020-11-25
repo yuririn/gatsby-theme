@@ -2,8 +2,9 @@
 title: concrete5で困ったときにはじめにしておくこと
 date: 2014-07-01
 hero: entry175.jpg
-category: ['CMS']
-cateId: ['cms']
+pagetype: blog
+category: 'CMS'
+cateId: 'cms'
 tags: ["concrete5"]
 description: concrete5を触ってて、どうにもこうにもサイトが更新されない時があります。そんな時の対処法をご紹介します。
 lead: ["フロントエンドエンジニアのかみーゆです！","concrete5を触ってて、どうにもこうにもサイトが更新されない時があります。そんな時の対処法をご紹介します。"]

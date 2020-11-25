@@ -2,8 +2,9 @@
 title: CMSの会フォローアップ1～記事ブロック×html5
 date: 2015-02-11
 hero: entry175.jpg
-category: ['IT Seminar']
-cateId: ['it-seminar']
+pagetype: blog
+category: 'IT Seminar'
+cateId: 'it-seminar'
 tags: ["concrete5"]
 description: 先日広島のCMSの会でconcrete5の講師をさせていただきました。そのうち時間がなくて紹介できなかったいくつかのTipsを何回かに分けて紹介させていただきます。今回は記事ブロックにhtml5を適応する方法です。
 lead: ["フロントエンドエンジニアのかみーゆです。","先日広島のCMSの会でconcrete5の講師をさせていただきました。","そのうち時間がなくて紹介できなかったいくつかのTipsを何回かに分けて紹介させていただきます。今回は記事ブロックにhtml5を適応する方法です。"]

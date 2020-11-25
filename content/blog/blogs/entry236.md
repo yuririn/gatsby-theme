@@ -2,8 +2,9 @@
 title: コンクリの外部フォームでお問い合わせフォーム作ったよ
 date: 2015-12-01
 hero: entry175.jpg
-category: ['CMS']
-cateId: ['cms']
+pagetype: blog
+category: 'CMS'
+cateId: 'cms'
 tags: ["WordPress"]
 description: concrete5の外部フォームを使ってフォーム作りました。5.7のリファレンスが少なめなのでメモします。
 lead: ["フロントエンドエンジニアのかみーゆです。","concrete5の外部フォームを使ってフォーム作りました。5.7のリファレンスが少なめなのでメモします。"]

@@ -2,8 +2,9 @@
 title: hostsを利用したドメイン移管の確認方法
 date: 2016-04-08
 hero: entry208.png
-category: ['Back End']
-cateId: ['back-end-program']
+pagetype: blog
+category: 'Back End'
+cateId: 'back-end-program'
 tags: ["コマンド"]
 description: hostsファイルなるものを書き換えて、ドメインを確認するというのをやったのでやり方をメモしておきます。ちなみに新しいコマンド（魔法）の活用法も覚えたよ。
 lead: ["フロントエンドエンジニアのかみーゆです。","hostsファイルなるものを書き換えて、ドメインを確認するというのをやったのでやり方をメモしておきます。ちなみに新しいコマンド（魔法）の活用法も覚えたよ。"]
