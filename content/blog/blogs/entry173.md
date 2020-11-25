@@ -2,6 +2,7 @@
 title: concrete5の「クリップボードにコピー」が何気に便利
 hero: entry175.jpg
 date: 2014-08-09
+pagetype: blog
 category: ['CMS']
 cateId: ['cms']
 tags: ["concrete5"]

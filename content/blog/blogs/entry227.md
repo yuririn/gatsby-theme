@@ -2,6 +2,7 @@
 title: アンガーマネージメント研修を終えて
 date: 2015-08-30
 hero: entry172.jpg
+pagetype: blog
 category: ['ITセミナー']
 cateId: ['it-seminar']
 tags: ["アンガーマネージメント"]

@@ -2,6 +2,7 @@
 title: 飼いネコが食中毒！？対処法等の備忘録
 date: 2018-07-14
 hero: entry278.jpg
+pagetype: blog
 category: ['Front End']
 cateId: ['front-end-program']
 tags: ["JavaScript","jQuery"]

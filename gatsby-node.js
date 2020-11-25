@@ -18,18 +18,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           sort: { fields: [frontmatter___date], order: ASC }
           limit: 1000
         ) {
-          nodes {
-            id
-            fields {
-              slug
+			totalCount
+			nodes {
+					id
+					fields {
+						slug
+					}
+					frontmatter {
+						tags
+						category
+						hero
+						pagetype
+					}
+				}
 			}
-			frontmatter {
-			  tags
-			  category
-			  hero
-			}
-          }
-        }
       }
     `
 	)
@@ -55,7 +57,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			const previousPostId = index === 0 ? null : posts[index - 1].id
 			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 			if (post.fields.slug.includes('entry')) {
-				console.log(post)
+				const pagetype = 'blog'
 				createPage({
 					path: post.fields.slug,
 					component: blogPost,
@@ -63,7 +65,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 						id: post.id,
 						previousPostId,
 						nextPostId,
-						hero: post.frontmatter.hero
+						hero: post.frontmatter.hero,
+						pagetype
 					},
 				})
 				count = count + 1
@@ -75,6 +78,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		for (let index = 0; index < numPages; index++) {
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
 			const pageNumber = index + 1
+			const pagetype = 'blog'
 			createPage({
 				path: withPrefix(pageNumber),
 				// 上で作成したblogPostList変数を使用します。
@@ -83,11 +87,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					limit: postsPerPage,
 					skip: index * postsPerPage,
 					current: pageNumber,
-					total: numPages,
+					totalCount: numPages,
 					hasNext: pageNumber < numPages,
 					nextPath: withPrefix(pageNumber + 1),
 					hasPrev: index > 0,
 					prevPath: withPrefix(pageNumber - 1),
+					pagetype
 				}
 			})
 		}
@@ -105,11 +110,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
+		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/tags/${tag}/`,
 			component: tagTemplate,
 			context: {
 				tag,
+				pagetype,
 			},
 		});
 	});
@@ -152,12 +159,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	categories.forEach(cate => {
 		const cateSlug = cate.slug
 		const name = cate.name
+		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,
 			context: {
 				cateSlug,
 				name,
+				pagetype,
 			},
 		});
 	})

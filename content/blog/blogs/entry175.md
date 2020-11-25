@@ -2,6 +2,7 @@
 title: cocnrete5のタイトルタグの出力をカスタマイズ
 date: 2014-07-02
 hero: entry175.jpg
+pagetype: blog
 category: ['CMS']
 cateId: ['cms']
 tags: ["concrete5"]

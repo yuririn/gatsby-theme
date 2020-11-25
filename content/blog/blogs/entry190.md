@@ -2,6 +2,7 @@
 title: FBのいいねの数がおかしい時はここを直せ！
 date: 2014-08-26
 hero: entry190.jpg
+pagetype: blog
 category: ['SEO']
 cateId: ['seo']
 tags: ["OGP"]

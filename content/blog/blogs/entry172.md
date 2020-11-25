@@ -2,6 +2,7 @@
 title: フリー素材で掲載許可がいるケース
 date: 2014-05-14
 hero: entry172.jpg
+pagetype: blog
 category: ['Life Hack']
 cateId: ['ginneko-tsuredure']
 tags: ["著作権"]

@@ -2,6 +2,7 @@
 title: しろたん師匠に学ぶ黒い画面とSQL入門
 date: 2016-11-30
 hero: entry208.png
+pagetype: blog
 category: ['Back End']
 cateId: ['back-end-program']
 tags: ["DB","concrete5"]

@@ -2,6 +2,7 @@
 title: data属性でJavaScriptで要素の値の操作をする
 date: 2018-06-13
 hero: entry267.png
+pagetype: blog
 category: ['Front end']
 cateId: ['front-end-program']
 tags: ["JavaScript"]

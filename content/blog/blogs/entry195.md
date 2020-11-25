@@ -2,6 +2,7 @@
 title: OSC2014 in HIROSHIMAに参加しました！
 date: 2014-09-21
 hero: entry175.jpg
+pagetype: blog
 category: ['CMS']
 cateId: ['cms']
 tags: ["concrete5"]

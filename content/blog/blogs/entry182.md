@@ -1,6 +1,7 @@
 ---
 title: たった8行！簡単PopUpWindow
 date: 2014-08-09
+pagetype: blog
 category: ['Front End']
 cateId: ['front-end-program']
 tags: ["JavaScript"]

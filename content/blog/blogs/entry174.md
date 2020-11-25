@@ -2,6 +2,7 @@
 title: concrete5で困ったときにはじめにしておくこと
 date: 2014-07-01
 hero: entry175.jpg
+pagetype: blog
 category: ['CMS']
 cateId: ['cms']
 tags: ["concrete5"]

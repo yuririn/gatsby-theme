@@ -14,13 +14,17 @@ const blogs = ({ data, location }) => {
 	let current = location.pathname.replace(/[^0-9]/g, '')
 	if (current !== "") current = parseInt(current)
 
+	console.log(data.allMarkdownRemark)
+
 	return (
 		<Layout location={location} title="銀ねこアトリエ">
-			<SEO title="ブログ一覧" />
+			<SEO title="ブログ一覧"
+				description="「銀ねこアトリエ」の最新ブログ一覧です。30代で転職し、セブ島に移住。主には仕事で使ったチップスを書きだめています。フロントエンド技術、WordPress、海外移住、キャリアアップ、たまにふざけてます。"
+			/>
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">
-					<h1 class="p-pageHeader__heading">記事一覧</h1>
-					<p>記事一覧</p>
+					<h1 class="p-pageHeader__heading">最新ブログ一覧</h1>
+					<p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
 				</div>
 				<img class="p-pageHeader__img" src={`https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg`} alt=""></img>
 			</div>
@@ -71,7 +75,11 @@ const blogs = ({ data, location }) => {
 export default blogs
 
 export const pageQuery = graphql`
-	query blosQyery($limit: Int!, $skip: Int!) {
+	query blosQyery(
+			$limit: Int!
+			$skip: Int!
+			$pagetype: String
+		) {
 			site {
 				siteMetadata {
 				title
@@ -81,6 +89,7 @@ export const pageQuery = graphql`
 			limit: $limit
 			skip: $skip
 			sort: {fields: [frontmatter___date], order: DESC }
+			filter: {frontmatter: {pagetype: { eq: $pagetype } } }
 		)
 		{
 			totalCount

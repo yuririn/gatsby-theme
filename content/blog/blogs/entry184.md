@@ -1,6 +1,7 @@
 ---
 title: FancyBox・iframeの高さの変更方法
 date: 2014-08-10
+pagetype: blog
 category: ['Front End']
 cateId: ['front-end-program']
 tags: ["JavaScript","jQuery"]

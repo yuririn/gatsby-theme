@@ -2,6 +2,7 @@
 title: hostsを利用したドメイン移管の確認方法
 date: 2016-04-08
 hero: entry208.png
+pagetype: blog
 category: ['Back End']
 cateId: ['back-end-program']
 tags: ["コマンド"]

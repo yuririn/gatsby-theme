@@ -2,6 +2,7 @@
 title: Webクリエータを目指すリスタート組の君たちへ
 date: 2018-06-19
 hero: entry197.png
+pagetype: blog
 category: ['ITセミナー']
 cateId: ['it-seminar']
 tags: ["講師"]

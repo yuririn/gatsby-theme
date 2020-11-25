@@ -1,6 +1,7 @@
 ---
 title: FuelPHPでテンプレートを実装する
 date: 2015-07-09
+pagetype: blog
 category: ['Back End']
 cateId: ['back-end-program']
 tags: ["fuelPHP"]

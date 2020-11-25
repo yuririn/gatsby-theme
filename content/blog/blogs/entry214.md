@@ -2,6 +2,7 @@
 title: 『広島でコンクリ』vol6 開催しました！
 date: 2015-01-18
 hero: entry175.jpg
+pagetype: blog
 category: ['IT Seminar']
 cateId: ['it-seminar']
 tags: ["concrete5"]

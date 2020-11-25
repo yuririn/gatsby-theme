@@ -3,6 +3,7 @@ title: これだけ覚えておくと便利！見習い黒画面使いのため�
 date: 2014-09-10
 modifieddate: 2020-11-23
 hero: entry192.jpg
+pagetype: blog
 category: ['Back End']
 cateId: ['back-end-program']
 tags: ["コマンド"]

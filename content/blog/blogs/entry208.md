@@ -2,6 +2,7 @@
 title: 鬼のPHP合宿に参加しました
 date: 2014-11-30
 hero: entry208.png
+pagetype: blog
 category: ['Back End']
 cateId: ['back-end-program']
 tags: ["php"]

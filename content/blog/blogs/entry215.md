@@ -2,6 +2,7 @@
 title: CMSの会フォローアップ1～記事ブロック×html5
 date: 2015-02-11
 hero: entry175.jpg
+pagetype: blog
 category: ['IT Seminar']
 cateId: ['it-seminar']
 tags: ["concrete5"]

@@ -2,6 +2,7 @@
 title: 続・パソコンスクールHA＊NAで講師をしました
 date: 2015-11-16
 hero: entry234.jpg
+pagetype: blog
 category: ['IT Seminor']
 cateId: ['it-seminar']
 tags: ["講師"]
