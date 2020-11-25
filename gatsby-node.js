@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					}
 					frontmatter {
 						tags
-						category
+						cateId
 						hero
 						pagetype
 					}
@@ -56,28 +56,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		posts.forEach((post, index) => {
 			const previousPostId = index === 0 ? null : posts[index - 1].id
 			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-<<<<<<< HEAD
-
-			//entryを含み_(下書き)以外の記事
-			if (post.fields.slug.includes('entry') && !post.fields.slug.includes('_')) {
-				console.log(post)
-=======
-			if (post.fields.slug.includes('entry')) {
-				const pagetype = 'blog'
->>>>>>> writing-blogs
-				createPage({
-					path: post.fields.slug,
-					component: blogPost,
-					context: {
-						id: post.id,
-						previousPostId,
-						nextPostId,
-						hero: post.frontmatter.hero,
-						pagetype
-					},
-				})
-				count = count + 1
-			}
+			createPage({
+				path: post.fields.slug,
+				component: blogPost,
+				context: {
+					id: post.id,
+					previousPostId,
+					nextPostId,
+					hero: post.frontmatter.hero,
+				},
+			})
 		})
 
 		let numPages = Math.ceil(count / postsPerPage)
@@ -115,17 +103,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
-<<<<<<< HEAD
 		//entryを含み_(下書き)以外の記事
-=======
-		const pagetype = 'blog'
->>>>>>> writing-blogs
 		createPage({
 			path: `/blogs/tags/${tag}/`,
 			component: tagTemplate,
 			context: {
 				tag,
-				pagetype,
 			},
 		});
 	});
@@ -166,20 +149,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const categoyTemplate = path.resolve(`./src/templates/category.js`);
 
 	categories.forEach(cate => {
-<<<<<<< HEAD
-		if (post.fields.slug.includes('entry')) {
-			const cateSlug = cate.slug
-			const name = cate.name
-			createPage({
-				path: `/blogs/${cate.slug}/`,
-				component: categoyTemplate,
-				context: {
-					cateSlug,
-					name,
-				},
-			});
-		}
-=======
 		const cateSlug = cate.slug
 		const name = cate.name
 		const pagetype = 'blog'
@@ -192,7 +161,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 				pagetype,
 			},
 		});
->>>>>>> writing-blogs
 	})
 
 }
