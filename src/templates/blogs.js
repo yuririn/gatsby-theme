@@ -91,6 +91,7 @@ export const pageQuery = graphql`
 			filter: {frontmatter: {pagetype: { eq: "blog" } } }
 		)
 		{
+
 			totalCount
 			nodes {
 				excerpt

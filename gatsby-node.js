@@ -63,11 +63,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					id: post.id,
 					previousPostId,
 					nextPostId,
-					hero: post.frontmatter.hero,
+					hero: post.frontmatter.hero
 				},
 			})
+
 		})
 
+		const postsPerPage = 12
 		let numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
@@ -151,14 +153,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	categories.forEach(cate => {
 		const cateSlug = cate.slug
 		const name = cate.name
-		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,
 			context: {
 				cateSlug,
 				name,
-				pagetype,
 			},
 		});
 	})

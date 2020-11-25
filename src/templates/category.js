@@ -91,6 +91,7 @@ category.propTypes = {
 		}),
 	}),
 }
+
 export default category
 
 export const pageQuery = graphql`
