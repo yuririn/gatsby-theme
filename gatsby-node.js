@@ -56,22 +56,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		posts.forEach((post, index) => {
 			const previousPostId = index === 0 ? null : posts[index - 1].id
 			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-			if (post.fields.slug.includes('entry')) {
-				const pagetype = 'blog'
-				createPage({
-					path: post.fields.slug,
-					component: blogPost,
-					context: {
-						id: post.id,
-						previousPostId,
-						nextPostId,
-						hero: post.frontmatter.hero,
-						pagetype
-					},
-				})
-				count = count + 1
-			}
+			createPage({
+				path: post.fields.slug,
+				component: blogPost,
+				context: {
+					id: post.id,
+					previousPostId,
+					nextPostId,
+					hero: post.frontmatter.hero,
+					pagetype
+				},
+			})
+
 		})
+
 		const postsPerPage = 12
 		let numPages = Math.ceil(count / postsPerPage)
 

@@ -156,7 +156,8 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        title
+		title
+
       }
     }
     next: markdownRemark(id: { eq: $nextPostId }) {
