@@ -2,8 +2,8 @@
 title: FancyBox・iframeの高さの変更方法
 date: 2014-08-10
 pagetype: blog
-category: ['Front End']
-cateId: ['front-end-program']
+category: 'Front End'
+cateId: 'front-end-program'
 tags: ["JavaScript","jQuery"]
 description: JqueryでPopupWindowを開くというのを昨日メモしましたが、ライブラリーを使ってもっとかっこよくしたい！ということでFancyboxがお勧めということで使ってみました。ギャラリーや動画などもかっこよく開けて良い感じでした。
 lead: ["現役フロントエンドエンジニアのかみーゆです。","jQueryでPopupWindowを開くというのを昨日メモしましたが、ライブラリーを使ってもっとかっこよくしたい！ということでFancyboxがお勧めということで使ってみました。ギャラリーや動画などもかっこよく開けて良い感じでした。"]
@@ -13,7 +13,7 @@ fancyBoxはクリックするとギャラリーや、動画などをポップア
 
 [Fancybox deompage](http://fancyapps.com/fancybox/)
 
-ZIPを解凍して<head>に外部ファイルをおきます。
+ZIPを解凍して`cateId: $1`に外部ファイルをおきます。
 
 ![クリックしても反応しない！？](./images/2014/entry184-1.jpg)
 * jQuery.fancybox.js

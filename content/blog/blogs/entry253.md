@@ -3,8 +3,8 @@ title: カンタン！wgetでサイトを丸ごとダウンロードする方法
 date: 2016-12-09
 hero: entry192.jpg
 pagetype: blog
-category: ['Back End']
-cateId: ['back-end-program']
+category: 'Back End'
+cateId: 'back-end-program'
 tags: ["コマンド"]
 description: wgetコマンド便利です。仕事中ファイルのバックアップをとろうと思いftpソフトでDLしていましたが途中止まってしまいました。なのでwgetコマンドで落とすことにしました。なので、wgetコマンドについてまとめておきます。
 lead: ["フロントエンドエンジニアのかみーゆです。","wgetコマンド便利です。仕事中ファイルのバックアップをとろうと思いftpソフトでDLしていましたが途中止まってしまいました。なのでwgetコマンドで落とすことにしました。","なので、wgetコマンドについてまとめておきます。"]

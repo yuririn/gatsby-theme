@@ -11,7 +11,6 @@ import TagList from "../components/common/tagsArchive"
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const posts = data.allMarkdownRemark.nodes
-	let i = 0;
 
 
 	if (posts.length === 0) {
@@ -85,8 +84,9 @@ export const pageQuery = graphql`
 			}
 		}
 		allMarkdownRemark(
-				sort: {fields: [frontmatter___date], order: DESC },
+				sort: {fields: [frontmatter___date], order: DESC }
 				limit: 9
+				filter: {frontmatter: {pagetype: { eq: "blog" } } }
 			) {
 			nodes {
 				excerpt
@@ -95,6 +95,7 @@ export const pageQuery = graphql`
 				}
 				frontmatter {
 					title
+					pagetype
 					date(formatString: "YYYY.MM.DD")
 					description
 					category

@@ -3,8 +3,8 @@ title: 続・パソコンスクールHA＊NAで講師をしました
 date: 2015-11-16
 hero: entry234.jpg
 pagetype: blog
-category: ['IT Seminor']
-cateId: ['it-seminar']
+category: 'IT Seminor'
+cateId: 'it-seminar'
 tags: ["講師"]
 description: 再び、3日間パソコンスクールHA＊NAでCMScocnrete5について授業をしました。授業内容、想ったこと、感じた事をまとめます。
 lead: ["フロントエンドエンジニアのかみーゆです。","再び、3日間パソコンスクールHA＊NAでCMScocnrete5について授業をしました。授業内容、想ったこと、感じた事をまとめます。"]

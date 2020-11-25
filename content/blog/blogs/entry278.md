@@ -1,11 +1,11 @@
 ---
-title: 飼いネコが食中毒！？対処法等の備忘録
+title: 初心者コーダに贈る！超軽量高機能エディタVS Code入門2
 date: 2018-07-14
 hero: entry278.jpg
 pagetype: blog
-category: ['Front End']
-cateId: ['front-end-program']
-tags: ["JavaScript","jQuery"]
+category: Life Hack
+cateId: ginneko-tsuredure
+tags: ["ねこ食中毒"]
 description: ネコの嘔吐が異常な時は要注意。うちのネコが拾い食いで死にかけたのでその時の対処法や医療費等をメモしておきます。
 lead: ["現役フロントエンドエンジニアのかみーゆです。","ネコの嘔吐が異常な時は要注意。うちのネコが拾い食いで死にかけたのでその時の対処法や医療費等をメモしておきます。"]
 ---

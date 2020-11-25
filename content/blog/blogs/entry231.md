@@ -3,8 +3,8 @@ title: コンクリの属性を制して最強サイトに
 date: 2015-10-27
 hero: entry175.jpg
 pagetype: blog
-category: ['CMS']
-cateId: ['cms']
+category: 'CMS'
+cateId: 'cms'
 tags: ["concrete5"]
 description: 最近コンクリでサイト作った時『属性』を使って、カスタマイズしたのでそれについてまとめました。
 lead: ["現役フロントエンドエンジニアのかみーゆです。","最近コンクリでサイト作った時『属性』を使って、カスタマイズしたのでそれについてまとめました。"]

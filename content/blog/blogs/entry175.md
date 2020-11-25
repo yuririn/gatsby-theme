@@ -3,8 +3,8 @@ title: cocnrete5のタイトルタグの出力をカスタマイズ
 date: 2014-07-02
 hero: entry175.jpg
 pagetype: blog
-category: ['CMS']
-cateId: ['cms']
+category: 'CMS'
+cateId: 'cms'
 tags: ["concrete5"]
 description: cocnrete5 TITLE属性をカスタマイズする方法をご紹介します。6系、7~8系です。
 lead: ["フロントエンドエンジニアのかみーゆです！","cocnrete5 TITLE属性をカスタマイズする方法をご紹介します。6系、7~8系です。"]

@@ -3,8 +3,8 @@ title: パソコンスクールでconcrete5の話をしました
 date: 2015-05-21
 hero: entry190.jpg
 pagetype: blog
-category: ['IT Seminar']
-cateId: ['it-seminar']
+category: 'IT Seminar'
+cateId: 'it-seminar'
 tags: ["concrete5","講師"]
 description: 3日間、パソコンスクールHA＊NA様にて職業訓練校生の皆さまにconcrete5についてみっちり話をして帰りました～。
 lead: ["フロントエンドエンジニアのかみーゆです。","3日間、パソコンスクールHA＊NA様にて職業訓練校生の皆さまにconcrete5についてみっちり話をして帰りました～。"]

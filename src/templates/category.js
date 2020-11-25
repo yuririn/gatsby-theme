@@ -98,7 +98,7 @@ export const pageQuery = graphql`
 			allMarkdownRemark(
 			limit: 2000
 			sort: {fields: [frontmatter___date], order: DESC }
-			filter: {frontmatter: {cateId: { in: [$cateSlug] } } }
+			filter: {frontmatter: {cateId: { eq: $cateSlug } } }
 		)
 		{
 			totalCount

@@ -3,8 +3,8 @@ title: concrete5の「クリップボードにコピー」が何気に便利
 hero: entry175.jpg
 date: 2014-03-26
 pagetype: blog
-category: ['CMS']
-cateId: ['cms']
+category: 'CMS'
+cateId: 'cms'
 tags: ["concrete5"]
 description: 『すごい広島』にお邪魔してconcrete5勉強会『広島でコンクリ』を開催し参加者は2人でした。ページタイプを中心にもくもくと勉強させていただきました。
 lead: ["現役フロントエンドエンジニアのかみーゆです。","『すごい広島』にお邪魔してconcrete5勉強会『広島でコンクリ』を開催し参加者は2人でした。ページタイプを中心にもくもくと勉強させていただきました。"]

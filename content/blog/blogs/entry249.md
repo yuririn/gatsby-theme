@@ -3,8 +3,8 @@ title: しろたん師匠に学ぶ黒い画面とSQL入門
 date: 2016-11-30
 hero: entry208.png
 pagetype: blog
-category: ['Back End']
-cateId: ['back-end-program']
+category: 'Back End'
+cateId: 'back-end-program'
 tags: ["DB","concrete5"]
 description: みなさん、SQLはお好きですか？今では多少普通の人よりはわかるようになりましたがちんぷんかんぷんちんです。私の敬愛するつよつよメンターしろたん師匠からそんな話するつもりなかったのにありがたくもSQLの話になったのでその内容をまとめます。
 lead: ["フロントエンドエンジニアのかみーゆです。","みなさん、SQLはお好きですか？今では多少普通の人よりはわかるようになりましたがちんぷんかんぷんちんです。私の敬愛するつよつよメンターしろたん師匠からそんな話するつもりなかったのにありがたくもSQLの話になったのでその内容をまとめます。"]

@@ -78,7 +78,6 @@ export const pageQuery = graphql`
 	query blosQyery(
 			$limit: Int!
 			$skip: Int!
-			$pagetype: String
 		) {
 			site {
 				siteMetadata {
@@ -89,7 +88,7 @@ export const pageQuery = graphql`
 			limit: $limit
 			skip: $skip
 			sort: {fields: [frontmatter___date], order: DESC }
-			filter: {frontmatter: {pagetype: { eq: $pagetype } } }
+			filter: {frontmatter: {pagetype: { eq: "blog" } } }
 		)
 		{
 			totalCount

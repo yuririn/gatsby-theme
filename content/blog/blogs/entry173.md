@@ -3,8 +3,8 @@ title: concrete5の「クリップボードにコピー」が何気に便利
 hero: entry175.jpg
 date: 2014-08-09
 pagetype: blog
-category: ['CMS']
-cateId: ['cms']
+category: 'CMS'
+cateId: 'cms'
 tags: ["concrete5"]
 description: CMS concrete5の「クリップボードにコピー」が何気に便利です。サイトを編集する際、どうしても似たようなブロックを使うのでヘビロテしてます。なので、その機能や使い方についてご紹介します。
 lead: ["現役フロントエンドエンジニアのかみーゆです。","CMS concrete5の「クリップボードにコピー」が何気に便利です。サイトを編集する際、どうしても似たようなブロックを使うのでヘビロテしてます。なので、その機能や使い方についてご紹介します。"]
