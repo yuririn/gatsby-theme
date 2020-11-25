@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	// Define a template for blog post
 	const blogPost = path.resolve(`./src/templates/blog-post.js`)
-	const blogList = path.resolve(`./src/pages/blogs.js`)
+	const blogList = path.resolve(`./src/templates/blogs.js`)
 
 	// Get all markdown blog posts sorted by date
 	const result = await graphql(
@@ -64,9 +64,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					previousPostId,
 					nextPostId,
 					hero: post.frontmatter.hero,
-					pagetype
 				},
 			})
+			count++
 
 		})
 
@@ -74,6 +74,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		let numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
+			console.log(index)
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
 			const pageNumber = index + 1
 			createPage({
@@ -112,7 +113,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			component: tagTemplate,
 			context: {
 				tag,
-				pagetype,
 			},
 		});
 	});
@@ -155,14 +155,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	categories.forEach(cate => {
 		const cateSlug = cate.slug
 		const name = cate.name
-		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,
 			context: {
 				cateSlug,
 				name,
-				pagetype,
 			},
 		});
 	})
