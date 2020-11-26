@@ -27,7 +27,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					frontmatter {
 						tags
 						category
-						cateId
 						hero
 						pagetype
 					}
@@ -64,7 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					id: post.id,
 					previousPostId,
 					nextPostId,
-					hero: post.frontmatter.hero
+					hero: post.frontmatter.hero,
 				},
 			})
 			count++
@@ -73,10 +72,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 		const postsPerPage = 12
 		let numPages = Math.ceil(count / postsPerPage)
-		console.log(numPages)
 
 		for (let index = 0; index < numPages; index++) {
-			console.log(index)
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
 			const pageNumber = index + 1
 			createPage({
@@ -109,6 +106,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
+		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/tags/${tag}/`,
 			component: tagTemplate,
