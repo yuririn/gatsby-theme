@@ -67,6 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					hero: post.frontmatter.hero
 				},
 			})
+			count++
 
 		})
 
@@ -75,6 +76,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		console.log(numPages)
 
 		for (let index = 0; index < numPages; index++) {
+			console.log(index)
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
 			const pageNumber = index + 1
 			createPage({
@@ -107,13 +109,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
 	[...new Set(tags)].forEach(tag => {
-		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/tags/${tag}/`,
 			component: tagTemplate,
 			context: {
 				tag,
-				pagetype,
 			},
 		});
 	});
@@ -156,14 +156,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	categories.forEach(cate => {
 		const cateSlug = cate.slug
 		const name = cate.name
-		const pagetype = 'blog'
 		createPage({
 			path: `/blogs/${cate.slug}/`,
 			component: categoyTemplate,
 			context: {
 				cateSlug,
 				name,
-				pagetype,
 			},
 		});
 	})
