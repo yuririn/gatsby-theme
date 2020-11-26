@@ -57,7 +57,7 @@ gatsby new my-gatsby-project https://github.com/gatsbyjs/gatsby-starter-blog
 
 my-gatsby-project はお好みで変えてください。
 
-私はプロジェクトを1つのディレクトリーに並列に置いて管理しているので、そこにgatsby用のディレクトリをお区場合は置きたいディレクトリに移動してください。
+私はプロジェクトを1つのディレクトリーに並列に置いて管理しているので、そこにgatsby用のディレクトリをおく場合はそのディレクトリに移動してください。
 
 
 ```
