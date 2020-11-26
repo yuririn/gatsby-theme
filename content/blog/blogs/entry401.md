@@ -1,13 +1,13 @@
 ---
 title: Gatsbyブログサイト移行物語1~インストールからNetlifyデプロイまで~
-date: 2020-11-25
+date: 2020-11-26
 hero: entry401.jpg
 pagetype: blog
 category: Front End
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
-description: このサイト表示の重さに耐えかねて、concrete5でブログ書くのをやめることにしました。現在、前から気になる静的サイトジェネレーターのGatsbyでブログを作り直しています。今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。*Macでのやり方となります。
-lead: ["現役フロントエンドエンジニアのかみーゆです。","このサイト表示の重さに耐えかねて、concrete5でブログ書くのをやめることにしました。","現在、前から気になる静的サイトジェネレーターのGatsbyJSでブログを作り直しています。","今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。","※ Mac以外では検証してません。ご了承ください"]
+description: このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。concrete5は別の形で運用しようと思います。現在、前から気になる静的サイトジェネレーターのGatsbyでブログを作り直しています。今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。*Macでのやり方となります。
+lead: ["フロントエンドエンジニアのかみーゆです。","このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。","concrete5は別の形で運用しようと思います。","現在、前から気になる静的サイトジェネレーターのGatsbyJSでブログを作り直しています。","今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。","※ Mac以外では検証してません。ご了承ください。"]
 ---
 ## Gatsby(JS)とは？
 Gatsby(JS)はReactで作られた**静的サイトジェネレーター**です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>
@@ -63,45 +63,49 @@ my-gatsby-project はお好みで変えてください。
 ```
 cd projects
 ```
-例えば、projectsディレクトリーに移動。
+例えばprojectsで各プロジェクトを管理しているのであれば、cdコマンドでそのディレクトリーに移動しておきましょう。
 
-私は普段VS Code のコマンドを使います！Gatsbyのディレクトリーができたら、そのディレクトリをVS Codeで開くことをオススメします。
+私は普段VS Code からコマンドを使います！Gatsbyのディレクトリーができたら、そのディレクトリをVS Codeで開くことをオススメします。
 
-Netlifyにデプロイしたいのでgitにも追加しておきましょう。
+Netlifyにデプロイしたいのでgitにも追加します。
 
-今回はgithubを使い、すべて公開で行うことにしました。
+今回私はgithubを使い、公開設定で制作することにしました。
 
 [https://github.com/](https://github.com/)
 
-新しくリポジトリを作ります。
-
 ![新しくリポジトリ](./images/2020/11/entry401-4.png)
 
-それ以外はデフォルトのままで追加します。
+早速新しくリポジトリを作ります。<br>
+とくに設定せずデフォルトのままで追加します。
 
 ![デフォルトのまま](./images/2020/11/entry401-5.png)
 
+以下は実際制作中のリポジトリです。
+
 [gatsby-theme](https://github.com/yuririn/gatsby-theme)
 
-gitでコミットできるようにしておきます。
-まずはfirst commitとコミット。
+コミットできるようにしておきます。<br>
+まずは「first commit」とコメントしてコミット。
 ```
 git init
 git add .
 git commit -m 'first commit'
 ```
 
-リモートと連携します。連携するURLはgithubのリポジトリページから取得できます。
+リモートと連携します。連携するURLはgithubのリポジトリページから取得しておきます。
 
-![リモートと連携します。連携するURLはgithubのリポジトリページから取得](./images/2020/11/entry401-5.png)
+![リモートと連携します。連携するURLはgithubのリポジトリページから取得](./images/2020/11/entry401-6.png)
 
+以下のコマンドでリモートリポジトリと連携できます。
 ```
 git remote add origin https://github.com/yuririn/gatsby-theme.git
 ```
-gitアカウントを複数使い分けている人は、ssh接続じゃないとpushできないので以下のコマンドで。
+gitアカウントを複数使い分けている人は、**ssh接続じゃないとpushできない**ので以下のコマンドで。
 ```
 git remote add origin git@github.com:yuririn/gatsby-theme.git
 ```
+注意！！！
+
 最近、githubのポリシーが変わって複数のアカウントでhttpsでのpushができなくなりました。<br>
 その場合は、鍵設定が必要です。<br>
 設定の仕方はこちらを参考に。
@@ -115,8 +119,8 @@ git push --set-upstream origin master
 ```
 git remote -v
 ```
-## GatsbyJSを起動してみる
-早速GatsbyJSを起動してみましょう！
+## Gatsbyを起動してみる
+早速Gatsbyを起動してみましょう！
 
 以下コードでタスクランナーが走ります。
 ```
@@ -133,7 +137,7 @@ gatsby develop
 
 
 ## 初期設定等を変更しよう
-gatsby-config.jsから初期設定を変更しておきましょう！
+ファイル・gatsby-config.jsから初期設定を変更しておきましょう！
 
 サイトメタ情報変更
 
@@ -174,10 +178,10 @@ plugins: [
 
 構造は以下の通り。
 
-タイトルやメタ情報を追記できる、frontmatterの部分と本文に当たる部分のふた通りあります。
+タイトルやメタ情報を追記できるfrontmatterの部分と、本文に当たる部分の2パートあります。
 ![タイトルやメタ情報を追記](./images/2020/11/entry401-7.png)
 
-`frontmatter`は以下の通り書いてみます。
+以下の通りfrontmatterを書いてみます。
 ```
 ---
 title: テスト投稿
@@ -185,13 +189,13 @@ date: 2020-11-26
 description: この記事はテスト投稿です
 ---
 ```
-以下はSSEO的に大切なので抜かりなく記述しておきましょう。
+以下はSEO的に大切なので抜かりなく記述しておきましょう。
 
 * title ... タイトル
 * date ... 日にち。-（ハイフン）でくぎる
 * description ... 記事の説明
 
-それに続けて適当に書いてみましょう！
+それに続けて適当に本文を書いてみましょう！
 
 ```
 初めての投稿！！
@@ -201,15 +205,15 @@ description: この記事はテスト投稿です
 
 今回はテスト練習なので、これでコミットしてデプロイしてみます。
 
-ファイルの追加
+**ファイルの追加**
 ```
 git add .
 ```
-コミット。
+
+次のように**コミットメッセージを概要と詳細**に分けたい時は間に改行を挟みます。
 
 ![コミットメッセージを概要と詳細に分ける](./images/2020/11/entry401-13.png)
 
-上記のようにコミットメッセージを概要と詳細に分けたい時は間に改行を挟みます。<br>
 ```
 git commit -F- <<EOM
 >記事追加
@@ -223,15 +227,15 @@ Netlifyをgitと連携してMasterにpushされたデータが反映するよう
 
 ![Netlify公式サイト](./images/2020/11/entry401-8.png)
 
-右上のSign Upから入って、githubと連携させてしまいます。
+右上のSign Upから入って、githubと連携させます。
 
 ![Netlify右上のSign Upから入って、githubと連携](./images/2020/11/entry401-9.png)
 
-「New site from Git」からからリポジトリを追加します。
+「New site from Git」からリポジトリを追加します。
 
-![「New site from Git」からからリポジトリを追加](./images/2020/11/entry401-10.png)
+![「New site from Git」からリポジトリを追加](./images/2020/11/entry401-10.png)
 
-Continuous DeploymentにGitHubを足します。
+Continuous DeploymentからGitHubを選択。
 
 ![「New site from Git」からからリポジトリを追加](./images/2020/11/entry401-11.png)
 
@@ -247,9 +251,11 @@ Continuous DeploymentにGitHubを足します。
 githubと連携して、gitのコマンドでmasterにpushするだけで公開できるようになったかと思います。
 
 ちなみに以下は移行中の銀ねこアトリエです。<br>
-現在リライトしつつ選定しつつ、62記事を写し終えました。。。
+現在リライトしつつ選定しつつ、本日時点でローカル環境には62記事移し終えました。。。
 
 [移行中の銀ねこアトリエ](https://ginneko-demo.netlify.app/)
+
+リライトつらたん。。。。
 
 次回はCSSを移行して、記事にサムネイルを足す方法をご紹介します！
 
@@ -271,10 +277,9 @@ UIのパーツ（構成部品）、いわゆるコンポーネントを作り、
 [React 公式サイト](https://ja.reactjs.org/)
 
 #### GraphQLとは？
-Facebookが開発しているWeb APIのための規格で「クエリ言語」と「スキーマ言語」の二つから構成されています。
+Facebookが開発しているWeb APIのための規格で「クエリ言語」と「スキーマ言語」の2つから構成されています。
 
-クエリ言語は、GraphQL APIのリクエストのための言語で、これはさらにデータ取得系のquery、データ更新系のmutation、サーバーサイドからのイベントの通知であるsubscriptionの3種類があります。なお、この記事では、総称としてのクエリ言語は「クエリ言語」と書き、クエリの3種のひとつであるqueryは「query」と書くことにします。
-
-スキーマ言語は、GraphQL APIの仕様を記述するための言語です。リクエストされたクエリは、スキーマ言語で記述したスキーマに従ってGraphQL処理系により実行されて、レスポンスを生成します。
+* **クエリ言語**は、GraphQL APIのリクエストのための言語で、これはさらにデータ取得系のquery、データ更新系のmutation、サーバーサイドからのイベントの通知であるsubscriptionの3種類があります。なお、この記事では、総称としてのクエリ言語は「クエリ言語」と書き、クエリの3種のひとつであるqueryは「query」と書くことにします。
+* **スキーマ言語**は、GraphQL APIの仕様を記述するための言語です。リクエストされたクエリは、スキーマ言語で記述したスキーマにしたがってGraphQL処理系により実行されて、レスポンスを生成します。
 
 [「GraphQL」徹底入門 ─ RESTとの比較、API・フロント双方の実装から学ぶ](https://eh-career.com/engineerhub/entry/2018/12/26/103000)
