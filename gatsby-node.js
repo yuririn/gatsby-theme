@@ -76,6 +76,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		for (let index = 0; index < numPages; index++) {
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
 			const pageNumber = index + 1
+
 			createPage({
 				path: withPrefix(pageNumber),
 				// 上で作成したblogPostList変数を使用します。
