@@ -47,7 +47,7 @@ const category = ({ pageContext, data }) => {
 												{hero ?
 
 													<Image filename={hero} />
-													: <Image filename="dummy.png" />
+													: <Image filename="common/dummy.png" />
 												}
 												<div class="p-entryCard__date">
 													{date}

@@ -35,7 +35,7 @@ const BlogPostTemplate = ({ data, location }) => {
 							{post.frontmatter.hero ?
 
 								<Image filename={post.frontmatter.hero} />
-								: <Image filename="dummy.png" />
+								: <Image filename="common/dummy.png" />
 							}
 
 						</div>

@@ -44,7 +44,7 @@ const blogs = ({ data, location }) => {
 										{post.frontmatter.hero ?
 
 											<Image filename={post.frontmatter.hero} />
-											: <Image filename="dummy.png" />
+											: <Image filename="common/dummy.png" />
 										}
 										<div class="p-entryCard__date">
 											{post.frontmatter.date}
