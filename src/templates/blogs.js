@@ -63,9 +63,7 @@ const blogs = ({ data, location }) => {
 						})}
 					</div>
 				</section>
-				<div class="ccm-pagination-wrapper">
-					<Pagination num={num} current={current}></Pagination>
-				</div>
+				<Pagination num={num} current={current}></Pagination>
 			</div>
 		</Layout>
 	)

@@ -43,28 +43,118 @@ const Next = ({ num, current }) => {
 	}
 }
 
+const Skip = ({ show }) => {
+	return (
+		show ? <li>...</li> : ''
+	)
+}
+
 const Pagination = ({ num, current }) => {
 	let array = []
 	for (let index = 1; index <= num; index++) {
 		array.push(index)
 	}
 
-	return (
-		<div class="ccm-pagination-wrapper">
-			<ol className="c-pager--archive p-section">
-				<Prev current={current} num={num} />
-				{(array || []).map(i => (
-					i === 1 ?
-						<Li num={i} current={current === ''} path={`/blogs/`} />
-						:
-						<Li num={i} current={current === i} path={`/blogs/page/${i}`} />
 
-				))
+	if (num < 6) {
+		console.log(num > 8)
+		return (
+			<div class="ccm-pagination-wrapper">
+				<ol className="c-pager--archive p-section">
+					<Prev current={current} num={num} />
+					{(array || []).map(i => (
+						i === 1 ?
+							<Li num={i} current={current === ''} path={`/blogs/`} />
+							:
+							<Li num={i} current={current === i} path={`/blogs/page/${i}`} />
+
+					)
+					)}
+					<Next current={current} num={num} />
+				</ol>
+			</div>
+		)
+	} else {
+		if (num >= 8) {
+			if (current <= 3 || current === '') {
+				array = []
+				for (let index = 1; index <= 5; index++) {
+					array.push(index)
 				}
-				<Next current={current} num={num} />
-			</ol>
-		</div>
-	)
+
+				return (
+					<div class="ccm-pagination-wrapper">
+						<ol className="c-pager--archive p-section">
+							<Prev current={current} num={num} />
+							{(array || []).map(i => (
+								i === 1 ?
+									<Li num={i} current={current === ''} path={`/blogs/`} />
+									:
+									<Li num={i} current={current === i} path={`/blogs/page/${i}`} />
+
+							))
+							}
+							<li>...</li>
+							<li><Link to={`/blogs/page/${num}`}>{num}</Link></li>
+							<Next current={current} num={num} />
+						</ol>
+					</div>
+				)
+
+
+			} else if (current >= num - 3) {
+				array = []
+				for (let index = num - 4; index <= num; index++) {
+					array.push(index)
+				}
+				return (
+					<div class="ccm-pagination-wrapper">
+						<ol className="c-pager--archive p-section">
+							<Prev current={current} num={num} />
+							<li><Link to={`/blogs/`}>1</Link></li>
+							<li>...</li>
+							{(array || []).map(i => (
+
+								<Li num={i} current={current === i} path={`/blogs/page/${i}`} />
+
+							))
+							}
+							<Next current={current} num={num} />
+						</ol>
+					</div>
+				)
+			} else {
+				array = []
+				for (let index = current - 2; index <= current + 2; index++) {
+					array.push(index)
+				}
+
+				return (
+					<div class="ccm-pagination-wrapper">
+						<ol className="c-pager--archive p-section">
+							<Prev current={current} num={num} />
+							<li><Link to={`/blogs/`}>1</Link></li>
+							<Skip show={current !== current - 3 == 1 ? '' : current - 3} />
+							{(array || []).map(i => (
+								<Li num={i} current={current === i} path={`/blogs/page/${i}`} />
+
+							))
+							}
+							<Skip show={current !== num - (current + 2)} />
+							<li><Link to={`/blogs/page/${num}`}>{num}</Link></li>
+							<Next current={current} num={num} />
+						</ol>
+					</div>
+				)
+			}
+		} else {
+			return (
+				''
+			)
+
+		}
+
+	}
 }
 
 export default Pagination
