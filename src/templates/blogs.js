@@ -63,7 +63,7 @@ const blogs = ({ data, location }) => {
 						})}
 					</div>
 				</section>
-				<Pagination num={num} current={current}></Pagination>
+				<Pagination num={num} current={current} type=""></Pagination>
 			</div>
 		</Layout>
 	)

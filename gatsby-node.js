@@ -102,20 +102,39 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		return edgeTags ? tags.concat(edgeTags) : tags;
 	}, []);
 
-	tags = Array.from(new Set(tags))
+	let counts = {};
+
+	for (var i = 0; i < tags.length; i++) {
+		let key = tags[i];
+		counts[key] = (counts[key]) ? counts[key] + 1 : 1;
+
+	}
+
+	tags = counts
 
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
-	[...new Set(tags)].forEach(tag => {
-		const pagetype = 'blog'
-		createPage({
-			path: `/blogs/tags/${tag}/`,
-			component: tagTemplate,
-			context: {
-				tag,
-			},
-		});
-	});
+	for (let tag in tags) {
+		const postsPerPage = 12
+		let count = tags[tag]
+		numPages = Math.ceil(count / postsPerPage)
+
+		for (let index = 0; index < numPages; index++) {
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/tags/${tag}` : `/blogs/tags/${tag}/page/${pageNumber}`
+			const pageNumber = index + 1
+
+			createPage({
+				path: withPrefix(pageNumber),
+				component: tagTemplate,
+				context: {
+					limit: postsPerPage,
+					skip: index * postsPerPage,
+					tag,
+				},
+			});
+		}
+		// console.log(tag, tags[tag])
+	}
 
 	const categories = [
 		{
