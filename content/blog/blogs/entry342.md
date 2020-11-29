@@ -1,7 +1,7 @@
 ---
 title: オフショアやりたくてセブ島に来て半年経ったから近況報告してみた
 date: 2019-12-14
-hero: entry342.jpg
+hero: 2019/entry342.jpg
 pagetype: blog
 category: Life Hack
 cateId: ginneko-tsuredure

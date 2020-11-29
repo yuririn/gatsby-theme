@@ -1,7 +1,7 @@
 ---
 title: SEO 勉強会「『Googleに聞きたい！ 検索エンジンQ&A』」無事終わりました
 date: 2018-10-09
-hero: entry279.jpg
+hero: 2018/entry279.jpg
 pagetype: blog
 category: ITセミナー
 cateId: it-seminar

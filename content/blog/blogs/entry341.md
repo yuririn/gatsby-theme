@@ -1,7 +1,7 @@
 ---
 title: SEO勉強会に参加しました in セブ島
 date: 2019-11-28
-hero: entry341.jpg
+hero: 2019/entry341.jpg
 pagetype: blog
 category: it-seminar
 cateId: it-seminar

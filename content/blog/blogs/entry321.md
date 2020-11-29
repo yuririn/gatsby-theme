@@ -1,7 +1,7 @@
 ---
 title: イカれたポートフォリオ作ったら、ナンパされたので転職してセブ島まで来た話
 date: 2019-05-05
-hero: entry321.jpg
+hero: 2019/entry321.jpg
 pagetype: blog
 category: 'Life Hack'
 cateId: 'ginneko-tsuredure'
@@ -14,7 +14,7 @@ lead: ["フロントエンドエンジニアのかみーゆです。","セブ島
 
 ## いい加減な気持ちでサイトを作り始める
 時間は少ないですが、ウケを狙うだけのために注力しつつサイトを作ることにしました。
-出来上がったサイトは[こちら](/portfolio/)。
+でき上がったサイトは[こちら](/portfolio/)。
 
 ![ポートフォリオサイト](./images/2019/entry321-1.png)
 

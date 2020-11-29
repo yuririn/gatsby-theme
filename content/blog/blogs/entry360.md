@@ -1,7 +1,7 @@
 ---
 title: Adobe XD ユーザーグループ広島のオンライン勉強会に参加しました
 date: 2020-04-11
-hero: entry360.jpg
+hero: 2020/entry360.jpg
 pagetype: blog
 category: 'ITセミナー'
 cateId: 'it-seminar'

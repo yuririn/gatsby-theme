@@ -1,6 +1,6 @@
 ---
 title: Webサイトの表示速度を真剣に考える
-date: 2019-06-21
+date: 2019/2019-06-21
 hero: entry325.png
 pagetype: blog
 category: SEO

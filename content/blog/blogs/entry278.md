@@ -1,7 +1,7 @@
 ---
 title: 初心者コーダに贈る！超軽量高機能エディタVS Code入門2
 date: 2018-07-14
-hero: entry278.jpg
+hero: 2018/entry278.jpg
 pagetype: blog
 category: Life Hack
 cateId: ginneko-tsuredure

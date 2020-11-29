@@ -1,7 +1,7 @@
 ---
 title: CSSカウンターを使ってリストタグにナンバーを振る
 date: 2020-03-29
-hero: entry363.jpg
+hero: 2020/entry363.jpg
 pagetype: blog
 category: 'Front End'
 cateId: 'front-end-program'

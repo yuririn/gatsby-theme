@@ -1,7 +1,7 @@
 ---
 title: 広島に帰省したのでウェブタッチミーティングでフィリピンやオフショアの話をしてきました
 date: 2020-02-16
-hero: entry356.png
+hero: 2020/entry356.png
 pagetype: blog
 category: 'ITセミナー'
 cateId: 'it-seminar'

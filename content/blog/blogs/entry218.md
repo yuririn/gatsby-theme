@@ -1,7 +1,7 @@
 ---
 title: 広島でコンクリ』Vol.7無事終了しました！
 date: 2015-02-22
-hero: entry175.jpg
+hero: 2014/entry175.jpg
 pagetype: blog
 category: 'IT Seminar'
 cateId: 'it-seminar'

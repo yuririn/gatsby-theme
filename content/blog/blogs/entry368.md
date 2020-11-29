@@ -1,7 +1,7 @@
 ---
 title: セブ島で仕事したかったんでXDで退職届を作った話
 date: 2020-06-27
-hero: entry368.png
+hero: 2020/entry368.png
 pagetype: blog
 category: 'Life Hack'
 cateId: 'ginneko-tsuredure'

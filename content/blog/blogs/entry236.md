@@ -1,7 +1,7 @@
 ---
 title: コンクリの外部フォームでお問い合わせフォーム作ったよ
 date: 2015-12-01
-hero: entry175.jpg
+hero: 2014/entry175.jpg
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'

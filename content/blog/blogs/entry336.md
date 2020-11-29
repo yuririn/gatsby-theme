@@ -1,8 +1,8 @@
 ---
 title: VScodeでカンタン！正規表現置換のためのチートシート
-date: 2019-07-21
+date: 2019/2019-07-21
 modifieddate: 2020-11-15
-hero: entry266.png
+hero: 2018/entry266.png
 pagetype: blog
 category: 'Front end'
 cateId: 'front-end-program'

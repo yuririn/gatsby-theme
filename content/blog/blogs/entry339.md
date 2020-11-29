@@ -1,7 +1,7 @@
 ---
 title: CSSの変な仕様あるあるを力一杯列挙してみた
 date: 2019-09-10
-hero: entry339.jpg
+hero: 2019/entry339.jpg
 pagetype: blog
 category: Front End
 cateId: front-end-program

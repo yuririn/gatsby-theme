@@ -1,7 +1,7 @@
 ---
 title: 第1回 concrete5勉強会 in 広島
 date: 2014-07-24
-hero: entry175.jpg
+hero: 2014/entry175.jpg
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'

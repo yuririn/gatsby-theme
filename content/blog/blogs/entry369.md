@@ -1,7 +1,7 @@
 ---
-title: セブ島で仕事したかったんでXDで退職届を作った話
+title: 駆け出しエンジニアの君へ。30才過ぎても転職はできる
 date: 2020-07-01
-hero: entry369.jpg
+hero: 2020/entry369.jpg
 pagetype: blog
 category: 'Life Hack'
 cateId: 'ginneko-tsuredure'

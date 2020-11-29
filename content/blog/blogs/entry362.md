@@ -1,7 +1,7 @@
 ---
 title: 2020年から始める JS 入門1 はじめの一歩・Hello world
 date: 2020-01-05
-hero: entry362.jpg
+hero: 2020/entry362.jpg
 pagetype: blog
 category: 'Life Hack'
 cateId: 'ginneko-tsuredure'

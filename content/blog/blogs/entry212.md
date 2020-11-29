@@ -1,7 +1,7 @@
 ---
 title: カラオケでうろ覚えで歌って90点以上とる方法
 date: 2014-12-24
-hero: entry212.jpg
+hero: 2014/entry212.jpg
 pagetype: blog
 category: 'Life Hack'
 cateId: 'ginneko-tsuredure'

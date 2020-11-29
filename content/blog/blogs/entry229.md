@@ -1,7 +1,7 @@
 ---
 title: OSC 2015 ひろしまでコンクリ出展致しました
 date: 2015-09-21
-hero: entry229.jpg
+hero: 2015/entry229.jpg
 pagetype: blog
 category: 'IT Seminar'
 cateId: 'it-seminar'

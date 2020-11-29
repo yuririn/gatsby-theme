@@ -1,7 +1,7 @@
 ---
 title: セブ島のSEO勉強会でWebサイト速度改善方法についてお話しさせていただきました
 date: 2020-03-21
-hero: entry357.jpg
+hero: 2020/entry357.jpg
 pagetype: blog
 category: 'ITセミナー'
 cateId: 'it-seminar'

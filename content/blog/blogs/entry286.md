@@ -1,7 +1,7 @@
 ---
 title: 脱 jQuery！軽量のスクロール JS・MoveTo が便利
 date: 2018-12-14
-hero: entry267.png
+hero: 2018/entry267.png
 pagetype: blog
 category: 'Front end'
 cateId: 'front-end-program'

@@ -1,7 +1,7 @@
 ---
 title: CSS の shape-outside で特定の形の図形にテキストを回り込ませる
 date: 2020-04-01
-hero: entry361.jpg
+hero: 2020/entry361.jpg
 pagetype: blog
 category: 'Front End'
 cateId: 'front-end-program'

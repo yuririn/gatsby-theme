@@ -1,7 +1,7 @@
 ---
 title: セブシティロックダウン 1か月を振り返る
 date: 2020-04-25
-hero: entry365.jpg
+hero: 2020/entry365.jpg
 pagetype: blog
 category: 'Life Hack'
 cateId: 'ginneko-tsuredure'

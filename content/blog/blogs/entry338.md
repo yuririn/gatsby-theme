@@ -1,7 +1,7 @@
 ---
 title: 古いSEO手法でボロボロだったサイトを改善させた話
 date: 2019-08-03
-hero: entry325.png
+hero: 2019/entry325.png
 pagetype: blog
 category: SEO
 cateId: seo

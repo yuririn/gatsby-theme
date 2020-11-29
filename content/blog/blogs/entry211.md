@@ -1,7 +1,7 @@
 ---
 title: WordPressでショートタグを作ってみた
 date: 2014-12-21
-hero: entry211.png
+hero: 2014/entry211.png
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'

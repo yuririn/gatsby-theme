@@ -1,7 +1,7 @@
 ---
 title: やりたかったから広島でSEOの勉強会します！
 date: 2018-08-20
-hero: entry276.png
+hero: 2018/entry276.png
 pagetype: blog
 category: ITセミナー
 cateId: it-seminar

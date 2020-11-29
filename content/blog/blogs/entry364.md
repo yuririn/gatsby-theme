@@ -1,7 +1,7 @@
 ---
 title: 2020年から始める JS 入門1 デバッグ
 date: 2020-03-02
-hero: entry362.jpg
+hero: 2020/entry362.jpg
 pagetype: blog
 category: 'Front End'
 cateId: 'front-end-program'

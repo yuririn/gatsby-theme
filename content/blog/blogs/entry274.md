@@ -1,7 +1,7 @@
 ---
 title: Webクリエータを目指すリスタート組の君たちへ
 date: 2018-06-19
-hero: entry197.png
+hero: 2014/entry197.png
 pagetype: blog
 category: 'Life Hack'
 cateId: 'ginneko-tsuredure'
