@@ -133,7 +133,7 @@ const Pagination = ({ num, current, type }) => {
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
 							<li><Link to={`/blogs/${type}`}>1</Link></li>
-							<Skip show={current !== current - 3 == 1 ? '' : current - 3} />
+							<Skip show={current !== num + (current - 3)} />
 							{(array || []).map(i => (
 								<Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} />
 
