@@ -1,12 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+// Components
 import Image from "../components/image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TagList from "../components/common/tagsArchive"
-
-// Components
 import { Link, graphql } from "gatsby"
 import { siteMetadata } from "../../gatsby-config"
 import Pagination from "../components/blogList/pagination"

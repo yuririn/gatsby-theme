@@ -27,6 +27,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					frontmatter {
 						tags
 						category
+						cateId
 						hero
 						pagetype
 					}
@@ -136,16 +137,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		// console.log(tag, tags[tag])
 	}
 
-	const categories = [
+	//タグを取得
+	//タグを取得
+	let cates = posts.reduce((cates, edge) => {
+		const edgeCates = edge['frontmatter']['cateId'];
+		return edgeCates ? cates.concat(edgeCates) : cates;
+	}, []);
+
+
+	let categories = {};
+
+	for (var i = 0; i < cates.length; i++) {
+		let key = cates[i];
+		categories[key] = (categories[key]) ? categories[key] + 1 : 1;
+
+	}
+
+	const cateArry = [
 		{
 			slug: 'cms',
 			name: 'Contents Managemant System',
-			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
 			slug: 'front-end-program',
-			name: 'Front End',
-			description: 'WordPressやconcrete5などCMSの記事'
 		},
 		{
 			slug: 'back-end-program',
@@ -170,19 +184,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	]
 
 	const categoyTemplate = path.resolve(`./src/templates/category.js`);
+	console.log(categories)
 
-	categories.forEach(cate => {
-		const cateSlug = cate.slug
-		const name = cate.name
-		createPage({
-			path: `/blogs/${cate.slug}/`,
-			component: categoyTemplate,
-			context: {
-				cateSlug,
-				name,
-			},
-		});
-	})
+	for (cate in categories) {
+		const postsPerPage = 12
+		let count = categories[cate]
+		console.log(count)
+		numPages = Math.ceil(count / postsPerPage)
+
+		for (let index = 0; index < numPages; index++) {
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/${cate}` : `/blogs/${cate}/page/${pageNumber}`
+			const pageNumber = index + 1
+			const cateSlug = cate
+
+			createPage({
+				path: withPrefix(pageNumber),
+				component: categoyTemplate,
+				context: {
+					limit: postsPerPage,
+					skip: index * postsPerPage,
+					cateSlug
+
+				},
+			});
+		}
+	}
 
 }
 
