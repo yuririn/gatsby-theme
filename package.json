@@ -34,6 +34,7 @@
 	},
 	"devDependencies": {
 		"gatsby-remark-autolink-headers": "^2.6.0",
+		"gatsby-remark-external-links": "0.0.4",
 		"prettier": "2.1.2"
 	},
 	"homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
