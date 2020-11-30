@@ -11,29 +11,24 @@ import { Link, graphql } from "gatsby"
 import { siteMetadata } from "../../gatsby-config"
 
 const category = ({ pageContext, data, location }) => {
-	const category = pageContext
+	const { cateSlug, current, page } = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
-	const num = Math.ceil(totalCount / 12);
-	let current = location.pathname.split(`${category.cateSlug}/page/`)[1]
-	if (location.pathname.split(`${category.cateSlug}/page/`)[1]) {
-		current = current.replace(/[^0-9]/g, '')
-		current = parseInt(current)
-	}
 
-	console.log(current)
 	// console.log(siteMetadata.category)
 	let cateName = ''
 	let cateDescription = ''
 	siteMetadata.category.forEach(
 		(cate) => {
-			if (cate.slug === category.cateSlug) {
+			if (cate.slug === cateSlug) {
 				cateDescription = cate.description;
 				cateName = cate.name;
 			}
 		}
 	)
+
+	console.log(pageContext)
 	return (
-		<Layout location={`blogs/${category.cateSlug}`} title={siteMetadata.title}>
+		<Layout location={location} title={siteMetadata.title}>
 			<SEO
 				title={`${cateName}`}
 				description={cateDescription}
@@ -81,7 +76,7 @@ const category = ({ pageContext, data, location }) => {
 								})}
 							</div>
 						</section>
-						{num !== 1 ? <Pagination num={num} current={current} type={`${category.cateSlug}/`}></Pagination> : ''}
+						{page > 1 ? <Pagination num={page} current={current} type={`${cateSlug}/`}></Pagination> : ''}
 					</div>
 				</div>
 			</main>

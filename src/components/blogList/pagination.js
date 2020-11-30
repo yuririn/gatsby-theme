@@ -14,7 +14,7 @@ const Li = ({ num, current, path }) => {
 }
 
 const Prev = ({ current, type }) => {
-	if (current === '') {
+	if (current === 1) {
 		return (
 			<li className="c-pager--archive__prev not-work"><span>Newer</span></li>
 		)
@@ -66,10 +66,8 @@ const Pagination = ({ num, current, type }) => {
 				<ol className="c-pager--archive p-section">
 					<Prev current={current} num={num} type={type} />
 					{(array || []).map(i => (
-						i === 1 ?
-							<Li num={i} current={current === ''} path={`/blogs/${type}`} type={type} />
-							:
-							<Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} type={type} />
+
+						i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} type={type} />
 
 					)
 					)}
@@ -90,10 +88,8 @@ const Pagination = ({ num, current, type }) => {
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
 							{(array || []).map(i => (
-								i === 1 ?
-									<Li num={i} current={current === ''} path={`/blogs/${type}`} />
-									:
-									<Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} />
+
+								i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} type={type} />
 
 							))
 							}
@@ -118,7 +114,7 @@ const Pagination = ({ num, current, type }) => {
 							<li>...</li>
 							{(array || []).map(i => (
 
-								<Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} />
+								i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} type={type} />
 
 							))
 							}

@@ -11,15 +11,10 @@ import { siteMetadata } from "../../gatsby-config"
 import Pagination from "../components/blogList/pagination"
 
 const Tags = ({ pageContext, data, location }) => {
-	const { tag } = pageContext
+	const { tag, current, page } = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
 	const num = Math.ceil(totalCount / 12);
 
-	let current = location.pathname.split(`${tag}/page/`)[1]
-	if (location.pathname.split(`${tag}/page/`)[1]) {
-		current = current.replace(/[^0-9]/g, '')
-		current = parseInt(current)
-	}
 	return (
 
 		<Layout location={`blogs/tags/${tag}`} title={siteMetadata.title}>
@@ -71,7 +66,7 @@ const Tags = ({ pageContext, data, location }) => {
 								})}
 							</div>
 						</section>
-						{num !== 1 ? <Pagination num={num} current={current} type={`tags/${tag}/`}></Pagination> : ''}
+						{page !== 1 ? <Pagination num={page} current={current} type={`tags/${tag}/`}></Pagination> : ''}
 					</div>
 				</div>
 			</main>

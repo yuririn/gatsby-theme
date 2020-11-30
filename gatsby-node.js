@@ -86,11 +86,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					limit: postsPerPage,
 					skip: index * postsPerPage,
 					current: pageNumber,
-					totalCount: numPages,
-					hasNext: pageNumber < numPages,
-					nextPath: withPrefix(pageNumber + 1),
-					hasPrev: index > 0,
-					prevPath: withPrefix(pageNumber - 1),
+					page: numPages,
 				}
 			})
 		}
@@ -130,6 +126,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 				context: {
 					limit: postsPerPage,
 					skip: index * postsPerPage,
+					current: pageNumber,
+					page: numPages,
 					tag,
 				},
 			});
@@ -153,38 +151,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	}
 
-	const cateArry = [
-		{
-			slug: 'cms',
-			name: 'Contents Managemant System',
-		},
-		{
-			slug: 'front-end-program',
-		},
-		{
-			slug: 'back-end-program',
-			name: 'Back End',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'seo',
-			name: 'Seaarch Engine Optimization',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'it-seminar',
-			name: 'ITセミナー',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'ginneko-tsuredure',
-			name: 'Life Hack',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-	]
 
 	const categoyTemplate = path.resolve(`./src/templates/category.js`);
-	console.log(categories)
 
 	for (cate in categories) {
 		const postsPerPage = 12
@@ -203,8 +171,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 				context: {
 					limit: postsPerPage,
 					skip: index * postsPerPage,
+					current: pageNumber,
+					page: numPages,
 					cateSlug
-
 				},
 			});
 		}
