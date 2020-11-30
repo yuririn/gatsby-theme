@@ -1,7 +1,7 @@
 ---
 title: ヒーロー島バレンタインSPに行ってきたよ
 date: 2016-02-29
-hero: entry240.png
+hero: 2016/entry240.png
 pagetype: blog
 category: 'Life hack'
 cateId: 'ginneko-tsuredure'

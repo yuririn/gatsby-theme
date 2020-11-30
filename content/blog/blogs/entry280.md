@@ -1,7 +1,7 @@
 ---
 title: 初心者コーダに贈る！超軽量高機能エディタVS Code入門2
 date: 2018-07-23
-hero: entry266.png
+hero: 2018/entry266.png
 pagetype: blog
 category: 'Front end'
 cateId: 'front-end-program'

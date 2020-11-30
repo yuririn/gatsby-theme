@@ -1,7 +1,7 @@
 ---
 title: LT駆動開発で「コーチング」についてライトニングトークしました
 date: 2014-10-05
-hero: entry197.png
+hero: 2014/entry197.png
 pagetype: blog
 category: 'IT Seminar'
 cateId: 'it-seminar'

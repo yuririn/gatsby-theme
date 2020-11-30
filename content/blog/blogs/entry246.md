@@ -1,7 +1,7 @@
 ---
 title: パソコンスクールHA＊NAで講師をしました season3
 date: 2016-05-20
-hero: entry246.jpg
+hero: 2016/entry246.jpg
 pagetype: blog
 category: 'IT Seminor'
 cateId: 'it-seminar'

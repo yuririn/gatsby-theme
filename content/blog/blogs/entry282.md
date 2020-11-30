@@ -1,7 +1,7 @@
 ---
 title: concrete5でページリストブロックの絞り込みをカスタマイズしてみた
 date: 2018-08-11
-hero: entry175.jpg
+hero: 2014/entry175.jpg
 pagetype: blog
 category: CMS
 cateId: cms

@@ -1,7 +1,7 @@
 ---
 title: ヒロフロ CMS部でコンクリの8を触ってもらいました
 date: 2018-06-17
-hero: entry272.png
+hero: 2018/entry272.png
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'

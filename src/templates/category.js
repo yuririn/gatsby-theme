@@ -1,29 +1,42 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+// Components
 import Image from "../components/image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TagList from "../components/common/tagsArchive"
-
-// Components
+import Pagination from "../components/blogList/pagination"
 import { Link, graphql } from "gatsby"
 import { siteMetadata } from "../../gatsby-config"
 
-const category = ({ pageContext, data }) => {
-	const category = pageContext
+const category = ({ pageContext, data, location }) => {
+	const { cateSlug, current, page } = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
+
+	// console.log(siteMetadata.category)
+	let cateName = ''
+	let cateDescription = ''
+	siteMetadata.category.forEach(
+		(cate) => {
+			if (cate.slug === cateSlug) {
+				cateDescription = cate.description;
+				cateName = cate.name;
+			}
+		}
+	)
+
 	return (
-		<Layout location={`blogs/${category.cateSlug}`} title={siteMetadata.title}>
+		<Layout location={location} title={siteMetadata.title}>
 			<SEO
-				title={`${category.name}に関する記事一覧`}
-				description={category.description}
+				title={`${cateName}`}
+				description={cateDescription}
 			/>
 			<main>
 				<div class="p-pageHeader">
 					<div class="p-pageHeader__main">
-						<h1 class="p-pageHeader__heading">{category.name}に関する記事</h1>
-						<p>{category.description}</p>
+						<h1 class="p-pageHeader__heading">{cateName}</h1>
+						<p>{cateDescription}</p>
 					</div>
 					<img class="p-pageHeader__img" src={`https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-${category.cateSlug}.jpg`} alt=""></img>
 				</div>
@@ -47,7 +60,7 @@ const category = ({ pageContext, data }) => {
 												{hero ?
 
 													<Image filename={hero} />
-													: <Image filename="dummy.png" />
+													: <Image filename="common/dummy.png" />
 												}
 												<div class="p-entryCard__date">
 													{date}
@@ -62,6 +75,7 @@ const category = ({ pageContext, data }) => {
 								})}
 							</div>
 						</section>
+						{page > 1 ? <Pagination num={page} current={current} type={`${cateSlug}/`}></Pagination> : ''}
 					</div>
 				</div>
 			</main>
@@ -95,9 +109,14 @@ category.propTypes = {
 export default category
 
 export const pageQuery = graphql`
-  query($cateSlug: String) {
+  query(
+	  $cateSlug: String
+	  $limit: Int!
+	  $skip: Int!
+	) {
 			allMarkdownRemark(
-			limit: 2000
+			limit: $limit
+			skip: $skip
 			sort: {fields: [frontmatter___date], order: DESC }
 			filter: {frontmatter: {cateId: { eq: $cateSlug } } }
 		)

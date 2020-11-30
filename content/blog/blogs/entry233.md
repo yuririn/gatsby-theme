@@ -1,7 +1,7 @@
 ---
 title: XAMPP/PHP5.5.27~mySQLの初期パスワード設定
 date: 2015-11-18
-hero: entry192.jpg
+hero: 2014/entry192.jpg
 pagetype: blog
 category: 'Back End'
 cateId: 'back-end-program'

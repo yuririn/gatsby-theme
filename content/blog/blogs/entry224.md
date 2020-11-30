@@ -1,7 +1,7 @@
 ---
 title: パソコンスクールでconcrete5の話をしました
 date: 2015-05-21
-hero: entry190.jpg
+hero: 2014/entry190.jpg
 pagetype: blog
 category: 'IT Seminar'
 cateId: 'it-seminar'

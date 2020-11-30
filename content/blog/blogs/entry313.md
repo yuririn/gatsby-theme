@@ -1,7 +1,7 @@
 ---
 title: JS でフォーム操作したいなら name 属性に submit をつけてはならない
-date: 2019-02-21
-hero: entry267.png
+date: 2019/2019-02-21
+hero: 2018/entry267.png
 pagetype: blog
 category: 'Front end'
 cateId: 'front-end-program'

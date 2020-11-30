@@ -1,7 +1,7 @@
 ---
 title: MySQL を 5.1 から 5.7 系にアップグレードする際にハマりました
 date: 2018-09-23
-hero: entry208.png
+hero: 2014/entry208.png
 pagetype: blog
 category: 'Back End'
 cateId: 'back-end-program'

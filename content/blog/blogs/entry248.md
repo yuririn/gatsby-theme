@@ -1,7 +1,7 @@
 ---
 title: concrete5.7でセッションハンドラをデータベースに変更する
 date: 2016-07-16
-hero: entry192.jpg
+hero: 2014/entry192.jpg
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'

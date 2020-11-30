@@ -1,7 +1,7 @@
 ---
 title: aタグ（リンク）のクリックできる範囲をCSSで親要素まで広げる
 date: 2014-08-09
-hero: entry181.png
+hero: 2014/entry181.png
 pagetype: blog
 category: 'Front End'
 cateId: 'front-end-program'

@@ -22,6 +22,39 @@ module.exports = {
 				instagram: `https://github.com/yuririn`,
 			}
 		],
+
+		category: [
+			{
+				slug: 'cms',
+				name: 'Contents Management System',
+				description: 'WordPressやconcrete5などCMSの記事',
+			},
+			{
+				slug: 'front-end-program',
+				name: 'Front End',
+				description: 'HTML、CSS、JSなどの書き留めたチップス',
+			},
+			{
+				slug: 'back-end-program',
+				name: 'Back End',
+				description: 'PHP、黒い画面、DBが中心'
+			},
+			{
+				slug: 'seo',
+				name: 'Seaarch Engine Optimization',
+				description: 'SEOやコンテンツマーケティングに関する記事'
+			},
+			{
+				slug: 'it-seminar',
+				name: 'ITセミナー',
+				description: '勉強会の開催/登壇について書いてます'
+			},
+			{
+				slug: 'ginneko-tsuredure',
+				name: 'Life Hack',
+				description: '思ったことを気ままに書いてます'
+			},
+		]
 	},
 	plugins: [
 		{
@@ -70,6 +103,13 @@ module.exports = {
 							icon: false,
 							maintainCase: true,
 						},
+					},
+					{
+						resolve: "gatsby-remark-external-links",
+						options: {
+							target: "_blank",
+							rel: "nofollow nopener"
+						}
 					},
 					`gatsby-remark-prismjs`,
 					`gatsby-remark-copy-linked-files`,

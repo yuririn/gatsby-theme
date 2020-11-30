@@ -1,7 +1,7 @@
 ---
 title: WordPressで画像をリサイズする
 date: 2015-11-19
-hero: entry211.png
+hero: 2014/entry211.png
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'

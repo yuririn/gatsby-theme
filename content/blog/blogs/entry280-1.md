@@ -1,7 +1,7 @@
 ---
 title: concrete5サイトが突然の文字化け！データベース設定で回避
 date: 2018-07-22
-hero: entry175.jpg
+hero: 2014/entry175.jpg
 pagetype: blog
 category: CMS
 cateId: cms

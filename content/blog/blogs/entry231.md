@@ -1,7 +1,7 @@
 ---
 title: コンクリの属性を制して最強サイトに
 date: 2015-10-27
-hero: entry175.jpg
+hero: 2014/entry175.jpg
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'

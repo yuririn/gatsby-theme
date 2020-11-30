@@ -1,7 +1,7 @@
 ---
 title: CSSスプライトのコードは Sass の Mixin にとりあえずまとめとけ！
 date: 2019-01-17
-hero: entry291.png
+hero: 2019/entry291.png
 pagetype: blog
 category: 'Front end'
 cateId: 'front-end-program'

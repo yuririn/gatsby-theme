@@ -1,7 +1,7 @@
 ---
 title: 広島生まれの私が広島で出会って忘れられないもの5選
 date: 2015-12-14
-hero: enrty237.jpg
+hero: 2015/enrty237.jpg
 pagetype: blog
 category: 'Life hack'
 cateId: 'ginneko-tsuredure'

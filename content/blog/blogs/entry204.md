@@ -1,7 +1,7 @@
 ---
 title: 「広島でコンクリ」concrete5勉強会vol4開催しました
 date: 2014-11-17
-hero: entry204.jpg
+hero: 2014/entry204.jpg
 pagetype: blog
 category: 'IT Seminar'
 cateId: 'it-seminar'

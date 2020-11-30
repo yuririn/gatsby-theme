@@ -7,14 +7,10 @@ import Image from "../components/image"
 import TagList from "../components/common/tagsArchive"
 import Pagination from "../components/blogList/pagination"
 
-const blogs = ({ data, location }) => {
+const blogs = ({ pageContext, data, location }) => {
+	const { current, page } = pageContext
 	const posts = data.allMarkdownRemark.nodes
 
-	const num = Math.ceil(data.allMarkdownRemark.totalCount / 12);
-	let current = location.pathname.replace(/[^0-9]/g, '')
-	if (current !== "") current = parseInt(current)
-
-	console.log(data.allMarkdownRemark)
 
 	return (
 		<Layout location={location} title="銀ねこアトリエ">
@@ -44,7 +40,7 @@ const blogs = ({ data, location }) => {
 										{post.frontmatter.hero ?
 
 											<Image filename={post.frontmatter.hero} />
-											: <Image filename="dummy.png" />
+											: <Image filename="common/dummy.png" />
 										}
 										<div class="p-entryCard__date">
 											{post.frontmatter.date}
@@ -63,10 +59,9 @@ const blogs = ({ data, location }) => {
 						})}
 					</div>
 				</section>
-				<div class="ccm-pagination-wrapper">
-					<Pagination num={num} current={current}></Pagination>
-				</div>
+				<Pagination num={page} current={current} type=""></Pagination>
 			</div>
+
 		</Layout>
 	)
 }

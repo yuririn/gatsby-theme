@@ -27,6 +27,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					frontmatter {
 						tags
 						category
+						cateId
 						hero
 						pagetype
 					}
@@ -85,11 +86,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 					limit: postsPerPage,
 					skip: index * postsPerPage,
 					current: pageNumber,
-					totalCount: numPages,
-					hasNext: pageNumber < numPages,
-					nextPath: withPrefix(pageNumber + 1),
-					hasPrev: index > 0,
-					prevPath: withPrefix(pageNumber - 1),
+					page: numPages,
 				}
 			})
 		}
@@ -102,68 +99,84 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		return edgeTags ? tags.concat(edgeTags) : tags;
 	}, []);
 
-	tags = Array.from(new Set(tags))
+	let counts = {};
+
+	for (var i = 0; i < tags.length; i++) {
+		let key = tags[i];
+		counts[key] = (counts[key]) ? counts[key] + 1 : 1;
+
+	}
+
+	tags = counts
 
 	//タグページを作成
 	const tagTemplate = path.resolve(`./src/templates/tags.js`);
-	[...new Set(tags)].forEach(tag => {
-		const pagetype = 'blog'
-		createPage({
-			path: `/blogs/tags/${tag}/`,
-			component: tagTemplate,
-			context: {
-				tag,
-			},
-		});
-	});
+	for (let tag in tags) {
+		const postsPerPage = 12
+		let count = tags[tag]
+		numPages = Math.ceil(count / postsPerPage)
 
-	const categories = [
-		{
-			slug: 'cms',
-			name: 'Contents Managemant System',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'front-end-program',
-			name: 'Front End',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'back-end-program',
-			name: 'Back End',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'seo',
-			name: 'Seaarch Engine Optimization',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'it-seminar',
-			name: 'ITセミナー',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-		{
-			slug: 'ginneko-tsuredure',
-			name: 'Life Hack',
-			description: 'WordPressやconcrete5などCMSの記事'
-		},
-	]
+		for (let index = 0; index < numPages; index++) {
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/tags/${tag}` : `/blogs/tags/${tag}/page/${pageNumber}`
+			const pageNumber = index + 1
+
+			createPage({
+				path: withPrefix(pageNumber),
+				component: tagTemplate,
+				context: {
+					limit: postsPerPage,
+					skip: index * postsPerPage,
+					current: pageNumber,
+					page: numPages,
+					tag,
+				},
+			});
+		}
+		// console.log(tag, tags[tag])
+	}
+
+	//タグを取得
+	//タグを取得
+	let cates = posts.reduce((cates, edge) => {
+		const edgeCates = edge['frontmatter']['cateId'];
+		return edgeCates ? cates.concat(edgeCates) : cates;
+	}, []);
+
+
+	let categories = {};
+
+	for (var i = 0; i < cates.length; i++) {
+		let key = cates[i];
+		categories[key] = (categories[key]) ? categories[key] + 1 : 1;
+
+	}
+
 
 	const categoyTemplate = path.resolve(`./src/templates/category.js`);
 
-	categories.forEach(cate => {
-		const cateSlug = cate.slug
-		const name = cate.name
-		createPage({
-			path: `/blogs/${cate.slug}/`,
-			component: categoyTemplate,
-			context: {
-				cateSlug,
-				name,
-			},
-		});
-	})
+	for (cate in categories) {
+		const postsPerPage = 12
+		let count = categories[cate]
+		numPages = Math.ceil(count / postsPerPage)
+
+		for (let index = 0; index < numPages; index++) {
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/${cate}` : `/blogs/${cate}/page/${pageNumber}`
+			const pageNumber = index + 1
+			const cateSlug = cate
+
+			createPage({
+				path: withPrefix(pageNumber),
+				component: categoyTemplate,
+				context: {
+					limit: postsPerPage,
+					skip: index * postsPerPage,
+					current: pageNumber,
+					page: numPages,
+					cateSlug
+				},
+			});
+		}
+	}
 
 }
 

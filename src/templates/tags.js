@@ -1,18 +1,20 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+// Components
 import Image from "../components/image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TagList from "../components/common/tagsArchive"
-
-// Components
 import { Link, graphql } from "gatsby"
 import { siteMetadata } from "../../gatsby-config"
+import Pagination from "../components/blogList/pagination"
 
-const Tags = ({ pageContext, data }) => {
-	const { tag } = pageContext
+const Tags = ({ pageContext, data, location }) => {
+	const { tag, current, page } = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
+	const num = Math.ceil(totalCount / 12);
+
 	return (
 
 		<Layout location={`blogs/tags/${tag}`} title={siteMetadata.title}>
@@ -47,7 +49,7 @@ const Tags = ({ pageContext, data }) => {
 												{hero ?
 
 													<Image filename={hero} />
-													: <Image filename="dummy.png" />
+													: <Image filename="common/dummy.png" />
 												}
 												<div class="p-entryCard__date">
 													{date}
@@ -64,10 +66,11 @@ const Tags = ({ pageContext, data }) => {
 								})}
 							</div>
 						</section>
+						{page !== 1 ? <Pagination num={page} current={current} type={`tags/${tag}/`}></Pagination> : ''}
 					</div>
 				</div>
 			</main>
-		</Layout>
+		</Layout >
 	)
 }
 Tags.propTypes = {
@@ -96,9 +99,14 @@ Tags.propTypes = {
 export default Tags
 
 export const pageQuery = graphql`
-  query($tag: String) {
-					allMarkdownRemark(
-						limit: 2000
+  query(
+	  $tag: String
+	  $limit: Int!
+	  $skip: Int!
+	) {
+		allMarkdownRemark(
+			limit: $limit
+			skip: $skip
       sort: {fields: [frontmatter___date], order: DESC }
       filter: {frontmatter: {tags: { in: [$tag] } } }
     ) {

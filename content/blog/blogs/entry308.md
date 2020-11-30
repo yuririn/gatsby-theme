@@ -1,7 +1,7 @@
 ---
 title: さくらレンサバで concrete5 8系を使うなら最新 Ver に Upgrade しとけ！
 date: 2019-01-21
-hero: entry175.jpg
+hero: 2014/entry175.jpg
 pagetype: blog
 category: CMS
 cateId: cms
