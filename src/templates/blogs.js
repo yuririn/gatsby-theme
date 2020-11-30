@@ -61,6 +61,7 @@ const blogs = ({ pageContext, data, location }) => {
 				</section>
 				<Pagination num={page} current={current} type=""></Pagination>
 			</div>
+
 		</Layout>
 	)
 }

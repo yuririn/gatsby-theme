@@ -8,6 +8,7 @@ import Toc from "../components/toc"
 import Category from "../components/blogs/category"
 import Description from "../components/blogs/descriotion"
 import TagsList from "../components/blogs/tagsBlog"
+import RelatedList from "../components/blogs/relatedList"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -98,7 +99,7 @@ const BlogPostTemplate = ({ data, location }) => {
 					</li>
 				</ul>
 			</nav>
-
+			<RelatedList category={post.frontmatter.cateId} title={post.frontmatter.title} tags={post.frontmatter.tags}></RelatedList>
 		</Layout>
 	)
 }
