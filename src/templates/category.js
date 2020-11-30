@@ -26,7 +26,6 @@ const category = ({ pageContext, data, location }) => {
 		}
 	)
 
-	console.log(pageContext)
 	return (
 		<Layout location={location} title={siteMetadata.title}>
 			<SEO

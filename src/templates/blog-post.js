@@ -9,6 +9,7 @@ import Category from "../components/blogs/category"
 import Description from "../components/blogs/descriotion"
 import TagsList from "../components/blogs/tagsBlog"
 import RelatedList from "../components/blogs/relatedList"
+import FovoriteList from "../components/common/favorites"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -100,6 +101,9 @@ const BlogPostTemplate = ({ data, location }) => {
 				</ul>
 			</nav>
 			<RelatedList category={post.frontmatter.cateId} title={post.frontmatter.title} tags={post.frontmatter.tags}></RelatedList>
+			<FovoriteList type="web" />
+			<FovoriteList type="life" />
+			<FovoriteList type="career" />
 		</Layout>
 	)
 }

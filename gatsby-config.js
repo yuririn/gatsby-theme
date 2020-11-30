@@ -22,6 +22,7 @@ module.exports = {
 				instagram: `https://github.com/yuririn`,
 			}
 		],
+
 		category: [
 			{
 				slug: 'cms',

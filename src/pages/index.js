@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import Image from "../components/image"
 import FirstView from "../components/firstview"
 import TagList from "../components/common/tagsArchive"
+import FovoriteList from "../components/common/favorites"
 
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -70,6 +71,9 @@ const BlogIndex = ({ data, location }) => {
 
 				</section>
 				<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
+				<FovoriteList type="web" />
+				<FovoriteList type="life" />
+				<FovoriteList type="career" />
 			</div>
 		</Layout>
 	)

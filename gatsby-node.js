@@ -157,7 +157,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	for (cate in categories) {
 		const postsPerPage = 12
 		let count = categories[cate]
-		console.log(count)
 		numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
