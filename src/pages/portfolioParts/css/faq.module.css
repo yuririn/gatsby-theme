@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+.faq{
+	margin-top: 30px;
+	background: #fff;
+    padding: 30px 30px;
+    border-radius: 20px;
+}
+.faq dt {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-left: 2em;
+    position: relative;
+}
+.faq dd {
+    margin-bottom: 30px;
+    position: relative;
+    margin-left: 0;
+    padding-left: 36px;
+}
+.faq dt::before {
+    font-family: 'Archivo Black', sans-serif;
+    top: 3px;
+    left: 0;
+    border-radius: 50%;
+    content: 'Q';
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    color: #fff;
+    background: #e95014;
+    display: block;
+    position: absolute;
+    text-align: center;
+}
+.faq dd::before {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    left: 0;
+    border-radius: 50%;
+    content: 'A';
+    width: 28px;
+    text-align: center;
+    line-height: 28px;
+    height: 28px;
+    color: #e95014;
+    border: 1px solid #e95014;
+    background: #fff;
+    display: block;
+    position: absolute;
+    text-align: center;
+}
+/* メディアクエリ */
+@media screen and (min-width: 768px){
+	.faq dt {
+		margin-bottom: 10px;
+		font-size: 2rem;
+		font-weight: bold;
+		padding-left: 2em;
+		position: relative;
+	}
+	.faq dd {
+		margin-bottom: 50px;
+		margin-left: 20px;
+	}
+}

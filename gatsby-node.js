@@ -8,6 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	// Define a template for blog post
 	const blogPost = path.resolve(`./src/templates/blog-post.js`)
+	const portfolioPost = path.resolve(`./src/pages/portfolio.js`)
 	const blogList = path.resolve(`./src/templates/blogs.js`)
 	const pagePost = path.resolve(`./src/templates/pages.js`)
 
@@ -45,6 +46,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		)
 		return
 	}
+
+	createPage({
+		path: 'portfolio',
+		component: portfolioPost,
+		context: {
+		},
+	});
 
 
 	const posts = result.data.allMarkdownRemark.nodes
