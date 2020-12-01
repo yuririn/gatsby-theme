@@ -61,6 +61,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	// Create blog posts pages
 	// But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
 	// `context` is available in the template as a prop and as a variable in GraphQL
+	const search = []
 
 	if (posts.length > 0) {
 		posts.forEach((post, index) => {
@@ -81,6 +82,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			}
 
 		})
+		// JSONファイルに出力
+		// fs.writeFileSync('./static/search.json', JSON.stringify(search, null, 4))
 
 		posts.forEach((post) => {
 			if (post.frontmatter.pagetype === 'page') {

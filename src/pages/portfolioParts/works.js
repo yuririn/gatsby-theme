@@ -1,7 +1,7 @@
 import React from 'react';
-import WorksStyles from "./css/works.module.css"
+// import WorksStyles from "./css/works.module.css"
 import CommonStyles from "./css/common.module.css"
-import Link from "gatsby"
+// import Link from "gatsby"
 
 const Works = () => (
 	<section className={CommonStyles.myMd}>
