@@ -36,6 +36,7 @@ export default ({ category, title, tags }) => {
 								title
 								cateId
 								tags
+								pagetype
 								}
 							}
 						}
@@ -47,6 +48,9 @@ export default ({ category, title, tags }) => {
 				let posts = data.allMarkdownRemark.edges.filter(
 					(post) => {
 						// タグの一致
+						if (post.node.frontmatter.pagetype !== 'blog') {
+							return false;
+						}
 						for (const tag of tags) {
 							return post.node.frontmatter.tags.includes(tag)
 						}

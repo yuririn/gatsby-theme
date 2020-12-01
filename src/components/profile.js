@@ -8,7 +8,7 @@ const profile = () => {
 		<section class="c-profile p-section">
 			<h2 class="c-heading--lg">管理人について</h2>
 			<div className="c-profile__img u-mblg">
-				<Image filename="my-profile.jpg" />
+				<img class="c-profile__img u-mblg" src="/static/b0464912775ee836bf92057ad4afa07f/b4294/my-profile.jpg" />
 			</div>
 			<div class="c-profile__content">
 				<div class="u-mblg c-editArea">

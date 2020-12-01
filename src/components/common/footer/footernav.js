@@ -12,8 +12,8 @@ const footernav = () => {
 			</ul >
 			<ul class="p-footerNav__item">
 				<li><Link to="/about">About Me</Link></li>
-				<li><Link to="/privacy">Privacy Policy</Link></li >
-				<li><Link to="/social">Social Media Policy</Link></li >
+				<li><Link to="/privacy-policy">Privacy Policy</Link></li >
+				<li><Link to="/socialmedia-policy">Social Media Policy</Link></li >
 				<li><Link to="/contact">Contact</Link></li >
 			</ul >
 			<ul class="p-footerNav__item--sns">
