@@ -17,8 +17,8 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 import Voice from './portfolioParts/voice'
 import Works from './portfolioParts/works'
-import Profile from './portfolioParts/Profile'
-import Contact from './portfolioParts/Contact'
+import Profile from './portfolioParts/profile'
+import Contact from './portfolioParts/contact'
 
 const Portfolio = ({ location }) => {
 	const nav = ['Profile', 'Works', 'Contact']

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, graphql } from "gatsby"
-import ContactStyles from "./css/faq.module.css"
+import { Link } from "gatsby"
+// import ContactStyles from "./css/faq.module.css"
 import CommonStyles from "./css/common.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
