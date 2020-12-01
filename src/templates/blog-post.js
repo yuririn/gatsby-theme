@@ -139,7 +139,9 @@ export const pageQuery = graphql`
           }
         }
       }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(
+		id: { eq: $id }
+	) {
       id
       excerpt(pruneLength: 160)
       html
@@ -153,6 +155,7 @@ export const pageQuery = graphql`
 		category
 		cateId
 		tags
+		pagetype
 		modifieddate(formatString: "YYYY.MM.DD")
 	  }
 	}

@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	// Define a template for blog post
 	const blogPost = path.resolve(`./src/templates/blog-post.js`)
 	const blogList = path.resolve(`./src/templates/blogs.js`)
+	const pagePost = path.resolve(`./src/templates/pages.js`)
 
 	// Get all markdown blog posts sorted by date
 	const result = await graphql(
@@ -55,20 +56,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	if (posts.length > 0) {
 		posts.forEach((post, index) => {
-			const previousPostId = index === 0 ? null : posts[index - 1].id
-			const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-			createPage({
-				path: post.fields.slug,
-				component: blogPost,
-				context: {
-					id: post.id,
-					previousPostId,
-					nextPostId,
-					hero: post.frontmatter.hero,
-				},
-			})
-			count++
+			if (post.frontmatter.pagetype === 'blog') {
+				const previousPostId = index === 0 ? null : posts[index - 1].id
+				const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+				createPage({
+					path: post.fields.slug,
+					component: blogPost,
+					context: {
+						id: post.id,
+						previousPostId,
+						nextPostId,
+						hero: post.frontmatter.hero,
+					},
+				})
+				count++
+			}
 
+		})
+
+		posts.forEach((post) => {
+			if (post.frontmatter.pagetype === 'page') {
+				createPage({
+					path: post.fields.slug,
+					component: pagePost,
+					context: {
+						id: post.id,
+						hero: post.frontmatter.hero,
+					},
+				})
+			}
 		})
 
 		const postsPerPage = 12
