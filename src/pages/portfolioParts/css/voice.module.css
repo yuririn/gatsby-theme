@@ -1,0 +1,24 @@
+.container {
+	margin-top: 30px;
+}
+
+.container article{
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+}
+
+.container article + article{
+	margin-top: 20px;
+}
+.container article p + p {
+	font-weight: bold;
+	text-align: right;
+	margin-top: 10px;
+}
+/* メディアクエリ */
+@media screen and (min-width: 768px){
+	.headingRecomend h2{
+		font-size: 3.8rem;
+	}
+}

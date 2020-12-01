@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+.recomendPoint {
+	margin-top: 30px;
+	list-style: none;
+    padding: 0;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.recomendPoint li{
+	display: inline-block;
+	margin-bottom: 10px;
+}
+.recomendPoint li::after{
+	content: ',';
+	margin-right: 10px;
+}
+.recomendPoint li:last-child::after{
+	content: none;
+}
+.LL {
+	font-size: 2.2rem;
+}
+.L {
+	font-size: 1.9rem;
+}
+.S {
+	font-size: 1.3rem;
+}
+.SS {
+	font-size: 1.1rem;
+}
+
+/* メディアクエリ */
+@media screen and (min-width: 768px){
+	.headingMd {
+		margin-bottom: 30px;
+	}
+	.headingMd > *{
+		font-size: 2.8rem;
+	}
+}

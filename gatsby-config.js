@@ -64,6 +64,7 @@ module.exports = {
 			},
 		},
 	],
+	plugins: [`gatsby-plugin-fontawesome-css`],
 	plugins: [
 		{
 			resolve: `gatsby-source-filesystem`,
