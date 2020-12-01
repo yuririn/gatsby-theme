@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import TextHighlighter from "./texthighlighter"
+import style from './style.module.css'
 
 
 const SearchResult = props => {
@@ -18,7 +19,7 @@ const SearchResult = props => {
 				slug
 			}
             frontmatter {
-              date(formatString: "YYYY-MM-DD")
+              date(formatString: "YYYY.MM.DD")
               title
               tags
 			  category
@@ -93,16 +94,15 @@ const SearchResult = props => {
 	return (
 		<div className={className}>
 			<div className="result-inner">
-				<span className="res">
-					<b>{result.length}</b>件ヒットしました
-        </span>
-				<ul>
+
+				{result !== null ? <p className={style.result}><b>{result.length}</b>件ヒットしました</p> : ''}
+
+				<ul className={style.resultList}>
 					{result.map(e => {
 						return (
 							<li key={e.fields.slug}>
 								<Link to={e.fields.slug}>
-
-									<TextHighlighter str={e.frontmatter.title} includes={props.value} />
+									<time>{e.frontmatter.date}</time><TextHighlighter str={e.frontmatter.title} includes={props.value} />
 								</Link>
 							</li>
 						)
@@ -127,14 +127,16 @@ const Search = props => {
 		setValue(e.target.value)
 	}
 	return (
-		<div className={props.className} focus={focus}>
-			<input
-				type="text"
-				placeholder="Search..."
-				onFocus={onFocus}
-				onBlur={onBlur}
-				onChange={onChange}
-			/>
+		<div focus={focus}>
+			<div className={style.searchBox}>
+				<input
+					type="text"
+					placeholder="検索する"
+					onFocus={onFocus}
+					onBlur={onBlur}
+					onChange={onChange}
+				/>
+			</div>
 			<SearchResult focus={focus} value={value} />
 		</div>
 	)

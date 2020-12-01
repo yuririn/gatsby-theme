@@ -72,6 +72,7 @@ const BlogIndex = ({ data, location }) => {
 
 				</section>
 				<p class="u-text-center u-mblg"><Link to="/blogs" className="p-btn--detail">Read More</Link></p>
+				<h2 class="c-heading--lg">記事を探す</h2>
 				<Search />
 
 				<FovoriteList type="web" />
