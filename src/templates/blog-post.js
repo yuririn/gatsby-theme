@@ -75,15 +75,7 @@ const BlogPostTemplate = ({ data, location }) => {
 				</div>
 			</article>
 			<nav className="blog-post-nav">
-				<ul
-					style={{
-						display: `flex`,
-						flexWrap: `wrap`,
-						justifyContent: `space-between`,
-						listStyle: `none`,
-						padding: 0,
-					}}
-				>
+				<ul>
 					<li>
 						{previous && (
 							<Link to={previous.fields.slug} rel="prev">
@@ -100,6 +92,7 @@ const BlogPostTemplate = ({ data, location }) => {
 					</li>
 				</ul>
 			</nav>
+
 			<RelatedList category={post.frontmatter.cateId} title={post.frontmatter.title} tags={post.frontmatter.tags}></RelatedList>
 			<FovoriteList type="web" />
 			<FovoriteList type="life" />
