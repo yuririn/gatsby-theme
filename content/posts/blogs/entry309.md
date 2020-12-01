@@ -1,6 +1,6 @@
 ---
 title: Web Touch Meeting ＋ Adobe XD に参加して来ました
-date: 2019/2019-01-22
+date: 2019-01-22
 hero: entry309.png
 pagetype: blog
 category: it-seminar

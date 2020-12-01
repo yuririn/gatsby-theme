@@ -1,6 +1,6 @@
 ---
 title: オブジェクト指向プログラミングをキャバクラに例えてみた
-date: 2019/2019-06-01
+date: 2019-06-01
 hero: entry323.jpg
 pagetype: blog
 category: 'Back End'

@@ -1,6 +1,6 @@
 ---
 title: HTMLとCSSのあり方ガチで考えてみた
-date: 2019/2019-07-18
+date: 2019-07-18
 hero: entry172.jpg
 pagetype: blog
 category: Front End

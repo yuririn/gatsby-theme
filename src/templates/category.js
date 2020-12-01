@@ -42,7 +42,7 @@ const category = ({ pageContext, data, location }) => {
 				</div>
 				<div className="page-template-archive">
 					<div className="l-container">
-						{totalCount == 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
+						{totalCount === 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
 						<section className="p-section">
 							<h2 className="c-heading--lg">最新記事</h2>
 							<div className="c-grid">

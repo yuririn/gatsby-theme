@@ -1,6 +1,6 @@
 ---
 title: CSSの変な仕様あるあるを力一杯列挙してみた
-date: 2019/2019-07-20
+date: 2019-07-20
 hero: entry335.png
 pagetype: blog
 category: Front End

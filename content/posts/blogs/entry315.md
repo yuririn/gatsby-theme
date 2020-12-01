@@ -1,6 +1,6 @@
 ---
 title: CSS3 アニメーションで軽量なアコーディオンメニューを作ろう！
-date: 2019/2019-02-11
+date: 2019-02-11
 modifieddate: 2020-11-05
 hero: entry315.jpg
 pagetype: blog

@@ -36,19 +36,19 @@ const Seminor = () => {
 }
 
 const showcategory = ({ id }) => {
-	if (id == 'front-end-program') {
+	if (id === 'front-end-program') {
 		return <Frontend />
-	} else if (id == 'life-hack') {
+	} else if (id === 'life-hack') {
 		return <Lifehack />
-	} else if (id == 'cms') {
+	} else if (id === 'cms') {
 		return <Cms />
-	} else if (id == 'back-end-program') {
+	} else if (id === 'back-end-program') {
 		return <Backend />
-	} else if (id == 'seo') {
+	} else if (id === 'seo') {
 		return <Seo />
-	} else if (id == 'it-seminar') {
+	} else if (id === 'it-seminar') {
 		return <Seminor />
-	} else if (id == 'ginneko-tsuredure') {
+	} else if (id === 'ginneko-tsuredure') {
 		return <Lifehack />
 	}
 

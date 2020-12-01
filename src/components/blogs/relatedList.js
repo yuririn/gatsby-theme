@@ -70,7 +70,7 @@ export default ({ category, title, tags }) => {
 
 					while (--i) {
 						var j = Math.floor(Math.random() * (i + 1));
-						if (i == j) continue;
+						if (i === j) continue;
 						var k = list[i];
 						list[i] = list[j];
 						list[j] = k;

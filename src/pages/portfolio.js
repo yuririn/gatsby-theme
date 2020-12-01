@@ -1,8 +1,8 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import SEO from "../components/seo"
-import Image from "../components/image"
+// import Image from "../components/image"
 
 // CSS
 import HeaderStyles from "./portfolioParts/css/header.module.css"
@@ -95,7 +95,7 @@ const Portfolio = ({ location }) => {
 			<Profile />
 			<Contact />
 			<footer className={CommonStyles.footer}>
-				<a href="#top" className={CommonStyles.footerBtn}></a>
+				<a href="#top" className={CommonStyles.footerBtn} aria-label="先頭へ戻る"></a>
 				<ul className={CommonStyles.footerNav}>
 					<li><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></li>
 					<li><Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /></Link></li>

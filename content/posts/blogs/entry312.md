@@ -1,6 +1,6 @@
 ---
 title: Webクリエータを目指すリスタート組の君たちへ finalseason
-date: 2019/2019-03-08
+date: 2019-03-08
 hero: 2014/entry197.png
 pagetype: blog
 category: 'Life Hack'

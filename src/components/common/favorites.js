@@ -62,7 +62,7 @@ export default ({ type }) => {
 				(data) => {
 					const { title, items } = favoritesList[type]
 					let posts = []
-					let index = 0
+
 					for (const item of items) {
 						if (item) {
 

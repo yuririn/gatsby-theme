@@ -55,9 +55,6 @@ const Pagination = ({ num, current, type }) => {
 		array.push(index)
 	}
 
-	if (current === undefined || current === NaN) {
-		current = ''
-	}
 
 
 	if (num < 6) {

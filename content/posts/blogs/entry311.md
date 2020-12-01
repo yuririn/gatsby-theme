@@ -1,6 +1,6 @@
 ---
 title: 超手軽！ビルトインサーバー使ってみました
-date: 2019/2019-03-03
+date: 2019-03-03
 hero: 2014/entry208.png
 pagetype: blog
 category: 'Back End'

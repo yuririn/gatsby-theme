@@ -64,7 +64,11 @@ module.exports = {
 			},
 		},
 	],
-	plugins: [`gatsby-plugin-fontawesome-css`],
+	plugins: [
+		{
+			resolve: `gatsby-plugin-fontawesome-css`
+		}
+	],
 	plugins: [
 		{
 			resolve: `gatsby-source-filesystem`,
@@ -136,7 +140,7 @@ module.exports = {
 				background_color: `#ffffff`,
 				theme_color: `#663399`,
 				display: `minimal-ui`,
-				icon: `content/assets/gatsby-icon.png`,
+				icon: `content/assets/common/icon.png`,
 			},
 		},
 		`gatsby-plugin-react-helmet`,

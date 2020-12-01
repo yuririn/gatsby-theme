@@ -13,7 +13,6 @@ import Pagination from "../components/blogList/pagination"
 const Tags = ({ pageContext, data, location }) => {
 	const { tag, current, page } = pageContext
 	const { edges, totalCount } = data.allMarkdownRemark
-	const num = Math.ceil(totalCount / 12);
 
 	return (
 
