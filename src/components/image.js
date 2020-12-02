@@ -41,7 +41,6 @@ export default ({ filename, className }) => (
 
 			// Imgタグでgatsby-imageで最適化された画像を表示する
 			const imageSizes = image.node.childImageSharp.sizes
-			console.log(imageSizes)
 			return <Img fluid={imageSizes} className={className} />
 		}}
 	/>

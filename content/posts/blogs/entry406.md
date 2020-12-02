@@ -61,7 +61,49 @@ plugins: [
   },
 ],
 ```
-フォルダー名もpostsに変更します。
+ディレクトリー名もpostsに変更します。
+
+さらに、ファイルの格納場所の名前の変更も忘れずに。
+
+```
+plugins: [
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+    path: `${__dirname}/content/blog`,
+    name: `blog`,
+
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+    path: `${__dirname}/content/assets`,
+    name: `assets`,
+    },
+  },
+  省略
+```
+を以下に変更。
+```
+plugins: [
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+    path: `${__dirname}/content/posts`,
+    name: `blog`,
+
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+    path: `${__dirname}/content/assets`,
+    name: `assets`,
+    },
+  },
+  省略
+```
 
 ## frontmatterを設計し投稿する。
 記事ごとに必要なタイトルなどの項目を設計します。
@@ -160,7 +202,7 @@ export default ({ filename }) => (
       // Imgタグでgatsby-imageで最適化された画像を表示する
       const imageSizes = image.node.childImageSharp.sizes
 
-      return <Img sizes={imageSizes} />
+      return <Img fluid={imageSizes} />
     }}
   />
 )
