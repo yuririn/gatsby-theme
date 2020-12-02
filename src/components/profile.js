@@ -6,10 +6,10 @@ const profile = () => {
 
 	return (
 		<section class="c-profile p-section">
-			<h2 class="c-heading--lg">管理人について</h2>
-			<div className="c-profile__img u-mblg">
-				<img class="c-profile__img u-mblg" src="/static/b0464912775ee836bf92057ad4afa07f/b4294/my-profile.jpg" />
-			</div>
+			<h2 class="c-heading--lg">管理人	について</h2>
+
+			<Image filename="camille.jpg" className="c-profile__img u-mblg" />
+
 			<div class="c-profile__content">
 				<div class="u-mblg c-editArea">
 					<p >「銀ねこアトリエ」へようこそ！フロントエンドエンジニアのかみーゆです。</p>
@@ -26,7 +26,7 @@ const profile = () => {
 				</div>
 				<p class="u-text-center"><Link to="/about" className="p-btn--detail">About Me</Link></p>
 			</div>
-		</section >
+		</section>
 	)
 }
 

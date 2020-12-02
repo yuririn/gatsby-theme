@@ -38,11 +38,11 @@ const category = ({ pageContext, data, location }) => {
 						<h1 class="p-pageHeader__heading">{cateName}</h1>
 						<p>{cateDescription}</p>
 					</div>
-					<img class="p-pageHeader__img" src={`https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-${category.cateSlug}.jpg`} alt=""></img>
+					<Image filename={`${cateSlug}.jpg`} className="p-pageHeader__img"></Image>
 				</div>
 				<div className="page-template-archive">
 					<div className="l-container">
-						{totalCount == 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
+						{totalCount === 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
 						<section className="p-section">
 							<h2 className="c-heading--lg">最新記事</h2>
 							<div className="c-grid">
