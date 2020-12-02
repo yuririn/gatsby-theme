@@ -8,21 +8,11 @@ module.exports = {
 		description: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニアの気ままな日記です。`,
 		siteUrl: `https://ginneko-atelier.com/`,
 		image: `https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/newogp2.png`,
-		social: [
-			{
-				name: `Twitter`,
-				twitter: `lirioL`,
+		social: {
 
-			},
-			{
-				instagram: `yurico.k`,
-			},
-			{
-				name: `GitHub`,
-				instagram: `https://github.com/yuririn`,
-			}
-		],
-
+			twitter: `lirioL`,
+			instagram: `yurico.k`,
+		},
 		category: [
 			{
 				slug: 'cms',
@@ -65,6 +55,14 @@ module.exports = {
 		},
 	],
 	plugins: [`gatsby-plugin-fontawesome-css`],
+	plugins: [
+		{
+			resolve: "gatsby-plugin-google-analytics",
+			options: {
+				trackingId: `UA-44536704-2`
+			}
+		},
+	],
 	plugins: [
 		{
 			resolve: `gatsby-source-filesystem`,

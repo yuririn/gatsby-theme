@@ -57,6 +57,10 @@ const SEO = ({ description, lang, meta, title, image }) => {
 					content: ogImage,
 				},
 				{
+					name: `google-site-verification`,
+					content: `UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`,
+				},
+				{
 					name: `twitter:card`,
 					content: `summary_large_image`,
 				},
