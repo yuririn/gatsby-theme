@@ -38,7 +38,7 @@ const category = ({ pageContext, data, location }) => {
 						<h1 class="p-pageHeader__heading">{cateName}</h1>
 						<p>{cateDescription}</p>
 					</div>
-					<img class="p-pageHeader__img" src={`https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-${category.cateSlug}.jpg`} alt=""></img>
+					<Image filename={`${cateSlug}.jpg`} className="p-pageHeader__img"></Image>
 				</div>
 				<div className="page-template-archive">
 					<div className="l-container">

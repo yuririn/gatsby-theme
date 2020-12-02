@@ -13,11 +13,17 @@ const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const posts = data.allMarkdownRemark.nodes
 
+	const ogpSrc = data.allFile.edges[0].node.childImageSharp.fluid.src
+
+
 
 	if (posts.length === 0) {
 		return (
 			<Layout location={location} title={siteTitle}>
-				<SEO title="セブ島に住むフロントエンジニアの日記" />
+				<SEO
+					title="All posts"
+					image={ogpSrc}
+				/>
 				<p>
 					No blog posts found. Add markdown posts to "content/blog" (or the
 					directory you specified for the "gatsby-source-filesystem" plugin in
@@ -27,10 +33,12 @@ const BlogIndex = ({ data, location }) => {
 		)
 	}
 
-
 	return (
 		<Layout location={location} title={siteTitle}>
-			<SEO title="セブ島に住むフロントエンジニアの日記" />
+			<SEO
+				title="セブ島に住む気ままなフロントエンジニアの日記"
+				image={ogpSrc}
+			/>
 			<FirstView />
 			<div className="l-container">
 				<section className="p-section">
@@ -88,6 +96,23 @@ export const pageQuery = graphql`
 			site {
 			siteMetadata {
 				title
+			}
+		}
+		allFile(
+		filter: {
+			relativePath: {eq: "common/newogp.png"}
+			sourceInstanceName: {eq: "assets"}
+		}){
+			edges {
+			node {
+				name
+				relativePath
+				childImageSharp {
+				fluid(maxWidth: 800) {
+					...GatsbyImageSharpFluid_withWebp
+				}
+				}
+			}
 			}
 		}
 		allMarkdownRemark(
