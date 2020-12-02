@@ -48,6 +48,15 @@ module.exports = {
 	},
 	plugins: [
 		{
+			resolve: "gatsby-plugin-google-analytics",
+			options: {
+				trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+				head: true,
+			}
+		},
+	],
+	plugins: [
+		{
 			resolve: `gatsby-theme-blog`,
 			options: {
 				basePath: `/posts`,
@@ -58,14 +67,6 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-fontawesome-css`
 		}
-	],
-	plugins: [
-		{
-			resolve: "gatsby-plugin-google-analytics",
-			options: {
-				trackingId: `UA-44536704-2`
-			}
-		},
 	],
 	plugins: [
 		{
