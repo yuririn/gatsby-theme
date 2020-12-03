@@ -1,4 +1,14 @@
 module.exports = {
+	plugins: [
+		{
+			resolve: "gatsby-plugin-google-analytics",
+			options: {
+				trackingId: `${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`,
+				head: true,
+				respectDNT: true,
+			}
+		},
+	],
 	siteMetadata: {
 		title: `銀ねこアトリエ`,
 		author: {
@@ -46,15 +56,6 @@ module.exports = {
 			},
 		]
 	},
-	plugins: [
-		{
-			resolve: "gatsby-plugin-google-analytics",
-			options: {
-				trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-				head: true,
-			}
-		},
-	],
 	plugins: [
 		{
 			resolve: `gatsby-theme-blog`,
