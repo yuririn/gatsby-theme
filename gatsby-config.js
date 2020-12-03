@@ -62,7 +62,6 @@ module.exports = {
 			options: {
 				path: `${__dirname}/content/posts`,
 				name: `posts`,
-
 			},
 		},
 		{
@@ -72,6 +71,7 @@ module.exports = {
 				name: `assets`,
 			},
 		},
+
 		{
 			resolve: `gatsby-transformer-remark`,
 			options: {
@@ -82,6 +82,7 @@ module.exports = {
 							maxWidth: 630,
 						},
 					},
+
 					{
 						resolve: `gatsby-remark-responsive-iframe`,
 						options: {
@@ -91,7 +92,6 @@ module.exports = {
 					{
 						resolve: `gatsby-remark-autolink-headers`,
 						options: {
-
 							icon: false,
 							maintainCase: true,
 						},
