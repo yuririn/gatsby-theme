@@ -6,8 +6,6 @@ import Genre from "../components/genre"
 
 
 const Layout = ({ location, title, children }) => {
-	let flag;
-	location.pathname.includes('blogs') ? flag = true : flag = false;
 
 	return (
 		<div>
@@ -15,8 +13,8 @@ const Layout = ({ location, title, children }) => {
 			<main>{children}</main>
 			<aside>
 				<div className="l-container md-Md">
-					{flag ? <Genre /> : ''}
-					{flag ? <Profile /> : ''}
+					<Genre />
+					<Profile />
 				</div>
 			</aside>
 			<Footer title={title} />
