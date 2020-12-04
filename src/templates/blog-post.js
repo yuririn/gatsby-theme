@@ -74,30 +74,31 @@ const BlogPostTemplate = ({ data, location }) => {
 					/>
 				</div>
 			</article>
-			<nav className="blog-post-nav">
-				<ul>
-					<li>
+			<nav class="p-section l-container">
+				<ol class="c-pager--article">
+					<li class="c-pager--article__prev">
 						{previous && (
+
 							<Link to={previous.fields.slug} rel="prev">
-								← {previous.frontmatter.title}
+								{previous.frontmatter.title}
 							</Link>
 						)}
 					</li>
-					<li>
+					<li class="c-pager--article__next">
 						{next && (
 							<Link to={next.fields.slug} rel="next">
-								{next.frontmatter.title} →
+								{next.frontmatter.title}
 							</Link>
 						)}
 					</li>
-				</ul>
+				</ol>
 			</nav>
 
 			<RelatedList category={post.frontmatter.cateId} title={post.frontmatter.title} tags={post.frontmatter.tags}></RelatedList>
 			<FovoriteList type="web" />
 			<FovoriteList type="life" />
 			<FovoriteList type="career" />
-		</Layout>
+		</Layout >
 	)
 }
 

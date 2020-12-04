@@ -38,7 +38,7 @@ src/
 
 変数名を変更しておきます。
 
-```
+```javascript
   省略
 const Blogs = ({ data, location }) => {
   省略
@@ -53,7 +53,7 @@ export default Blogs
 gatsbyjsは静的ページを生成するので各一覧を生成するためのコードを書きます。
 
 **gatsby-node.js**のexports.createPages内、GraphQLでクエリが実行されすべての記事を取得しています。
-```
+```javascript
 // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
@@ -83,7 +83,6 @@ gatsbyjsは静的ページを生成するので各一覧を生成するための
   }
 
   const posts = result.data.allMarkdownRemark.nodes
-
 ```
 
 すべての記事は変数`posts`に格納されています。
@@ -95,7 +94,7 @@ gatsbyjsは静的ページを生成するので各一覧を生成するための
 
 **一覧に個別ページを含めたくない**ので、ページのタイプを追加します。各mdファイルの**fromtmatterにpagetypeを追記**します。
 
-```
+```md
 ---
 title: Webサイトの表示速度を真剣に考える
 date: 2019-06-21
@@ -107,7 +106,7 @@ description: 昔いた会社で、画像の圧縮、CSSなどの外部ファイ�
 gatsby-node.js側です。<br>
 queryにpagetypeを含めたいのでfrontmatterとpagetypeを追加します。
 
-```
+```javascript
 const result = await graphql(
   `
   {
@@ -134,11 +133,11 @@ const result = await graphql(
 
 createPageを実行するテンプレートを追加します。
 
-```
+```javascript
 const blogList = path.resolve(`./src/templates/blogs.js`)
 ```
 
-```
+```javascript
 if (posts.length > 0) {
   createPage({
     path: '/blogs/',
@@ -155,7 +154,7 @@ blogs.jsを編集します！
 
 ![pagetypeがblogの記事のみを取得する](./images/2020/12/entry408-1.png)
 
-```
+```javascript
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
@@ -249,7 +248,7 @@ frontmatterにcategory項目を追加します。
 
 ブログを設計するときに、カテゴリーの数を増やさないって決めていたのでgatby-config.jsの`siteMetadata`にあらかじめ、以下のようにcategoryを追記しておきました。
 
-```
+```js
 module.exports = {
   siteMetadata: {
     title: `銀ねこアトリエ`,
@@ -313,7 +312,7 @@ blogs.jsをsrc/templates/内に複製し、category.jsを作成します。
 
 gatsby-node.jsのクエリに`cateId`を追加します。
 
-```
+```jS
 const result = await graphql(
   `
   {
@@ -341,7 +340,7 @@ const result = await graphql(
 category.jsをテンプレートとしたすべての記事からcateIdを絞り込んでページを生成します。
 postからカテゴリーのIDを抽出して重複を削除し、各ページを生成します。
 
-```
+```javascript
   const categoyTemplate = path.resolve(`./src/templates/category.js`);
 
   let categories = {};
@@ -373,7 +372,7 @@ postからカテゴリーのIDを抽出して重複を削除し、各ページ�
 `import { siteMetadata } from "../../gatsby-config"`であらかじめgatsby-config.jsに設定したカテゴリーのslug、name、descriptionを取得し、`cateSlug`と一致するデータのみを使用します。
 
 ![カテゴリー一覧の取得](./images/2020/12/entry408-2.png)
-```
+```javascript
 import React from "react"
 import PropTypes from "prop-types"
 
@@ -507,7 +506,7 @@ export const pageQuery = graphql`
 ```
 ## タグを追加する
 この銀ねこアトリエではタグは複数設定OKなので以下のように追加します。
-```
+```markdown
 ---
 title: Webサイトの表示速度を真剣に考える
 date: 2019-06-21
@@ -519,7 +518,7 @@ description: 昔いた会社で、画像の圧縮、CSSなどの外部ファイ�
 ---
 ```
 gatsby-node.js側のqueryにtagsを追記します。
-```
+```javascript
 const result = await graphql(
   `
   {
@@ -557,7 +556,7 @@ gatsby-node.js側にタグのページを生成するためのコードを追記
 
 ポイントはテンプレート側クエリのフィルターが配列なので`filter: {frontmatter: {tags: { in: [$tag] } } }`となっています。
 
-```
+```javascript
   //タグを取得
   let tags = posts.reduce((tags, edge) => {
     const edgeTags = edge['frontmatter']['tags'];
@@ -588,7 +587,8 @@ gatsby-node.js側にタグのページを生成するためのコードを追記
     // console.log(tag, tags[tag])
   }
 ```
-```
+
+```javascript
 import React from "react"
 import PropTypes from "prop-types"
 

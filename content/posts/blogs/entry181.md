@@ -31,15 +31,17 @@ lead: ["現役フロントエンドエンジニアのかみーゆです。","a�
 
 `display: flex`でナビのliタグを横方向に並べ、幅を均等に振り分けます。
 
-```
-&lt;!-- HTML -->
-&lt;ul>
-  &lt;li><a href="/">ホーム</a></li>
+```html
+<!-- HTML -->
+<ul>
+  <li><a href="/">ホーム</a></li>
   <li><a href="blog/">ブログ</a></li>
   <li><a href="profile/">プロフィール</a></li>
   <li><a href="contact/">お問合わせ</a></li>
 </ul>
+```
 
+```css
 /* CSS */
 * {
   box-sizing: border-box;
@@ -95,10 +97,12 @@ displayは要素の表示形式を指定するプロパティで`inline`を指�
 この現象は初心者あるあるです。
 
 解消法はCSSでimgタグに`vertical-align: bottom`をセットするだけです。
-```
+```html
 <!-- HTML -->
 <a href="/"><img src="images/hogehoge.jpg" alt="hogehoge" width="200" height="200"></a>
+```
 
+```css
 /* CSS */
 a {
   display: block;
@@ -147,7 +151,7 @@ imgタグなどのインラインレベルの要素はこれらの文字と同�
 * `justify-content: center`
 * `align-items: center`
 
-```
+```css
 * {
   box-sizing: border-box;
   line-height: 1.8;
@@ -222,13 +226,13 @@ aタグやimgタグは、HTML5では主にフレージングコンテンツの�
 
 | 種類 | タグ | 備考 |
 | ---- | ---- | ---- |
-| フローコンテンツ | &lt;a>, &lt;abbr>, &lt;address>,&lt;area>（map要素内にある場合）&lt;article>, &lt;aside>, &lt;audio>,<br>&lt;b>, &lt;bdi>, &lt;bdo>, &lt;blockquote>,&lt;br>, &lt;button>,<br> &lt;canvas>, &lt;cite>, &lt;code>, &lt;data>, &lt;datalist>, &lt;del>,&lt;details>, &lt;dfn>, &lt;div>, &lt;dl>,<br>&lt;em>, &lt;embed>, &lt;fieldset>, &lt;figure>, &lt;footer>, &lt;form>,<br>&lt;h1>-&lt;h6>, &lt;header>,&lt;hr>, &lt;i>, &lt;iframe>, &lt;img>,&lt;input>,<br> &lt;ins>, &lt;kbd>, &lt;keygen>, <br>&lt;label>, &lt;main>, &lt;map>, &lt;mark>,&lt;menu>, &lt;meter>, &lt;nav>, &lt;noscript>,<br>&lt;object>, &lt;ol>, &lt;output>, &lt;p>, &lt;picture>, &lt;pre>, <br>&lt;progress>, &lt;q>, &lt;ruby>, &lt;s>,<br>&lt;samp>, &lt;script>, &lt;section>, &lt;select>,&lt;small>, &lt;span>, &lt;strong>, &lt;sub>, &lt;sup>,<br>&lt;table>, &lt;template>, &lt;textarea>,<br> &lt;time>, &lt;u>, &lt;ul>, &lt;var>, &lt;video>, &lt;wbr>, テキスト|
-|メタデータコンテンツ|&lt;base>, &lt;link>, &lt;meta>, &lt;noscript>, &lt;script>, &lt;style>, &lt;template>, &lt;title>|
-|ヘッディングコンテンツ|&lt;h1> ~ &lt;h6>|見出し|
-|セクショニングコンテンツ|&lt;article>, &lt;aside>, &lt;nav>, &lt;section>||
-|フレージングコンテンツ|&lt;a>, &lt;abbr>, &lt;area> （map要素内にある場合）<br> &lt;audio>, &lt;b>, &lt;bdi>, &lt;bdo>, &lt;br>, &lt;button>,<br> &lt;canvas>, &lt;cite>, &lt;code>, &lt;data>,<br>	&lt;datalist>, &lt;del>, &lt;dfn>, &lt;em>, &lt;embed>,<br> &lt;i>, &lt;iframe>, &lt;img>, &lt;input>, &lt;ins>, &lt;kbd>,<br> &lt;keygen>, &lt;label>, &lt;map>, &lt;mark>, &lt;meter>,<br> &lt;noscript>, &lt;object>, &lt;output>, &lt;picture>,<br> &lt;progress>, &lt;q>, &lt;ruby>, &lt;s>,<br> &lt;samp>, &lt;script>, &lt;select>, &lt;small>,<br> &lt;span>, &lt;strong>, &lt;sub>, &lt;sup>,<br> &lt;template>, &lt;textarea>, &lt;time>,<br> &lt;u>, &lt;var>, &lt;video>, &lt;wbr>, テキスト||
-|エンベディッドコンテンツ|&lt;audio>, &lt;canvas>, &lt;embed>, &lt;iframe>, &lt;img>, &lt;object>, &lt;picture>, &lt;video>||
-|インタラクティブコンテンツ|&lt;a> （HTML 5.1ではhref属性がある場合に限る）,<br>&lt;audio> （controls属性がある場合）,<br>&lt;button>, &lt;details>, &lt;embed>, &lt;iframe>,<br>&lt;img> （usemap属性がある場合）,<br>&lt;input> （type="hidden"の場合は除く）,<br><&lt;keygen>, &lt;label>,<br>&lt;object><br>（usemap属性がある場合）（HTML 5.1では除外）,<br>&lt;select>, &lt;textarea>, &lt;video> （controls属性がある場合）||
+| フローコンテンツ | <a>, <abbr>, <address>,<area>（map要素内にある場合）<article>, <aside>, <audio>,<br><b>, <bdi>, <bdo>, <blockquote>,<br>, <button>,<br> <canvas>, <cite>, <code>, <data>, <datalist>, <del>,<details>, <dfn>, <div>, <dl>,<br><em>, <embed>, <fieldset>, <figure>, <footer>, <form>,<br><h1>-<h6>, <header>,<hr>, <i>, <iframe>, <img>,<input>,<br> <ins>, <kbd>, <keygen>, <br><label>, <main>, <map>, <mark>,<menu>, <meter>, <nav>, <noscript>,<br><object>, <ol>, <output>, <p>, <picture>, <pre>, <br><progress>, <q>, <ruby>, <s>,<br><samp>, <script>, <section>, <select>,<small>, <span>, <strong>, <sub>, <sup>,<br><table>, <template>, <textarea>,<br> <time>, <u>, <ul>, <var>, <video>, <wbr>, テキスト|
+|メタデータコンテンツ|<base>, <link>, <meta>, <noscript>, <script>, <style>, <template>, <title>|
+|ヘッディングコンテンツ|<h1> ~ <h6>|見出し|
+|セクショニングコンテンツ|<article>, <aside>, <nav>, <section>||
+|フレージングコンテンツ|<a>, <abbr>, <area> （map要素内にある場合）<br> <audio>, <b>, <bdi>, <bdo>, <br>, <button>,<br> <canvas>, <cite>, <code>, <data>,<br>	<datalist>, <del>, <dfn>, <em>, <embed>,<br> <i>, <iframe>, <img>, <input>, <ins>, <kbd>,<br> <keygen>, <label>, <map>, <mark>, <meter>,<br> <noscript>, <object>, <output>, <picture>,<br> <progress>, <q>, <ruby>, <s>,<br> <samp>, <script>, <select>, <small>,<br> <span>, <strong>, <sub>, <sup>,<br> <template>, <textarea>, <time>,<br> <u>, <var>, <video>, <wbr>, テキスト||
+|エンベディッドコンテンツ|<audio>, <canvas>, <embed>, <iframe>, <img>, <object>, <picture>, <video>||
+|インタラクティブコンテンツ|<a> （HTML 5.1ではhref属性がある場合に限る）,<br><audio> （controls属性がある場合）,<br><button>, <details>, <embed>, <iframe>,<br><img> （usemap属性がある場合）,<br><input> （type="hidden"の場合は除く）,<br><<keygen>, <label>,<br><object><br>（usemap属性がある場合）（HTML 5.1では除外）,<br><select>, <textarea>, <video> （controls属性がある場合）||
 
 ## まとめ・この記事を読んでくださった方へ
 この記事は私がブログを始めた頃、2014年に書いたものです。

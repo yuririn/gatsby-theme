@@ -1,6 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+
 const footernav = () => {
 
 	return (
@@ -17,8 +21,8 @@ const footernav = () => {
 				<li><Link to="/contact">Contact</Link></li >
 			</ul >
 			<ul class="p-footerNav__item--sns">
-				<li><Link to=""><i class="fab fa-twitter"></i></Link></li>
-				<li><Link to=""><i class="fab fa-instagram"></i></Link></li>
+				<li><Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /></Link></li>
+				<li><Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" ><FontAwesomeIcon icon={faInstagram} /></Link></li>
 			</ul>
 		</div>
 	)

@@ -71,7 +71,6 @@ module.exports = {
 				name: `assets`,
 			},
 		},
-
 		{
 			resolve: `gatsby-transformer-remark`,
 			options: {
@@ -103,7 +102,19 @@ module.exports = {
 							rel: "nofollow nopener"
 						}
 					},
-					`gatsby-remark-prismjs`,
+					{
+						resolve: `gatsby-remark-prismjs`,
+						options: {
+							classPrefix: "language-",
+							inlineCodeMarker: null,
+							aliases: {},
+							showLineNumbers: true,
+							noInlineHighlight: false,
+						},
+					},
+
+					'gatsby-remark-prismjs-title',
+
 					`gatsby-remark-copy-linked-files`,
 					`gatsby-remark-smartypants`,
 				],

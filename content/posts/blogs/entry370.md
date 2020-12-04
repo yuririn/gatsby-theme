@@ -39,13 +39,13 @@ labelの使ったコーディング方法は2通りあります。
 inputタグとlabelタグを紐づけるとlabelタグをタップしただけでチェックできるようになります。
 inputタグにid属性、labelタグにfor属性を追加します。両方同じ値にします。
 
-```
+```html
 <input type="radio" value="malticolor" name="cat" >三毛ねこ</label>
 ```
 ### labelタグの中に入れてしまう方法
 inputタグをlabelタグの中に入れてしまいます。属性を追加しなくていいので楽チンです。
 
-```
+```html
 <label><input type="radio" value="malticolor" name="cat">三毛ねこ</label>
 ```
 
@@ -72,7 +72,7 @@ inputタグとlabelタグは隣接しているので隣接セレクターが利�
 ボタン用のbefore&afterは高さと幅を持った要素を作るためには`dispplay`を`block`か`inline-block`あたりに設定しておくのを忘れずに。
 
 #### HTML
-```
+```html
 <p class="radio-btns">
   <input type="radio" value="ラベル1" name="radio" id="radio1"><label for="radio1">ラベル1</label>
   <input type="radio" value="ラベル2" name="radio" id="radio2"><label for="radio2">ラベル2</label>
@@ -80,7 +80,7 @@ inputタグとlabelタグは隣接しているので隣接セレクターが利�
 </p>
 ```
 #### CSS
-```
+```css
 label ~ label {
   margin-left: 15px;
 }
@@ -139,7 +139,7 @@ contentプロパティがセットで、値に文字なども追加できます�
 
 ![基本のラジオボタン・チェックボックスをCSSでカスタマイズ2](./images/2020/07/entry370-4-1.png)
 
-```
+```css
 element::before {
   content: 'こんにちは';
 }
@@ -149,13 +149,13 @@ inputタグや、brタグのように中にコンテンツを内包できない�
 #### 擬似クラス
 擬似クラスを使うとそのタグの特定の状態を指定できます。この場合だとラジオボタンに「チェックが入った状態」のcheckedを使います。擬似クラスを指定するときは:（コロン1つ）を使います。
 
-```
+```css
 element:checked
 ```
 #### 隣接セレクター
 となり合った要素の指定方法です。要素同士を ＋（プラス）で繋ぎます。
 
-```
+```css
 element + element
 ```
 ### チェックボックスも同じHTMLの構成でスタイリング
@@ -164,7 +164,7 @@ element + element
 今回は特別な素材を用意せず、borderとtransform（変形）のrotate（回転）を利用してCSSのみで作ります。
 
 ![チェックボックスも同じHTMLの構成でスタイリング](./images/2020/07/entry370-5.png)
-```
+```css
 display: block;
 width: 6px;
 height: 10px;
@@ -173,14 +173,14 @@ border-right: 3px solid #c2004a;
 border-bottom: 3px solid #c2004a;
 ```
 #### HTML
-```
+```html
 <p class="check-btns">
   <input type="checkbox" value="ラベル1" name="check" id="check1"><label for="check1">ラベル1</label><input type="checkbox" value="ラベル2" name="check" id="check2"><label for="check2">ラベル2</label><input type="checkbox" value="ラベル3" name="check" id="check3"><label for="check3">ラベル3</label>
 </p>
 ```
 
 #### CSS
-```
+```css
 label ~ label {
   margin-left: 15px;
 }
@@ -238,7 +238,7 @@ input[type=checkbox] {
 CodePenにいくつかコードを掲載しています。興味ある方はコピペで使ってみてください。
 
 HTMLはこちらを共通で使います。
-```
+```html
 <!--チェックボックス-->
 <p class="check-btns">
   <input type="checkbox" value="ラベル1" name="check" id="check1"><label for="check1">ラベル1</label><input type="checkbox" value="ラベル2" name="check" id="check2"><label for="check2">ラベル2</label><input type="checkbox" value="ラベル3" name="check" id="check3"><label for="check3">ラベル3</label>
@@ -251,7 +251,7 @@ HTMLはこちらを共通で使います。
 ### ズームしながら出現するチェックボックス
 ![ズームしながら出現するチェックボックス](./images/2020/07/entry370-6.gif)
 
-```
+```css
 label ~ label {
   margin-left: 30px;
 }
@@ -302,7 +302,7 @@ label ~ label {
 ### 波紋が広がるラジオボタン
 ![波紋が広がるラジオボタン](./images/2020/07/entry370-7.gif)
 
-```
+```css
 label ~ label {
   margin-left: 30px;
 }/* ベースのラジオボタン */
@@ -375,7 +375,7 @@ label ~ label {
 ### スマフォやアプリに使えるラジオボタン
 ![スマフォやアプリに使えるラジオボタン](./images/2020/07/entry370-8.gif)
 
-```
+```css
 label ~ label {
   margin-left: 30px;
 }
@@ -439,7 +439,7 @@ label ~ label {
 [デモ : スマフォやアプリに使えるラジオボタン｜CodePen](https://codepen.io/camile/pen/JjGZLyy)
 ### スピンしながらチェックが入るラジオボタン
 ![スピンしながらチェックが入るラジオボタン](./images/2020/07/entry370-9.gif)
-```
+```css
 .radio label {
   position: relative;
   padding-left: 25px;

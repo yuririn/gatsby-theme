@@ -57,7 +57,7 @@ LazyLoadなどjQueryライブラリを利用すれば比較的実装は容易で
 
 もちろん、画像が初期ロード時に存在しないことになります。解析されないのでSEO的に困るという場合は画像データは構造化データに入れてあげましょう。
 
-```
+```js
 <script type="application/ld+json">
 [
   {
@@ -95,7 +95,7 @@ CSS、JSなどは思い切ってワンソース化しましょう。一個のフ
 WordPressなどでは、あらかじめ絵文字とか用意してありますが正直いらんです。<br>
 WordPressの場合余分なファイルの読み込みは以下で止めることができます。
 
-```
+```php
 // 不要な機能を停止
 // 絵文字
 remove_action('admin_print_scripts', 'print_emoji_detection_script');

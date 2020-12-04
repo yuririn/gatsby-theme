@@ -35,7 +35,7 @@ MW WP Form は日本製のとても便利なフォームプラグイン。お問
 #### HTML
 ショートタグを設定するとこんな感じでHTMLが出力されます。
 
-```
+```html
 <span class="mwform-radio-field  horizontal-item">
   <label>
   <input name="cat" type="radio" value="のらねこ" />
@@ -54,7 +54,7 @@ MW WP Form は日本製のとても便利なフォームプラグイン。お問
 ### CSS
 デフォルトではこんな感じで設定されてます。
 
-```
+```css
 .mw_wp_form .horizontal-item {
   margin-right: 10px;
   display: inline-block;
@@ -82,7 +82,7 @@ MW WP Form は日本製のとても便利なフォームプラグイン。お問
 
 ![クラスを付与するためにショートコードを挿入する時に以下のような設定](./images/2020/07/entry374-2.png)
 
-```
+```css
 /* ラジオボタンを隠す */
 .radio-btns input[type=radio].radio-btns__item{
   display: none;
@@ -145,7 +145,7 @@ checkboxの場合、単純にクラス名がmwform-checkbox-fieldに変わるだ
 仕上がりイメージはこんな感じ。
 ![MW WP Form チェックボックス のカスタマイズ法](./images/2020/07/entry374-4.png)
 
-```
+```css
 .checkbox input[type=checkbox].checkbox__item{
   display: none;
 }
@@ -213,7 +213,7 @@ Ajaxによるフォーム送信するところとか、個人的に心が熱く�
 ![Contact Form 7ラジオボタンのカスタマイズ法](./images/2020/07/entry374-5.png)
 
 #### HTML
-```
+```html
 <span class="wpcf7-form-control-wrap radio-577">
   <span class="wpcf7-form-control wpcf7-radio"><span class="wpcf7-list-item first"><label><input checked="checked" name="radio-577" type="radio" value="radio1" /><span class="wpcf7-list-item-label">radio1</span></label></span>
   <span class="wpcf7-list-item"><label><input name="radio-577" type="radio" value="radio2" /><span class="wpcf7-list-item-label">radio2</span></label></span>
@@ -222,7 +222,7 @@ Ajaxによるフォーム送信するところとか、個人的に心が熱く�
 ```
 #### CSS
 
-```
+```css
 .wpcf7-form-control-wrap {
   position: relative;
 }
@@ -248,7 +248,7 @@ span.wpcf7-list-item-label::before, span.wpcf7-list-item-label::after {
 出力されるHTMLはラジオボタンと構造は一緒です。全体のラッパーの名前が違うくらい。相変わらずネスト（入れ子）が深いです。
 
 #### HTML
-```
+```html
 <span class="wpcf7-form-control-wrap checkbox-648">
   <span class="wpcf7-form-control wpcf7-checkbox">
     <span class="wpcf7-list-item first"></label></input name="checkbox-648[]" type="checkbox" value="checkbox1" /><span class="wpcf7-list-item-label">checkbox1</span></span>
@@ -258,7 +258,7 @@ span.wpcf7-list-item-label::before, span.wpcf7-list-item-label::after {
 </span>
 ```
 #### CSS
-```
+```css
 .checkbox input[type=checkbox]{
   display: none;
 }

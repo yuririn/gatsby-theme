@@ -42,7 +42,7 @@ lead: ["現役フロントエンドエンジニアのかみーゆです。","CSS
 ![パターン1、開閉させるトリガーをチェックボックスに持たせる](./images/2019/entry315-3.gif)
 
 すべてのコードは以下のような感じです。
-```
+```html
 <!-- HTML -->
 <input type="checkbox" id="menu1">
 <label for="menu1">メニュー1</label>
@@ -59,7 +59,9 @@ lead: ["現役フロントエンドエンジニアのかみーゆです。","CSS
 <div>
   <p>コンテンツがここに入ります</p>
 </div>
+```
 
+```css
 // CSS
 input[type=checkbox] {
   display: none;
@@ -96,7 +98,7 @@ input[type=checkbox]:checked + label + div {
 
 ![パターン2、開閉させるトリガーをラジオボタンに持たせる](./images/2019/entry315-4.gif)
 
-```
+```html
 <!-- HTML -->
 <input type="radio" name="accordion" id="menu1">
 <label for="menu1">メニュー1</label>
@@ -113,7 +115,9 @@ input[type=checkbox]:checked + label + div {
 <div>
   <p>コンテンツがここに入ります</p>
 </div>
+```
 
+```css
 // CSS
 body {
   margin: 50px auto;
@@ -171,7 +175,7 @@ input[type=radio]:checked + label + div {
 
 **閉じた状態**
 
-```
+```css
 div {
   overflow: hidden;
   height: 0;
@@ -179,7 +183,7 @@ div {
 }
 ```
 **開いた状態**
-```
+```css
 input[type=checkbox]:checked + label + div {
   display: block;
   height: 50px;
@@ -188,7 +192,7 @@ input[type=checkbox]:checked + label + div {
 
 すべてコードをかくとこんな感じになります。
 
-```
+```html
 <!-- HTML -->
 <input type="checkbox" id="menu1">
 <label for="menu1">メニュー1</label>
@@ -205,7 +209,9 @@ input[type=checkbox]:checked + label + div {
 <div>
   <p>コンテンツがここに入ります</p>
 </div>
+```
 
+```css
 // CSS
 input[type=checkbox] {
   display: none;
@@ -259,7 +265,7 @@ GIFアニメの通りスライドアップするとき変な間ができて不�
 
 ![パターン2、開閉させるトリガーをラジオボタンに持たせる](./images/2019/entry315-5.gif)
 
-```
+```html
 <input type="checkbox" id="menu1">
 <label for="menu1">メニュー1</label>
 <div>
@@ -275,7 +281,9 @@ GIFアニメの通りスライドアップするとき変な間ができて不�
 <div>
   <p>コンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入りますコンテンツがここに入ります</p>
 </div>
+```
 
+```css
 // CSS
 body {
   width: 800px;
@@ -328,7 +336,7 @@ input[type=checkbox]:checked + label + div {
 
 ![JavaScriptも利用して不自然なタグを使わずカクツキなくリッチにアコーディオンメニューを実装](./images/2019/entry315-6.gif)
 **HTML**
-```
+```html
 <dl class="accordion">
   <dt class="accordion__menu">メニュー1</dt>
   <dd class="accordion__item"><p>ここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入りますここにテキストが入ります</p></dd>
@@ -340,7 +348,7 @@ input[type=checkbox]:checked + label + div {
 </dl>
 ```
 **CSS**
-```
+```css
 body {
   width: 800px;
   margin: 50px auto;
@@ -378,7 +386,7 @@ p {
 }
 ```
 **JS**
-```
+```js
 // アコーディオン取得
 const accordions = document.querySelectorAll('.accordion');
 // 高さの配列格納用

@@ -89,7 +89,7 @@ Admine Consoleから新しいサイトの設定をしてトークンを発行し
 たとえば、formというIDのformタグをターゲットにしたい場合こんな感じ。
 external_form/contact_form.php以下にこちらを追記。
 
-```
+```php
 <form method="post" action="<?php echo $view->action('send')?>" id="form" name="form">
 // 省略
 </form>
@@ -99,13 +99,13 @@ JSを追加します。<br>
 とりあえずFooter付近で大丈夫だと思います。<br>
 JSにはrender以降のパラメーター[サイトキー]にreCAPCHAで取得できるサイトキーを記述します。
 
-```
+```js
 <script src="https://www.google.com/recaptcha/api.js?render=[サイトキー]"></script>
 ```
 
 続けてJSを追記します。
 
-```
+```js
 <script>
   const rc_form = document.getElementById('form');
 
@@ -137,7 +137,7 @@ JSにはrender以降のパラメーター[サイトキー]にreCAPCHAで取得�
 次はPHP側のコントローラーに記述します。[シークレットキー]には取得した値を入力します。<br>
 `$result->score`から取れるスコアレベルは０ ~ 1なのでその間で設定します。
 
-```
+```php
 if ($this->bID == $bID) {
     // validation/form ヘルパーを呼び出し
     $email = Core::make('helper/validation/strings');

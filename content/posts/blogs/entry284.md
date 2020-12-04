@@ -31,33 +31,33 @@ MySQL 5.1 が古いのか、バージョンアップするためにはまず、5
 ## まずは 5.6 系へアップグレード
 vagrant sshで入り、まずはバージョン確認。
 
-```
+```bash
 # vagrant ssh
 ```
 特権レベルにセット。
 
-```
+```bash
 # sudo -i
 ```
 まずはmysqlをシャットダウン。
-```
+```bash
 # service mysqld stop
 ```
 既存のmysqlを削除
-```
+```bash
 # yum remove mysql*
 ```
 
-```
+```bash
 # yum -y install http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
 ```
 落ちてこない人は直接、ルートにmysql-community-release-el6-5.noarch.rpmを置いて yum install すればいいと思う。
 
-```
+```bash
 cd /vagrant
 # yum -y install mysql-community-release-el6-5.noarch.rpm
 ```
-```
+```bash
 # yum-config-manager --disable mysql55-community
 # yum-config-manager --enable mysql56-community
 ```
@@ -66,17 +66,17 @@ yum-config-managerでエラーになる人は以下コマンドを実行して�
 
 [[yum]yum-config-managerコマンドの実行でcommand not foundエラー](https://akamist.com/blog/archives/942)
 
-```
+```bash
 # yum -y install yum-utils
 ```
 インストール。
-```
+```bash
 # yum install mysql mysql-devel mysql-server mysql-utilities
 ```
 ここですでにDBがあるとおそらく mysqld が起動できないはずです。
 
 なので、まずはログを確認してみます。
-```
+```bash
 # less /var/log/mysqld.log
 ```
 Mac ではログファイルを開いたら shift + g で一番下まで行けます。
@@ -90,14 +90,14 @@ Mac ではログファイルを開いたら shift + g で一番下まで行け�
 [my.cnfでinnodb関連の設定後、MySQLが起動しなくなった](https://www.ilovex.co.jp/blog/system/projectandsystemdevelopment/mycnfinnodbmysql.html)
 
 ディレクトリーを移動して中身を確認。
-```
+```bash
 # cd /var/lib/mysql
 # ls(もしくはll)
 ```
 
 下の三つが不要なので強制削除します。<br>
 ※もちろんエラー内容を確認の上削除。
-```
+```bash
 # rm -rf ib_logfile0
 # rm -rf ib_logfile1
 # rm -rf ibdata1
@@ -105,24 +105,24 @@ Mac ではログファイルを開いたら shift + g で一番下まで行け�
 ### Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't existというエラーが出た場合
 インストール時に mysql_install_db が実行されるが、ディレクトリがわからない状態なので、インストール場所とユーザ名を指定して明示的に実行すると良いようです。
 
-```
+```bash
 # mysql_install_db --datadir=/var/lib/mysql --user=mysql
 ```
 [MySQLの起動時に "Fatal error: Can't open and lock privilege tables: Table 'mysql.host' doesn't exist"というエラーが出た](http://satoh-d.hatenablog.com/entry/2015/04/11/100204)
 これで無事再起動できるはずです。
-```
+```bash
 # service mysqld start
 ```
 アップグレードします。
-```
+```bash
 # mysql_upgrade -u root
 ```
 パスワードを設定している場合はお尻に -p をつけてパスワード入力します。
-```
+```bash
 # mysql_upgrade -u root -p
 ```
 バージョン確認。
-```
+```bash
 # mysql --version
 ```
 ようやく5.6系になりました。
@@ -130,30 +130,30 @@ Mac ではログファイルを開いたら shift + g で一番下まで行け�
 続けて、5.7 にアップグレードします。
 
 まずはmysqlをシャットダウン。
-```
+```bash
 # service mysqld stop
 ```
 せっかく作ったけど、のmysqlを削除。
-```
+```bash
 # yum remove mysql*
 ```
 5.7を有効化
-```
+```bash
 # yum-config-manager --disable mysql56-community
 # yum-config-manager --enable mysql57-community-dmr
 ```
 インストール
-```
+```bash
 # yum install mysql mysql-devel mysql-server mysql-utilitie
 ```
-```
+```bash
 # service mysqld start
 # mysql_upgrade -u root
 //もしくは
 # mysql_upgrade -u root -p
 ```
 無事アップグレードできているはずです。
-```
+```bash
 # mysql --version
 ```
 ### まとめ

@@ -5,3 +5,5 @@ import "typeface-merriweather"
 // import "./src/normalize.css"
 // custom CSS styles
 import "./src/style.css"
+
+import "prismjs/themes/prism-twilight.css"

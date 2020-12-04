@@ -334,7 +334,7 @@ WordPressをインストールした直下に**wp-config.php**というファイ
 
 ![テキストエディターで開けると思うので、以下コードを必ず書き加えてください](./images/2020/07/entry379-22.jpg)
 
-```
+```php
 // wp 管理画面側からのphpの編集禁止
 define('DISALLOW_FILE_EDIT', TRUE);
 ```
@@ -360,7 +360,7 @@ define('DISALLOW_FILE_EDIT', TRUE);
 
 ![パーマネントリンクの設定をするとファイルが作成2](./images/2020/07/entry379-24.jpg)
 
-```
+```bash
 <IfModule mod_rewrite.c>
 # リライト機能をONにする
 RewriteEngine on

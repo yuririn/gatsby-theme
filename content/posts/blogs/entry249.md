@@ -42,19 +42,19 @@ SQL上何がどう動いているのが分かってるのかい？
 今回はvagrantで作ったサーバーの中を参考にみてみます。<br>
 vagrant sshで接続します。
 
-```
+```bash
 $ mysql -u【ユーザー名】 -p【パスワード】
 ```
 
 ワンラインでかけますのでユーザー名がuserパスワードがpasswordの場合はこんな感じで続けて書けます。
-```
+```bash
 $ mysql -uuser -ppassword
 ```
 MySQLに接続できるようになりました。
 データベースのあれこれがわかるのでまずはコマンドshow databasesを叩いてみましょう。
 終端に必ず;(セミコロン)が要ります。
 
-```
+```sql
 mysql > show databases;
 ```
 
@@ -63,7 +63,7 @@ mysql > show databases;
 どのデータベースを使用するか選び、中身を見てみましょう！
 
 ![どのデータベースを使用するか選び、中身を見てみましょう](./images/2016/entry249-2.jpg)
-```
+```sql
 //データベースを選ぶ
 mysql > use 【データベース名】;
 //例
@@ -79,7 +79,7 @@ select * from【テーブル名】でそのテーブルの全てのデータが�
 
 ![wordpressのwp_usersの中](./images/2016/entry249-3.png)
 
-```
+```sql
 //テーブルの中を見る
 mysql > select * from 【テーブル名】;
 //例
@@ -88,7 +88,7 @@ mysql > select * from wp_users;
 
 ![wordpressのwp_usersの中](./images/2016/entry249-4.jpg)
 
-```
+```sql
 //データベースを選ぶ
 mysql > select 【カラム名】 from 【データベース名】;
 //例
@@ -109,7 +109,7 @@ explain selectを実行するとSQLの挙動や出力スピードを最適化す
 
 いつか役に立つはずなの、そのやり方もメモっておきます。
 
-```
+```sql
 mysql > explain select * from wp_posts;
 ```
 
@@ -181,14 +181,14 @@ typeがALLになりました。
 
 まず、ルートに戻ってls -alで隠しファイルを確認します。
 
-```
+```bash
 $ ls -al
 ```
 
 そうすると、.mysql_historyという隠しファイルが　確認できると思います。
 
 catコマンドで中身を見てみましょう。
-```
+```bash
 $ cat .mysql_history
 ```
 ## とりあえずまとめ

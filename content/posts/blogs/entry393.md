@@ -46,7 +46,7 @@ lead: ["フロントエンドエンジニアかみーゆです。","フォーム
 
 ![セレクトボックス（プルダウンメニュー）](./images/2020/11/entry393-1-1.gif)
 
-```
+```html
 <select name="selectbox">
   <option value="項目1">項目1</option>
   <option value="項目2">項目2</option>
@@ -70,7 +70,7 @@ appearanceプロパティはチェックボックスやボタンなどの各フ�
 
 ![セレクトボックス（プルダウンメニュー）](./images/2020/11/entry393-2.png)
 
-```
+```css
 appearance: none;
 ```
 
@@ -87,7 +87,7 @@ appearance: none;
 IE対応では`appearance`に`-ms-expand`というドロップダウンメニューを開いたり閉じたりするボタンを作る擬似要素に`desplay:none`をセットする必要があります。
 
 参考：[::-ms-expand|MDN](https://developer.mozilla.org/ja/docs/Web/CSS/::-ms-expand)
-```
+```css
 select::-ms-expand {
   display: none;
 }
@@ -110,7 +110,7 @@ selectの上にdiv（ラッパー）などでラッピングし、擬似要素�
 位置を`position: absolute`で右端に固定します。<br>
 縦位置ど真ん中にしたいので`top: 50%`に配置して`translateY(-50%)`で要素の高さ半分上に上げています。
 
-```
+```css
   right: 10px;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
@@ -126,8 +126,7 @@ z-indexは要素の重なり順を操作できるプロパティです。
 このままではマークの上をクリックしてもセレクトボックスが反応しないのでセレクトボックスの下にマークを潜り込ませます。<br>
 ラッパーにはz`-index: 1`を、afterには`z-index: -1`を付与します。
 
-```
-
+```html
 <!-- HTLM -->
 <div class="select">
   <select name="item">
@@ -136,7 +135,9 @@ z-indexは要素の重なり順を操作できるプロパティです。
     <option value="項目3">項目3</option>
   </select>
 </div>
+```
 
+```css
 // CSS
 /* 基本のセレクトボックスのカスタマイズ */
 .select {
@@ -191,18 +192,20 @@ select {
 
 うまく効かないときは**/（スラッシュ）が抜けていることが多い**です。
 
-```
+```css
 background: #cfcedb url(./assets/arrow.svg) no-repeat right 10px center / 16px auto;
 ```
 セレクトボックスのコードはこちら
-```
+```html
 <!-- HTLM -->
 <select name="item">
   <option value="項目1">項目1</option>
   <option value="項目2">項目2</option>
   <option value="項目3">項目3</option>
 </select>
+```
 
+```css
 // CSS
 select {
   /* 初期化 */
@@ -240,7 +243,7 @@ select {
 * **selected**　選択された状態
 * **disabled**　操作不能
 
-```
+```html
 <!-- HTLM -->
 <select name="item">
   <option selected disabled>選択してください</option>
@@ -248,7 +251,9 @@ select {
   <option value="項目2">項目2</option>
   <option value="項目3">項目3</option>
 </select>
+```
 
+```css
 // CSS
 select {
   /* 初期化 */
@@ -280,7 +285,7 @@ option[selected][disabled] {
 **optgroup**を使ってまとめることができます。<br>
 たくさん項目がある際は、ユーザーの可読性も上がるので親切です。
 
-```
+```html
 <!-- HTML -->
 <select>
   <optgroup label="フルーツ">
@@ -295,7 +300,7 @@ option[selected][disabled] {
 </select>
 ```
 
-[optionタグをグルーピングデモ|Code Pen](https://codepen.io/camile/pen/pobxXdd)
+[optionタグをグルーピングデモ|Code Pen](https://codepen.io/camile/pen/pobxXdd)<br>
 参考:[HTML 要素リファレンス optgroup MDN](https://developer.mozilla.org/ja/docs/Web/HTML/Element/optgroup)
 
 ### ケース3・複数の項目を選択したい
@@ -310,7 +315,7 @@ option[selected][disabled] {
 
 また時間があるときにもうちょい調べて追記します。
 
-```
+```html
 <!-- HTML -->
 <select name="item" multiple>
   <option value="項目1">項目1</option>
@@ -319,7 +324,9 @@ option[selected][disabled] {
   <option value="項目4">項目4</option>
   <option value="項目5">項目5</option>
 </select>
+```
 
+```css
 // CSS
 select {
   /* 初期化 */

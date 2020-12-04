@@ -20,7 +20,7 @@ lead: ["現役フロントエンドエンジニアのかみーゆです。","Wor
 fuctions.php に add_filter で wpcf7_validate にフックするコードを書けば OK。
 
 以下のコードの例は、checkboxです。
-```
+```php
 // contact form 7 バリデーション追加
 function wpcf7_validate_customize($result, $tags)
 {

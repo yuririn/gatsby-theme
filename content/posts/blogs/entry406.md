@@ -41,7 +41,7 @@ gatsby-config.jsの`gatsby-theme-blog`の`basepath`を`blogs`から`/posts`変�
 gatsby-config.jsはプロジェクトをインストールした直下にあります。<br>
 blogの下にblogsがあるのは気持ち悪いので。。。
 
-```
+```js
 plugins: [
   {
     resolve: `gatsby-theme-blog`,
@@ -52,7 +52,7 @@ plugins: [
 ],
 ```
 を以下に変更。
-```
+```js
 plugins: [
   {
     resolve: `gatsby-theme-blog`,
@@ -66,7 +66,7 @@ plugins: [
 
 さらに、ファイルの格納場所の名前の変更も忘れずに。
 
-```
+```js
 plugins: [
   {
     resolve: `gatsby-source-filesystem`,
@@ -86,7 +86,7 @@ plugins: [
   省略
 ```
 を以下に変更。
-```
+```js
 plugins: [
   {
     resolve: `gatsby-source-filesystem`,
@@ -113,7 +113,7 @@ plugins: [
 
 後々何が出力したいかよく考えて作成しましょう。
 
-```
+```md
 ---
 title: テスト投稿
 date: 2020-11-26
@@ -126,7 +126,7 @@ description: この記事はテスト投稿です
 
 ルールが煩雑だと記事も破綻しますので。
 
-```
+```md
 ---
 title: テスト投稿
 date: 2020-11-26
@@ -158,7 +158,7 @@ src/components直下にimage.jsファイルを作成します。
 
 惚れてまうやろ。
 
-```
+```js
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
@@ -215,12 +215,12 @@ export default ({ filename }) => (
 
 次にsrc/templetes/内のblog-post.jsに作ったコンポーネントをインポートします。
 
-```
+```js
 import Image from "../components/image"
 ```
 const BlogPostTemplate ~ 以下にサムネを追加したいところにコードを追加します。<br>
 主にはheader内を変更します。
-```
+```js
 <header>
   <h1 itemProp="headline">{post.frontmatter.title}</h1>
   <p>{post.frontmatter.date}</p>
@@ -229,7 +229,7 @@ const BlogPostTemplate ~ 以下にサムネを追加したいところにコー�
 const BlogPostTemplate のHTMLの部分ですが、全体的にはこんな感じ。
 
 もしサムネがないときはダミー画像を表示します。
-```
+```js
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -270,7 +270,7 @@ const BlogPostTemplate = ({ data, location }) => {
 idが正しい場合、同じMDファイルを読み込んでHTMLにパースしています。
 QraphQLはクエリ言語なので、MDファイルのfrontmatter(---で囲んだ部分)の設定もここから読み取ることができます。
 
-```
+```js
   markdownRemark(id: { eq: $id }) {
     id
     excerpt(pruneLength: 160)
@@ -284,7 +284,7 @@ QraphQLはクエリ言語なので、MDファイルのfrontmatter(---で囲ん�
 ```
 クエリにheroを足し、ついでに日本人からするとなじみのない日付のフォーマットも変えてしまいます。
 YYYY年MM月DD日と変更することも可能です。
-```
+```js
   markdownRemark(id: { eq: $id }) {
     id
     excerpt(pruneLength: 160)
@@ -307,7 +307,7 @@ src/components内にprofile.jsを作ります。
 
 リンクタグも使いたいので`gatsby`からLinkも呼び出します。
 
-```
+```js
 import React from "react"
 import { Link } from "gatsby"
 import Image from "../components/image"
@@ -346,7 +346,7 @@ export default profile
 
 あとはお好きなところに作ったコンポーネントをインポートしてタグを追記してください。
 
-```
+```js
 import Profile from "../components/profile"
 
 省略
@@ -369,7 +369,7 @@ src直下のgatsby-browser.jsを以下のように書き換えました。<br>
 
 必要あればこちらにCSSファイルをを追記してください。
 
-```
+```js
 // normalize CSS across browsers
 // import "./src/normalize.css"
 import "./src/style.css"

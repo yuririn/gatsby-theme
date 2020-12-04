@@ -28,7 +28,7 @@ function.phpなどに`create_post_type`という関数を作って、新たに�
 
 今回はあくまで「カスタムフィールドにメディア（画像登録）を追加する方法」のご紹介なので、詳しい説明は割愛します。
 
-```
+```php
 
 add_action( 'init', 'create_post_type' );
 
@@ -72,8 +72,8 @@ add_meta_box()を使って登録エリアを作ります。
 
 [関数リファレンス/add meta box](https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/add_meta_box)
 
-```
-dd_action( 'admin_menu', 'add_custom_fields' );
+```php
+add_action( 'admin_menu', 'add_custom_fields' );
 
 function add_custom_fields() {
     add_meta_box(
@@ -95,7 +95,7 @@ function add_custom_fields() {
 
 実際のデータはフォームタグをhiddenで仕込んでおき、JSで動的に値を格納できるようにしておきます。
 
-```
+```php
 function product_custom_fields() {
     $product_image_name = array();
     $product_image = arra();
@@ -140,7 +140,7 @@ function product_custom_fields() {
 
 [関数リファレンス/wp enqueue media](https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/wp_enqueue_media)
 
-```
+```php
 add_action( 'admin_enqueue_scripts', add_api );
 
 function add_api() {
@@ -155,8 +155,7 @@ function add_api() {
 
 ![JavaScript APIの調整](./images/2020/11/entry400-3.png)
 
-```
-
+```php
 add_action( 'admin_footer', array ( $this, 'add_script' ) );
 
 public function add_script() {
@@ -200,7 +199,7 @@ public function add_script() {
 ### 画像と画像名を保存
 画像と画像名を保存できるようにします。
 
-```
+```php
 add_action( 'save_post', 'save_products' );
 
 function save_products( $post_id ) {

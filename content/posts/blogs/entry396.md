@@ -60,10 +60,12 @@ CMSから吐き出すタグを**自分では書き換えられないけどCSS側
 
 ![ホバーで半透明](./images/2020/11/entry396-3.gif)
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--basic">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
+```
 
+```css
 /* CSS */
 a[class^=btn] { //btnから始まるクラス
   background: #FF9258;
@@ -89,10 +91,12 @@ a[class^=btn] { //btnから始まるクラス
 ホバーすると、ボーダーが反転します。<br>
 他のボタンとサイズを合わせるためにbox-sizing: border-box;でborderを内側に含めています。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--border">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
+```
 
+```css
 /* CSS */
 .btn--border {
   height: 46px;
@@ -121,10 +125,12 @@ a[class^=btn] { //btnから始まるクラス
 クリックしたとき、押した感が出るように`transformY`で位置をわずかに下げ、さらに`box-shadow`も同じ分量減らします。<br>
 これで不自然な挙動をしないボタンらしいボタンの完成です。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--button">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
+```
 
+```css
 /* CSS */
 .btn--button {
   position: relative;
@@ -146,6 +152,8 @@ a[class^=btn] { //btnから始まるクラス
   box-shadow: 0 2px 0 #B45624;
 }
 ```
+
+
 <div class="box"><h4>CSSセレクターこんな指定の仕方もあるよ！</h4><p>私、コードが減るという理由で時折トリッキー？な指定方法を使います。参考までに。</p><p>クラスの前方一致<br>セレクタ名[class^=btn]<br>ある文字列から始まるクラスのみを指定できます。この場合btnほにゃららといった感じですね。<br>クラスの後方一致<br>セレクタ名[class$=btn]<br>逆に後方一致だとこんな書き方ができます。<br>部分一致<br>セレクタ名[*=btn]<br>btnが含まれるか否か</p></div>
 
 ## ボタンのCSSコード・スニペット
@@ -174,10 +182,12 @@ a[class^=btn] { //btnから始まるクラス
 
 背景を半透明にしただけで、クリックとともに白っぽさが増します。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--skeleton">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--skeleton {
   background: rgba(255, 255, 255, .2);
@@ -204,11 +214,12 @@ a[class^=btn] { //btnから始まるクラス
 クリアソープのように少し立体感をつけてみました。<br>
 box-shadowをinsetにして立体感をつけています。
 
-```
-
+```html
 <!-- HTML -->
 <a href="" class="btn--skeleton2">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--skeleton3 {
   background: rgba(255, 255, 255, .1);
@@ -240,10 +251,12 @@ box-shadowをinsetにして立体感をつけています。
 
 ボーダーをbox-shadowだけで作って、ライトのようにしています。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--skeleton3">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--skeleton3 {
   background: rgba(255, 255, 255, .1);
@@ -294,10 +307,12 @@ box-shadowをinsetにして立体感をつけています。
 
 あらかじめグラデーションを逆にした擬似要素をopacity:0で隠しておき、ホバー時に表示させグラデーションを反転させます。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--gradient">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--gradient {
   z-index: 1;
@@ -350,10 +365,12 @@ hoverした時に`left: -100%`でアニメーションさせます。
 
 ![グラデーションが横にスライド](./images/2020/11/entry396-11.gif)
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--gradient2">BUTTON<i class="zmdi zmdi-chevron-right"></i></a>
+```
 
+```css
 /* CSS */
 .btn--gradient2 {
   z-index: 1;
@@ -408,10 +425,12 @@ hoverした時に`left: -100%`でアニメーションさせます。
 ポイントはグラデの角度を315度の斜めにし左右の色をそれぞれ50%に設定します。<br>
 あとは先ほどのグラデーション横にスライドのようにアニメーションさせるだけです。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--gradient3">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--gradient3 {
   z-index: 1;
@@ -467,10 +486,12 @@ hoverした時に`left: -100%`でアニメーションさせます。
 
 text-shadowとbox-shadowでエンボス風のボタンです。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--emboss">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--emboss {
   display: flex;
@@ -502,10 +523,12 @@ text-shadowとbox-shadowでエンボス風のボタンです。
 ![パキッとした影が広がるボタン](./images/2020/11/entry396-15.gif)
 
 box-shadowを2個重ねるだけで、クールなボタンができます。
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--shadow">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--shadow {
   display: flex;
@@ -535,10 +558,12 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 
 クリックすると波紋が広がります。
 
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--bubble">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--bubble {
   z-index: 1;
@@ -608,10 +633,12 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 ![ボーダーがアニメーションするボタン](./images/2020/11/entry396-17.gif)
 
 ボーダーが左上と右下からアニメーションするボタンです。**heightとwidthを0から100%**に広げることで実現しています。
-```
+```html
 <!-- HTML -->
 <a href="" class="btn--border">BUTTON</a>
+```
 
+```css
 /* CSS */
 .btn--border {
   display: flex;
