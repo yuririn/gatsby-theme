@@ -16,6 +16,7 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
     text-shadow: none;
 	color: #001d7c;
 	border: 1px solid #001d7c;
+	font-size: 1.4rem;
 }
 
 .c-article__ganre a {
@@ -31,4 +32,14 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 }
 .p-mainvisual__title {
     top: -40px;
+}
+
+.md-Md {
+	margin-bottom: 80px;
+}
+
+@media only screen and (max-width:769px){
+	.md-Md {
+		margin-bottom: 120px;
+	}
 }
