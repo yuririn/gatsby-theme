@@ -6,7 +6,10 @@ import Genre from "../components/genre"
 
 
 const Layout = ({ location, title, children }) => {
-
+	let flag = false;
+	if (location.pathname.indexOf('blogs') !== -1) {
+		flag = true;
+	}
 
 	return (
 		<div>
@@ -14,8 +17,8 @@ const Layout = ({ location, title, children }) => {
 			<main>{children}</main>
 			<aside>
 				<div className="l-container md-Md">
-					{(location.pathname.indexOf('blogs') !== -1) ? <Genre /> : ''}
-					{(location.pathname.indexOf('blogs') !== -1) ? <Profile /> : ''}
+					{flag ? <Genre /> : ''}
+					{flag ? <Profile /> : ''}
 				</div>
 			</aside>
 			<Footer title={title} />
