@@ -6,10 +6,8 @@ import Genre from "../components/genre"
 
 
 const Layout = ({ location, title, children }) => {
-	let flag = false;
-	if (location.pathname.indexOf('blogs') !== -1) {
-		flag = true;
-	}
+	let flag;
+	location.pathname.match('blogs') ? flag = true : flag = false;
 
 	return (
 		<div>
