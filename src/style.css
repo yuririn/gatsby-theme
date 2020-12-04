@@ -25,6 +25,10 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 .p-tagList__item{
 	margin-bottom: 8px;
 }
+
 .p-tagList li a{
 	margin-right: 5px;
+}
+.p-mainvisual__title {
+    top: -40px;
 }
