@@ -35,8 +35,8 @@ lead: ["フロントエンドエンジニアのかみーゆです。","私はセ
 
 1か月前にさらに詳しく辞めた理由などを綴っています。
 
-<a class="article-link" href="https://ginneko-atelier.com/blogs/entry386">
-<section><div class="article-link__img"><img alt="消耗しない生き方の選択とセブ島での充電生活レポート" src="https://ginneko-atelier.com/application/files/cache/thumbnails/23c44396094778baf39eea46d93c6957.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<a class="article-link" href="/blogs/entry386">
+<section><div class="article-link__img"><img alt="消耗しない生き方の選択とセブ島での充電生活レポート" src="/static/c70a7693aea0ef25bef6e31deed569de/f836f/entry386.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">消耗しない生き方の選択とセブ島での充電生活レポート</div>
 <p class="description">かみーゆ、また仕事辞めたってよ。2019年4月「MacBook Pro とスーツケースだけで生きていこう」と、セブ島に来て1年半経ちまし･･･</p>
 <p><time datetime="2020-10-27">2020.10.27</time></p></div></section></a>
