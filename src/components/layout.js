@@ -4,6 +4,7 @@ import Header from "../components/common/header"
 import Profile from "../components/profile"
 import Genre from "../components/genre"
 
+
 const Layout = ({ location, title, children }) => {
 
 
