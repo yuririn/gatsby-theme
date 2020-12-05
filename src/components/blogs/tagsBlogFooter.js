@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 const Tag = ({ tag }) => (
-	<dd className="p-tagList__item"><Link to={`/blogs/tags/${encodeURI(tag)}/`}>{tag}</Link></dd>
+	<Link to={`/blogs/tags/${encodeURI(tag)}/`}>{tag}</Link>
 );
 
 const TagsFooter = ({ tags }) => (
 	<dl className="c-article__tags p-tagList--sm.p-section">
 		<dt>Tags</dt>
-		{(tags || []).map(tag => (
-			<Tag key={tag} tag={tag} />
-		))}
+		<dd className="p-tagList__item">
+			{(tags || []).map(tag => (
+				<Tag key={tag} tag={tag} />
+			))}
+		</dd>
 	</dl>
 );
 
