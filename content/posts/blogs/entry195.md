@@ -7,7 +7,7 @@ category: 'CMS'
 cateId: 'cms'
 tags: ["concrete5"]
 description: concrete5エバンジェリストでもある私が、OSC2014 in HIROSHIMAに参加しました！concrete5 in HIROSHIMAからはCMS・concrete5の紹介でブースを出させていただきました。
-lead: ["フロントエンドエンジニアのかみーゆです。","concrete5エバンジェリストでもある私が、OSC2014 in HIROSHIMAに参加しました！concrete5 in HIROSHIMAからはCMS・concrete5の紹介でブースを出させていただきました。"]
+lead: ["concrete5エバンジェリストでもある私が、OSC2014 in HIROSHIMAに参加しました！concrete5 in HIROSHIMAからはCMS・concrete5の紹介でブースを出させていただきました。"]
 ---
 
 ## OSC（オープンソースカンファレンス）ってなんぞや？

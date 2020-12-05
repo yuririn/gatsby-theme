@@ -6,7 +6,7 @@ category: 'Front End'
 cateId: 'front-end-program'
 tags: ["JavaScript","jQuery"]
 description: JqueryでPopupWindowを開くというのを昨日メモしましたが、ライブラリーを使ってもっとかっこよくしたい！ということでFancyboxがお勧めということで使ってみました。ギャラリーや動画などもかっこよく開けて良い感じでした。
-lead: ["現役フロントエンドエンジニアのかみーゆです。","jQueryでPopupWindowを開くというのを昨日メモしましたが、ライブラリーを使ってもっとかっこよくしたい！ということでFancyboxがお勧めということで使ってみました。ギャラリーや動画などもかっこよく開けて良い感じでした。"]
+lead: ["jQueryでPopupWindowを開くというのを昨日メモしましたが、ライブラリーを使ってもっとかっこよくしたい！ということでFancyboxがお勧めということで使ってみました。ギャラリーや動画などもかっこよく開けて良い感じでした。"]
 ---
 ## fancyBoxをDLしてみよう
 fancyBoxはクリックするとギャラリーや、動画などをポップアップ表示できる便利なJQueryライブラリーです。

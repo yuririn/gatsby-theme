@@ -7,7 +7,7 @@ category: 'Front end'
 cateId: 'front-end-program'
 tags: ["JavaScript"]
 description: みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。
-lead: ["フロントエンドエンジニアのかみーゆです。","みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。"]
+lead: ["みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。"]
 ---
 
 ## GitHub からソースを拾ってこよう
