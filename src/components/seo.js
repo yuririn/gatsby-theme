@@ -86,6 +86,7 @@ const SEO = ({ description, lang, meta, title, image }) => {
 				},
 			].concat(meta)}
 		>
+
 		</Helmet>
 	)
 }

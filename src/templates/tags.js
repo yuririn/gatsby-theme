@@ -25,7 +25,7 @@ const Tags = ({ pageContext, data, location }) => {
 				<div className="page-template-archive">
 					<div class="p-pageHeader">
 						<div class="p-pageHeader__main">
-							<h1 class="p-pageHeader__heading">{tag}に関する記事</h1>
+							<h1 class="p-pageHeader__heading">{tag}</h1>
 							<p>{totalCount}記事あります</p>
 						</div>
 						<img class="p-pageHeader__img" src="https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg" alt=""></img>

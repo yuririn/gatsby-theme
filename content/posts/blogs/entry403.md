@@ -1,7 +1,7 @@
 ---
 title: セブ島充電生活2ヶ月目経過報告。これまでと今から
 date: 2020-11-27
-hero: entry403.jpg
+hero: 2020/entry403.jpg
 pagetype: blog
 category: Life Hack
 cateId: ginneko-tsuredure

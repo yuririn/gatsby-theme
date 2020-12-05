@@ -12,6 +12,7 @@ import TagsListFooter from "../components/blogs/tagsBlogFooter"
 import RelatedList from "../components/blogs/relatedList"
 import FovoriteList from "../components/common/favorites"
 import Prof from "../components/blogs/smallProf"
+// import Adsense from "../components/common/GoogleAdsense"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -19,6 +20,7 @@ const BlogPostTemplate = ({ data, location }) => {
 	const { previous, next } = data
 	const src = data.allFile.edges[0] ? data.allFile.edges[0].node.childImageSharp.fluid.src : ''
 	const fullTitle = encodeURI(siteTitle + '|' + post.frontmatter.title)
+
 	return (
 		<Layout location={location} title={siteTitle}>
 
@@ -60,6 +62,7 @@ const BlogPostTemplate = ({ data, location }) => {
 						</dl>
 						<TagsList tags={post.frontmatter.tags} />
 						<Description texts={post.frontmatter.lead} />
+
 						<Toc data={data.markdownRemark.tableOfContents} />
 						<ul class="c-snsBtns u-mblg">
 							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--fb" to={`http://www.facebook.com/share.php?u=https://ginneko-atelier.com${location.pathname}`} target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Facebook</span></Link></li>
@@ -112,7 +115,7 @@ const BlogPostTemplate = ({ data, location }) => {
 			<FovoriteList type="web" />
 			<FovoriteList type="life" />
 			<FovoriteList type="career" />
-		</Layout >
+		</Layout>
 	)
 }
 
@@ -132,7 +135,7 @@ export const pageQuery = graphql`
 	}
 	allFile(
 	filter: {
-									relativePath: {eq: $hero}
+		relativePath: {eq: $hero}
 		sourceInstanceName: {eq: "assets"}
 	}){
 									edges {

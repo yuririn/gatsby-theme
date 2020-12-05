@@ -17,6 +17,7 @@ const Layout = ({ location, title, children }) => {
 				</div>
 			</aside>
 			<Footer title={title} />
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		</div>
 	)
 }

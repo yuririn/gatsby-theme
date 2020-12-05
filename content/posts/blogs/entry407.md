@@ -1,7 +1,7 @@
 ---
 title: クリスマスが近いので、ブログ執筆を恋の告白に例えてみた
 date: 2020-12-01
-hero: entry407.jpg
+hero: 2020/entry407.png
 pagetype: blog
 cateId: seo
 category: SEO

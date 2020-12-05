@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー、タグ一覧の出力~
 date: 2020-12-03
-hero: entry401.jpg
+hero: 2020/entry401.jpg
 pagetype: blog
 category: Front End
 cateId: front-end-program

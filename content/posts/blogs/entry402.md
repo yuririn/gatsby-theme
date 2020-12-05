@@ -1,7 +1,7 @@
 ---
 title: コンクリ（CMS concrete5）へreCAPCHA v3を追加しました
 date: 2020-11-26
-hero: entry402.jpg
+hero: 2020/entry402.jpg
 pagetype: blog
 category: CMS
 cateId: cms

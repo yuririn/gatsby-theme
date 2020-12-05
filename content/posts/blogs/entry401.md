@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語1~インストールからNetlifyデプロイまで~
 date: 2020-11-26
-hero: entry401.jpg
+hero: 2020/entry401.jpg
 pagetype: blog
 category: Front End
 cateId: front-end-program

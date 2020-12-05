@@ -169,18 +169,20 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 	display: block;
 }
 .mokuji:checked + .c-content__heading:after {
-	transition: .3s;
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 1px;
-    top: 15px;
-	right: 0px;
-	background: #464675;
-	display: block;
+	transform: rotate(0deg);
+
 }
 .mokuji+ .c-content__heading:after {
 	transform: rotate(90deg);
+	transition: .3s;
+	position: absolute;
+    content: "";
+    width: 30px;
+    height: 1px;
+    top: 10px;
+	right: 0px;
+	background: #464675;
+	display: block;
 }
 
 .c-article__description {

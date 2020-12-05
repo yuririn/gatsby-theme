@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語2~投稿ページの充実と画像設定~
 date: 2020-11-30
-hero: entry401.jpg
+hero: 2020/entry401.jpg
 pagetype: blog
 category: Front End
 cateId: front-end-program

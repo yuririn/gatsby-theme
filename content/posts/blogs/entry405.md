@@ -1,7 +1,7 @@
 ---
 title: 未確認生物（UMA）に遭遇?!セブオーシャンパークへ行ってきました！
 date: 2020-11-28
-hero: entry405.jpg
+hero: 2020/entry405.jpg
 pagetype: blog
 category: Life Hack
 cateId: ginneko-tsuredure
@@ -43,7 +43,7 @@ lead: ["フィリピンセブ島に住む我々は長期のロックダウンで
 マイアさんの記事はこちら。
 
 <a class="article-link" href="/blogs/entry387">
-<section><div class="article-link__img"><img alt="セブ島唯一日本人占い師・さくら庵のマイアさんから学ぶかみーゆ流占いとの付き合い方" src="https://ginneko-atelier.com/application/files/cache/thumbnails/d19589498ee171e1a1ae5ea170d571d8.jpg" class="" width="150" height="113"></div><div class="article-link__main">
+<section><div class="article-link__img"><img alt="セブ島唯一日本人占い師・さくら庵のマイアさんから学ぶかみーゆ流占いとの付き合い方" src="/static/83e8eec33ea4e7bd0589bed31e613501/f836f/entry387.jpg" class="" width="150" height="113"></div><div class="article-link__main">
 <div class="article-link__main__title">セブ島唯一日本人占い師・さくら庵のマイアさんから学ぶかみーゆ流占いとの付き合い方</div>
 <p class="description">フロントエンドエンジニア、今はプータローのかみーゆです。
 たまーにですが、セブ島唯一日本人占い師・さくら庵のマイアさんとお茶してます。ぶ･･･</p>
