@@ -26,7 +26,7 @@ const SEO = ({ description, lang, meta, title, image }) => {
 
 	const metaDescription = description || site.siteMetadata.description
 	const defaultTitle = site.siteMetadata?.title
-	const ogImage = `https://ginneko-atelir.com${image}` || site.siteMetadata?.image
+	const ogImage = `https://ginneko-atelier.com${image}` || site.siteMetadata?.image
 
 	return (
 		<Helmet
