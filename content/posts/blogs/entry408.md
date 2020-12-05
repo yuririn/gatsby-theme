@@ -32,8 +32,8 @@ src/
     |   ├ blog-post.js
     |   └ blogs.js（ここに格納）
     ├ components/
-    ├ style.css
-    └ normalize.css
+  ├ style.css
+  └ normalize.css
 ```
 
 変数名を変更しておきます。

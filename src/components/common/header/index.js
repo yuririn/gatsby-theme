@@ -1,9 +1,6 @@
 import React from "react"
 import Logo from "./logo"
 import { Link } from "gatsby"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = ({ title }) => {
 	return (
@@ -36,13 +33,8 @@ const Footer = ({ title }) => {
 										</ul>
 									</li>
 									<li><Link className="c-nav__navLink" to="/about">About This Site</Link></li>
-									<li><Link className="c-nav__navLink" to="/portfolio">Portfolio</Link></li>
 									<li><Link className="c-nav__navLink" to="/contact">Contact</Link></li>
 								</ul>
-								<div>
-									<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow" class="c-nav__snsBtn"><FontAwesomeIcon icon={faTwitter} /></Link>
-									<Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" class="c-nav__snsBtn"><FontAwesomeIcon icon={faInstagram} /></Link>
-								</div>
 							</div>
 						</div>
 					</nav>
