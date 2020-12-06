@@ -18,7 +18,7 @@ const SmallProf = () => (
 				<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /></Link>
 				<Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faInstagram} /></Link>
 			</p>
-			<p className="message">フリーランス。元テックスクールのエンジニア講師。IT業界10年。CMS conrete5のエバンジェリスト。現在セブ島在住。好きなものは肉とビール。</p>
+			<p className="message">セブ島在住。IT業界10年の気ままなフリーランス。元エンジニア講師。CMS conrete5のエバンジェリスト。好きなものは肉とビール。</p>
 			<p className="seemore"><Link to="/profile/" >See More</Link></p>
 		</div>
 	</div>

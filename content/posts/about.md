@@ -8,8 +8,7 @@ description: 「銀ねこアトリエ」は私の技術的なチャレンジや�
 「銀ねこアトリエ」は私の技術的なチャレンジや生活や生き方を綴った公開備忘録です。
 
 ## 管理人・かみーゆのプロフィールと略歴
-
-<img class="c-profile__img u-mblg" src="/static/b0464912775ee836bf92057ad4afa07f/b4294/my-profile.jpg">
+<img src="/static/02ba3e4fd1b2848614d56ad15bb7e7d7/2244e/camille.jpg" alt="" loading="lazy"  class="c-profile__img">
 
 神守　由理子（かみもり・ゆりこ）/ フロントエンドエンジニア
 
