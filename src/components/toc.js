@@ -1,15 +1,13 @@
 import React from "react";
 
 const Toc = props => {
-	const list = props.data.replace(/(ul>)/gi, 'ol>');
 	return (
 		<div class="p-box--gray u-mblg">
-			<input type="checkbox" className="mokuji" id="mokuji" />
-			<label className="c-content__heading" for="mokuji">目次</label>
-			<div className="c-editArea mokujiList">
+			<h2 className="c-content__heading">この記事のざっくりとした内容</h2>
+			<div className="c-editArea">
 				<div
 					dangerouslySetInnerHTML={{
-						__html: list,
+						__html: props.data,
 					}}
 				>
 				</div>

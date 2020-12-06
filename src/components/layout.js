@@ -12,15 +12,11 @@ const Layout = ({ location, title, children }) => {
 			<main>{children}</main>
 			<aside>
 				<div className="l-container">
-					<section className="p-section">
-						<h2 className="c-heading--lg">記事のジャンル</h2>
-						<Genre />
-					</section>
+					<Genre />
 					<Profile />
 				</div>
 			</aside>
 			<Footer title={title} />
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		</div>
 	)
 }
