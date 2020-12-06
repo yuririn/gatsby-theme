@@ -5,7 +5,7 @@ const Toc = props => {
 	return (
 		<div class="p-box--gray u-mblg">
 			<input type="checkbox" class="mokuji" id="mokuji" />
-			<label className="c-content__heading" for="mokuji">この記事のざっくりとした内容</label>
+			<label className="c-content__heading" for="mokuji">目次</label>
 			<div className="c-editArea mokujiList">
 				<div
 					dangerouslySetInnerHTML={{

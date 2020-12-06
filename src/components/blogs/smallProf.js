@@ -14,7 +14,7 @@ const smallProf = () => {
 			<p className="name">かみーゆ/フロントエンドエンジニア</p>
 			<p className="sns"><Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /></Link><Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" ><FontAwesomeIcon icon={faInstagram} /></Link></p>
 
-			<p className="message">経たエンジニア講師オフショア千人を経て、フリーランスのセブ島在住の気ままなエンジニア。CMS concrete5エバンジェリスト。「納得のいく人生」の	ライフスタイルを発信しています。</p>
+			<p className="message">フリーランスのセブ島在住の気ままなエンジニア。元エンジニア講師。CMS concrete5エバンジェリスト。「納得のいく人生」のライフスタイルを発信しています。</p>
 
 		</div>
 	)

@@ -17,6 +17,8 @@ const BlogPostTemplate = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const { previous, next } = data
 	const src = data.allFile.edges[0] ? data.allFile.edges[0].node.childImageSharp.fluid.src : ''
+	const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
+	const perfectTitle = encodeURI(post.frontmatter.title + '|' + siteTitle)
 
 	return (
 		<Layout location={location} title={siteTitle}>
@@ -60,10 +62,10 @@ const BlogPostTemplate = ({ data, location }) => {
 						<TagsList tags={post.frontmatter.tags} />
 						<Description texts={post.frontmatter.lead} />
 						<ul class="c-snsBtns u-mblg">
-							<li class="c-snsBtns__item"><a class="c-snsBtns__item--fb" href=""><span class="c-snsBtns__label">Facebook</span><span class="c-snsBtns__num">0</span></a></li>
-							<li class="c-snsBtns__item"><a class="c-snsBtns__item--tw" href=""><span class="c-snsBtns__label">Twitter</span><span class="c-snsBtns__num">0</span></a></li>
-							<li class="c-snsBtns__item"><a class="c-snsBtns__item--hateb" href=""><span class="c-snsBtns__label">はてB!</span><span class="c-snsBtns__num">0</span></a></li>
-							<li class="c-snsBtns__item"><a class="c-snsBtns__item--pocket" href=""><span class="c-snsBtns__label">Pocket</span><span class="c-snsBtns__num">0</span></a></li>
+							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--fb" to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Facebook</span></Link></li>
+							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--tw" to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Twitter</span></Link></li>
+							<li class="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" class="c-snsBtns__item--hateb" rel="noopener nofollow"><span class="c-snsBtns__label">はてB!</span></Link></li>
+							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Pocket</span></Link></li>
 						</ul>
 						<Toc data={data.markdownRemark.tableOfContents} />
 						<Prof></Prof>
@@ -74,6 +76,15 @@ const BlogPostTemplate = ({ data, location }) => {
 						dangerouslySetInnerHTML={{ __html: post.html }}
 						itemProp="articleBody"
 					/>
+				</div>
+				<div class="l-container--md">
+					<ul class="c-snsBtns u-mblg">
+						<li class="c-snsBtns__item"><Link class="c-snsBtns__item--fb" to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Facebook</span></Link></li>
+						<li class="c-snsBtns__item"><Link class="c-snsBtns__item--tw" to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Twitter</span></Link></li>
+						<li class="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" class="c-snsBtns__item--hateb" rel="noopener nofollow"><span class="c-snsBtns__label">はてB!</span></Link></li>
+						<li class="c-snsBtns__item"><Link class="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Pocket</span></Link></li>
+					</ul>
+					<TagsList tags={post.frontmatter.tags} />
 				</div>
 			</article>
 			<nav class="p-section l-container">
@@ -113,37 +124,37 @@ export const pageQuery = graphql`
 	$nextPostId: String
 	$hero: String
   ) {
-    site {
-      siteMetadata {
-        title
-      }
+					site {
+					siteMetadata {
+					title
+				}
 	}
 	allFile(
 	filter: {
-		relativePath: {eq: $hero}
+					relativePath: {eq: $hero}
 		sourceInstanceName: {eq: "assets"}
 	}){
-        edges {
-          node {
-            name
+					edges {
+					node {
+					name
             relativePath
             childImageSharp {
-              fluid(maxWidth: 800) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+					fluid(maxWidth: 800) {
+					...GatsbyImageSharpFluid_withWebp
+				}
             }
           }
         }
       }
     markdownRemark(
-		id: { eq: $id }
+		id: {eq: $id }
 	) {
-      id
+					id
       excerpt(pruneLength: 160)
       html
 	  tableOfContents
       frontmatter {
-        title
+					title
         date(formatString: "YYYY.MM.DD")
         description
 		lead
@@ -155,22 +166,22 @@ export const pageQuery = graphql`
 		modifieddate(formatString: "YYYY.MM.DD")
 	  }
 	}
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
+    previous: markdownRemark(id: {eq: $previousPostId }) {
+					fields {
+					slug
+				}
       frontmatter {
-		title
+					title
 
-      }
+				}
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
+    next: markdownRemark(id: {eq: $nextPostId }) {
+					fields {
+					slug
+				}
       frontmatter {
-        title
-      }
+					title
+				}
 	}
 
   }
