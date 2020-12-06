@@ -1,18 +1,16 @@
 import React from "react"
-import Footer from "../components/common/footer"
-import Header from "../components/common/header"
-import Profile from "../components/profile"
-import Genre from "../components/genre"
+import Footer from "./common/footer"
+import Header from "./common/header"
 
-const LayoutSimple = ({ location, title, children }) => {
+const Layout = ({ location, title, children }) => {
 
 	return (
 		<div>
 			<Header title={title} />
-			<main className="mb-Lg">{children}</main>
+			<main class="mb-Lg">{children}</main>
 			<Footer title={title} />
 		</div>
 	)
 }
 
-export default LayoutSimple
+export default Layout

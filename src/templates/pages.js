@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import LayoutSimple from "../components/LayoutSimple"
+import LayoutSimple from "../components/layoutSimple"
 import SEO from "../components/seo"
 
 const PagePostTemplate = ({ data, location }) => {

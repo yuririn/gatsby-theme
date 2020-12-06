@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import LayoutSimple from "../components/LayoutSimple"
+import LayoutSimple from "../components/layoutSimple"
 import SEO from "../components/seo"
 import Image from "../components/image"
 import Search from "../components/search/"
@@ -21,7 +21,7 @@ const NotFoundPage = ({ data, location }) => {
 			</div>
 			<section class="c-404">
 				<div class="l-container--md">
-					<p className="mb-Lg">大変遺憾ではありますが、あなたのお探しのページにたどり着けなかったようです。<br />管理人がどこかに移動させたか、内容が気に入らないから削除してしまったのかもしれません。誠に申し訳ありません。</p>
+					<p className="mb-Md">大変遺憾ではありますが、あなたのお探しのページにたどり着けなかったようです。<br />管理人がどこかに移動させたか、内容が気に入らないから削除してしまったのかもしれません。誠に申し訳ありません。</p>
 					<div c className="mb-Md">
 						<p class="u-text-center"><a class="p-btn--detail" >トップページヘ</a></p>
 					</div>

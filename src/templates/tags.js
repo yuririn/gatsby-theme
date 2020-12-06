@@ -21,55 +21,53 @@ const Tags = ({ pageContext, data, location }) => {
 				title={`${tag}に関する記事一覧`}
 				description={siteMetadata.description}
 			/>
-			<main>
-				<div className="page-template-archive">
-					<div class="p-pageHeader">
-						<div class="p-pageHeader__main">
-							<h1 class="p-pageHeader__heading">{tag}</h1>
-							<p>{totalCount}記事あります</p>
-						</div>
-						<Image filename="common/ganre_common.jpg" className="p-pageHeader__img"></Image>
+			<div className="page-template-archive">
+				<div class="p-pageHeader">
+					<div class="p-pageHeader__main">
+						<h1 class="p-pageHeader__heading">{tag}</h1>
+						<p>{totalCount}記事あります</p>
 					</div>
-					<div className="l-container">
-						<section className="p-section">
-							<h2 className="c-heading--lg">最新記事</h2>
-							<div className="c-grid">
-								{edges.map(({ node }) => {
-									const { slug } = node.fields
-									const { title, hero, date, tags } = node.frontmatter
-									return (
-										<article
-											className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
-											itemScope
-											itemType="http://schema.org/Article"
-											key={slug}
-										>
-											<Link to={slug} itemProp="url" className="p-entryCard__img" >
-												{hero ?
-
-													<Image filename={hero} />
-													: <Image filename="common/dummy.png" />
-												}
-												<div class="p-entryCard__date">
-													{date}
-												</div>
-											</Link>
-											<Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
-											<div className="p-entryCard__footer">
-												<div className="p-entryCard__footer">
-													<TagList tags={tags} />
-												</div>
-											</div>
-										</article>
-									)
-								})}
-							</div>
-						</section>
-						{page !== 1 ? <Pagination num={page} current={current} type={`tags/${tag}/`}></Pagination> : ''}
-					</div>
+					<Image filename="common/ganre_common.jpg" className="p-pageHeader__img"></Image>
 				</div>
-			</main>
-		</Layout >
+				<div className="l-container">
+					<section className="p-section">
+						<h2 className="c-heading--lg">最新記事</h2>
+						<div className="c-grid">
+							{edges.map(({ node }) => {
+								const { slug } = node.fields
+								const { title, hero, date, tags } = node.frontmatter
+								return (
+									<article
+										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+										itemScope
+										itemType="http://schema.org/Article"
+										key={slug}
+									>
+										<Link to={slug} itemProp="url" className="p-entryCard__img" >
+											{hero ?
+
+												<Image filename={hero} />
+												: <Image filename="common/dummy.png" />
+											}
+											<div class="p-entryCard__date">
+												{date}
+											</div>
+										</Link>
+										<Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+										<div className="p-entryCard__footer">
+											<div className="p-entryCard__footer">
+												<TagList tags={tags} />
+											</div>
+										</div>
+									</article>
+								)
+							})}
+						</div>
+					</section>
+					{page !== 1 ? <Pagination num={page} current={current} type={`tags/${tag}/`}></Pagination> : ''}
+				</div>
+			</div>
+		</Layout>
 	)
 }
 Tags.propTypes = {

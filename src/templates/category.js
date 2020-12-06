@@ -32,53 +32,53 @@ const category = ({ pageContext, data, location }) => {
 				title={`${cateName}`}
 				description={cateDescription}
 			/>
-			<main>
-				<div class="p-pageHeader">
-					<div class="p-pageHeader__main">
-						<h1 class="p-pageHeader__heading">{cateName}</h1>
-						<p>{cateDescription}</p>
-					</div>
-					<Image filename={`${cateSlug}.jpg`} className="p-pageHeader__img"></Image>
-				</div>
-				<div className="page-template-archive">
-					<div className="l-container">
-						{totalCount === 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
-						<section className="p-section">
-							<h2 className="c-heading--lg">最新記事</h2>
-							<div className="c-grid">
-								{edges.map(({ node }) => {
-									const { slug } = node.fields
-									const { title, hero, date, tags } = node.frontmatter
-									return (
-										<article
-											className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
-											itemScope
-											itemType="http://schema.org/Article"
-											key={slug}
-										>
-											<Link to={slug} itemProp="url" className="p-entryCard__img" >
-												{hero ?
 
-													<Image filename={hero} />
-													: <Image filename="common/dummy.png" />
-												}
-												<div class="p-entryCard__date">
-													{date}
-												</div>
-											</Link>
-											<Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
-											<div className="p-entryCard__footer">
-												<TagList tags={tags} />
-											</div>
-										</article>
-									)
-								})}
-							</div>
-						</section>
-						{page > 1 ? <Pagination num={page} current={current} type={`${cateSlug}/`}></Pagination> : ''}
-					</div>
+			<div class="p-pageHeader">
+				<div class="p-pageHeader__main">
+					<h1 class="p-pageHeader__heading">{cateName}</h1>
+					<p>{cateDescription}</p>
 				</div>
-			</main>
+				<Image filename={`${cateSlug}.jpg`} className="p-pageHeader__img"></Image>
+			</div>
+			<div className="page-template-archive">
+				<div className="l-container">
+					{totalCount === 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
+					<section className="p-section">
+						<h2 className="c-heading--lg">最新記事</h2>
+						<div className="c-grid">
+							{edges.map(({ node }) => {
+								const { slug } = node.fields
+								const { title, hero, date, tags } = node.frontmatter
+								return (
+									<article
+										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+										itemScope
+										itemType="http://schema.org/Article"
+										key={slug}
+									>
+										<Link to={slug} itemProp="url" className="p-entryCard__img" >
+											{hero ?
+
+												<Image filename={hero} />
+												: <Image filename="common/dummy.png" />
+											}
+											<div class="p-entryCard__date">
+												{date}
+											</div>
+										</Link>
+										<Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+										<div className="p-entryCard__footer">
+											<TagList tags={tags} />
+										</div>
+									</article>
+								)
+							})}
+						</div>
+					</section>
+					{page > 1 ? <Pagination num={page} current={current} type={`${cateSlug}/`}></Pagination> : ''}
+				</div>
+			</div>
+
 		</Layout>
 	)
 }
