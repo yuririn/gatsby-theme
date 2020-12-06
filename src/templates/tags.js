@@ -28,7 +28,7 @@ const Tags = ({ pageContext, data, location }) => {
 							<h1 class="p-pageHeader__heading">{tag}</h1>
 							<p>{totalCount}記事あります</p>
 						</div>
-						<img class="p-pageHeader__img" src="https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg" alt=""></img>
+						<Image filename="common/ganre_common.jpg" />
 					</div>
 					<div className="l-container">
 						<section className="p-section">
