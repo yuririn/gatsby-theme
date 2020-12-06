@@ -8,6 +8,7 @@ import Toc from "../components/toc"
 import Category from "../components/blogs/category"
 import Description from "../components/blogs/descriotion"
 import TagsList from "../components/blogs/tagsBlog"
+import TagsListFooter from "../components/blogs/tagsBlogFooter"
 import RelatedList from "../components/blogs/relatedList"
 import FovoriteList from "../components/common/favorites"
 import Prof from "../components/blogs/smallProf"
@@ -84,14 +85,20 @@ const BlogPostTemplate = ({ data, location }) => {
 						<li class="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" class="c-snsBtns__item--hateb" rel="noopener nofollow"><span class="c-snsBtns__label">はてB!</span></Link></li>
 						<li class="c-snsBtns__item"><Link class="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Pocket</span></Link></li>
 					</ul>
-					<TagsList tags={post.frontmatter.tags} />
+					<dl className="c-article__tags">
+						<dt>Category</dt>
+						<dd class="cate"><Link to={`/blogs/${post.frontmatter.cateId}/`}>{post.frontmatter.category}</Link></dd>
+					</dl>
+					<dl className="c-article__tags">
+						<dt>Tags</dt>
+						<dd><TagsListFooter tags={post.frontmatter.tags} /></dd>
+					</dl>
 				</div>
 			</article>
 			<nav class="p-section l-container">
 				<ol class="c-pager--article">
 					<li class="c-pager--article__prev">
 						{previous && (
-
 							<Link to={previous.fields.slug} rel="prev">
 								{previous.frontmatter.title}
 							</Link>
@@ -111,7 +118,7 @@ const BlogPostTemplate = ({ data, location }) => {
 			<FovoriteList type="web" />
 			<FovoriteList type="life" />
 			<FovoriteList type="career" />
-		</Layout >
+		</Layout>
 	)
 }
 
@@ -123,22 +130,23 @@ export const pageQuery = graphql`
     $previousPostId: String
 	$nextPostId: String
 	$hero: String
-  ) {
-					site {
-					siteMetadata {
-					title
-				}
-	}
-	allFile(
-	filter: {
-					relativePath: {eq: $hero}
-		sourceInstanceName: {eq: "assets"}
-	}){
-					edges {
-					node {
+  )
+  {
+		site {
+			siteMetadata {
+				title
+			}
+		}
+		allFile(
+		filter: {
+			relativePath: {eq: $hero}
+			sourceInstanceName: {eq: "assets"}
+		}){
+			edges {
+				node {
 					name
-            relativePath
-            childImageSharp {
+					relativePath
+					childImageSharp {
 					fluid(maxWidth: 800) {
 					...GatsbyImageSharpFluid_withWebp
 				}
@@ -176,13 +184,13 @@ export const pageQuery = graphql`
 				}
     }
     next: markdownRemark(id: {eq: $nextPostId }) {
-					fields {
-					slug
-				}
-      frontmatter {
-					title
-				}
+			fields {
+			slug
+		}
+		frontmatter {
+			title
+		}
 	}
 
-  }
+}
 `

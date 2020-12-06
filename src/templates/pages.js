@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
+import LayoutSimple from "../components/LayoutSimple"
 import SEO from "../components/seo"
 
 const PagePostTemplate = ({ data, location }) => {
@@ -10,7 +10,7 @@ const PagePostTemplate = ({ data, location }) => {
 	const src = data.allFile.edges[0] ? data.allFile.edges[0].node.childImageSharp.fluid.src : ''
 
 	return (
-		<Layout location={location} title={siteTitle}>
+		<LayoutSimple location={location} title={siteTitle}>
 
 			<SEO
 				title={post.frontmatter.title}
@@ -39,7 +39,7 @@ const PagePostTemplate = ({ data, location }) => {
 				</article>
 			</div>
 
-		</Layout>
+		</LayoutSimple>
 	)
 }
 
