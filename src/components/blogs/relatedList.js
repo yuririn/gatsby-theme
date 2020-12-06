@@ -47,14 +47,14 @@ export default ({ category, title, tags }) => {
 				// タイトルとカテゴリーとタグが記事と一致した時だけ抽出
 				let posts = data.allMarkdownRemark.edges.filter(
 					(post) => {
+						for (const tag of tags) {
+							return post.node.frontmatter.tags.includes(tag)
+						}
 						// タグの一致
 						if (post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title) {
 							return (
 								post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title
 							)
-						}
-						for (const tag of tags) {
-							post.node.frontmatter.tags.includes(tag)
 						}
 
 					}
