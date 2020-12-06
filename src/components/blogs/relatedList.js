@@ -49,7 +49,11 @@ export default ({ category, title, tags }) => {
 					(post) => {
 						// タグの一致
 						for (const tag of tags) {
-							return post.node.frontmatter.tags.includes(tag)
+							if (post.node.frontmatter.title !== title) {
+								return post.node.frontmatter.tags.includes(tag)
+							} else {
+								return false
+							}
 						}
 						if (post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title) {
 							return (
