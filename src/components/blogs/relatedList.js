@@ -49,17 +49,15 @@ export default ({ category, title, tags }) => {
 					(post) => {
 						// タグの一致
 						if (post.node.frontmatter.pagetype !== 'blog') {
-
-							for (const tag of tags) {
-								if (post.node.frontmatter.title !== title) return post.node.frontmatter.tags.includes(tag)
-							}
-							if (post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title) {
-								return (
-									post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title
-								)
-							}
-						} else {
 							return false;
+						}
+						for (const tag of tags) {
+							return (post.node.frontmatter.title !== title) ? post.node.frontmatter.tags.includes(tag) : ''
+						}
+						if (post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title) {
+							return (
+								post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title
+							)
 						}
 
 					}
