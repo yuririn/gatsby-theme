@@ -36,10 +36,10 @@ export default NotFoundPage
 
 export const pageQuery = graphql`
   query {
-					site {
-					siteMetadata {
-					title
-				}
+		site {
+		siteMetadata {
+		title
+		}
     }
   }
 `
