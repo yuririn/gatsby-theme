@@ -10,6 +10,7 @@ import Description from "../components/blogs/descriotion"
 import TagsList from "../components/blogs/tagsBlog"
 import RelatedList from "../components/blogs/relatedList"
 import FovoriteList from "../components/common/favorites"
+import Prof from "../components/blogs/smallProf"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -65,6 +66,7 @@ const BlogPostTemplate = ({ data, location }) => {
 							<li class="c-snsBtns__item"><a class="c-snsBtns__item--pocket" href=""><span class="c-snsBtns__label">Pocket</span><span class="c-snsBtns__num">0</span></a></li>
 						</ul>
 						<Toc data={data.markdownRemark.tableOfContents} />
+						<Prof></Prof>
 					</div>
 				</header>
 				<div class="l-container--md">
