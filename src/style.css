@@ -195,15 +195,25 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 }
 
 .c-editArea ul>li:before {
-    left: 7px;
+    left: 8px;
     top: 6px;
     display: block;
     color: #001d7c;
     content: "";
     width: .3em;
-    height: .5em;
+    height: .6em;
     background: none;
     transform: rotate(45deg);
     border: #c03363 solid 4px;
     border-width: 0 3px 3px 0;
+}
+.mb-Md {
+	margin-bottom: 20px;
+}
+.mt-Lg{
+	margin-top: 100px;
+}
+
+.mb-Lg {
+	margin-bottom: 100px;
 }

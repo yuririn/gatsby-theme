@@ -12,7 +12,10 @@ const Layout = ({ location, title, children }) => {
 			<main>{children}</main>
 			<aside>
 				<div className="l-container">
-					<Genre />
+					<section className="p-section">
+						<h2 className="c-heading--lg">記事のジャンル</h2>
+						<Genre />
+					</section>
 					<Profile />
 				</div>
 			</aside>
