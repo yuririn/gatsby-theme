@@ -22,7 +22,7 @@ const blogs = ({ pageContext, data, location }) => {
 					<h1 class="p-pageHeader__heading">最新ブログ一覧</h1>
 					<p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
 				</div>
-				<Image filename="common/ganre_common.jpg" />
+				<Image filename="common/ganre_common.jpg" className="p-pageHeader__img" />
 			</div>
 			<div className="l-container">
 				<section className="p-section">

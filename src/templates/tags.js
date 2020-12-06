@@ -28,7 +28,7 @@ const Tags = ({ pageContext, data, location }) => {
 							<h1 class="p-pageHeader__heading">{tag}</h1>
 							<p>{totalCount}記事あります</p>
 						</div>
-						<Image filename="common/ganre_common.jpg" />
+						<Image filename="common/ganre_common.jpg" className="p-pageHeader__img" />
 					</div>
 					<div className="l-container">
 						<section className="p-section">
