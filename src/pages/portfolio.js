@@ -14,6 +14,7 @@ import { faBullhorn } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import Image from "../components/image"
 
 import Voice from './portfolioParts/voice'
 import Works from './portfolioParts/works'
@@ -27,6 +28,7 @@ const Portfolio = ({ location }) => {
 			<SEO
 				title="広島生まれ、広島育ちのIT戦士"
 				description="広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。"
+				image="/static/213311b9bb7be131aae7771033b326b7/ee604/ogp.png"
 			/>
 			<header className={HeaderStyles.header}>
 				<p className={HeaderStyles.headerLogo}>Camille Site</p>

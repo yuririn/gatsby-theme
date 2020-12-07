@@ -12,6 +12,7 @@ import TagsListFooter from "../components/blogs/tagsBlogFooter"
 import RelatedList from "../components/blogs/relatedList"
 import FovoriteList from "../components/common/favorites"
 import Prof from "../components/blogs/smallProf"
+import Tags from "../components/blogs/tagList"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -118,6 +119,13 @@ const BlogPostTemplate = ({ data, location }) => {
 			<FovoriteList type="web" />
 			<FovoriteList type="life" />
 			<FovoriteList type="career" />
+			<div className="l-container">
+				<section class="p-box--gray p-section u-text-center">
+					<h2 class="c-heading--lg">人気のタグ</h2>
+					<Tags />
+				</section>
+			</div>
+
 		</Layout>
 	)
 }

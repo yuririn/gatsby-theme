@@ -104,7 +104,7 @@ const Result = prop => {
 		return (
 
 			<section className="p-section">
-				<h2 className="c-heading--lg">記事のジャンルから探す</h2>
+				<h2 className="c-heading--lg">タグから探す</h2>
 				<p class=" mb-Md">それぞれの記事は私かみーゆが思いつきかつ無造作に作られたタグに紐づけられてます。頑張って探してください。</p>
 				<ul class="p-tagList--lg u-mblg">
 					<TagsList></TagsList>

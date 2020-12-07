@@ -46,7 +46,7 @@ export default ({ tags }) => {
 				return (
 					<div>
 						{tags.map(tag => {
-							return <li class="p-tagList__item"><Link to={`/blogs/tags/${tag.name}/`}>{tag.name}</Link></li>
+							return <li class="p-tagList__item"><Link to={`/blogs/tags/${tag.name}/`}>{tag.name}（{tag.count}）</Link></li>
 						}
 						)
 						}

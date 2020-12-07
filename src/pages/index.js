@@ -8,8 +8,7 @@ import FirstView from "../components/firstview"
 import TagList from "../components/common/tagsArchive"
 import FovoriteList from "../components/common/favorites"
 import Search from "../components/search/"
-import Profile from "../components/profile"
-import Genre from "../components/genre"
+import TagsList from "../components/blogs/tagList"
 
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -86,8 +85,12 @@ const BlogIndex = ({ data, location }) => {
 				<FovoriteList type="web" />
 				<FovoriteList type="life" />
 				<FovoriteList type="career" />
+				<section class="p-box--gray p-section u-text-center">
+					<h2 class="c-heading--lg">人気のタグ</h2>
+					<TagsList />
+				</section>
 			</div>
-		</Layout>
+		</Layout >
 	)
 }
 
