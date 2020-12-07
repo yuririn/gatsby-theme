@@ -1,5 +1,5 @@
 ---
-title: Gatsbyブログサイト移行物語4~プラグインgatsby-remark-autolink-headersを利用して目次出力~
+title: Gatsbyブログサイト移行物語4~プラグインを利用して目次出力~
 date: 2020-12-07
 hero: 2020/entry401.jpg
 pagetype: blog
@@ -15,7 +15,7 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [投稿ページの充実と画像の方法](/blogs/entry406/)
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
-4. プラグインgatsby-remark-autolink-headersを利用して目次出力（←イマココ）
+4. プラグインを利用して目次出力（←イマココ）
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「Gatsby Starter Blog」を改造しています。同じテーマでないと動かない可能性があります。

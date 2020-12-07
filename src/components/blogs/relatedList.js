@@ -47,21 +47,20 @@ export default ({ category, title, tags }) => {
 				// タイトルとカテゴリーとタグが記事と一致した時だけ抽出
 				let posts = data.allMarkdownRemark.edges.filter(
 					(post) => {
-						// for (const tag of tags) {
-						// 	return post.node.frontmatter.tags.includes(tag)
-						// }
 						// タグの一致
-						// for (const tag of tags) {
-						// 	if (post.node.frontmatter.title !== title) {
-						// 		return post.node.frontmatter.tags.includes(tag)
-						// 	} else {
-						// 		return false
-						// 	}
-						// }
+
 						if (post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title) {
 							return (
 								post.node.frontmatter.cateId === category & post.node.frontmatter.title !== title
 							)
+						} else {
+							if (post.node.frontmatter.title !== title) {
+								for (const tag of tags) {
+									for (const item in post.node.frontmatter.tags) {
+										if (tag === post.node.frontmatter.tags[item]) return true
+									}
+								}
+							}
 						}
 
 					}
