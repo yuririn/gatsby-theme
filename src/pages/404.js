@@ -89,7 +89,7 @@ const Result = prop => {
 	if (prop.value === 'item01') {
 		return (
 			<div>
-				<p class="u-text-center">まずは、トップページに心を落ち着かせましょう。</p><p class="u-text-center"><Link class="p-btn--detail" to="/">トップページヘ</Link></p>
+				<p class="u-text-center">まずは、トップページに戻って心を落ち着かせましょう。</p><p class="u-text-center"><Link class="p-btn--detail" to="/">トップページヘ</Link></p>
 			</div>
 		)
 	} else if (prop.value === 'item02') {
@@ -195,8 +195,8 @@ const NotFoundPage = ({ data, location }) => {
 				<div class="l-container--md">
 					<div class="mb-Md mt-Xs"><BreadCrumbList current="お探しのページは見つかりませんでした" /></div>
 					<section className="c-editArea">
-						<h2>大変遺憾ではありますが、あなたのお探しのページにたどり着けなかったようです</h2>
-						<p>管理人がどこかに移動させたか、内容が気に入らないから削除してしまったのかもしれません。誠に申し訳ありません。</p>
+						<h2>あなたのお探しのページにたどり着けなかったようです</h2>
+						<p>大変遺憾ではありますが、管理人がどこかに移動させたか、<em>内容が気に入らないから削除してしまった</em>の可能性があります。誠に申し訳ありません。</p>
 						<p>でも少し立ち止まって考えてみてください。これってひょっとしたら、普段頑張りすぎているあなたに少し休憩した方がいいっていう神様のアドバイスなのかもしれません。</p>
 						<p>そんなあなたのために「銀ねこアトリエ」はいくつかオプションを用意しました。お好きな項目をお選びください。</p>
 					</section>
