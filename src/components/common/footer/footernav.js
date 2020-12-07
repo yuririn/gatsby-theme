@@ -18,7 +18,7 @@ const footernav = () => {
 				<li><Link to="/about">About Me</Link></li>
 				<li><Link to="/privacy-policy">Privacy Policy</Link></li >
 				<li><Link to="/socialmedia-policy">Social Media Policy</Link></li >
-				<li><Link to="/contact">Contact</Link></li >
+				{/* <li><Link to="/contact">Contact</Link></li > */}
 			</ul >
 			<ul class="p-footerNav__item--sns">
 				<li><Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /></Link></li>
