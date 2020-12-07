@@ -13,6 +13,7 @@ import RelatedList from "../components/blogs/relatedList"
 import FovoriteList from "../components/common/favorites"
 import Prof from "../components/blogs/smallProf"
 import Tags from "../components/blogs/tagList"
+import BreadCrumbList from "../components/common/breadCrumbList"
 
 const BlogPostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -48,6 +49,7 @@ const BlogPostTemplate = ({ data, location }) => {
 						</div>
 					</div>
 					<div class="l-container--md">
+						<BreadCrumbList type="blog" current={post.frontmatter.title} />
 						<h1 class="c-article__heading">{post.frontmatter.title}</h1>
 						<dl className="c-article__date">
 							<dt>公開日</dt>

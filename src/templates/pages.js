@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import LayoutSimple from "../components/layoutSimple"
 import SEO from "../components/seo"
+import BreadCrumbList from "../components/common/breadCrumbList"
 
 const PagePostTemplate = ({ data, location }) => {
 	const post = data.markdownRemark
@@ -20,17 +21,18 @@ const PagePostTemplate = ({ data, location }) => {
 
 			<div class="l-main_contents">
 
+				<div className="l-container--md mt-Md"><BreadCrumbList current={post.frontmatter.title} /></div>
 				<article
-					className="l-container--md u-pt-lg"
+					className="l-container--md"
 					itemScope
 					itemType="http://schema.org/Article"
 				>
 					<header>
-						<div class="l-container--md">
+						<div>
 							<h1 class="c-article__heading">{post.frontmatter.title}</h1>
 						</div>
 					</header>
-					<div class="l-container--md">
+					<div>
 						<section className="c-editArea"
 							dangerouslySetInnerHTML={{ __html: post.html }}
 							itemProp="articleBody"

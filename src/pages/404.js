@@ -7,6 +7,7 @@ import Image from "../components/image"
 import Search from "../components/search/"
 import Genre from "../components/genre"
 import TagsList from "../components/blogs/tagList"
+import BreadCrumbList from "../components/common/breadCrumbList"
 
 const Uranai = ({ value }) => {
 	const num = value - 1
@@ -182,24 +183,27 @@ const NotFoundPage = ({ data, location }) => {
 
 	return (
 		<LayoutS location={location} title={siteTitle}>
-			<SEO title="404: Not Found" />
+			<SEO title="お探しのページは見つかりませんでした" />
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">
-					<h1 class="p-pageHeader__heading">Page Not Found</h1>
+					<h1 class="p-pageHeader__heading">404</h1>
 					<p class="p-pageHeader__content">お探しのページは見つかりませんでした</p>
 				</div>
 				<Image filename="common/ganre-404.jpg" className="p-pageHeader__img" />
 			</div>
 			<section class="c-404">
 				<div class="l-container--md">
-					<p>大変遺憾ではありますが、あなたのお探しのページにたどり着けなかったようです。<br />管理人がどこかに移動させたか、内容が気に入らないから削除してしまったのかもしれません。誠に申し訳ありません。</p>
-					<p>でも少し立ち止まって考えてみてください。これってひょっとしたら、普段頑張りすぎているあなたに少し休憩した方がいいっていう神様のアドバイスなのかもしれません。</p>
-					<p>そんなあなたのために「銀ねこアトリエ」はいくつかオプションを用意しました。お好きな項目をお選びください。</p>
-
+					<div class="mb-Md mt-Xs"><BreadCrumbList current="お探しのページは見つかりませんでした" /></div>
+					<section className="c-editArea">
+						<h2>大変遺憾ではありますが、あなたのお探しのページにたどり着けなかったようです</h2>
+						<p>管理人がどこかに移動させたか、内容が気に入らないから削除してしまったのかもしれません。誠に申し訳ありません。</p>
+						<p>でも少し立ち止まって考えてみてください。これってひょっとしたら、普段頑張りすぎているあなたに少し休憩した方がいいっていう神様のアドバイスなのかもしれません。</p>
+						<p>そんなあなたのために「銀ねこアトリエ」はいくつかオプションを用意しました。お好きな項目をお選びください。</p>
+					</section>
 					<Menu></Menu>
 				</div>
-			</section>
-		</LayoutS>
+			</section >
+		</LayoutS >
 	)
 }
 

@@ -9,6 +9,7 @@ import TagList from "../components/common/tagsArchive"
 import Pagination from "../components/blogList/pagination"
 import { Link, graphql } from "gatsby"
 import { siteMetadata } from "../../gatsby-config"
+import BreadCrumbList from "../components/common/breadCrumbList"
 
 const category = ({ pageContext, data, location }) => {
 	const { cateSlug, current, page } = pageContext
@@ -42,6 +43,7 @@ const category = ({ pageContext, data, location }) => {
 			</div>
 			<div className="page-template-archive">
 				<div className="l-container">
+					<BreadCrumbList type="blog" current={cateName} />
 					{totalCount === 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
 					<section className="p-section">
 						<h2 className="c-heading--lg">最新記事</h2>

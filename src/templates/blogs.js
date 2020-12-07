@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import Image from "../components/image"
 import TagList from "../components/common/tagsArchive"
 import Pagination from "../components/blogList/pagination"
+import BreadCrumbList from "../components/common/breadCrumbList"
 
 const blogs = ({ pageContext, data, location }) => {
 	const { current, page } = pageContext
@@ -25,6 +26,7 @@ const blogs = ({ pageContext, data, location }) => {
 				<Image filename="common/ganre_common.jpg" className="p-pageHeader__img"></Image>
 			</div>
 			<div className="l-container">
+				<BreadCrumbList type="blogs" />
 				<section className="p-section">
 					<h2 className="c-heading--lg">最新記事</h2>
 					<div className="c-grid">
