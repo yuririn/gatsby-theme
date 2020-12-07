@@ -62,9 +62,7 @@ export default ({ category, title, tags }) => {
 								}
 							}
 						}
-
 					}
-
 				)
 				if (!posts) return
 
