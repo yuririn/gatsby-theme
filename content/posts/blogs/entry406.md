@@ -16,6 +16,7 @@ lead: ["現在GatsbyJSでサイトのリニューアル中です！","ブログ�
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. 投稿ページの充実と画像の方法（←イマココ）
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+4. [プラグインgatsby-remark-autolink-headersを利用して目次出力](/blogs/entry410/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造します
 この記事は一番メジャーなテンプレート、 Gatsby Starter Blogを改造しています。同じテーマでないと動かない可能性があります。

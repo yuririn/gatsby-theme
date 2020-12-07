@@ -8,6 +8,8 @@ import FirstView from "../components/firstview"
 import TagList from "../components/common/tagsArchive"
 import FovoriteList from "../components/common/favorites"
 import Search from "../components/search/"
+import Profile from "../components/profile"
+import Genre from "../components/genre"
 
 const BlogIndex = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`

@@ -98,7 +98,7 @@ module.exports = {
 						resolve: `gatsby-remark-autolink-headers`,
 						options: {
 							icon: false,
-							maintainCase: true,
+							maintainCase: false,
 						},
 					},
 					{

@@ -13,8 +13,9 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
 1. インストールからNetlifyデプロイまで（←イマココ）
-2. [投稿ページの充実と画像の方法]((/blogs/entry406/))
+2. [投稿ページの充実と画像の方法](/blogs/entry406/)
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+4. [プラグインgatsby-remark-autolink-headersを利用して目次出力](/blogs/entry410/)
 
 ## Gatsby(JS)とは？
 Gatsby(JS)はReactで作られた**静的サイトジェネレーター**です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>
