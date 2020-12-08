@@ -156,7 +156,7 @@ ErrorDocument 503 /maintenance.html #表示させるメンテナンスページ
 
 [第90回「WEB TOUCH MEETING](http://www.webtouchmeeting.com/meeting/90web-touch-meeting.html)
 
-みなさん、DNS変更は慎重に！
+DNS変更は慎重に！
 
 みなさんのWeb制作ライフの一助となれば幸いです。
 
