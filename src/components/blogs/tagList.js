@@ -37,10 +37,6 @@ export default ({ tags }) => {
 					tags.push({ name: tag, count: counts[tag] })
 				}
 
-				console.log(tags)
-
-
-
 				if (!tags) return
 
 				return (
