@@ -1,5 +1,5 @@
 ---
-title: Gatsbyホットリロード中に同じWiFi内に繋がっている他のディバイスからアクセスする方法
+title: Gatsbyホットリロード中他のディバイスからアクセスする方法
 date: 2020-12-07
 hero: 2014/entry192.jpg
 pagetype: blog

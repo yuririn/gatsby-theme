@@ -129,13 +129,13 @@ ErrorDocument 503 /maintenance.html #表示させるメンテナンスページ
 
 最低でも24時間ぐらいかかるみたいだし、開き直って他の作業をしました。
 
-翌日も友達とLandersに買い物へ行ってジャンク祭りを堪能しました。
+翌日も気にせず友達とLandersに買い物へ行ってジャンク祭りを堪能。
 
 ![友達とLandersに買い物へ行ってジャンク祭り](./images/2020/12/entry412-1.jpg)
 
 [スーパーマーケット Landers](https://goo.gl/maps/dwUh5CFc3Edo1SRy8)
 
-いつの間にか反映していました。
+そんなことをしていると、いつの間にか反映していました。
 
 ### 嬉しいリニューアル効果
 ページ読み込みのストレスは軽減し、UXが向上したおかげで*PVも1.5倍まで伸びました!!!*<br>
@@ -146,7 +146,7 @@ ErrorDocument 503 /maintenance.html #表示させるメンテナンスページ
 ## まとめ
 今回私が痛い目にあったDNS変更に関する経験と対処法についてシェアさせていただきました。
 
-ちなみに以前DNS変更がいかに怖いかって内容をITセミナーで登壇して話ししていました。<br><br>
+ちなみに以前*DNS変更がいかに怖いか*って内容をITセミナーで話をしていたことが発覚しました。。。<br><br>
 
 しかも、DNS変更の作業は**爆弾撤去作業のように神経を使う**と説明までしておりました。。。<br><br>
 
@@ -155,6 +155,8 @@ ErrorDocument 503 /maintenance.html #表示させるメンテナンスページ
 [サイト引越しの際に学んだ5の教訓 | Slide Share](https://www2.slideshare.net/yurikamimori/5-239853511)
 
 [第90回「WEB TOUCH MEETING](http://www.webtouchmeeting.com/meeting/90web-touch-meeting.html)
+
+みなさん、DNS変更は慎重に！
 
 みなさんのWeb制作ライフの一助となれば幸いです。
 

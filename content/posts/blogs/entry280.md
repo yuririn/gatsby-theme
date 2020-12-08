@@ -27,8 +27,7 @@ VS Code は以下からダウンロードします。
 ## ユーザー設定
 cmd + ,（カンマ）でユーザー設定を開きます。Json形式で記述して行きます。
 
-```
-
+```js
 "editor.formatOnPaste": true,
 // ペースト時に自動でフォーマット
 "editor.formatOnSave": true,
@@ -105,9 +104,9 @@ cmd + ,（カンマ）でユーザー設定を開きます。Json形式で記述
 ### Live Sass Compilerカスタマイズ方法
 Live Sass Compilerカスタマイズ方法です。<br>私の場合開発者ツールでよくデバッグするので、起動ブラウザは主にChromeを使います。
 
-```
+```js
 "liveServer.settings.port": 4500,//ポート番号"
-liveServer.settings.root": "/src",//ルートディレクトリ
+"liveServer.settings.root": "/src",//ルートディレクトリ
 "liveServer.settings.CustomBrowser" : "chrome",//使用するブラウザ
 ```
 
@@ -120,7 +119,7 @@ PCのIPアドレスはMACであればシステム環境 > ネットワークで�
 ファイルの圧縮指定をcompressedにするときはミニファイしたファイルとわかりやすいよう.min.cssという感じのファイル名にしてあげるといいと思います。
 
 
-```
+```js
 "liveSassCompile.settings.formats": [
     {
         "format": "compressed", //expanded, compact, compressed, nested デフォはexpanded
@@ -132,7 +131,7 @@ PCのIPアドレスはMACであればシステム環境 > ネットワークで�
 
 オートプレフィクサーをつけたいときは以下のようにセットします。
 
-```
+```js
 "liveSassCompile.settings.autoprefix": [
     "> 1%",
     "last 2 versions"
@@ -141,7 +140,7 @@ PCのIPアドレスはMACであればシステム環境 > ネットワークで�
 
 ブラウザの指定は[こちら](https://github.com/browserslist/browserslist)を参考に。
 
-```
+```js
 "liveSassCompile.settings.formats": [
     {
         "format": "compressed",//expanded, compact, compressed, nested デフォはexpanded
@@ -153,14 +152,14 @@ PCのIPアドレスはMACであればシステム環境 > ネットワークで�
 
 mapを作りたくないときは以下をセットします。
 
-```
+```js
 "liveSassCompile.settings.generateMap":false
 ```
 
 mapファイルは中身を見たところでなんてことないので隠しちゃいましょう。、以下のコードを追記して見えないようにセット。
 
 
-```
+```js
 "files.exclude": { // エクスプローラーから非表示にするファイル
     "**/*.map": true
 }
@@ -189,7 +188,7 @@ SCSSの便利なところはファイルを小分けにして管理できると�
 
 style.scssに以下のように記述して_base.scssを読み込みます。
 
-```
+```scss
 @import "components/base";
 ```
 次にGo LiveをクリックしてLive Serverを起動しましょう。
@@ -204,7 +203,7 @@ VS codeは最初からEmmetが使用できます。Emmetはhtml,CSS,SCSSを短�
 
 `!` を入力した後に tab ボタンを押すだけです。
 
-```
+```html
 <nav class="l-globalNav">
   <ul class="container">
     <li><a href="/">HOME</a></li>
@@ -219,7 +218,7 @@ VS codeは最初からEmmetが使用できます。Emmetはhtml,CSS,SCSSを短�
 ### 基本スタイルを設定する
 _mixin.scssにサイトの基本スタイル設定をしておくと使い回しができます。
 
-```
+```scss
 $font-family:"游ゴシック体",YuGothic,"Yu Gothic","ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,Helvetica,sans-serif;//ベースのフォント$font-color: #333;$breakpoint: 768px;$font-size: 1.6rem;$line-height: 1.8;
 ```
 
@@ -235,15 +234,15 @@ SCSSファイルでpcと入力したら、スニペットを呼び出すこと�
 $はエスケープが必要なので\\（バックスラッシュ2こ）を頭につけます。
 
 bodyの中が出力されるスニペットです。,で改行が入ります。
-```
+```js
 "pc mq": {
   "prefix": "pc",
   "body": [
     "@media only screen and (min-width:\\\\$breakpoint) {",
-  　" $1",
-  　"}//pc",
-  ],　
-　"description": "PC MediaQuery"
+    " $1",
+    "}//pc",
+  ],
+  "description": "PC MediaQuery"
 }
 ```
 
@@ -253,7 +252,7 @@ gulpで環境を作ればmediaqueryをモジュールでまとめることがで
 
 游ゴシック体はIEで何故か表示がズレるバグがあるので、メイリオに読み替えてあげると安心です。
 
-```
+```scss
 html{
   font-size: 62.5%;
   font-family: $font-family;
@@ -275,13 +274,13 @@ GoogleのWebフォントを追加してみましょう。
 
 head内にスタイルシートを読み込みます。
 
-```
+```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:700">
 ```
 
 再利用できるようにmixinを作ります。_mixin.scssに追記しましょう。
 
-```
+```scss
 @mixin font-oswald{
   font-family: 'Oswald', sans-serif;  letter-spacing: .2em;
 }
@@ -290,7 +289,7 @@ head内にスタイルシートを読み込みます。
 ### _module.scssに使いまわせるスタイルを設定する
 使いまわせる、.containerというクラスを作ります。
 
-```
+```scss
 .container{
   padding-left: 15px;
   padding-right: 15px;
@@ -307,7 +306,7 @@ head内にスタイルシートを読み込みます。
 ## ヘッダーをスタイリングをする
 _layout.scssに以下のコードを追加しましょう。
 
-```
+```scss
 .l-header{
   background: $font-color;
 
@@ -334,7 +333,7 @@ _layout.scssに以下のコードを追加しましょう。
 
 ## グローバルナビゲーションをスタイリングをする
 
-```
+```scss
 .l-globalNav{
   box-shadow: 0 2px 2px rgba(0,0,0,.2);
 
@@ -392,5 +391,5 @@ _module.scss、行237の7こめそんなプロパティないよって教えて�
 
 そのほか、間違えて全角空白が入っていたり、割と気づきにくいSCSSのムダにできてしまったコンパイルも、探し出してくれるので重宝しています。
 
-## まとめ：VS Code の拡張機能だけで時短！
-今回はヘッダーとグローバルナヴを簡易的にコーディングしてみました。VS Code でコーディングするためには多少のカスタマイズは必要と思いますが敷居は低いと思います。SCSS、Emmet、Live Server を使えば初心者の方でもかなり手早くコーディングできると思います。ぜひ、お試しあれ。
+## まとめ：VS Codeの拡張機能だけで時短！
+今回はヘッダーとグローバルナヴを簡易的にコーディングしてみました。VS Codeでコーディングするためには多少のカスタマイズは必要と思いますが敷居は低いと思います。SCSS、Emmet、Live Server	を使えば初心者の方でもかなり手早くコーディングできると思います。ぜひ、お試しあれ。
