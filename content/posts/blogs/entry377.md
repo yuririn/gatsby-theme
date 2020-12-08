@@ -211,7 +211,7 @@ SEOのブログでお金を稼ぎたいなら、今すぐアメブロでもな�
 当時を振り返る記事を書きました。詳しくはこちらをお読みください。
 
 <a class="article-link" href="/blogs/entry382">
-<section><div class="article-link__img"><img alt="会社は人の割合で決まる！組織を腸内フローラに例えてみた" src="https://ginneko-atelier.com/application/files/cache/thumbnails/b7b66df1c2314749ddf28f0b811ce502.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<section><div class="article-link__img"><img alt="会社は人の割合で決まる！組織を腸内フローラに例えてみた" src="/static/91e84ac53bbe4cad18325a0d18b85c5a/f836f/entry382.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">会社は人の割合で決まる！組織を腸内フローラに例えてみた</div>
 <p class="description">昔、乳酸菌を取り扱う会社にいました。当時は「腸内環境整える前にマジ社内環境整えよう」よ、と思うくらい劣悪でした。組織って腸内環境に似ているので	･･･</p>
 <p>

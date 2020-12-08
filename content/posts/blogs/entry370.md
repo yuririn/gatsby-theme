@@ -497,7 +497,7 @@ MW WP FormとContact Form 7でのフォームのカスタマイズ法もご紹�
 セレクトボックスのカスタマイズ方法も追加しました！！こちらも合わせてお読みください。
 
 <a class="article-link" href="/blogs/entry393">
-<section><div class="article-link__img"><img alt="コピペでOK！セレクトボックス（プルダウンメニュー）のカスタマイズ方法" src="https://ginneko-atelier.com/application/files/cache/thumbnails/57d9e14d21de84da7176b68b3205b676.png" width="150" height="113" class=""></div><div class="article-link__main">
+<section><div class="article-link__img"><img alt="コピペでOK！セレクトボックス（プルダウンメニュー）のカスタマイズ方法" src="/static/b42da5d41cf4e96d53403505a0b0a1bb/69585/entry393.png" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">コピペでOK！セレクトボックス（プルダウンメニュー）のカスタマイズ方法</div>
 <p class="description">フロントエンドエンジニアのかみーゆです。フォームパーツのカスタマイズって難しいですよね？中でもセレクトボックス（プルダウンメニュー）をC･･･</p>
 <p>
@@ -510,7 +510,7 @@ MW WP FormとContact Form 7でのフォームのカスタマイズ法もご紹�
 さらにボタンのCSSスニペットの記事も追加しました！！
 
 <a class="article-link" href="/blogs/entry396">
-<section><div class="article-link__img"><img alt="実用性重視！使えるボタンのCSSコード・スニペット集！" src="https://ginneko-atelier.com/application/files/cache/thumbnails/00cd2dab20904e5d2ead9b9847a6b84b.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<section><div class="article-link__img"><img alt="実用性重視！使えるボタンのCSSコード・スニペット集！" src="/static/0cc18aaad04da390c3ce765830d160db/f836f/entry396.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">実用性重視！使えるボタンのCSSコード・スニペット集！</div>
 <p class="description">フロントエンドエンジニアのかみーゆです。ボタンデザインやコーディングで悩むことありませんか？今日はボタンのスニペット集を作りました！解説もあ･･･</p>
 <p>

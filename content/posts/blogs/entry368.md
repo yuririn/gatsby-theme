@@ -128,6 +128,7 @@ WordやGoogleドキュメントを使えばこんな苦労する必要もなく�
 * [XDUG](https://xdug.jp/)
 * [広島XDUG](https://xdug.jp/hiroshima/)
 * [当日のTwitterまとめの様子はこちら](https://twitter.com/hashtag/XDCebu?src=hashtag_click&f=live)
+* [こんなところで使えるのXD活用法｜20191208 XD勉強会 in セブ島 | Slide Share](https://www2.slideshare.net/yurikamimori/xd20191208-xd-in)
 
 ![2019年12月セブ島でXDの勉強会](./images/2020/06/entry368-6.jpg)
 
@@ -140,7 +141,7 @@ WordやGoogleドキュメントを使えばこんな苦労する必要もなく�
 
 最後までお読みいただきありがとうございました。
 
-## おまけ・XD退職届のDLはこちらから
+<!-- ## おまけ・XD退職届のDLはこちらから
 せっかくなのでXDの退職届と退職願の雛形を作ってますので、興味ある方はこちらご利用ください。
 
-<p class="u-text-center"><a class="p-btn--detail" href="/packages/newginneko/themes/newginneko/assets/resignation.zip">データダウンロード</a></p>
+<p class="u-text-center"><a class="p-btn--detail" href="/packages/newginneko/themes/newginneko/assets/resignation.zip">データダウンロード</a></p> -->
