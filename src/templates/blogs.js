@@ -18,6 +18,7 @@ const blogs = ({ pageContext, data, location }) => {
 			<SEO title="ブログ一覧"
 				description="「銀ねこアトリエ」の最新ブログ一覧です。30代で転職し、セブ島に移住。主には仕事で使ったチップスを書きだめています。フロントエンド技術、WordPress、海外移住、キャリアアップ、たまにふざけてます。"
 				location={location}
+				type='blogs'
 			/>
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">

@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import config from "../../gatsby-config"
 
-const SEO = ({ description, lang, meta, title, image, location, modifieddate, date }) => {
+const SEO = ({ description, lang, meta, title, image, location, modifieddate, date, type }) => {
 	const { site } = useStaticQuery(
 		graphql`
 		query {
@@ -33,14 +33,13 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 	const pageName = `${title} | ${defaultTitle}`;
 	let blogUrl = location ? location.href : domain
 	const isRoot = domain === blogUrl ? true : false
-	let type = isRoot ? 'WebSite' : 'WebPage'
+	let page = isRoot ? 'WebSite' : 'WebPage'
 	const modified = modifieddate ? modifieddate : date
-	const isArticle = blogUrl.includes('entry') ? true : false
-	const isBlog = blogUrl.includes('blogs') ? true : false
 
-	if (blogUrl.includes('page/')) {
-		blogUrl = blogUrl.split('page/')[0]
+	if (type === 'archive' || type === 'blogs') {
+		blogUrl = String(blogUrl).replace(/page\/([0-9])+/, '')
 	}
+
 
 
 	const author = [
@@ -73,7 +72,7 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 	const jsonLdConfigs = [
 		{
 			'@context': 'http://schema.org',
-			'@type': type,
+			'@type': page,
 			inLanguage: 'ja',
 			url: blogUrl,
 			name: pageName,
@@ -84,7 +83,7 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 		}
 	];
 
-	if (isArticle) {
+	if (type === 'article') {
 		jsonLdConfigs.push({
 			'@context': 'http://schema.org',
 			'@type': 'BlogPosting',
@@ -119,7 +118,7 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 				},
 
 			})
-		if (isArticle || isBlog) {
+		if (type === 'archive' || type === 'article') {
 			breadCrumbList.push(
 				{
 					'@type': 'ListItem',
@@ -239,6 +238,7 @@ SEO.propTypes = {
 	meta: PropTypes.arrayOf(PropTypes.object),
 	title: PropTypes.string.isRequired,
 	image: PropTypes.string,
+	type: PropTypes.string,
 	location: PropTypes.string,
 	date: PropTypes.string,
 	modifieddate: PropTypes.string,

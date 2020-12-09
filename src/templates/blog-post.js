@@ -33,6 +33,7 @@ const BlogPostTemplate = ({ data, location }) => {
 				location={location}
 				date={post.frontmatter.date}
 				modifieddate={post.frontmatter.modifieddate}
+				type='argicle'
 			/>
 			<article
 				className="p-section"
