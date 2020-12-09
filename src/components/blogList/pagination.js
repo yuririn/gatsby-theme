@@ -56,7 +56,6 @@ const Pagination = ({ num, current, type }) => {
 	}
 
 
-
 	if (num < 6) {
 		return (
 			<div class="ccm-pagination-wrapper">
@@ -121,7 +120,7 @@ const Pagination = ({ num, current, type }) => {
 				)
 			} else {
 				array = []
-				for (let index = current - 2; index <= current + 2; index++) {
+				for (let index = current - 1; index <= current + 2; index++) {
 					array.push(index)
 				}
 
@@ -136,7 +135,7 @@ const Pagination = ({ num, current, type }) => {
 
 							))
 							}
-							<Skip show={current !== num - (current + 2)} />
+							<Skip show={current !== num - (current + 3)} />
 							<li><Link to={`/blogs/${type}page/${num}`}>{num}</Link></li>
 							<Next current={current} num={num} type={type} />
 						</ol>

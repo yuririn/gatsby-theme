@@ -17,10 +17,11 @@ const blogs = ({ pageContext, data, location }) => {
 		<Layout location={location} title="銀ねこアトリエ">
 			<SEO title="ブログ一覧"
 				description="「銀ねこアトリエ」の最新ブログ一覧です。30代で転職し、セブ島に移住。主には仕事で使ったチップスを書きだめています。フロントエンド技術、WordPress、海外移住、キャリアアップ、たまにふざけてます。"
+				location={location}
 			/>
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">
-					<h1 class="p-pageHeader__heading">最新ブログ一覧</h1>
+					<h1 class="p-pageHeader__heading">ブログ一覧</h1>
 					<p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
 				</div>
 				<Image filename="common/ganre_common.jpg" className="p-pageHeader__img"></Image>

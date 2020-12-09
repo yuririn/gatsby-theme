@@ -32,6 +32,7 @@ const category = ({ pageContext, data, location }) => {
 			<SEO
 				title={`${cateName}`}
 				description={cateDescription}
+				location={location}
 			/>
 
 			<div class="p-pageHeader">

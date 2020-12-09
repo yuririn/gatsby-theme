@@ -5,7 +5,7 @@ hero: 2020/entry412.jpg
 pagetype: blog
 category: Back End
 cateId: back-end-program
-tags: ["コマンド","しろたん師匠"]
+tags: ["サーバー引越し","しろたん師匠"]
 description: サイト移行やDNS（ネームサーバー）変更、ちゃんと事前準備して行ってますか？最近ドメインをさくらサーバーからお名前.comへ移し、さらにサーバーもNetlifyへ移しました。移管中エラーを吐いて、ブログページが見れなくなってしまいました。事前準備を怠ったことを死ぬほど反省しました。体験談と対処法を綴ります。
 lead: ["サイト移行やDNS（ネームサーバー）変更、ちゃんと事前準備して行ってますか？","最近ドメインをさくらサーバーからお名前.comへ移し、さらにサーバーもNetlifyへ移しました。","移管中エラーを吐いて、ブログページが見れなくなってしまいました。事前準備を怠ったことを死ぬほど反省しました。","体験談と対処法を綴ります。"]
 ---
@@ -21,6 +21,10 @@ lead: ["サイト移行やDNS（ネームサーバー）変更、ちゃんと事
 * 最悪の事態に備えてメンテナンス中ページも用意しておく
 
 <br>連日のサイトのコーディングと記事移行がキツかったのもあり、*サイトをリニューアルできるのが嬉しすぎて*3つとも抜けていました。
+
+<a href="https://px.a8.net/svt/ejp?a8mat=3BFREY+GE0L9U+50+2HCB1D" rel="nofollow">
+<img border="0" width="100" height="60" alt="" src="https://www28.a8.net/svt/bgt?aid=200609674991&wid=001&eno=01&mid=s00000000018015006000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2HCB1D" alt="">
 
 <small>※普段クライアントに対しては公開日などをきちんと確認しています。</small><br><br>
 
@@ -43,6 +47,11 @@ DNS（ネームサーバー）の変更は、たとえ変更手続きが終わ�
 PVはGoogleAnalyticsなどで確認できます。
 
 サイトの系統にもよりますが、金曜日の深夜から日にかけて作業するのがオススメです。
+
+<a href="https://px.a8.net/svt/ejp?a8mat=3BFREY+GE0L9U+50+2I3QOX" rel="nofollow">
+<img border="0" width="468" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=200609674991&wid=001&eno=01&mid=s00000000018015134000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2I3QOX" alt="">
+
 
 ただ、サーバー会社にお問い合わせができないのである程度覚悟しておいてください。<br><br>
 
@@ -161,3 +170,7 @@ DNS変更は慎重に！
 みなさんのWeb制作ライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+
+<a href="https://px.a8.net/svt/ejp?a8mat=3BFREY+GE0L9U+50+2HK0TD" rel="nofollow">
+<img border="0" width="350" height="80" alt="" src="https://www20.a8.net/svt/bgt?aid=200609674991&wid=001&eno=01&mid=s00000000018015042000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2HK0TD" alt="">

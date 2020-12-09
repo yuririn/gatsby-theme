@@ -7,7 +7,7 @@ module.exports = {
 		},
 		description: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニアの気ままな日記です。`,
 		siteUrl: `https://ginneko-atelier.com/`,
-		image: `https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/newogp2.png`,
+		image: `https://ginneko-atelier.com/static/734c25c8328e14e4d8df99abaea453a2/ee604/newogp.png`,
 		social: {
 
 			twitter: `lirioL`,

@@ -183,7 +183,11 @@ const NotFoundPage = ({ data, location }) => {
 
 	return (
 		<LayoutS location={location} title={siteTitle}>
-			<SEO title="お探しのページは見つかりませんでした" />
+			<SEO
+				location={location}
+				title="お探しのページは見つかりませんでした"
+
+			/>
 			<div class="p-pageHeader">
 				<div class="p-pageHeader__main">
 					<h1 class="p-pageHeader__heading">404</h1>
@@ -202,8 +206,8 @@ const NotFoundPage = ({ data, location }) => {
 					</section>
 					<Menu></Menu>
 				</div>
-			</section >
-		</LayoutS >
+			</section>
+		</LayoutS>
 	)
 }
 

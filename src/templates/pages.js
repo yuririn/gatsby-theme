@@ -17,6 +17,7 @@ const PagePostTemplate = ({ data, location }) => {
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
 				image={src}
+				location={location}
 			/>
 
 			<div class="l-main_contents">

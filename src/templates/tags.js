@@ -21,6 +21,7 @@ const Tags = ({ pageContext, data, location }) => {
 			<SEO
 				title={`${tag}に関する記事一覧`}
 				description={siteMetadata.description}
+				location={location}
 			/>
 			<div className="page-template-archive">
 				<div class="p-pageHeader">

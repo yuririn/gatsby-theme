@@ -24,6 +24,7 @@ const BlogIndex = ({ data, location }) => {
 				<SEO
 					title="All posts"
 					image={ogpSrc}
+					location="/"
 				/>
 				<p>
 					No blog posts found. Add markdown posts to "content/blog" (or the

@@ -16,9 +16,10 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 2. [投稿ページの充実と画像の方法](/blogs/entry406/)
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
 4. プラグインを利用して目次出力（←イマココ）
+5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
-この記事は一番メジャーなテンプレート、「Gatsby Starter Blog」を改造しています。同じテーマでないと動かない可能性があります。
+この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
 
 ## 目次出力のためのプラグインgatsby-remark-autolink-headersを利用
 GatsbyJSは豊富なプラグインが魅力です。
@@ -114,7 +115,7 @@ src/components/内にtopics.jsを追加します。
 ```
 src/
     ├ templates/
-    |   ├ blog-post.js
+    |   └ blog-post.js
     └ components/
         └ topics.js（新規作成）
 ```

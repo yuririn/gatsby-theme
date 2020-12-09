@@ -30,6 +30,9 @@ const BlogPostTemplate = ({ data, location }) => {
 				title={post.frontmatter.title}
 				description={post.frontmatter.description || post.excerpt}
 				image={src}
+				location={location}
+				date={post.frontmatter.date}
+				modifieddate={post.frontmatter.modifieddate}
 			/>
 			<article
 				className="p-section"

@@ -154,6 +154,9 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 	transition: .3s;
 	overflow: hidden;
 }
+.mokuji ~ .mokujiList ol > li > ol > li > ol{
+	display: none;
+}
 .mokuji + .c-content__heading {
 	position: relative;
 	display: block;
@@ -170,11 +173,11 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 	display: block;
 }
 .mokuji:checked + .c-content__heading:after {
-	transform: rotate(0deg);
+	transform: rotate(90deg);
 
 }
 .mokuji+ .c-content__heading:after {
-	transform: rotate(90deg);
+	transform: rotate(0deg);
 	transition: .3s;
 	position: absolute;
     content: "";
@@ -258,4 +261,13 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 }
 .c-breadcramb li:last-child::after {
 	content: none;
+}
+.mokuji-expand {
+	display: none;
+}
+.mokuji-expand-label{
+	padding-top: 10px;
+	display: block;
+	width: 100px;
+	margin: 0 auto;
 }

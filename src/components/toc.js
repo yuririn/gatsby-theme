@@ -8,6 +8,7 @@ const Toc = props => {
 			<input type="checkbox" class="mokuji" id="mokuji" />
 			<label className="c-content__heading" for="mokuji">目次</label>
 			<div className="c-editArea mokujiList">
+
 				<div
 					dangerouslySetInnerHTML={{
 						__html: list,

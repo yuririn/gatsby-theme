@@ -29,6 +29,7 @@ const Portfolio = ({ location }) => {
 				title="広島生まれ、広島育ちのIT戦士"
 				description="広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。"
 				image="/static/213311b9bb7be131aae7771033b326b7/ee604/ogp.png"
+				location={location}
 			/>
 			<header className={HeaderStyles.header}>
 				<p className={HeaderStyles.headerLogo}>Camille Site</p>
