@@ -51,8 +51,6 @@ const BlogIndex = ({ data, location }) => {
 							return (
 								<article
 									className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
-									itemScope
-									itemType="http://schema.org/Article"
 								>
 									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
 										{post.frontmatter.hero ?

@@ -56,8 +56,6 @@ const category = ({ pageContext, data, location }) => {
 								return (
 									<article
 										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
-										itemScope
-										itemType="http://schema.org/Article"
 										key={slug}
 									>
 										<Link to={slug} itemProp="url" className="p-entryCard__img" >

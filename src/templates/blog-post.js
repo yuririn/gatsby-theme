@@ -33,12 +33,10 @@ const BlogPostTemplate = ({ data, location }) => {
 				location={location}
 				date={post.frontmatter.date}
 				modifieddate={post.frontmatter.modifieddate}
-				type='argicle'
+				type='article'
 			/>
 			<article
 				className="p-section"
-				itemScope
-				itemType="http://schema.org/Article"
 			>
 				<header>
 					<div className={`c-article__mainvisual--` + post.frontmatter.cateId}>

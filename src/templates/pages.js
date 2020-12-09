@@ -25,8 +25,6 @@ const PagePostTemplate = ({ data, location }) => {
 				<div className="l-container--md mt-Md"><BreadCrumbList current={post.frontmatter.title} /></div>
 				<article
 					className="l-container--md"
-					itemScope
-					itemType="http://schema.org/Article"
 				>
 					<header>
 						<div>

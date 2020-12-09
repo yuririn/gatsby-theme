@@ -5,14 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-const Footer = ({ title }) => {
+const Header = ({ title }) => {
 	return (
 		<header class="l-header">
 			<div class="l-container">
 				<div class="c-grid--between">
 					<div id="header-logo">
 						<Link to="/">
-							{title}
 							<Logo />
 						</Link>
 
@@ -53,4 +52,4 @@ const Footer = ({ title }) => {
 	)
 }
 
-export default Footer
+export default Header

@@ -6,7 +6,7 @@ module.exports = {
 			summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
 		},
 		description: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニアの気ままな日記です。`,
-		siteUrl: `https://ginneko-atelier.com/`,
+		siteUrl: `https://ginneko-atelier.com`,
 		image: `https://ginneko-atelier.com/static/734c25c8328e14e4d8df99abaea453a2/ee604/newogp.png`,
 		social: {
 
@@ -125,6 +125,13 @@ module.exports = {
 					`gatsby-remark-smartypants`,
 				],
 			},
+		},
+		{
+			resolve: `gatsby-plugin-sitemap`,
+			options: {
+				output: `/sitemap.xml`,
+				exclude: [`/blogs/page/*`, `/blogs/tags/*/page/*`, `/blogs/*/page/*`],
+			}
 		},
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,
