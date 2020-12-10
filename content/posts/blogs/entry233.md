@@ -5,7 +5,7 @@ hero: 2014/entry192.jpg
 pagetype: blog
 category: 'Back End'
 cateId: 'back-end-program'
-tags: [XAMPP"]
+tags: [XAMPP]
 description: Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。
 lead: ["Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。"]
 ---

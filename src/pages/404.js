@@ -166,7 +166,7 @@ const Menu = () => {
 				</li>
 				<li>
 					<label>
-						<input type="radio" name="item" value="item04" onChange={onChange} /><span>ページ探すのをやめて占いをする</span>
+						<input type="radio" name="item" value="item04" onChange={onChange} /><span>ページを探すのをやめて占いをする</span>
 					</label>
 				</li>
 			</ul>

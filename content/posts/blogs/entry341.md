@@ -5,7 +5,7 @@ hero: 2019/entry341.jpg
 pagetype: blog
 category: it-seminar
 cateId: it-seminar
-tags: ["Web解析","Google Analytics"]
+tags: ["Web解析"]
 description: Sprobeさん主催のSEO勉強会に参加してきました。Googleアナリティクスの機能を基本からちょっとしたアドバンスな部分までハンズオン形式で触っていく形で楽しく学ばせていただきました。セブ島で日本語でこんな勉強会開催されるなんてサイコーです。
 lead: ["Sprobeさん主催のSEO勉強会に参加してきました。","Googleアナリティクスの機能を基本からちょっとしたアドバンスな部分までハンズオン形式で触っていく形で楽しく学ばせていただきました。セブ島で日本語でこんな勉強会開催されるなんてサイコーです。"]
 ---

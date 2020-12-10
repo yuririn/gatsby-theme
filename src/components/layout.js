@@ -8,7 +8,7 @@ const Layout = ({ location, title, children }) => {
 
 	return (
 		<div>
-			<Header title={title} />
+			<Header title={title} location={location.pathname} />
 			<main>{children}</main>
 			<aside>
 				<div className="l-container">

@@ -28,7 +28,7 @@ const blogs = ({ pageContext, data, location }) => {
 				<Image filename="common/ganre_common.jpg" className="p-pageHeader__img"></Image>
 			</div>
 			<div className="l-container">
-				<BreadCrumbList type="blogs" />
+				<BreadCrumbList type="blogs" current="ブログ一覧" />
 				<section className="p-section">
 					<h2 className="c-heading--lg">最新記事</h2>
 					<div className="c-grid">

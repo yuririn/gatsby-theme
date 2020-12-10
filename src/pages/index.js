@@ -40,6 +40,7 @@ const BlogIndex = ({ data, location }) => {
 			<SEO
 				title="セブ島に住む気ままなフロントエンジニアの日記"
 				image={ogpSrc}
+				location={location}
 			/>
 			<FirstView />
 			<div className="l-container">

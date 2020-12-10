@@ -5,15 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-const Header = ({ title }) => {
+const Header = ({ title, location }) => {
+
 	return (
 		<header class="l-header">
 			<div class="l-container">
 				<div class="c-grid--between">
 					<div id="header-logo">
-						<Link to="/">
-							<Logo />
-						</Link>
+						{location === '/' ? <Logo /> : <Link to="/"><Logo /></Link>}
 
 					</div>
 					<nav className="c-grid--flex">
