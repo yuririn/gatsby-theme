@@ -1,6 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語4~プラグインを利用して目次出力~
 date: 2020-12-07
+modifieddate: 2020-12-11
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front End
@@ -17,6 +18,7 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
 4. プラグインを利用して目次出力（←イマココ）
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
+6. [個別ページテンプレート作成](/blogs/entry416/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -143,19 +145,95 @@ export default Topic;
 ```
 リスト化されたデータは`data.markdownRemark.tableOfContents`に格納されます。
 
+blog-post.jsのクエリの`markdownRemark()`内に`tableOfContents`を*必ず追記*してください。
+
 あとは記事の読み込みたい場所にコンポーネントを出力するだけです。
 
 ```js
 import Topic from "../components/topic"
+
 //~コード省略~
+
 const BlogPostTemplate = ({ data, location }) => {
   {/*読み込みたい場所に挿入*/}
   <Topic data={data.markdownRemark.tableOfContents} />
+
   //~コード省略~
+
 }
 
 export default BlogPostTemplate
-//~コード省略~
+
+export const pageQuery = graphql`
+  query BlogPostBySlug(
+    $id: String!
+    $previousPostId: String
+    $nextPostId: String
+    $hero: String
+  )
+  {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allFile(
+      filter: {
+        relativePath: {eq: $hero}
+        sourceInstanceName: {eq: "assets"}
+      }
+    ){
+      edges {
+        node {
+          name
+          relativePath
+          childImageSharp {
+          fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+            }
+          }
+        }
+      }
+    markdownRemark(
+      id: {eq: $id }
+    ) {
+        id
+        excerpt(pruneLength: 160)
+        html
+        tableOfContents
+        frontmatter {
+          title
+          date(formatString: "YYYY.MM.DD")
+          description
+          lead
+          hero
+          category
+          cateId
+          tags
+          pagetype
+          modifieddate(formatString: "YYYY.MM.DD")
+        }
+      }
+      previous: markdownRemark(id: {eq: $previousPostId }) {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+        }
+      }
+      next: markdownRemark(id: {eq: $nextPostId }) {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+        }
+      }
+    }
+  }
+`
 ```
 
 ## 出力されるタグをulからolに変え、開閉ボタンをつける

@@ -24,7 +24,7 @@ const profile = () => {
 					<p>	好きな人といるだけでパワースポット！今は大好きな仲間と消耗しない働き方をするために計画中。
 						13歳の頃から「好きなように生きて好きなように死ぬ」が人生のKPI。<br />「楽しいか」、「かっこいいか」でやることを判断・取捨択一しています。好きなものは肉とビール。</p>
 				</div>
-				<p class="u-text-center"><Link to="/about" className="p-btn--detail">About Me</Link></p>
+				<p class="u-text-center"><Link to="/about/" className="p-btn--detail">About Me</Link></p>
 			</div>
 		</section>
 	)

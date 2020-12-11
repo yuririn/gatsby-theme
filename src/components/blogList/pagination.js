@@ -24,7 +24,7 @@ const Prev = ({ current, type }) => {
 		)
 	} else {
 		return (
-			<li className="c-pager--archive__prev"><Link to={`/blogs/${type}page/${current - 1}`}>Newer</Link></li>
+			<li className="c-pager--archive__prev"><Link to={`/blogs/${type}page/${current - 1}/`}>Newer</Link></li>
 		)
 	}
 }
@@ -37,8 +37,8 @@ const Next = ({ num, current, type }) => {
 	} else {
 		return (
 
-			current === '' ? <li className="c-pager--archive__next"><Link to={`/blogs/${type}page/2`}>Older</Link></li> :
-				<li className="c-pager--archive__next"><Link to={`/blogs/${type}page/${current + 1}`}>Older</Link></li>
+			current === '' ? <li className="c-pager--archive__next"><Link to={`/blogs/${type}page/2/`}>Older</Link></li> :
+				<li className="c-pager--archive__next"><Link to={`/blogs/${type}page/${current + 1}/`}>Older</Link></li>
 		)
 	}
 }
@@ -63,7 +63,7 @@ const Pagination = ({ num, current, type }) => {
 					<Prev current={current} num={num} type={type} />
 					{(array || []).map(i => (
 
-						i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} type={type} />
+						i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}/`} type={type} />
 
 					)
 					)}
@@ -85,12 +85,12 @@ const Pagination = ({ num, current, type }) => {
 							<Prev current={current} num={num} type={type} />
 							{(array || []).map(i => (
 
-								i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} type={type} />
+								i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}/`} type={type} />
 
 							))
 							}
 							<li>...</li>
-							<li><Link to={`/blogs/${type}page/${num}`}>{num}</Link></li>
+							<li><Link to={`/blogs/${type}page/${num}/`}>{num}</Link></li>
 							<Next current={current} num={num} type={type} />
 						</ol>
 					</div>
@@ -110,7 +110,7 @@ const Pagination = ({ num, current, type }) => {
 							<li>...</li>
 							{(array || []).map(i => (
 
-								i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} type={type} />
+								i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}/`} type={type} />
 
 							))
 							}
@@ -131,12 +131,12 @@ const Pagination = ({ num, current, type }) => {
 							<li><Link to={`/blogs/${type}`}>1</Link></li>
 							<Skip show={current !== num + (current - 3)} />
 							{(array || []).map(i => (
-								<Li num={i} current={current === i} path={`/blogs/${type}page/${i}`} />
+								<Li num={i} current={current === i} path={`/blogs/${type}page/${i}/`} />
 
 							))
 							}
 							<Skip show={current !== num - (current + 3)} />
-							<li><Link to={`/blogs/${type}page/${num}`}>{num}</Link></li>
+							<li><Link to={`/blogs/${type}page/${num}/`}>{num}</Link></li>
 							<Next current={current} num={num} type={type} />
 						</ol>
 					</div>

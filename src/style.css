@@ -17,6 +17,9 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
     text-shadow: none;
 	color: #001d7c;
 	border: 1px solid #001d7c;
+	font-size: 1.4rem;
+	display: inline-block;
+	margin:0 3px;
 }
 
 .c-article__ganre a {

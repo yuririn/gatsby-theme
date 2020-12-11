@@ -23,9 +23,7 @@ const PagePostTemplate = ({ data, location }) => {
 			<div class="l-main_contents">
 
 				<div className="l-container--md mt-Md"><BreadCrumbList current={post.frontmatter.title} /></div>
-				<article
-					className="l-container--md"
-				>
+				<article className="l-container--md">
 					<header>
 						<div>
 							<h1 class="c-article__heading">{post.frontmatter.title}</h1>
@@ -34,7 +32,6 @@ const PagePostTemplate = ({ data, location }) => {
 					<div>
 						<section className="c-editArea"
 							dangerouslySetInnerHTML={{ __html: post.html }}
-							itemProp="articleBody"
 						/>
 					</div>
 				</article>

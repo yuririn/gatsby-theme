@@ -102,7 +102,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		let numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
-			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}`
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`
 			const pageNumber = index + 1
 
 			createPage({
@@ -144,7 +144,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
-			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/tags/${tag}` : `/blogs/tags/${tag}/page/${pageNumber}`
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/tags/${tag}/` : `/blogs/tags/${tag}/page/${pageNumber}/`
 			const pageNumber = index + 1
 
 			createPage({
@@ -187,7 +187,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		numPages = Math.ceil(count / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
-			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/${cate}` : `/blogs/${cate}/page/${pageNumber}`
+			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/${cate}/` : `/blogs/${cate}/page/${pageNumber}/`
 			const pageNumber = index + 1
 			const cateSlug = cate
 

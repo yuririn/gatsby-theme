@@ -12,6 +12,7 @@ module.exports = {
 
 			twitter: `lirioL`,
 			instagram: `yurico.k`,
+			youtube: `https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw`,
 		},
 		category: [
 			{

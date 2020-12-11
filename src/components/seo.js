@@ -176,27 +176,27 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 					content: metaDescription,
 				},
 				{
-					property: `og: title`,
+					property: `og:title`,
 					content: title,
 				},
 				{
-					property: `og: description`,
+					property: `og:description`,
 					content: metaDescription,
 				},
 				{
-					property: `og: type`,
+					property: `og:type`,
 					content: `website`,
 				},
 				{
-					name: `og: image`,
+					name: `og:image`,
 					content: ogImage,
 				},
 				{
-					name: `google - site - verification`,
-					content: `UmyZdMHGMBc6 - P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`,
+					name: `google-site-verification`,
+					content: `UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`,
 				},
 				{
-					name: `twitter: card`,
+					name: `twitter:card`,
 					content: `summary_large_image`,
 				},
 				{
@@ -204,19 +204,19 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 					content: ogImage,
 				},
 				{
-					name: `twitter: image`,
+					name: `twitter:image`,
 					content: ogImage,
 				},
 				{
-					name: `twitter: creator`,
-					content: site.siteMetadata?.social?.twitter || ``,
+					name: `twitter:creator`,
+					content: config.siteMetadata.social.twitter || ``,
 				},
 				{
-					name: `twitter: title`,
+					name: `twitter:title`,
 					content: title,
 				},
 				{
-					name: `twitter: description`,
+					name: `twitter:description`,
 					content: metaDescription,
 				},
 			].concat(meta)}
