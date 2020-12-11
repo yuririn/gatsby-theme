@@ -25,14 +25,12 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 		`
 	)
 
-
-
-	const domain = `https://ginneko-atelier.com`
+	const domain = config.siteMetadata.siteUrl
 	const metaDescription = description || site.siteMetadata.description
 	const defaultTitle = site.siteMetadata?.title
 	const ogImage = `${domain}${image}` || site.siteMetadata?.image
 	const pageName = `${title} | ${defaultTitle}`;
-	let blogUrl = location.pathname !== '/' ? location.href : domain
+	let blogUrl = location ? location.href : domain
 	const isRoot = domain === blogUrl ? true : false
 	let page = isRoot ? 'WebSite' : 'WebPage'
 	const modified = modifieddate ? modifieddate : date

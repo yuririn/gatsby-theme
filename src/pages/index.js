@@ -24,7 +24,7 @@ const BlogIndex = ({ data, location }) => {
 				<SEO
 					title="All posts"
 					image={ogpSrc}
-					location="/"
+					location={location}
 				/>
 				<p>
 					No blog posts found. Add markdown posts to "content/blog" (or the
@@ -90,7 +90,7 @@ const BlogIndex = ({ data, location }) => {
 					<TagsList />
 				</section>
 			</div>
-		</Layout >
+		</Layout>
 	)
 }
 
