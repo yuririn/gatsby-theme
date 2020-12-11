@@ -37,7 +37,7 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 	const modified = modifieddate ? modifieddate : date
 
 	if (type === 'archive' || type === 'blogs') {
-		blogUrl = String(blogUrl).replace(/page\/([0-9])+/, '')
+		blogUrl = String(blogUrl).replace(/\/page\/([0-9])+/, '')
 	}
 
 
