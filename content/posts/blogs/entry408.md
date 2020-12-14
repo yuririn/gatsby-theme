@@ -18,6 +18,7 @@ lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテ
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
+7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、 Gatsby Starter Blogを改造しています。同じテーマでないと動かない可能性があります。

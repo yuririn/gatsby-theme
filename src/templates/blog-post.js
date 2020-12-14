@@ -67,14 +67,15 @@ const BlogPostTemplate = ({ data, location }) => {
 						</dl>
 						<TagsList tags={post.frontmatter.tags} />
 						<Description texts={post.frontmatter.lead} />
+
 						<ul class="c-snsBtns u-mblg">
 							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--fb" to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Facebook</span></Link></li>
 							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--tw" to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Twitter</span></Link></li>
 							<li class="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" class="c-snsBtns__item--hateb" rel="noopener nofollow"><span class="c-snsBtns__label">はてB!</span></Link></li>
 							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Pocket</span></Link></li>
 						</ul>
-						<Toc data={data.markdownRemark.tableOfContents} />
 						<Prof></Prof>
+						<Toc data={data.markdownRemark.tableOfContents} />
 					</div>
 				</header>
 				<div class="l-container--md">

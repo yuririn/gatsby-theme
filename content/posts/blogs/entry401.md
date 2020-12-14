@@ -18,6 +18,7 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
+7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 
 ## Gatsby(JS)とは？
 Gatsby(JS)はReactで作られた**静的サイトジェネレーター**です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>

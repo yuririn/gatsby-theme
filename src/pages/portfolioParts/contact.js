@@ -7,7 +7,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const Contact = () => (
 
-	<section className={CommonStyles.myMd}>
+	<section className={CommonStyles.myMd} id="Contact">
 		<header className={CommonStyles.headingLg}>
 			<h2>Contact</h2>
 		</header>

@@ -29,16 +29,14 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 	const domain = config.siteMetadata.siteUrl
 	const metaDescription = description || site.siteMetadata.description
 	const defaultTitle = site.siteMetadata?.title
-	const ogImage = `${domain}${image}` || site.siteMetadata?.image
+	const ogImage = image ? `${config.siteMetadata.siteUrl}${image}` : config.siteMetadata.image
 	const pageName = `${title} | ${defaultTitle}`;
 	let blogUrl = location ? location.href : domain
 	const isRoot = `${domain}/` === blogUrl ? true : false
 	let page = isRoot ? 'WebSite' : 'WebPage'
 	const modified = modifieddate ? modifieddate : date
 
-	if (type === 'archive' || type === 'blogs') {
-		blogUrl = String(blogUrl).replace(/\/page\/([0-9])+/, '')
-	}
+	blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, '')
 
 
 
@@ -95,8 +93,8 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 				url: ogImage,
 			},
 			description: description,
-			datePublished: date.replace('.', '-').replace('.', '-'),
-			dateModified: modified.replace('.', '-').replace('.', '-'),
+			datePublished: date.replace(/\./g, '-'),
+			dateModified: modified.replace(/\./g, '-'),
 			mainEntityOfPage: {
 				'@type': 'WebPage',
 				'@id': blogUrl

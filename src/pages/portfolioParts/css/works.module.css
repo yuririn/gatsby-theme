@@ -1,59 +1,92 @@
-@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
-.headingMd {
-    text-align: center;
-}
-.bg_gray{
-	background: #eee;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-.headingMd > * {
-	font-weight: bold;
-	margin: 0;
-    display: inline-block;
-    position: relative;
-    padding: 0 20px;
-    font-size: 2rem;
-}
+.WorksList {
+	margin-top: 30px;
 
-.headingMd > *::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 8%;
-    -webkit-transform: rotate(30deg);
-    transform: rotate(30deg);
-    display: block;
-    width: 2px;
-    height: 80%;
-    background: #333;
-    -webkit-box-shadow: 5px -2px 0 #333;
-    box-shadow: 5px -2px 0 #333;
 }
-
-.headingMd > *::after {
-	content: '';
-    position: absolute;
-    left: 0;
-    top: 8%;
-    -webkit-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-    display: block;
-    width: 2px;
-    height: 80%;
-    background: #333;
-    -webkit-box-shadow: -5px -2px 0 #333;
-    box-shadow: -5px -2px 0 #333;
+.WorksList article{
+	padding: 10px 3px 3px;
+	border: 8px solid #eee;
+	margin-bottom: 4px;
 }
-.center {
-	text-align: center;
+.WorkItem h3{
+		font-weight: bold;
+		font-size: 1.8rem;
+		text-align: center;
+		margin-bottom: 5px;
 }
-/* メディアクエリ */
-@media screen and (min-width: 768px){
-	.headingMd {
-		margin-bottom: 30px;
+	.WorksList .WorkItemImg{
+		display: block;
+		margin-top: 10px;
 	}
-	.headingMd > *{
-		font-size: 2.8rem;
+@media screen and (min-width: 400px){
+	.WorksList {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.WorksList {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.WorksList article{
+		width: 50%;
+		padding: 1px;
+		position: relative;
+		overflow: hidden;
+		font-size: 1.4rem;
+		border: none;
+		margin-bottom: 0;
+	}
+
+	.WorksList .WorkItemImg{
+		display: block;
+		transition: .3s;
+		margin-top: 0;
+	}
+
+	.WorksList article:hover .WorkItemImg{
+		transform: scale(1.2) rotate(-5deg);
+	}
+
+	.WorkItem {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		z-index: 1;
+		opacity: 0;
+		color: #ffffff;
+		transition: .3s;
+		background: rgba(0,0,0,.8);
+	}
+
+	.WorkItem:hover {
+		opacity: 1;
+	}
+
+	.WorkItem h3{
+		font-weight: bold;
+		font-size: 2rem;
+		margin-bottom: 10px;
+	}
+
+}
+
+@media screen and (min-width: 768px){
+	.WorksList article{
+		width: 33.333%;
+	}
+}
+@media screen and (min-width: 1200px){
+	.WorkItem h3{
+		font-size: 2.6rem;
+	}
+	.WorksList article{
+		width: 25%
 	}
 }

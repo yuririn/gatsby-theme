@@ -1,6 +1,6 @@
 ---
 title: Gatsbyブログサイト移行物語6~個別ページテンプレート作成~
-date: 2020-12-13
+date: 2020-12-14
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front end
@@ -18,6 +18,7 @@ lead: ["GatsbyでプライバシーポリシーやAboutページなど記事一�
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. 個別ページテンプレート作成（←イマココ）
+7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -166,7 +167,7 @@ description: 「銀ねこアトリエ」は私の技術的なチャレンジや�
 ## まとめ・個別ページの追加はとってもカンタン
 とってもカンタンでしたね！
 
-次回「*Gatsbyブログサイト移行物語*」ではGatsbyサイトでのOGP画像出力やプラグインHelmetを使ったSEO対応の記事になる予定です。
+次回「*Gatsbyブログサイト移行物語*」ではGatsbyサイトでの[OGP画像出力やプラグインHelmetを使ったSEO対応](/blogs/entry418/)の記事です。
 
 皆さんのコーディングライフの一助となれば幸いです。
 

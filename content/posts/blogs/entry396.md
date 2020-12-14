@@ -709,7 +709,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 参考にしてください。
 
 <a class="article-link" href="/blogs/entry370">
-<section><div class="article-link__img"><img alt="CSSを駆使してラジオボタン・チェックボックスをカスタマイズ" src="https://ginneko-atelier.com/application/files/cache/thumbnails/fcad62ff98a260414a81a8331d20f9f1.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<section><div class="article-link__img"><img alt="CSSを駆使してラジオボタン・チェックボックスをカスタマイズ" src="/static/b42da5d41cf4e96d53403505a0b0a1bb/69585/entry393.png" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">CSSを駆使してラジオボタン・チェックボックスをカスタマイズ</div>
 <p class="description">CSSでラジオボタン・チェックボックスの見た目を変える方法を詳しく解説しました。HTML/C･･･</p>
 <p>

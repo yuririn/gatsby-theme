@@ -7,7 +7,7 @@ import Faq from './faq'
 import Image from "./../../components/image"
 
 const Voice = () => (
-	<section className={CommonStyles.myMd}>
+	<section className={CommonStyles.myMd} id="Profile">
 		<header className={CommonStyles.headingLg}>
 			<h2>Profile</h2>
 		</header>
@@ -16,7 +16,7 @@ const Voice = () => (
 				<Image filename="camille.jpg" className="c-profile__img u-mblg" />
 			</div>
 			<h3 className={CommonStyles.headingSm}>かみーゆ（ビダンじゃないほう）/フロントエンドエンジニア</h3>
-			<p>広島生まれ広島育ちのIT戦士です。気が付いたらフロントエンドエンジニアになっていました。<br />さらに最近気が付いたのですが、いつの間にかフィリピン・セブ島に来て、しかもロックダウン（コミュニティ単位での隔離）に巻き込まれてます。人生っておもしろい。</p>
+			<p className={CommonStyles.myMd}>広島生まれ広島育ちのIT戦士です。気が付いたらフロントエンドエンジニアになっていました。<br />さらに最近気が付いたのですが、いつの間にかフィリピン・セブ島に来て、しかもロックダウン（コミュニティ単位での隔離）に巻き込まれてます。人生っておもしろい。</p>
 		</div>
 		<div className={CommonStyles.bg_gray}>
 			<Feature />

@@ -5,6 +5,8 @@ pagetype: page
 hero: common/newogp.png
 description: 「銀ねこアトリエ」は私の技術的なチャレンジや生活や生き方を綴った公開備忘録です。
 ---
+![ビールじゃろって言いつつ缶チューハイを飲むかみーゆ](./images/about.jpg)
+
 「銀ねこアトリエ」は私の技術的なチャレンジ・考え方や生き方を綴った公開備忘録です。
 
 私だからできることを発信しています。Web制作など、ご興味のある方はTwitter[@LirioY](https://twitter.com/LirioY)にDMください。
