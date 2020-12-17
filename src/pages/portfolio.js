@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 
 import SEO from "../components/seo"
-// import Image from "../components/image"
 
 // CSS
 import HeaderStyles from "./portfolioParts/css/header.module.css"
@@ -12,10 +11,9 @@ import CommonStyles from "./portfolioParts/css/common.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullhorn } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import Image from "../components/image"
+import { faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
+// components
 import Voice from './portfolioParts/voice'
 import Works from './portfolioParts/works'
 import Profile from './portfolioParts/profile'

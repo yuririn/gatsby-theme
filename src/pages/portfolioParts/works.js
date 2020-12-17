@@ -19,7 +19,7 @@ const Works = () => (
 
 				<section className={WorksStyles.WorkItem}>
 					<h3>人材プロジェクトアシ</h3>
-					<p>広島県の人材育成プロジェクトのアシスタントをしていました。2年長かったー。</p>
+					<p>広島県の人材育成プロジェクトのアシスタントをしていました。2年長かったー。気がついたらいつの間にかドメインMAされていて心の底からおったまげーション。</p>
 				</section>
 				<Image filename="portfolio/hirohata.jpg" className={WorksStyles.WorkItemImg}></Image>
 
@@ -57,7 +57,7 @@ const Works = () => (
 				<Link to="https://dream-tech.jp/" target="_blank" rel="noopener nofollow">
 					<section className={WorksStyles.WorkItem}>
 						<h3>保守・運用</h3>
-						<p>子どもプログラミングスクールのWebサイトの保守運用を行なっています。</p>
+						<p>子どもプログラミングスクールのWebサイトの保守運用を行なっています。大好きなお客様には命がけで寄り添います。</p>
 					</section>
 					<Image filename="portfolio/happy-chime.jpg" className={WorksStyles.WorkItemImg}></Image>
 
@@ -68,7 +68,7 @@ const Works = () => (
 				<Link to="/blogs/entry356/">
 					<section className={WorksStyles.WorkItem}>
 						<h3>ITセミナー登壇</h3>
-						<p>2020/2/2に広島に帰省し、オフショアの話しました。コロナの営業で開催が危ぶまれましたが、80人近くの方にご参加いただきました。</p>
+						<p>2020/2/2に広島に帰省し、オフショアの話しました。コロナの営業で開催が危ぶまれましたが、80人ぐらいの方にご参加いただきました。</p>
 					</section>
 					<Image filename="2020/entry356.png" className={WorksStyles.WorkItemImg}></Image>
 				</Link>
@@ -93,7 +93,7 @@ const Works = () => (
 				<Link to="/blogs/entry369/">
 					<section className={WorksStyles.WorkItem}>
 						<h3>キャリアアドバイス</h3>
-						<p>キャリアに悩んでいる元同僚に対して書いた記事。30才過ぎてもエンジニアに離れる</p>
+						<p>キャリアに悩んでいる元同僚に対して書いた記事。自分で限界を決めないで、30才過ぎてもプログラマーになれる。</p>
 					</section>
 					<Image filename="2020/entry369.jpg" className={WorksStyles.WorkItemImg}></Image>
 				</Link>

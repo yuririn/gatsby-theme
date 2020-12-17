@@ -20,6 +20,7 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
+8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
