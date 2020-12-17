@@ -1,13 +1,14 @@
 ---
 title: Gatsbyブログサイト移行物語7~プラグインHelmetでSEO調整~
 date: 2020-12-16
+modifieddate: 2020-12-17
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front end
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
-description: Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。
-lead: ["Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。"]
+description: Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。
+lead: ["Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。","※FBシェアにおけるcanonilcal属性を修正しました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -366,6 +367,7 @@ return (
 ### URLの正規化をする
 このサイトはページネーションがあるので投稿が増えると、一覧ページが無限に増えます。
 類似ページが何個もあると検索エンジンに認識されるのはSEO的にもよろしくないので、カノニカル属性を使ってURLを正規化します。
+※ FBシェアにおけるパラメーターの不具合を発見しcanonilcal属性を修正しました。
 
 ```html
 <link rel="canonical" href="URL"/>
@@ -396,6 +398,7 @@ URLに`/page/数字/`を含む場合は除去し、そのURLをcanonical属性�
   let blogUrl = location ? location.href : `${config.siteMetadata.siteUrl}/`
   // ページネーション削除
   blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, '')
+  blogUrl = blogUrl.replace(/\?(.*?)$/, '')
 
   // ~ 省略 ~
 
