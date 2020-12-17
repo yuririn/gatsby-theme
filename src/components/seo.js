@@ -37,6 +37,7 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 	const modified = modifieddate ? modifieddate : date
 
 	blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, '')
+	blogUrl = blogUrl.replace(/\?(.*?)$/, '')
 
 
 
