@@ -217,6 +217,10 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 					name: `twitter:description`,
 					content: metaDescription,
 				},
+				{
+					name: `og:url`,
+					content: blogUrl,
+				},
 			].concat(meta)}
 		>
 			<link rel="canonical" href={blogUrl}></link>
