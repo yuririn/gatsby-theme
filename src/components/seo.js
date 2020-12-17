@@ -35,8 +35,9 @@ const SEO = ({ description, lang, meta, title, image, location, modifieddate, da
 	const isRoot = `${domain}/` === blogUrl ? true : false
 	let page = isRoot ? 'WebSite' : 'WebPage'
 	const modified = modifieddate ? modifieddate : date
-
-	blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, '')
+	if (type === 'archive' || type === 'blogs') {
+		blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, '')
+	}
 	blogUrl = blogUrl.replace(/\?(.*?)$/, '')
 
 

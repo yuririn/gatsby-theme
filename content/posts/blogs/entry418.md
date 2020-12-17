@@ -397,8 +397,9 @@ URLに`/page/数字/`を含む場合は除去し、そのURLをcanonical属性�
 
   let blogUrl = location ? location.href : `${config.siteMetadata.siteUrl}/`
   // ページネーション削除
-  blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, '')
-  blogUrl = blogUrl.replace(/\?(.*?)$/, '')
+  if (type === 'archive' || type === 'blogs') {
+    blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, '')
+  }
 
   // ~ 省略 ~
 
@@ -410,11 +411,11 @@ URLに`/page/数字/`を含む場合は除去し、そのURLをcanonical属性�
       title={title}
       titleTemplate={pageName}
       meta={[
-		// ~ 省略 ~
-		{
-			name: `og:url`,
-			content: blogUrl,
-		},
+    // ~ 省略 ~
+    {
+      name: `og:url`,
+      content: blogUrl,
+    },
       {
       ].concat(meta)}
     >
