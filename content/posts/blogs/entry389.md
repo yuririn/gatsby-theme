@@ -296,8 +296,9 @@ iPhoneの追跡機能を使ってみたら、すでにマニラにありまし�
 
 2020年、**フィリピン人の最低賃金は1日385ペソ（約800円）**とのこと。
 
-しかも、**現在失業率は約50%**。<br><br>
+しかも、**8月時点で失業率は45.5%**。
 
+<small>[CNN Philippines](https://www.cnnphilippines.com/news/2020/8/16/sws-survey-adult-joblessness.html)参照</small><br><br>
 
 
 ロックダウンで僅かな補助金は出たそうですが、もらえる人は限られていたそうです。
