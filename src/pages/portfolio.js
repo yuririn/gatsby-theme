@@ -19,14 +19,15 @@ import Works from './portfolioParts/works'
 import Profile from './portfolioParts/profile'
 import Contact from './portfolioParts/contact'
 
-const Portfolio = ({ location }) => {
+const Portfolio = ({ data, location }) => {
 	const nav = ['Profile', 'Works', 'Contact']
+	const img = data.allFile.edges[0].node.childImageSharp.fluid.src;
 	return (
 		<div className={HeaderStyles.default}>
 			<SEO
 				title="広島生まれ、広島育ちのIT戦士を紹介するサイト"
 				description="広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。"
-				image="/static/213311b9bb7be131aae7771033b326b7/ee604/ogp.png"
+				image={img}
 				location={location}
 			/>
 			<header className={HeaderStyles.header}>
@@ -109,3 +110,30 @@ const Portfolio = ({ location }) => {
 }
 
 export default Portfolio
+export const portfolioQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+	}
+	allFile(
+	filter: {
+		relativePath: {eq: "portfolio/portfolio-ogp.png"}
+		sourceInstanceName: {eq: "assets"}
+
+	}){
+        edges {
+          node {
+            name
+            relativePath
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+	  }
+	}
+`
