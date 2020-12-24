@@ -131,7 +131,7 @@ module.exports = {
 			resolve: `gatsby-plugin-sitemap`,
 			options: {
 				output: `/sitemap.xml`,
-				exclude: [`/blogs/page/*`, `/blogs/tags/*/page/*`, `/blogs/*/page/*`],
+				exclude: [`/blogs/page/*`, `/blogs/tags/*/page/*`, `/blogs/*/page/*`, `/contact/thanks/`],
 			}
 		},
 		`gatsby-transformer-sharp`,
