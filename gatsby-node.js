@@ -8,6 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	// Define a template for blog post
 	const blogPost = path.resolve(`./src/templates/blog-post.js`)
+	const contact = path.resolve(`./src/templates/contact.js`)
 	// const portfolioPost = path.resolve(`./src/pages/portfolio.js`)
 	const blogList = path.resolve(`./src/templates/blogs.js`)
 	const pagePost = path.resolve(`./src/templates/pages.js`)
@@ -82,8 +83,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 			}
 
 		})
-		// JSONファイルに出力
-		// fs.writeFileSync('./static/search.json', JSON.stringify(search, null, 4))
+
+		createPage({
+			path: '/contact/',
+			component: contact,
+			context: {
+			},
+		})
+
+		createPage({
+			path: '/contact/thanks/',
+			component: contact,
+			context: {
+			},
+		})
 
 		posts.forEach((post) => {
 			if (post.frontmatter.pagetype === 'page') {

@@ -26,6 +26,11 @@ lead: ["将来海外移住を考えている方へ。フィリピンでは最長
 
 フィリピンの首都マニラに比べ**セブ島は治安が比較的いい**からです。
 
+### YouTubeも公開しました！！
+YouTubeも公開しましました！！引っ越し当日の様子など納めてますのでよろしければご覧ください！
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0HIdlacQMw0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## フィリピンには外国人向けのキレイなコンドミニアムがたくさんある
 ![フィリピンには外国人向けのキレイなコンドミニアムがたくさんある](./images/2020/12/entry417-0.jpg)
 
@@ -34,6 +39,8 @@ lead: ["将来海外移住を考えている方へ。フィリピンでは最長
 しかも家具や電化製品も備え付け。手ぶらで入居できます。
 
 24時間警備員がいたり、コンドミニアムによっては週1度ハウスキーピングが入るところもあります。
+
+
 
 ### 現在ロックダウンの影響でコンドミニアムが安い！
 2020年4月より*ロックダウンの影響で外国人居住者は激減*しました。<br><br>

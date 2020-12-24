@@ -30,7 +30,7 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 私が2年前、テキトーに作ってヘッドハントされたきっかけとなったページです。**ぶっちゃけ中身はひどい**です。
 
 <a class="article-link" href="/portfolio/">
-<section><div class="article-link__img"><img alt="コピペでOK！セレクトボックス（プルダウンメニュー）のカスタマイズ方法" src="/static/213311b9bb7be131aae7771033b326b7/ee604/ogp.png" width="150" height="113" class=""></div><div class="article-link__main">
+<section><div class="article-link__img"><img alt="広島生まれ、広島育ちのIT戦士を紹介するサイト" src="/static/213311b9bb7be131aae7771033b326b7/ee604/portfolio-ogp.png" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">広島生まれ、広島育ちのIT戦士を紹介するサイト</div>
 <p class="description">広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介し･･･</p>
 <p>
