@@ -88,7 +88,7 @@ const Form = () => {
 		<div>
 			<p>銀ねこアトリエでは各種相談を受けつけております。まずはお気軽にご相談ください。</p>
 			<div className={ContactStyles.contact}>
-				<form name="contact" method="POST" data-netlify="true" action="/contact/thanks/">
+				<form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/contact/thanks/">
 					<input type="hidden" name="form-name" value="contact" />
 					<dl>
 						<dt>ご相談の種類</dt>
@@ -103,9 +103,9 @@ const Form = () => {
 							}
 							<Detail name={value}></Detail>
 						</dd>
-						<dt>お名前</dt>
+						<dt>お名前<span>必須</span></dt>
 						<dd><input type="text" name="name" required onChange={setName} /></dd>
-						<dt>メールアドレス</dt>
+						<dt>メールアドレス<span>必須</span></dt>
 						<dd><input type="email" name="email" required onChange={setEmail} /><p className={ContactStyles.error}>{emailError}</p></dd>
 						<dt>メッセージ</dt>
 						<dd><textarea type="text" name="message" /></dd>
