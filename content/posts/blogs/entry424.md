@@ -249,6 +249,18 @@ lead: ["日本のみなさん、フェイスシールドは普段使ってます
 * お手頃さ : *不明*
 * ゆったり感 : *5*
 
+## 選手権なので順位発表します！！…の前に小休止。YouTubeもあるよ！
+
+ブログの元ネタです！少し内容も違います。
+
+ぜひこちらもご覧ください！
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VuHVkKR0Xkw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+チャンネル登録してくれたら跳んで喜びます！好き❤️<br>
+↓↓↓↓↓<br>
+[かみーゆちゃんねる](https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw)
+
 ## 結論・一番オススメフェイスシールドは？
 以上5つのフェイスシールドを紹介しました。
 
@@ -291,14 +303,6 @@ lead: ["日本のみなさん、フェイスシールドは普段使ってます
 ![マクタンに現れた不審者](./images/2020/12/entry424-16.jpg)
 
 *ニューノーマル*どころか、見事に*ニューアブノーマル*です。
-
-## YouTubeもあるよ！
-
-ブログの元ネタです！少し内容も違います。
-
-ぜひこちらもご覧ください！
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VuHVkKR0Xkw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## まとめ・フィリピンでは日本で入手困難なフェイスシールドがお手頃価格で手に入る
 
