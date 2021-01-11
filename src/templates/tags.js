@@ -25,9 +25,9 @@ const Tags = ({ pageContext, data, location }) => {
 				type='archive'
 			/>
 			<div className="page-template-archive">
-				<div class="p-pageHeader">
-					<div class="p-pageHeader__main">
-						<h1 class="p-pageHeader__heading">{tag}</h1>
+				<div className="p-pageHeader">
+					<div className="p-pageHeader__main">
+						<h1 className="p-pageHeader__heading">{tag}</h1>
 						<p>{totalCount}記事あります</p>
 					</div>
 					<Image filename="common/ganre_common.jpg" className="p-pageHeader__img"></Image>
@@ -45,17 +45,17 @@ const Tags = ({ pageContext, data, location }) => {
 										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
 										key={slug}
 									>
-										<Link to={slug} itemProp="url" className="p-entryCard__img" >
+										<Link to={slug} className="p-entryCard__img" >
 											{hero ?
 
 												<Image filename={hero} />
 												: <Image filename="common/dummy.png" />
 											}
-											<div class="p-entryCard__date">
+											<div className="p-entryCard__date">
 												{date}
 											</div>
 										</Link>
-										<Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+										<Link to={slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
 										<div className="p-entryCard__footer">
 											<div className="p-entryCard__footer">
 												<TagList tags={tags} />

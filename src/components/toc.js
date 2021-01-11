@@ -4,8 +4,8 @@ const Toc = props => {
 	const list = props.data.replace(/(ul>)/gi, 'ol>');
 
 	return (
-		<div class="p-box--gray u-mblg">
-			<input type="checkbox" class="mokuji" id="mokuji" />
+		<div className="p-box--gray u-mblg">
+			<input type="checkbox" className="mokuji" id="mokuji" />
 			<label className="c-content__heading" for="mokuji">目次</label>
 			<div className="c-editArea mokujiList">
 

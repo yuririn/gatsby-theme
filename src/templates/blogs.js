@@ -20,9 +20,9 @@ const blogs = ({ pageContext, data, location }) => {
 				location={location}
 				type='blogs'
 			/>
-			<div class="p-pageHeader">
-				<div class="p-pageHeader__main">
-					<h1 class="p-pageHeader__heading">ブログ一覧</h1>
+			<div className="p-pageHeader">
+				<div className="p-pageHeader__main">
+					<h1 className="p-pageHeader__heading">ブログ一覧</h1>
 					<p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
 				</div>
 				<Image filename="common/ganre_common.jpg" className="p-pageHeader__img"></Image>
@@ -38,17 +38,15 @@ const blogs = ({ pageContext, data, location }) => {
 								<article
 									className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
 								>
-									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
+									<Link to={post.fields.slug} className="p-entryCard__img" >
 										{post.frontmatter.hero ?
 
 											<Image filename={post.frontmatter.hero} />
 											: <Image filename="common/dummy.png" />
 										}
-										<div class="p-entryCard__date">
-											{post.frontmatter.date}
-										</div>
+										<div className="p-entryCard__date"><time date={post.frontmatter.date.replace(/\./g, '-')}>{post.frontmatter.date}</time></div>
 									</Link>
-									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+									<Link to={post.fields.slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
 									<div className="p-entryCard__footer">
 										<div className="p-entryCard__footer">
 											<div className="p-entryCard__footer">

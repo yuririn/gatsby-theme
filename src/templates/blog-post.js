@@ -50,50 +50,50 @@ const BlogPostTemplate = ({ data, location }) => {
 
 						</div>
 					</div>
-					<div class="l-container--md">
+					<div className="l-container--md">
 						<BreadCrumbList type="blog" current={post.frontmatter.title} />
-						<h1 class="c-article__heading">{post.frontmatter.title}</h1>
+						<h1 className="c-article__heading">{post.frontmatter.title}</h1>
 						<dl className="c-article__date">
 							<dt>公開日</dt>
-							<dd>{post.frontmatter.date}</dd>
+							<dd><time date={post.frontmatter.date.replace(/\./g, '-')}>{post.frontmatter.date}</time></dd>
 							{post.frontmatter.modifieddate ?
-								<dt>更新日</dt>
+								<dt>メンテナンス日</dt>
 								: ''
 							}
 							{post.frontmatter.modifieddate ?
-								<dd>{post.frontmatter.modifieddate}</dd>
+								<dd><time date={post.frontmatter.modifieddate.replace(/\./g, '-')}>{post.frontmatter.modifieddate}</time></dd>
 								: ''
 							}
 						</dl>
 						<TagsList tags={post.frontmatter.tags} />
 						<Description texts={post.frontmatter.lead} />
 
-						<ul class="c-snsBtns u-mblg">
-							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--fb" to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Facebook</span></Link></li>
-							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--tw" to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Twitter</span></Link></li>
-							<li class="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" class="c-snsBtns__item--hateb" rel="noopener nofollow"><span class="c-snsBtns__label">はてB!</span></Link></li>
-							<li class="c-snsBtns__item"><Link class="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Pocket</span></Link></li>
+						<ul className="c-snsBtns u-mblg">
+							<li className="c-snsBtns__item"><Link className="c-snsBtns__item--fb" to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`} target="_blank" target="_blank" rel="noopener nofollow"><span className="c-snsBtns__label">Facebook</span></Link></li>
+							<li className="c-snsBtns__item"><Link className="c-snsBtns__item--tw" to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span className="c-snsBtns__label">Twitter</span></Link></li>
+							<li className="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" className="c-snsBtns__item--hateb" rel="noopener nofollow"><span className="c-snsBtns__label">はてB!</span></Link></li>
+							<li className="c-snsBtns__item"><Link className="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span className="c-snsBtns__label">Pocket</span></Link></li>
 						</ul>
 						<Prof></Prof>
 						<Toc data={data.markdownRemark.tableOfContents} />
 					</div>
 				</header>
-				<div class="l-container--md">
+				<div className="l-container--md">
 					<section className="c-editArea"
 						dangerouslySetInnerHTML={{ __html: post.html }}
 						itemProp="articleBody"
 					/>
 				</div>
-				<div class="l-container--md">
-					<ul class="c-snsBtns u-mblg">
-						<li class="c-snsBtns__item"><Link class="c-snsBtns__item--fb" to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Facebook</span></Link></li>
-						<li class="c-snsBtns__item"><Link class="c-snsBtns__item--tw" to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Twitter</span></Link></li>
-						<li class="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" class="c-snsBtns__item--hateb" rel="noopener nofollow"><span class="c-snsBtns__label">はてB!</span></Link></li>
-						<li class="c-snsBtns__item"><Link class="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span class="c-snsBtns__label">Pocket</span></Link></li>
+				<div className="l-container--md">
+					<ul className="c-snsBtns u-mblg">
+						<li className="c-snsBtns__item"><Link className="c-snsBtns__item--fb" to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`} target="_blank" target="_blank" rel="noopener nofollow"><span className="c-snsBtns__label">Facebook</span></Link></li>
+						<li className="c-snsBtns__item"><Link className="c-snsBtns__item--tw" to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span className="c-snsBtns__label">Twitter</span></Link></li>
+						<li className="c-snsBtns__item"><Link to={`https://b.hatena.ne.jp/entry/${perfectUrl}`} target="_blank" className="c-snsBtns__item--hateb" rel="noopener nofollow"><span className="c-snsBtns__label">はてB!</span></Link></li>
+						<li className="c-snsBtns__item"><Link className="c-snsBtns__item--pocket" to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`} target="_blank" target="_blank" rel="noopener nofollow"><span className="c-snsBtns__label">Pocket</span></Link></li>
 					</ul>
 					<dl className="c-article__tags">
 						<dt>Category</dt>
-						<dd class="cate"><Link to={`/blogs/${post.frontmatter.cateId}/`}>{post.frontmatter.category}</Link></dd>
+						<dd className="cate"><Link to={`/blogs/${post.frontmatter.cateId}/`}>{post.frontmatter.category}</Link></dd>
 					</dl>
 					<dl className="c-article__tags">
 						<dt>Tags</dt>
@@ -101,16 +101,16 @@ const BlogPostTemplate = ({ data, location }) => {
 					</dl>
 				</div>
 			</article>
-			<nav class="p-section l-container">
-				<ol class="c-pager--article">
-					<li class="c-pager--article__prev">
+			<nav className="p-section l-container">
+				<ol className="c-pager--article">
+					<li className="c-pager--article__prev">
 						{previous && (
 							<Link to={previous.fields.slug} rel="prev">
 								{previous.frontmatter.title}
 							</Link>
 						)}
 					</li>
-					<li class="c-pager--article__next">
+					<li className="c-pager--article__next">
 						{next && (
 							<Link to={next.fields.slug} rel="next">
 								{next.frontmatter.title}
@@ -125,13 +125,13 @@ const BlogPostTemplate = ({ data, location }) => {
 			<FovoriteList type="life" />
 			<FovoriteList type="career" />
 			<div className="l-container">
-				<section class="p-box--gray p-section u-text-center">
-					<h2 class="c-heading--lg">人気のタグ</h2>
+				<section className="p-box--gray p-section u-text-center">
+					<h2 className="c-heading--lg">人気のタグ</h2>
 					<Tags />
 				</section>
 			</div>
 
-		</Layout>
+		</Layout >
 	)
 }
 

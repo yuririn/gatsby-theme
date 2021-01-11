@@ -53,17 +53,15 @@ const BlogIndex = ({ data, location }) => {
 								<article
 									className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
 								>
-									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
+									<Link to={post.fields.slug} className="p-entryCard__img" >
 										{post.frontmatter.hero ?
 
 											<Image filename={post.frontmatter.hero} />
 											: <Image filename={`common/dummy.png`} />
 										}
-										<div class="p-entryCard__date">
-											{post.frontmatter.date}
-										</div>
+										<div className="p-entryCard__date"><time date={post.frontmatter.date.replace(/\./g, '-')}>{post.frontmatter.date}</time></div>
 									</Link>
-									<Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+									<Link to={post.fields.slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
 									<div className="p-entryCard__footer">
 										<div className="p-entryCard__footer">
 											<div className="p-entryCard__footer">
@@ -78,15 +76,15 @@ const BlogIndex = ({ data, location }) => {
 					</div>
 
 				</section>
-				<p class="u-text-center u-mblg"><Link to="/blogs/" className="p-btn--detail">Read More Blog</Link></p>
-				<h2 class="c-heading--lg">記事を探す</h2>
+				<p className="u-text-center u-mblg"><Link to="/blogs/" className="p-btn--detail">Read More Blog</Link></p>
+				<h2 className="c-heading--lg">記事を探す</h2>
 				<Search />
 
 				<FovoriteList type="web" />
 				<FovoriteList type="life" />
 				<FovoriteList type="career" />
-				<section class="p-box--gray p-section u-text-center">
-					<h2 class="c-heading--lg">人気のタグ</h2>
+				<section className="p-box--gray p-section u-text-center">
+					<h2 className="c-heading--lg">人気のタグ</h2>
 					<TagsList />
 				</section>
 			</div>

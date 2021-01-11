@@ -1,6 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語2~投稿ページの充実と画像設定~
 date: 2020-11-30
+modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front End
@@ -20,7 +21,8 @@ lead: ["現在GatsbyJSでサイトのリニューアル中です！","ブログ�
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
-8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
+8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
+9. [関連記事一覧出力](/blogs/entry430/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造します
 この記事は一番メジャーなテンプレート、 Gatsby Starter Blogを改造しています。同じテーマでないと動かない可能性があります。
@@ -320,13 +322,13 @@ import Image from "../components/image"
 const profile = () => {
 
   return (
-    <section class="c-profile p-section">
-      <h2 class="c-heading--lg">管理人について</h2>
+    <section className="c-profile p-section">
+      <h2 className="c-heading--lg">管理人について</h2>
       <div className="c-profile__img u-mblg">
         <Image filename="my-profile.jpg" />
       </div>
-      <div class="c-profile__content">
-        <div class="u-mblg c-editArea">
+      <div className="c-profile__content">
+        <div className="u-mblg c-editArea">
           <p >「銀ねこアトリエ」へようこそ！フロントエンドエンジニアのかみーゆです。</p>
           <ul>
             <li>日本でフロントエンドを中心に約10年Web制作</li>
@@ -339,7 +341,7 @@ const profile = () => {
           <p>好きな人といるだけでパワースポット！今は大好きな仲間と消耗しない働き方をするために計画中。
             13歳の頃から「好きなように生きて好きなように死ぬ」が人生のKPI。<br />「楽しいか」、「かっこいいか」でやることを判断・取捨択一しています。好きなものは肉とビール。</p>
         </div>
-        <p class="u-text-center"><Link to="/about" className="p-btn--detail">About Me</Link></p>
+        <p className="u-text-center"><Link to="/about" className="p-btn--detail">About Me</Link></p>
       </div>
     </section >
   )

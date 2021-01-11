@@ -58,7 +58,7 @@ const Pagination = ({ num, current, type }) => {
 
 	if (num < 6) {
 		return (
-			<div class="ccm-pagination-wrapper">
+			<div className="ccm-pagination-wrapper">
 				<ol className="c-pager--archive p-section">
 					<Prev current={current} num={num} type={type} />
 					{(array || []).map(i => (
@@ -80,7 +80,7 @@ const Pagination = ({ num, current, type }) => {
 				}
 
 				return (
-					<div class="ccm-pagination-wrapper">
+					<div className="ccm-pagination-wrapper">
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
 							{(array || []).map(i => (
@@ -103,7 +103,7 @@ const Pagination = ({ num, current, type }) => {
 					array.push(index)
 				}
 				return (
-					<div class="ccm-pagination-wrapper">
+					<div className="ccm-pagination-wrapper">
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
 							<li><Link to={`/blogs/${type}`}>1</Link></li>
@@ -125,7 +125,7 @@ const Pagination = ({ num, current, type }) => {
 				}
 
 				return (
-					<div class="ccm-pagination-wrapper">
+					<div className="ccm-pagination-wrapper">
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
 							<li><Link to={`/blogs/${type}`}>1</Link></li>

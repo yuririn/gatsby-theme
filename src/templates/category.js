@@ -36,9 +36,9 @@ const category = ({ pageContext, data, location }) => {
 				type='archive'
 			/>
 
-			<div class="p-pageHeader">
-				<div class="p-pageHeader__main">
-					<h1 class="p-pageHeader__heading">{cateName}</h1>
+			<div className="p-pageHeader">
+				<div className="p-pageHeader__main">
+					<h1 className="p-pageHeader__heading">{cateName}</h1>
 					<p>{cateDescription}</p>
 				</div>
 				<Image filename={`${cateSlug}.jpg`} className="p-pageHeader__img"></Image>
@@ -58,17 +58,17 @@ const category = ({ pageContext, data, location }) => {
 										className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
 										key={slug}
 									>
-										<Link to={slug} itemProp="url" className="p-entryCard__img" >
+										<Link to={slug} className="p-entryCard__img" >
 											{hero ?
 
 												<Image filename={hero} />
 												: <Image filename="common/dummy.png" />
 											}
-											<div class="p-entryCard__date">
-												{date}
+											<div className="p-entryCard__date">
+												<div className="p-entryCard__date"><time date={date.replace(/\./g, '-')}>{date}</time></div>
 											</div>
 										</Link>
-										<Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+										<Link to={slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
 										<div className="p-entryCard__footer">
 											<TagList tags={tags} />
 										</div>

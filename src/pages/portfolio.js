@@ -68,7 +68,7 @@ const Portfolio = ({ data, location }) => {
 				</section>
 			</main>
 			<section>
-				<div class="l-container">
+				<div className="l-container">
 					<header className={CommonStyles.headingLg}>
 						<h2>かみーゆをおススメする7つの理由</h2>
 					</header>
@@ -84,7 +84,7 @@ const Portfolio = ({ data, location }) => {
 					</ol>
 				</div>
 				<div className={CommonStyles.bg_gray}>
-					<section class="l-container">
+					<section className="l-container">
 						<header className={CommonStyles.headingMd}>
 							<h3><FontAwesomeIcon icon={faBullhorn} /> お喜びの声</h3>
 						</header>

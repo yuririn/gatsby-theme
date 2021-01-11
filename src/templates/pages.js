@@ -20,13 +20,13 @@ const PagePostTemplate = ({ data, location }) => {
 				location={location}
 			/>
 
-			<div class="l-main_contents">
+			<div className="l-main_contents">
 
 				<div className="l-container--md mt-Md"><BreadCrumbList current={post.frontmatter.title} /></div>
 				<article className="l-container--md">
 					<header>
 						<div>
-							<h1 class="c-article__heading">{post.frontmatter.title}</h1>
+							<h1 className="c-article__heading">{post.frontmatter.title}</h1>
 						</div>
 					</header>
 					<div>

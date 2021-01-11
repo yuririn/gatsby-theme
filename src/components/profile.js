@@ -5,13 +5,13 @@ import Image from "../components/image"
 const profile = () => {
 
 	return (
-		<section class="c-profile p-section">
-			<h2 class="c-heading--lg">管理人	について</h2>
+		<section className="c-profile p-section">
+			<h2 className="c-heading--lg">管理人	について</h2>
 
 			<Image filename="camille.jpg" className="c-profile__img u-mblg" />
 
-			<div class="c-profile__content">
-				<div class="u-mblg c-editArea">
+			<div className="c-profile__content">
+				<div className="u-mblg c-editArea">
 					<p >「銀ねこアトリエ」へようこそ！フロントエンドエンジニアのかみーゆです。</p>
 					<ul>
 						<li>日本でフロントエンドを中心に約10年Web制作</li>
@@ -25,7 +25,7 @@ const profile = () => {
 					<p>	好きな人といるだけでパワースポット！今は大好きな仲間と消耗しない働き方をするために計画中。
 						13歳の頃から「好きなように生きて好きなように死ぬ」が人生のKPI。<br />「楽しいか」、「かっこいいか」でやることを判断・取捨択一しています。好きなものは肉とビール。</p>
 				</div>
-				<p class="u-text-center"><Link to="/about/" className="p-btn--detail">About Me</Link></p>
+				<p className="u-text-center"><Link to="/about/" className="p-btn--detail">About Me</Link></p>
 			</div>
 		</section>
 	)

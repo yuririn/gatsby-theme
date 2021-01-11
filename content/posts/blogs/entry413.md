@@ -1,6 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語5~プラグインナシで一覧にページネーション実装~
 date: 2020-12-09
+modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front end
@@ -19,7 +20,8 @@ lead: ["記事数が増えると一覧にペーネーションが欲しくなり
 5. プラグインナシで一覧にページネーション実装（←イマココ）
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
-8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
+8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
+9. [関連記事一覧出力](/blogs/entry430/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -35,10 +37,10 @@ WordPressなど、その他のCMSに慣れていると*一覧を分割しペー�
 
 一覧ページの実装の仕方についてはこちらを参考にしてください。
 
-<a class="article-link" href="/blogs/entry408/">
-<section><div class="article-link__img"><img alt="実用性重視！使えるボタンのCSSコード・スニペット集！" src="/static/206512c4ac54a09bce7ea7c2b867aeaa/f836f/entry401.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー、タグ一覧の出力~</div>
-<p class="description">gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリー、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよ･･･</p>
+<a className="article-link" href="/blogs/entry408/">
+<section><div className="article-link__img"><img alt="実用性重視！使えるボタンのCSSコード・スニペット集！" src="/static/206512c4ac54a09bce7ea7c2b867aeaa/f836f/entry401.jpg" width="150" height="113" className=""></div><div className="article-link__main">
+<div className="article-link__main__title">Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー、タグ一覧の出力~</div>
+<p className="description">gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリー、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよ･･･</p>
 <p>
 <time datetime="2020-12-03">2020.12.03</time>
 </p>

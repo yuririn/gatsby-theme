@@ -24,11 +24,11 @@ const List = ({ item, url }) => {
 		<article className="p-entryCard c-grid__item--md6 c-grid__item--lg4">
 			<Link className="p-entryCard__img" to={url}>
 				{hero ? <Image filename={hero} /> : <Image filename="common/dummy.png" />}
-				<div class="p-entryCard__date">
+				<div className="p-entryCard__date">
 					{date}
 				</div>
 			</Link>
-			<Link to={url} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+			<Link to={url} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
 		</article>
 	)
 }
@@ -78,9 +78,9 @@ export default ({ type }) => {
 					}
 
 					return (
-						<section class="p-section l-container is-view">
+						<section className="p-section l-container is-view">
 							<h2 className="c-heading--lg">{title}</h2>
-							<div class="c-grid add-numbering">
+							<div className="c-grid add-numbering">
 								{posts.map(item => {
 									return <List item={item.node.frontmatter} url={item.node.fields.slug} key={item.node.fields.slug} />
 								}

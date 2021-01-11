@@ -1,6 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語1~インストールからNetlifyデプロイまで~
 date: 2020-11-26
+modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front End
@@ -19,7 +20,8 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
-8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
+8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
+9. [関連記事一覧出力](/blogs/entry430/)
 
 ## Gatsby(JS)とは？
 Gatsby(JS)はReactで作られた**静的サイトジェネレーター**です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>

@@ -7,9 +7,9 @@ import { faTwitter, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-
 const Header = ({ title, location }) => {
 
 	return (
-		<header class="l-header">
-			<div class="l-container">
-				<div class="c-grid--between">
+		<header className="l-header">
+			<div className="l-container">
+				<div className="c-grid--between">
 					<div id="header-logo">
 						{location === '/' ? <Logo /> : <Link to="/"><Logo /></Link>}
 
@@ -34,12 +34,12 @@ const Header = ({ title, location }) => {
 									</li>
 									<li><Link className="c-nav__navLink" to="/about/">About This Site</Link></li>
 									<li><Link className="c-nav__navLink" to="/portfolio/">Portfolio</Link></li>
-									{/* <li><Link className="c-nav__navLink" to="/contact">Contact</Link></li> */}
+									<li><Link className="c-nav__navLink" to="/contact">Contact</Link></li>
 								</ul>
 								<div>
-									<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow" class="c-nav__snsBtn"><FontAwesomeIcon icon={faTwitter} /></Link>
-									<Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" class="c-nav__snsBtn"><FontAwesomeIcon icon={faInstagram} /></Link>
-									<Link to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw" target="_blank" rel="noopener nofollow" class="c-nav__snsBtn"><FontAwesomeIcon icon={faYoutube} /></Link>
+									<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faTwitter} /></Link>
+									<Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faInstagram} /></Link>
+									<Link to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faYoutube} /></Link>
 								</div>
 							</div>
 						</div>

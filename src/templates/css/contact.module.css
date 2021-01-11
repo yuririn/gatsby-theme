@@ -125,6 +125,19 @@
 	font-size: 1.2rem;
 	margin-left: 10px;
 }
+.title {
+	font-size: 1.4em;
+	margin-bottom: 1em;
+	font-weight: bold;
+}
+.title::after {
+    margin-top: 5px;
+    content: "";
+    display: block;
+    background: #c03363;
+    width: 30px;
+	height: 2px;
+}
 @media screen and (min-width: 768px){
 	.contact{
 		margin-top: 40px;

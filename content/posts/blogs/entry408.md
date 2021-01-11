@@ -19,7 +19,8 @@ lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテ
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
-8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
+8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
+9. [関連記事一覧出力](/blogs/entry430/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、 Gatsby Starter Blogを改造しています。同じテーマでないと動かない可能性があります。
@@ -174,9 +175,9 @@ const blogs = ({ data, location }) => {
       <SEO title="ブログ一覧"
         description="「銀ねこアトリエ」の最新ブログ一覧です。"
       />
-      <div class="p-pageHeader">
-        <div class="p-pageHeader__main">
-          <h1 class="p-pageHeader__heading">最新ブログ一覧</h1>
+      <div className="p-pageHeader">
+        <div className="p-pageHeader__main">
+          <h1 className="p-pageHeader__heading">最新ブログ一覧</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
         </div>
       </div>
@@ -192,17 +193,17 @@ const blogs = ({ data, location }) => {
                   itemScope
                   itemType="http://schema.org/Article"
                 >
-                  <Link to={post.fields.slug} itemProp="url" className="p-entryCard__img" >
+                  <Link to={post.fields.slug} className="p-entryCard__img" >
                     {post.frontmatter.hero ?
 
                       <Image filename={post.frontmatter.hero} />
                       : <Image filename="common/dummy.png" />
                     }
-                    <div class="p-entryCard__date">
+                    <div className="p-entryCard__date">
                       {post.frontmatter.date}
                     </div>
                   </Link>
-                  <Link to={post.fields.slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+                  <Link to={post.fields.slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
                 </article>
               )
             })}
@@ -411,9 +412,9 @@ const category = ({ pageContext, data, location }) => {
         description={cateDescription}
       />
       <main>
-        <div class="p-pageHeader">
-          <div class="p-pageHeader__main">
-            <h1 class="p-pageHeader__heading">{cateName}</h1>
+        <div className="p-pageHeader">
+          <div className="p-pageHeader__main">
+            <h1 className="p-pageHeader__heading">{cateName}</h1>
             <p>{cateDescription}</p>
           </div>
           {`${cateSlug}.jpg`} className="p-pageHeader__img"></Image>
@@ -434,17 +435,17 @@ const category = ({ pageContext, data, location }) => {
                       itemType="http://schema.org/Article"
                       key={slug}
                     >
-                      <Link to={slug} itemProp="url" className="p-entryCard__img" >
+                      <Link to={slug} className="p-entryCard__img" >
                         {hero ?
 
                           <Image filename={hero} />
                           : <Image filename="common/dummy.png" />
                         }
-                        <div class="p-entryCard__date">
+                        <div className="p-entryCard__date">
                           {date}
                         </div>
                       </Link>
-                      <Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+                      <Link to={slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
                     </article>
                   )
                 })}
@@ -618,12 +619,12 @@ const Tags = ({ pageContext, data, location }) => {
       />
       <main>
         <div className="page-template-archive">
-          <div class="p-pageHeader">
-            <div class="p-pageHeader__main">
-              <h1 class="p-pageHeader__heading">{tag}に関する記事</h1>
+          <div className="p-pageHeader">
+            <div className="p-pageHeader__main">
+              <h1 className="p-pageHeader__heading">{tag}に関する記事</h1>
               <p>{totalCount}記事あります</p>
             </div>
-            <img class="p-pageHeader__img" src="https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg" alt=""></img>
+            <img className="p-pageHeader__img" src="https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg" alt=""></img>
           </div>
           <div className="l-container">
             <section className="p-section">
@@ -639,16 +640,16 @@ const Tags = ({ pageContext, data, location }) => {
                       itemType="http://schema.org/Article"
                       key={slug}
                     >
-                      <Link to={slug} itemProp="url" className="p-entryCard__img" >
+                      <Link to={slug} className="p-entryCard__img" >
                         {hero ?
                           <Image filename={hero} />
                           : <Image filename="common/dummy.png" />
                         }
-                        <div class="p-entryCard__date">
+                        <div className="p-entryCard__date">
                           {date}
                         </div>
                       </Link>
-                      <Link to={slug} itemProp="url" className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+                      <Link to={slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
                       <div className="p-entryCard__footer">
                         <div className="p-entryCard__footer">
                           <TagList tags={tags} />

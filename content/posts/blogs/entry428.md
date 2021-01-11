@@ -1,5 +1,5 @@
 ---
-title: Pug（旧：Jade）で時短・効率コーディングしよう！
+title: pug（旧：Jade）を使い倒して時短マークアップしよう！
 date: 2021-01-10
 hero: 2021/entry428.jpg
 pagetype: blog
@@ -9,16 +9,18 @@ tags: ["npm","HTML","pug","node"]
 description: 私はページを量産したりチームでサイトを作る時にPugという言語を使ってWebサイトを作っています。","普段webpackやgulpを使っている方なら導入のハードルも低いと思います。今回は導入の仕方と記述方法（とくに記述方法はディープ！に記載しています）をまとめました。今回はgulpやwebpackを使わないので、package.jsonさえ作ることができればすぐ始められます！とても記事は長いので目次を利用して好きなところを読んでください。
 lead: ["私はページを量産したりチームでサイトを作る時Pugという言語を使ってWebサイトを作っています。普段webpackやgulpを使っている方なら導入のハードルも低いと思います。","npmでの導入の仕方と記述方法（とくに記述方法はディープ！に記載しています）をまとめました。今回はgulpやwebpackを使わないので、package.jsonさえ作ることができればすぐ始められます！","とても記事は長いので目次を利用して好きなところを読んでください。"]
 ---
-## Pugとは？
+## pugとは？
 Pugとは、Haml（HTMLを抽象化したマークアップ言語）記法に影響を受けたJavaScriptで実装された高機能テンプレートエンジンです。
-より短いコードでキレイかつ簡潔にコードを書くことができます。
+
+*より短く、キレイかつ簡潔にコード*を書くことができます。
+
 > The general rendering process of Pug is simple. pug.compile() will compile the Pug source code into a JavaScript function that takes a data object (called “locals”) as an argument. Call that resultant function with your data, and voilà!, it will return a string of HTML rendered with your data.<br>
 > The compiled function can be re-used, and called with different sets of data.<br>
 > 公式サイト：[pug](https://pugjs.org/api/getting-started.html)
 
-昔は、Jade（ヒスイ）と呼ばれていましたが、すでに商標登録されていたのでPugに名前が変更されました（Version 2以降）。
+昔は、*Jade（ヒスイ）*と呼ばれていましたが、すでに商標登録されていたのでPugに名前が変更されました（Version 2以降）。
 
-私の考えるデメリットとメリットを紹介します。
+私の考えるpugでコーディングするデメリットとメリットを紹介します。
 
 ### 導入のメリット
 
@@ -26,9 +28,9 @@ Pugとは、Haml（HTMLを抽象化したマークアップ言語）記法に影
 * 短いコードでキレイかつ簡潔にコードが書ける
 * ヘッダーや共通部分とそれ以外を分けて書ける
 
-![Pugではヘッダーや共通部分とそれ以外を分けて書ける](./images/2021/01/entry428-1.jpg)
+![pugではヘッダーや共通部分とそれ以外を分けて書ける](./images/2021/01/entry428-1.jpg)
 
-こちらは私が作っているサイトの実際のPugファイルです。footerやheaderなどを分けてデフォルトで読み込み、主要コンテンツだけ毎度変更しています。
+こちらは私が作っているサイトの実際のpugファイルです。footerやheaderなどを分けてデフォルトで読み込み、主要コンテンツだけ毎度変更しています。
 
 ### 導入のデメリット
 
@@ -41,20 +43,22 @@ Pugとは、Haml（HTMLを抽象化したマークアップ言語）記法に影
 こちらは私が実際に利用しているLaravel mixのwebpackのコードです。タスクを書いたりしないといけないのは少し面倒ですね。
 
 ## 導入方法
-Pugはnpm経由でインストール可能です。
+pugはnpm経由でインストール可能です。
 
-npmをインストールしていることが前提です。
+npmをインストールしていることが前提です。インストールのコードは公式サイトでは以下が紹介されています。
 
 ```shell script
 npm install pug
 ```
 
-`pug-practice`というディレクトリを作ってみましょう。
+<br>今回は練習のため、`pug-practice`というディレクトリを作ってみましょう。ディレクトリー名とproject名が被らないように注意してください。
 
 npmのモジュールを管理できるようにpackage.jsonを作っておきます。VSコードであれば、ターミナルを`control + shift + @`で開くことができます。
 
 ### npm initでpackage.jsonを作成
-ディレクトリー名とproject名が被らないように注意してください。
+package.jsonを作成し、npmモジュールを管理しながら、進めていきます。
+
+package.jsonを作成は以下のコマンド。
 
 ```
 npm init
@@ -63,17 +67,20 @@ npm init
 ```
 npm init -y
 ```
-でpackage.jsonを作成可能です。通常プロジェクト名などを対話式で入力し作成していくのですが、`-y`のオプションで面倒な入力を省くことができます。
+
+通常プロジェクト名など、対話式で入力し作成していくのですが`-y`のオプションを使うと面倒な入力を省くことができます。
 
 ### npmのモジュールをインストール
-Pugをインストールします。
+次にpugをインストールします。
 
 ```shell script
 npm install pug pug-cli -D
 ```
 場合によってインストールでコケるのでsudo（管理者権限で実行）をつけてみてください。
 
-`-D`オプションで現在のプロジェクト管理下のみでモジュールが使えるようになります。
+<small>※ テンプレートを分けたい場合は、pug-cliを再インストールする必要があります。<br><a href="#テンプレート化したい場合に使う記述方法">テンプレート化したい場合に使う記述方法</a>を参照してください。</small>
+
+<br>`-D`オプションで現在のプロジェクト管理下のみでモジュールが使えるようになります。
 
 現時点ではグローバルにインストールせず、プロジェクト毎にモジュールをインストールするのが主流です。
 
@@ -105,11 +112,17 @@ package.jsonファイルが以下のようになっていたら成功です。
 ```
 
 ```js
-"pug": "pug ./src --hierarchy -o ./dist -P -w"
+"pug-w": "pug ./src --hierarchy -o ./dist -P -w"
 ```
 <small>※scriptのオプションは記事の最後にあります。</small>
 
-現在のディレクトリーの構造です。srcディレクトリーにtemplate.pugを追加します。
+実行は以下のコマンド。
+
+```
+npm run pug-w
+```
+
+<br>今回用意するディレクトリーの構造です。srcディレクトリーにindex.pugを追加します。
 ```
 /pug-practice
   ├ node_modules/
@@ -125,7 +138,7 @@ src内のファイルを更新するとコンパイルされます。`-w`オプ�
 
 ## 基本の記述方法
 
-記述方法です。永久保存版。
+記述方法です。多分永久保存版。
 
 ### 基本中の基本・単純なタグと文字列を出力したい場合
 pugの記法はタグ名+スペース+コンテンツです。閉じタグは不要です。
@@ -175,13 +188,13 @@ p!='見出し1は<h1>タグで囲みます'
 <p>見出し1は<h1>で囲みます。</p>
 ```
 ### コメント
-コメントをPug上には残して、htmlには反映したくない場合は*/（スラッシュ）2つ＋-（ハイフン）*を文前に追加。
+コメントをpug上には残して、htmlには反映したくない場合は */（スラッシュ）2つ＋-（ハイフン）*を文前に追加。
 
 ```pug
 //- ここにコメントをかく
 ```
 
-htmlのコメントとして残したい場合は*/（スラッシュ）2つ*です。
+htmlのコメントとして残したい場合は */（スラッシュ）2つ*です。
 
 ```pug
 // ここにコメントをかく
@@ -270,7 +283,7 @@ input(
 <input type="checkbox" name="agreement" checked="checked"/>
 ```
 
-<br>要素を複数行にまたいで書くこともできる。
+<br>*`（バッククォート）*を使えば、属性の値を複数行にまたいで書くこともできる。
 ```pug
 input(data-json=`
   {
@@ -289,7 +302,7 @@ input(data-json=`
 " />
 ```
 
-<br>さらに`&attributes()`を使って、後から属性を追加もできます。
+<br>さらに`&attributes()`を使って、後から属性を連想配列として追加できます。
 ```pug
 a(href="/")&attributes({'style':'color:white','target':'_blank'}) リンク
 ```
@@ -300,7 +313,7 @@ a(href="/")&attributes({'style':'color:white','target':'_blank'}) リンク
 
 ### 改行追加
 インライン扱いされるようなタグは改行されずコンパイル時美しく整形されません。
-改行を加えたい場合は*|（パイプ）2つ*を使います。
+改行を加えたい場合は *|（パイプ）2つ*を使います。
 
 
 ```pug
@@ -319,7 +332,7 @@ a(href="/blog") Blog
 
 ### 文字列の中にタグ
 文字列の中に文字を入れる方法が2つあります。
-1つは*|（パイプ）*を使う方法です。
+1つは *|（パイプ）*を使う方法です。
 
 ```pug
 p
@@ -352,7 +365,7 @@ style.
   }
 
 script.
-  let pug = 'Hello, Pug!!!';
+  let pug = 'Hello, pug!!!';
   console.log(pug);
 ```
 
@@ -366,15 +379,17 @@ script.
 </style>
 
 <script>
-  let pug = 'Hello, Pug!!!';
+  let pug = 'Hello, pug!!!';
   console.log(pug);
 </script>
 ```
 ## プログラミング的記述方法
 分岐や変数、ループの書き方です。
 
+ちょっと難しくなりますが、ムリに使わなくてもpugは十分書けます。
+
 ### 変数
-ちょっと難しくなります。Pugでは変数が使えます。何気に便利。
+pugでは変数が使えます。何気に便利。コンテンツとして出力したいときは `#{}` の中に記入します。
 
 ```pug
 - var name = "aaa"
@@ -397,7 +412,7 @@ input(type="text" value=name)
 input(type="text" value=name + 'です')
 ```
 
-<br>文字列と混ぜるときは変数を*${}*内に記入し*`（バッククオート）*で囲んだほうが可読性は上がります。
+<br>文字列と混在させるときは変数を `${}` 内に記入し *`（バッククオート）*で囲むと前述したものより可読性が上がります。
 
 ```pug
 //- 変数 + 文字列
@@ -424,7 +439,7 @@ h1(class=toppage ? 'is-top' : 'is-lower') 見出し
 <h1 class="is-top">見出し</h1>
 ```
 
-<br>そのまま変数を出力したい場合は*\（バックスラッシュ）*を使用します。
+<br>そのまま変数を出力したい場合は *\（バックスラッシュ）*を使用します。
 
 ```pug
 p \#{pug}は変数です。
@@ -432,7 +447,7 @@ p \#{pug}は変数です。
 
 出力結果です。
 ```html
-p \#{pug}は変数です。
+<p>#{pug}は変数です。</p>
 ```
 
 <br>`&attributes()`を使えば、属性を配列に渡して値を追加可能です。
@@ -448,7 +463,7 @@ a(href="/")&attributes(attributes) リンク
 ```
 
 ### ifやcaseなどの分岐処理
-if文です。ヘッダーロゴのリンクをつけるつけないなどの判定によく使います。
+*if文*です。ヘッダーロゴのリンクをつけるつけないなどの判定によく使います。
 
 ```pug
 - var pageId = 'home'
@@ -464,7 +479,7 @@ else
 <h1>my site</h1>
 ```
 
-<br>いわゆるswhich分のような書き方もできます。
+<br>いわゆる*swhich文*のような書き方もできます。
 
 ```pug
 - var  pageTemplate = 'contact'
@@ -497,7 +512,7 @@ case pageTemplate
 ### for、each、while文などのループ処理
 ループもできます。
 
-まずはfor文から。
+まずは*for文*から。
 
 ```pug
 ul
@@ -515,7 +530,7 @@ ul
   <li class="item">リスト03</li>
 </ul>
 ```
-<br>while文も使えます。出力結果は先ほどのfor文と一緒です。
+<br>*while文*も使えます。出力結果は先ほどの*for文*と一緒です。
 ```pug
 - var n = 0;
 ul
@@ -523,7 +538,7 @@ ul
      li.item リスト0#{n++}
 ```
 
-<br>eachの方がより実用的。
+<br>*each文*はより実用的に使えると思います。
 
 ```pug
 ul
@@ -553,7 +568,7 @@ ul
 </ul>
 ```
 
-<br>連想配列パターン。共通の変数として宣言さえしておけばメニューにめっちゃ使える。
+<br>連想配列パターン。共通の変数として宣言さえしておけばメニューなんかにめっちゃ使える。
 
 三項演算子と組み合わせると、クラスに現在のページというクラスも追加できます。
 
@@ -573,7 +588,7 @@ ul
   <li><a href="/rabbit">うさぎ</a></li>
 </ul>
 ```
-<br>さらにちょいテク。pugはそもそもJSのメソッドが使えるので、値を大文字化してそのままタイトルに使う方法もあります。
+<br>さらにちょいテク。pugはそもそもJSのメソッドが使えるので、値を大文字（アッパーケース）化してそのままタイトルに使う方法もあります。
 ```pug
 ul
   each val in ['cat', 'dog', 'rabbit']
@@ -589,7 +604,7 @@ ul
 ```
 
 ### 関数・mixin
-再利用したいときはmixinに登録しておきましょう。
+再利用したいときは*mixin*に登録しておきましょう。
 ```pug
 mixin list
   ul
@@ -644,7 +659,7 @@ mixin pageHeader(pageId='top', pageName='トップページ')
   <h1>トップページ</h1>
 </header>
 ```
-<br>スプレッド構文。
+<br>スプレッド構文を利用するパターン
 
 ```pug
 mixin list(id, ...items)
@@ -665,19 +680,21 @@ mixin list(id, ...items)
 ## テンプレート化したい場合に使う記述方法
 ファイルを分けて、テンプレート化していきます。
 
-このままではコンパイル時に、*_（アンダースコア）*がついたファイルもコンパイルされてしまうので、pug-cliをGitHub – pugjs/pug-cli: Pug’s CLI interfaceから*インストールし直す*必要があります。
+このままではコンパイル時に、*_（アンダースコア）*がついたファイルもコンパイルされてしまうので、「pug-cliをGitHub – pugjs/pug-cli: Pug’s CLI interface」から*インストールし直す*必要があります。
 ```
 npm i github:pugjs/pug-cli#master -D
 ```
 
-[pug-cliで_（アンダースコア）がついたファイルやディレクトもコンパイルされてしまう問題を解決する
+参照：[pug-cliで_（アンダースコア）がついたファイルやディレクトもコンパイルされてしまう問題を解決する
 ](https://qiita.com/soarflat/items/48cec8fb19252a3fc4ad)
 
 ### include・ファイルの読み込み
-ファイルを読み込みたい場合は*include ファイルパス*です。
+ファイルを読み込みたい場合は *include+ペース+ファイルパス*です。
+
+拡張子（.pug）は省略できます。
 
 ```pug
-include _inc/_header.pug
+include _inc/_header
 ```
 ### extend・継承
 extendとblockを使って元となるファイルを継承することもできます。
@@ -704,10 +721,10 @@ append slider
   ├ node_modules/
   ├ package.json
   ├ src/
-  |  ├ _inc/
-  |  |   ├ _layout.pug（追加）
-  |  |   ├ _header.pug（追加）
-  |  |   └ _footer.pug（追加）
+  |  ├ _inc/（追加）
+  |  |  ├ _layout.pug（追加）
+  |  |  ├ _header.pug（追加）
+  |  |  └ _footer.pug（追加）
   |  └ index.pug
   └ dist/
      └ index.html（勝手に出力されます）
@@ -753,6 +770,7 @@ html
 block siteInfo
 block variables
 
+//- コンテンツ
 header
   if pageId === 'index'
     h1 #{siteName}
@@ -769,6 +787,7 @@ nav
 //- setting
 block siteInfo
 
+//- コンテンツ
 footer
   +list
   p: small (c) #{siteName}
@@ -784,6 +803,7 @@ append variables
   - var pageName = 'トップページ'
   - var pageDescription = 'ページの説明'
 
+//- コンテンツ
 append content
   h1 #{pageName}
   p test
@@ -831,9 +851,10 @@ append content
 
 npmでcliで読み込むと、webpackやgulpどちらにでもカンタンに組み込めるので便利かと思います！
 
-今回はよく忘れる変数やループ処理などのやり方を*かなりディープ*にまとめました。
+今回はよく忘れる変数やループ処理などの使い方を*かなりディープ*にまとめました。
 
-[Pugの公式サイト](https://pugjs.org/api/getting-started.html)を網羅してるのでよかったら参考にしていただけると嬉しいです。
+[pugの公式サイト](https://pugjs.org/api/getting-started.html)を結構頑張って網羅してる（つもり..
+）のでよかったら参考にしていただけると嬉しいです。
 
 次回はもう少し実務で使えるテンプレのレシピをまとめようと思います。
 

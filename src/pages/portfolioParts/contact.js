@@ -11,7 +11,7 @@ const Contact = () => (
 		<header className={CommonStyles.headingLg}>
 			<h2>Contact</h2>
 		</header>
-		<div className={CommonStyles.myMd} class="l-container">
+		<div className={CommonStyles.myMd} className="l-container">
 			<p className={CommonStyles.center}>ただいまフォーム実装中です。<br />ご用のある方はお手数ですが、<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} />LirioY</Link>までDMにてご連絡ください。</p>
 		</div>
 	</section>

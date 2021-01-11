@@ -1,6 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語8~CSSコンポーネントでオリジナルページを作ろう！！~
 date: 2020-12-19
+modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front end
@@ -20,6 +21,7 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. CSSコンポーネントでオリジナルページを作ろう！！（←イマココ）
+9. [関連記事一覧出力](/blogs/entry430/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -29,10 +31,10 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 
 私が2年前、テキトーに作ってヘッドハントされたきっかけとなったページです。**ぶっちゃけ中身はひどい**です。
 
-<a class="article-link" href="/portfolio/">
-<section><div class="article-link__img"><img alt="広島生まれ、広島育ちのIT戦士を紹介するサイト" src="/static/213311b9bb7be131aae7771033b326b7/ee604/portfolio-ogp.png" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">広島生まれ、広島育ちのIT戦士を紹介するサイト</div>
-<p class="description">広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介し･･･</p>
+<a className="article-link" href="/portfolio/">
+<section><div className="article-link__img"><img alt="広島生まれ、広島育ちのIT戦士を紹介するサイト" src="/static/213311b9bb7be131aae7771033b326b7/ee604/portfolio-ogp.png" width="150" height="113" className=""></div><div className="article-link__main">
+<div className="article-link__main__title">広島生まれ、広島育ちのIT戦士を紹介するサイト</div>
+<p className="description">広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介し･･･</p>
 <p>
 <time datetime="2018-12-20">2018.12.20</time>
 </p>
@@ -42,7 +44,7 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 
 静的ページでもともと実装していたのですが、せっかくなのでこの度Gatsby用にコードを書き直しました。
 
-![銀ねこアトリエとIT戦士のサイト](./images/2020/12/entry420-1.jpg)
+![銀ねこアトリエとIT戦士のサイト](./images/2020/12/entry421-1.jpg)
 
 この通り、本サイトとテイストがまったく違います。
 
@@ -71,7 +73,7 @@ Gatsbyでは*CSSモジュール*と言って、パーツごとにスタイルを
 
 しかも、file名を*〇〇.module.css*と命名するだけでモジュール化できます。<br>
 
-<div class="box">
+<div className="box">
 <h4><em>CSSモジュールやコンポーネントでパーツ分けする利点</em></h4>
 長年HTMLやCSSを書いていると直面する問題があります。別のパーツがCSSで汚染されたり再利用が難しかったり、それを防ぐために上書きを繰り返したりコードばっかり長くなります。<br>このように部品単位管理することで、汚染防止もできるし再利用が楽チンになります。<br>エコロジー！
 </div>
@@ -370,7 +372,7 @@ const Portfolio = ({ location }) => {
 ## まとめ・CSSモジュールでまったく違うデザインのページが作れる
 CSSモジュールを使うとまったく違うデザインのページが作れるだけじゃなく、コードも節約できます。ぜひ試してみてください。
 
-次回は、カテゴリーやタグが同じ関連記事一覧出力の仕方をご紹介します！2021年一発目の記事になると思いますのでよろしくお願いします！！！
+次回は、カテゴリーやタグが同じ[関連記事一覧出力の仕方](/blogs/entry430/)をご紹介します！2021年一発目の記事になると思いますのでよろしくお願いします！！！
 
 皆さんのコーディングライフの一助となれば幸いです。
 

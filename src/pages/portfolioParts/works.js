@@ -9,7 +9,7 @@ const Works = () => (
 		<header className={CommonStyles.headingLg}>
 			<h2>Works</h2>
 		</header>
-		<div class="l-container">
+		<div className="l-container">
 			{/* <p className={CommonStyles.center}>ただいま準備中です。今しばらくお待ちください。</p> */}
 			<p className={CommonStyles.center}>今まで作ったコンテンツや作品、やって来た実績をご紹介します｡</p>
 		</div>

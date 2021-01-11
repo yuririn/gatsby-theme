@@ -15,6 +15,7 @@ const types = [{ name: 'ウェブサイト作成の依頼', description: '簡易
 const Thanks = () => {
 	return (
 		<div>
+			<h2 className={ContactStyles.title}>お問い合わせフォームが送信されました</h2>
 			<p>お問い合わせフォームを送信いたしました。内容を拝見し、返信させていただきます。</p>
 			<p>明らかなセールスや、スパムと判断した場合は返信し兼ねますのでご了承ください。</p>
 			<p>5日経っても返信がない場合はお手数ですが、再度ご連絡をお願いします。</p>
@@ -23,7 +24,7 @@ const Thanks = () => {
 				<li><Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /> LirioY</Link></li>
 				<li><Link to="https://www.facebook.com/ginnekoatelier" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faFacebook} /> 銀ねこアトリエ</Link></li>
 			</ul>
-			<p class="u-text-center u-mblg"><a class="p-btn--detail" href="/"><FontAwesomeIcon icon={faHome} /> Home</a></p>
+			<p className="u-text-center u-mblg"><a className="p-btn--detail" href="/"><FontAwesomeIcon icon={faHome} /> Home</a></p>
 		</div>
 	)
 }
@@ -123,6 +124,7 @@ const contactTemplate = ({ data, location }) => {
 	const siteTitle = data.site.siteMetadata?.title || `Title`
 	const siteDescription = data.site.siteMetadata?.description
 	const src = data.allFile.edges[0] ? data.allFile.edges[0].node.childImageSharp.fluid.src : ''
+	console.log(location);
 
 	return (
 		<LayoutSimple location={location} title={siteTitle}>
@@ -134,20 +136,20 @@ const contactTemplate = ({ data, location }) => {
 				location={location}
 			/>
 
-			<div class="l-main_contents">
-				<div class="p-pageHeader">
-					<div class="p-pageHeader__main">
-						<h1 class="p-pageHeader__heading">お問い合わせ</h1>
-						<p class="p-pageHeader__content">お問い合わせはこちらから</p>
+			<div className="l-main_contents">
+				<div className="p-pageHeader">
+					<div className="p-pageHeader__main">
+						<h1 className="p-pageHeader__heading">Contact</h1>
+						<p className="p-pageHeader__content">お問い合わせ</p>
 					</div>
 					<Image filename="common/contact.jpg" className="p-pageHeader__img" />
 				</div>
 				<section>
-					<div class="l-container--md">
-						<div class="mb-Md mt-Xs"><BreadCrumbList current="お問い合わせ" /></div>
+					<div className="l-container--md">
+						<div className="mb-Md mt-Xs"><BreadCrumbList current="お問い合わせ" /></div>
 					</div>
-					<div class="l-container--md">
-						{location.pathname === `/contact/` ? <Form></Form> : <Thanks />}
+					<div className="l-container--md">
+						{location.pathname === `/contact/thanks/` ? <Thanks /> : <Form></Form>}
 					</div>
 				</section>
 			</div>

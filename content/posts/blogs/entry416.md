@@ -1,6 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語6~個別ページテンプレート作成~
 date: 2020-12-14
+modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front end
@@ -19,7 +20,8 @@ lead: ["GatsbyでプライバシーポリシーやAboutページなど記事一�
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. 個別ページテンプレート作成（←イマココ）
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
-8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
+8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
+9. [関連記事一覧出力](/blogs/entry430/)
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。

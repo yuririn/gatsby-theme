@@ -11,8 +11,8 @@ const Voice = () => (
 		<header className={CommonStyles.headingLg}>
 			<h2>Profile</h2>
 		</header>
-		<div className={CommonStyles.myMd} class="l-container" >
-			<div class="c-profile__img u-mblg">
+		<div className={CommonStyles.myMd} className="l-container" >
+			<div className="c-profile__img u-mblg">
 				<Image filename="camille.jpg" className="c-profile__img u-mblg" />
 			</div>
 			<h3 className={CommonStyles.headingSm}>かみーゆ（ビダンじゃないほう）/フロントエンドエンジニア</h3>
