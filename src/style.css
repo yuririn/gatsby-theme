@@ -274,3 +274,12 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 	width: 100px;
 	margin: 0 auto;
 }
+.c-editArea span.code {
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	background: none;
+	padding: 0;
+}
+
+.c-editArea span.code:after {
+	background: none;
+}
