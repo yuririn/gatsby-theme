@@ -88,7 +88,7 @@ const Form = () => {
 		<div>
 			<p>銀ねこアトリエでは各種相談を受けつけております。まずはお気軽にご相談ください。</p>
 			<div className={ContactStyles.contact}>
-				<form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" action="/contact/thanks/">
+				<form name="contact" method="POST" data-netlify="true" action="/contact/thanks/">
 					<input type="hidden" name="form-name" value="contact" />
 					<dl>
 						<dt>ご相談の種類</dt>
@@ -111,7 +111,6 @@ const Form = () => {
 						<dd><textarea type="text" name="message" /></dd>
 					</dl>
 					<p className={ContactStyles.agreement}><label><input type="checkbox" name="agreement" required onChange={setAgreement} /><span></span></label><a href="/privacy-policy/" target="_blank">プライバシーポリシー</a>に同意の上送信する</p>
-					<div data-netlify-recaptcha="true"></div>
 					<p><button type="submit" disabled={name && email && agreement ? false : true}>送信する</button></p>
 					<Error name={name} email={email} agreement={agreement} ></Error>
 				</form>
