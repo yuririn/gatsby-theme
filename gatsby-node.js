@@ -65,25 +65,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 	const search = []
 
 	if (posts.length > 0) {
-		posts.forEach((post, index) => {
+		const blogPosts = [];
+		posts.forEach((post) => {
 			if (post.frontmatter.pagetype === 'blog') {
-				const previousPostId = index === 0 ? null : posts[index - 1].id
-				const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-				createPage({
-					path: post.fields.slug,
-					component: blogPost,
-					context: {
-						id: post.id,
-						previousPostId,
-						nextPostId,
-						hero: post.frontmatter.hero,
-					},
-				})
-				count++
+				blogPosts.push(post);
 			}
 
 		})
 
+		console.log(blogPosts)
+
+		blogPosts.forEach((post, index) => {
+			const previousPostId = index === 0 ? null : blogPosts[index - 1].id
+			const nextPostId = index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
+			createPage({
+				path: post.fields.slug,
+				component: blogPost,
+				context: {
+					id: post.id,
+					previousPostId,
+					nextPostId,
+					hero: post.frontmatter.hero,
+				},
+			})
+		})
 		createPage({
 			path: '/contact/',
 			component: contact,
@@ -112,7 +117,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 		})
 
 		const postsPerPage = 12
-		let numPages = Math.ceil(count / postsPerPage)
+		let numPages = Math.ceil(blogPosts.length / postsPerPage)
 
 		for (let index = 0; index < numPages; index++) {
 			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`

@@ -1,5 +1,5 @@
 ---
-title: Gatsbyブログサイト移行物語8~関連記事一覧出力~
+title: Gatsbyブログサイト移行物語9~関連記事一覧出力~
 date: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
@@ -102,8 +102,8 @@ render={(data) => {
 }
 ```
 
-### 記事が存在したらランダム出力する
-一致するものがなければ処理を中断し、あれば一覧をシャッフルし6記事に絞り込みます。
+### 関連記事が存在したらランダム出力する
+関連記事の条件に一致するものがなければ処理を中断し、あれば一覧をシャッフルし6記事に絞り込みます。
 ```js
 // 一致するものがなければ処理しない
 if (!posts) return
@@ -167,8 +167,8 @@ const List = ({ item, url }) => {
 }
 ```
 
-### relatedList.jsをまとめて書くと
-components/blogs/に以下ファイルを格納します。
+### 関連記事を出力するコンポーネントのコードをまとめて書くと
+関連記事を出力するコンポーネントrelatedList.jsファイルをcomponents/blogs/に格納します。
 
 ```js
 import React from "react"
@@ -277,7 +277,7 @@ export default ({ category, title, tags }) => {
 ```
 
 ## ブログ詳細に関連記事を出力
-relatedList.jsを呼び出します。
+コンポーネントを呼び出します。
 
 ```js
 // ~省略~
