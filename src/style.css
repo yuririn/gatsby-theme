@@ -283,3 +283,6 @@ img.is-view{opacity:0}.is-load,img:not(.is-view){opacity:1}.is-load{transition:.
 .c-editArea span.code:after {
 	background: none;
 }
+a[class^=p-btn] {
+	text-decoration: none;
+}
