@@ -73,8 +73,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 		})
 
-		console.log(blogPosts)
-
 		blogPosts.forEach((post, index) => {
 			const previousPostId = index === 0 ? null : blogPosts[index - 1].id
 			const nextPostId = index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
