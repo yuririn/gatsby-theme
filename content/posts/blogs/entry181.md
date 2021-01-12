@@ -32,13 +32,13 @@ lead: ["aタグのクリックする範囲がズレたり、想像以上にク�
 `display: flex`でナビのliタグを横方向に並べ、幅を均等に振り分けます。
 
 ```html
-<!-- HTML -->
-<ul>
-  <li><a href="/">ホーム</a></li>
-  <li><a href="blog/">ブログ</a></li>
-  <li><a href="profile/">プロフィール</a></li>
-  <li><a href="contact/">お問合わせ</a></li>
-</ul>
+`<!-- HTML -->`
+`<ul>`
+  `<li>``<a href="/">`ホーム`</a>``</li>`
+  `<li>``<a href="blog/">`ブログ`</a>``</li>`
+  `<li>``<a href="profile/">`プロフィール`</a>``</li>`
+  `<li>``<a href="contact/">`お問合わせ`</a>``</li>`
+`</ul>`
 ```
 
 ```css
@@ -98,8 +98,8 @@ displayは要素の表示形式を指定するプロパティで`inline`を指�
 
 解消法はCSSでimgタグに`vertical-align: bottom`をセットするだけです。
 ```html
-<!-- HTML -->
-<a href="/"><img src="images/hogehoge.jpg" alt="hogehoge" width="200" height="200"></a>
+`<!-- HTML -->`
+`<a href="/">``<img src="images/hogehoge.jpg" alt="hogehoge" width="200" height="200">``</a>`
 ```
 
 ```css
@@ -226,13 +226,13 @@ aタグやimgタグは、HTML5では主にフレージングコンテンツの�
 
 | 種類 | タグ | 備考 |
 | ---- | ---- | ---- |
-| フローコンテンツ | <a>, <abbr>, <address>,<area>（map要素内にある場合）<article>, <aside>, <audio>,<br><b>, <bdi>, <bdo>, <blockquote>,<br>, <button>,<br> <canvas>, <cite>, <code>, <data>, <datalist>, <del>,<details>, <dfn>, <div>, <dl>,<br><em>, <embed>, <fieldset>, <figure>, <footer>, <form>,<br><h1>-<h6>, <header>,<hr>, <i>, <iframe>, <img>,<input>,<br> <ins>, <kbd>, <keygen>, <br><label>, <main>, <map>, <mark>,<menu>, <meter>, <nav>, <noscript>,<br><object>, <ol>, <output>, <p>, <picture>, <pre>, <br><progress>, <q>, <ruby>, <s>,<br><samp>, <script>, <section>, <select>,<small>, <span>, <strong>, <sub>, <sup>,<br><table>, <template>, <textarea>,<br> <time>, <u>, <ul>, <var>, <video>, <wbr>, テキスト|
-|メタデータコンテンツ|<base>, <link>, <meta>, <noscript>, <script>, <style>, <template>, <title>|
-|ヘッディングコンテンツ|<h1> ~ <h6>|見出し|
-|セクショニングコンテンツ|<article>, <aside>, <nav>, <section>||
-|フレージングコンテンツ|<a>, <abbr>, <area> （map要素内にある場合）<br> <audio>, <b>, <bdi>, <bdo>, <br>, <button>,<br> <canvas>, <cite>, <code>, <data>,<br>	<datalist>, <del>, <dfn>, <em>, <embed>,<br> <i>, <iframe>, <img>, <input>, <ins>, <kbd>,<br> <keygen>, <label>, <map>, <mark>, <meter>,<br> <noscript>, <object>, <output>, <picture>,<br> <progress>, <q>, <ruby>, <s>,<br> <samp>, <script>, <select>, <small>,<br> <span>, <strong>, <sub>, <sup>,<br> <template>, <textarea>, <time>,<br> <u>, <var>, <video>, <wbr>, テキスト||
-|エンベディッドコンテンツ|<audio>, <canvas>, <embed>, <iframe>, <img>, <object>, <picture>, <video>||
-|インタラクティブコンテンツ|<a> （HTML 5.1ではhref属性がある場合に限る）,<br><audio> （controls属性がある場合）,<br><button>, <details>, <embed>, <iframe>,<br><img> （usemap属性がある場合）,<br><input> （type="hidden"の場合は除く）,<br><<keygen>, <label>,<br><object><br>（usemap属性がある場合）（HTML 5.1では除外）,<br><select>, <textarea>, <video> （controls属性がある場合）||
+| フローコンテンツ | `<a>`, `<abbr>`, `<address>`,<br>`<area>`（map要素内にある場合）`<article>`, `<aside>`,<br> `<audio>`,`<br>``<b>`, <br>`<bdi>`, `<bdo>`, `<blockquote>`,<br>`<br>`, `<button>`,`<br>` `<canvas>`, <br>`<cite>`, `<code>`, `<data>`, `<datalist>`, <br>`<del>`,`<details>`, `<dfn>`, <br>`<div>`,`<dl>`,`<br>``<em>`,<br> `<embed>`, `<fieldset>`, `<figure>`,<br> `<footer>`, `<form>`,`<br>``<h1>`-`<h6>`,<br> `<header>`,`<hr>`, `<i>`, `<iframe>`,<br> `<img>`,`<input>`,`<br>`<br> `<ins>`, `<kbd>`, `<keygen>`, <br>`<br>``<label>`, `<main>`, `<map>`,<br> `<mark>`,`<menu>`, `<meter>`, `<nav>`,<br> `<noscript>`,`<br>``<object>`, `<ol>`,<br> `<output>`, `<p>`, `<picture>`, <br>`<pre>`, `<br>``<progress>`, `<q>`, <br>`<ruby>`, `<s>`,`<br>``<samp>`, `<script>`,<br> `<section>`, `<select>`,`<small>`, <br>`<span>`, `<strong>`, `<sub>`, `<sup>`,`<br>``<table>`, `<template>`,<br> `<textarea>`,`<br>` `<time>`,<br> `<u>`, `<ul>`, `<var>`, <br>`<video>`, `<wbr>`, テキスト|
+|メタデータコンテンツ|`<base>`, `<link>`, `<meta>`, `<noscript>`,<br> `<script>`, `<style>`, `<template>`, `<title>`|
+|ヘッディングコンテンツ|`<h1>` ~ `<h6>`|見出し|
+|セクショニングコンテンツ|`<article>`, `<aside>`, `<nav>`, `<section>`||
+|フレージングコンテンツ|`<a>`, `<abbr>`, `<area>` （map要素内にある場合）<br>`<br>` `<audio>`, `<b>`, `<bdi>`, `<bdo>`, <br>`<br>`, `<button>`,`<br>` `<canvas>`, `<cite>`, `<code>`, `<data>`,`<br>`<br>	`<datalist>`, `<del>`, `<dfn>`, `<em>`, `<embed>`,`<br>`<br> `<i>`, `<iframe>`, `<img>`, `<input>`, <br>`<ins>`, `<kbd>`,`<br>`<br> `<keygen>`, `<label>`, `<map>`, `<mark>`, `<meter>`,<br>`<br>` `<noscript>`, `<object>`, <br>`<output>`, `<picture>`,`<br>` <br>`<progress>`, `<q>`, `<ruby>`, `<s>`,<br>`<br>` `<samp>`, `<script>`, `<select>`, <br>`<small>`,`<br>` `<span>`, <br>`<strong>`, `<sub>`, `<sup>`,<br>`<br>` `<template>`, `<textarea>`, `<time>`,<br>`<br>` `<u>`, `<var>`,<br> `<video>`, `<wbr>`, テキスト||
+|エンベディッドコンテンツ|`<audio>`, `<canvas>`, `<embed>`, `<iframe>`, `<img>`, `<object>`, `<picture>`, `<video>`||
+|インタラクティブコンテンツ|`<a>` （HTML 5.1ではhref属性がある場合に限る）,<br>`<br>``<audio>` （controls属性がある場合）,<br>`<br>``<button>`, `<details>`, `<embed>`, `<iframe>`,<br>`<br>``<img>` （usemap属性がある場合）,<br>`<br>``<input>`（type="hidden"の場合は除く）,<br>`<br>``<<keygen>`, `<label>`,`<br>`<br>`<object>`<br>`<br>`（usemap属性がある場合）（HTML 5.1では除外）,<br>`<br>``<select>`, `<textarea>`,<br> `<video>`（controls属性がある場合）||
 
 ## まとめ・この記事を読んでくださった方へ
 この記事は私がブログを始めた頃、2014年に書いたものです。
