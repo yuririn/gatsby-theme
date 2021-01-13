@@ -169,3 +169,7 @@
 		cursor: pointer;
 	}
 }
+
+.hidearea {
+	display: none;
+}

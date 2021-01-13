@@ -76,29 +76,30 @@ query {
 関連記事では同じ記事を除いた、類似記事を絞り込みます。
 
 ```js
-render={(data) => {
-  // タイトルとカテゴリーとタグが記事と一致した時だけ抽出
-  let posts = data.allMarkdownRemark.edges.filter(
-    (post) => {
-        // カテゴリーが一致してタイトルが一致しないもの取得
-        if ( post.node.frontmatter.title !== title) {
-      if(post.node.frontmatter.cateId === category) {
-        return (
-          post.node.frontmatter.cateId === categor
-        )
-      }
-      for (const tag of tags) {
-              for (const item in post.node.frontmatter.tags) {
-                if (tag === post.node.frontmatter.tags[item]) return true
-              }
+render={
+  (data) => {
+    let posts = data.allMarkdownRemark.edges.filter(
+      (post) => {
+        // タイトルは除外
+        if (post.node.frontmatter.title !== title) {
+          // カテゴリーの一致出力
+          if (post.node.frontmatter.cateId === category) {
+            return (
+              post.node.frontmatter.cateId === category
+            )
+          }
+          // タグの一致出力
+          for (const tag of tags) {
+            for (const item in post.node.frontmatter.tags) {
+              if (tag === post.node.frontmatter.tags[item]) return true
             }
-          )
+          }
         }
       }
-    )
-  )
+	)/* end filter*/
 
-  // 省略
+	// 省略
+  }
 }
 ```
 
@@ -169,6 +170,8 @@ const List = ({ item, url }) => {
 
 ### 関連記事を出力するコンポーネントのコードをまとめて書くと
 関連記事を出力するコンポーネントrelatedList.jsファイルをcomponents/blogs/に格納します。
+
+<small>※ Imageコンポーネントについては<a href="/blogs/entry406/">投稿ページの充実と画像設定</a>をご覧ください。</small>
 
 ```js
 import React from "react"

@@ -8,7 +8,7 @@ import BreadCrumbList from "../components/common/breadCrumbList"
 import ContactStyles from "./css/contact.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const types = [{ name: 'ウェブサイト作成の依頼', description: '簡易的なLPからWordPressの実装まで実装を承ります。まずはテレビ電話でヒアリングいたしますので、メッセージに希望日時候補を3つご入力の上メールフォームを送信してください。' }, { name: '相談したい', description: '大変恐縮ですがヒアリングなしでのお見積もりはいたしません。まずはテレビ電話などでご相談を受け付けます。メッセージに相談内容の概要とテレビ電話の希望日時候補を3つご入力の上、メールフォームを送信してください。' }, { name: '講演依頼', description: 'セミナーでの登壇や講演なども承っております。まずはご相談ください。' }, { name: 'そのほか', description: 'そのほかご相談などございましたらお気軽にお問い合わせください。' }]
 
@@ -113,6 +113,10 @@ const Form = () => {
 					</dl>
 					<p className={ContactStyles.agreement}><label><input type="checkbox" name="agreement" required onChange={setAgreement} /><span></span></label><a href="/privacy-policy/" target="_blank">プライバシーポリシー</a>に同意の上送信する</p>
 					<p><button type="submit" disabled={name && email && agreement ? false : true}>送信する</button></p>
+					<div class="p-contact__item" className={ContactStyles.hidearea}>
+						<label for="message"></label>
+						<input type="text" name="bot-field" v-model="botField" />
+					</div>
 					<Error name={name} email={email} agreement={agreement} ></Error>
 				</form>
 			</div>
