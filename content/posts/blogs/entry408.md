@@ -175,35 +175,35 @@ const blogs = ({ data, location }) => {
       <SEO title="ブログ一覧"
         description="「銀ねこアトリエ」の最新ブログ一覧です。"
       />
-      <div className="p-pageHeader">
-        <div className="p-pageHeader__main">
-          <h1 className="p-pageHeader__heading">最新ブログ一覧</h1>
+      <div class="p-pageHeader">
+        <div class="p-pageHeader__main">
+          <h1 class="p-pageHeader__heading">最新ブログ一覧</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
         </div>
       </div>
-      <div className="l-container">
-        <section className="p-section">
-          <h2 className="c-heading--lg">最新記事</h2>
-          <div className="c-grid">
+      <div class="l-container">
+        <section class="p-section">
+          <h2 class="c-heading--lg">最新記事</h2>
+          <div class="c-grid">
             {posts.map(post => {
 
               return (
                 <article
-                  className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+                  class="p-entryCard c-grid__item--md6 c-grid__item--lg4"
                   itemScope
                   itemType="http://schema.org/Article"
                 >
-                  <Link to={post.fields.slug} className="p-entryCard__img" >
+                  <Link to={post.fields.slug} class="p-entryCard__img" >
                     {post.frontmatter.hero ?
 
                       <Image filename={post.frontmatter.hero} />
                       : <Image filename="common/dummy.png" />
                     }
-                    <div className="p-entryCard__date">
+                    <div class="p-entryCard__date">
                       {post.frontmatter.date}
                     </div>
                   </Link>
-                  <Link to={post.fields.slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
+                  <Link to={post.fields.slug} class="p-entryCard__body"><h3 class="p-entryCard__heading">{post.frontmatter.title}</h3></Link>
                 </article>
               )
             })}
@@ -412,40 +412,40 @@ const category = ({ pageContext, data, location }) => {
         description={cateDescription}
       />
       <main>
-        <div className="p-pageHeader">
-          <div className="p-pageHeader__main">
-            <h1 className="p-pageHeader__heading">{cateName}</h1>
+        <div class="p-pageHeader">
+          <div class="p-pageHeader__main">
+            <h1 class="p-pageHeader__heading">{cateName}</h1>
             <p>{cateDescription}</p>
           </div>
-          {`${cateSlug}.jpg`} className="p-pageHeader__img"></Image>
+          {`${cateSlug}.jpg`} class="p-pageHeader__img"></Image>
         </div>
-        <div className="page-template-archive">
-          <div className="l-container">
-            {totalCount === 0 ? <p className="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
-            <section className="p-section">
-              <h2 className="c-heading--lg">最新記事</h2>
-              <div className="c-grid">
+        <div class="page-template-archive">
+          <div class="l-container">
+            {totalCount === 0 ? <p class="p-txt-center">{category.name}に関する記事はまだありません</p> : ''}
+            <section class="p-section">
+              <h2 class="c-heading--lg">最新記事</h2>
+              <div class="c-grid">
                 {edges.map(({ node }) => {
                   const { slug } = node.fields
                   const { title, hero, date, tags } = node.frontmatter
                   return (
                     <article
-                      className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+                      class="p-entryCard c-grid__item--md6 c-grid__item--lg4"
                       itemScope
                       itemType="http://schema.org/Article"
                       key={slug}
                     >
-                      <Link to={slug} className="p-entryCard__img" >
+                      <Link to={slug} class="p-entryCard__img" >
                         {hero ?
 
                           <Image filename={hero} />
                           : <Image filename="common/dummy.png" />
                         }
-                        <div className="p-entryCard__date">
+                        <div class="p-entryCard__date">
                           {date}
                         </div>
                       </Link>
-                      <Link to={slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+                      <Link to={slug} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
                     </article>
                   )
                 })}
@@ -618,40 +618,40 @@ const Tags = ({ pageContext, data, location }) => {
         description={siteMetadata.description}
       />
       <main>
-        <div className="page-template-archive">
-          <div className="p-pageHeader">
-            <div className="p-pageHeader__main">
-              <h1 className="p-pageHeader__heading">{tag}に関する記事</h1>
+        <div class="page-template-archive">
+          <div class="p-pageHeader">
+            <div class="p-pageHeader__main">
+              <h1 class="p-pageHeader__heading">{tag}に関する記事</h1>
               <p>{totalCount}記事あります</p>
             </div>
-            <img className="p-pageHeader__img" src="https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg" alt=""></img>
+            <img class="p-pageHeader__img" src="https://ginneko-atelier.com/packages/newginneko/themes/newginneko/assets/images/common/ganre-common.jpg" alt=""></img>
           </div>
-          <div className="l-container">
-            <section className="p-section">
-              <h2 className="c-heading--lg">最新記事</h2>
-              <div className="c-grid">
+          <div class="l-container">
+            <section class="p-section">
+              <h2 class="c-heading--lg">最新記事</h2>
+              <div class="c-grid">
                 {edges.map(({ node }) => {
                   const { slug } = node.fields
                   const { title, hero, date, tags } = node.frontmatter
                   return (
                     <article
-                      className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+                      class="p-entryCard c-grid__item--md6 c-grid__item--lg4"
                       itemScope
                       itemType="http://schema.org/Article"
                       key={slug}
                     >
-                      <Link to={slug} className="p-entryCard__img" >
+                      <Link to={slug} class="p-entryCard__img" >
                         {hero ?
                           <Image filename={hero} />
                           : <Image filename="common/dummy.png" />
                         }
-                        <div className="p-entryCard__date">
+                        <div class="p-entryCard__date">
                           {date}
                         </div>
                       </Link>
-                      <Link to={slug} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
-                      <div className="p-entryCard__footer">
-                        <div className="p-entryCard__footer">
+                      <Link to={slug} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
+                      <div class="p-entryCard__footer">
+                        <div class="p-entryCard__footer">
                           <TagList tags={tags} />
                         </div>
                       </div>

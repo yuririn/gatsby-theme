@@ -101,17 +101,17 @@ const PagePostTemplate = ({ data, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
 
-      <div className="l-main_contents">
+      <div class="l-main_contents">
         <article
-          className="l-container--md"
+          class="l-container--md"
         >
           <header>
             <div>
-              <h1 className="c-article__heading">{post.frontmatter.title}</h1>
+              <h1 class="c-article__heading">{post.frontmatter.title}</h1>
             </div>
           </header>
           <div>
-            <section className="c-editArea"
+            <section class="c-editArea"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
           </div>

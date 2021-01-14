@@ -1,6 +1,7 @@
 ---
 title: WordPress プラグインなしでカスタム投稿のカスタムフィールドにメディアを追加する方法
 date: 2020-11-21
+modifieddate: 2021-01-13
 hero: 2020/entry400.jpg
 pagetype: blog
 category: CMS
@@ -200,6 +201,10 @@ public function add_script() {
 ### 画像と画像名を保存
 画像と画像名を保存できるようにします。
 
+*2021年1月13日追記*
+
+サイトをリロードやプレビューへ切り替えた際にデータが消えるバグを発見しました。
+
 ```php
 add_action( 'save_post', 'save_products' );
 
@@ -207,15 +212,19 @@ function save_products( $post_id ) {
     // 画像
     for ( $i=0; $i < 3; $i++ ) {
         if ( isset( $_POST['product-image-name_'.$i] ) ){
-            update_post_meta( $post_id, 'product-image-name_'.$i, $_POST['product-image-name_'.$i] );
-        } else {
-            delete_post_meta($post_id, 'product-image-name_'.$i);
+			if ( $_POST['product-image-name_'.$i] !== '' ){
+				update_post_meta( $post_id, 'product-image-name_'.$i, $_POST['product-image-name_'.$i] );
+			} else {
+				delete_post_meta($post_id, 'product-image-name_'.$i);
+			}
         }
         // 画像の保存
         if( isset( $_POST['product-image_' . $i] ) ) {
-            update_post_meta( $post_id, 'product-image_' . $i, $_POST['product-image_' . $i] );
-        } else {
-            delete_post_meta( $post_id, 'product-image_'.$i );
+			if( $_POST['product-image_' . $i] !== '' ) {
+				update_post_meta( $post_id, 'product-image_' . $i, $_POST['product-image_' . $i] );
+			} else {
+				delete_post_meta( $post_id, 'product-image_'.$i );
+				}
         }
     }
 }

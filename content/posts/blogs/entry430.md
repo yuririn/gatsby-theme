@@ -134,9 +134,9 @@ posts = posts.slice(0, 6);
 <br>抽出結果を出力返します。
 ```js
 return (
-  <section className="p-section l-container is-view">
-  <h2 className="c-heading--lg">関連記事もあわせてお読みください</h2>
-    <div className="c-grid">
+  <section class="p-section l-container is-view">
+  <h2 class="c-heading--lg">関連記事もあわせてお読みください</h2>
+    <div class="c-grid">
       {posts.map(item => {
           return <List item={item.node.frontmatter} url={item.node.fields.slug} />
         })
@@ -155,14 +155,14 @@ const List = ({ item, url }) => {
 
   const { title, date, hero } = item
   return (
-    <article className="p-entryCard c-grid__item--md6 c-grid__item--lg4">
-      <Link className="p-entryCard__img" to={url}>
+    <article class="p-entryCard c-grid__item--md6 c-grid__item--lg4">
+      <Link class="p-entryCard__img" to={url}>
         {hero ? <Image filename={hero} /> : <Image filename="common/dummy.png" />}
-        <div className="p-entryCard__date">
+        <div class="p-entryCard__date">
           {date}
         </div>
       </Link>
-      <Link to={url} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+      <Link to={url} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
     </article>
   )
 }
@@ -183,14 +183,14 @@ const List = ({ item, url }) => {
   const { title, date, hero } = item
 
   return (
-    <article className="p-entryCard c-grid__item--md6 c-grid__item--lg4">
-      <Link className="p-entryCard__img" to={url}>
+    <article class="p-entryCard c-grid__item--md6 c-grid__item--lg4">
+      <Link class="p-entryCard__img" to={url}>
         {hero ? <Image filename={hero} /> : <Image filename="common/dummy.png" />}
-        <div className="p-entryCard__date">
+        <div class="p-entryCard__date">
           {date}
         </div>
       </Link>
-      <Link to={url} className="p-entryCard__body"><h3 className="p-entryCard__heading">{title}</h3></Link>
+      <Link to={url} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
     </article>
   )
 }
@@ -262,8 +262,8 @@ export default ({ category, title, tags }) => {
           posts = posts.slice(0, 6);
 
           return (
-            <section className="p-section l-container is-view"><h2 className="c-heading--lg">関連記事もあわせてお読みください</h2>
-              <div className="c-grid">
+            <section class="p-section l-container is-view"><h2 class="c-heading--lg">関連記事もあわせてお読みください</h2>
+              <div class="c-grid">
                 {
 				  posts.map( item => {
                     return <List item={item.node.frontmatter} url={item.node.fields.slug} />

@@ -132,7 +132,7 @@ import React from "react";
 
 const Topic = props => {
   return (
-    <div className="mokujiList">
+    <div class="mokujiList">
       <h2>目次</h2>
         <div
           dangerouslySetInnerHTML={{
@@ -245,10 +245,10 @@ export const pageQuery = graphql`
 
 このサイトではolはすでにカウンター関数を利用してスタイリングしてあります。
 
-<a className="article-link" href="/blogs/entry315/">
-<section><div className="article-link__img"><img alt="CSSカウンターを使ってリストタグにナンバーを振る" src="/static/d3d707b7c02bb897cc179d3feb35e47b/f836f/entry363.jpg" className="" width="150" height="113"></div><div className="article-link__main">
-<div className="article-link__main__title">CSSカウンターを使ってリストタグにナンバーを振る</div>
-<p className="description">1-2、2-3みたいにリストや見出しにナンバーが振られているサイトを見か･･･</p>
+<a class="article-link" href="/blogs/entry315/">
+<section><div class="article-link__img"><img alt="CSSカウンターを使ってリストタグにナンバーを振る" src="/static/d3d707b7c02bb897cc179d3feb35e47b/f836f/entry363.jpg" class="" width="150" height="113"></div><div class="article-link__main">
+<div class="article-link__main__title">CSSカウンターを使ってリストタグにナンバーを振る</div>
+<p class="description">1-2、2-3みたいにリストや見出しにナンバーが振られているサイトを見か･･･</p>
 <p>
 <time datetime="2020-03-29">2020.03.29</time>
 </p>
@@ -266,10 +266,10 @@ const Topic = props => {
   const list = props.data.replace(/(ul>)/gi, 'ol>');
 
   return (
-    <div className="p-box--gray u-mblg">
-      <input type="checkbox" className="mokuji" id="mokuji" />
-      <label className="c-content__heading" for="mokuji">目次</label>
-      <div className="c-editArea mokujiList">
+    <div class="p-box--gray u-mblg">
+      <input type="checkbox" class="mokuji" id="mokuji" />
+      <label class="c-content__heading" for="mokuji">目次</label>
+      <div class="c-editArea mokujiList">
         <div
           dangerouslySetInnerHTML={{
             __html: list,
@@ -288,10 +288,10 @@ export default Topic;
 
 今回はコードしか紹介しませんので詳しく原理を知りたい方はこちらをご覧ください。
 
-<a className="article-link" href="/blogs/entry315/">
-<section><div className="article-link__img"><img alt="セブ島唯一日本人占い師・さくら庵のマイアさんから学ぶかみーゆ流占いとの付き合い方" src="/static/45a35d1dd3ec602a1e1eff28669aade0/f836f/entry315.jpg" className="" width="150" height="113"></div><div className="article-link__main">
-<div className="article-link__main__title">CSS3 アニメーションで軽量なアコーディオンメニューを作ろう！</div>
-<p className="description">CSS3 アニメーションって便利ですよね？jQueryに依存しないと軽量･･･</p>
+<a class="article-link" href="/blogs/entry315/">
+<section><div class="article-link__img"><img alt="セブ島唯一日本人占い師・さくら庵のマイアさんから学ぶかみーゆ流占いとの付き合い方" src="/static/45a35d1dd3ec602a1e1eff28669aade0/f836f/entry315.jpg" class="" width="150" height="113"></div><div class="article-link__main">
+<div class="article-link__main__title">CSS3 アニメーションで軽量なアコーディオンメニューを作ろう！</div>
+<p class="description">CSS3 アニメーションって便利ですよね？jQueryに依存しないと軽量･･･</p>
 <p>
 <time datetime="2019-02-11">2019.02.11</time>
 </p>
@@ -301,10 +301,10 @@ export default Topic;
 
 HTMLはこんな感じで出力されます。コードが長いので省略しています。
 ```html
-<div className="p-box--gray u-mblg">
-  <input type="checkbox" className="mokuji" id="mokuji">
-  <label className="c-content__heading" for="mokuji">目次</label>
-  <div className="c-editArea mokujiList">
+<div class="p-box--gray u-mblg">
+  <input type="checkbox" class="mokuji" id="mokuji">
+  <label class="c-content__heading" for="mokuji">目次</label>
+  <div class="c-editArea mokujiList">
     <div>
       <ol>
     ここリストが出力されます
@@ -369,7 +369,7 @@ CSSモジュール化の仕方についてはポートフォリのページを�
 <br><br>最初から閉じておきたい場合は、`input`に`checked`を付与しておきましょう。
 
 ```html
-<input type="checkbox" className="mokuji" id="mokuji" checked>
+<input type="checkbox" class="mokuji" id="mokuji" checked>
 ```
 ## オプションの一覧
 オプションの一覧です。icon以外はあまり使うことないかもしれません。
@@ -378,7 +378,7 @@ CSSモジュール化の仕方についてはポートフォリのページを�
 |-|-|
 |offsetY|リンクをクリックして移動した時の見出しの上の空き（オフセット）の調整。pxです|
 |icon|Boolean。デフォルトはtrueでホバーすると左にアイコンが表示されまます。|
-|className|アンカーに独自のクラス名を指定するそう|
+|class|アンカーに独自のクラス名を指定するそう|
 |maintainCase|Boolean。含まれる要は大文字小文字を維持するか指定できる。|
 |removeAccents|Boolean。アクセント削除。日本人のサイトにはまず必要なさそう。|
 |isIconAfterHeader|Boolean。アイコンの位置を右側に移動|

@@ -31,10 +31,10 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 
 私が2年前、テキトーに作ってヘッドハントされたきっかけとなったページです。**ぶっちゃけ中身はひどい**です。
 
-<a className="article-link" href="/portfolio/">
-<section><div className="article-link__img"><img alt="広島生まれ、広島育ちのIT戦士を紹介するサイト" src="/static/213311b9bb7be131aae7771033b326b7/ee604/portfolio-ogp.png" width="150" height="113" className=""></div><div className="article-link__main">
-<div className="article-link__main__title">広島生まれ、広島育ちのIT戦士を紹介するサイト</div>
-<p className="description">広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介し･･･</p>
+<a class="article-link" href="/portfolio/">
+<section><div class="article-link__img"><img alt="広島生まれ、広島育ちのIT戦士を紹介するサイト" src="/static/213311b9bb7be131aae7771033b326b7/ee604/portfolio-ogp.png" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">広島生まれ、広島育ちのIT戦士を紹介するサイト</div>
+<p class="description">広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介し･･･</p>
 <p>
 <time datetime="2018-12-20">2018.12.20</time>
 </p>
@@ -73,7 +73,7 @@ Gatsbyでは*CSSモジュール*と言って、パーツごとにスタイルを
 
 しかも、file名を*〇〇.module.css*と命名するだけでモジュール化できます。<br>
 
-<div className="box">
+<div class="box">
 <h4><em>CSSモジュールやコンポーネントでパーツ分けする利点</em></h4>
 長年HTMLやCSSを書いていると直面する問題があります。別のパーツがCSSで汚染されたり再利用が難しかったり、それを防ぐために上書きを繰り返したりコードばっかり長くなります。<br>このように部品単位管理することで、汚染防止もできるし再利用が楽チンになります。<br>エコロジー！
 </div>
@@ -119,24 +119,24 @@ import CommonStyles from "./portfolioParts/css/common.module.css"
 const Portfolio = ({ location }) => {
   const nav = ['Profile', 'Works', 'Contact']
   return (
-    <div className={HeaderStyles.default}>
+    <div class={HeaderStyles.default}>
       <SEO
         title="広島生まれ、広島育ちのIT戦士を紹介するサイト"
         description="広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。"
         image="/static/213311b9bb7be131aae7771033b326b7/ee604/ogp.png"
         location={location}
       />
-      <header className={HeaderStyles.header}>
-        <p className={HeaderStyles.headerLogo}>Camille Site</p>
+      <header class={HeaderStyles.header}>
+        <p class={HeaderStyles.headerLogo}>Camille Site</p>
         <span
-          className={HeaderStyles.navBtn}
+          class={HeaderStyles.navBtn}
           role="button"
           aria-label="ナビゲーションボタン"
           id="menuBtn"
         >
 
         </span>
-        <nav className={HeaderStyles.globalNav}>
+        <nav class={HeaderStyles.globalNav}>
           <ul>
             {
               nav.map((value) => {
@@ -155,8 +155,8 @@ const Portfolio = ({ location }) => {
       </header>
       <main id="top">
         <section>
-          <div className={FirstViewStyles.firstViewArea}>
-            <div className={FirstViewStyles.firstViewArea_main}>
+          <div class={FirstViewStyles.firstViewArea}>
+            <div class={FirstViewStyles.firstViewArea_main}>
               <h1>広島生まれ、広島育ちのIT戦士</h1>
               <p>納期と平和を守ります。</p>
             </div>
@@ -164,8 +164,8 @@ const Portfolio = ({ location }) => {
         </section>
      </main>
 
-      <footer className={CommonStyles.footer}>
-        <p className={CommonStyles.footerCopy}><small>(c)IT戦士かみーゆを紹介するサイト</small></p>
+      <footer class={CommonStyles.footer}>
+        <p class={CommonStyles.footerCopy}><small>(c)IT戦士かみーゆを紹介するサイト</small></p>
       </footer>
     </div>
   )
@@ -176,7 +176,7 @@ export default Portfolio
 ```
 headerにスタイルを当てるためにheader.module.cssを作成し、HeaderStulesという名前でimportしておきます。
 
-header.module.cssから`default`というクラスのCSSを呼び出したい場合、`className`を`HeaderStyles.default`とします。
+header.module.cssから`default`というクラスのCSSを呼び出したい場合、`class`を`HeaderStyles.default`とします。
 
 ```js
 import HeaderStyles from "./portfolioParts/css/header.module.css"
@@ -184,7 +184,7 @@ import HeaderStyles from "./portfolioParts/css/header.module.css"
 const Portfolio = ({ location }) => {
   // ~ 省略~
   return (
-  <div className={HeaderStyles.default}>
+  <div class={HeaderStyles.default}>
   {/* ~ 省略~*/}
   }
 }
@@ -262,7 +262,7 @@ import React from 'react';
 import VoiceStyles from "./css/voice.module.css"
 
 const Voice = () => (
-  <div className={VoiceStyles.container}>
+  <div class={VoiceStyles.container}>
     <article>
       <p>IT戦士ゆりこは強そうに見えて意外と寂しがり屋です。<br />友達未満ぐらいの距離だと、思ったことをグサッと言われたり、いつ休んでるんだと思うぐらい仲間思いで必死に仕事してるつよつよな人に見えますが、一定の距離にいくと実は寂しがりやな一面が見えるんです。<br />あとは、年齢が一回りも違う私が下の名前で呼んでも恥ずかしがるだけで怒りはしない優しい人なんです。<br />最後に敵に回すと厄介で、味方になるとかなり頼もしいので、あなたはどちらになるのか楽しみです(^^；)</p>
       <p>ニート・ギャング候補生・スポーツ選手/まだ20代男性</p>
@@ -349,14 +349,14 @@ const Portfolio = ({ location }) => {
   return (
   // ~ 省略~
 
-      <footer className={CommonStyles.footer}>
-        <a href="#top" className={CommonStyles.footerBtn} aria-label="先頭へ戻る"></a>
-        <ul className={CommonStyles.footerNav}>
+      <footer class={CommonStyles.footer}>
+        <a href="#top" class={CommonStyles.footerBtn} aria-label="先頭へ戻る"></a>
+        <ul class={CommonStyles.footerNav}>
           <li><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></li>
           <li><Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /></Link></li>
           <li><Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" ><FontAwesomeIcon icon={faInstagram} /></Link></li>
         </ul>
-        <p className={CommonStyles.footerCopy}><small>(c)IT戦士かみーゆを紹介するサイト</small></p>
+        <p class={CommonStyles.footerCopy}><small>(c)IT戦士かみーゆを紹介するサイト</small></p>
       </footer>
     // ~ 省略~
   )

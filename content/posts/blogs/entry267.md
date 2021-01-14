@@ -57,7 +57,7 @@ JSはdocument.getElements〜とあるように複数を取得するのが前提�
 //jQuery
 elm = $('.test')
 // JS
-elm = document.getElementsByClassName('test')
+elm = document.getElementsByclass('test')
 elm = elm[0]
 ```
 classで取得するときも同様で、[0]で何個目のクラスか指定して取得してます。

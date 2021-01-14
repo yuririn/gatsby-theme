@@ -37,10 +37,10 @@ WordPressなど、その他のCMSに慣れていると*一覧を分割しペー�
 
 一覧ページの実装の仕方についてはこちらを参考にしてください。
 
-<a className="article-link" href="/blogs/entry408/">
-<section><div className="article-link__img"><img alt="実用性重視！使えるボタンのCSSコード・スニペット集！" src="/static/206512c4ac54a09bce7ea7c2b867aeaa/f836f/entry401.jpg" width="150" height="113" className=""></div><div className="article-link__main">
-<div className="article-link__main__title">Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー、タグ一覧の出力~</div>
-<p className="description">gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリー、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよ･･･</p>
+<a class="article-link" href="/blogs/entry408/">
+<section><div class="article-link__img"><img alt="実用性重視！使えるボタンのCSSコード・スニペット集！" src="/static/206512c4ac54a09bce7ea7c2b867aeaa/f836f/entry401.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー、タグ一覧の出力~</div>
+<p class="description">gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリー、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよ･･･</p>
 <p>
 <time datetime="2020-12-03">2020.12.03</time>
 </p>
@@ -236,15 +236,15 @@ import React from "react"
 const Prev = ({ current, type }) => {
 	if (current === 1) {
 		return (
-			<li className="pagination__prev not-work"><span>Newer</span></li>
+			<li class="pagination__prev not-work"><span>Newer</span></li>
 		)
 	} else if (current === 2) {
 		return (
-			<li className="pagination__prev"><Link to={`/blogs/${type}/`}>Newer</Link></li>
+			<li class="pagination__prev"><Link to={`/blogs/${type}/`}>Newer</Link></li>
 		)
 	} else {
 		return (
-			<li className="pagination__prev"><Link to={`/blogs/${type}page/${current - 1}/`}>Newer</Link></li>
+			<li class="pagination__prev"><Link to={`/blogs/${type}page/${current - 1}/`}>Newer</Link></li>
 		)
 	}
 }
@@ -252,20 +252,20 @@ const Prev = ({ current, type }) => {
 const Next = ({ num, current, type }) => {
 	if (current === num) {
 		return (
-			<li className="pagination__next not-work"><span>Older</span></li>
+			<li class="pagination__next not-work"><span>Older</span></li>
 		)
 	} else {
 		return (
 
-			current === '' ? <li className="pagination__next"><Link to={`/blogs/${type}page/2/`}>Older</Link></li> :
-				<li className="pagination__next"><Link to={`/blogs/${type}page/${current + 1}/`}>Older</Link></li>
+			current === '' ? <li class="pagination__next"><Link to={`/blogs/${type}page/2/`}>Older</Link></li> :
+				<li class="pagination__next"><Link to={`/blogs/${type}page/${current + 1}/`}>Older</Link></li>
 		)
 	}
 }
 
 const Pagination = ({ num, current, type }) => {
 	return (
-		<ul className="pagination">
+		<ul class="pagination">
 			<Prev current={current} num={num} type={type} />
 			page {current}/{num}
 			<Next current={current} num={num} type={type} />

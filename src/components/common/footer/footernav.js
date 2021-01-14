@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faInstagram, faYoutube, faSlideshare } from "@fortawesome/free-brands-svg-icons";
 
 const footernav = () => {
 
@@ -23,6 +23,7 @@ const footernav = () => {
 				<li><Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faTwitter} /></Link></li>
 				<li><Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" ><FontAwesomeIcon icon={faInstagram} /></Link></li>
 				<li><Link to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw" target="_blank" rel="noopener nofollow" ><FontAwesomeIcon icon={faYoutube} /></Link></li>
+				<li><Link to="https://www2.slideshare.net/yurikamimori" target="_blank" rel="noopener nofollow"><FontAwesomeIcon icon={faSlideshare} /></Link></li>
 			</ul>
 		</div>
 	)
