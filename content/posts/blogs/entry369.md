@@ -241,3 +241,8 @@ IT業界ではじめて働いた会社の時給は780円（スキルあるから
 
 
 紆余曲折して今に至る私のたわごとでしたが、最後までお読みいただきありがとうございました。
+
+### おまけ・YouTubeもあるよ！
+YouTube化しました！よろしければご一読ください。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TXzfsPEYBm8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
