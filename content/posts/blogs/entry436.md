@@ -5,7 +5,7 @@ hero: 2021/entry436.jpg
 pagetype: blog
 category: Front End
 cateId: front-end-program
-tags: ["WordPress"]
+tags: ["css"]
 description: CSSのプロパティの進化、めまぐるしいですね。今回は次世代の余白の考え方、margin-block、margin-inline、padding-block、padding-inlineを徹底解剖してみます！
 lead: ["CSSのプロパティの進化、めまぐるしいですね。今回は次世代の余白の考え方、margin-block、margin-inline、padding-block、padding-inlineを徹底解剖してみます！"]
 ---
