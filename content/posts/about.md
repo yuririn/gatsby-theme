@@ -12,7 +12,10 @@ description: 「銀ねこアトリエ」は私の技術的なチャレンジや�
 私だからできることを発信しています。Web制作など、ご興味のある方はTwitter[@LirioY](https://twitter.com/LirioY)にDMください。
 
 ## 管理人・かみーゆってどんな人？
-<img src="/static/02ba3e4fd1b2848614d56ad15bb7e7d7/2244e/camille.jpg" alt="" loading="lazy"  class="c-profile__img">
+![管理人・かみーゆ](./images/camille-prof.png)
+
+<br>
+
 <div class="box">
 <p>神守　由理子（かみもり・ゆりこ）/ フロントエンドエンジニア</p>
 

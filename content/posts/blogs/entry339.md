@@ -1,5 +1,5 @@
 ---
-title: CSSの変な仕様あるあるを力一杯列挙してみた
+title: たった1pxの気遣いでWebサイトは見違える
 date: 2019-09-10
 hero: 2019/entry339.jpg
 pagetype: blog
