@@ -153,7 +153,7 @@ div {
 
 * 内側の余白を設定したいときは`padding-inline`プロパティを使えます。使い方は`margin-inline`と一緒です。
 
-### margin-inlineとmargin-blockを使って4方のマージンを設定する
+### margin-inlineとmargin-blockを使って四方のマージンを設定する
 通常のプロパティ`margin`同様前後左右余白を設定するときのコードを紹介します。
 
 今までの物理プロパティで書くコードとも比較してみましょう。
