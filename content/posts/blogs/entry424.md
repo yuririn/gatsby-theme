@@ -65,7 +65,7 @@ lead: ["日本のみなさん、フェイスシールドは普段使ってます
 
 興味ある方はこちらの記事を参考にしてください。
 
-<a class="article-link" href="/blogs/entry374">
+<a class="article-link" href="/blogs/entry389/">
 <section><div class="article-link__img"><img alt="セブ島地域密着の生活・カーボンマーケットでお買い物しました" src="/static/f36fa93ecb9a9806574821b2793b5f32/f836f/entry389.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">セブ島地域密着の生活・カーボンマーケットでお買い物しました</div>
 <p class="description">先日地元の人しかあまり行かないカーボンマーケットをはじめとするコロン（街の名前）エリアで買い物を楽しんだのでレポート･･･</p>

@@ -173,6 +173,11 @@ LPであればボリュームにもよりますが、スクラッチ（Bootstrap
 </section>
 </a>
 
+## 動画もあります！あわせてご覧ください
+YouTubeもあります。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gyLvtohWXE0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## まとめ・経験が「何か」を学べば転職のチャンスがある
 経験と一言で片付けますが、一体どんなスキルが必要なのか知れば努力で補えることもあります。
 
