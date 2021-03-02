@@ -65,10 +65,6 @@
 		"serve": "gatsby serve",
 		"clean": "gatsby clean",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-		"a": "git add .",
-		"c": "git commit -F- <<EOM",
-		"ac": "num run a & npm rum c",
-		"p": "git push",
 		"dev-m": "gatsby develop -H 192.168.254.100 -p 8000",
 		"dev": "some-dev-command"
 	}
