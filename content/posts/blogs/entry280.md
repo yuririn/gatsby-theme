@@ -1,395 +1,379 @@
 ---
-title: 初心者コーダーに贈る！超軽量高機能エディタVS Code入門2
+title: 初心者コーダーに贈る！超軽量高機能エディターVS Code入門2
 date: 2018-07-23
-hero: 2018/entry266.png
+modifieddate: 2021-03-05
+hero: 2018/entry266.jpg
 pagetype: blog
 category: 'Front end'
 cateId: 'front-end-program'
 tags: ["VS Code"]
-description: コーディング初心者必見。2015年にリリースされたVisual Studio Codeをコーディング初心者でも快適に使う方法をまとめます。随時追記して更新します。
-lead: ["コーディング初心者必見。2015年にリリースされたVisual Studio Codeをコーディング初心者でも快適に使う方法をまとめます。随時追記して更新します。"]
+description: コーディング初心者に贈るVS Code完全マニュアル第2弾！第1弾で快適にコーディングできるところまでセッティングしたので、さらに便利に使えるようにスニペット、ターミナルやGit連携などのご紹介をします。この記事は最新2021年のVS Codeに合わせて大幅にリライトしました。
+lead: ["コーディング初心者に贈るVS Code完全マニュアル第2弾！第1弾で快適にコーディングできるところまでセッティングしたので、さらに便利に使えるようにスニペット、ターミナルやGit連携などのご紹介をします。","この記事は最新2021年のVS Codeに合わせて大幅にリライトしました。"]
 ---
+## この記事のゴール：VS Codeをさらに使いこなすためにスニペットを作ったりGit連携できるようになる
 
-## まずは VS Code をダウンロード
-Macで話を進めていきます。ショートカットが多少違うかも知れませんがご了承ください。
+第1弾では快適にコーディングできるところまでセッティングしました。
 
-VS Code は以下からダウンロードします。
+<a class="article-link" href="/blogs/entry266/">
+<section><div class="article-link__img"><img alt="初心者コーダーに贈る！超軽量高機能エディターVS Code入門1" src="/static/35bb69d2db3044dfc04f5f7e89445f15/f836f/entry266.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">初心者コーダーに贈る！超軽量高機能エディターVS Code入門1</div>
+<p class="description">コーディング初心者に贈るVS Code完全マニュアル第一弾！インストールから拡張機能、カスタマイズまで、コーディング初心者･･</p>
+<p>
+<time datetime="2018-06-11">2018.06.11</time>
+</p>
+</div>
+</section></a>
 
-[VS Code](https://www.microsoft.com/ja-jp/dev/products/code-vs.aspx)
+VS Codeをダウンロードし、ある程度設置ができていることが前提条件です。
 
-拡張機能を入れて日本語化します。最近アップデートしました。1.25.1になったら日本語化が必要みたいです。でもまたそのうちなくなるかも。
+### VS Codeの見取り図
+機能が多く迷子になりやすいので、わからなくなったらこちらを参考に。
 
-[Japanese Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja)
+![VS Code](./images/2018/entry266-5.jpg)
 
-ローカライズしたら、再起動しましょう。
-![VS Code down load](./images/2018/entry280-1.png)
+#### アクティビティ バー
 
-## ユーザー設定
-cmd + ,（カンマ）でユーザー設定を開きます。Json形式で記述して行きます。
+![アクティビティバー](./images/2018/entry266-2.jpg)
 
-```js
-"editor.formatOnPaste": true,
-// ペースト時に自動でフォーマット
-"editor.formatOnSave": true,
-// ファイル保存時に自動でフォーマット
-"editor.formatOnType": true,
-// 入力した行を自動でフォーマット
-"editor.minimap.renderCharacters": false,
-// ミニマップの表示文字をブロックに変更
-"editor.minimap.showSlider": "always",
-// 表示領域をミニマップで常にハイライト
-"editor.multiCursorModifier": "ctrlCmd",
-// マウスでの複数選択時の修飾キーを変更
-"editor.renderControlCharacters": true,
-// 制御文字を表示
-"editor.renderWhitespace": "all",
-// 半角スペースを常に表示
-"editor.snippetSuggestions": "top",
-// Emmet などのスニペット候補を優先して表示
-"editor.tabSize": 2,
-// タブのサイズ変更
-"editor.wordWrap": "on",
-// エディターの幅で折り返し
-"editor.wrappingColumn": 80,
-//エディターで次の行に折り返される文字数を制御
-"emmet.showSuggestionsAsSnippets": true,
-// Emmet の候補を表示"emmet.triggerExpansionOnTab": true,
-// TAB キーで Emmet を展開できるようにする
-"emmet.variables": {
-      // Emmet で展開される HTML の言語を変更
-    "lang": "ja"
-},
-"explorer.confirmDelete": false,
-// ファイル削除時の確認を表示しない
-"files.insertFinalNewline": true,
-// ファイルの保存時に末尾を改行
-"files.trimFinalNewlines": true,
-// ファイルの保存時に最終行以降をトリミング
-"files.trimTrailingWhitespace": true,
-// ファイルの保存時に行末の空白をトリミング
-"html.format.contentUnformatted": "pre, code, textarea, title, h1, h2, h3, h4, h5, h6, p",
-// タグ内の記述はフォーマットしない
-"html.format.extraLiners": "",
-// head, body, /html タグの前に改行を入れない
-"html.format.unformatted": null,
-// フレージング・コンテンツ（旧インライン要素のようなタグ）はフォーマットしない
-"html.format.wrapLineLength": 0,
-// 行の文字数制限を無くし自動で改行させない
-"window.title": "${activeEditorMedium}${separator}${rootName}",
-// ウインドウ上部に表示する文字列の設定
-"workbench.editor.labelFormat": "short",
-// タブに表示する文字列の設定
-"workbench.editor.tabSizing": "shrink",
-// タブの表示設定"workbench.startupEditor": "none",
-// Welcome Page を表示しない
-"editor.rulers": [  50,  100],
-"auto-close-tag.SublimeText3Mode": true,
-// </で閉じタグ追加"editor.folding": false,
-//折りたたみ機能を使用しない
-```
 
-## インストールしておきたい拡張機能
-楽しくミスを減らしてコーディングできる拡張機能をご紹介します。
+## VS Codeのスニペット
 
-|拡張機能名|説明|
-|-|-|
-|vscode-icons|ファイル類にアイコンを表示します。アイコンが表示できる仕組みは拡張子やファイル名から判断しているようです。pugファイルが並ぶとわんこのパグだらけになって超カワイイです。<br>インストールしたら左下歯車マークをクリックしてファイルアイコンのテーマをvscode-iconに変更しましょう。|
-|filesize|各ファイルサイズが分かって何気に便利です。フォルダ単位でだとなおいい気はしますが、難しいですね。。|
-|Path Intellisense|パスのインテリセンスを有効になります。|
-|Trailing Spaces|前後の余分な空白を見つけてくれます。|
-|zenkaku|全角スペースがハイライトします。うっかり全角のせいで動かないこともあるので、コーダー初心者には必須です。|
-|Live Server|gulpいらずでBrowserSyncできます。ちょっと確認したいとき、いちいち環境作るのも面倒なのでとても便利です。ポート番号をプロジェクトごとに変えておくと、いくつかのプロジェクトを同時に起動できます。<br>ソースをおくフォルダがごちゃごちゃにならないようにルートディレクトリを作っておくといいです。私の場合開発者ツールでよくデバッグするので、起動ブラウザは主にChromeを使います。|
-|Live Server|gulpいらずでBrowserSyncできます。ちょっと確認したいとき、いちいち環境作るのも面倒なのでとても便利です。ポート番号をプロジェクトごとに変えておくと、いくつかのプロジェクトを同時に起動できます。ソースをおくフォルダがごちゃごちゃにならないようにルートディレクトリを作っておくといいです。|
-|Live Sass Compiler|SCSSをコンパイルできます。|
-### Live Sass Compilerカスタマイズ方法
-Live Sass Compilerカスタマイズ方法です。<br>私の場合開発者ツールでよくデバッグするので、起動ブラウザは主にChromeを使います。
+> #### スニペットとは
+> VS Codeのスニペットとは、よく使うコード一式をショートカットやキーに登録しておく機能です。言語ごとに登録できます。
+コード書いてると、「これ何回書いたっけ？」ってことあると思います。
+
+### スニペット設定用ファイルを追加方法
+HTMLのスニペットを作ります。
+
+![アクティビティーバーの下側・歯車マークをクリック>ユーザースニペット（ショートカットは当たってません）をクリック](./images/2018/entry280-1.jpg)
+
+アクティビティーバーの下側・歯車マークをクリック>ユーザースニペット（ショートカットは当たってません）をクリックします。
+
+![htmlとバーに入力すると、HTMLと入力するとhtml用にhtml.jsonというスニペット用のファイル](./images/2018/entry280-2.jpg)
+
+htmlとバーに入力すると、HTMLと入力するとhtml用にhtml.jsonというスニペット用のファイルができます。
+
+### スニペット設定用ファイルの削除方法
+
+タブを右クリック（Option+Cmd+R）し「ファインダーで表示します」を選ぶと、ファイルの置かれている場所がわかります。
+
+![「ファインダーで表示します」を選ぶと、ファイルの置かれている場所](./images/2018/entry280-3.jpg)
+
+不要になったらここから削除します。
+
+### スニペットの書き方
+
+コメントアウトされているPrint to console〜から閉じカッコまでをコピーしてスニペットを作っていきます。
 
 ```js
-"liveServer.settings.port": 4500,//ポート番号"
-"liveServer.settings.root": "/src",//ルートディレクトリ
-"liveServer.settings.CustomBrowser" : "chrome",//使用するブラウザ
-```
-
-同じLAN内ならPCのIP+port番号で接続可能です。
-PCのIPアドレスはMACであればシステム環境 > ネットワークで調べることができます。もちろん設定も変更可能です。
-
-### Live Sass Compilerカスタマイズ方法
-圧縮方法やファイルの置き場所等変えたいときはcmd + ,(カンマ)でユーザー設定ファイルを開き以下のように追記します。
-プロジェクトごとに変えたいときは.vscode内のsetting.jsonに記述します。
-ファイルの圧縮指定をcompressedにするときはミニファイしたファイルとわかりやすいよう.min.cssという感じのファイル名にしてあげるといいと思います。
-
-
-```js
-"liveSassCompile.settings.formats": [
-    {
-        "format": "compressed", //expanded, compact, compressed, nested デフォはexpanded
-        "extensionName": ".min.css", //ファイル名
-        "savePath": "~/../css/" //ファイル名
-    }
-]
-```
-
-オートプレフィクサーをつけたいときは以下のようにセットします。
-
-```js
-"liveSassCompile.settings.autoprefix": [
-    "> 1%",
-    "last 2 versions"
-]
-```
-
-ブラウザの指定は[こちら](https://github.com/browserslist/browserslist)を参考に。
-
-```js
-"liveSassCompile.settings.formats": [
-    {
-        "format": "compressed",//expanded, compact, compressed, nested デフォはexpanded
-        "extensionName": ".min.css",//ファイル名
-        "savePath": "~/../css/"//ファイル名
-    }
-]
-```
-
-mapを作りたくないときは以下をセットします。
-
-```js
-"liveSassCompile.settings.generateMap":false
-```
-
-mapファイルは中身を見たところでなんてことないので隠しちゃいましょう。、以下のコードを追記して見えないようにセット。
-
-
-```js
-"files.exclude": { // エクスプローラーから非表示にするファイル
-    "**/*.map": true
+{
+  // Place your snippets for html here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  //   "prefix": "log",
+  //   "body": [
+  //     "console.log('$1');",
+  //     "$2"
+  //   ],
+  //   "description": "Log output to console"
+  // }
 }
-```
-## Emmetでコーディングしてみる
-さて、環境は整いました。早速コーディングしてみましょう。
-srcディレクトリを作成し、その中に以下のようにディレクトリ、ファイル類をセットしましょう。
-```
-src/
-  ┣ index.html
-  ┗ assets/
-      ┗ scss/
-         ┣ style.scss
-         ┗ components/
-            ┣ _mixin.scss
-            ┣ _base.scss
-            ┣ _layout.scss
-            ┗ _module.scss
 
-```
-
-SCSSの便利なところはファイルを小分けにして管理できるところです。style.scssにリセットcssのコードを入れてみましょう。<br>
-以下ファイルをコピペします。普通にコンパイルするとライセンス関連のコメントが削除されてしまうので、一行目の`/*`を`/*!`に書き換えます。
-
-[http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css](http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css)
-
-style.scssに以下のように記述して_base.scssを読み込みます。
-
-```scss
-@import "components/base";
-```
-次にGo LiveをクリックしてLive Serverを起動しましょう。
-
-VS codeは最初からEmmetが使用できます。Emmetはhtml,CSS,SCSSを短いアルファベットを打つだけでタグなどを展開してくれる便利なものです。
-
-なので、Emmetを覚えるとコーディングがグンと早くなります。
-
-[Emmetチートシート](https://docs.emmet.io/cheat-sheet/)
-
-早速htmlを展開してみます。
-
-`!` を入力した後に tab ボタンを押すだけです。
-
-```html
-<nav class="l-globalNav">
-  <ul class="container">
-    <li><a href="/">HOME</a></li>
-    <li><a href="/about.html">ABOUT</a></li>
-    <li><a href="/information.html">INFORMATION</a></li>
-    <li><a href="/contact.html">CONTACT</a></li>
-  </ul>
-</nav>
-```
-展開したらtabで移動しながらメニュー名とリンク先を追記していきます。
-
-### 基本スタイルを設定する
-_mixin.scssにサイトの基本スタイル設定をしておくと使い回しができます。
-
-```scss
-$font-family:"游ゴシック体",YuGothic,"Yu Gothic","ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,Helvetica,sans-serif;//ベースのフォント$font-color: #333;$breakpoint: 768px;$font-size: 1.6rem;$line-height: 1.8;
-```
-
-### スニペットを作成してみる
-メディアクエリのスニペットを作っておくと便利です。
-
-左下歯車マークをクリックし、ユーザースニペット > scss.jsonを編集します。
-
-今回は可読性や管理の便利さを優先して、設定ごとにメディアクエリをのスニペットを作ります。
-
-SCSSファイルでpcと入力したら、スニペットを呼び出すことができます。
-
-$はエスケープが必要なので\\（バックスラッシュ2こ）を頭につけます。
-
-bodyの中が出力されるスニペットです。,で改行が入ります。
-```js
-"pc mq": {
-  "prefix": "pc",
-  "body": [
-    "@media only screen and (min-width:\\\\$breakpoint) {",
-    " $1",
-    "}//pc",
-  ],
-  "description": "PC MediaQuery"
-}
-```
-
-gulpで環境を作ればmediaqueryをモジュールでまとめることができますが、今回は初心者コーダー向けということで割愛します。
-### _base.scss内に基本のスタイルを追加してみる
-基本のスタイルを_base.scss内に書いておきます。
-
-游ゴシック体はIEで何故か表示がズレるバグがあるので、メイリオに読み替えてあげると安心です。
-
-```scss
-html{
-  font-size: 62.5%;
-  font-family: $font-family;
-  color: $font-color;
-}
-body{
-  font-size: $font-size;
-  line-height: $line-height;
-  -webkit-text-size-adjust: 100%;
-}
-//IEハック
- 11_:-ms-fullscreen, :root html {
-  font-family: "メイリオ", Meiryo, Helvetica, sans-serif\\9;
-}
-```
-
-### Webフォントを追加する
-GoogleのWebフォントを追加してみましょう。
-
-head内にスタイルシートを読み込みます。
-
-```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:700">
-```
-
-再利用できるようにmixinを作ります。_mixin.scssに追記しましょう。
-
-```scss
-@mixin font-oswald{
-  font-family: 'Oswald', sans-serif;  letter-spacing: .2em;
-}
-```
-
-### _module.scssに使いまわせるスタイルを設定する
-使いまわせる、.containerというクラスを作ります。
-
-```scss
-.container{
-  padding-left: 15px;
-  padding-right: 15px;
-  max-width: 1030px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media only screen and (min-width:$breakpoint) {
-    padding-left: 30px;    padding-right: 30px;
-  }//pc
-}
-```
-
-## ヘッダーをスタイリングをする
-_layout.scssに以下のコードを追加しましょう。
-
-```scss
-.l-header{
-  background: $font-color;
-
-  &_logo{
-    text-align: center;
-    @include font-oswald;//Webフォントを呼び出す
-    font-size: 2.6rem;
-    color: #ffffff;
-    padding-top: 15px;
-    padding-bottom: 15px;
+//↓↓スニペットの雛形
+{
+  "スニペット名": {
+    "prefix": "キー",
+    "body": [
+      "コード内容"
+    ],
+    "description": "スニペットの説明"
   }
-
-  @media only screen and (min-width:$breakpoint) {
-    adding-top: 30px;
-    padding-bottom: 30px;
-
-    &_logo{
-      font-size: 3rem;
-    }
-  }//pc
 }
-//.l-header
 ```
 
-## グローバルナビゲーションをスタイリングをする
+<br>デフォルトで用意されている*html:5*で展開するHTMLのコードはこちら。
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
 
-```scss
-.l-globalNav{
-  box-shadow: 0 2px 2px rgba(0,0,0,.2);
+</body>
+</html>
+```
 
-  a{
-    font-size: 1.8rem;
-    text-align: center;
-    display: block;
-    color: $font-color;
-    text-decoration: none;
-    @include font-oswald;
-    padding: 15px;
+<br>個人的にはhead内に最低必要なコードは含めておきたいです。足りないコードはこちら4つ。
+```html
+<!-- 電話番号の自動リンク化を無効 -->
+<meta name="format-detection" content="telephone=no">
+<!-- ページの説明 -->
+<meta name="description" content="説明が入ります">
+<!-- スタイルシート -->
+<link rel="stylesheet" href="style.css">
+```
+<br>
+
+* *電話番号の自動リンク化を無効* iOSのSafariには、文書内の電話番号を検出して自動的にリンクする機能が備わっているのですが、電話番号以外の番号も誤認識されてしまうことがありやっかいです。最初から無効化しておきます。
+* *ページの説明* サイト公開に最低限必要。
+* *スタイルシート* 絶対何かしら読み込むので用意しておきます。ファイル名はあとで変更すれば良いです。]
+
+ちなみにコードは爆長になるので、「Option+Z」コードの折り返しをセットしておきましょう。
+
+コードは以下。
+
+```js
+{
+  // HTMLのためのスニペット
+  "html5": {
+    "prefix": "html:temp",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"ja\">",
+      "  <head>",
+      "    <meta charset=\"UTF-8\">",
+      "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">",
+      "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",
+      "    <meta name=\"format-detection\" content=\"telephone=no\">",
+      "    <title>${1:タイトル}</title>",
+      "    <meta name=\"description\" content=\"${2:説明}\">\n",
+      "    <!-- style -->",
+      "    <link rel=\"canonical\" href=\"${3:style.css}\">",
+      "    <!-- js -->",
+      "    <script src=\"script.js\" defer></script>",
+      "  </head>",
+      "  <body>",
+      "    $4",
+      "  </body>",
+      "</html>"
+    ],
+    "description": "ベースHTMLのスニペット"
   }
+}
+```
+<br>`${1:タイトル}`のように書いておくと、デフォルトの文字を入れつつタブでカーソル移動しながら簡単に書き換えられます。
 
-  @media only screen and (min-width:$breakpoint) {
-    ul{
-      display: flex;
-      justify-content: space-between;
-    }
+数字は移動したい順番です。
 
-    li{
-      flex: 1;
-    }
+`html:temp`で展開可能です。候補も出ますし、どんなコードが展開されるかもわかります。
 
-    a{
-      transition: .3s;
+![候補も出ますし、どんなコードが展開されるかも教えてくれます](./images/2018/entry280-4.jpg)
 
-      &:hover{
-        color: #b50202;
-      }
-    }
-  }//pc
-}//.l-globalNav
+
+## VS CodeでGitと連携する！
+せっかくなのでコードを管理するためにGitと連携しましょう。
+
+Gitでググったらおそらく、コマンドがわんさか出てきて初学者にとっては地獄。。。
+
+GUI（グラフィカル・ユーザー・インターフェイス）で使えるなんて超幸せです！<br><br>
+
+**バージョン管理とはすなわち*躾（しつけ）*！**<br><br>
+
+初学者だろうが有無を言わずに使いましょう！
+
+GitHubとVS Codeをサインインしておきます。私はVS Codeを普段GitHubと連携しています。<br>
+アクティブバーの人マークをクリックし、サインインして同期を選び、GitHubを選びます。
+
+![アクティブバーの人マークをクリックし、サインインして同期を選び、GitHubを選びます](./images/2018/entry280-5.jpg)
+
+### GitHubでリポジトリを作り、クローンする
+
+GitHubで先にリポジトリを作っておきます（readme.mdを追加しないで作ってください）。
+
+新しくVS Codeを開きクローンするを選びます。
+
+![GitHubで先にリポジトリを作っておきます（readme.mdを追加しないで作ってください](./images/2018/entry280-6.jpg)
+
+リポジトリを選び、クローンする場所を選びます。
+
+クローンが終わると改めて「VS Codeを開きますか？」と聞かれるでそちらを開いておきます。
+
+### readme.mdファイルを追加してファーストコミット
+
+![readme.mdファイルを追加して「Initial Commit」](./images/2018/entry280-7.jpg)
+
+ディレクトリーにreadme.mdという名前のファイルを追加します。適当に文字を打ち込み、ソース管理（ショートカットCtrl+Shift+G）を開きます。
+
+ちょっと小さいですがアイコンにそって説明します。
+
+![ちょっと小さいですがアイコンにそって説明します](./images/2018/entry280-8.jpg)
+
+1. ファイル名です。クリックすると変更前・変更後を比較できます。<br>![クリックすると変更前・変更後を比較できます](./images/2018/entry280-9.jpg)
+2. 単純にファイルを開けます。
+3. 変更を破棄できます
+4. 変更をステージ（コミット対象）に移せます。
+5. 状態。U（新規）/M（変更）/D（削除）/C（コンフリクト）です。クリックするとファイル名同様変更前・変更後を比較できます。赤くなってる場合はエラーがあるかコンフリクトしているので注意です。
+
+ここでは4のプラスボタンをクリックしてステージングします。
+
+「ステージされている変更」が出現し、ファイルがそちらに移動します。もしステージングを取り消したい場合はー（マイナス）ボタンを押して下に移動します。
+
+![変更したファイルの変更は「ソース管理」「ステージされている変更」の横にある横ボタンからまとめて操](./images/2018/entry280-10.jpg)
+
+ファイルの量が増えてくると面倒です。変更したファイルの変更は「ソース管理」「ステージされている変更」の横にある横ボタンからまとめて操作できます。
+
+サイドバー右上のメニュー(・・・)から「コミット」>「ステージング済みをコミット」を選択します。するとコミットのメッセージを求められるので「Initial Commit」と入力しておきましょう。
+
+![コミット](./images/2018/entry280-12.jpg)
+
+コミット履歴はエクスプローラーのタイムラインから確認できます。
+
+![コミット履歴](./images/2018/entry280-13.jpg)
+
+*結構頻繁に行き来する*ので、エクスプローラー（Shift+Cmd+E）とソース管理（Ctrl+Shift+G）のショートカットは覚えたほうがいいです。
+
+### プッシュ
+リモートにプッシュします。
+
+サイドバー右上のメニュー(・・・)から「プル、プッシュ」>「プッシュ」を選択。
+
+![プッシュ](./images/2018/entry280-14.jpg)
+
+GitHubのリポジトリでちゃんとプッシュされているか、確認しましょう。
+
+![GitHubのリポジトリでちゃんとプッシュされているか、確認](./images/2018/entry280-15.jpg)
+
+### ブランチ追加・切り替え
+VS Codeはブランチの追加も簡単です！
+
+![VS Codeはブランチの追加](./images/2018/entry280-16.jpg)
+
+メニューからも追加できますが、下のステータスバーから追加するほうがカンタンです。
+
+切り替えも同様に下のステータスバーをクリックして切り替え可能です。
+
+### マージ
+マージはブランチに移動し、サイドバー右上のメニュー(・・・)から「ブランチ」>「ブランチをマージ」を選択。
+
+マージしたいブランチを選択するだけです。
+
+![VS Codeはブランチの追加](./images/2018/entry280-17.jpg)
+
+### コンフリクト対応
+追記します！！
+
+<div class="box">
+  <h4>余談・Macのキーチェーンで保存されていたパスワードが厄介でプッシュできない現象に陥った。。。</h4>
+  ちなみに私のMacに2つのGitHubのパスワードがキーチェーンに保存されていました。<br>
+  パスワードを聞かれたら、現在削除されたアカウントが優先されプッシュできない状況にお陥りました。<br>
+  もう使ってないのでキーチェーンから削除して一件落着。みなさんも気をつけましょう。
+</div>
+
+## ターミナルを使おう！（ちょっとハードル上がるよ）
+通常ターミナルは別アプリケーションから開きますがVS Codeにも付属でついています。「Ctrl+Shift+@」で表示・非表示可能です。
+
+私は普段、Git操作はターミナルから行っていて、VS CodeのGit機能はブランチ切り替えと作成ぐらいしか使ってません。
+
+GitHubのアカウントを以前2こもっていてコミットで1アカウントの方がhttpsのURLからはできなくなってしまいました。
+
+困ったので片方はssh接続といって鍵認証で接続する方法をとることにしています。
+
+[GitHubでssh接続する手順~公開鍵・秘密鍵の生成から~](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)
+
+### コマンドでクローンする
+普通にVS Codeを開いてターミナルを起動し、cdコマンドでディレクトリ移動します。
+
+ディスクトップに移動しておきます。
+
+```
+cd Desktop
+```
+自分の居場所がわからない人は以下コマンドで調べてみましょう。
+
+```
+ls -a
 ```
 
-## アウトラインを活用しよう
-アウトラインとは**HTML、CSS、SCSSのアウトライン（構造）が一目瞭然の機能**です。
+今いる階層のディレクトリ・ファイルが確認できます。
 
-こちらはエクスプローラー（ファイル類）メニューでSCSSファイルを選択した状態です。下の方にアウトラインというメニューがあるのでクリックすると展開して以下のように構造を表示してくれます。
+![ls -a　今いる階層のディレクトリ・ファイルが確認できます](./images/2018/entry280-18.jpg)
 
-構造は多いので探すのが大変な場合は右3点ポッチのメニューから並べ替えたり、フィルタリングして変更かけたいところにジャンプできます。
+<br>sshの方のURLでgit cloneします。
 
-![VS Code down アウトライン](./images/2018/entry280-1.png)
+![sshの方のURLでgit clone](./images/2018/entry280-19.jpg)
 
-記述にエラーがあると、以下のような表示になるので、その項目をクリックして修正しに行くこともできます。
+```
+git clone git@github.com:yuririn/vscode.git
+```
 
-![VS Code down アウトライン2](./images/2018/entry280-2.png)
+パスフレーズを聞かれるので入力します。
 
-## 「問題」をチェックしてエラー回避
-「問題」という機能も便利です。アウトラインと同じようにミスがあると、教えてくれます。
-クリックすると問題のあるファイルのエラー箇所にジャンプしてくれます。cmd + shift + Mで表示されます。
+![公開鍵のパスフレーズを聞かれる](./images/2018/entry280-20.jpg)
 
-_module.scss、行237の7こめそんなプロパティないよって教えてくれます。
+これで問題なければ、クローンできます！！
 
-![VS Code down アウトライン2](./images/2018/entry280-3.png)
+いくつかgitのコマンドをご紹介しておきます。
 
-そのほか、間違えて全角空白が入っていたり、割と気づきにくいSCSSのムダにできてしまったコンパイルも、探し出してくれるので重宝しています。
+### 変更のあったものだけステージング
+```
+git add .
+```
 
-## まとめ：VS Codeの拡張機能だけで時短！
-今回はヘッダーとグローバルナヴを簡易的にコーディングしてみました。VS Codeでコーディングするためには多少のカスタマイズは必要と思いますが敷居は低いと思います。SCSS、Emmet、Live Server	を使えば初心者の方でもかなり手早くコーディングできると思います。ぜひ、お試しあれ。
+### コミット
+```
+git commit -m "ここにコメント"
+```
+
+### プッシュ
+
+```
+git push --set-upstream origin <ブランチ名>
+```
+2回目以降オプションは不要。
+```
+push
+```
+
+## まとめ：VS Codeをもっともっと快適に使おう！！
+今回はスニペットの作り方、Git連携、ターミナルの使い方をご紹介させていただきました。
+
+あくまでVS Codeの使い方にフォーカスしてますので、Gitの細かいコマンドなどは触れていません。
+
+前回同様、クソ長い記事になってしまいましたがぜひ目次を利用して必要な項目だけ見てもらえると幸いです。
+
+最後までお読みいただきありがとうございました。
+
+## おまけ：VS Codeお悩み別使い方
+
+第1弾ではショートカット一覧を掲載したのでシチュエーションやお悩み別の使い方を掲載しておきます。
+
+### サイドバーが邪魔
+Cmd+Bでサイドバーを閉じます。開きたい時は同じくCmd+B。
+
+### 開いているファイルが多すぎて邪魔
+
+ショートカットCmd+K+Cmd+Wですべて閉じて、開きたいファイルだけクイックオープン（Cmd+P）からファイル名を入力して開きます。
+
+### ファイル名は分かっているけど、ファイルとディレクトリが膨大でエクスプローラーから探すのは辛い
+
+クイックオープンを使いましょう。「Cmd+P」でワークスペース内のファイルを素早く探すことができます。
+
+ファイル名を入力するだけです。
+
+### headerのここ書き換えたいんだけど、どこやっけ？
+タグの位置は分かってるけどコードが長くてカオス。
+
+そんな時はエクスプローラーの中のアウトラインからHTMLやCSSのツリー構造から移動するのが早いかも！
+
+エクスプローラーの中のアウトラインを使うと*HTML、CSS、SCSSのアウトライン（構造）が一目瞭然の機能*です。クラスやIdも一緒に記載されているので場所を判別しやすいです。
+
+### 現在開いているファイルの任意の行にところに移動したい
+ミニマップか、クイックオープンを使います。
+
+* クイックオープン：Cmd+Pと入力後、:行数
+* ミニマップ：大体ここくらいかなって位置を選んで移動
+
+### エラーの場所を探したい
+
+* ミニマップ:現在のファイルのエラーを修正したい。マップ上に赤い線が入るのでファイル上どのくらいエラーを吐いてるのかもわかる（たまに気分も萎える）。
+* アウトライン:現在のファイルのエラーを教えてくれる。エラー個所に素早く移動できる。
+* 問題：全体のエラーを教えてくれる。エラー個所に素早く移動できる。
+
+エラーをチェックする時は問題を開いておくと○。ショートカット「Cmd+Shift+M」です。
