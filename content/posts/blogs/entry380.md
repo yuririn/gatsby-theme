@@ -237,7 +237,7 @@ Analyticsも合わせて経過を見ていきます。
 今回の改修&リライトした記事で劇的に改善した事例をご紹介します。
 
 <a class="article-link" href="/blogs/entry336">
-<section><div class="article-link__img"><img alt="VScodeでカンタン！正規表現置換のためのチートシート" src="/static/8334aab14954ce83da1cef589108ae3d/69585/entry266.png" width="150" height="113" class=""></div><div class="article-link__main">
+<section><div class="article-link__img"><img alt="VScodeでカンタン！正規表現置換のためのチートシート" src="/static/95e83be157ab3f2a1be514b44a86cd50/f836f/entry336.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">VScodeでカンタン！正規表現置換のためのチートシート</div>
 <p class="description">コードをいわゆる「置換（置き換え）」、一気に変換したい！ってときありませんか？「正規表現」を使う･･･</p>
 <p>

@@ -2,7 +2,7 @@
 title: VScodeでカンタン！正規表現置換のためのチートシート
 date: 2019-07-21
 modifieddate: 2020-12-15
-hero: 2018/entry266.png
+hero: 2019/entry336.jpg
 pagetype: blog
 category: 'Front end'
 cateId: 'front-end-program'
@@ -18,8 +18,15 @@ lead: ["コードをいわゆる「置換（置き換え）」、一気に変換
 
 この記事では深く触れませんので、VS Codeに関する記事も合わせてお読みください。
 
-[初心者コーダに贈る！超軽量高機能エディタVS Code入門](https://ginneko-atelier.com/blogs/entry266)
-[初心者コーダに贈る！超軽量高機能エディタVS Code入門2](https://ginneko-atelier.com/blogs/entry280)
+<a class="article-link" href="/blogs/entry266/">
+<section><div class="article-link__img"><img alt="初心者コーダーに贈る！超軽量高機能エディターVS Code入門1" src="/static/35bb69d2db3044dfc04f5f7e89445f15/f836f/entry266.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">初心者コーダーに贈る！超軽量高機能エディターVS Code入門1</div>
+<p class="description">コーディング初心者に贈るVS Code完全マニュアル第一弾！インストールから拡張機能、カスタマイズまで、コーディング初心者･･</p>
+<p>
+<time datetime="2018-06-11">2018.06.11</time>
+</p>
+</div>
+</section></a>
 
 今回は、単一ファイルの置換方法と複数ファイルの置換方法両方のやり方をご紹介します。
 
@@ -159,6 +166,8 @@ PDFから文章をコピーすると謎の半角スペースが紛れ込んで�
 //置換後の文字列
 <tr>\n  <td>$1</td><td>$2</td>\n</tr>
 ```
+<small>※ tdタグを含む$1の部分はセルの数で調整してください。</small>
+
 残ったタブを削除します。
 ```
 //置換する文字列

@@ -1,252 +1,250 @@
 const path = require(`path`)
-const Promise = require('bluebird')
+const Promise = require("bluebird")
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const slash = require('slash')
+const slash = require("slash")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-	const { createPage } = actions
+  const { createPage } = actions
 
-	// Define a template for blog post
-	const blogPost = path.resolve(`./src/templates/blog-post.js`)
-	const contact = path.resolve(`./src/templates/contact.js`)
-	// const portfolioPost = path.resolve(`./src/pages/portfolio.js`)
-	const blogList = path.resolve(`./src/templates/blogs.js`)
-	const pagePost = path.resolve(`./src/templates/pages.js`)
+  // Define a template for blog post
+  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const contact = path.resolve(`./src/templates/contact.js`)
+  // const portfolioPost = path.resolve(`./src/pages/portfolio.js`)
+  const blogList = path.resolve(`./src/templates/blogs.js`)
+  const pagePost = path.resolve(`./src/templates/pages.js`)
 
-	// Get all markdown blog posts sorted by date
-	const result = await graphql(
-		`
+  // Get all markdown blog posts sorted by date
+  const result = await graphql(
+    `
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: ASC }
           limit: 1000
         ) {
-			totalCount
-			nodes {
-					id
-					fields {
-						slug
-					}
-					frontmatter {
-						tags
-						category
-						cateId
-						hero
-						pagetype
-					}
-				}
-			}
+          totalCount
+          nodes {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              tags
+              category
+              cateId
+              hero
+              pagetype
+            }
+          }
+        }
       }
     `
-	)
+  )
 
-	if (result.errors) {
-		reporter.panicOnBuild(
-			`There was an error loading your blog posts`,
-			result.errors
-		)
-		return
-	}
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      result.errors
+    )
+    return
+  }
 
-	// createPage({
-	// 	path: 'portfolio',
-	// 	component: portfolioPost,
-	// 	context: {
-	// 	},
-	// });
+  // createPage({
+  // 	path: 'portfolio',
+  // 	component: portfolioPost,
+  // 	context: {
+  // 	},
+  // });
 
+  const posts = result.data.allMarkdownRemark.nodes
+  let count = 0
 
-	const posts = result.data.allMarkdownRemark.nodes
-	let count = 0
+  // Create blog posts pages
+  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
+  // `context` is available in the template as a prop and as a variable in GraphQL
+  const search = []
 
-	// Create blog posts pages
-	// But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-	// `context` is available in the template as a prop and as a variable in GraphQL
-	const search = []
+  if (posts.length > 0) {
+    const blogPosts = []
+    posts.forEach(post => {
+      if (post.frontmatter.pagetype === "blog") {
+        blogPosts.push(post)
+      }
+    })
 
-	if (posts.length > 0) {
-		const blogPosts = [];
-		posts.forEach((post) => {
-			if (post.frontmatter.pagetype === 'blog') {
-				blogPosts.push(post);
-			}
+    blogPosts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : blogPosts[index - 1].id
+      const nextPostId =
+        index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
+      createPage({
+        path: post.fields.slug,
+        component: blogPost,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+          hero: post.frontmatter.hero,
+        },
+      })
+    })
+    createPage({
+      path: "/contact/",
+      component: contact,
+      context: {},
+    })
 
-		})
+    createPage({
+      path: "/contact/thanks/",
+      component: contact,
+      context: {},
+    })
 
-		blogPosts.forEach((post, index) => {
-			const previousPostId = index === 0 ? null : blogPosts[index - 1].id
-			const nextPostId = index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
-			createPage({
-				path: post.fields.slug,
-				component: blogPost,
-				context: {
-					id: post.id,
-					previousPostId,
-					nextPostId,
-					hero: post.frontmatter.hero,
-				},
-			})
-		})
-		createPage({
-			path: '/contact/',
-			component: contact,
-			context: {
-			},
-		})
+    posts.forEach(post => {
+      if (post.frontmatter.pagetype === "page") {
+        createPage({
+          path: post.fields.slug,
+          component: pagePost,
+          context: {
+            id: post.id,
+            hero: post.frontmatter.hero,
+          },
+        })
+      }
+    })
 
-		createPage({
-			path: '/contact/thanks/',
-			component: contact,
-			context: {
-			},
-		})
+    const postsPerPage = 12
+    let numPages = Math.ceil(blogPosts.length / postsPerPage)
 
-		posts.forEach((post) => {
-			if (post.frontmatter.pagetype === 'page') {
-				createPage({
-					path: post.fields.slug,
-					component: pagePost,
-					context: {
-						id: post.id,
-						hero: post.frontmatter.hero,
-					},
-				})
-			}
-		})
+    for (let index = 0; index < numPages; index++) {
+      const withPrefix = pageNumber =>
+        pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`
+      const pageNumber = index + 1
 
-		const postsPerPage = 12
-		let numPages = Math.ceil(blogPosts.length / postsPerPage)
+      createPage({
+        path: withPrefix(pageNumber),
+        // 上で作成したblogPostList変数を使用します。
+        component: blogList,
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          current: pageNumber,
+          page: numPages,
+        },
+      })
+    }
+  }
 
-		for (let index = 0; index < numPages; index++) {
-			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`
-			const pageNumber = index + 1
+  //タグを取得
+  let tags = posts.reduce((tags, edge) => {
+    const edgeTags = edge["frontmatter"]["tags"]
+    return edgeTags ? tags.concat(edgeTags) : tags
+  }, [])
 
-			createPage({
-				path: withPrefix(pageNumber),
-				// 上で作成したblogPostList変数を使用します。
-				component: blogList,
-				context: {
-					limit: postsPerPage,
-					skip: index * postsPerPage,
-					current: pageNumber,
-					page: numPages,
-				}
-			})
-		}
-	}
+  let counts = {}
 
+  for (var i = 0; i < tags.length; i++) {
+    let key = tags[i]
+    counts[key] = counts[key] ? counts[key] + 1 : 1
+  }
 
-	//タグを取得
-	let tags = posts.reduce((tags, edge) => {
-		const edgeTags = edge['frontmatter']['tags'];
-		return edgeTags ? tags.concat(edgeTags) : tags;
-	}, []);
+  tags = counts
 
-	let counts = {};
+  //タグページを作成
+  const tagTemplate = path.resolve(`./src/templates/tags.js`)
+  for (let tag in tags) {
+    const postsPerPage = 12
+    let count = tags[tag]
+    numPages = Math.ceil(count / postsPerPage)
 
-	for (var i = 0; i < tags.length; i++) {
-		let key = tags[i];
-		counts[key] = (counts[key]) ? counts[key] + 1 : 1;
+    for (let index = 0; index < numPages; index++) {
+      const withPrefix = pageNumber =>
+        pageNumber === 1
+          ? `/blogs/tags/${tag}/`
+          : `/blogs/tags/${tag}/page/${pageNumber}/`
+      const pageNumber = index + 1
 
-	}
+      createPage({
+        path: withPrefix(pageNumber),
+        component: tagTemplate,
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          current: pageNumber,
+          page: numPages,
+          tag,
+        },
+      })
+    }
+    // console.log(tag, tags[tag])
+  }
 
-	tags = counts
+  //タグを取得
+  //タグを取得
+  let cates = posts.reduce((cates, edge) => {
+    const edgeCates = edge["frontmatter"]["cateId"]
+    return edgeCates ? cates.concat(edgeCates) : cates
+  }, [])
 
-	//タグページを作成
-	const tagTemplate = path.resolve(`./src/templates/tags.js`);
-	for (let tag in tags) {
-		const postsPerPage = 12
-		let count = tags[tag]
-		numPages = Math.ceil(count / postsPerPage)
+  let categories = {}
 
-		for (let index = 0; index < numPages; index++) {
-			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/tags/${tag}/` : `/blogs/tags/${tag}/page/${pageNumber}/`
-			const pageNumber = index + 1
+  for (var i = 0; i < cates.length; i++) {
+    let key = cates[i]
+    categories[key] = categories[key] ? categories[key] + 1 : 1
+  }
 
-			createPage({
-				path: withPrefix(pageNumber),
-				component: tagTemplate,
-				context: {
-					limit: postsPerPage,
-					skip: index * postsPerPage,
-					current: pageNumber,
-					page: numPages,
-					tag,
-				},
-			});
-		}
-		// console.log(tag, tags[tag])
-	}
+  const categoyTemplate = path.resolve(`./src/templates/category.js`)
 
-	//タグを取得
-	//タグを取得
-	let cates = posts.reduce((cates, edge) => {
-		const edgeCates = edge['frontmatter']['cateId'];
-		return edgeCates ? cates.concat(edgeCates) : cates;
-	}, []);
+  for (cate in categories) {
+    const postsPerPage = 12
+    let count = categories[cate]
+    numPages = Math.ceil(count / postsPerPage)
 
+    for (let index = 0; index < numPages; index++) {
+      const withPrefix = pageNumber =>
+        pageNumber === 1
+          ? `/blogs/${cate}/`
+          : `/blogs/${cate}/page/${pageNumber}/`
+      const pageNumber = index + 1
+      const cateSlug = cate
 
-	let categories = {};
-
-	for (var i = 0; i < cates.length; i++) {
-		let key = cates[i];
-		categories[key] = (categories[key]) ? categories[key] + 1 : 1;
-
-	}
-
-
-	const categoyTemplate = path.resolve(`./src/templates/category.js`);
-
-	for (cate in categories) {
-		const postsPerPage = 12
-		let count = categories[cate]
-		numPages = Math.ceil(count / postsPerPage)
-
-		for (let index = 0; index < numPages; index++) {
-			const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/${cate}/` : `/blogs/${cate}/page/${pageNumber}/`
-			const pageNumber = index + 1
-			const cateSlug = cate
-
-			createPage({
-				path: withPrefix(pageNumber),
-				component: categoyTemplate,
-				context: {
-					limit: postsPerPage,
-					skip: index * postsPerPage,
-					current: pageNumber,
-					page: numPages,
-					cateSlug
-				},
-			});
-		}
-	}
-
+      createPage({
+        path: withPrefix(pageNumber),
+        component: categoyTemplate,
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          current: pageNumber,
+          page: numPages,
+          cateSlug,
+        },
+      })
+    }
+  }
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-	const { createNodeField } = actions
+  const { createNodeField } = actions
 
-	if (node.internal.type === `MarkdownRemark`) {
-		const value = createFilePath({ node, getNode })
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode })
 
-		createNodeField({
-			name: `slug`,
-			node,
-			value,
-		})
-	}
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
+  }
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
-	const { createTypes } = actions
+  const { createTypes } = actions
 
-	// Explicitly define the siteMetadata {} object
-	// This way those will always be defined even if removed from gatsby-config.js
+  // Explicitly define the siteMetadata {} object
+  // This way those will always be defined even if removed from gatsby-config.js
 
-	// Also explicitly define the Markdown frontmatter
-	// This way the "MarkdownRemark" queries will return `null` even when no
-	// blog posts are stored inside "content/blog" instead of returning an error
-	createTypes(`
+  // Also explicitly define the Markdown frontmatter
+  // This way the "MarkdownRemark" queries will return `null` even when no
+  // blog posts are stored inside "content/blog" instead of returning an error
+  createTypes(`
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
