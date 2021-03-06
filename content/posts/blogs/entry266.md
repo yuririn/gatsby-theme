@@ -104,8 +104,8 @@ VS Code左手にある以下のメニューをアクテビティバーと呼び�
 検索・置換に関しては、こちらにより詳しく書いてあります。
 
 <a class="article-link" href="/blogs/entry336/">
-<section><div class="article-link__img"><img alt="VScodeでカンタン！正規表現置換のためのチートシート" src="/static/95e83be157ab3f2a1be514b44a86cd50/f836f/entry336.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">VScodeでカンタン！正規表現置換のためのチートシート</div>
+<section><div class="article-link__img"><img alt="VS Codeでカンタン！正規表現置換のためのチートシート" src="/static/8ecf37b123c8696efad17b0e505e7e82/f836f/entry336.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">VS Codeでカンタン！正規表現置換のためのチートシート</div>
 <p class="description">コードをいわゆる「置換（置き換え）」、一気に変換したい！ってときありませんか？「正規表現」を使うと･･</p>
 <p>
 <time datetime="2019-07-21">2019.07.21</time>
@@ -434,7 +434,7 @@ VS Codeがさらに使いやすくなるよう、拡張機能をインストー�
 ![>VS Codeにも使えるテーマ](./images/2018/entry266-16.jpg)<br>
 
 - _Bracket Pair Colorizer_<br>ペアの{}（波括弧）を色付けして見分けやすくしてくれる拡張機能です。JavaScriptやCSS（とくにSCSS）の{}（波括弧）の入子って地獄。ペアの色が違うだけで助かります。![元々あるファイルもワークスペース内であれば候補から追加](./images/2018/entry266-14.jpg)<br>
-- _Live Server_<br>VS Codeで簡易ローカルサーバーを起動できます。ボタンで一発インストールするだけでタスクランナー使えます。作業効率がアップするので駆け出しさんにもオススメです!<br>![簡易ローカルサーバー](./images/2018/entry266-17.jpg)<br>
+- _Live Server_<br>VS Codeで簡易ローカルサーバーを起動できます。ボタンで一発インストールするだけでライブリロード（ファイルを更新するたびにブラウザーも更新）使えます。作業効率がアップするので駆け出しさんにもオススメです!<br>![簡易ローカルサーバー](./images/2018/entry266-17.jpg)<br>
 - _Auto Rename Tag_<br>ペアになっているHTML/XMLタグの名前を自動的に変更できます。後からタグを書き直したいなんてシチュエーション日常茶飯事。だから入れて置いて損はなし。![ペアになっているHTML/XMLタグの名前を自動的に変更](./images/2018/entry266-18.jpg)<br>
 - _Path Intellisense_<br>ワークスペース内のパスを補完してくれる超便利な拡張機能です。![ペアになっているHTML/XMLタグの名前を自動的に変更](./images/2018/entry266-13.jpg)<br>
 - _HTML CSS Support_<br>HTMLに対するCSSのサポート。class属性の補完、ID属性の補完、css、scssファイルの検索をしてくれます。)<br>
@@ -521,8 +521,8 @@ Gitとの連携もカンタンで無料ってめちゃめちゃいいです！
 | Ctrl+End          | Cmd+↓                           | _❤︎_ ファイルの最後へ移動      |
 | Ctrl+↑ / ↓        | ⌃PgUp / ⌃PgDn                   | _❤︎_ 上下の行の入れ替え        |
 | Alt+PgUp / PgDn   | Cmd+PgUp /Cmd+PgDn              | ページの入れ替え               |
-| Ctrl+Shift+[      | Option+Cmd+[                    | _★❤︎_ 次のタブのファイルへ移動 |
-| Ctrl+Shift+]      | Option+Cmd+]                    | _★❤︎_ 前のタブのファイルへ移動 |
+| Ctrl+Shift+[      | Option+Cmd+[                    | _★ ❤︎_ 次のタブのファイルへ移動 |
+| Ctrl+Shift+]      | Option+Cmd+]                    | _★ ❤︎_ 前のタブのファイルへ移動 |
 | Ctrl+K Ctrl+C     | Cmd+K Cmd+C                     | 行にコメント追加               |
 | Ctrl+K Ctrl+U     | Cmd+K Cmd+U                     | 行のコメント削除               |
 | Ctrl+/            | Cmd+/                           | _★_ コメントの追加と削除       |
@@ -545,8 +545,8 @@ Gitとの連携もカンタンで無料ってめちゃめちゃいいです！
 |Shift+Alt+→ / ←|Ctrl+Shift+Cmd+→ / ← |選択範囲を拡大/縮小|
 |Shift+Alt+Drag|Shift+Option+Drag| _★ ❤︎_ ドラッグしながら矩形選択|
 |Ctrl+Shift+Alt+↑ / ↓ / ← / →|Shift+Option+Cmd+↑ / ↓ / ← / →| _★ ❤︎_ 十字キーを使っての矩形選択|
-|Ctrl+Shift+Alt+PgUp|Shift+Option+Cmd+PgUp|ページの上へ矩形選択|
-|Ctrl+Shift+Alt+PgDn|Shift+Option+Cmd+PgDn|ページの下へ矩形選択|
+|Ctrl+Shift+ Alt+PgUp|Shift+Option+ Cmd+PgUp|ページの上へ矩形選択|
+|Ctrl+Shift+ Alt+PgDn|Shift+Option+ Cmd+PgDn|ページの下へ矩形選択|
 
 よくやるのは十字キーを使っての矩形選択 >Cmd+←/→などで行の先頭や最後にカーソルを移動させ、まとめてタグを書き換えます。
 
@@ -559,9 +559,9 @@ Cmd+Dは超便利で使いまくっています。
 | ----------------- | ------------------------------- | ------------------------------ |
 |Ctrl+F         |Cmd+F                           | _★_ エディター内での検索             |
 |Ctrl+H         |Option+Cmd+F                           | _★_ エディター内での置換      |
-|Alt+Enter         |Option+Enter              | _★_ 候補を全て選択             |
+|Alt+Enter         |Option+Enter              | _★_ 候補をすべて選択             |
 |Ctrol+D         |Cmd+D              | _★ ❤︎_ 現在選択中の文字列と同じ次に出てくる文字列を選択    |
-|Ctrl+U         |Cmd+U              | 文字選択のUndo（選択前に一つ戻ります）    |
+|Ctrl+U         |Cmd+U              | 文字選択のUndo（選択前に1つ戻ります）    |
 |Ctrl+K Ctrl+D         |Cmd+K Cmd+U              | 文字選択をスキップ    |
 |Alt+C          |Option+C              | 大文字小文字を区別する    |
 |Alt+R          |Option+R              | 単語で検索    |

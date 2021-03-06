@@ -5,7 +5,7 @@ hero: 2021/entry438.jpg
 pagetype: blog
 category:  Life Hack
 cateId: ginneko-tsuredure
-tags: ["YouTube","ライフスタイル"]
+tags: ["YouTube","ライフスタイル","セブ島エンジニア生活"]
 description: これからYouTubeをはじめようと思っている人へ。私はYouTubeをはじめて物の見方や生活が変わりました。YouTube動画ができるまでの行程もざっくり紹介しています。新米YouTuberが具体的に変わったことと今後どんなことを発信していきたいかなどを綴ろうと思います。
 lead: ["これからYouTubeをはじめようと思っている人へ。","私はYouTubeをはじめて物の見方や生活が変わりました。YouTube動画ができるまでの行程もざっくり紹介しています。新米YouTuberが具体的に変わったことと今後どんなことを発信していきたいかなどを綴ろうと思います。"]
 ---
