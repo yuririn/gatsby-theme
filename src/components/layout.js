@@ -5,23 +5,22 @@ import Profile from "../components/profile"
 import Genre from "../components/genre"
 
 const Layout = ({ location, title, children }) => {
-
-	return (
-		<div>
-			<Header title={title} location={location.pathname} />
-			<main>{children}</main>
-			<aside>
-				<div className="l-container">
-					<section className="p-section">
-						<h2 className="c-heading--lg">記事のジャンル</h2>
-						<Genre />
-					</section>
-					<Profile />
-				</div>
-			</aside>
-			<Footer title={title} />
-		</div>
-	)
+  return (
+    <div>
+      <Header title={title} location={location.pathname} />
+      <main>{children}</main>
+      <aside>
+        <div className="l-container">
+          <section className="p-section">
+            <h2 className="c-heading--lg">記事のジャンル</h2>
+            <Genre />
+          </section>
+          <Profile />
+        </div>
+      </aside>
+      <Footer title={title} />
+    </div>
+  )
 }
 
 export default Layout

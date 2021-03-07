@@ -159,7 +159,7 @@ htmlとバーに入力すると、HTMLと入力するとhtml用にhtml.jsonと�
       "    <title>${1:タイトル}</title>",
       "    <meta name=\"description\" content=\"${2:説明}\">\n",
       "    <!-- style -->",
-      "    <link rel=\"canonical\" href=\"${3:style.css}\">",
+      "    <link rel=\"stylesheet\" href=\"${3:style.css}\">",
       "    <!-- js -->",
       "    <script src=\"script.js\" defer></script>",
       "  </head>",
