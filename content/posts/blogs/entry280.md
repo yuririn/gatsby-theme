@@ -28,7 +28,7 @@ VS Codeをダウンロードし、ある程度設置ができていることが�
 
 本来こちらに書いていた、SCSSの設定などは3弾に記載しました！！
 
-<a class="article-link" href="/blogs/entry400/">
+<a class="article-link" href="/blogs/entry440/">
 <section><div class="article-link__img"><img alt="初心者コーダーに贈る！超軽量高機能エディターVS Code入門3" src="/static/35bb69d2db3044dfc04f5f7e89445f15/f836f/entry266.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">初心者コーダーに贈る！超軽量高機能エディターVS Code入門3</div>
 <p class="description">コーディング初心者に贈るVS Code完全マニュアル第3弾！拡張機能をフルに生かして難しいことを出来るだけ飛ばしてHTMLやSCSSを書ける環境･･</p>
