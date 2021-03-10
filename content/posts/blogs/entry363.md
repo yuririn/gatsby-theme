@@ -1,27 +1,40 @@
 ---
-title: CSSカウンターを使ってリストタグにナンバーを振る
+title: CSSカウンターって知ってる？要素に自動でナンバリング（数字）しよう
 date: 2020-03-29
 hero: 2020/entry363.jpg
 pagetype: blog
 category: 'Front End'
 cateId: 'front-end-program'
 tags: [CSS]
-description: 1-2、2-3みたいにリストや見出しにナンバーが振られているサイトを見かけて真似したいと思ったことありませんか？CSSカウンターというタグに数字を自動で振ることができる関数が使われています。通常のolタグのデザインをカスタマイズしたいときなどとても役に立ちます。実装したいけどどうしたらできるかわからない！って思った方必見。実装方法を紹介しているのでぜひご覧ください。
-lead: ["1-2、2-3みたいにリストや見出しにナンバーが振られているサイトを見かけて真似したいと思ったことありませんか？","CSSカウンターというタグに数字を自動で振ることができる関数が使われています。","通常のolタグのデザインをカスタマイズしたいときなどとても役に立ちます。","実装したいけどどうしたらできるかわからない！って思った方必見。実装方法を紹介しているのでぜひご覧ください。"]
+description: 意外と知られてませんがCSSにカウンターという数字を自動で振ることができるモジュールがあります。普通のolタグや使うよりかっこいい実装ができます！実装方法はもちろんいくつかサンプルコードを紹介しているのでぜひ活用してください。
+lead: ["リストや見出しにナンバー（数字）が振られているサイトを見かけませんか？","私は何年も前に見かけた時、「ちょーかっこいいから真似したい」って思いました。","意外と知られてませんが昔からCSSにはカウンターという数字を自動で振ることができるモジュールがあります。普通のolタグや使うよりかっこいい実装ができます！","実装方法はもちろんいくつかサンプルコードを紹介しているのでぜひ活用してください。"]
 ---
 
 ## CSSカウンターとは？
-CSSカウンターは CSS2／CSS2.1 ですでにあったナンバリング用のモジュールです。使い方はいたって単純。
-基本は親要素で初期化し、特定の要素を数えて、その値を擬似要素なんかを使っ（content）出力といったようなものです。
-そのほか、めちゃめちゃマニアックな使い方もできます。興味がある人はどうぞ。
+
+CSSカウンターとは、モジュール（CSS関数）の一種。自動で要素を数えてナンバリングする機能です。
+
+olタグに限らず知らなければうっかりナンバリングの数字を手動で振ってしまいそうですが装飾もできるし自動出力してくれるので便利です。
+
+![自動で要素を数えてナンバリング](./images/2020/03/entry363-0.jpg)
+
+
+CSS2／CSS2.1 ですでにあったモジュールで、使い方はいたって単純。
+
 
 [CSS Counter Styles Level 3](https://triple-underscore.github.io/css-counter-styles-ja.html)
-## カウンター関数基本の使い方
+
+## カウンターモジュールの基本の使い方
+
+親要素のなかで特定の要素を数えて、その値を擬似要素とcontentを使って出力といったようなものです。
+
 最初に必ずプロパティ counter-reset で値を初期化しましょう。
+
 コンピュータは 0 基準で始まるので、既定値は 0。
+
 以下のようにカウンターの名前は任意でセットします。ちなみに none, inherit, initial は使用できません。
 
-```
+```css
 counter-reset: num;
 ```
 ## ナンバリングしたい対象の要素を選ぶ
@@ -33,8 +46,7 @@ section、li ごとなどなど対象の要素など、プロパティ `counter-
 
 たとえば、こんな感じでCSSを設定すると `main` 内に `h2` が登場するたび、擬似要素（::before）へナンバリングされた数値が出力されるようになります。
 
-```
-
+```css
 main {
   counter-reset: section;
 }
@@ -44,6 +56,7 @@ h2::before {
 }
 ```
 ## いくつかベーシックなサンプルをご紹介
+
 ### 超基本的なオーダーリスト
 基本のオーダーリストだとこんな感じでタイリングできます。
 ![超基本的なオーダーリスト](./images/2020/03/entry363-1.jpg)
@@ -54,7 +67,7 @@ h2::before {
 ![超基本的なオーダーリスト2](./images/2020/03/entry363-2.jpg)
 
 HTML
-```
+```html
 <ol>
   <li>番号のリスト</li>
   <li>番号のリスト</li>
@@ -63,7 +76,7 @@ HTML
 </ol>
 ```
 CSS
-```
+```css
 ol {
   counter-reset: num;
   margin: 15px;
@@ -93,13 +106,15 @@ ol li::before {
 CSS
 
 ![丸で囲って装飾する](./images/2020/03/entry363-3.jpg)
-```
+
+```css
 ol.circle li {
   padding-left: 1.5em; /* 1.5文字分くらい */
   text-indent: -1.5em;
   counter-increment: num;
   margin-bottom: .5em;
 }
+
 ol.circle li::before {
   width: 1.5rem;
   line-height: 1.5;
@@ -119,7 +134,7 @@ ol.circle li::before {
 入る数字の形式を変更することもできます!!!<br>
 指定方法は数字形式を第二引数に入れるだけです。
 
-```
+```css
 counter(num, 表示する形式)
 ```
 
@@ -141,13 +156,14 @@ counter(num, 表示する形式)
 
 ![数字形式の表示方法の変更](./images/2020/03/entry363-4.jpg)
 
-```
+```css
 ol.lower-roman li {
   padding-left: 1.5em; /* １.５文字分くらい */
   text-indent: -1.5em;
   counter-increment: num;
   margin-bottom: .5em;
 }
+
 ol.lower-roman li::before {
   width: 1.5rem;
   line-height: 1.5;
@@ -175,8 +191,8 @@ ol.lower-roman li::before {
 こういうレパートリーがあるとデザインないときに即興で作れて良いです。
 
 HTML
-```
-<class="card">
+```html
+<section class="card">
   <section>
     <h3>タイトル</h3>
     <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
@@ -186,28 +202,27 @@ HTML
     <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
   </section>
   <section>
-   <h3>タイトル</h3>
-   <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
- </section>
- <section>
-   <h3>タイトル</h3>
-   <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
- </section>
- <section>
-   <h3>タイトル</h3>
-   <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
- </section>
- <section>
-   <h3>タイトル</h3>
-   <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
+    <h3>タイトル</h3>
+    <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
+  </section>
+  <section>
+    <h3>タイトル</h3>
+    <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
+  </section>
+  <section>
+    <h3>タイトル</h3>
+    <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
+  </section>
+  <section>
+    <h3>タイトル</h3>
+    <p>コンテンツが入りますコンテンツが入りますコンテンツが入ります</p>
   </section>
 </section>
 ```
 
 CSS
 
-```
-
+```css
 .card {
   counter-reset: num;
   display: flex;
@@ -215,10 +230,12 @@ CSS
   width: 960px;
   justify-content: space-between;
 }
+
 .card h2{
   width: 100%;
   margin-bottom: 30px;
 }
+
 .card section {
   box-sizing: border-box;
   position: relative;
@@ -229,6 +246,7 @@ CSS
   background: #eee;
   margin-bottom: 50px;
 }
+
 .card section::before {
   position: absolute;
   left: 50%;
@@ -244,6 +262,7 @@ CSS
   background: red;
   box-shadow: 5px 5px 0 rgba(255, 0, 0, .3);
 }
+
 .card section h3{
   text-align: center;
   font-weight: bold;
@@ -263,7 +282,7 @@ counters関数を使うとさらに複雑にナンバーを入れ子にできま
 通常以下の子要素、孫要素と下の下まで指定できるのに対して、特定できて便利です。
 
 [CSSの子セレクターの指定の仕方について](http://www.htmq.com/csskihon/005.shtml)
-```
+```css
 /* 子セレクタの指定 */
 ul > li {
   margin: 50px;　/* スタイルが直下の li にしか効かない */
@@ -275,8 +294,8 @@ ul li {
 ```
 ### リストの入れ子の正しい書き方
 `li` タグの中に改めて `ul` ないしは `ol` を書いて `li` タグを足します。
-```
 
+```html
 <ul>
   <li>リスト</li>
   <li>リスト</li>
@@ -304,7 +323,7 @@ ul li {
 
 HTML
 
-```
+```html
 <ul class="has-child">
   <li>リスト</li>
   <li>リスト</li>
@@ -319,12 +338,13 @@ HTML
 ```
 
 CSS
-```
+```css
 ul.has-child > li {
   text-indent: -1em;
   margin-left: 1em;
   margin-bottom: 10px;
 }
+
 ul.has-child > li::before {
   text-indent: 0;
   content: '';
@@ -335,15 +355,18 @@ ul.has-child > li::before {
   border-radius: 50%;
   transform: scale(.5);
 }
+
 ul.has-child > li > ul {
   padding-left: 1em;
   margin-top: 7px;
   margin-bottom: -5px;
 }
+
 ul.has-child > li > ul > li{
   margin-left: 1em;
   margin-bottom: 5px;
 }
+
 ul.has-child > li > ul > li::before{
   content: '';
   width: 10px;
@@ -353,6 +376,7 @@ ul.has-child > li > ul > li::before{
   vertical-align: 5px;
 }
 ```
+
 ### 子リストも合わせてナンバー出力する
 今度は入れ子のリストの文頭にナンバーをつけてみましょう。
 子リストには親要素のナンバーも合わせて付与します。
@@ -360,11 +384,13 @@ ul.has-child > li > ul > li::before{
 そうすることで、親の何番目の子の何番目なのかがわかりやすくなります。
 
 以下のように、親要素子要素もろともすべてに`counter-reset`をセットするのがポイントです。
-```
+
+```css
 ol.ol-has-child, ol.ol-has-child ol {
   counter-reset: cnt;/* 親要素から子要素全てにcounter-resetをセットする*/
 }
 ```
+
 あとは以下の通り全体のliタグに、`counter-increment` と `counters` 関数をセットするだけ。
 これで `ol` の `ol-has-child` というクラスを持つ親要素の全 `li` タグに自動でナンバー出力を設定できます。
 
@@ -372,7 +398,7 @@ ol.ol-has-child, ol.ol-has-child ol {
 
 なので子要素は**1 - 2**みたいな出力になります。
 
-```
+```css
 ol.ol-has-child li::before {
   counter-increment: cnt;
   content: counters(cnt, " - ") ;
@@ -381,7 +407,7 @@ ol.ol-has-child li::before {
 ![複雑な入れ子を正しく装飾する](./images/2020/03/entry363-7.jpg)
 
 HTML
-```
+```html
 <ol class="ol-has-child">
   <li>リスト</li>
   <li>リスト</li>
@@ -395,34 +421,40 @@ HTML
 </ol>
 ```
 CSS
-```
+```css
 ol.ol-has-child, ol.ol-has-child ol {
   counter-reset: cnt;/* 親要素から子要素全てにcounter-resetをセットする*/
 }
+
 ol.ol-has-child > li {
   text-indent: -1.5em;
   margin-left: 1.5em;
   margin-bottom: 10px;
 }
+
 ol.ol-has-child li::before {
   counter-increment: cnt;
   content: counters(cnt, " - ") ;
   color: red;
   font-weight: bold;
 }
+
 ol.ol-has-child > li::before {
   text-indent: 0;
   width: 2em;
   display: inline-block;
 }
+
 ol.ol-has-child > li > ol {
   margin: 10px;
 }
+
 ol.ol-has-child > li > ol > li{
   text-indent: -3em;
   margin-left: 3em;
   margin-bottom: 10px;
 }
+
 ol.ol-has-child > li > ol > li::before{
   width: 3em;
   display: inline-block;
@@ -430,12 +462,15 @@ ol.ol-has-child > li > ol > li::before{
 }
 ```
 counters関数も通常のcounter関数同様、引数に表示形式を指定できます。
-```
+
+```css
 counters(名前, コネクター, 表示形式) ;
 ```
+
 ## まとめ
 いちいち数字を入力するのは面倒！<br>
 このブログでいうと最初の目次にもCSSカウンターを利用してます。
+
 是非、CSSの自動ナンバリング活用してみてください。
 
 最後までお読みいただきありがとうございました。
