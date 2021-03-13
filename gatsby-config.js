@@ -61,6 +61,14 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-hotjar-tracking`,
+      options: {
+        includeInDevelopment: false,
+        id: 2295862,
+        sv: 6,
+      },
+    },
+    {
       resolve: `gatsby-plugin-fontawesome-css`,
     },
     {
@@ -138,6 +146,7 @@ module.exports = {
         ],
       },
     },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-feed`,
