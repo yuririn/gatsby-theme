@@ -183,12 +183,14 @@ ul > li {
     text-decoration: none;
     display: block;
     margin-bottom: 15px;
+
     @media screen and (min-width: 768px){
       margin-bottom: 30px;
       margin-top: 20px;
     }
 
     .article-link__img {
+      box-sizing: border-box;
       width: 120px;
       border-radius: 10px;
       overflow: hidden;
@@ -207,6 +209,8 @@ ul > li {
       padding-left: 15px;
       font-weight: 700;
       line-height: 1.4;
+      box-sizing: border-box;
+      width: calc(100% - 120px);
 
       @media screen and (min-width: 768px){
         width: calc(100% - 150px);
@@ -227,6 +231,7 @@ ul > li {
     section {
       border-radius: 10px;
       display: flex;
+      flex-wrap: wrap;
       align-items: flex-start;
       padding: 15px;
       background: #f7f7f7;
