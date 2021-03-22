@@ -158,6 +158,9 @@ body.no-scroll {
     text-align: center;
     margin-bottom: 30px;
     line-height: 1.6;
+    @media screen and (min-width: 768px) {
+      font-size: 1.6rem;
+    }
 
     &::after {
         content: "";

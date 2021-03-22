@@ -9,6 +9,9 @@
 	max-width: 500px;
 	border: solid 1px var(--color-blue);
 	box-sizing: border-box;
+	outline: none;
+	font-size: 1.6rem;
+	box-shadow: none;
 }
 
 .result {

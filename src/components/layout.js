@@ -60,6 +60,27 @@ const GlobalStyle = createGlobalStyle`
 
       &.is-small {
 
+        @media screen and (max-width: 769px) {
+        .p-entryCard__date {
+            top: 2px;
+            padding-right: 10px;
+          }
+
+          .p-entryCard__heading {
+             display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+          }
+
+          .p-entryCard__footer {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
+        }
+
 
         @media screen and (max-width: 769px) {
           &+ .is-small {

@@ -110,9 +110,18 @@ ul > li {
     border: none;
     background: #131a37;
     box-shadow: none;
-    margin: 0 0 30px;
+    margin: 30px 0 40px;
     overflow: auto;
     padding: 1em;
+  }
+  .token.tag, .token.boolean, .token.number, .token.deleted {
+    color: #81e7a2;
+  }
+  .token.keyword, .token.property, .token.selector, .token.constant, .token.symbol, .token.builtin {
+    color: #f8aec3;
+  }
+  .token.attr-name, .token.attr-value, .token.string, .token.char, .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string, .token.variable, .token.inserted {
+      color: #5bfff1;
   }
   strong {
     font-weight: 700;
@@ -172,8 +181,12 @@ ul > li {
   }
   a.article-link {
     text-decoration: none;
-    margin-bottom: 15px;
     display: block;
+    margin-bottom: 15px;
+    @media screen and (min-width: 768px){
+      margin-bottom: 30px;
+      margin-top: 20px;
+    }
 
     .article-link__img {
       width: 120px;
@@ -192,13 +205,19 @@ ul > li {
 
     .article-link__main {
       padding-left: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+
       @media screen and (min-width: 768px){
-          width: calc(100% - 150px);
-        }
+        width: calc(100% - 150px);
+      }
 
       .description {
+        font-weight: 400;
         display: none;
+        line-height: 1.6;
         @media screen and (min-width: 768px){
+          margin-top: 10px;
           display: block;
           font-size: 1.2rem;
           color: var(--font-color);
