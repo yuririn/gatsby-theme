@@ -31,8 +31,18 @@ export const Header = styled.div`
       &--ginneko-tsuredure:before {
         background-image: url(/static/080974e034b1312f6e2e3696e8edd54c/2244e/genre-ginneko-tsuredure.jpg)
       }
-
-
+      &--cms:before{
+        background-image:url(/static/9fb9fa4df8d1d3da0c6fe1d74cd70712/2244e/genre-cms.jpg)
+      }
+      &--seo:before{
+        background-image:url(/static/0f5e983805a492892296241cee4f8db1/2244e/genre-seo.jpg)
+      }
+      &--it-seminar:before{
+        background-image:url(/static/3bdad4eadd3fc56e6dc0a573d8195a88/2244e/genre-it-seminar.jpg)
+      }
+      &--back-end-program:before{
+        background-image:url(/static/455c623b5c5f9e2f47178506aeb6b7e9/2244e/genre-back-end-program.jpg)
+      }
     }
 
 

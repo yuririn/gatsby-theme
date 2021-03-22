@@ -236,7 +236,7 @@ const BlogPostTemplate = ({ data, location }) => {
             tags={post.frontmatter.tags}
           ></RelatedList>
           <section className="p-section">
-          <h2 className="c-heading--lg--side">カテゴリー</h2>
+          <h2 className="c-heading--lg--side">ジャンル</h2>
           <ul className="sideCateList">
             <li><a href="/blogs/front-end-program/">Front End</a></li>
             <li><a href="/blogs/back-end-program/">Back End</a></li>
