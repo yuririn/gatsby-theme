@@ -1,14 +1,15 @@
 import { Link } from "gatsby"
 import React from "react"
+import styled from "styled-components";
 
 const Li = ({ num, current, path }) => {
 	if (current) {
 		return (
-			<li className="c-pager--archive__current"><span>{num}</span></li>
+			<li className="c-pager--archive__current c-pager--archive__num"><span>{num}</span></li>
 		)
 	} else {
 		return (
-			<li><Link to={path}>{num}</Link></li>
+			<li className="c-pager--archive__num"><Link to={path}>{num}</Link></li>
 		)
 	}
 }
@@ -58,7 +59,7 @@ const Pagination = ({ num, current, type }) => {
 
 	if (num < 6) {
 		return (
-			<div className="ccm-pagination-wrapper">
+			<PagerWrapper>
 				<ol className="c-pager--archive p-section">
 					<Prev current={current} num={num} type={type} />
 					{(array || []).map(i => (
@@ -69,7 +70,7 @@ const Pagination = ({ num, current, type }) => {
 					)}
 					<Next current={current} num={num} type={type} />
 				</ol>
-			</div>
+			</PagerWrapper>
 		)
 	} else {
 		if (num >= 8) {
@@ -80,7 +81,7 @@ const Pagination = ({ num, current, type }) => {
 				}
 
 				return (
-					<div className="ccm-pagination-wrapper">
+					<PagerWrapper>
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
 							{(array || []).map(i => (
@@ -90,10 +91,10 @@ const Pagination = ({ num, current, type }) => {
 							))
 							}
 							<li>...</li>
-							<li><Link to={`/blogs/${type}page/${num}/`}>{num}</Link></li>
+							<li className="c-pager--archive__num"><Link to={`/blogs/${type}page/${num}/`}>{num}</Link></li>
 							<Next current={current} num={num} type={type} />
 						</ol>
-					</div>
+					</PagerWrapper>
 				)
 
 
@@ -103,10 +104,10 @@ const Pagination = ({ num, current, type }) => {
 					array.push(index)
 				}
 				return (
-					<div className="ccm-pagination-wrapper">
+					<PagerWrapper>
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
-							<li><Link to={`/blogs/${type}`}>1</Link></li>
+							<li className="c-pager--archive__num"><Link to={`/blogs/${type}`}>1</Link></li>
 							<li>...</li>
 							{(array || []).map(i => (
 
@@ -116,7 +117,7 @@ const Pagination = ({ num, current, type }) => {
 							}
 							<Next current={current} num={num} type={type} />
 						</ol>
-					</div>
+					</PagerWrapper>
 				)
 			} else {
 				array = []
@@ -125,10 +126,10 @@ const Pagination = ({ num, current, type }) => {
 				}
 
 				return (
-					<div className="ccm-pagination-wrapper">
+					<PagerWrapper>
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
-							<li><Link to={`/blogs/${type}`}>1</Link></li>
+							<li className="c-pager--archive__num"><Link to={`/blogs/${type}`}>1</Link></li>
 							<Skip show={current !== num + (current - 3)} />
 							{(array || []).map(i => (
 								<Li num={i} current={current === i} path={`/blogs/${type}page/${i}/`} />
@@ -136,10 +137,10 @@ const Pagination = ({ num, current, type }) => {
 							))
 							}
 							<Skip show={current !== num - (current + 3)} />
-							<li><Link to={`/blogs/${type}page/${num}/`}>{num}</Link></li>
+							<li className="c-pager--archive__num"><Link to={`/blogs/${type}page/${num}/`}>{num}</Link></li>
 							<Next current={current} num={num} type={type} />
 						</ol>
-					</div>
+					</PagerWrapper>
 				)
 			}
 		} else {
@@ -153,3 +154,149 @@ const Pagination = ({ num, current, type }) => {
 }
 
 export default Pagination
+
+const PagerWrapper = styled.div`
+	min-height: 80px;
+    position: relative;
+    text-align: center;
+
+	ol {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+		color: #fff;
+	}
+	.c-pager--archive__next--current:before, .c-pager--archive__next:before {
+		right: 0;
+		transition: .5s;
+		transform: skew(
+	45deg
+	);
+	}
+	li {
+		display: inline-block;
+	}
+	.c-pager--archive__next, .c-pager--archive__next--current, .c-pager--archive__prev, .c-pager--archive__prev--current {
+		z-index: 1;
+		overflow: hidden;
+		border: 1px solid var(--color-blue);
+		top: 0;
+		position: absolute;
+		border-radius: 5px;
+		color: #fff;
+		transition: .5s;
+	}
+	.c-pager--archive__prev--current:before, .c-pager--archive__prev:before {
+		left: 0;
+		transition: .5s;
+		transform: skew(
+			-45deg
+			);
+		}
+	.c-pager--archive__prev:hover{
+		a {
+
+			color: var(--color-blue);
+		}
+
+		&:before
+		{
+			left: -120%;
+		}
+	}
+	.c-pager--archive__next:hover{
+		a {
+			color: var(--color-blue);
+		}
+		&:before
+		 {
+			right: -120%;
+		}
+	}
+	.c-pager--archive__next--current:before, .c-pager--archive__next:before, .c-pager--archive__prev--current:before, .c-pager--archive__prev::before {
+		z-index: -1;
+		position: absolute;
+		content: "";
+		top: 0;
+		width: 120%;
+		height: 100%;
+		display: block;
+		background: var(--color-blue);
+	}
+	.c-pager--archive__next--current a, .c-pager--archive__next a {
+		color: #fff;
+	}
+
+	.c-pager--archive__prev, .c-pager--archive__prev--current {
+		left: 0;
+		display: inline-block!important;
+		a, span {
+			transition: .3s;
+			display: block;
+			padding: 10px 50px!important;
+			@media only screen and (min-width: 768px) {
+				padding: 15px 50px!important;
+			}
+		}
+	}
+	.c-pager--archive__next, .c-pager--archive__next--current {
+		right: 0;
+		display: inline-block!important;
+
+		a, span {
+			transition: .3s;
+			display: block;
+			padding: 10px 50px!important;
+			@media only screen and (min-width: 768px) {
+				padding: 15px 50px!important;
+			}
+		}
+	}
+	.not-work {
+		opacity: .7;
+		pointer-events: none;
+	}
+
+	.c-pager--archive__num {
+		display: none;
+		@media only screen and (min-width: 768px) {
+			display: inline-block;
+		}
+
+		span {
+			    display: block;
+			border-radius: 50%;
+			height: 35px;
+			font-size: 1.2rem;
+			width: 35px;
+			border: 1px solid var(--color-blue);
+			text-align: center;
+			line-height: 33px;
+			margin-left: 5px;
+			margin-right: 5px;
+			color: var(--color-blue);
+		}
+		a {
+			display: block;
+			border-radius: 50%;
+			height: 35px;
+			font-size: 1.2rem;
+			width: 35px;
+			border: 1px solid var(--color-blue);
+			text-align: center;
+			line-height: 33px;
+			margin-left: 5px;
+			margin-right: 5px;
+			background: var(--color-blue);
+			color: #fff;
+			transition: .3s;
+
+			&:hover {
+				color: var(--color-blue);
+
+				background: #fff;
+			}
+		}
+	}
+`

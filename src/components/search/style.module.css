@@ -7,7 +7,8 @@
 	padding: 10px;
 	width: 100%;
 	max-width: 500px;
-	border: solid 1px #001d7c;
+	border: solid 1px var(--color-blue);
+	box-sizing: border-box;
 }
 
 .result {
@@ -15,11 +16,20 @@
 	text-align: center;
 }
 .resultList {
+	background: #eee;
+	max-height: 300px;
+	overflow: auto;
 	margin-bottom: 50px;
+	border-radius: 10px;
 }
 .resultList li{
+	padding: 10px 20px;
 	margin-bottom: 5px;
 	font-weight: bold;
+	line-height: 1.8;
+}
+.resultList li a{
+	color: var(--color-blue);
 }
 
 .resultList li time{

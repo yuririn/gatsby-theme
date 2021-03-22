@@ -37,7 +37,7 @@ const blogs = ({ pageContext, data, location }) => {
           <div className="c-grid">
             {posts.map(post => {
               return (
-                <article className="p-entryCard c-grid__item--md6 c-grid__item--lg4">
+                <article className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small">
                   <Link to={post.fields.slug} className="p-entryCard__img">
                     {post.frontmatter.hero ? (
                       <Image filename={post.frontmatter.hero} />
@@ -56,11 +56,7 @@ const blogs = ({ pageContext, data, location }) => {
                     </h3>
                   </Link>
                   <div className="p-entryCard__footer">
-                    <div className="p-entryCard__footer">
-                      <div className="p-entryCard__footer">
-                        <TagList tags={post.frontmatter.tags} />
-                      </div>
-                    </div>
+                      <TagList tags={post.frontmatter.tags} />
                   </div>
                 </article>
               )

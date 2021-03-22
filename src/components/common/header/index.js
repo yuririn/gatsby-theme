@@ -1,55 +1,53 @@
-import React from "react"
+import React, { useState } from "react"
 import Logo from "./logo"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter, faInstagram, faYoutube, faSlideshare } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faInstagram, faYoutube, faSlideshare} from "@fortawesome/free-brands-svg-icons";
+import { faSearch} from "@fortawesome/free-solid-svg-icons";
+import Search from "../../search/"
+import styled from 'styled-components';
 
 const Header = ({ title, location }) => {
 
 	return (
+	<HeaderWrapper>
 		<header className="l-header">
-			<div className="l-container">
-				<div className="c-grid--between">
-					<div id="header-logo">
-						{location === '/' ? <Logo /> : <Link to="/"><Logo /></Link>}
-
-					</div>
-					<nav className="c-grid--flex">
-						<div className="c-nav">
-							<input type="checkbox" role="button" id="navBtn"></input>
-							<label className="c-nav__btn" for="navBtn">
-							</label>
-							<div className="c-nav__container" role="navigation">
-								<ul className="c-nav__child">
-									<li><Link className="c-nav__navLink" to="/">Home</Link></li>
-									<li><Link className="c-nav__navLink" to="/blogs/">Blog</Link>
-										<ul>
-											<li><Link to="/category/cms">CMS</Link></li>
-											<li><Link to="/category/front-end-program/">Front End</Link></li>
-											<li><Link to="/category/back-end-program/">Back End</Link></li>
-											<li><Link to="/category/seo/">SEO</Link></li>
-											<li><Link to="/category/it-seminar">IT Seminor</Link></li>
-											<li><Link to="/category/ginneko-tsuredure/">Life Hack</Link></li>
-										</ul>
-									</li>
-									<li><Link className="c-nav__navLink" to="/about/">About This Site</Link></li>
-									<li><Link className="c-nav__navLink" to="/portfolio/">Portfolio</Link></li>
-									<li><Link className="c-nav__navLink" to="/contact">Contact</Link></li>
-								</ul>
-								<div>
-									<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faTwitter} /></Link>
-									<Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faInstagram} /></Link>
-									<Link to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faYoutube} /></Link>
-									<Link to="https://www2.slideshare.net/yurikamimori" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faSlideshare} /></Link>
-								</div>
-							</div>
-						</div>
-					</nav>
+			<div>
+				<div id="header-logo">
+					{location === '/' ? <Logo /> : <Link to="/"><Logo /></Link>}
 				</div>
 			</div>
 		</header>
-
+	</HeaderWrapper>
 	)
 }
 
 export default Header
+
+const HeaderWrapper = styled.div`
+	.l-header {
+		position: fixed;
+		left: 0;
+		top: 0;
+		height: 60px;
+		width: 100%;
+		background: hsla(0,0%,100%,.9);
+		box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
+		z-index: 100;
+		display: flex;
+		align-items: center;
+
+	}
+
+	#header-logo svg {
+    height: 36px;
+    transition: .3s;
+		margin-left: 15px;
+		@media screen and (min-width: 768px){
+			margin-left: 30px;
+		}
+	}
+	#header-logo svg {
+		fill: var(--color-blue);
+	}
+`

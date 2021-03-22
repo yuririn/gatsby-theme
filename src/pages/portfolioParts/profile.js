@@ -13,7 +13,7 @@ const Voice = () => (
     </header>
     <div className={CommonStyles.myMd} className="l-container">
       <div className="c-profile__img u-mblg">
-        <Image filename="camille.jpg" className="c-profile__img u-mblg" />
+        <Image filename="camille.jpg" className={CommonStyles.profImg} />
       </div>
       <h3 className={CommonStyles.headingSm}>
         かみーゆ（ビダンじゃないほう）/フロントエンドエンジニア

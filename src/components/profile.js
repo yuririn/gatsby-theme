@@ -1,14 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
 import Image from "../components/image"
+import styled from "styled-components";
 
 const profile = () => {
 
 	return (
-		<section className="c-profile p-section">
+		<Profile>
 			<h2 className="c-heading--lg">管理人	について</h2>
 
-			<Image filename="camille.jpg" className="c-profile__img u-mblg" />
+			<Image filename="camille.jpg" className="prfImg"/>
 
 			<div className="c-profile__content">
 				<div className="u-mblg c-editArea">
@@ -27,8 +28,27 @@ const profile = () => {
 				</div>
 				<p className="u-text-center"><Link to="/about/" className="p-btn--detail">About Me</Link></p>
 			</div>
-		</section>
+		</Profile>
 	)
 }
 
 export default profile
+
+const Profile = styled.div`
+	line-height: 2;
+	max-width: 700px;
+	margin: 0 auto;
+	padding-bottom: 50px;
+	.prfImg {
+		width: 200px;
+		border-radius: 50%;
+		display: block;
+		margin: 0 auto 30px;
+	}
+	p + p{
+		margin-top: 1em;
+	}
+	ul {
+
+	}
+`

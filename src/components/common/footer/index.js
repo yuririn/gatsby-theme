@@ -1,17 +1,125 @@
 import React from "react"
 
 import FooterNav from "./footernav"
+import styled from 'styled-components';
 
 const Footer = ({ title }) => {
 	return (
-		<footer className="l-footer">
-			<div className="l-container">
-				<FooterNav />
-				<p className="u-text-center" id="copyright"><small>(C) {title}</small></p>
-			</div>
-		</footer>
+		<FooterWrapper>
+
+			<footer className="l-footer">
+				<div className="l-container">
+					<FooterNav />
+					<p className="u-text-center l-footer__copyright"><small>(C) {title}</small></p>
+				</div>
+			</footer>
+		</FooterWrapper>
 
 	)
 }
 
 export default Footer
+const FooterWrapper = styled.div`
+	z-index:10;
+	position:relative;
+
+	.l-footer {
+		background: var(--color-blue);
+		padding: 50px 0 30px;
+		color: #fff;
+		line-height: 1;
+
+		&__copyright {
+			font-size: 1.2rem;
+			letter-spacing: .1em;
+		}
+	}
+	.p-footerNav {
+	    margin-bottom: 25px;
+	}
+	.p-footerNav__item {
+		margin-bottom: 25px;
+
+		li +li {
+			margin-top: 25px;
+		}
+	}
+	.p-footerNav__item a {
+		letter-spacing: .15em;
+		color: #fff;
+		display: block;
+		position: relative;
+		padding-left: 20px;
+		text-decoration: none;
+
+		&:before {
+			transition: .3s;
+			position: absolute;
+			content: "";
+			width: 5px;
+			height: 5px;
+			top: 4px;
+			left: 0;
+			display: block;
+			border: 1px solid #fff;
+			border-bottom: none;
+			border-left: none;
+			transform: rotate(
+		45deg
+		);
+		}
+	}
+
+	.p-footerNav__item--sns {
+		margin-top: 40px;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	.p-footerNav__item--sns li {
+		display: inline-block;
+		margin:0 20px;
+
+		a {
+			color: #fff;
+		}
+	}
+
+	@media screen and (min-width: 768px){
+		.p-footerNav__item a {
+			transition: .3s;
+			&:hover {
+				text-decoration: underline;
+
+				&::before {
+					left: 5px;
+				}
+			}
+		}
+		.p-footerNav__item--sns{
+			margin-top: 0;
+			margin-bottom: 0;
+			text-align: left;
+
+			a {
+				transition: .3s;
+
+				&:hover {
+					opacity: 0.5;
+				}
+			}
+			li {
+				margin-right: 0;
+				margin-left: 0;
+
+				& + li {
+					margin-left: 20px;
+				}
+			}
+		}
+		.p-footerNav {
+			display: flex;
+			justify-content: space-around;
+		}
+	}
+`

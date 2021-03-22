@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 import SEO from "../components/seo"
 
 // CSS
+import { BaseStyle } from "./../styles/common/base";
+import { CommonStyle } from "./../styles/common/common";
 import HeaderStyles from "./portfolioParts/css/header.module.css"
 import FirstViewStyles from "./portfolioParts/css/firstview.module.css"
 import RecomendStyles from "./portfolioParts/css/recomend.module.css"
@@ -29,7 +31,9 @@ const Portfolio = ({ data, location }) => {
         description="広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。"
         image={img}
         location={location}
-      />
+        />
+        <CommonStyle/>
+        <BaseStyle/>
       <header className={HeaderStyles.header}>
         <p className={HeaderStyles.headerLogo}>Camille Site</p>
         <span

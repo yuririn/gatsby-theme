@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby"
 
 import LayoutS from "../components/layoutSimple"
 import SEO from "../components/seo"
+import styled from 'styled-components';
+import { Edit } from "./../styles/blog-styles/edit";
 import Image from "../components/image"
 import Search from "../components/search/"
 import Genre from "../components/genre"
@@ -132,10 +134,10 @@ const Result = prop => {
     )
   } else if (prop.value === "item04") {
     return (
-      <div className="result__item__inner l-container--md">
-        <div className="l-container--md">
+      <div className="result__item__inner l-container">
+        <div>
           <div style={value ? { display: `none` } : { desplay: `block` }}>
-            <p id="fortune-text">
+            <p id="fortune-text" className="u-text-center">
               たまには息抜きが必要ですよね。気晴らしに、占いでもしていってください。
             </p>
             <p className="u-text-center">
@@ -165,7 +167,7 @@ const Menu = () => {
     setValue(e.target.value)
   }
   return (
-    <div id="uranai">
+    <div id="uranai" className="l-container">
       <ul className="uranai__list">
         <li>
           <label>
@@ -237,12 +239,12 @@ const NotFoundPage = ({ data, location }) => {
         </div>
         <Image filename="common/ganre-404.jpg" className="p-pageHeader__img" />
       </div>
-      <section className="c-404">
-        <div className="l-container--md">
-          <div className="mb-Md mt-Xs">
-            <BreadCrumbList current="お探しのページは見つかりませんでした" />
+      <P404>
+        <div className="mb-Md mt-Xs l-container">
+          <BreadCrumbList current="お探しのページは見つかりませんでした" />
           </div>
-          <section className="c-editArea">
+        <Edit>
+        <div className="l-container">
             <h2>あなたのお探しのページにたどり着けなかったようです</h2>
             <p>
               大変遺憾ではありますが、管理人がどこかに移動させたか、
@@ -255,10 +257,10 @@ const NotFoundPage = ({ data, location }) => {
             <p>
               そんなあなたのために「銀ねこアトリエ」はいくつかオプションを用意しました。お好きな項目をお選びください。
             </p>
-          </section>
+            </div>
+          </Edit>
           <Menu></Menu>
-        </div>
-      </section>
+      </P404>
     </LayoutS>
   )
 }
@@ -272,5 +274,211 @@ export const pageQuery = graphql`
         title
       }
     }
+  }
+`
+const P404 = styled.div`
+.l-container {
+    max-width: 900px;
+  }
+  input[type=radio] {
+    display: none;
+  }
+
+
+  .mb-Md {
+    margin-bottom: 20px;
+  }
+
+  .mt-Lg {
+    margin-top: 100px;
+  }
+
+  .fortune__btn {
+      width: 110px;
+      height: 96px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      font-size: 2rem;
+      margin: 10px auto;
+      color: #fff;
+      font-weight: 700;
+      transform: scale(.8);
+      animation: dokidoki 1.8s infinite;
+      opacity: 1;
+      background: none;
+      border: none;
+      &:hover {
+          animation: dokidoki .5s infinite;
+          opacity: .7;
+      }
+
+      &:after {
+            z-index: -1;
+    position: absolute;
+    content: "";
+    display: block;
+        bottom: 0;
+        left: 8px;
+        border-left: 47px solid transparent;
+        border-top: 45px solid #c03363;
+        border-right: 47px solid transparent;
+      }
+
+      &:before {
+            z-index: -1;
+    position: absolute;
+    content: "";
+    display: block;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        box-shadow: 50px 0 0 #c03364, 20px 20px 0 #c03364;
+        background: #c03363;
+    }
+  }
+
+  .p-section {
+    li {
+      padding-left: 0;
+      &::before {
+        content: none;
+      }
+    }
+  }
+  .uranai__list {
+    margin: 30px auto 0;
+    border: 5px solid rgba(51,51,85,.3);
+    color: #335;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    li {
+      margin-bottom: 30px;
+      padding-left: 0;
+      &::before {
+        content: none;
+      }
+    }
+    label {
+      display: inline-block;
+      font-weight: 700;
+      padding-left: 25px;
+      display: block;
+
+      input[type=radio]:checked+span:before {
+          transform: rotateX(
+          540deg
+          );
+          opacity: 1;
+      }
+
+      input[type=radio]+span {
+          display: block;
+          position: relative;
+          width: 100%;
+          &:before {
+          content: "";
+              display: block;
+              left: -25px;
+              top: 4px;
+              position: absolute;
+              border-top: 7px solid transparent;
+              border-left: 14px solid var(--color-accent);
+              border-bottom: 7px solid transparent;
+              opacity: 0;
+              transition: .3s;
+          }
+      }
+      input[type=radio]:checked+span {
+        color: var(--color-accent);
+
+
+    }
+  }
+    @media screen and (min-width: 768px) {
+      padding: 30px 30px 10px;
+      border-radius: 20px;
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+          width: 50%;
+      }
+
+    }
+
+}
+
+  .fortune {
+    padding: 20px 20px 5px;
+      background: rgba(51,51,85,.2);
+      border-radius: 15px;
+
+      @media screen and (min-width: 768px) {
+        padding: 30px 40px 5px;
+        border-radius: 20px;
+    }
+
+  dt {
+    font-weight: 700;
+    padding-left: 15px;
+    position: relative;
+    line-height: 1.4;
+    margin-bottom: 15px;
+
+    &:before {
+        position: absolute;
+        display: block;
+        content: "";
+        left: 0;
+        background: #c03363;
+        width: 2px;
+        height:100%;
+        top: 0;
+    }
+    @media screen and (min-width: 768px) {
+           margin-bottom: 20px;
+
+    }
+    }
+    dd {
+      margin-bottom: 30px;
+    }
+    .is-last a {
+        display: block;
+        padding: 20px;
+        background: hsla(0,0%,100%,.4);
+        border-radius: 15px;
+        font-weight: 700;
+        text-align: center;
+        font-size: 1.1em;
+        color: #001d7c;
+        text-decoration: none;
+        span {
+          display: block;
+          margin-top: 10px;
+        }
+    }
+  }
+
+  @keyframes dokidoki {
+      0% {
+          transform: scale(.85)
+      }
+
+      5% {
+          transform: scale(.82)
+      }
+
+      95% {
+          transform: scale(.82)
+      }
+
+      to {
+          transform: scale(.87)
+      }
   }
 `

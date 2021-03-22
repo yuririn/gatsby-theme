@@ -62,7 +62,7 @@ const category = ({ pageContext, data, location }) => {
                 const { title, hero, date, tags } = node.frontmatter
                 return (
                   <article
-                    className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+                    className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
                     key={slug}
                   >
                     <Link to={slug} className="p-entryCard__img">
@@ -72,9 +72,8 @@ const category = ({ pageContext, data, location }) => {
                         <Image filename="common/dummy.png" />
                       )}
                       <div className="p-entryCard__date">
-                        <div className="p-entryCard__date">
+
                           <time date={date.replace(/\./g, "-")}>{date}</time>
-                        </div>
                       </div>
                     </Link>
                     <Link to={slug} className="p-entryCard__body">

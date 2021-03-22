@@ -1,6 +1,11 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import {Article} from './../styles/blog-styles/article'
+import {Header} from './../styles/blog-styles/header';
+import {Sidebar} from './../styles/blog-styles/sidebar';
+import { Edit } from "./../styles/blog-styles/edit";
+import styled from 'styled-components';
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
@@ -13,6 +18,7 @@ import RelatedList from "../components/blogs/relatedList"
 import FovoriteList from "../components/common/favorites"
 import Prof from "../components/blogs/smallProf"
 import Tags from "../components/blogs/tagList"
+import Search from "../components/search/"
 import BreadCrumbList from "../components/common/breadCrumbList"
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -36,103 +42,107 @@ const BlogPostTemplate = ({ data, location }) => {
         modifieddate={post.frontmatter.modifieddate}
         type="article"
       />
-      <article className="p-section">
-        <header>
-          <div className={`c-article__mainvisual--` + post.frontmatter.cateId}>
-            <div className="c-article__img">
-              <Category
-                name={post.frontmatter.categoryId}
-                id={post.frontmatter.cateId}
-              />
-              {post.frontmatter.hero ? (
-                <Image filename={post.frontmatter.hero} />
-              ) : (
-                <Image filename="common/dummy.png" />
-              )}
-            </div>
+      <Header>
+        <div className={`c-article__mainvisual c-article__mainvisual--` + post.frontmatter.cateId}>
+          <div className="c-article__img">
+            <Category
+              name={post.frontmatter.categoryId}
+              id={post.frontmatter.cateId}
+            />
+            {post.frontmatter.hero ? (
+              <Image filename={post.frontmatter.hero} />
+            ) : (
+              <Image filename="common/dummy.png" />
+            )}
           </div>
-          <div className="l-container--md">
-            <BreadCrumbList type="blog" current={post.frontmatter.title} />
-            <h1 className="c-article__heading">{post.frontmatter.title}</h1>
-            <dl className="c-article__date">
-              <dt>公開日</dt>
-              <dd>
-                <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                  {post.frontmatter.date}
-                </time>
-              </dd>
-              {post.frontmatter.modifieddate ? <dt>メンテナンス日</dt> : ""}
-              {post.frontmatter.modifieddate ? (
+        </div>
+      </Header>
+        <div className="l-container">
+          <BreadCrumbList type="blog" current={post.frontmatter.title} />
+        </div>
+        <Body>
+        <Article>
+          <article className="p-section">
+            <div className="l-container">
+              <h1 className="c-article__heading">{post.frontmatter.title}</h1>
+              <dl className="c-article__date">
+                <dt>公開日</dt>
                 <dd>
-                  <time
-                    date={post.frontmatter.modifieddate.replace(/\./g, "-")}
-                  >
-                    {post.frontmatter.modifieddate}
+                  <time date={post.frontmatter.date.replace(/\./g, "-")}>
+                    {post.frontmatter.date}
                   </time>
                 </dd>
-              ) : (
-                ""
-              )}
-            </dl>
-            <TagsList tags={post.frontmatter.tags} />
-            <Description texts={post.frontmatter.lead} />
+                {post.frontmatter.modifieddate ? <dt>メンテナンス日</dt> : ""}
+                {post.frontmatter.modifieddate ? (
+                  <dd>
+                    <time
+                      date={post.frontmatter.modifieddate.replace(/\./g, "-")}
+                    >
+                      {post.frontmatter.modifieddate}
+                    </time>
+                  </dd>
+                ) : (
+                  ""
+                )}
+              </dl>
+              <TagsList tags={post.frontmatter.tags} />
+              <Description texts={post.frontmatter.lead} />
 
-            <ul className="c-snsBtns u-mblg">
-              <li className="c-snsBtns__item">
-                <Link
-                  className="c-snsBtns__item--fb"
-                  to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`}
-                  target="_blank"
-                  target="_blank"
-                  rel="noopener nofollow"
-                >
-                  <span className="c-snsBtns__label">Facebook</span>
-                </Link>
-              </li>
-              <li className="c-snsBtns__item">
-                <Link
-                  className="c-snsBtns__item--tw"
-                  to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`}
-                  target="_blank"
-                  target="_blank"
-                  rel="noopener nofollow"
-                >
-                  <span className="c-snsBtns__label">Twitter</span>
-                </Link>
-              </li>
-              <li className="c-snsBtns__item">
-                <Link
-                  to={`https://b.hatena.ne.jp/entry/${perfectUrl}`}
-                  target="_blank"
-                  className="c-snsBtns__item--hateb"
-                  rel="noopener nofollow"
-                >
-                  <span className="c-snsBtns__label">はてB!</span>
-                </Link>
-              </li>
-              <li className="c-snsBtns__item">
-                <Link
-                  className="c-snsBtns__item--pocket"
-                  to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`}
-                  target="_blank"
-                  target="_blank"
-                  rel="noopener nofollow"
-                >
-                  <span className="c-snsBtns__label">Pocket</span>
-                </Link>
-              </li>
-            </ul>
-            <Prof></Prof>
-            <Toc data={data.markdownRemark.tableOfContents} />
-          </div>
-        </header>
-        <div className="l-container--md">
-          <section
-            className="c-editArea"
+              <ul className="c-snsBtns u-mblg">
+                <li className="c-snsBtns__item">
+                  <Link
+                    className="c-snsBtns__item--fb"
+                    to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`}
+                    target="_blank"
+                    target="_blank"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">Facebook</span>
+                  </Link>
+                </li>
+                <li className="c-snsBtns__item">
+                  <Link
+                    className="c-snsBtns__item--tw"
+                    to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`}
+                    target="_blank"
+                    target="_blank"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">Twitter</span>
+                  </Link>
+                </li>
+                <li className="c-snsBtns__item">
+                  <Link
+                    to={`https://b.hatena.ne.jp/entry/${perfectUrl}`}
+                    target="_blank"
+                    className="c-snsBtns__item--hateb"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">はてB!</span>
+                  </Link>
+                </li>
+                <li className="c-snsBtns__item">
+                  <Link
+                    className="c-snsBtns__item--pocket"
+                    to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`}
+                    target="_blank"
+                    target="_blank"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">Pocket</span>
+                  </Link>
+                </li>
+              </ul>
+              <Prof></Prof>
+              <Toc data={data.markdownRemark.tableOfContents} />
+            </div>
+          <Edit>
+            <section
             dangerouslySetInnerHTML={{ __html: post.html }}
+            className="l-container u-mblg"
             itemProp="articleBody"
           />
-        </div>
+          </Edit>
         <div className="l-container--md">
           <ul className="c-snsBtns u-mblg">
             <li className="c-snsBtns__item">
@@ -214,20 +224,41 @@ const BlogPostTemplate = ({ data, location }) => {
         </ol>
       </nav>
 
-      <RelatedList
-        category={post.frontmatter.cateId}
-        title={post.frontmatter.title}
-        tags={post.frontmatter.tags}
-      ></RelatedList>
-      <FovoriteList type="web" />
-      <FovoriteList type="life" />
-      <FovoriteList type="career" />
-      <div className="l-container">
-        <section className="p-box--gray p-section u-text-center">
+      </Article>
+
+
+      <Sidebar>
+        <div class="inner">
+          <Search />
+          <RelatedList
+            category={post.frontmatter.cateId}
+            title={post.frontmatter.title}
+            tags={post.frontmatter.tags}
+          ></RelatedList>
+          <section className="p-section">
+          <h2 className="c-heading--lg--side">カテゴリー</h2>
+          <ul className="sideCateList">
+            <li><a href="/blogs/front-end-program/">Front End</a></li>
+            <li><a href="/blogs/back-end-program/">Back End</a></li>
+            <li><a href="/blogs/seo/">SEO</a></li>
+            <li><a href="/blogs/it-seminar">IT Seminor</a></li>
+            <li><a href="/blogs/ginneko-tsuredure/">Life Hack</a></li>
+          </ul>
+          </section>
+          <div className="l-container">
+          <section className="p-box--gray p-section u-text-center">
           <h2 className="c-heading--lg">人気のタグ</h2>
           <Tags />
-        </section>
-      </div>
+          </section>
+          </div>
+        </div>
+        </Sidebar>
+        <div className="p-section l-container">
+          <FovoriteList type="web" />
+          <FovoriteList type="life" />
+          <FovoriteList type="career" />
+        </div>
+      </Body>
     </Layout>
   )
 }
@@ -298,5 +329,16 @@ export const pageQuery = graphql`
         title
       }
     }
+  }
+`
+
+
+const Body = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    flex-wrap: wrap;
   }
 `

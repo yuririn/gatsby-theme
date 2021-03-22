@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import LayoutSimple from "../components/layoutSimple"
 import SEO from "../components/seo"
+import { Edit } from "./../styles/blog-styles/edit";
 import BreadCrumbList from "../components/common/breadCrumbList"
 
 const PagePostTemplate = ({ data, location }) => {
@@ -31,12 +32,12 @@ const PagePostTemplate = ({ data, location }) => {
               <h1 className="c-article__heading">{post.frontmatter.title}</h1>
             </div>
           </header>
-          <div>
+          <Edit>
             <section
               className="c-editArea"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
-          </div>
+          </Edit>
         </article>
       </div>
     </LayoutSimple>

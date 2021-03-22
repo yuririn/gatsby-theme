@@ -44,7 +44,7 @@ const Tags = ({ pageContext, data, location }) => {
                 const { title, hero, date, tags } = node.frontmatter
                 return (
                   <article
-                    className="p-entryCard c-grid__item--md6 c-grid__item--lg4"
+                    className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
                     key={slug}
                   >
                     <Link to={slug} className="p-entryCard__img">
@@ -59,9 +59,8 @@ const Tags = ({ pageContext, data, location }) => {
                       <h3 className="p-entryCard__heading">{title}</h3>
                     </Link>
                     <div className="p-entryCard__footer">
-                      <div className="p-entryCard__footer">
+
                         <TagList tags={tags} />
-                      </div>
                     </div>
                   </article>
                 )

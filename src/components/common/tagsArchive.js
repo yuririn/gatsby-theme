@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 const Tag = ({ tag }) => (
 	<li className="p-tagList__item">
@@ -7,12 +8,23 @@ const Tag = ({ tag }) => (
 	</li>
 );
 
-const Tags = ({ tags }) => (
-	<ul className="p-tagList">
-		{(tags || []).map(tag => (
-			<Tag key={tag} tag={tag} />
-		))}
-	</ul>
-);
+const Tags = ({ tags }) => {
+
+	return (
+		<TagList>
+			<ul>
+				{(tags || []).map(tag => (
+					<Tag key={tag} tag={tag} />
+				))}
+			</ul>
+		</TagList>
+	)
+};
 
 export default Tags;
+
+const TagList = styled.div`
+	ul {
+		list-style: none;
+	}
+`

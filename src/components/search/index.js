@@ -92,7 +92,7 @@ const SearchResult = props => {
   return (
     <div className={className}>
       <div className="result-inner">
-        {result !== null ? (
+        {result !== null　&& result.length !== 0 ? (
           <p className={style.result}>
             <b>{result.length}</b>件ヒットしました
           </p>

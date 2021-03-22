@@ -8,6 +8,7 @@ import FirstView from "../components/firstview"
 import TagList from "../components/common/tagsArchive"
 import FovoriteList from "../components/common/favorites"
 import Search from "../components/search/"
+import styled from 'styled-components';
 import TagsList from "../components/blogs/tagList"
 
 const BlogIndex = ({ data, location }) => {
@@ -16,18 +17,7 @@ const BlogIndex = ({ data, location }) => {
 
   const ogpSrc = data.allFile.edges[0].node.childImageSharp.fluid.src
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" image={ogpSrc} location={location} />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
+  let cardClass = 'p-entryCard c-grid__item--md6 c-grid__item--lg4';
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -37,13 +27,23 @@ const BlogIndex = ({ data, location }) => {
         location={location}
       />
       <FirstView />
-      <div className="l-container">
+      <BigWhite>
+        <div  className="l-container">
         <section className="p-section">
           <h2 className="c-heading--lg">最新記事</h2>
           <div className="c-grid">
-            {posts.map(post => {
+            {posts.map((post, i) => {
+
+              if(i === 0 ){
+                cardClass = 'p-entryCard c-grid__item--md6 c-grid__item--lg4 is-first'
+              }else if(i > 2) {
+                cardClass = 'p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small'
+              }else {
+                cardClass = 'p-entryCard c-grid__item--md6 c-grid__item--lg4';
+              }
+
               return (
-                <article className="p-entryCard c-grid__item--md6 c-grid__item--lg4">
+                <article className={(cardClass)}>
                   <Link to={post.fields.slug} className="p-entryCard__img">
                     {post.frontmatter.hero ? (
                       <Image filename={post.frontmatter.hero} />
@@ -60,13 +60,11 @@ const BlogIndex = ({ data, location }) => {
                     <h3 className="p-entryCard__heading">
                       {post.frontmatter.title}
                     </h3>
+                    {(i === 0 ? <p>{post.frontmatter.description}</p> :''
+                    )}
                   </Link>
                   <div className="p-entryCard__footer">
-                    <div className="p-entryCard__footer">
-                      <div className="p-entryCard__footer">
-                        <TagList tags={post.frontmatter.tags} />
-                      </div>
-                    </div>
+                      <TagList tags={post.frontmatter.tags} />
                   </div>
                 </article>
               )
@@ -84,11 +82,12 @@ const BlogIndex = ({ data, location }) => {
         <FovoriteList type="web" />
         <FovoriteList type="life" />
         <FovoriteList type="career" />
-        <section className="p-box--gray p-section u-text-center">
+        <section className="p-box--gray u-text-center">
           <h2 className="c-heading--lg">人気のタグ</h2>
           <TagsList />
         </section>
       </div>
+      </BigWhite>
     </Layout>
   )
 }
@@ -122,7 +121,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 9
+      limit: 10
       filter: { frontmatter: { pagetype: { eq: "blog" } } }
     ) {
       nodes {
@@ -142,5 +141,15 @@ export const pageQuery = graphql`
         }
       }
     }
+  }
+`
+const BigWhite = styled.div`
+  position:relative;
+  background-color:#fff;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  @media screen and (min-width: 768px){
+    padding-bottom: 50px;
+    padding-top: 80px;
   }
 `

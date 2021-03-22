@@ -1,5 +1,5 @@
 ---
-title: 毎日ブログを書く必要なし！リライトのスヽス
+title: 毎日ブログを書く必要なし！リライトのスヽメ
 date: 2021-03-13
 hero: 2021/entry444.jpg
 pagetype: blog

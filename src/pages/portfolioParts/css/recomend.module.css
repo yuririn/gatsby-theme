@@ -5,6 +5,7 @@
     padding-left: 0;
     counter-reset: cnt;
     margin-bottom: 100px;
+    margin-top: 30px;
 }
 
 .recomendList li {
@@ -14,6 +15,7 @@
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 8px;
+    line-height: 1.8;
 }
 
 .recomendList li::before {
