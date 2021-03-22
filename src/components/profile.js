@@ -7,7 +7,7 @@ const profile = () => {
 
 	return (
 		<Profile>
-			<h2 className="c-heading--lg">管理人	について</h2>
+			<h2 className="c-heading--lg">管理人について</h2>
 
 			<Image filename="camille.jpg" className="prfImg"/>
 

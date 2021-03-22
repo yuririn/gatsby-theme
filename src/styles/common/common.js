@@ -154,12 +154,14 @@ body.no-scroll {
 
   .c-heading--lg, .c-heading--xl__sub {
     font-weight: 700;
-    font-size: 2rem;
     text-align: center;
     margin-bottom: 30px;
     line-height: 1.6;
+    font-size: 1.8rem;
+    letter-spacing: .1em;
+
     @media screen and (min-width: 768px) {
-      font-size: 1.6rem;
+      font-size: 2rem;
     }
 
     &::after {
@@ -168,7 +170,7 @@ body.no-scroll {
         width: 30px;
         height: 2px;
         background: var(--color-accent);
-        margin: 5px auto 0;
+        margin: 7px auto 0;
     }
   }
 
