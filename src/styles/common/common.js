@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components'
 
 export const CommonStyle = createGlobalStyle`
   body.no-scroll {
-      @media only screen and (min-width: 768px) {
-      overflow: hidden;
+      @media only screen and (max-width: 769px) {
+        overflow: hidden;
       }
   }
   small {

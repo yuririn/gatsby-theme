@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Article = styled.div`
   @media screen and (min-width: 768px){
-	  width: calc(100% - 200px);
-	  padding:  0 50px  0 30px;
+	  width: calc(100% - 250px);
+	  padding:  0 30px  0 30px;
   }
   @media screen and (min-width: 1020px){
 	  width: calc(100% - 300px);
@@ -16,8 +16,6 @@ export const Article = styled.div`
 
 }
  .c-article{
-
-
    	&__heading {
 		font-size: 2.4rem;
 		font-weight: 700;

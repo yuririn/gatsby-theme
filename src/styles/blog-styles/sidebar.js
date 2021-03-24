@@ -12,7 +12,7 @@ export const Sidebar = styled.div`
    }
   div{
     margin-bottom: 0;
-}
+  }
 }
 h2 {
   margin-bottom: 20px;
@@ -46,7 +46,8 @@ h2 {
    div.result-inner {
      margin-bottom: -30px!important;
    }
-   width: 200px;
+   width: 250px;
+   padding-right: 30px;
 
   .inner {
     position: sticky;
@@ -57,6 +58,7 @@ h2 {
   }
   @media screen and (min-width: 1020px){
 	  width: 300px;
+
   }
 
   .sideCateList {

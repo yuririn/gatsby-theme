@@ -221,7 +221,6 @@ const contactTemplate = ({ data, location }) => {
   const src = data.allFile.edges[0]
     ? data.allFile.edges[0].node.childImageSharp.fluid.src
     : ""
-  console.log(location)
 
   return (
     <LayoutSimple location={location} title={siteTitle}>

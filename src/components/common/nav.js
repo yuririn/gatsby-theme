@@ -10,7 +10,7 @@ const GlobalNav = ({ title, location }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const move = e =>{
-		document.body.classList.toggle('no-scroll')
+		isOpen == false? document.body.classList.add('no-scroll') : document.body.classList.remove('no-scroll')
 		setIsOpen(!isOpen)
 	}
 
@@ -35,7 +35,7 @@ const GlobalNav = ({ title, location }) => {
 									</li>
 									<li><Link className="c-nav__navLink" to="/about/" onClick={move}>About Me</Link></li>
 									<li><Link className="c-nav__navLink" to="/portfolio/" onClick={move}>Portfolio</Link></li>
-									<li><Link className="c-nav__navLink" to="/contact">Contact</Link></li>
+									<li><Link className="c-nav__navLink" to="/contact" onClick={move}>Contact</Link></li>
 								</ul>
 								<div className="c-nav__sns">
 									<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faTwitter} /></Link>
