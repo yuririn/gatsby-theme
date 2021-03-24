@@ -6,6 +6,9 @@ export const CommonStyle = createGlobalStyle`
         overflow: hidden;
       }
   }
+  .google-auto-placed {
+    padding: 15px 0;
+  }
   small {
     font-size: 1.2rem;
   }

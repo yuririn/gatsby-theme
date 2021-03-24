@@ -5,7 +5,7 @@ module.exports = {
       name: `かみーゆ`,
       summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
     },
-    description: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニアの気ままな日記です。`,
+    description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
     siteUrl: `https://ginneko-atelier.com`,
     image: `https://ginneko-atelier.com/static/734c25c8328e14e4d8df99abaea453a2/ee604/newogp.png`,
     social: {

@@ -22,7 +22,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
-        title="セブ島に住む気ままなフロントエンジニアの日記"
+        title="セブ島に住む気ままなフロントエンジニアのライフログ"
         image={ogpSrc}
         location={location}
       />

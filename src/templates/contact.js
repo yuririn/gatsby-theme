@@ -225,7 +225,7 @@ const contactTemplate = ({ data, location }) => {
   return (
     <LayoutSimple location={location} title={siteTitle}>
       <SEO
-        title={`${siteTitle}`}
+        title="お問い合わせ"
         description={siteDescription}
         image={src}
         location={location}
