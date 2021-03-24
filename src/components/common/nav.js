@@ -112,13 +112,13 @@ const NavWrapper = styled.div`
 		position: relative;
 		width: 50px;
 	}
-
+@media only screen and (max-width: 769px) {
 	.c-nav .c-nav__btn.is-active ~ .c-nav__container {
 		top: 60px;
 		opacity: 1;
 		z-index: 200;
 	}
-
+}
 	.c-nav__container {
 		opacity: 0;
 		transition: opacity .3s;
