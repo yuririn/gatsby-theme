@@ -1,17 +1,24 @@
 .WorksList {
 	margin-top: 30px;
-
 }
 .WorksList article{
 	padding: 10px 3px 3px;
 	border: 8px solid #eee;
 	margin-bottom: 4px;
 }
+.WorksList article a{
+	text-decoration: none;
+	color: #333;
+}
 .WorkItem h3{
+	padding: 10px;
 		font-weight: bold;
 		font-size: 1.8rem;
 		text-align: center;
 		margin-bottom: 5px;
+}
+.WorkItem p{
+	padding: 0 10px;
 }
 	.WorksList .WorkItemImg{
 		display: block;

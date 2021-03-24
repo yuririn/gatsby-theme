@@ -1,4 +1,4 @@
-import React from "react"
+import React,{ useState } from "react"
 import { Link } from "gatsby"
 
 import SEO from "../components/seo"
@@ -23,7 +23,12 @@ import Contact from "./portfolioParts/contact"
 
 const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]
+  const [isOpen, setIsOpen] = useState(false);
+
   const img = data.allFile.edges[0].node.childImageSharp.fluid.src
+  const menuEvent = ()=>{
+		setIsOpen(!isOpen)
+  }
   return (
     <div className={HeaderStyles.default}>
       <SEO
@@ -37,17 +42,21 @@ const Portfolio = ({ data, location }) => {
       <header className={HeaderStyles.header}>
         <p className={HeaderStyles.headerLogo}>Camille Site</p>
         <span
+          onClick={menuEvent}
           className={HeaderStyles.navBtn}
           role="button"
           aria-label="ナビゲーションボタン"
           id="menuBtn"
         ></span>
-        <nav className={HeaderStyles.globalNav}>
+        <nav className={(isOpen ? HeaderStyles.globalNavOpen : HeaderStyles.globalNav)}>
           <ul>
+            <li>
+              <Link to='/' onClick={menuEvent}>Home</Link>
+            </li>
             {nav.map(value => {
               return (
                 <li>
-                  <Link to={`#${value}`}>{value}</Link>
+                  <Link to={`#${value}`} onClick={menuEvent}>{value}</Link>
                 </li>
               )
             })}

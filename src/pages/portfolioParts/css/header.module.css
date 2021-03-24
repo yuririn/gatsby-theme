@@ -70,18 +70,65 @@
 
 }
 
-.globalNav ul{
-	display: none;
-    padding: 0 15px;
 
-}
+    nav.is-open ul{
+
+    }
+    nav.is-open ul li {
+         text-align: center;
+        padding: 20px;
+    }
+    nav.is-open ul li a{
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 2rem;
+        font-family: "Archivo Black", serif;
+        letter-spacing: .1em;
+    }
+    @media screen and (max-width: 769px){
+        .globalNav ul{
+            display: none;
+            padding: 0 15px;
+        }
+        .globalNavOpen ul {
+            display: block;
+            position: absolute;
+            top: 43px;
+            left: 0;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            width: 100%;
+            padding-top: 30px;
+        }
+
+        .globalNavOpen ul li{
+            padding: 10px;
+            text-align: center;
+        }
+        .globalNavOpen ul li a{
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: "Archivo Black", serif;
+            letter-spacing: .1em;
+            padding: 15px;
+            max-width: 300px;
+            font-size: 2rem;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            color: rgb(233, 80, 20);
+            background: rgb(51, 51, 51);
+            border: 2px solid rgb(233, 80, 20);
+        }
+    }
+
 
 /* メディアクエリ */
 @media screen and (min-width: 768px){
 	.navBtn{
 		display: none;
 	}
-
+    .globalNavOpen ul,
 	.globalNav ul {
 		display: block;
 		padding: 0;
@@ -92,11 +139,12 @@
 		z-index: 100;
 	}
 
+    .globalNavOpen ul li,
 	.globalNav ul li {
 		text-align: center;
 		display: inline-block;
 	}
-
+    .globalNavOpen ul li a,
 	.globalNav a {
 		width: 120px;
 		display: block;
