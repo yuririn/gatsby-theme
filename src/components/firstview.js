@@ -50,7 +50,7 @@ const Mainvisual = styled.div`
 	.gatsby-image-wrapper {
 		height: 100%;
 
-		@media screen and (min-width: 1120px){
+		@media screen and (min-width: 1441px){
 			filter: blur(1px);
 		}
 	}

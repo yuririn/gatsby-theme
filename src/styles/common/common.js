@@ -2,7 +2,9 @@ import { createGlobalStyle } from 'styled-components'
 
 export const CommonStyle = createGlobalStyle`
   body.no-scroll {
-    overflow: hidden;
+      @media only screen and (min-width: 768px) {
+      overflow: hidden;
+      }
   }
   small {
     font-size: 1.2rem;
