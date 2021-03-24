@@ -122,10 +122,6 @@ export const BaseStyle = createGlobalStyle`
     @media screen and (min-width: 768px) {
       font-size: 1.6rem;
     }
-
-    &.no-scroll {
-      overflow: hidden;
-    }
   }
   img {
       max-width: 100%;

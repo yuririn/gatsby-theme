@@ -25,7 +25,7 @@ const Mainvisual = styled.div`
 	.bg {
 		z-index: -10;
 		overflow: hidden;
-		height: 250px;
+		height: 300px;
 		width: 100%;
 		position: fixed;
 		top: 0;
@@ -64,7 +64,7 @@ const Mainvisual = styled.div`
 		position: relative;
 		color: #fff;
 		background: linear-gradient(135deg, rgb(47,89,188) 0%,rgb(93,154,173) 100%);
-		margin-top: 250px;
+		margin-top: 300px;
 
 
 		svg {
