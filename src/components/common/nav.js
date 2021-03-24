@@ -8,7 +8,6 @@ import styled from 'styled-components';
 
 const GlobalNav = ({ title, location }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	document.body.classList.remove('no-scroll')
 
 	const move = e =>{
 		document.body.classList.toggle('no-scroll')
