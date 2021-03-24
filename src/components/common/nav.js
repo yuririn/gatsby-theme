@@ -35,7 +35,7 @@ const GlobalNav = ({ title, location }) => {
 											<li><Link to="/blogs/ginneko-tsuredure/" onClick={move}>Life Hack</Link></li>
 										</ul>
 									</li>
-									<li><Link className="c-nav__navLink" to="/about/" onClick={move}>About This Site</Link></li>
+									<li><Link className="c-nav__navLink" to="/about/" onClick={move}>About Me</Link></li>
 									<li><Link className="c-nav__navLink" to="/portfolio/" onClick={move}>Portfolio</Link></li>
 									<li><Link className="c-nav__navLink" to="/contact">Contact</Link></li>
 								</ul>
@@ -56,7 +56,6 @@ const GlobalNav = ({ title, location }) => {
 export default GlobalNav
 
 const NavWrapper = styled.div`
-
 	.c-nav__btn {
 		transform: translateY(-50%);
 		position: fixed;
@@ -71,6 +70,10 @@ const NavWrapper = styled.div`
 		border: none;
 		outline: none;
 		z-index: 200;
+
+		@media only screen and (min-width: 768px) {
+			display: none;
+		}
 	}
 
 	.c-nav__btn::after, .c-nav__btn:before {
@@ -100,8 +103,8 @@ const NavWrapper = styled.div`
 		transform-origin: 50% 50%;
 	}
 	.c-nav {
-    position: relative;
-    width: 50px;
+		position: relative;
+		width: 50px;
 	}
 	.c-grid--flex {
 		display: flex;
@@ -123,7 +126,7 @@ const NavWrapper = styled.div`
 		transition: opacity .3s;
 		padding: 30px 15px;
 		position: fixed;
-		left: 0;
+		right: 0;
 		top: 60px;
 		width: 100%;
 		height: calc(100% - 60px);
@@ -131,17 +134,108 @@ const NavWrapper = styled.div`
 		overflow: auto;
 		z-index: -9999;
 
+		@media only screen and (min-width: 768px) {
+			opacity: 1;
+			z-index: 200;
+			background: none;
+			height: 60px;
+			right: 15px;
+			width: calc(100% - 200px);
+			top: 0;
+			padding: 0;
+			display: flex;
+			justify-content: flex-end;
+			overflow: inherit;
+		}
+
 		.c-nav__child {
 			max-width: 400px;
 			width: 100%;
 		    margin: auto;
-         li {
-			margin-bottom: 25px;
 
-			ul {
+			@media only screen and (min-width: 768px) {
+				margin: 0;
+				height: 60px;
+				max-width: initial;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+			}
+			li {
+				@media only screen and (min-width: 768px) {
+					display:flex;
+					align-items: center;
+					height: 60px;
+					margin-bottom: 0;
+					padding: 10px 5px;
+					position: relative;
+
+					&:hover {
+						&::after {
+							width: 70%;
+						}
+						&::before {
+							transform: scale(1,1);
+							left: 85%;
+						}
+					}
+
+					&::before {
+						transform: scale(0,0);
+						position: absolute;
+						bottom: -3px;
+						left: 15%;
+						content: '';
+						display: block;
+						height: 6px;
+						border-radius: 50%;
+						width: 6px;
+						background: var(--color-accent);
+						transform: scale(0,0);
+						transition: .4s;
+
+					}
+
+					&::after {
+						position: absolute;
+						bottom: 0;
+						left: 15%;
+						content: '';
+						display: block;
+						height: 1px;
+						width: 0%;
+						background: var(--color-accent);
+						transition: .4s;
+					}
+
+					a {
+
+						&:hover {
+							color: var(--color-link);
+						}
+						display:flex;
+						align-items: center;
+						border: none;
+						background: none;
+						font-weight: bold;
+						height: 40px;
+						padding: 0 10px;
+
+						&::before {
+							content: none;
+						}
+					}
+				}
+				margin-bottom: 25px;
+
+				ul {
 				margin-top: 15px;
 				margin-bottom: -5px;
 				text-align: center;
+				@media only screen and (min-width: 768px) {
+					display: none;
+				}
 			}
 
 			li {
@@ -165,6 +259,10 @@ const NavWrapper = styled.div`
 		max-width: 400px;
 	    margin: 0 auto;
 		text-align: center;
+
+		@media only screen and (min-width: 768px) {
+			display: none;
+		}
 
 		a {
 			background: #fff;

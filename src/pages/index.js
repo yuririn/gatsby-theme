@@ -30,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
       <BigWhite>
         <div  className="l-container">
         <section className="p-section">
-          <h2 className="c-heading--lg">最新記事</h2>
+          <h2 className="c-heading--lg">最新の記事</h2>
           <div className="c-grid">
             {posts.map((post, i) => {
 
@@ -76,7 +76,7 @@ const BlogIndex = ({ data, location }) => {
             Read More Blog
           </Link>
         </p>
-        <h2 className="c-heading--lg">記事を探す</h2>
+        <h2 className="c-heading--lg">記事を探そう！</h2>
         <Search />
 
         <FovoriteList type="web" />

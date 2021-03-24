@@ -13,8 +13,9 @@ const Header = ({ title, location }) => {
 	<HeaderWrapper>
 		<header className="l-header">
 			<div>
-				<div id="header-logo">
-					{location === '/' ? <Logo /> : <Link to="/"><Logo /></Link>}
+				 <div id="header-logo">
+					<span>セブ島に住むフロントエンドエンジニアの雑記</span>
+					{location === '/' ? <h1><Logo /></h1> : <Link to="/"><Logo /></Link>}
 				</div>
 			</div>
 		</header>
@@ -38,9 +39,19 @@ const HeaderWrapper = styled.div`
 		align-items: center;
 
 	}
+	#header-logo span{
+		display: block;
+		font-size: 1rem;
+		padding-left: 15px;
+		margin-bottom: 5px;
+		padding-top: 5px;
+		@media screen and (min-width: 768px){
+			padding-left: 30px;
+		}
+	}
 
 	#header-logo svg {
-    height: 36px;
+    height: 34px;
     transition: .3s;
 		margin-left: 15px;
 		@media screen and (min-width: 768px){

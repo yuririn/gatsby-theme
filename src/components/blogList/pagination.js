@@ -46,7 +46,7 @@ const Next = ({ num, current, type }) => {
 
 const Skip = ({ show }) => {
 	return (
-		show ? <li>...</li> : ''
+		show ? <li class="skip">...</li> : ''
 	)
 }
 
@@ -90,7 +90,7 @@ const Pagination = ({ num, current, type }) => {
 
 							))
 							}
-							<li>...</li>
+							<li class="skip">...</li>
 							<li className="c-pager--archive__num"><Link to={`/blogs/${type}page/${num}/`}>{num}</Link></li>
 							<Next current={current} num={num} type={type} />
 						</ol>
@@ -108,7 +108,7 @@ const Pagination = ({ num, current, type }) => {
 						<ol className="c-pager--archive p-section">
 							<Prev current={current} num={num} type={type} />
 							<li className="c-pager--archive__num"><Link to={`/blogs/${type}`}>1</Link></li>
-							<li>...</li>
+							<li class="skip">...</li>
 							{(array || []).map(i => (
 
 								i === 1 ? <Li num={i} current={current === i} path={`/blogs/${type}`} type={type} /> : <Li num={i} current={current === i} path={`/blogs/${type}page/${i}/`} type={type} />
@@ -176,6 +176,13 @@ const PagerWrapper = styled.div`
 	}
 	li {
 		display: inline-block;
+
+		&.skip {
+			display: none;
+			@media only screen and (min-width: 768px){
+				display: inline-block;
+			}
+		}
 	}
 	.c-pager--archive__next, .c-pager--archive__next--current, .c-pager--archive__prev, .c-pager--archive__prev--current {
 		z-index: 1;

@@ -63,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
         @media screen and (max-width: 769px) {
         .p-entryCard__date {
             top: 2px;
-            padding-right: 10px;
+            padding:5px 10px 5px 15px;
           }
 
           .p-entryCard__heading {
@@ -121,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
             }
 
              .p-entryCard__date {
-               font-size: 1rem;
+               font-size: 1.1rem;
              }
         }
       }

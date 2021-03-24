@@ -177,8 +177,8 @@ export const Article = styled.div`
 	.title {
 		position: absolute;
 		background: #fff;
-		top: -15px;
-		padding: 0 15px;
+		top: -20px;
+		padding: 10px 15px;
 		left: 50%;
 		white-space: nowrap;
 		font-weight: 700;

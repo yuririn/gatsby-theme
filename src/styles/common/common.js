@@ -1,9 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const CommonStyle = createGlobalStyle`
-body.no-scroll {
-      overflow: hidden;
-    }
+  body.no-scroll {
+    overflow: hidden;
+  }
+  small {
+    font-size: 1.2rem;
+  }
 
   .BigWhite{
     position:relative;
@@ -38,8 +41,12 @@ body.no-scroll {
   }
 
   .l-main_contents {
-    margin-top: 80px;
+    margin-top: 0;
     margin-bottom: 50px;
+
+    &.is-page {
+      margin-top: 80px;
+    }
   }
 
   .c-article__heading {
@@ -202,4 +209,5 @@ body.no-scroll {
         }
     }
   }
+
 `

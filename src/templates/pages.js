@@ -22,7 +22,7 @@ const PagePostTemplate = ({ data, location }) => {
         location={location}
       />
 
-      <div className="l-main_contents">
+      <div className="l-main_contents is-page">
         <div className="l-container--md mt-Md">
           <BreadCrumbList current={post.frontmatter.title} />
         </div>
