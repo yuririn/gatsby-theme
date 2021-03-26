@@ -5,7 +5,7 @@ hero: 2018/entry278.jpg
 pagetype: blog
 category: Life Hack
 cateId: ginneko-tsuredure
-tags: ["ねこ食中毒"]
+tags: ["ライフスタイル"]
 description: ネコの嘔吐が異常な時は要注意。うちのネコが拾い食いで死にかけたのでその時の対処法や医療費等をメモしておきます。
 lead: ["ネコの嘔吐が異常な時は要注意。うちのネコが拾い食いで死にかけたのでその時の対処法や医療費等をメモしておきます。"]
 ---
