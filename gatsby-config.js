@@ -116,6 +116,7 @@ module.exports = {
               rel: "nofollow nopener",
             },
           },
+          "gatsby-remark-prismjs-title",
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -126,8 +127,6 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
-
-          "gatsby-remark-prismjs-title",
 
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
