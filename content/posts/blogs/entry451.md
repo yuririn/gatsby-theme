@@ -1,5 +1,5 @@
 ---
-title: 銀ねこアトリエSEO対策レポート ~半年間のSEO対策を振り返る~
+title: 銀ねこアトリエSEO対策レポート ~半年間を振り返る~
 date: 2021-04-03
 hero: 2021/entry451.jpg
 pagetype: blog
