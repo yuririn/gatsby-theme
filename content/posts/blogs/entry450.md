@@ -261,7 +261,7 @@ which phpsc
 which phpcbf
 ```
 
-![phpcs.executablePathのパスを調べる](./images/2021/04/entry450-13.jpg)
+![phpcs.executablePathのパスを調べる](./images/2021/04/entry450-14.jpg)
 
 `"editor.defaultFormatter": "simone-baldini.vscode-phpcbf",`は、他にたくさんフォーマッターを持っているときにphpcbfを使うように設定しています。
 
