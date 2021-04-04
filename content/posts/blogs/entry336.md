@@ -1,7 +1,7 @@
 ---
 title: VS Codeでカンタン！正規表現置換のためのチートシート
 date: 2019-07-21
-modifieddate: 2021-03-08
+modifieddate: 2021-04-05
 hero: 2019/entry336.jpg
 pagetype: blog
 category: 'Front end'
@@ -137,7 +137,31 @@ lead: ["コードをいわゆる「置換（置き換え）」、一気に変換
 // 置換後の文字列
 <a href="<?php echo home_url('/$1')?>">
 ```
+### PHPのif文をヨーダ記法に一括置換
 
+他でも使えそうですが、通常のコードをヨーダ記法などに書き換えたい時の置換方法です。
+
+演算子を挟んで中身を入れ替えます。他にも応用できます。
+
+```
+\$(.*?) !== '(.*?)'
+
+'$2' !== $$$1
+```
+
+変換した文字の先頭に$を付与したいときは$$$1とか$$$2とかにします。
+
+ヨーダ記法に関してはこちら。
+
+<a class="article-link" href="/blogs/entry452/">
+<section><div class="article-link__img"><img alt="WordPress phpcsでコーディング規約を守るコード" src="/static/4e7d7db8849ad47fcf44a549cf857b2a/f836f/entry452.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">WordPress phpcsでコーディング規約を守るコード</div>
+<p class="description">この記事はWordPressコーディング規約をphpcs導入して入れたものの、エラー英語だしよくわかんないって嘆いている人向･･･</p>
+<p>
+<time datetime="2021-04-05">2021.04.05</time>
+</p>
+</div>
+</section></a>
 
 ### 日本語の間の空白を取り除く
 PDFから文章をコピーすると謎の半角スペースが紛れ込んでることがよくあります。
@@ -175,7 +199,7 @@ PDFから文章をコピーすると謎の半角スペースが紛れ込んで�
 //置換後の文字列
 なし
 ```
-## 大文字・小文字の変換
+### 大文字・小文字の変換
 置換といえばVS Codeには大文字・小文字変換機能が付いています。
 
 最初の文字だけを大文字に替えたり、スネークケースに変えることも可能です。
@@ -191,7 +215,6 @@ PDFから文章をコピーすると謎の半角スペースが紛れ込んで�
 ショートカットの例。
 * 小文字を大文字に Cmd+Shift+Option+U
 * 大文字を小文字に Cmd+Shift+Option+L
-
 
 
 ## まとめ・置換最強
