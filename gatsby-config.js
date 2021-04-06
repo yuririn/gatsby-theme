@@ -48,18 +48,28 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+      resolve: `gatsby-plugin-google-gtag`,
+      trackingIds: [
+        process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        process.env.GOOGLE_ADSENSE_ID,
+      ],
+      pluginConfig: {
         head: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: process.env.GOOGLE_ADSENSE_ID,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-analytics",
+    //   options: {
+    //     trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+    //     head: true,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-google-adsense`,
+    //   options: {
+    //     publisherId: process.env.GOOGLE_ADSENSE_ID,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-hotjar-tracking`,
       options: {

@@ -1,14 +1,14 @@
 ---
 title: Gatsbyブログサイト移行物語7~プラグインHelmetでSEO調整~
 date: 2020-12-16
-modifieddate: 2020-12-17
+modifieddate: 2021-04-06
 hero: 2020/entry401.jpg
 pagetype: blog
 category: Front end
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
-description: Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。
-lead: ["Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。","※FBシェアにおけるcanonilcal属性を修正しました。"]
+description: Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。※GA4に対応しました。
+lead: ["Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。","※FBシェアのcanonilcal属性を修正しました。","※GA4に対応しました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -613,14 +613,22 @@ export default SEO
 
 ![構造化データ](./images/2020/12/entry418-2.jpg)
 
-## プラグインを使ってGoogleAnalyticsを追加
+## プラグインを使ってGoogleAnalyticsを追加（2021年4月6日追記！）
 
 プラグインを使ってGoogleアナリティクスで計測できるようにします。
 
-[gatsby-plugin-google-analytics](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-analytics/)
+~~gatsby-plugin-google-analytics~~
+
+じゃなく、こっちを使います！
+
+[gatsby-plugin-google-gtag](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/)
+
+gatsby-plugin-google-analyticsはanalytics.jsが使われています。GA4でも計測したいのでgtag.jsに切り替える必要があります！
+
+<small>※ 通常のGAタグのIDを使い、GA4と連携させます。</small>
 
 ```
-npm install gatsby-plugin-google-analytics
+npm install gatsby-plugin-google-gtag
 ```
 
 プラグインをインストールしたら、gatsby-node.jsに追記します。
@@ -633,11 +641,14 @@ Googleアナリティクスはプラグインの一番上の方に追記して�
 module.exports = {
   plugins: [
     {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-        head: true,
-      }
+      resolve: `gatsby-plugin-google-gtag`,
+      trackingIds: [
+        process.env.GOOGLE_ANALYTICS_TRACKING_ID,//トラッキングID
+        process.env.GOOGLE_ADSENSE_ID,//Adsenseもまとめて入れられる！！
+      ],
+      pluginConfig: {
+        head: true,//headerに追記
+      },
     },
   ],
 }

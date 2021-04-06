@@ -18,7 +18,7 @@ WordPress で自作した機能はまとめておかないとめちゃめちゃ�
 
 その対策として、私は今まで functions.php に機能ごとに分けてインクルードしていました。
 
-```
+```php
 // ショートコード----------------------------------------------
 require get_template_directory() . '/functions/shortcode.php';
 ```
@@ -44,7 +44,7 @@ require get_template_directory() . '/functions/shortcode.php';
 wp-content/plugins 内にファイルを突っ込むだけです。
 例えば sample.php といったファイルに機能を書くなら、中身はこんな感じです。
 
-```
+```php
 <?php
 /**
 * @package sample
@@ -82,12 +82,10 @@ seo_set/
      |    seo_style.css
     └ js/
            seo_script.js
-
-
 ```
 seo_set.php には以下のようなコードで他のファイル類を読み込みます。
 
-```
+```php
 <?php
 /**
 * @package seo_set

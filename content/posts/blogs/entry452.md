@@ -276,6 +276,21 @@ OK
 $array = array(
 );
 ```
+### キャメルケースはNG！
+JS書いてるとついついうっかりキャメルケース書いてしまいますがNGです。
+
+変数名や関数名はスネークケースで書きます。
+
+```php
+NG
+$metaDescription
+myFunction()
+
+OK
+$meta_description
+my_function()
+```
+
 ### ループ条件内で関数を使うな
 
 > the use of count() inside a loop condition is not allowed; assign the return value to a variable and use the variable in the loop condition instead.
