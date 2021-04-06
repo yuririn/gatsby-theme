@@ -49,12 +49,14 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-plugin-google-gtag`,
-      trackingIds: [
-        process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-        process.env.GOOGLE_ADSENSE_ID,
-      ],
-      pluginConfig: {
-        head: true,
+      options: {
+        trackingIds: [
+          process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+          process.env.GOOGLE_ADSENSE_ID,
+        ],
+        pluginConfig: {
+          head: true,
+        },
       },
     },
     // {

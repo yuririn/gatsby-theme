@@ -642,12 +642,14 @@ module.exports = {
   plugins: [
     {
       resolve: `gatsby-plugin-google-gtag`,
-      trackingIds: [
-        process.env.GOOGLE_ANALYTICS_TRACKING_ID,//トラッキングID
-        process.env.GOOGLE_ADSENSE_ID,//Adsenseもまとめて入れられる！！
-      ],
-      pluginConfig: {
-        head: true,//headerに追記
+      options: {
+        trackingIds: [
+          process.env.GOOGLE_ANALYTICS_TRACKING_ID,//トラッキングID
+          process.env.GOOGLE_ADSENSE_ID,//Adsenseもまとめて入れられる！！
+        ],
+        pluginConfig: {
+          head: true,//headerに追記
+        },
       },
     },
   ],
