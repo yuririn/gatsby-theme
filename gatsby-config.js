@@ -50,10 +50,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [
-          process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-          process.env.GOOGLE_ADSENSE_ID,
-        ],
+        trackingIds: [process.env.GOOGLE_ANALYTICS_TRACKING_ID],
         pluginConfig: {
           head: true,
         },
@@ -66,12 +63,12 @@ module.exports = {
     //     head: true,
     //   },
     // },
-    // {
-    //   resolve: `gatsby-plugin-google-adsense`,
-    //   options: {
-    //     publisherId: process.env.GOOGLE_ADSENSE_ID,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: process.env.GOOGLE_ADSENSE_ID,
+      },
+    },
     {
       resolve: `gatsby-plugin-hotjar-tracking`,
       options: {
