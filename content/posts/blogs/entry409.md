@@ -304,4 +304,16 @@ YouTubeなどの良質な学習コンテンツはありますし、公式リフ�
 <img border="0" width="336" height="280" alt="" src="https://www24.a8.net/svt/bgt?aid=201115000685&wid=001&eno=01&mid=s00000016159003006000&mc=1"></a>
 <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=3BQLBS+BBTY5U+3GOM+HWAG1" alt="">
 
-最後までお読みいただきありがとうございました。
+最後までお読みいただきありがとうございました。<br><br>
+
+学習方法ではなく、年齢やキャリアで悩んでいる方はこちらの記事も併せてお読みください。
+
+<a class="article-link" href="/blogs/entry369/">
+<section><div class="article-link__img"><img alt="駆け出しエンジニアの君へ。30才過ぎても転職はできる" src="/static/892bb87f5521b76614fa49c895bc8df3/f836f/entry369.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">駆け出しエンジニアの君へ。30才過ぎても転職はできる</div>
+<p class="description">「ITエンジニア、Webデザイナーに転職したい」。そんな相談を受けることがあります。10年前IT業界へ転職したときに･･</p>
+<p>
+<time datetime="2020-07-01">2020.07.01</time>
+</p>
+</div>
+</section></a>
