@@ -371,12 +371,25 @@ select[multiple] option:checked {
 CSSだけでのカスタマイズは大変ですが避けて通れないのでスタイリング頑張りましょう。
 
 ボタンのCSSスニペット集も追加しました！
-<a class="article-link" href="/blogs/entry396">
+<a class="article-link" href="/blogs/entry396/">
 <section><div class="article-link__img"><img alt="実用性重視！使えるボタンのCSSコード・スニペット集！" src="/static/0cc18aaad04da390c3ce765830d160db/f836f/entry396.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">実用性重視！使えるボタンのCSSコード・スニペット集！</div>
 <p class="description">ボタンデザインやコーディングで悩むことありませんか？今日はボタンのスニペット集を作りました！解説もあ･･･</p>
 <p>
 <time datetime="2020-11-14">2020.11.14</time>
+</p>
+</div>
+</section>
+</a>
+
+さらにグローバルメニューのホバーアニメスニペット集追加しました！ぜひ活用して表情豊かなウェブサイトを作ってください！
+
+<a class="article-link" href="/blogs/entry449/">
+<section><div class="article-link__img"><img alt="実務で使える！グローバルメニューホバーアニメーションスニペット集" src="/static/189c33364c7c1d2a54c756f754b8392f/f836f/entry449.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">実務で使える！グローバルメニューホバーアニメーションスニペット集</div>
+<p class="description">Web制作をしていると、グロナビのホバーアニメの持ちネタが尽きます。そこで、グロナビのためのアニメーション･･･</p>
+<p>
+<time datetime="2021-03-26">2021.03.26</time>
 </p>
 </div>
 </section>
