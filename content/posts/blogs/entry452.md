@@ -167,11 +167,12 @@ phpcsでコード書いてるとここら辺も怒られます。
 |-|-|
 | `esc_html()`| htmlタグをエスケープ|
 | `esc_url()`| URLのプロトコルのチェックや適切でない文字をエスケープ|
+| `wp_attr()`| < > & " ' (小なり、大なり、アンパサンド、ダブルクォート、シングルクォート) 文字参照をエンコード|
 | `wp_kses()`| 特定のタグと属性の出力以外エスケープ|
 
 たとえば、`get_the_title()`で取得した投稿内容を`echo`出力したい場合はこんな感じです。
 
-`get_~`系の関数出力はすべてエスケープ処理が必要だと思っておいてもいいくらいです。
+`get_~()`系の関数出力はすべてエスケープ処理が必要だと思っておいてもいいくらいです。
 
 ```php
 echo esc_html( get_the_title() );
@@ -180,7 +181,13 @@ URLではこんな感じで使います。
 ```php
 <a href="<?php echo esc_url( home_url('/') ); ">ホーム</a>
 ```
-特定のタグや属性だけ残したいときはこんな感じ。
+
+属性のエスケープ例。
+```php
+<input type="text" value="<?php echo esc_attr( $title ); ">
+```
+
+<br>特定のタグや属性だけ残したいときはこんな感じ。
 
 brタグだけスリップできます。
 
@@ -295,7 +302,7 @@ my_function()
 
 > the use of count() inside a loop condition is not allowed; assign the return value to a variable and use the variable in the loop condition instead.
 
-ループ条件内でのcount（）をまんま使ったら怒られました。
+ループ条件内での`count()`（配列を数える関数）をまんま使ったら怒られました。
 
 ```php
 NG
@@ -341,23 +348,64 @@ function show_archives( $atts ) {
 ```php
 $atts['order']
 ```
+## 登録（CRUD）系
+`update_post_meta()`などカスタムフィールドからデータを保存したいとき、そのまま書くとエラーがコンボします。
+
+> An associative array of variables passed to the current script via the HTTP POST method.<br>
+> `$_POST` data not unslashed before sanitization. `Use wp_unslash()` or similar<br>
+> Detected usage of a non-sanitized input variable:<br>
+> Processing form data without nonce verification
+
+
+`wp_unslash`で値からスラッシュを取りぞき。`sanitize_text_field`で入力テキストを無害化します。
+
+```php
+sanitize_text_field( wp_unslash( $_POST['title'] ) );
+```
+判定は`isset()`や`empty()`を使います。
+```
+if ( ! empty( $_POST['title'] ) ) {
+  //処理
+}
+if ( isset( $_POST['title'] ) ) {
+  //処理
+}
+```
+> Processing form data without nonce verification.
+
+`$_GET`での判定では`wp_verify_nonce`でセッションが有効か確認してと言われます。
+
+```
+$action = wp_verify_nonce( isset( $_GET['action'] ) )
+if ( $action ) {
+  //処理
+}
+```
+ここら辺の検証は何よりもWordPress Codexが参考になりました。Codexサイコー！
+
+[データ検証](https://wpdocs.osdn.jp/%E3%83%87%E3%83%BC%E3%82%BF%E6%A4%9C%E8%A8%BC)
 
 ## どうしようもないエラーを非表示にしたい
 
 やりたくないけど、どうしてもチェックを無視したいときは以下を使います。
 
-一部無効（私はどうしてもの時基本これしか使いません）。
+### 一部無効（私はどうしてもの時基本これしか使いません）。
+
+たとえばです。
+
 ```php
 // @codingStandardsIgnoreStart
 $test = $_GET['test'];
 // @codingStandardsIgnoreEnd
 ```
-ファイルまるごと無視
+`$_GET`や`$_POST`系のエスケープに関しては[入力系](#入力系)を参考にしてください。
+
+### ファイルまるごと無視
 ```php
 <?php
 // @codingStandardsIgnoreFile
 ```
-フォルダー丸ごと無視
+### フォルダー丸ごと無視
 ```
 phpcs --ignore=*/tests/*,*/data/* /path/to/code
 ```

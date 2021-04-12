@@ -5,7 +5,7 @@ hero: 2014/entry175.jpg
 pagetype: blog
 category: 'CMS'
 cateId: 'cms'
-tags: ["WordPress"]
+tags: ["concrete5"]
 description: concrete5の外部フォームを使ってフォーム作りました。5.7のリファレンスが少なめなのでメモします。
 lead: ["concrete5の外部フォームを使ってフォーム作りました。5.7のリファレンスが少なめなのでメモします。"]
 ---

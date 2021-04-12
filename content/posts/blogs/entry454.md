@@ -6,8 +6,8 @@ pagetype: blog
 category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress"]
-description: WordPressでもSEO Packなどを使わずカスタムフィールドの実装だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！一覧を編集したらカスタムフィールドが消えるバグの修正方法もついでにまとめてます。
-lead: ["WordPressでもSEO Packなどを使わずカスタムフィールドの実装だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！","一覧を編集したらカスタムフィールドが消えるバグの修正方法もついでにまとめてます。"]
+description: WordPressでもSEO Packなどを使わずカスタムフィールドの実装だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！一覧を編集したらカスタムフィールドが消えるバグの対処方法もついでにまとめてます。
+lead: ["WordPressでもSEO Packなどを使わずカスタムフィールドの実装だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！","一覧を編集したらカスタムフィールドが消えるバグの対処方法もついでにまとめてます。"]
 ---
 ## この記事を参考にする上での注意点
 
@@ -29,7 +29,9 @@ phpcsでWordPressコーディング規約を設定しておくといいです。
 
 ## カスタムフィールドからコンパクトにタイトルやメタディスクリプションを編集できるようにする
 
-カスタムフィールドは追加、アップデート、取得、削除用（CRAD）の関数が用意されています。
+カスタムフィールドは追加、アップデート、取得、削除用（CRUD）の関数が用意されています。
+
+<small>※ C…Create、R…Read、U…Update、D…Delete</small>
 
 ぶっちゃけ、`add_post_meta`は`update_post_meta`で代用できます。
 
@@ -39,7 +41,7 @@ add_post_meta(  ページのID, カスタムフィールド名 );
 // 取得
 get_post_meta( ページのID, カスタムフィールド名 , true );
 // アップデート
-update_post_meta(  ページのID, カスタムフィールド名 );
+update_post_meta( ページのID, カスタムフィールド名 );
 // 削除
 delete_post_meta( ページのID, カスタムフィールド名 );
 ```
@@ -60,11 +62,11 @@ function seo_fields() {
 
 	<div id="resiter"  class="resister">
 		<h2>タイトル</h2>
-		<p><input name="metatitle" value="<?php echo esc_html( $metatitle ); ?>"  class="large-text code" placeholder="タイトル" id="metatitle"></p>
+		<p><input name="metatitle" value="<?php echo attr_html( $metatitle ); ?>"  class="large-text code" placeholder="タイトル" id="metatitle"></p>
 		<p><span id="titleNum"></span>文字</p>
 		<p>検索された時に表示されるタイトルです。35文字から41文字以内に収めるのが理想です。</p>
 		<h2>説明文</h2>
-		<p><textarea name="description" class="large-text code" rows="3" placeholder="このページの説明文" id="metadescription"><?php echo esc_html( $description ); ?></textarea></p>
+		<p><textarea name="description" class="large-text code" rows="3" placeholder="このページの説明文" id="metadescription"><?php echo attr_html( $description ); ?></textarea></p>
 		<p><span id="descriptionNum"></span>文字</p>
 		<p>検索された時に表示されるタイトルです。130文字以内に収めるのが理想です。</p>
 	</div>
@@ -102,20 +104,20 @@ add_action( 'admin_menu', 'add_seo_fields' );
  * @param string $post_id is id.
  */
 function save_seo_fields( $post_id ) {
-	$metatitle   = isset( $_POST['metatitle'] );
-	$description = isset( $_POST['description'] );
 
-	if ( wp_verify_nonce( isset( $_GET['action'] ) ) ) {
-		if ( ! empty( $metatitle ) ) {
-			update_post_meta( $post_id, 'metatitle', esc_html( $metatitle ) );
-		} else {
-				delete_post_meta( $post_id, 'metatitle' );
-			}
+	if ( ! empty( $_POST['metatitle'] ) ) {
+		$metatitle = sanitize_text_field( wp_unslash( $_POST['metatitle'] ) );
+		update_post_meta( $post_id, 'metatitle', $metatitle );
+	} else {
+		if ( wp_verify_nonce( isset( $_GET['action'] ) ) ) {
+			delete_post_meta( $post_id, 'metatitle' );
 		}
-
-		if ( ! empty( $description ) ) {
-			update_post_meta( $post_id, 'description', isset( $description ) );
-		} else {
+	}
+	if ( ! empty( $_POST['description'] ) ) {
+		$description = sanitize_text_field( wp_unslash( $_POST['description'] ) );
+		update_post_meta( $post_id, 'description', $description );
+	} else {
+		if ( wp_verify_nonce( isset( $_GET['action'] ) ) ) {
 			delete_post_meta( $post_id, 'description' );
 		}
 	}
@@ -124,7 +126,7 @@ add_action( 'save_post', 'save_seo_fields' );
 ```
 ## 管理画面の投稿一覧に表示する
 
-カラムを追加します。
+カラムを追加します。コメントのカラムはいらないので`unset()`で削除します。
 
 ```php
 /**
@@ -136,6 +138,7 @@ function add_seo_posts_columns( $columns ) {
 	if ( 'post' === get_post_type() || 'page' === get_post_type() ) {
 		$columns['metatitle']   = 'メタタイトル';
 		$columns['description'] = 'ページの説明';
+
 		unset( $columns['comments'] );
 	}
 	return $columns;
