@@ -1,25 +1,23 @@
 import React from "react"
 
-import { createGlobalStyle } from "styled-components";
-import { BaseStyle } from "./../styles/common/base";
-import { CommonStyle } from "./../styles/common/common";
-import { Edit } from "./../styles/blog-styles/edit";
+import { createGlobalStyle } from "styled-components"
+import { BaseStyle } from "./../styles/common/base"
+import { CommonStyle } from "./../styles/common/common"
+import { Edit } from "./../styles/blog-styles/edit"
 import Footer from "../components/common/footer"
 import Header from "../components/common/header"
 import GNav from "../components/common/nav"
 import Profile from "../components/profile"
 import Genre from "../components/genre"
 
-
-
 const Layout = ({ location, title, children }) => {
   return (
     <div>
-    <BaseStyle/>
-    <CommonStyle/>
-    <GlobalStyle/>
+      <BaseStyle />
+      <CommonStyle />
+      <GlobalStyle />
       <Header title={title} location={location.pathname} />
-      <GNav/>
+      <GNav />
       <main>{children}</main>
       <aside class="BigWhite">
         <div className="l-container">

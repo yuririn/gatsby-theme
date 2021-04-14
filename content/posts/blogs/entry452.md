@@ -363,7 +363,7 @@ $atts['order']
 sanitize_text_field( wp_unslash( $_POST['title'] ) );
 ```
 判定は`isset()`や`empty()`を使います。
-```
+```php
 if ( ! empty( $_POST['title'] ) ) {
   //処理
 }
@@ -373,13 +373,16 @@ if ( isset( $_POST['title'] ) ) {
 ```
 > Processing form data without nonce verification.
 
-`$_GET`での判定では`wp_verify_nonce`でセッションが有効か確認してと言われます。
+$_GET`での判定です。
 
-```
-$action = wp_verify_nonce( isset( $_GET['action'] ) )
-if ( $action ) {
-  //処理
+クエリ自体を登録し`get_query_var`で取得できるようにしておきます。
+
+```php
+function add_query_vars_filter( $vars ){
+	$vars[] = 'test';
+	return $vars;
 }
+add_filter( 'query_vars', 'add_query_vars_filter' );
 ```
 ここら辺の検証は何よりもWordPress Codexが参考になりました。Codexサイコー！
 

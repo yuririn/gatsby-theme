@@ -71,8 +71,12 @@ function seo_fields() {
 		<p>検索された時に表示されるタイトルです。130文字以内に収めるのが理想です。</p>
 	</div>
 	<?php
+	wp_nonce_field( 'seo', 'seo_field' );
 }
 ```
+`wp_nonce_field`を追記しました。
+* [Using Nonces](https://developer.wordpress.org/themes/theme-security/using-nonces/)
+* [wp verify nonce](https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/wp_verify_nonce)
 
 表示するためには`admin_menu`を`add_action`にフックさせます。
 
@@ -95,7 +99,11 @@ add_action( 'admin_menu', 'add_seo_fields' );
 
 一覧だろうが、詳細だろうが保存の際に同じように処理されるけど、一覧では保存する値が存在しないので削除処理されてしまいます。
 
-ちょっと力技ですが、管理画面が一覧か、詳細なのかを判断するのに`action`パラメーターがあるかで削除処理するかの処理を入れました。
+~~ちょっと力技ですが、管理画面が一覧か、詳細なのかを判断するのに`action`パラメーターがあるかで削除処理するかの処理を入れました。~~
+
+<br>上記、global変数`$pagenow`を追加し、ページテンプレート名を取得する方法に切り替えました。
+
+先ほどの`wp_verify_field`で生成したnonceを`wp_verify_nonce`で確認します。nonceが無効ならfalseを返します。これでエラーは発生しなくなるはずです。
 
 ```php
 /**
@@ -104,12 +112,16 @@ add_action( 'admin_menu', 'add_seo_fields' );
  * @param string $post_id is id.
  */
 function save_seo_fields( $post_id ) {
+	global $pagenow;
+	if ( ! isset( $_POST['seo_field'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['seo_field'] ) ), 'seo' ) ) {
+		return false;
+	}
 
 	if ( ! empty( $_POST['metatitle'] ) ) {
 		$metatitle = sanitize_text_field( wp_unslash( $_POST['metatitle'] ) );
 		update_post_meta( $post_id, 'metatitle', $metatitle );
 	} else {
-		if ( wp_verify_nonce( isset( $_GET['action'] ) ) ) {
+		if ( is_admin() || ( 'post.php' === $pagenow ) ) {
 			delete_post_meta( $post_id, 'metatitle' );
 		}
 	}
@@ -117,7 +129,7 @@ function save_seo_fields( $post_id ) {
 		$description = sanitize_text_field( wp_unslash( $_POST['description'] ) );
 		update_post_meta( $post_id, 'description', $description );
 	} else {
-		if ( wp_verify_nonce( isset( $_GET['action'] ) ) ) {
+		if ( is_admin() || ( 'post.php' === $pagenow ) ) {
 			delete_post_meta( $post_id, 'description' );
 		}
 	}
@@ -236,6 +248,7 @@ function seo_fields() {
 		});
 	</script>
 	<?php
+	//省略
 }
 ```
 ## まとめ・カスタマイズするならコンパクトだけどユーザーファースト
