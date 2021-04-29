@@ -33,7 +33,7 @@ const BlogIndex = ({ data, location }) => {
             <h2 className="c-heading--lg">YouTube「かみーゆちゃんねる」やってるよ！</h2>
             <p className="u-text-center u-mblg">海外ノマドやエンジニアライフについて配信中です。</p>
             <div className="c-grid">
-              <div className="c-grid__item--md6">
+              <div className="c-grid__item--md6 u-mblg">
                 <IframeWrapper>
                   <iframe
                     width="560"
@@ -47,7 +47,7 @@ const BlogIndex = ({ data, location }) => {
                 </IframeWrapper>
                 <h3>セブ島と日本をつなぐプロジェクト</h3>
               </div>
-              <div className="c-grid__item--md6">
+              <div className="c-grid__item--md6 u-mblg">
                 <IframeWrapper>
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLRSXt39PZIMWSeahdQUIm2dcgMA_C8KIY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </IframeWrapper>
