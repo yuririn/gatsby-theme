@@ -264,11 +264,11 @@ const GlobalStyle = createGlobalStyle`
         background: #fff;
         transition: .3s;
         white-space: nowrap;
-        padding: 2px 15px 5px 2px;
+        padding: 2px 3px 5px 2px;
 
         @media screen and (min-width: 768px) {
           font-size: 1.1rem;
-          padding: 3px 20px 5px 3px;
+          padding: 3px 3px 5px 3px;
           &:hover {
             background-color: var(--color-blue);
             color: #fff;

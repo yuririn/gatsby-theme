@@ -18,7 +18,7 @@ const Header = ({ title, location }) => {
       <header className="l-header">
         <div>
           <div id="header-logo">
-            <span>セブ島に住むフロントエンジニアのライフログ</span>
+            <span>セブ島在住海外ノマド フロントエンジニアの日記</span>
             {location === "/" ? (
               <h1>
                 <Logo />

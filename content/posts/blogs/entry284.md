@@ -5,7 +5,7 @@ hero: 2014/entry208.png
 pagetype: blog
 category: 'Back End'
 cateId: 'back-end-program'
-tags: ["DB","MySQL"]
+tags: ["DB"]
 description: grant の MySQL を 5.1 から 5.7 系にアップグレードする際にどハマりし、結局助けてもらってなんとかアップグレードしたのでそのやり方をメモします。
 lead: ["grant の MySQL を 5.1 から 5.7 系にアップグレードする際にどハマりし、結局助けてもらってなんとかアップグレードしたのでそのやり方をメモします。"]
 ---
