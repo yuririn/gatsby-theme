@@ -1,5 +1,5 @@
 ---
-title: 月額千円で始められるWordPressブログ開設マニュアル・後半
+title: 【WordPress初心者へ】月額1000円！ワードプレスブログの始め方・後半
 date: 2020-08-02
 hero: 2020/entry381.png
 pagetype: blog
@@ -15,8 +15,8 @@ lead: ["WordPressを使ってブログ始めたい人へのマニュアル第二
 前回の記事を読みたい方はこちらから。
 
 <a class="article-link" href="/blogs/entry379">
-<section><div class="article-link__img"><img alt="月額千円で始められるWordPressブログ開設マニュアル・前半" src="/static/9cb8d1f591b70275591ceafadc71d274/69585/entry379.png" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">月額千円で始められるWordPressブログ開設マニュアル・前半</div>
+<section><div class="article-link__img"><img alt="【WordPress初心者へ】月額1000円！ワードプレスブログの始め方・前半" src="/static/9cb8d1f591b70275591ceafadc71d274/69585/entry379.png" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">【WordPress初心者へ】月額1000円！ワードプレスブログの始め方・前半</div>
 <p class="description">WordPressって人気ですよね。WordPress使ってブログ始めたいけど何から手をつけて･･･</p>
 <p>
 <time datetime="2020-07-29">2020.07.29</time>
