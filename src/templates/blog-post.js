@@ -1,11 +1,11 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import {Article} from './../styles/blog-styles/article'
-import {Header} from './../styles/blog-styles/header';
-import {Sidebar} from './../styles/blog-styles/sidebar';
-import { Edit } from "./../styles/blog-styles/edit";
-import styled from 'styled-components';
+import { Article } from "./../styles/blog-styles/article"
+import { Header } from "./../styles/blog-styles/header"
+import { Sidebar } from "./../styles/blog-styles/sidebar"
+import { Edit } from "./../styles/blog-styles/edit"
+import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
@@ -43,7 +43,12 @@ const BlogPostTemplate = ({ data, location }) => {
         type="article"
       />
       <Header>
-        <div className={`c-article__mainvisual c-article__mainvisual--` + post.frontmatter.cateId}>
+        <div
+          className={
+            `c-article__mainvisual c-article__mainvisual--` +
+            post.frontmatter.cateId
+          }
+        >
           <div className="c-article__img">
             <Category
               name={post.frontmatter.categoryId}
@@ -57,10 +62,10 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
         </div>
       </Header>
-        <div className="l-container">
-          <BreadCrumbList type="blog" current={post.frontmatter.title} />
-        </div>
-        <Body>
+      <div className="l-container">
+        <BreadCrumbList type="blog" current={post.frontmatter.title} />
+      </div>
+      <Body>
         <Article>
           <article className="p-section">
             <div className="l-container">
@@ -136,122 +141,130 @@ const BlogPostTemplate = ({ data, location }) => {
               <Prof></Prof>
               <Toc data={data.markdownRemark.tableOfContents} />
             </div>
-          <Edit>
-            <section
-            dangerouslySetInnerHTML={{ __html: post.html }}
-            className="l-container u-mblg"
-            itemProp="articleBody"
-          />
-          </Edit>
-        <div className="l-container--md">
-          <ul className="c-snsBtns u-mblg">
-            <li className="c-snsBtns__item">
-              <Link
-                className="c-snsBtns__item--fb"
-                to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`}
-                target="_blank"
-                target="_blank"
-                rel="noopener nofollow"
-              >
-                <span className="c-snsBtns__label">Facebook</span>
-              </Link>
-            </li>
-            <li className="c-snsBtns__item">
-              <Link
-                className="c-snsBtns__item--tw"
-                to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`}
-                target="_blank"
-                target="_blank"
-                rel="noopener nofollow"
-              >
-                <span className="c-snsBtns__label">Twitter</span>
-              </Link>
-            </li>
-            <li className="c-snsBtns__item">
-              <Link
-                to={`https://b.hatena.ne.jp/entry/${perfectUrl}`}
-                target="_blank"
-                className="c-snsBtns__item--hateb"
-                rel="noopener nofollow"
-              >
-                <span className="c-snsBtns__label">はてB!</span>
-              </Link>
-            </li>
-            <li className="c-snsBtns__item">
-              <Link
-                className="c-snsBtns__item--pocket"
-                to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`}
-                target="_blank"
-                target="_blank"
-                rel="noopener nofollow"
-              >
-                <span className="c-snsBtns__label">Pocket</span>
-              </Link>
-            </li>
-          </ul>
-          <dl className="c-article__tags">
-            <dt>Category</dt>
-            <dd className="cate">
-              <Link to={`/blogs/${post.frontmatter.cateId}/`}>
-                {post.frontmatter.category}
-              </Link>
-            </dd>
-          </dl>
-          <dl className="c-article__tags">
-            <dt>Tags</dt>
-            <dd>
-              <TagsListFooter tags={post.frontmatter.tags} />
-            </dd>
-          </dl>
-        </div>
-      </article>
-      <nav className="p-section l-container">
-        <ol className="c-pager--article">
-          <li className="c-pager--article__prev">
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li className="c-pager--article__next">
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title}
-              </Link>
-            )}
-          </li>
-        </ol>
-      </nav>
+            <Edit>
+              <section
+                dangerouslySetInnerHTML={{ __html: post.html }}
+                className="l-container u-mblg"
+                itemProp="articleBody"
+              />
+            </Edit>
+            <div className="l-container--md">
+              <ul className="c-snsBtns u-mblg">
+                <li className="c-snsBtns__item">
+                  <Link
+                    className="c-snsBtns__item--fb"
+                    to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`}
+                    target="_blank"
+                    target="_blank"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">Facebook</span>
+                  </Link>
+                </li>
+                <li className="c-snsBtns__item">
+                  <Link
+                    className="c-snsBtns__item--tw"
+                    to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`}
+                    target="_blank"
+                    target="_blank"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">Twitter</span>
+                  </Link>
+                </li>
+                <li className="c-snsBtns__item">
+                  <Link
+                    to={`https://b.hatena.ne.jp/entry/${perfectUrl}`}
+                    target="_blank"
+                    className="c-snsBtns__item--hateb"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">はてB!</span>
+                  </Link>
+                </li>
+                <li className="c-snsBtns__item">
+                  <Link
+                    className="c-snsBtns__item--pocket"
+                    to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`}
+                    target="_blank"
+                    target="_blank"
+                    rel="noopener nofollow"
+                  >
+                    <span className="c-snsBtns__label">Pocket</span>
+                  </Link>
+                </li>
+              </ul>
+              <dl className="c-article__tags">
+                <dt>Category</dt>
+                <dd className="cate">
+                  <Link to={`/blogs/${post.frontmatter.cateId}/`}>
+                    {post.frontmatter.category}
+                  </Link>
+                </dd>
+              </dl>
+              <dl className="c-article__tags">
+                <dt>Tags</dt>
+                <dd>
+                  <TagsListFooter tags={post.frontmatter.tags} />
+                </dd>
+              </dl>
+            </div>
+          </article>
+          <nav className="p-section l-container">
+            <ol className="c-pager--article">
+              <li className="c-pager--article__prev">
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li className="c-pager--article__next">
+                {next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+            </ol>
+          </nav>
+        </Article>
 
-      </Article>
-
-
-      <Sidebar>
-        <div class="inner">
-          <Search />
-          <RelatedList
-            category={post.frontmatter.cateId}
-            title={post.frontmatter.title}
-            tags={post.frontmatter.tags}
-          ></RelatedList>
-          <section className="p-section">
-          <h2 className="c-heading--lg--side">ジャンル</h2>
-          <ul className="sideCateList">
-            <li><a href="/blogs/front-end-program/">Front End</a></li>
-            <li><a href="/blogs/back-end-program/">Back End</a></li>
-            <li><a href="/blogs/seo/">SEO</a></li>
-            <li><a href="/blogs/it-seminar">IT Seminor</a></li>
-            <li><a href="/blogs/ginneko-tsuredure/">Life Hack</a></li>
-          </ul>
-          </section>
-          <div className="l-container">
-          <section className="p-box--gray p-section u-text-center">
-          <h2 className="c-heading--lg">人気のタグ</h2>
-          <Tags />
-          </section>
+        <Sidebar>
+          <div class="inner">
+            <Search />
+            <RelatedList
+              category={post.frontmatter.cateId}
+              title={post.frontmatter.title}
+              tags={post.frontmatter.tags}
+            ></RelatedList>
+            <section className="p-section">
+              <h2 className="c-heading--lg--side">ジャンル</h2>
+              <ul className="sideCateList">
+                <li>
+                  <a href="/blogs/front-end-program/">Front End</a>
+                </li>
+                <li>
+                  <a href="/blogs/back-end-program/">Back End</a>
+                </li>
+                <li>
+                  <a href="/blogs/seo/">SEO</a>
+                </li>
+                <li>
+                  <a href="/blogs/it-seminar">IT Seminor</a>
+                </li>
+                <li>
+                  <a href="/blogs/ginneko-tsuredure/">Life Hack</a>
+                </li>
+              </ul>
+            </section>
+            <div className="l-container">
+              <section className="p-box--gray p-section u-text-center">
+                <h2 className="c-heading--lg">人気のタグ</h2>
+                <Tags />
+              </section>
+            </div>
           </div>
-        </div>
         </Sidebar>
         <div className="p-section l-container">
           <FovoriteList type="web" />
@@ -331,7 +344,6 @@ export const pageQuery = graphql`
     }
   }
 `
-
 
 const Body = styled.div`
   @media screen and (min-width: 768px) {

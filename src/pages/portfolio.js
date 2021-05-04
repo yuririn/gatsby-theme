@@ -1,11 +1,11 @@
-import React,{ useState } from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 
 import SEO from "../components/seo"
 
 // CSS
-import { BaseStyle } from "./../styles/common/base";
-import { CommonStyle } from "./../styles/common/common";
+import { BaseStyle } from "./../styles/common/base"
+import { CommonStyle } from "./../styles/common/common"
 import HeaderStyles from "./portfolioParts/css/header.module.css"
 import FirstViewStyles from "./portfolioParts/css/firstview.module.css"
 import RecomendStyles from "./portfolioParts/css/recomend.module.css"
@@ -23,11 +23,11 @@ import Contact from "./portfolioParts/contact"
 
 const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const img = data.allFile.edges[0].node.childImageSharp.fluid.src
-  const menuEvent = ()=>{
-		setIsOpen(!isOpen)
+  const menuEvent = () => {
+    setIsOpen(!isOpen)
   }
   return (
     <div className={HeaderStyles.default}>
@@ -36,9 +36,9 @@ const Portfolio = ({ data, location }) => {
         description="広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。"
         image={img}
         location={location}
-        />
-        <CommonStyle/>
-        <BaseStyle/>
+      />
+      <CommonStyle />
+      <BaseStyle />
       <header className={HeaderStyles.header}>
         <p className={HeaderStyles.headerLogo}>Camille Site</p>
         <span
@@ -48,15 +48,23 @@ const Portfolio = ({ data, location }) => {
           aria-label="ナビゲーションボタン"
           id="menuBtn"
         ></span>
-        <nav className={(isOpen ? HeaderStyles.globalNavOpen : HeaderStyles.globalNav)}>
+        <nav
+          className={
+            isOpen ? HeaderStyles.globalNavOpen : HeaderStyles.globalNav
+          }
+        >
           <ul>
             <li>
-              <Link to='/' onClick={menuEvent}>Home</Link>
+              <Link to="/" onClick={menuEvent}>
+                Home
+              </Link>
             </li>
             {nav.map(value => {
               return (
                 <li>
-                  <Link to={`#${value}`} onClick={menuEvent}>{value}</Link>
+                  <Link to={`#${value}`} onClick={menuEvent}>
+                    {value}
+                  </Link>
                 </li>
               )
             })}

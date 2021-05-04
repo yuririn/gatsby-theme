@@ -3,8 +3,8 @@ import { graphql, Link } from "gatsby"
 
 import LayoutS from "../components/layoutSimple"
 import SEO from "../components/seo"
-import styled from 'styled-components';
-import { Edit } from "./../styles/blog-styles/edit";
+import styled from "styled-components"
+import { Edit } from "./../styles/blog-styles/edit"
 import Image from "../components/image"
 import Search from "../components/search/"
 import Genre from "../components/genre"
@@ -242,9 +242,9 @@ const NotFoundPage = ({ data, location }) => {
       <P404>
         <div className="mb-Md mt-Xs l-container">
           <BreadCrumbList current="お探しのページは見つかりませんでした" />
-          </div>
+        </div>
         <Edit>
-        <div className="l-container">
+          <div className="l-container">
             <h2>あなたのお探しのページにたどり着けなかったようです</h2>
             <p>
               大変遺憾ではありますが、管理人がどこかに移動させたか、
@@ -257,9 +257,9 @@ const NotFoundPage = ({ data, location }) => {
             <p>
               そんなあなたのために「銀ねこアトリエ」はいくつかオプションを用意しました。お好きな項目をお選びください。
             </p>
-            </div>
-          </Edit>
-          <Menu></Menu>
+          </div>
+        </Edit>
+        <Menu></Menu>
       </P404>
     </LayoutS>
   )
@@ -277,13 +277,12 @@ export const pageQuery = graphql`
   }
 `
 const P404 = styled.div`
-.l-container {
+  .l-container {
     max-width: 900px;
   }
-  input[type=radio] {
+  input[type="radio"] {
     display: none;
   }
-
 
   .mb-Md {
     margin-bottom: 20px;
@@ -294,49 +293,49 @@ const P404 = styled.div`
   }
 
   .fortune__btn {
-      width: 110px;
-      height: 96px;
+    width: 110px;
+    height: 96px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    font-size: 2rem;
+    margin: 10px auto;
+    color: #fff;
+    font-weight: 700;
+    transform: scale(0.8);
+    animation: dokidoki 1.8s infinite;
+    opacity: 1;
+    background: none;
+    border: none;
+    &:hover {
+      animation: dokidoki 0.5s infinite;
+      opacity: 0.7;
+    }
+
+    &:after {
+      z-index: -1;
+      position: absolute;
+      content: "";
       display: block;
-      position: relative;
-      z-index: 1;
-      font-size: 2rem;
-      margin: 10px auto;
-      color: #fff;
-      font-weight: 700;
-      transform: scale(.8);
-      animation: dokidoki 1.8s infinite;
-      opacity: 1;
-      background: none;
-      border: none;
-      &:hover {
-          animation: dokidoki .5s infinite;
-          opacity: .7;
-      }
+      bottom: 0;
+      left: 8px;
+      border-left: 47px solid transparent;
+      border-top: 45px solid #c03363;
+      border-right: 47px solid transparent;
+    }
 
-      &:after {
-            z-index: -1;
-    position: absolute;
-    content: "";
-    display: block;
-        bottom: 0;
-        left: 8px;
-        border-left: 47px solid transparent;
-        border-top: 45px solid #c03363;
-        border-right: 47px solid transparent;
-      }
-
-      &:before {
-            z-index: -1;
-    position: absolute;
-    content: "";
-    display: block;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        left: 0;
-        top: 0;
-        box-shadow: 50px 0 0 #c03364, 20px 20px 0 #c03364;
-        background: #c03363;
+    &:before {
+      z-index: -1;
+      position: absolute;
+      content: "";
+      display: block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+      box-shadow: 50px 0 0 #c03364, 20px 20px 0 #c03364;
+      background: #c03363;
     }
   }
 
@@ -350,7 +349,7 @@ const P404 = styled.div`
   }
   .uranai__list {
     margin: 30px auto 0;
-    border: 5px solid rgba(51,51,85,.3);
+    border: 5px solid rgba(51, 51, 85, 0.3);
     color: #335;
     padding: 15px;
     border-radius: 20px;
@@ -368,36 +367,32 @@ const P404 = styled.div`
       padding-left: 25px;
       display: block;
 
-      input[type=radio]:checked+span:before {
-          transform: rotateX(
-          540deg
-          );
-          opacity: 1;
+      input[type="radio"]:checked + span:before {
+        transform: rotateX(540deg);
+        opacity: 1;
       }
 
-      input[type=radio]+span {
-          display: block;
-          position: relative;
-          width: 100%;
-          &:before {
+      input[type="radio"] + span {
+        display: block;
+        position: relative;
+        width: 100%;
+        &:before {
           content: "";
-              display: block;
-              left: -25px;
-              top: 4px;
-              position: absolute;
-              border-top: 7px solid transparent;
-              border-left: 14px solid var(--color-accent);
-              border-bottom: 7px solid transparent;
-              opacity: 0;
-              transition: .3s;
-          }
+          display: block;
+          left: -25px;
+          top: 4px;
+          position: absolute;
+          border-top: 7px solid transparent;
+          border-left: 14px solid var(--color-accent);
+          border-bottom: 7px solid transparent;
+          opacity: 0;
+          transition: 0.3s;
+        }
       }
-      input[type=radio]:checked+span {
+      input[type="radio"]:checked + span {
         color: var(--color-accent);
-
-
+      }
     }
-  }
     @media screen and (min-width: 768px) {
       padding: 30px 30px 10px;
       border-radius: 20px;
@@ -405,80 +400,77 @@ const P404 = styled.div`
       flex-wrap: wrap;
 
       li {
-          width: 50%;
+        width: 50%;
       }
-
     }
-
-}
+  }
 
   .fortune {
     padding: 20px 20px 5px;
-      background: rgba(51,51,85,.2);
-      border-radius: 15px;
+    background: rgba(51, 51, 85, 0.2);
+    border-radius: 15px;
 
-      @media screen and (min-width: 768px) {
-        padding: 30px 40px 5px;
-        border-radius: 20px;
+    @media screen and (min-width: 768px) {
+      padding: 30px 40px 5px;
+      border-radius: 20px;
     }
 
-  dt {
-    font-weight: 700;
-    padding-left: 15px;
-    position: relative;
-    line-height: 1.4;
-    margin-bottom: 15px;
+    dt {
+      font-weight: 700;
+      padding-left: 15px;
+      position: relative;
+      line-height: 1.4;
+      margin-bottom: 15px;
 
-    &:before {
+      &:before {
         position: absolute;
         display: block;
         content: "";
         left: 0;
         background: #c03363;
         width: 2px;
-        height:100%;
+        height: 100%;
         top: 0;
-    }
-    @media screen and (min-width: 768px) {
-           margin-bottom: 20px;
-
-    }
+      }
+      @media screen and (min-width: 768px) {
+        margin-bottom: 20px;
+      }
     }
     dd {
       margin-bottom: 30px;
     }
     .is-last a {
+      display: block;
+      padding: 20px;
+      background: hsla(0, 0%, 100%, 0.4);
+      border-radius: 15px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.1em;
+      color: #001d7c;
+      text-decoration: none;
+      span {
         display: block;
-        padding: 20px;
-        background: hsla(0,0%,100%,.4);
-        border-radius: 15px;
-        font-weight: 700;
-        text-align: center;
-        font-size: 1.1em;
-        color: #001d7c;
-        text-decoration: none;
-        span {
-          display: block;
-          margin-top: 10px;
-        }
+        margin-top: 10px;
+      }
     }
   }
 
   @keyframes dokidoki {
-      0% {
-          transform: scale(.85)
-      }
+    0% {
+      transform: scale(0.85);
+    }
 
-      5% {
-          transform: scale(.82)
-      }
+    5% {
+      transform: scale(0.82);
+    }
 
-      95% {
-          transform: scale(.82)
-      }
+    95% {
+      transform: scale(0.82);
+    }
 
-      to {
-          transform: scale(.87)
-      }
+    to {
+      transform: scale(0.87);
+    }
   }
 `

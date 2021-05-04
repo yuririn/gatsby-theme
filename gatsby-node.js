@@ -9,7 +9,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const contact = path.resolve(`./src/templates/contact.js`)
-  // const portfolioPost = path.resolve(`./src/pages/portfolio.js`)
+  const aboutPost = path.resolve(`./src/pages/about.js`)
+  const portfolioPost = path.resolve(`./src/pages/portfolio.js`)
   const blogList = path.resolve(`./src/templates/blogs.js`)
   const pagePost = path.resolve(`./src/templates/pages.js`)
 
@@ -48,13 +49,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  // createPage({
-  // 	path: 'portfolio',
-  // 	component: portfolioPost,
-  // 	context: {
-  // 	},
-  // });
+  createPage({
+    path: "portfolio",
+    component: portfolioPost,
+    context: {},
+  })
 
+  createPage({
+    path: "/contact/",
+    component: contact,
+    context: {},
+  })
+
+  createPage({
+    path: "/contact/thanks/",
+    component: contact,
+    context: {},
+  })
+  createPage({
+    path: "/about/",
+    component: aboutPost,
+    context: {},
+  })
   const posts = result.data.allMarkdownRemark.nodes
   let count = 0
 
@@ -85,17 +101,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           hero: post.frontmatter.hero,
         },
       })
-    })
-    createPage({
-      path: "/contact/",
-      component: contact,
-      context: {},
-    })
-
-    createPage({
-      path: "/contact/thanks/",
-      component: contact,
-      context: {},
     })
 
     posts.forEach(post => {
@@ -177,7 +182,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // console.log(tag, tags[tag])
   }
 
-  //タグを取得
   //タグを取得
   let cates = posts.reduce((cates, edge) => {
     const edgeCates = edge["frontmatter"]["cateId"]

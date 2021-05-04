@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components"
 
 export const CommonStyle = createGlobalStyle`
   body.no-scroll {
@@ -120,7 +120,7 @@ export const CommonStyle = createGlobalStyle`
     background: var(--color-blue);
 
     &__img{
-      opacity: 0.4;
+      opacity: 0.6;
       height: 100%;
       width: 100%;
       img {
