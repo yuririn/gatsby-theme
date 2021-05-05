@@ -260,7 +260,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <Search />
             <ul class="side-banner">
               <li>
-                <Link to="/">
+                <Link to="/about/">
                   <Image filename="common/about-banner.jpg" />
                 </Link>
               </li>
