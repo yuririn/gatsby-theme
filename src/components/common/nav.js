@@ -1,54 +1,135 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter, faInstagram, faYoutube, faSlideshare} from "@fortawesome/free-brands-svg-icons";
-import { faSearch} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faTwitter,
+  faInstagram,
+  faYoutube,
+  faSlideshare,
+} from "@fortawesome/free-brands-svg-icons"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import Search from "../search/"
-import styled from 'styled-components';
+import styled from "styled-components"
 
 const GlobalNav = ({ title, location }) => {
-	const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-	const move = e =>{
-		isOpen == false? document.body.classList.add('no-scroll') : document.body.classList.remove('no-scroll')
-		setIsOpen(!isOpen)
-	}
+  const move = e => {
+    isOpen == false
+      ? document.body.classList.add("no-scroll")
+      : document.body.classList.remove("no-scroll")
+    setIsOpen(!isOpen)
+  }
 
-	return (
-	<NavWrapper>
-					<nav className="c-grid--flex">
-						{/* <FontAwesomeIcon icon={faSearch} /> */}
-						{/* <Search /> */}
-						<div className="c-nav">
-							<button type="button" onClick={move} className={(isOpen ? 'c-nav__btn open is-active' : 'c-nav__btn')}></button>
-							<div className="c-nav__container" role="navigation">
-								<ul className="c-nav__child">
-									<li><Link className="c-nav__navLink" to="/" onClick={move}>Home</Link></li>
-									<li><Link className="c-nav__navLink" to="/blogs/" onClick={move}>Blog</Link>
-										<ul>
-											<li><Link to="/blogs/front-end-program/" onClick={move}>Front End</Link></li>
-											<li><Link to="/blogs/back-end-program/" onClick={move}>Back End</Link></li>
-											<li><Link to="/blogs/seo/" onClick={move}>SEO</Link></li>
-											<li><Link to="/blogs/it-seminar" onClick={move}>IT Seminor</Link></li>
-											<li><Link to="/blogs/ginneko-tsuredure/" onClick={move}>Life Hack</Link></li>
-										</ul>
-									</li>
-									<li><Link className="c-nav__navLink" to="/about/" onClick={move}>About Me</Link></li>
-									<li><Link className="c-nav__navLink" to="/portfolio/" onClick={move}>Portfolio</Link></li>
-									<li><Link className="c-nav__navLink" to="/contact" onClick={move}>Contact</Link></li>
-								</ul>
-								<div className="c-nav__sns">
-									<Link to="https://twitter.com/LirioY" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faTwitter} /></Link>
-									<Link to="https://www.instagram.com/yurico.k" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faInstagram} /></Link>
-									<Link to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faYoutube} /></Link>
-									<Link to="https://www2.slideshare.net/yurikamimori" target="_blank" rel="noopener nofollow" className="c-nav__snsBtn"><FontAwesomeIcon icon={faSlideshare} /></Link>
-									</div>
-								</div>
-
-						</div>
-					</nav>
-	</NavWrapper>
-	)
+  return (
+    <NavWrapper>
+      <nav className="c-grid--flex">
+        {/* <FontAwesomeIcon icon={faSearch} /> */}
+        {/* <Search /> */}
+        <div className="c-nav">
+          <button
+            type="button"
+            onClick={move}
+            className={isOpen ? "c-nav__btn open is-active" : "c-nav__btn"}
+          ></button>
+          <div className="c-nav__container" role="navigation">
+            <ul className="c-nav__child">
+              <li>
+                <Link className="c-nav__navLink" to="/" onClick={move}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link className="c-nav__navLink" to="/blogs/" onClick={move}>
+                  Blog
+                </Link>
+                <ul>
+                  <li>
+                    <Link to="/blogs/front-end-program/" onClick={move}>
+                      Front End
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blogs/back-end-program/" onClick={move}>
+                      Back End
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blogs/seo/" onClick={move}>
+                      SEO
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blogs/it-seminar" onClick={move}>
+                      IT Seminor
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blogs/ginneko-tsuredure/" onClick={move}>
+                      Life Hack
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <Link className="c-nav__navLink" to="/about/" onClick={move}>
+                  About Me
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="c-nav__navLink"
+                  to="/portfolio/"
+                  onClick={move}
+                >
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link className="c-nav__navLink" to="/contact" onClick={move}>
+                  Contact
+                </Link>
+              </li>
+            </ul>
+            <div className="c-nav__sns">
+              <Link
+                to="https://twitter.com/LirioY"
+                target="_blank"
+                rel="noopener nofollow"
+                className="c-nav__snsBtn"
+              >
+                <FontAwesomeIcon icon={faTwitter} />
+              </Link>
+              <Link
+                to="https://www.instagram.com/yurico.k"
+                target="_blank"
+                rel="noopener nofollow"
+                className="c-nav__snsBtn"
+              >
+                <FontAwesomeIcon icon={faInstagram} />
+              </Link>
+              <Link
+                to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
+                target="_blank"
+                rel="noopener nofollow"
+                className="c-nav__snsBtn"
+              >
+                <FontAwesomeIcon icon={faYoutube} />
+              </Link>
+              <Link
+                to="https://www2.slideshare.net/yurikamimori"
+                target="_blank"
+                rel="noopener nofollow"
+                className="c-nav__snsBtn"
+              >
+                <FontAwesomeIcon icon={faSlideshare} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </NavWrapper>
+  )
 }
 
 export default GlobalNav

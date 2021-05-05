@@ -56,7 +56,7 @@ const blogs = ({ pageContext, data, location }) => {
                     </h3>
                   </Link>
                   <div className="p-entryCard__footer">
-                      <TagList tags={post.frontmatter.tags} />
+                    <TagList tags={post.frontmatter.tags} />
                   </div>
                 </article>
               )

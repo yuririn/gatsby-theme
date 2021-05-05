@@ -1,11 +1,12 @@
 ---
 title: pug（旧：Jade）を使い倒して時短マークアップしよう！
 date: 2021-01-10
+modifieddate: 2021-05-05
 hero: 2021/entry428.jpg
 pagetype: blog
 category: Front End
 cateId: front-end-program
-tags: ["npm","pug","node"]
+tags: ["npm"]
 description: 私はページを量産したりチームでサイトを作る時にPugという言語を使ってWebサイトを作っています。普段webpackやgulpを使っている方なら導入のハードルも低いと思います。今回は導入の仕方と記述方法（とくに記述方法はディープ！に記載しています）をまとめました。今回はgulpやwebpackを使わないので、package.jsonさえ作ることができればすぐ始められます！とても記事は長いので目次を利用して好きなところを読んでください。
 lead: ["私はページを量産したりチームでサイトを作る時Pugという言語を使ってWebサイトを作っています。普段webpackやgulpを使っている方なら導入のハードルも低いと思います。","npmでの導入の仕方と記述方法（とくに記述方法はディープ！に記載しています）をまとめました。今回はgulpやwebpackを使わないので、package.jsonさえ作ることができればすぐ始められます！","とても記事は長いので目次を利用して好きなところを読んでください。"]
 ---
@@ -19,6 +20,18 @@ Pugとは、Haml（HTMLを抽象化したマークアップ言語）記法に影
 > 公式サイト：[pug](https://pugjs.org/api/getting-started.html)
 
 昔は、*Jade（ヒスイ）*と呼ばれていましたが、すでに商標登録されていたのでPugに名前が変更されました（Version 2以降）。
+
+似たようなテンプレートエンジンでEJSもあります。参考にしてください。
+
+<a class="article-link" href="/blogs/entry459/">
+<section><div class="article-link__img"><img alt="【Gulp】EJSを使ってHTMLを量産する" src="/static/ec41a887eedc9aa38ac8bcc21039eb2c/47498/entry459.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">【Gulp】EJSを使ってHTMLを量産する</div>
+<p class="description">最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。･･</p>
+<p>
+<time datetime="2021-05-05">2021.05.05</time>
+</p>
+</div>
+</section></a>
 
 私の考えるpugでコーディングするデメリットとメリットを紹介します。
 

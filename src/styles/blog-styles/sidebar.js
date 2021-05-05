@@ -14,6 +14,44 @@ export const Sidebar = styled.div`
     margin-bottom: 0;
   }
 }
+.side-banner {
+    padding-bottom: 20px;
+
+    li {
+        position: relative;
+        margin-bottom: 20px;
+        a {
+            display: block;
+            border: 1px solid #ccc;
+            img {
+                width: 100%;
+            }
+            @media screen and (min-width: 1020px){
+
+                transition: .3s;
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+        &.iframe {
+            position: relative;
+            padding-top: 56.25%;
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+
+            iframe {
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                width: 100%;
+            }
+        }
+    }
+}
 h2 {
   margin-bottom: 20px;
   font-size: 1.3em;
@@ -42,18 +80,20 @@ h2 {
    }
 
 }
- @media screen and (min-width: 768px){
-   div.result-inner {
-     margin-bottom: -30px!important;
-   }
-   width: 250px;
-   padding-right: 30px;
+.inner {
+    padding:0 15px 50px;
+}
+@media screen and (min-width: 768px){
+    div.result-inner {
+        margin-bottom: -30px!important;
+    }
+    width: 250px;
+    padding-right: 30px;
 
-  .inner {
+    .inner {
     position: sticky;
     top: 0;
-    padding-top: 65px;
-    padding-right: 30px;
+    padding: 65px 0 0;
   }
   }
   @media screen and (min-width: 1020px){

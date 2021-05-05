@@ -5,7 +5,7 @@ hero: 2018/entry267.png
 pagetype: blog
 category: Front End
 cateId: front-end-program
-tags: ["JavaScript","node","npm"]
+tags: ["JavaScript","npm"]
 description: npm-scriptで画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。
 lead: ["npm-scriptで使って画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。"]
 ---

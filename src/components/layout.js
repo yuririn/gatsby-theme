@@ -18,7 +18,7 @@ const Layout = ({ location, title, children }) => {
       <GlobalStyle />
       <Header title={title} location={location.pathname} />
       <GNav />
-      <main>{children}</main>
+      <main id="top">{children}</main>
       <aside class="BigWhite">
         <div className="l-container">
           <section className="p-section">

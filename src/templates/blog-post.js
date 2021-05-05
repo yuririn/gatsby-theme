@@ -231,45 +231,91 @@ const BlogPostTemplate = ({ data, location }) => {
         </Article>
 
         <Sidebar>
+          <RelatedList
+            category={post.frontmatter.cateId}
+            title={post.frontmatter.title}
+            tags={post.frontmatter.tags}
+          ></RelatedList>
+          <section className="p-section">
+            <h2 className="c-heading--lg--side">ジャンル</h2>
+            <ul className="sideCateList">
+              <li>
+                <a href="/blogs/front-end-program/">Front End</a>
+              </li>
+              <li>
+                <a href="/blogs/back-end-program/">Back End</a>
+              </li>
+              <li>
+                <a href="/blogs/seo/">SEO</a>
+              </li>
+              <li>
+                <a href="/blogs/it-seminar">IT Seminor</a>
+              </li>
+              <li>
+                <a href="/blogs/ginneko-tsuredure/">Life Hack</a>
+              </li>
+            </ul>
+          </section>
           <div class="inner">
             <Search />
-            <RelatedList
-              category={post.frontmatter.cateId}
-              title={post.frontmatter.title}
-              tags={post.frontmatter.tags}
-            ></RelatedList>
-            <section className="p-section">
-              <h2 className="c-heading--lg--side">ジャンル</h2>
-              <ul className="sideCateList">
-                <li>
-                  <a href="/blogs/front-end-program/">Front End</a>
-                </li>
-                <li>
-                  <a href="/blogs/back-end-program/">Back End</a>
-                </li>
-                <li>
-                  <a href="/blogs/seo/">SEO</a>
-                </li>
-                <li>
-                  <a href="/blogs/it-seminar">IT Seminor</a>
-                </li>
-                <li>
-                  <a href="/blogs/ginneko-tsuredure/">Life Hack</a>
-                </li>
-              </ul>
-            </section>
-            <div className="l-container">
-              <section className="p-box--gray p-section u-text-center">
-                <h2 className="c-heading--lg">人気のタグ</h2>
-                <Tags />
-              </section>
-            </div>
+            <ul class="side-banner">
+              <li>
+                <Link to="/">
+                  <Image filename="common/about-banner.jpg" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="https://twitter.com/LirioY"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Image filename="common/twitter-banner.jpg" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Image filename="common/youtube-banner.jpg" />
+                </Link>
+              </li>
+
+              <li class="iframe">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/videoseries?list=PLRSXt39PZIMWu7Uj5VOOKaCEZMj9k5RHZ"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </li>
+            </ul>
+            <h2>お仕事のご依頼</h2>
+            <p class="u-text-center">
+              <a class="p-btn--detail" href="/contact/">
+                お問い合わせ
+              </a>
+            </p>
+            <p class="u-text-center">
+              <small>初見の方、30分無料相談承っております。</small>
+            </p>
           </div>
         </Sidebar>
         <div className="p-section l-container">
           <FovoriteList type="web" />
           <FovoriteList type="life" />
           <FovoriteList type="career" />
+        </div>
+        <div className="l-container">
+          <section className="p-box--gray p-section u-text-center">
+            <h2 className="c-heading--lg">人気のタグ</h2>
+            <Tags />
+          </section>
         </div>
       </Body>
     </Layout>

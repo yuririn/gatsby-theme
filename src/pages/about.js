@@ -20,20 +20,19 @@ import {
   faYoutube,
   faSlideshare,
 } from "@fortawesome/free-brands-svg-icons"
+import CvArea from "../components/common/cvArea"
 
 const aboutPost = ({ data, location }) => {
   const pageTitle = "銀ねこアトリエ管理人かみーゆを力一杯紹介します"
   const description =
     "「銀ねこアトリエ」は海外ノマドフロントエンドエンジニア・かみーゆの技術的なチャレンジや生活や生き方を綴った公開備忘録です。"
   const modifiedDate = "2021-05-05"
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const perfectUrl = `https://ginneko-atelier.com/about`
-  const perfectTitle = encodeURI(pageTitle + "|" + siteTitle)
   const img = data.allFile.edges[0].node.childImageSharp.fluid.src
   console.log(data)
 
   return (
-    <Layout location="about" title={pageTitle}>
+    <Layout location="about" title="銀ねこアトリエ">
       <SEO
         title={pageTitle}
         description={description}
@@ -563,56 +562,75 @@ const aboutPost = ({ data, location }) => {
                     <Image filename="about/about3.jpg" />
                   </p>
                 </div>
-                <div className="cvArea">
-                  <h2>\ お仕事の依頼はこちら /</h2>
-                  <p>
-                    初見の方は必ずオンラインミーティング（30分以内：無料）を実施させていただきます。
-                    <br />
-                    本当にその機能や実装が必要かなど、し〜〜っかりお話しさせていただいた上でお見積もりをさせていただきます。
-                    オンラインミーティング（~30分：無料）の
-                    <em>ご希望日時の候補を3つ</em>
-                    ほどお問い合わせフォームよりご送信ください。
-                  </p>
-                  <p>
-                    <small>
-                      ※
-                      お問い合わせ内容によってはご希望に添えないこともございます。ご了承くださいませ。
-                    </small>
-                  </p>
-                  <p class="u-text-center">
-                    <a class="p-btn--detail" href="/contact/">
-                      Contact
-                    </a>
-                  </p>
-                </div>
+                <CvArea></CvArea>
               </Edit>
             </div>
           </article>
         </Article>
 
         <Sidebar>
+          <section className="p-section">
+            <h2 className="c-heading--lg--side">ジャンル</h2>
+            <ul className="sideCateList">
+              <li>
+                <a href="/blogs/front-end-program/">Front End</a>
+              </li>
+              <li>
+                <a href="/blogs/back-end-program/">Back End</a>
+              </li>
+              <li>
+                <a href="/blogs/seo/">SEO</a>
+              </li>
+              <li>
+                <a href="/blogs/it-seminar">IT Seminor</a>
+              </li>
+              <li>
+                <a href="/blogs/ginneko-tsuredure/">Life Hack</a>
+              </li>
+            </ul>
+          </section>
           <div class="inner">
             <Search />
-            <section className="p-section">
-              <h2 className="c-heading--lg--side">ジャンル</h2>
-              <ul className="sideCateList">
-                <li>
-                  <a href="/blogs/front-end-program/">Front End</a>
-                </li>
-                <li>
-                  <a href="/blogs/back-end-program/">Back End</a>
-                </li>
-                <li>
-                  <a href="/blogs/seo/">SEO</a>
-                </li>
-                <li>
-                  <a href="/blogs/it-seminar">IT Seminor</a>
-                </li>
-                <li>
-                  <a href="/blogs/ginneko-tsuredure/">Life Hack</a>
-                </li>
-              </ul>
-            </section>
+            <ul class="side-banner">
+              <li>
+                <Link
+                  to="https://twitter.com/LirioY"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Image filename="common/twitter-banner.jpg" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Image filename="common/youtube-banner.jpg" />
+                </Link>
+              </li>
+              <li class="iframe">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/videoseries?list=PLRSXt39PZIMWu7Uj5VOOKaCEZMj9k5RHZ"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </li>
+            </ul>
+            <h2>お仕事のご依頼</h2>
+            <p class="u-text-center">
+              <a class="p-btn--detail" href="/contact/">
+                お問い合わせ
+              </a>
+            </p>
+            <p class="u-text-center">
+              <small>初見の方、30分無料相談承っております。</small>
+            </p>
           </div>
         </Sidebar>
         <div className="p-section l-container">
