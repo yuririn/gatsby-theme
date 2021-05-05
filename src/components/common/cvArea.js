@@ -23,7 +23,7 @@ const cvArea = () => {
       </p>
       <p class="u-text-center">
         <a class="p-btn--detail" href="/contact/">
-          Contact
+          お問い合わせ
         </a>
       </p>
     </Area>

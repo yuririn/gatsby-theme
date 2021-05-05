@@ -45,7 +45,7 @@ const aboutPost = ({ data, location }) => {
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">About Me</h1>
-          <p className="p-pageHeader__content">かみーゆさんってどんな人？</p>
+          <p className="p-pageHeader__content">かみーゆってどんな人？</p>
         </div>
         <Image filename="common/about.jpg" className="p-pageHeader__img" />
       </div>
