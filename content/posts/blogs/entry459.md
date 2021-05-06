@@ -321,9 +321,9 @@ gulp.task("ejs", function (done) {
   │      └ _header.ejs
   └ dist/
      ├ index.html
-     ├ contact/index.ejs
-     ├ about/index.ejs
-     └ work/index.ejs
+     ├ contact/index.html
+     ├ about/index.html
+     └ work/index.html
 ```
 `site.json`ファイルを作成しdada/内に追加。基本のサイト情報やページごとの設定を書いていきます。
 

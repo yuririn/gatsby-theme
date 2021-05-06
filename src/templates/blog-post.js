@@ -20,6 +20,8 @@ import Prof from "../components/blogs/smallProf"
 import Tags from "../components/blogs/tagList"
 import Search from "../components/search/"
 import BreadCrumbList from "../components/common/breadCrumbList"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faRss } from "@fortawesome/free-solid-svg-icons"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -209,6 +211,13 @@ const BlogPostTemplate = ({ data, location }) => {
                 </dd>
               </dl>
             </div>
+            <Feedly>
+               <h2> 「銀ねこアトリエ」のブログを定期購読しよう</h2>
+              <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fginneko-atelier.com%2Frss.xml'  target='blank'>
+                <FontAwesomeIcon icon={faRss} />
+                Feedlyに登録する
+              </a>
+            </Feedly>
           </article>
           <nav className="p-section l-container">
             <ol className="c-pager--article">
@@ -398,5 +407,39 @@ const Body = styled.div`
     max-width: 1120px;
     margin: 0 auto;
     flex-wrap: wrap;
+  }
+`
+
+const Feedly = styled.div`
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee;
+    // border:1px solid #6cc655;
+    flex-direction: column;
+    margin: 0 15px;
+
+    @media screen and (min-width: 768px) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+h2 {
+    margin-bottom: 20px;
+}
+a {
+        background: #6cc655;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        padding: 0 20px;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    svg {
+        margin-right: 10px;
+    }
   }
 `

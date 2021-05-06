@@ -139,7 +139,6 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
-
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
@@ -180,5 +179,100 @@ module.exports = {
     // `gatsby-plugin-offline`,
     `gatsby-plugin-twitter`,
     `gatsby-plugin-smoothscroll`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark, allFile } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                const image = allFile.edges.find(n => {
+                  return n.node.relativePath.includes(
+                    edge.node.frontmatter.hero
+                  )
+                })
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.frontmatter.description,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [
+                    {
+                      "content:encoded":
+                        `&lt;img src=&quot;${image.node.childImageSharp.original.src}&quot; height=&quot;${image.node.childImageSharp.original.height}&quot; width=&quot;${image.node.childImageSharp.original.width}&quot; &gt;` +
+                        edge.node.html,
+                    },
+                  ],
+                })
+              })
+            },
+            query: `
+              {
+                site {
+                  siteMetadata {
+                    title
+                    siteUrl
+                  }
+                }
+                allFile(
+                  filter: {
+                    sourceInstanceName: { eq: "assets" }
+                  }
+                ) {
+                  edges {
+                    node {
+                      name
+                      relativePath
+                      childImageSharp {
+                        original {
+                          src
+                          height
+                          width
+                        }
+                      }
+                    }
+                  }
+                }
+                allMarkdownRemark(
+                  limit: 20
+                  sort: { order: DESC, fields: [frontmatter___date] }
+                  filter: { frontmatter: { pagetype: { eq: "blog" } } }
+                ) {
+                  edges {
+                    node {
+                      html
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        description
+                        date
+                        hero
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "銀ねこアトリエ RSS Feed",
+            feed_url: "https://ginneko-atelier.com/rss.xml",
+          },
+        ],
+      },
+    },
   ],
 }
