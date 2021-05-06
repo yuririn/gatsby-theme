@@ -211,7 +211,7 @@ module.exports = {
                   custom_elements: [
                     {
                       "content:encoded":
-                        `&lt;img src=&quot;${image.node.childImageSharp.original.src}&quot; height=&quot;${image.node.childImageSharp.original.height}&quot; width=&quot;${image.node.childImageSharp.original.width}&quot; &gt;` +
+                        `<img src="${image.node.childImageSharp.original.src}" height="${image.node.childImageSharp.original.height}" width="${image.node.childImageSharp.original.width}" />` +
                         edge.node.html,
                     },
                   ],
