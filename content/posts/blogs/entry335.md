@@ -3,7 +3,7 @@ title: CSSの変な仕様あるあるを力一杯列挙してみた
 date: 2019-07-20
 hero: entry335.png
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["CSS"]
 description: CSSってムズくないですか？マジで。多分初心者がつまづくであろう、なんでこーなるの？！をまとめます。思い出したら随時更新しようと思います。
 lead: ["CSSってムズくないですか？マジで。多分初心者がつまづくであろう、なんでこーなるの？！をまとめます。","思い出したら随時更新しようと思います。"]

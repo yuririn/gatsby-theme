@@ -4,7 +4,7 @@ date: 2020-11-26
 modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
 description: 現在、前から気になる静的サイトジェネレーターのGatsbyでブログを作り直しています。今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。concrete5は別の形で運用しようと思います。*Macでのやり方となります。
 lead: ["現在、前から気になる静的サイトジェネレーターのGatsbyJSでブログを作り直しています。","今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。","このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。","concrete5は別の形で運用しようと思います。","※ Mac以外では検証してません。ご了承ください。"]

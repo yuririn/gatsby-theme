@@ -10,6 +10,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Image from "../components/image"
 import FovoriteList from "../components/common/favorites"
+import { siteMetadata } from "../../gatsby-config"
 
 import Search from "../components/search"
 import BreadCrumbList from "../components/common/breadCrumbList"
@@ -570,21 +571,13 @@ const aboutPost = ({ data, location }) => {
           <section className="p-section">
             <h2 className="c-heading--lg--side">ジャンル</h2>
             <ul className="sideCateList">
-              <li>
-                <a href="/blogs/front-end-program/">Front End</a>
-              </li>
-              <li>
-                <a href="/blogs/back-end-program/">Back End</a>
-              </li>
-              <li>
-                <a href="/blogs/seo/">SEO</a>
-              </li>
-              <li>
-                <a href="/blogs/it-seminar">IT Seminor</a>
-              </li>
-              <li>
-                <a href="/blogs/ginneko-tsuredure/">Life Hack</a>
-              </li>
+              {siteMetadata.category.map(item => {
+                return (
+                  <li>
+                    <Link to={`/blogs/${item.slug}/`}>{item.name}</Link>
+                  </li>
+                )
+              })}
             </ul>
           </section>
           <div class="inner">

@@ -4,7 +4,7 @@ date: 2020-12-19
 modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
 description: Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方を解説します！
 lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方を解説します！"]

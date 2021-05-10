@@ -3,7 +3,7 @@ title: 【npm-script】imagemin-cliを使って画像圧縮する方法
 date: 2020-12-25
 hero: 2018/entry267.png
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["JavaScript","npm"]
 description: npm-scriptで画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。
 lead: ["npm-scriptで使って画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。"]

@@ -3,7 +3,7 @@ title: HTMLとCSSのあり方ガチで考えてみた
 date: 2019-07-18
 hero: entry172.jpg
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["UX/UI","CSS","アクセシビリティ"]
 description: HTMLとCSSのあり方について考えたことはありますか？検索エンジン、ユーザーなどを踏まえて私の考え方を述べようと思います。
 lead: ["HTMLとCSSのあり方について考えたことはありますか？検索エンジン、ユーザーなどを踏まえて私の考え方を述べようと思います。"]

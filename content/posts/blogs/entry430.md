@@ -3,7 +3,7 @@ title: Gatsbyブログサイト移行物語9~関連記事一覧出力~
 date: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
 description: 今回でGatsbyカスタマイズ9記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！
 lead: ["今回でGatsbyカスタマイズ9記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！"]

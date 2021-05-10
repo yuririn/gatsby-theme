@@ -3,7 +3,7 @@ title: Gatsbyホットリロード中他のディバイスからアクセスす�
 date: 2020-12-07
 hero: 2014/entry192.jpg
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["Gatsby","npm"]
 description: GatsbyJSでサイト構築中、iPhoneやAndoroidでもチェックしたいですよね？同じWiFi繋がっているのなら、browser syncではExternalアドレスが使えるはず！やり方を調べていたら、見つかったのでそのやり方をメモしておきます。
 lead: ["GatsbyJSでサイト構築中、iPhoneやAndoroidでもチェックしたいですよね？","同じWiFi繋がっているのなら、browser syncみたいにExternalアドレスが使えるはず！","やり方を調べていたら、見つかったのでそのやり方をメモしておきます。"]

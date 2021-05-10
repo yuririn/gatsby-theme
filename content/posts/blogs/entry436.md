@@ -3,7 +3,7 @@ title: 次世代CSSは論理プロパティ！margin-block、margin-inlineを徹
 date: 2021-01-28
 hero: 2021/entry436.jpg
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["CSS"]
 description: CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今今回は次世代の余白の考え方、margin-block、margin-inline、padding-block、padding-inlineを徹底解剖してみます！
 lead: ["CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今回は次世代の余白の考え方、margin-block、margin-inlineを徹底解剖してみます！"]

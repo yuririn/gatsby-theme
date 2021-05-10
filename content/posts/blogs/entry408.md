@@ -3,7 +3,7 @@ title: Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー�
 date: 2020-12-03
 hero: 2020/entry401.jpg
 pagetype: blog
-cateId: front-end-program
+cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
 description: gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリー、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよくなりました。今回はそれぞれの一覧の出力の仕方についてまとめます。
 lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリー、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよくなりました。今回はそれぞれの一覧の出力の仕方についてまとめます。","※ Mac以外では検証してません。ご了承ください。"]
@@ -274,12 +274,12 @@ module.exports = {
         description: 'WordPressやconcrete5などCMSの記事',
       },
       {
-        slug: 'front-end-program',
+        slug: 'web-developer',
         name: 'Front End',
         description: 'HTML、CSS、JSなどの書き留めたチップス',
       },
       {
-        slug: 'back-end-program',
+        slug: 'web-developer',
         name: 'Back End',
         description: 'PHP、黒い画面、DBが中心'
       },
