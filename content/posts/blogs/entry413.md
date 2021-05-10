@@ -4,7 +4,6 @@ date: 2020-12-09
 modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
-category: Front end
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
 description: 記事数が増えると一覧にペーネーションが欲しくなりますよね？複数ページネーションを実装するためのプラグインがあるにもかかわらず自作して実装してしまいました。プラグインに頼らず実装したい人のために、やり方をシェアします。

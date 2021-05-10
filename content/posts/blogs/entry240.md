@@ -3,7 +3,6 @@ title: ヒーロー島バレンタインSPに行ってきたよ
 date: 2016-02-29
 hero: 2016/entry240.png
 pagetype: blog
-category: 'Life hack'
 cateId: 'ginneko-tsuredure'
 tags: ["おもしろ"]
 description: 先週.net系勉強会ヒーロー島に参加してきました！！.netの技術を使ったり、パワポでプロジェクションマッピングしたり、新しい技術に触れたり超楽しかったです。

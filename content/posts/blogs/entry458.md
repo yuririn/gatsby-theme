@@ -3,7 +3,6 @@ title: 【2021年】WordPressに追加しておきたい機能（プラグイン
 date: 2021-05-03
 hero: 2021/entry458.jpg
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: [ "WordPress","SEOライティング"]
 description: WordPress使ってみたいけどテーマや機能（プラグイン）どうすればいいの?!....そんなお悩みありませんか？デザイン面や機能がバランスよく揃っていると、ブログってとても始めやすいです。この記事では、WordPressに追加しておくとすぐにでも快適にウェブサイトを運用できるテーマや機能（プラグイン）を紹介します。難しいことはしませんのでご安心を。最新のWordPress（2021年5月時点）で検証済みです。

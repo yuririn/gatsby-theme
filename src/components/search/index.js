@@ -21,7 +21,7 @@ const SearchResult = props => {
               date(formatString: "YYYY.MM.DD")
               title
               tags
-              category
+              cateId
               description
             }
           }
@@ -92,7 +92,7 @@ const SearchResult = props => {
   return (
     <div className={className}>
       <div className="result-inner">
-        {result !== null　&& result.length !== 0 ? (
+        {result !== null && result.length !== 0 ? (
           <p className={style.result}>
             <b>{result.length}</b>件ヒットしました
           </p>

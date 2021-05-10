@@ -3,8 +3,7 @@ title: SEO勉強会に参加しました in セブ島
 date: 2019-11-28
 hero: 2019/entry341.jpg
 pagetype: blog
-category: it-seminar
-cateId: it-seminar
+cateId: 'career'
 tags: ["Web解析"]
 description: Sprobeさん主催のSEO勉強会に参加してきました。Googleアナリティクスの機能を基本からちょっとしたアドバンスな部分までハンズオン形式で触っていく形で楽しく学ばせていただきました。セブ島で日本語でこんな勉強会開催されるなんてサイコーです。
 lead: ["Sprobeさん主催のSEO勉強会に参加してきました。","Googleアナリティクスの機能を基本からちょっとしたアドバンスな部分までハンズオン形式で触っていく形で楽しく学ばせていただきました。セブ島で日本語でこんな勉強会開催されるなんてサイコーです。"]

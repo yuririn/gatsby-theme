@@ -123,6 +123,8 @@ export const CommonStyle = createGlobalStyle`
       opacity: 0.6;
       height: 100%;
       width: 100%;
+      filter:blur(2px);
+
       img {
         object-fit: cover;
       }

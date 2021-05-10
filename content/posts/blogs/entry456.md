@@ -3,7 +3,6 @@ title: 使いこなせたら超便利！Twitter検索術まとめ
 date: 2021-04-15
 hero: 2021/entry456.jpg
 pagetype: blog
-category: 'SEO'
 cateId: 'seo'
 tags: [ "Twitter","SNS運用"]
 description: 最近、情報はTwitterの検索機能で収集することが多くなりました。とにかく最新の情報が手に入りやすいです！フィルターを使うと、キーワードや期間、ユーザー、メディアの有無など詳細に絞り込めます。実際に高度で便利な検索方法をまとめましたので参考にしてください。

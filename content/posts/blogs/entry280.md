@@ -4,8 +4,7 @@ date: 2018-07-23
 modifieddate: 2021-03-05
 hero: 2018/entry266.jpg
 pagetype: blog
-category: 'Front end'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["VS Code"]
 description: コーディング初心者に贈るVS Code完全マニュアル第2弾！第1弾で快適にコーディングできるところまでセッティングしたので、さらに便利に使えるようにスニペット、ターミナルやGit連携などのご紹介をします。この記事は最新2021年のVS Codeに合わせて大幅にリライトしました。
 lead: ["コーディング初心者に贈るVS Code完全マニュアル第2弾！","第1弾で快適にコーディングできるところまでセッティングしたので、さらに便利に使えるようにスニペット、ターミナルやGit連携などのご紹介をします。","この記事は最新2021年のVS Codeに合わせて大幅にリライトしました。"]

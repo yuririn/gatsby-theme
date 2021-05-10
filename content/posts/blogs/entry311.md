@@ -3,8 +3,7 @@ title: 超手軽！ビルトインサーバー使ってみました
 date: 2019-03-03
 hero: 2014/entry208.png
 pagetype: blog
-category: 'Back End'
-cateId: 'back-end-program'
+cateId: 'web-developer'
 tags: ["コマンド","しろたん師匠"]
 description: ちょっと php の挙動を確認したいけど、MAMPとかセットアップしたり、Vagrant で環境作るの面倒だしってことがありませんか？そんな時にビルトインサーバーを使うと便利です。Visual Studio Code のプラグイン使ってもいいですが、コマンド一個叩くだけなのでこっちの方がお手軽です。
 lead: ["ちょっと php の挙動を確認したいけど、MAMPとかセットアップしたり、Vagrant で環境作るの面倒だしってことがありませんか？そんな時にビルトインサーバーを使うと便利です。Visual Studio Code のプラグイン使ってもいいですが、コマンド一個叩くだけなのでこっちの方がお手軽です。"]

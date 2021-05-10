@@ -3,8 +3,7 @@ title: AceエディターをWebサイトに組み込んでみよう！！
 date: 2021-03-07
 hero: 2021/entry442.jpg
 pagetype: blog
-category: 'Front end'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["JavaScript"]
 description: ちょっとマニアックなお話！お仕事でCMSなどの管理画面に組み込めるJS製Aceエディターというものを先日使ってみました。使い方等、まとめましたので参考にしてくだい。
 lead: ["ちょっとマニアックなお話！" ,"お仕事でCMSなどの管理画面に組み込めるJS製Aceエディターというものを先日使ってみました。使い方等、まとめましたので参考にしてくだい。"]

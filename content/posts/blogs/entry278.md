@@ -3,7 +3,6 @@ title: 飼いネコが食中毒！？対処法等の備忘録
 date: 2018-07-14
 hero: 2018/entry278.jpg
 pagetype: blog
-category: Life Hack
 cateId: ginneko-tsuredure
 tags: ["ライフスタイル"]
 description: ネコの嘔吐が異常な時は要注意。うちのネコが拾い食いで死にかけたのでその時の対処法や医療費等をメモしておきます。

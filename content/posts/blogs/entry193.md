@@ -3,7 +3,6 @@ title: ノンデザイナーの為のカラー入門
 date: 2014-09-10
 hero: 2014/entry172.jpg
 pagetype: blog
-category: 'Life Hack'
 cateId: 'ginneko-tsuredure'
 tags: ["UX/UI","デザイン"]
 description: 今回フリー素材で掲載許可がいるがあるので実際に調べてみました。

@@ -3,8 +3,7 @@ title: CSS の shape-outside で特定の形の図形にテキストを回り込
 date: 2020-04-01
 hero: 2020/entry361.jpg
 pagetype: blog
-category: 'Front End'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["CSS"]
 description: 最近 float 使ってますか？ 一昔前の横並びのカラムレイアウトの鉄板は float と クリアフィックス でした。 今は grid や flex の登場でめっちゃ毛嫌いされている float の使い道と四角以外の図形へのオサレな回り込みをしてみましょう。
 lead: ["最近 float 使ってますか？ 一昔前の横並びのカラムレイアウトの鉄板は float と クリアフィックス でした。 今は grid や flex の登場でめっちゃ毛嫌いされている float の使い道と四角以外の図形へのオサレな回り込みをしてみましょう。"]

@@ -3,7 +3,6 @@ title: WordPress phpcsでコーディング規約を守るコード
 date: 2021-04-05
 hero: 2021/entry452.jpg
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress","VS Code","PHP"]
 description: この記事はWordPressコーディング規約をphpcs導入して入れたものの、エラー英語だしよくわかんないって嘆いている人向けの記事です。ありがちなエラーの回避方法をまとめました。

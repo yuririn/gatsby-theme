@@ -4,7 +4,6 @@ date: 2020-07-29
 modified: 2021-05-03
 hero: 2020/entry379.png
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress"]
 description: WordPress使ってブログ始めたいけど何から手をつけていいかわからない！って相談をよく受けます。そこで、初心者でもWordPressでブログを最善の状態で始められる方法を考えました。私は仕事柄、多いときは月3つ以上のペースでWordPressサイトに向き合ってます。経験と知識は積み上がってるので、価値のある情報を提供できると思います。この記事は前半・後半に分かれていて前半ではサーバーの選び方や注意点、WordPressのインストール方法について解説します。

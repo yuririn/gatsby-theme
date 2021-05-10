@@ -17,11 +17,13 @@ const category = ({ pageContext, data, location }) => {
 
   // console.log(siteMetadata.category)
   let cateName = ""
+  let cateEnName = ""
   let cateDescription = ""
   siteMetadata.category.forEach(cate => {
     if (cate.slug === cateSlug) {
       cateDescription = cate.description
       cateName = cate.name
+      cateEnName = cate.enName
     }
   })
 
@@ -72,8 +74,7 @@ const category = ({ pageContext, data, location }) => {
                         <Image filename="common/dummy.png" />
                       )}
                       <div className="p-entryCard__date">
-
-                          <time date={date.replace(/\./g, "-")}>{date}</time>
+                        <time date={date.replace(/\./g, "-")}>{date}</time>
                       </div>
                     </Link>
                     <Link to={slug} className="p-entryCard__body">
@@ -145,7 +146,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "YYYY.MM.DD")
             hero
-            category
+            cateId
             tags
           }
         }

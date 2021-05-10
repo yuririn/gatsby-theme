@@ -3,8 +3,7 @@ title: 2021年セブ島にオフショア会社設立。かみーゆ、YouTube�
 date: 2020-12-13
 hero: 2020/entry415.jpg
 pagetype: blog
-category: Life Hack
-cateId: ginneko-tsuredure
+cateId: 'overseas-freelancing'
 tags: ["キャリアアップ・転職","フリーランス","海外移住"]
 description: 来年2021年仲間と一緒にこのフィリピン・セブ島で「オフショア会社」を立ち上げることになりました。情報配信のため、YouTubeもスタート。合わせて、会社設立の経緯とフィリピンの実情をお話しします。
 lead: ["来年2021年仲間と一緒にこのフィリピン・セブ島で「オフショア会社」を立ち上げることになりました。","情報配信のため、YouTubeもスタート。合わせて、会社設立の経緯とフィリピンの実情をお話しします。"]

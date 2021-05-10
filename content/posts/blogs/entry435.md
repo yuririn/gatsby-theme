@@ -3,7 +3,6 @@ title: URL引数を使ってWordPress MWWPフォームの値を自動入力す�
 date: 2021-01-24
 hero: 2021/entry435.jpg
 pagetype: blog
-category: CMS
 cateId: cms
 tags: ["WordPress"]
 description: ちょっとマニアックな記事です。昔WordPressのフォームプラグインの鉄板・MWWPにURL引数を使ってフォームに値を自動入力する機能をつけました。最近メンテナンスすることがあり、「よくできてる」と感心したのでやり方をご紹介します。需要は少ないかもですが、お役に立てれば幸いです。WordPressをカスタムフィールドやカスタム投稿を軽くカスタマイズしたことがある方ならすんなりわかると思います。

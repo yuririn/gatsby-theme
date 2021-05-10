@@ -3,7 +3,6 @@ title: Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー�
 date: 2020-12-03
 hero: 2020/entry401.jpg
 pagetype: blog
-category: Front End
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
 description: gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリー、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよくなりました。今回はそれぞれの一覧の出力の仕方についてまとめます。
@@ -268,7 +267,7 @@ module.exports = {
       twitter: `lirioL`,
       instagram: `yurico.k`,
     },
-    category: [
+    [
       {
         slug: 'cms',
         name: 'Contents Management System',
@@ -290,7 +289,7 @@ module.exports = {
         description: 'SEOやコンテンツマーケティングに関する記事'
       },
       {
-        slug: 'it-seminar',
+        slug: 'career',
         name: 'ITセミナー',
         description: '勉強会の開催/登壇について書いてます'
       },
@@ -460,7 +459,7 @@ const category = ({ pageContext, data, location }) => {
 
 category.propTypes = {
   pageContext: PropTypes.shape({
-    category: PropTypes.string.isRequired,
+    PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
@@ -518,8 +517,7 @@ title: Webサイトの表示速度を真剣に考える
 date: 2019-06-21
 hero: entry325.png
 pagetype: blog
-cateId: seo
-tags: [表示速度,SEOコーディング]
+cateId: tags: [表示速度,SEOコーディング]
 description: 昔いた会社で、画像の圧縮、CSSなどの外部ファイルを徹底して不要ファイルを削除して圧縮してさらにワンソース化した結果、50位から20位以内に順位が改善したことがあります。今日はWebサイトの軽量化とスピードについて真剣に考えようと思います。
 ---
 ```

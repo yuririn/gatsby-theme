@@ -3,8 +3,7 @@ title: SEO 勉強会「『Googleに聞きたい！ 検索エンジンQ&A』」�
 date: 2018-10-09
 hero: 2018/entry279.jpg
 pagetype: blog
-category: ITセミナー
-cateId: it-seminar
+cateId: 'career'
 tags: ["Google検索エンジン"]
 description: 10/6(土)「Googleに聞きたい！検索エンジンQ&A」無事終わりました。ご参加くださったみなさん、本当にありがとうございました。
 lead: ["10/6(土)「Googleに聞きたい！検索エンジンQ&A」無事終わりました。ご参加くださったみなさん、本当にありがとうございました。"]

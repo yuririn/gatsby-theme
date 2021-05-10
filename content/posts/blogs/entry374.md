@@ -3,8 +3,7 @@ title: WordPressのラジオボタンとチェックボックスをカスタマ�
 date: 2020-07-18
 hero: 2020/entry374.jpg
 pagetype: blog
-category: 'Front End'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["CSS"]
 description: WordPressのフォームのデザインを変えたいことってありますよね？プラグインを使っているせいで、複雑なHTMLが出力されていたり、CSSの意味がわからなくなったり。。。そんなときはコピペで秒で解決しましょう！！この記事ではMW WPフォーム、Contact Form 7の二大プラグインのラジオボタンとチェックボックスのカスタマイズ方法をご紹介します。
 lead: ["WordPressのフォームのデザインを変えたいことってありますよね？","プラグインを使っているせいで、複雑なHTMLが出力されていたり、CSSの意味がわからなくなったり。。。","そんなときはコピペで秒で解決しましょう！！","この記事ではMW WPフォーム、Contact Form 7の二大プラグインのラジオボタンとチェックボックスのカスタマイズ方法をご紹介します。"]

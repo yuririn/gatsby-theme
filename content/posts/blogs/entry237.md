@@ -3,7 +3,6 @@ title: 広島生まれの私が広島で出会って忘れられないもの5選
 date: 2015-12-14
 hero: 2015/enrty237.jpg
 pagetype: blog
-category: 'Life hack'
 cateId: 'ginneko-tsuredure'
 tags: ["おもしろ"]
 description: この記事はAdventカレンダー「ふつうの広島」の14日目のエントリーです。あくまで私の広島でのふつうに変かもーってことを5つご紹介します。

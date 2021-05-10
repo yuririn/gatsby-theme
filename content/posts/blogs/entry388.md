@@ -3,8 +3,7 @@ title: セブ島でも漬物が食べたい！パン粉ぬか漬けのレシピ
 date: 2020-10-30
 hero: 2020/entry388.jpg
 pagetype: blog
-category: 'Life Hack'
-cateId: 'ginneko-tsuredure'
+cateId: 'overseas-freelancing'
 tags: ["セブ島エンジニア生活","海外移住","海外ノマド"]
 description: 海外に住んでものすごく恋しいのが和食です。どの国でも手に入る食材を使って、パン粉のぬか漬けレシピをご紹介します。
 lead: ["フロントエンドエンジニア、今はプータローのかみーゆです。","たまーにですが、セブ島唯一日本人占い師・さくら庵のマイアさんとお茶してます。

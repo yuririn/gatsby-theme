@@ -3,8 +3,7 @@ title: Adobe XD ユーザーグループ広島のオンライン勉強会に参�
 date: 2020-04-11
 hero: 2020/entry360.jpg
 pagetype: blog
-category: 'ITセミナー'
-cateId: 'it-seminar'
+cateId: 'career'
 tags: ["UX/UI","XD"]
 description: セブシティーがロックダウンされて毎日超寂しい今日この頃。地元広島でXDのオンライン勉強会開催するって言うもんだから参加することにしました。
 lead: ["セブシティーがロックダウンされて毎日超寂しい今日この頃。","地元広島でXDのオンライン勉強会開催するって言うもんだから参加することにしました。"]

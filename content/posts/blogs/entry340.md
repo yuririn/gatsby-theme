@@ -3,7 +3,6 @@ title: Webクリエーターを目指すリスタート組の君たちへ リタ
 date: 2019-09-21
 hero: 2019/entry340.jpg
 pagetype: blog
-category: 'Life Hack'
 cateId: 'ginneko-tsuredure'
 tags: ["講師","キャリアアップ・転職"]
 description: ここ数年、縁あって職業訓練校の講師としてWebクリエータを育てていました。これから目指す人、学ぶ人、業界に飛び込む君たちへの想いを、個人の一意見と責任を持って綴ろうと思います。

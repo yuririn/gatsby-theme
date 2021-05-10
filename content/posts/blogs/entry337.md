@@ -3,7 +3,6 @@ title: Contact Form 7 で必須項目のエラーメッセージをカスタム
 date: 2019-08-02
 hero: 2014/entry211.png
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress"]
 description: WordPressサイトだけでも月1くらいのペースで制作しています。よく、フォーム系のプラグインのお世話になります。中でもContact Form 7はお気に入りでめっちゃ奥が深いですね！カスタマイズする時こころおどります！今回は発想の転換で必須項目のエラーメッセージを変えたのでそのやり方をメモしておきます。

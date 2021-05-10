@@ -3,8 +3,7 @@ title: OSC 2015 ひろしまでコンクリ出展致しました
 date: 2015-09-23
 hero: 2015/entry230.jpg
 pagetype: blog
-category: 'IT Seminar'
-cateId: 'it-seminar'
+cateId: 'career'
 tags: ["講師"]
 description: コミュニティ「インストひろしま」にてphotoshopの写真レタッチ入門をハンズオン形式で行いました。その内容をまとめます。
 lead: ["コミュニティ「インストひろしま」にてphotoshopの写真レタッチ入門をハンズオン形式で行いました。その内容をまとめます。"]

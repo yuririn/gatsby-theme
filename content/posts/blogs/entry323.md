@@ -3,8 +3,7 @@ title: オブジェクト指向プログラミングをキャバクラに例え�
 date: 2019-06-01
 hero: entry323.jpg
 pagetype: blog
-category: 'Back End'
-cateId: 'back-end-program'
+cateId: 'web-developer'
 tags: ["例えてみる","講師","おもしろ"]
 description: オブジェクト指向って説明が難しいですね。どうやったら理解できるか一晩考えたら、キャバクラに例えるのが面白そうなのでチャレンジしてみます。
 lead: ["オブジェクト指向って説明が難しいですね。どうやったら理解できるか一晩考えたら、キャバクラに例えるのが面白そうなのでチャレンジしてみます。"]

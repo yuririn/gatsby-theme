@@ -3,8 +3,7 @@ title: コピペでOK！CSS セレクトボックス（select option）のカス
 date: 2020-11-10
 hero: 2020/entry393.png
 pagetype: blog
-category: 'Front End'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["CSS"]
 description: フォームパーツのカスタマイズって難しいですよね？中でもセレクトボックス（select option）をCSSでカスタマイズする時は手を焼きます。ということで今回はセレクトボックスの書き方、CSSでのカスタマイズ方法をケース別にまとめてみました。スニペットも用意しています（随時追記します）。WordPressの「MW WPフォーム」や「Contact Form 7」のカスタマイズにも応用可能なので参考にしてください。
 lead: ["フォームパーツのカスタマイズって難しいですよね？","中でもセレクトボックス（select option）をCSSでカスタマイズする時は手を焼きます。","ということで今回はセレクトボックスの書き方、CSSでのカスタマイズ方法をケース別にまとめてみました。","スニペットも用意しています（随時追記します）。WordPressの「MW WPフォーム」や「Contact Form 7」のカスタマイズにも応用可能なので参考にしてください。"]

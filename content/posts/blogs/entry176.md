@@ -3,7 +3,6 @@ title: 第1回 concrete5勉強会 in 広島
 date: 2014-07-24
 hero: 2014/entry175.jpg
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["concrete5"]
 description: 第一回広島でのconcrete5の勉強会をまとめです。当日は中四国でconcrete5の勉強ができるということで遠くははるばる山口からお越しいただきました。その日のスライドのまとめをUPします。

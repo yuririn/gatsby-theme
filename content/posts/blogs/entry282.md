@@ -3,7 +3,6 @@ title: concrete5でページリストブロックの絞り込みをカスタマ�
 date: 2018-08-11
 hero: 2014/entry175.jpg
 pagetype: blog
-category: CMS
 cateId: cms
 tags: ["concrete5"]
 description: concrete5 でページリストブロックの検索結果をカスタマイズしなくてないけなくなったのでそのやり方をメモします。

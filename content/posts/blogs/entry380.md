@@ -3,7 +3,6 @@ title: ブログ運用を結婚生活に例えてみた
 date: 2020-08-01
 hero: 2020/entry380.jpg
 pagetype: blog
-category: 'SEO'
 cateId: 'seo'
 tags: ["例えてみる"]
 description: ブログを始めてしばらくして、伸び悩んでどうしていいかわからない人のために記事を書きました。実体験を元に結婚生活にも例えてみました！SEOチップスも散りばめています。この記事は最低、PageSpeed InsightsやAnalytics、search consoleの使い方を知っていることを想定に書かれています。あくまで私のやり方ですが、皆さんの一助になれば幸いです！

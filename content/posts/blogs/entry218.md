@@ -3,8 +3,7 @@ title: 広島でコンクリ』Vol.7無事終了しました！
 date: 2015-02-22
 hero: 2014/entry175.jpg
 pagetype: blog
-category: 'IT Seminar'
-cateId: 'it-seminar'
+cateId: 'career'
 tags: ["concrete5"]
 description: concrete5勉強会『広島でコンクリ　Vol.7』開催しました。今回はコミュメンバーにページタイプとコンポーザーと制作事例についてお話をしてもらいました！忙しい中構成、資料づくりありがとうございます。
 lead: ["concrete5勉強会『広島でコンクリ　Vol.7』開催しました。","今回はコミュメンバーにページタイプとコンポーザーと制作事例についてお話をしてもらいました！忙しい中構成、資料づくりありがとうございます。"]

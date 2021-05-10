@@ -3,7 +3,6 @@ title: だから、私はダイエットなんてやんない
 date: 2021-01-23
 hero: 2021/entry434.jpg
 pagetype: blog
-category: Life Hack
 cateId: ginneko-tsuredure
 tags: ["海外移住","ライフスタイル"]
 description: 実は私20年ほぼ体重が変わらないんです。食事は楽しいですか？体や心と対話していますか？まずなぜ太ったか考えたことありますか？かみーゆ流ダイエットしなくて済むコツをお教えします。

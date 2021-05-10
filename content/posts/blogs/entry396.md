@@ -3,8 +3,7 @@ title: CSSボタンデザインコード・スニペット集！
 date: 2020-11-14
 hero: 2020/entry396.jpg
 pagetype: blog
-category: 'Front End'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["CSS"]
 description: ボタンデザインやコーディングでどうCSSを書いていいか悩むことありませんか？今回は実用性重視でボタンのスニペット集を作りました！UI/UXの観点からどんなボタンが最適であるべきか解説つき！もちろんコピペで今すぐ使えます。
 lead: ["ボタンデザインやコーディングでどうCSSを書いていいか悩むことありませんか？","今回は実用性重視でボタンのスニペット集を作りました！","UI/UXの観点からどんなボタンが最適であるべきか解説つき！もちろんコピペで今すぐ使えます。"]

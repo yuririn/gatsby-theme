@@ -4,7 +4,6 @@ date: 2020-11-30
 modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
-category: Front End
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
 description: 現在GatsbyJSでサイトのリニューアル中です！ブログのファーストビューって大切ですよね。アイキャッチ次第で読むか読まないか考えますもん。今回はブログページを充実させるためにアイキャッチなどを追加する方法をご紹介します。CSSの調整も行いました！※ Mac以外では検証してません。ご了承ください。

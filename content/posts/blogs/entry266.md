@@ -4,8 +4,7 @@ date: 2018-06-11
 modifieddate: 2021-03-03
 hero: 2018/entry266.jpg
 pagetype: blog
-category: "Front end"
-cateId: "front-end-program"
+cateId: 'web-developer'
 tags: ["VS Code"]
 description: コーディング初心者に贈るVS Code完全マニュアル第1弾！インストールから拡張機能、カスタマイズまで、コーディング初心者でもすぐにフロントエンド（HTML、CSS、JavaScript）をコーディングできるようにするためのセッティング方法をまとめています。この記事は最新2021年のVS Codeに合わせて大幅にリライトしました。
 lead: ["コーディング初心者に贈るVS Code完全マニュアル第1弾！インストールから拡張機能、カスタマイズまで、コーディング初心者でもすぐにフロントエンド（HTML、CSS、JavaScript）をコーディングできるようにするためのセッティング方法をまとめています。","この記事は最新2021年のVS Codeに合わせて大幅にリライトしました。"]

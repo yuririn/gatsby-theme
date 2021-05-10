@@ -3,8 +3,7 @@ title: JS でフォーム操作したいなら name 属性に submit をつけ�
 date: 2019-02-21
 hero: 2018/entry267.png
 pagetype: blog
-category: 'Front end'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["JavaScript"]
 description: フォーム操作したい時 JS で値を追加したり、操作したい時があると思います。そんな時、name 属性の命名に注意ください！場合によっては JS が動かねーから要注意です。
 lead: ["フォーム操作したい時 JS で値を追加したり、操作したい時があると思います。そんな時、name 属性の命名に注意ください！場合によっては JS が動かねーから要注意です。"]

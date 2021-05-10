@@ -3,9 +3,8 @@ title: 古いSEO手法でボロボロだったサイトを改善させた話
 date: 2019-08-03
 hero: 2019/entry325.png
 pagetype: blog
-category: SEO
-cateId: seo
-tags: ["seo","Gulp","SCSS"]
+cateId: SEO
+tags: ["Gulp","SCSS"]
 description: 今年広島のWeb勉強会で話をした内容をブログ化しました。古いSEO手法のせいで 80位以下 だったボロボロに傷ついたサイトを 10位以内まで改善したお話のダイジェストです。
 lead: ["今年広島のWeb勉強会で話をした内容をブログ化しました。古いSEO手法のせいで 80位以下 だったボロボロに傷ついたサイトを 10位以内まで改善したお話のダイジェストです。"]
 ---

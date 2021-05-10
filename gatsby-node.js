@@ -30,7 +30,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
             frontmatter {
               tags
-              category
               cateId
               hero
               pagetype

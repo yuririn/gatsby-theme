@@ -3,8 +3,7 @@ title: イカれたポートフォリオ作ったら、ナンパされたので�
 date: 2019-05-05
 hero: 2019/entry321.jpg
 pagetype: blog
-category: 'Life Hack'
-cateId: 'ginneko-tsuredure'
+cateId: 'overseas-freelancing'
 tags: ["セブ島エンジニア生活","キャリアアップ・転職"]
 description: セブ島来て1ヶ月経ちました。ヘッドハントされてセブ島に来たのでその経緯について綴ります。
 lead: ["セブ島来て1ヶ月経ちました。ヘッドハントされてセブ島に来たのでその経緯について綴ります。"]

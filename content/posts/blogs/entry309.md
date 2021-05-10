@@ -3,8 +3,7 @@ title: Web Touch Meeting ＋ Adobe XD に参加して来ました
 date: 2019-01-22
 hero: entry309.png
 pagetype: blog
-category: it-seminar
-cateId: it-seminar
+cateId: 'career'
 tags: ["Web Touch Meeting","XD"]
 description: 待望の Web Touch Meeting が帰ってきました。しかも大好きな XD スペシャルということで、LT すべく乗り込みました。ちなみに今回はSEOについてLTさせていただきました。
 lead: ["待望の Web Touch Meeting が帰ってきました。しかも大好きな XD スペシャルということで、LT すべく乗り込みました。ちなみに今回はSEOについてLTさせていただきました。"]

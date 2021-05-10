@@ -3,7 +3,6 @@ title: プラグインなしでWordPressのカスタムフィールドを追加&
 date: 2021-04-11
 hero: 2021/entry454.jpg
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress"]
 description: WordPressでもSEO Packなどを使わずカスタムフィールドの実装だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！一覧を編集したらカスタムフィールドが消えるバグの対処方法もついでにまとめてます。

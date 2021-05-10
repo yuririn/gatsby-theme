@@ -4,7 +4,6 @@ date: 2020-12-18
 modifieddate: 2021-04-19
 hero: 2020/entry420.jpg
 pagetype: blog
-category: Life Hack
 cateId: ginneko-tsuredure
 tags: ["おもしろ"]
 description: 皆さんの周りに中間子（真ん中っ子）っていますか？悲しいかな、中間子は予測不能、意味不明、よくわからん性格の人が多く思われがちです。そんな私達を理解して欲しくて中間子の私が取扱い方を説明します。

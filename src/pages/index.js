@@ -30,8 +30,12 @@ const BlogIndex = ({ data, location }) => {
       <BigWhite>
         <div className="l-container">
           <section className="p-section">
-            <h2 className="c-heading--lg">YouTube「かみーゆちゃんねる」やってるよ！</h2>
-            <p className="u-text-center u-mblg">海外ノマドやエンジニアライフについて配信中です。</p>
+            <h2 className="c-heading--lg">
+              YouTube「かみーゆちゃんねる」やってるよ！
+            </h2>
+            <p className="u-text-center u-mblg">
+              海外ノマドやエンジニアライフについて配信中です。
+            </p>
             <div className="c-grid">
               <div className="c-grid__item--md6 u-mblg">
                 <IframeWrapper>
@@ -49,12 +53,29 @@ const BlogIndex = ({ data, location }) => {
               </div>
               <div className="c-grid__item--md6 u-mblg">
                 <IframeWrapper>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLRSXt39PZIMWSeahdQUIm2dcgMA_C8KIY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/videoseries?list=PLRSXt39PZIMWSeahdQUIm2dcgMA_C8KIY"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
                 </IframeWrapper>
                 <h3>女性エンジニアが海外ノマド生活するとどうなるの？</h3>
               </div>
             </div>
-            <p class="u-text-center u-mblg"><a class="p-btn--detail" href="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw" target="_blank" rel="noopener">チャンネル登録する</a></p>
+            <p class="u-text-center u-mblg">
+              <a
+                class="p-btn--detail"
+                href="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
+                target="_blank"
+                rel="noopener"
+              >
+                チャンネル登録する
+              </a>
+            </p>
           </section>
           <section className="p-section">
             <h2 className="c-heading--lg">最新の記事</h2>
@@ -161,7 +182,6 @@ export const pageQuery = graphql`
           pagetype
           date(formatString: "YYYY.MM.DD")
           description
-          category
           cateId
           hero
           tags
@@ -182,12 +202,12 @@ const BigWhite = styled.div`
 `
 
 const IframeWrapper = styled.div`
-    position: relative;
-    padding-top: 56.25%;
-    overflow: hidden;
-    height: 0;
-    width: 100%;
-    margin-bottom: 20px;
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+  height: 0;
+  width: 100%;
+  margin-bottom: 20px;
   iframe {
     position: absolute;
     left: 0;

@@ -4,7 +4,6 @@ date: 2019-02-11
 modifieddate: 2020-11-05
 hero: entry315.jpg
 pagetype: blog
-category: Front End
 cateId: front-end-program
 tags: ["CSS"]
 description: CSS3 アニメーションって便利ですよね？jQueryに依存しないと軽量になります。今回は「CSSを駆使する方法」と「JSも使ってさらにリッチに実装する方法」の2パターンをご紹介します。原理を理解したい方は順を追った解説をまず読み進めてみてください。※ この記事は「CSS3 だけでアコーディオンメニューを実装」を大幅にリライトしました。

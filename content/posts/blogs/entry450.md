@@ -3,7 +3,6 @@ title: WordPress phpcsでコーディング規約を守る環境を作る
 date: 2021-04-01
 hero: 2021/entry450.jpg
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress","VS Code","PHP"]
 description: WordPressってPHPとhtmlが混在するし、コードが煩雑になりがちなのでphpcsでコードをチェックできる環境を作ってみました！思った以上の収穫があったので導入方法などを綴ります。Mac・VS Code前提で進めます！

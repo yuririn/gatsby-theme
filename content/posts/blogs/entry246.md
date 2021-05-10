@@ -3,8 +3,7 @@ title: パソコンスクールHA＊NAで講師をしました season3
 date: 2016-05-20
 hero: 2016/entry246.jpg
 pagetype: blog
-category: 'IT Seminor'
-cateId: 'it-seminar'
+cateId: 'career'
 tags: ["講師"]
 description: パソコンスクールHA＊NAでのCMScocnrete5導入の授業も今回で3回目となりました。昨日3日間の授業を終え想ったこと、感じた事をまとめます。
 lead: ["パソコンスクールHA＊NAでのCMScocnrete5導入の授業も今回で3回目となりました。昨日3日間の授業を終え想ったこと、感じた事をまとめます。"]

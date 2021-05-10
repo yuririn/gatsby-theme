@@ -3,8 +3,7 @@ title: CSSスプライトのコードは Sass の Mixin にとりあえずまと
 date: 2019-01-17
 hero: 2019/entry291.png
 pagetype: blog
-category: 'Front end'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["SCSS","CSS","Gulp"]
 description: 毎度のことですがウェブサイトが重くなる原因の一つに画像の読み込みが挙げられます。そこでCSSスプライトで gulp と Sass を利用してサイトを減量する方法をメモしておきます。
 lead: ["毎度のことですがウェブサイトが重くなる原因の一つに画像の読み込みが挙げられます。そこでCSSスプライトで gulp と Sass を利用してサイトを減量する方法をメモしておきます。"]

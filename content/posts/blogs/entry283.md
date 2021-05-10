@@ -3,7 +3,6 @@ title: WordPress で自作した機能を plugin 化してまとめると幸せ�
 date: 2018-08-14
 hero: 2014/entry211.png
 pagetype: blog
-category: CMS
 cateId: cms
 tags: ["WordPress"]
 description: WordPress のfunctions.php に書いていく、自作した機能をプラグインごとにまとめたらめちゃめちゃ便利だったのでその方法をメモっておきます。

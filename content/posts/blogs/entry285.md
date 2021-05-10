@@ -3,7 +3,6 @@ title: Webクリエータを目指すリスタート組の君たちへ season2
 date: 2018-11-07
 hero: 2014/entry197.png
 pagetype: blog
-category: 'Life Hack'
 cateId: 'ginneko-tsuredure'
 tags: ["講師","キャリアアップ・転職"]
 description: 私はフロントエンドエンジニアで制作する傍、職業訓練校の講師もしてます。Webクリエイタをしていて日々思っていることとWebクリエイタをこれから目指す人に伝えたいことを綴ります。この意見は私の一個人の見解で、会社とは関係ない旨だけ先に言っておきます。

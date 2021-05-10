@@ -10,6 +10,7 @@ import {
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import Search from "../search/"
 import styled from "styled-components"
+import { siteMetadata } from "../../../gatsby-config"
 
 const GlobalNav = ({ title, location }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -44,31 +45,15 @@ const GlobalNav = ({ title, location }) => {
                   Blog
                 </Link>
                 <ul>
-                  <li>
-                    <Link to="/blogs/front-end-program/" onClick={move}>
-                      Front End
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/blogs/back-end-program/" onClick={move}>
-                      Back End
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/blogs/seo/" onClick={move}>
-                      SEO
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/blogs/it-seminar" onClick={move}>
-                      IT Seminor
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/blogs/ginneko-tsuredure/" onClick={move}>
-                      Life Hack
-                    </Link>
-                  </li>
+                  {siteMetadata.category.map(item => {
+                    return (
+                      <li>
+                        <Link to={`/blogs/${item.slug}/`} onClick={move}>
+                          {item.name}
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
               </li>
               <li>

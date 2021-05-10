@@ -3,7 +3,6 @@ title: 待ってました！Chrome88 で aspect-ratioプロパティがついに
 date: 2021-02-03
 hero: 2021/entry437.jpg
 pagetype: blog
-category: Front End
 cateId: front-end-program
 tags: ["CSS"]
 description: CSS aspect-ratioプロパティがChrome88でサポートされました。今まではCSSを駆使して縦横の比率（アスペクト比）を保ってましたが、不要になる日も間近。早めに使い方を覚えて来るべき日に備えましょう。旧アスペクト比の保ち方も合わせてご紹介します。

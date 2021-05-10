@@ -3,7 +3,6 @@ title: 【WordPress初心者へ】月額1000円！ワードプレスブログの
 date: 2020-08-02
 hero: 2020/entry381.png
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress"]
 description: WordPressを使ってブログ始めたい人へのマニュアル第二弾！WordPress設定、SEO設定、Gutenbergの最低限の使い方を解説しています。サーバーの選び方、ドメインどーすりゃいい？インストールすらもわからない人も前半を見れば大丈夫。さあ、WordPressでブログを始めましょう！！

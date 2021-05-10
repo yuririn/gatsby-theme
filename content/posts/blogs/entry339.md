@@ -3,7 +3,6 @@ title: たった1pxの気遣いでWebサイトは見違える
 date: 2019-09-10
 hero: 2019/entry339.jpg
 pagetype: blog
-category: Front End
 cateId: front-end-program
 tags: ["デザイン","UX/UI"]
 description: 最近、久々にプロのWebデザイナーの仕事（デザインカンプ）をみて感動しました。そこで私が普段、1px単位で気をつけていることを書き記してみました。わずか数ピクセルで見やすさ、余白の心地よさが変わります。

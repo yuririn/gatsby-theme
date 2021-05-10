@@ -22,6 +22,7 @@ import Search from "../components/search/"
 import BreadCrumbList from "../components/common/breadCrumbList"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faRss } from "@fortawesome/free-solid-svg-icons"
+import { siteMetadata } from "../../gatsby-config"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -200,7 +201,11 @@ const BlogPostTemplate = ({ data, location }) => {
                 <dt>Category</dt>
                 <dd className="cate">
                   <Link to={`/blogs/${post.frontmatter.cateId}/`}>
-                    {post.frontmatter.category}
+                    {siteMetadata.category.map(item => {
+                      return post.frontmatter.cateId === item.slug
+                        ? item.name
+                        : ""
+                    })}
                   </Link>
                 </dd>
               </dl>
@@ -212,8 +217,11 @@ const BlogPostTemplate = ({ data, location }) => {
               </dl>
             </div>
             <Feedly>
-               <h2> 「銀ねこアトリエ」のブログを定期購読しよう</h2>
-              <a href='https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fginneko-atelier.com%2Frss.xml'  target='blank'>
+              <h2> 「銀ねこアトリエ」のブログを定期購読しよう</h2>
+              <a
+                href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fginneko-atelier.com%2Frss.xml"
+                target="blank"
+              >
                 <FontAwesomeIcon icon={faRss} />
                 Feedlyに登録する
               </a>
@@ -248,21 +256,13 @@ const BlogPostTemplate = ({ data, location }) => {
           <section className="p-section">
             <h2 className="c-heading--lg--side">ジャンル</h2>
             <ul className="sideCateList">
-              <li>
-                <a href="/blogs/front-end-program/">Front End</a>
-              </li>
-              <li>
-                <a href="/blogs/back-end-program/">Back End</a>
-              </li>
-              <li>
-                <a href="/blogs/seo/">SEO</a>
-              </li>
-              <li>
-                <a href="/blogs/it-seminar">IT Seminor</a>
-              </li>
-              <li>
-                <a href="/blogs/ginneko-tsuredure/">Life Hack</a>
-              </li>
+              {siteMetadata.category.map(item => {
+                return (
+                  <li>
+                    <Link to={`/blogs/${item.slug}/`}>{item.name}</Link>
+                  </li>
+                )
+              })}
             </ul>
           </section>
           <div class="inner">
@@ -374,7 +374,6 @@ export const pageQuery = graphql`
         description
         lead
         hero
-        category
         cateId
         tags
         pagetype
@@ -411,35 +410,35 @@ const Body = styled.div`
 `
 
 const Feedly = styled.div`
-    height: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  // border:1px solid #6cc655;
+  flex-direction: column;
+  margin: 0 15px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  a {
+    background: #6cc655;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #eee;
-    // border:1px solid #6cc655;
-    flex-direction: column;
-    margin: 0 15px;
-
-    @media screen and (min-width: 768px) {
-        margin-left: 0;
-        margin-right: 0;
-    }
-h2 {
-    margin-bottom: 20px;
-}
-a {
-        background: #6cc655;
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        padding: 0 20px;
+    height: 40px;
+    padding: 0 20px;
     color: #fff;
     border-radius: 20px;
     text-decoration: none;
     svg {
-        margin-right: 10px;
+      margin-right: 10px;
     }
   }
 `

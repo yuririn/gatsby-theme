@@ -3,8 +3,7 @@ title: 『広島でコンクリ』vol6 開催しました！
 date: 2015-01-18
 hero: 2014/entry175.jpg
 pagetype: blog
-category: 'IT Seminar'
-cateId: 'it-seminar'
+cateId: 'career'
 tags: ["concrete5"]
 description: 昨日新年1発目のconcrete5勉強会『広島でコンクリ』concrete5勉強会を開催しました。新年早々私を含め9名の参加者。とっても楽しかった。
 lead: ["昨日新年1発目のconcrete5勉強会『広島でコンクリ』concrete5勉強会を開催しました。新年早々私を含め9名の参加者。とっても楽しかった。"]

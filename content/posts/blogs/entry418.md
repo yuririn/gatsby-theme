@@ -4,7 +4,6 @@ date: 2020-12-16
 modifieddate: 2021-04-06
 hero: 2020/entry401.jpg
 pagetype: blog
-category: Front end
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
 description: Gatsby記事もこれで7記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。※GA4に対応しました。

@@ -3,8 +3,7 @@ title: XAMPP/PHP5.5.27~mySQLの初期パスワード設定
 date: 2015-11-18
 hero: 2014/entry192.jpg
 pagetype: blog
-category: 'Back End'
-cateId: 'back-end-program'
+cateId: 'web-developer'
 tags: [XAMPP]
 description: Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。
 lead: ["Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。"]

@@ -3,7 +3,6 @@ title: コンクリ（CMS concrete5）へreCAPCHA v3を追加しました
 date: 2020-11-26
 hero: 2020/entry402.jpg
 pagetype: blog
-category: CMS
 cateId: cms
 tags: ["concrete5"]
 description: みなさん、スパム対策してますか？。GoogleのreCAPTCHA v3が機械学習で「このメールスパムやで！」って選り分けてくれるようになりました。リリース当初は喜び勇んで運用しているサイトにガツガツ実装しました。じつは最近、当ブログサイト「銀ねこアトリエ」に実装してみたのでそのやり方を紹介します。

@@ -3,7 +3,6 @@ title: concrete5.7でセッションハンドラをデータベースに変更�
 date: 2016-07-16
 hero: 2014/entry192.jpg
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["DB","concrete5"]
 description: サーバの設定がガチガチでセッションが書き込めなくなっていたのでデータベースに書き込む方法に変更したので、そのやり方についてメモします。

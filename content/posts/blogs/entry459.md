@@ -3,8 +3,7 @@ title: 【Gulp】EJSを使ってHTMLを量産する
 date: 2021-05-05
 hero: 2021/entry459.jpg
 pagetype: blog
-category: 'Front End'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: [ "JavaScript","npm"]
 description: 最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。
 lead: ["最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。","JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。"]

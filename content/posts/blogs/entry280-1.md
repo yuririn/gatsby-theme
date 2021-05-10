@@ -3,7 +3,6 @@ title: concrete5サイトが突然の文字化け！データベース設定で�
 date: 2018-07-22
 hero: 2014/entry175.jpg
 pagetype: blog
-category: CMS
 cateId: cms
 tags: ["DB","concrete5"]
 description: 突然、昔納品したconcrete5がサイトが文字化けしました。データベースを読み込む際のOption設定で文字化けを回避できるのでそのやり方についてご紹介します

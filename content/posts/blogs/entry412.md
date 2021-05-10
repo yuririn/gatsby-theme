@@ -3,7 +3,6 @@ title: 本当に怖いDNS（ネームサーバー）変更。予想外のトラ�
 date: 2020-12-08
 hero: 2020/entry412.jpg
 pagetype: blog
-category: Back End
 cateId: back-end-program
 tags: ["サーバー引越し","しろたん師匠"]
 description: サイト移行やDNS（ネームサーバー）変更、ちゃんと事前準備して行ってますか？最近ドメインをさくらサーバーからお名前.comへ移し、さらにサーバーもNetlifyへ移しました。移管中エラーを吐いて、ブログページが見れなくなってしまいました。事前準備を怠ったことを死ぬほど反省しました。体験談と対処法を綴ります。

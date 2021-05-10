@@ -3,7 +3,6 @@ title: ヒロフロ CMS部でコンクリの8を触ってもらいました
 date: 2018-06-17
 hero: 2018/entry272.png
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["concrete5"]
 description: 6/2広島フロントエンド勉強会でconcrete5の特徴や運用についてお話、みなさんに体感していただきました。

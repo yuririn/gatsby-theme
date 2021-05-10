@@ -4,7 +4,6 @@ date: 2021-01-10
 modifieddate: 2021-05-05
 hero: 2021/entry428.jpg
 pagetype: blog
-category: Front End
 cateId: front-end-program
 tags: ["npm"]
 description: 私はページを量産したりチームでサイトを作る時にPugという言語を使ってWebサイトを作っています。普段webpackやgulpを使っている方なら導入のハードルも低いと思います。今回は導入の仕方と記述方法（とくに記述方法はディープ！に記載しています）をまとめました。今回はgulpやwebpackを使わないので、package.jsonさえ作ることができればすぐ始められます！とても記事は長いので目次を利用して好きなところを読んでください。

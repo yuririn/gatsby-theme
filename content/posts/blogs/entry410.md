@@ -4,7 +4,6 @@ date: 2020-12-07
 modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
-category: Front End
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
 description: 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。

@@ -3,9 +3,8 @@ title: 豚の脳？！Tuslob Buwa（トゥスロブワ）が食べれるDonkatsu
 date: 2021-03-01
 hero: 2021/entry441.jpg
 pagetype: blog
-category: Life Hack
-cateId: ginneko-tsuredure
-tags: ["海外移住", "ライフスタイル"]
+cateId: 'overseas-freelancing'
+tags: ["海外移住"]
 description: 海外に来たら現地の料理を食べたい！住んでるならなおのこと！でも不安。。。ということで、フィリピン・セブ州マクタン島にある日本人の運営するDonkatsuレストランに行ってきました。豚の脳ミソを調理した、Tuslob Buwa（トゥスロブワ）をというセブアノ料理を堪能して来ました。
 lead: ["海外に来たら現地の料理を食べたい！住んでるならなおのこと！でも不安。。。","ということで、フィリピン・セブ州マクタン島にある日本人の運営するDonkatsuレストランに行ってきました。豚の脳ミソを調理した、Tuslob Buwa（トゥスロブワ）というセブアノ料理を堪能して来ました。"]
 ---

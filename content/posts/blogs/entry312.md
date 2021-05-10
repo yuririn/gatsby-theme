@@ -3,8 +3,7 @@ title: Webクリエータを目指すリスタート組の君たちへ finalseas
 date: 2019-03-08
 hero: 2014/entry197.png
 pagetype: blog
-category: 'Life Hack'
-cateId: 'ginneko-tsuredure'
+cateId: 'overseas-freelancing'
 tags: ["講師","キャリアアップ・転職"]
 description: ここ数年、縁あって職業訓練校の講師としてWebクリエータを育てていました。これから目指す人、学ぶ人、業界に飛び込む君たちへの想いを、個人の一意見と責任を持って綴ろうと思います。
 lead: ["職業訓練校を経て、5年以上経った今フロントエンドエンジニアをしている私がWebクリエータを目指すリスタート組の君たちへ贈りたいリアルなメッセージを綴りました。私個人の意見なのでご了承の上お読みください。"]

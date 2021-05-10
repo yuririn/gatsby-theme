@@ -4,7 +4,6 @@ date: 2020-11-21
 modifieddate: 2021-01-13
 hero: 2020/entry400.jpg
 pagetype: blog
-category: CMS
 cateId: cms
 tags: [WordPress]
 description: 今回はプラグインを使わずにカスタムフィールドで画像を登録する方法のご紹介です。投稿画面から便利にかんたんに複数の画像登録したくて探していたらJavaScript APIが使えることを知りました。メディアを呼び出せるとリッチに画像をカスタムフィールドで登録できる機能を実装できます。

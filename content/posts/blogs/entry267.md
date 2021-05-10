@@ -3,8 +3,7 @@ title: data属性でJavaScriptで要素の値の操作をする
 date: 2018-06-13
 hero: 2018/entry267.png
 pagetype: blog
-category: 'Front end'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["JavaScript"]
 description: JSとjQueryを比較しつつdata属性（カスタムデータ）などの値の操作や注意点をご紹介。 この記事は、古いIEがサポート外になったので「カスタムデータ属性を使う時はIEに気をつけろ」を大幅にリライトしました。
 lead: ["JSとjQueryを比較しつつdata属性（カスタムデータ）などの値の操作や注意点をご紹介。 この記事は、古いIEがサポート外になったので「カスタムデータ属性を使う時はIEに気をつけろ」を大幅にリライトしました。"]

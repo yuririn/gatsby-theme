@@ -3,7 +3,6 @@ title: さくらレンサバで concrete5 8系を使うなら最新 Ver に Upgr
 date: 2019-01-21
 hero: 2014/entry175.jpg
 pagetype: blog
-category: CMS
 cateId: cms
 tags: ["concrete5"]
 description: 去年レンタルサーバー（さくら）がの PHP のバージョンが勝手にアップグレードしてサイトが見れなくなってしまったことがあります。concrete5 8.2 では php7.2 で予約語のせいで動かなくなったみたいです。そこで、concrete5 8.2 を php7.2 に対応する方法を紹介します。

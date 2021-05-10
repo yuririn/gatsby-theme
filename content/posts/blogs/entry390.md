@@ -3,8 +3,7 @@ title: 便利なのに使ってないの？！CSSプロパティ5選
 date: 2020-11-03
 hero: 2020/entry390.jpg
 pagetype: blog
-category: 'Front End'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["CSS"]
 description: エンジニアとしてフロント技術をキャッチアップしなきゃと、CSS、特にプロパティのおさらいをしました。columns、pointer-events、writing-modeなど普段使わないのでないでしょうか？知っていれば、コーディングの幅がグンと広がりますよ！！ということで、この記事では私がよく使うCSSのプロパティやバリューの使い方などをさらに掘り下げまとめてみました。
 lead: ["フロントエンドエンジニア、今はプータローのかみーゆです。","エンジニアとしてフロント技術をキャッチアップしなきゃと、CSS、特にプロパティのおさらいをしました。","columns、pointer-events、writing-modeなど普段使わないのでないでしょうか？","知っていれば、コーディングの幅がグンと広がりますよ！！","ということで、この記事では私がよく使うCSSのプロパティやバリューの使い方などをさらに掘り下げまとめてみました。"]

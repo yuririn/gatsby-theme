@@ -3,7 +3,6 @@ title: WordPressでショートタグを作ってみた
 date: 2014-12-21
 hero: 2014/entry211.png
 pagetype: blog
-category: 'CMS'
 cateId: 'cms'
 tags: ["WordPress"]
 description: みんな大好きWordPress!今回はショートタグの作り方をご紹介します！！

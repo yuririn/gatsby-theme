@@ -4,7 +4,6 @@ date: 2020-12-14
 modifieddate: 2021-01-12
 hero: 2020/entry401.jpg
 pagetype: blog
-category: Front end
 cateId: front-end-program
 tags: ["JavaScript","React","Gatsby"]
 description: GatsbyでプライバシーポリシーやAboutページなど記事一覧のループに含めたくないけどMarkDownで手軽に管理したいページを表示させるテンプレートを作りました。

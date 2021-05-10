@@ -3,8 +3,7 @@ title: 脱 jQuery！軽量のスクロール JS・MoveTo が便利
 date: 2018-12-14
 hero: 2018/entry267.png
 pagetype: blog
-category: 'Front end'
-cateId: 'front-end-program'
+cateId: 'web-developer'
 tags: ["JavaScript"]
 description: みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。
 lead: ["みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。"]
