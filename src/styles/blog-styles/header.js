@@ -39,7 +39,7 @@ export const Header = styled.div`
         background-image: url(/static/0f5e983805a492892296241cee4f8db1/2244e/genre-seo.jpg);
       }
       &--career:before {
-        background-image: url(/static/3bdad4eadd3fc56e6dc0a573d8195a88/2244e/genre-it-seminar.jpg);
+        background-image: url(/static/3bdad4eadd3fc56e6dc0a573d8195a88/2244e/genre-career.jpg);
       }
       &--overseas-freelancing:before {
         background-image: url(/static/7dc6e0658207e9c08aee9a9e6aea2828/2244e/genre-overseas-freelancing.jpg);

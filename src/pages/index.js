@@ -11,26 +11,6 @@ import Search from "../components/search/"
 import styled from "styled-components"
 import TagsList from "../components/blogs/tagList"
 
-if (typeof window !== "undefined") {
-  window.addEventListener(
-    "scroll",
-    () => {
-      let position = document
-        .querySelector("main > div:first-child")
-        .getBoundingClientRect().y
-      let bg = document.querySelector("main .bg")
-      if (position > 0) {
-        bg.classList.remove("op0")
-      } else {
-        if (!bg.classList.contains("op0")) {
-          bg.classList.add("op0")
-        }
-      }
-    },
-    true
-  )
-}
-
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
@@ -38,6 +18,26 @@ const BlogIndex = ({ data, location }) => {
   const ogpSrc = data.allFile.edges[0].node.childImageSharp.fluid.src
 
   let cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
+
+  if (typeof window !== "undefined") {
+    window.addEventListener(
+      "scroll",
+      () => {
+        let position = document
+          .querySelector("main > div:first-child")
+          .getBoundingClientRect().y
+        let bg = document.querySelector("main .bg")
+        if (position > 0) {
+          bg.classList.remove("op0")
+        } else {
+          if (!bg.classList.contains("op0")) {
+            bg.classList.add("op0")
+          }
+        }
+      },
+      true
+    )
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
