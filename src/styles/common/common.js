@@ -216,5 +216,8 @@ export const CommonStyle = createGlobalStyle`
         }
     }
   }
+  .google-auto-placed {
+    background: #fff;
+  }
 
 `

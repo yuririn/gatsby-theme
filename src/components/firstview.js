@@ -111,6 +111,11 @@ const Mainvisual = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    transition: 0.3s;
+
+    &.op0 {
+      opacity: 0;
+    }
   }
   img {
     object-fit: cover;
