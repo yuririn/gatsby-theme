@@ -27,7 +27,7 @@ export const Header = styled.div`
       }
 
       &--web-developer:before {
-        background-image: url(/static/f684234481e7fc4c2e76afafc9f6f43c/2244e/genre-front-end-program.jpg);
+        background-image: url(/static/f684234481e7fc4c2e76afafc9f6f43c/2244e/genre-web-developer.jpg);
       }
       &--ginneko-tsuredure:before {
         background-image: url(/static/080974e034b1312f6e2e3696e8edd54c/2244e/genre-ginneko-tsuredure.jpg);
