@@ -125,10 +125,10 @@ $gap: 20px;//余白
 ```
 [グリッドレイアウトを使いたいとき|CodePen](https://codepen.io/camile/pen/wvJJWNd)
 
-## step関数でコマ送りアニメーション！
+## step関数でコマ送りアニメーションを実装
 最近のCSSアニメーションはめっちゃ優秀なんですが、spep関数を使うとこんなものも作れます！
 
-![step関数でカワイイアニメーション！](./images/2021/05/entry462-9.gif)
+![step関数でコマ送りアニメーションを実装](./images/2021/05/entry462-9.gif)
 
 コマ数分のイラストを置いた画像素材を作ります。並べる方向は縦でも横でもOK!!
 
@@ -170,11 +170,12 @@ body {
   align-items: center;
   height: 100vh;
 }
+
 .chara {
   display: inline-block;
-  height: calc(270px / 2);
-  width: calc(290px / 2);
-  animation: tekuteku 1s steps(3) infinite;
+  height: 135px;
+  width: 145px;
+  animation: tekuteku 1.3s steps(4) infinite;
   background: url(tekuteku.png) 0 0 / 100% auto;
 }
 
@@ -185,7 +186,7 @@ body {
 }
 ```
 
-[step関数でカワイイアニメーション！|CodePen](https://codepen.io/camile/pen/dyvvWpZ)
+[step関数でステップアニメーション|CodePen](https://codepen.io/camile/pen/dyvvWpZ)
 
 ## 自動でナンバリング出力！counter()&counters()関数！
 
