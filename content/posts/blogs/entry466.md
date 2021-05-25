@@ -1,5 +1,5 @@
 ---
-title: 【WordPress】GitHubにUpしたプラグインの更新を受け取る
+title: 【WordPress】GitHubリポジトリにコミットしたプラグインを自動更新可能にする
 date: 2021-05-25
 hero: 2021/entry466.jpg
 pagetype: blog

@@ -214,11 +214,20 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  enclosure: {
+                    url:
+                      site.siteMetadata.siteUrl +
+                      image.node.childImageSharp.original.src,
+                    size: 1200,
+                    type: image.node.childImageSharp.original.src.includes(
+                      "png"
+                    )
+                      ? "image/png"
+                      : "image/jpeg",
+                  },
                   custom_elements: [
                     {
-                      "content:encoded":
-                        `<p><img src="${image.node.childImageSharp.original.src}" height="${image.node.childImageSharp.original.height}" width="${image.node.childImageSharp.original.width}"></p>` +
-                        edge.node.html,
+                      "content:encoded": edge.node.html,
                     },
                   ],
                 })
