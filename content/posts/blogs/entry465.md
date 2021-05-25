@@ -10,7 +10,7 @@ lead: ["WordPressでサイトごとの独自の値を登録できるようにし
 ---
 <div class="msg-baloon">
 <p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>今回は管理画面でサイトの値を保存して、さらに値をajax（jQuery）で保存します！</p>
+<p>今回は管理画面でサイト共通の設定を追加し、さらに値をajax（jQuery）で保存します！</p>
 </div>
 
 この記事では基本WordPressのコーディング規約を守ってコードを紹介しています。エスケープ処理なども含め、よくわからない方はこちらの記事も合わせて参考にしてください。
@@ -222,7 +222,7 @@ function save_data() {
 	if ( isset( $_POST['action'] ) && 'save_data' === $_POST['action'] ) {
 		foreach ( $_POST as $key => $value ) {
 			if ( isset( $_POST[ $key ] ) ) {
-				if ( 'action' !== $key || 'varified_field' !== $key || '_wp_http_referer' !== $key) {
+				if ( 'action' !== $key || 'varified_field' !== $key || '_wp_http_referer' !== $key ) {
 					update_option( esc_html( $key ), esc_html( $value ) );
 				}
 			} else {
