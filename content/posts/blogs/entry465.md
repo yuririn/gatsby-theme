@@ -45,6 +45,8 @@ add_action( 'admin_menu', 'my_admin_menu' );
 ```
 メニューアイコンは自作してもいいですが、WordPressにはあらかじめかなりの数が用意されているのでこちらを使うのが賢いかも。
 
+![メニューアイコンDashicons](./images/2021/05/entry465-1.jpg)
+
 [Dashicons](https://developer.wordpress.org/resource/dashicons/#heading)
 
 もしオリジナルが使いたいときはメニューアイコンを以下のように書き換えます。
@@ -54,7 +56,7 @@ add_action( 'admin_menu', 'my_admin_menu' );
 ```php
 plugins_url( 'myplugin/images/icon.png' ),
 ```
-## 管理画面で出力するページを作成
+## 管理画面で出力するhtmlコードなどを作成
 次に管理画面用のページを作っていきます。さっき設置した`add_my_admin_menu`（もちろん名前は任意）と関数としてページの内容を書いていきます。
 
 ```php
@@ -69,7 +71,7 @@ function add_my_admin_menu() {
   <?php
 }
 ```
-ページ共通の設定の場合はoptionに登録するのがオススメです。*ここにコード*へ次のよう、サイトごとの値登録に必要なコードを追記します。
+ページ共通の設定の場合はoptionに登録するのがオススメです。事前の*ここにコード*の部分へ、サイトごとの値登録に必要なコードを追記します。
 
 
 ```php
@@ -81,6 +83,7 @@ function add_my_admin_menu() {
     </td>
   </tr>
 </table>
+<?php wp_nonce_field( 'verified', 'verified_field' ); ?>
 <button class="button-primary" data-save="saveBtn">保存</button>
 ```
 同じWordPress内で共通の値を保村するときはoption系の関数が便利です。
@@ -90,6 +93,19 @@ function add_my_admin_menu() {
 |*get_option*|そのサイト（テーマ）の独自の値を取得|`get_option(キー,値)`|
 |*update_option*|そのサイト（テーマ）の独自の値を更新・新規登録|`update_option(キー,値)`|
 |*delete_option*|そのサイト（テーマ）の独自の値を削除|`update_option(キー)`|
+
+ここでポイントなのが`wp_nonce_field`で、フォームデータを安全に送るためのWordPressの仕組みです。
+
+このフォームデータが、同サイトからの送られてきたかチェックしてくれます。
+
+```php
+<?php wp_nonce_field( 【値】, 【フィールド名】 ); ?>
+```
+出力されるhtml。
+```php
+<input type="hidden" id="【フィールド名】" name="【フィールド名】" value="xxxxxxxxx">
+```
+データの受け取り側にも処理を書きます。<br>同サイトからの送られてきたかどうかのチェックの仕方は[保存処理をするコードを書く](#保存処理をするコードを書く)の方をみてください。
 
 ## ajax（jQuery）で保存処理
 
@@ -109,7 +125,26 @@ add_action(
 
 ```
 
-今回*add_my_admin_menu*という名前で作ったので[ページ名]のところを変えます。
+今回`add_my_admin_menu`という名前で作ったので[ページ名]のところを変えます。
+
+ページ名がわからない場合は、var_dumpで調べましょう。
+
+```php
+function my_admin_menu() {
+	$hook = add_menu_page(
+		'My page name',
+		'My page name',
+		'manage_options',
+		'my_admin_menu',
+		'add_my_admin_menu',
+		'dashicons-calendar-alt',
+		20
+	);
+  var_dump( $hook );
+}
+add_action( 'admin_menu', 'my_admin_menu' );
+```
+<small>※ 調べたらvar_dumpを削除するのを忘れずに。</small>
 
 ```php
 add_action(
@@ -118,14 +153,11 @@ add_action(
 		?>
     <script>
     jQuery(document).ready(function($) {
-      $('body').on('click','.status .notice-dismiss', function() {
-        $('.status div').remove();
-        return false;
-      })
+      //IDsaveDataのフォームのデータを取得する。
       $('#saveData').submit(function(event){
         event.preventDefault();
         const fd = new FormData( this );
-        fd.append('action'  , 'save_data' );
+        fd.append( 'action', 'save_data' );
 
         $.ajax({
           type: "POST",
@@ -143,33 +175,54 @@ add_action(
       return false;
       })
     });
+    $('body').on('click','.status .notice-dismiss', function() {
+      $('.status div').remove();
+      return false;
+    });
     </script>
   <?php
 	}
 );
 ```
-`$('.status').html~`のところは保存した後の保存した後成功したか否かを知らせる処理です。クラスstatusに要素を追加することで知らせます。
+`$('.status').html~`のコードは保存が後成功したか否かをお知らせする処理です。クラスstatusにhtmlを追加します。
 
-<small>※ jQueryが動かない場合はcdnなどから、改めて取ってくる必要があるかもしれません。</small>
+![メニューアイコンDashicons](./images/2021/05/entry465-2.jpg)
 
-## 保存処理をする場所を作る
+追加した要素の削除処理。
+```js
+$('body').on('click','.status .notice-dismiss', function() {
+  $('.status div').remove();
+  return false;
+});
+```
+これでWordPressらしい管理画面になりました！
+
+## 保存処理をするコードを書く
 データを受け取って保存処理をします。
 
 WordPressにはajax用の`wp_ajax_save_data`という便利なフックがあります。
 
-前のコードで`fd.append('action'  , 'save_data' );`を指定したようにaction名は`save_data`で渡されます。
+前のコードで`fd.append( 'action', 'save_data' );`を指定したようにaction名は`save_data`で渡されます。
 
-同じ名前で関数を作ります。このままphpcsでコードを書くと構文エラーで真っ赤になると思います。修正するので少し待っててください^^;
+同じ`save_data`という名前で関数を作ります。
 
-`page`と`action`は必ず投げられる値ですが保存する必要ないので除外します。
+`action`は必ず投げられる値ですが、保存する必要ないので除外します。
+
+`wp_nonce_field`から、送信元の場所とデータ照合の値も送られてきます。
+
+`varified_field`（データ照合）と`_wp_http_referer`（参照元）も保存する必要ないので項目から除外します。
 
 ```php
 add_action( 'wp_ajax_save_data', 'save_data' );
 function save_data() {
-  if ( isset( $_POST['action'] ) && $_POST['action'] === 'save_data' ) {
+	if ( ! isset( $_POST['verified_field'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['verified_field'] ) ), 'verified' ) ) {
+		return false;
+	}
+
+	if ( isset( $_POST['action'] ) && 'save_data' === $_POST['action'] ) {
 		foreach ( $_POST as $key => $value ) {
 			if ( isset( $_POST[ $key ] ) ) {
-				if ( $key !== 'action' || $key !== 'page' ) {
+				if ( 'action' !== $key || 'varified_field' !== $key || '_wp_http_referer' !== $key) {
 					update_option( esc_html( $key ), esc_html( $value ) );
 				}
 			} else {
@@ -178,14 +231,29 @@ function save_data() {
 		}
 	}
 
-	echo json_encode( 'Succsess' );
+	echo wp_json_encode( 'Succsess' );
 	die();
 }
+```
+[管理画面で出力するhtmlコードなどを作成](#管理画面で出力するhtmlコードなどを作成)で追記したフィールド、`wp_nonce_field`のバリューが正しいか判断します。
+
+フィールドもなく、値もない場合は処理を終了します。
+
+```php
+if ( ! isset( $_POST['verified_field'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['verified_field'] ) ), 'verified' ) ) {
+		return false;
+	}
 ```
 <div class="box">
 <h4>プログラムがうまくいったかは必ずChrome Dev ToolのNetwokを確認しよう</h4>
 保存できたかどうかを確認する前に、ちゃんと思ったデータが送信されているかを確認しましょう。Chromeの開発者ツール（Dev Tool）からNetworkを使えば「post」データとして送信されていることが確認できます。
 </div>
+
+![Chromeの開発者ツール（Dev Tool）](./images/2021/05/entry465-3.jpg)
+
+<small>※レスポンスタブを開くと「Success」が返ってきています。</small>
+![Chromeの開発者ツール（Dev Tool）](./images/2021/05/entry465-4.jpg)
+
 
 ## まとめ・非同期処理だとユーサーもハッピー
 以上ざっくりですが、駆け足で管理画面のカスタマイズ方法、WordPressのもともとある機能のajax非同期処理でサイト全体をお伝えしました。

@@ -183,7 +183,7 @@ const SEO = ({
           content: `website`,
         },
         {
-          name: `og:image`,
+          property: `og:image`,
           content: ogImage,
         },
         {
@@ -215,7 +215,7 @@ const SEO = ({
           content: metaDescription,
         },
         {
-          name: `og:url`,
+          property: `og:url`,
           content: blogUrl,
         },
       ].concat(meta)}
