@@ -210,6 +210,7 @@ module.exports = {
                   )
                 })
                 return Object.assign({}, edge.node.frontmatter, {
+                  title: edge.node.frontmatter.title,
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
@@ -227,7 +228,14 @@ module.exports = {
                   },
                   custom_elements: [
                     {
-                      "content:encoded": edge.node.html,
+                      "content:encoded":
+                        '<p><img src="' +
+                        site.siteMetadata.siteUrl +
+                        image.node.childImageSharp.original.src +
+                        '" width="1200" height="900" alt="' +
+                        edge.node.frontmatter.title +
+                        '"></p>' +
+                        edge.node.html,
                     },
                   ],
                 })

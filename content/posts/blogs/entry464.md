@@ -27,6 +27,11 @@ lead: ["「子ども服をセブに送るプロジェクト」始動！第一弾
 </div>
 </section></a>
 
+### YouTubeも作りました！！
+YouTubeでも配信しています！併せてご覧ください。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4wPJBmtcAjo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## お墓に住む人たち
 セブ島にはお墓に住んでいる人たちがいます。<br>私は、そのうちのひとつにお邪魔しました。
 
@@ -177,6 +182,7 @@ lead: ["「子ども服をセブに送るプロジェクト」始動！第一弾
 **世界の一人でも多くの子どもたちが健康に大人になれたらいい**と思い「*子ども服をセブに送るプロジェクト*」を始めました。
 
 私ができることは周りにいる人を手伝うことぐらいです。
+
 
 私がこの活動をする目的はあくまで、**世界の一人でも多くの子どもたちが健康に大人になれたらいい**です。
 
