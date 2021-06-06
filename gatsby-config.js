@@ -218,11 +218,9 @@ module.exports = {
                   enclosure: {
                     url:
                       site.siteMetadata.siteUrl +
-                      image.node.childImageSharp.original.src,
+                      image.node.childImageSharp.sizes.src,
                     size: 1200,
-                    type: image.node.childImageSharp.original.src.includes(
-                      "png"
-                    )
+                    type: image.node.childImageSharp.sizes.src.includes("png")
                       ? "image/png"
                       : "image/jpeg",
                   },
@@ -231,7 +229,7 @@ module.exports = {
                       "content:encoded":
                         '<p><img src="' +
                         site.siteMetadata.siteUrl +
-                        image.node.childImageSharp.original.src +
+                        image.node.childImageSharp.sizes.src +
                         '" width="1200" height="900" alt="' +
                         edge.node.frontmatter.title +
                         '"></p>' +
@@ -259,10 +257,8 @@ module.exports = {
                       name
                       relativePath
                       childImageSharp {
-                        original {
+                        sizes {
                           src
-                          height
-                          width
                         }
                       }
                     }

@@ -63,7 +63,7 @@ IDは時と場合によるのでですが、whileなどで回してなりして�
 * [3] => 真偽値: リサイズされいている場合は true、元のサイズの場合は false
 
 なのでパスを取得してimgタグなどに出力したい時は以下のような感じになります。
-```
+```php
 $imagepath = wp_get_attachment_image_src(get_post_meta($post->ID, 'photo1', true), 'newResizeImage');
 echo '<img src="' . $imagepath[0] . '" width="' . $imagepath[1]. '" height="' . $imagepath[2]. '">';
 ```
