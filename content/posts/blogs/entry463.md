@@ -1,6 +1,6 @@
 ---
 title: カウントダウンタイマーをバニラJSでシンプルに実装
-date: 2021-05-23
+date: 2021-05-22
 hero: 2021/entry463.jpg
 pagetype: blog
 cateId: 'web-developer'
