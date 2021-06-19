@@ -10,7 +10,7 @@ lead: ["日本には辛そうに生きている長女が多い気がします。
 ---
 以前「中間子ってどんな性格？」というブログを書きました。私は4人兄弟の絶賛代表的な中間子です。
 
-<a class="article-link" href="/blogs/entry457/">
+<a class="article-link" href="/blogs/entry420/">
 <section><div class="article-link__img"><img alt="破天荒な性格？サバイバー？中間子の取扱方、教えます" src="/static/50cc0440752353abef936b5c655fe3c3/f836f/entry420.jpg" width="150" height="113" class=""></div><div class="article-link__main">
 <div class="article-link__main__title">破天荒な性格？サバイバー？中間子の取扱方、教えます</div>
 <p class="description">皆さんの周りに中間子（真ん中っ子）っていますか？悲しいかな、中間子は予測不能、意味不明、よくわからん性格の人ばかりと思･･･</p>

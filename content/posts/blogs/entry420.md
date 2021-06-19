@@ -152,4 +152,17 @@ lead: ["皆さんの周りに中間子（真ん中っ子）っていますか？
 
 人と違ってもいいじゃないですか！変だと思う自分を認めて、もっと気楽に生きていきましょ。
 
+長女版も書きました！よろしければ併せてお読みください。
+
+<a class="article-link" href="/blogs/entry473/">
+<section><div class="article-link__img"><img alt="期待と責任？だから辛い長女の性格を考察してみた" src="/static/6845048f0b795caff2b647d6ba62b0da/f836f/entry473.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">期待と責任？だから辛い長女の性格を考察してみた</div>
+<p class="description">日本には辛そうに生きている長女が多い気がします。私は中間子として親の期待や責任から免れてきた子なので成長しきった今でも期待と呪縛･･･</p>
+<p>
+<time datetime="2021-06-18">2021.06.18</time>
+</p>
+</div>
+</section>
+</a>
+
 最後までお読みいただきありがとうございました。
