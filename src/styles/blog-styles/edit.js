@@ -74,38 +74,38 @@ export const Edit = styled.div`
       }
     }
     &--right {
-        display: flex;
-        margin: 3em 0;
-        flex-direction: row-reverse;
-        align-items: start;
-        p:first-child {
-            text-align: center;
-            width: 100px;
-            font-size: 1.3rem;
+      display: flex;
+      margin: 3em 0;
+      flex-direction: row-reverse;
+      align-items: start;
+      p:first-child {
+        text-align: center;
+        width: 100px;
+        font-size: 1.3rem;
 
-            img {
-                border-radius: 50%;
-                margin-bottom: 15px;
-            }
+        img {
+          border-radius: 50%;
+          margin-bottom: 15px;
         }
-        p:last-child {
-            width: calc(100% - 130px);
-            margin-right: 30px;
-            background: #eeeeee;
-            padding: 15px;
-            border-radius: 10px;
-            position: relative;
+      }
+      p:last-child {
+        width: calc(100% - 130px);
+        margin-right: 30px;
+        background: #eeeeee;
+        padding: 15px;
+        border-radius: 10px;
+        position: relative;
 
-            &::before {
-                right: -15px;
-                top: 15px;
-                position: absolute;
-                content: "";
-                border-left: 15px solid #eeeeee;
-                border-top: 10px solid transparent;
-                border-bottom: 10px solid transparent;
-            }
+        &::before {
+          right: -15px;
+          top: 15px;
+          position: absolute;
+          content: "";
+          border-left: 15px solid #eeeeee;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
         }
+      }
     }
   }
   h2 {
@@ -295,6 +295,10 @@ export const Edit = styled.div`
     position: relative;
     margin-top: 40px;
     border-radius: 15px;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
 
     &::before {
       @media screen and (min-width: 768px) {

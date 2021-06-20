@@ -54,17 +54,23 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        trackingIds: [
-          process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-          process.env.GOOGLE_ADSENSE_ID,
-        ],
-        pluginConfig: {
-          head: true,
-        },
+        id: process.env.GTM_ID,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: [
+    //       process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+    //       process.env.GOOGLE_ADSENSE_ID,
+    //     ],
+    //     pluginConfig: {
+    //       head: true,
+    //     },
+    //   },
+    // },
     // {
     //   resolve: "gatsby-plugin-google-analytics",
     //   options: {
@@ -72,20 +78,20 @@ module.exports = {
     //     head: true,
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: process.env.GOOGLE_ADSENSE_ID,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-hotjar-tracking`,
-      options: {
-        includeInDevelopment: false,
-        id: 2295862,
-        sv: 6,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-adsense`,
+    //   options: {
+    //     publisherId: process.env.GOOGLE_ADSENSE_ID,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-hotjar-tracking`,
+    //   options: {
+    //     includeInDevelopment: false,
+    //     id: 2295862,
+    //     sv: 6,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-fontawesome-css`,
     },
