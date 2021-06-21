@@ -212,7 +212,7 @@ const Form = () => {
               送信する
             </button>
           </p>
-          <div class="p-contact__item" className={ContactStyles.hidearea}>
+          <div className={ContactStyles.hidearea}>
             <label for="message"></label>
             <input type="text" name="bot-field" v-model="botField" />
           </div>
