@@ -321,12 +321,47 @@ function createProject() {
   }
 }
 ```
+## トリガーを設定して常に表示するようにする
+最後にスプシ起動時、常にメニューが表示されるように設定しておきます。
+
+トリガーから「トリガーを追加」を選びます。
+
+![](./images/2021/06/entry476-7.jpg)
+
+関数に`setMenu`をセット。あとは、デフォルトのままで大丈夫です。
+
+![](./images/2021/06/entry476-8.jpg)
+
 ## まとめ・少しコードを書けばGoogle系のツールは自動化可能！
 煩わしいなあって思っていたフォルダー作成などの処理がボタン操作で可能になりました！
 
 シートを見れば一目瞭然になりました。
 
 少ない人数で仕事していると雑務もすべて自分でしないといけないので、少しでも減らして本業に集中したいものです。
+
+<br>ァイルアップロードとリネームを自動化したい方はこちらもどうぞ！
+
+<a class="article-link" href="/blogs/entry475/">
+<section><div class="article-link__img"><img alt="【GAS】スプシからファイルアップロードし、ドライブに保存・UI編" src="/static/c54562085bca0c60e7c9a80b7acd3a29/f836f/entry475.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">【GAS】スプシからファイルアップロードし、ドライブに保存する・UI編</div>
+<p class="description">プログラミングで自動化してヒューマンエラーやルールのブレをを減らしたい！Google Apps Scriptを使ってスプシ（Googleスプレッドシート）から･･･</p>
+<p>
+<time datetime="2021-06-24">2021.06.24</time>
+</p>
+</div>
+</section>
+</a>
+
+<a class="article-link" href="/blogs/entry476/">
+<section><div class="article-link__img"><img alt="事例で紹介【GAS】スプシからファイルアップロードし、ドライブに保存・保存編" src="/static/b4bf1409820c6b3c49db0802a47b85d1/f836f/entry476.jpg" width="150" height="113" class=""></div><div class="article-link__main">
+<div class="article-link__main__title">事例で紹介【GAS】スプシからファイルアップロードし、ドライブに保存・保存編</div>
+<p class="description">プログラミングで自動化してヒューマンエラーやルールのブレをを減らしたい！Google Apps Scriptを使ってスプシ（Googleスプレッドシート）から･･･</p>
+<p>
+<time datetime="2021-06-24">2021.06.24</time>
+</p>
+</div>
+</section>
+</a>
 
 この記事が皆さんの事務作業時短の一助となれば幸いです。
 
