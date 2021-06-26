@@ -24,9 +24,10 @@ import {
 import CvArea from "../components/common/cvArea"
 
 const aboutPost = ({ data, location }) => {
-  const pageTitle = "銀ねこアトリエ管理人かみーゆを力一杯紹介します"
+  const pageTitle =
+    "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
   const description =
-    "「銀ねこアトリエ」は海外ノマドフロントエンドエンジニア・かみーゆの技術的なチャレンジや生活や生き方を綴った公開備忘録です。"
+    "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
   const modifiedDate = "2021-05-05"
   const perfectUrl = `https://ginneko-atelier.com/about`
   const img = data.allFile.edges[0].node.childImageSharp.fluid.src
