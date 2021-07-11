@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const CommonStyle = createGlobalStyle`
   body.no-scroll {
@@ -220,4 +220,4 @@ export const CommonStyle = createGlobalStyle`
     background: #fff;
   }
 
-`
+`;

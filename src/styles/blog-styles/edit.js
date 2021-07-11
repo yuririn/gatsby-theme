@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Edit = styled.div`
   line-height: 2;
@@ -33,6 +33,17 @@ export const Edit = styled.div`
       margin-left: 20px;
     }
   }
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    background: none;
+  }
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: #fff;
+  }
   .text-center {
     text-align: center;
   }
@@ -44,11 +55,15 @@ export const Edit = styled.div`
     display: flex;
     margin: 3em 0;
     align-items: start;
-
+    .gatsby-image-wrapper.gatsby-image-wrapper-constrained {
+      width: 100px;
+      height: 100px;
+    }
     p:first-child {
       text-align: center;
       width: 100px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      font-weight: bold;
 
       img {
         border-radius: 50%;
@@ -456,4 +471,4 @@ export const Edit = styled.div`
     margin: 0 auto;
     max-width: 300px;
   }
-`
+`;

@@ -1,8 +1,8 @@
-import React from "react"
+import React from "react";
 
-import FooterNav from "./footernav"
-import styled from "styled-components"
-import scrollTo from "gatsby-plugin-smoothscroll"
+import FooterNav from "./footernav";
+import styled from "styled-components";
+import scrollTo from "gatsby-plugin-smoothscroll";
 
 const Footer = ({ title }) => {
   return (
@@ -17,58 +17,55 @@ const Footer = ({ title }) => {
       </footer>
       <button onClick={() => scrollTo("#top")}></button>
     </FooterWrapper>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
 const FooterWrapper = styled.div`
   z-index: 10;
   position: relative;
-
   button {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      border: none;
-      width: 50px;
-      height: 50px;
-      background: rgba(255,255,255,.8);
-      border: 1px solid var(--color-blue);
-      border-radius: 50%;
-      content: '';
-      transition: .3s;
-
-      &::before {
-          display: block;
-          width: 10px;
-          height: 10px;
-          content: '';
-          position: absolute;
-          left: 50%;
-          transform: translate(-50%, -30%) rotate(45deg);
-          border-top: 2px solid var(--color-blue);
-          border-left: 2px solid var(--color-blue);
-          transition: .3s;
-        }
-        @media screen and (min-width: 768px) {
-            width: 70px;
-            height: 70px;
-            &:hover {
-                cursor: pointer;
-                background: var(--color-blue);
-                transform: translateY(-10px);
-                &::before {
-                    border-color: #fff;
-                }
-            }
-        }
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    border: none;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--color-blue);
+    border-radius: 50%;
+    content: "";
+    transition: 0.3s;
+    &::before {
+      display: block;
+      width: 10px;
+      height: 10px;
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -30%) rotate(45deg);
+      border-top: 2px solid var(--color-blue);
+      border-left: 2px solid var(--color-blue);
+      transition: 0.3s;
     }
+    @media screen and (min-width: 768px) {
+      width: 70px;
+      height: 70px;
+      &:hover {
+        cursor: pointer;
+        background: var(--color-blue);
+        transform: translateY(-10px);
+        &::before {
+          border-color: #fff;
+        }
+      }
+    }
+  }
   .l-footer {
     background: var(--color-blue);
     padding: 50px 0 30px;
     color: #fff;
     line-height: 1;
-
     &__copyright {
       font-size: 1.2rem;
       letter-spacing: 0.1em;
@@ -79,7 +76,6 @@ const FooterWrapper = styled.div`
   }
   .p-footerNav__item {
     margin-bottom: 25px;
-
     li + li {
       margin-top: 25px;
     }
@@ -91,7 +87,6 @@ const FooterWrapper = styled.div`
     position: relative;
     padding-left: 20px;
     text-decoration: none;
-
     &:before {
       transition: 0.3s;
       position: absolute;
@@ -107,28 +102,23 @@ const FooterWrapper = styled.div`
       transform: rotate(45deg);
     }
   }
-
   .p-footerNav__item--sns {
     margin-top: 40px;
     margin-bottom: 30px;
     text-align: center;
   }
-
   .p-footerNav__item--sns li {
     display: inline-block;
     margin: 0 20px;
-
     a {
       color: #fff;
     }
   }
-
   @media screen and (min-width: 768px) {
     .p-footerNav__item a {
       transition: 0.3s;
       &:hover {
         text-decoration: underline;
-
         &::before {
           left: 5px;
         }
@@ -138,10 +128,8 @@ const FooterWrapper = styled.div`
       margin-top: 0;
       margin-bottom: 0;
       text-align: left;
-
       a {
         transition: 0.3s;
-
         &:hover {
           opacity: 0.5;
         }
@@ -149,7 +137,6 @@ const FooterWrapper = styled.div`
       li {
         margin-right: 0;
         margin-left: 0;
-
         & + li {
           margin-left: 20px;
         }
@@ -160,4 +147,4 @@ const FooterWrapper = styled.div`
       justify-content: space-around;
     }
   }
-`
+`;

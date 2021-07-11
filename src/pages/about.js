@@ -1,41 +1,40 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import { Article } from "../styles/blog-styles/article"
-import { Header } from "../styles/blog-styles/header"
-import { Sidebar } from "../styles/blog-styles/sidebar"
-import { Edit } from "../styles/blog-styles/edit"
-import styled from "styled-components"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Image from "../components/image"
-import FovoriteList from "../components/common/favorites"
-import { siteMetadata } from "../../gatsby-config"
+import { Article } from "../styles/blog-styles/article";
+import { Header } from "../styles/blog-styles/header";
+import { Sidebar } from "../styles/blog-styles/sidebar";
+import { Edit } from "../styles/blog-styles/edit";
+import styled from "styled-components";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import Img from "../components/img";
+import FovoriteList from "../components/common/favorites";
+import { siteMetadata } from "../../gatsby-config";
 
-import Search from "../components/search"
-import BreadCrumbList from "../components/common/breadCrumbList"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import BreadCrumbList from "../components/common/bread-crumb-list";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
   faInstagram,
   faYoutube,
   faSlideshare,
-} from "@fortawesome/free-brands-svg-icons"
-import CvArea from "../components/common/cvArea"
+} from "@fortawesome/free-brands-svg-icons";
+import CvArea from "../components/common/cv-area";
 
 const aboutPost = ({ data, location }) => {
   const pageTitle =
-    "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
+    "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します";
   const description =
-    "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
-  const modifiedDate = "2021-05-05"
-  const perfectUrl = `https://ginneko-atelier.com/about`
-  const img = data.allFile.edges[0].node.childImageSharp.fluid.src
-  console.log(data)
+    "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。";
+  const modifiedDate = "2021-05-05";
+  const perfectUrl = `https://ginneko-atelier.com/about`;
+  const img = data.allFile.edges[0].node.childImageSharp.fluid.src;
+  console.log(data);
 
   return (
     <Layout location="about" title="銀ねこアトリエ">
-      <SEO
+      <Seo
         title={pageTitle}
         description={description}
         location={location}
@@ -49,7 +48,7 @@ const aboutPost = ({ data, location }) => {
           <h1 className="p-pageHeader__heading">About Me</h1>
           <p className="p-pageHeader__content">かみーゆってどんな人？</p>
         </div>
-        <Image filename="common/about.jpg" className="p-pageHeader__img" />
+        <Img filename="common/about.jpg" className="p-pageHeader__img" />
       </div>
       <div className="l-container">
         <BreadCrumbList current={pageTitle} />
@@ -69,7 +68,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="common/camille.jpg" />
+                    <Img filename="common/camille.jpg" />
                     かみーゆ
                   </p>
                   <p>
@@ -105,7 +104,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-y.jpg" />
+                    <Img filename="about/camille-y.jpg" />
                     かみーゆ（20代）
                   </p>
                   <p>そうだ！！紙に描かなくても爪に描けばいいじゃん！</p>
@@ -116,7 +115,7 @@ const aboutPost = ({ data, location }) => {
                   2021で入賞することもできました。まあまあ頑張りました。
                 </p>
                 <p>
-                  <Image filename="about/about1.jpg" />
+                  <Img filename="about/about1.jpg" />
                 </p>
                 <p>
                   <small>
@@ -141,7 +140,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-y.jpg" />
+                    <Img filename="about/camille-y.jpg" />
                     かみーゆ（20代）
                   </p>
                   <p>
@@ -156,7 +155,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-y.jpg" />
+                    <Img filename="about/camille-y.jpg" />
                     かみーゆ（20代）
                   </p>
                   <p>
@@ -199,7 +198,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-y.jpg" />
+                    <Img filename="about/camille-y.jpg" />
                     かみーゆ（20代）
                   </p>
                   <p>
@@ -214,7 +213,7 @@ const aboutPost = ({ data, location }) => {
                 <p>職業訓練校を経てIT業界へ転身しました。</p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-m.jpg" />
+                    <Img filename="about/camille-m.jpg" />
                     かみーゆ（30代）
                   </p>
                   <p>
@@ -235,7 +234,7 @@ const aboutPost = ({ data, location }) => {
                 <h3>再び、会社員へ</h3>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-m.jpg" />
+                    <Img filename="about/camille-m.jpg" />
                     かみーゆ（30代）
                   </p>
                   <p>
@@ -248,7 +247,7 @@ const aboutPost = ({ data, location }) => {
                   フリーランスで修羅場をくぐったおかげで力はつき、Web制作会社のフロントエンドエンジニアでテクニカルディレクターとして採用され、再び会社員として働くことになりました。
                 </p>
                 <p>
-                  <Image filename="about/about2.jpg" />
+                  <Img filename="about/about2.jpg" />
                 </p>
                 <p>子どもとたくさん思い出も作ることができました。</p>
                 <p>
@@ -256,7 +255,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-m.jpg" />
+                    <Img filename="about/camille-m.jpg" />
                     かみーゆ（30代）
                   </p>
                   <p>
@@ -301,7 +300,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-o.jpg" />
+                    <Img filename="about/camille-o.jpg" />
                     かみーゆ（40代）
                   </p>
                   <p>
@@ -329,7 +328,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="about/camille-o.jpg" />
+                    <Img filename="about/camille-o.jpg" />
                     かみーゆ（40代）
                   </p>
                   <p>
@@ -380,7 +379,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="common/camille.jpg" />
+                    <Img filename="common/camille.jpg" />
                     かみーゆ
                   </p>
                   <p>理不尽だなぁ。もっと若者にチャンスがあったらなぁ。</p>
@@ -388,7 +387,7 @@ const aboutPost = ({ data, location }) => {
                 <p>そんな時、同じ思いの仲間も見つかりました。</p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="common/camille.jpg" />
+                    <Img filename="common/camille.jpg" />
                     かみーゆ
                   </p>
                   <p>
@@ -453,7 +452,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="common/camille.jpg" />
+                    <Img filename="common/camille.jpg" />
                     かみーゆ
                   </p>
                   <p>
@@ -474,7 +473,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <div class="msg-baloon">
                   <p>
-                    <Image filename="common/camille.jpg" />
+                    <Img filename="common/camille.jpg" />
                     かみーゆ
                   </p>
                   <p>
@@ -507,7 +506,7 @@ const aboutPost = ({ data, location }) => {
                   みなさんに寄り添い、ホームページ作りだけではなくIT技術でお悩みを解決しつつ、少しでもお役に立てるように頑張ります。
                 </p>
                 <h2>海外ノマドエンジニア・かみーゆはこんな人</h2>
-                <Image filename="common/camille.jpg" className="prfImg" />
+                <Img filename="common/camille.jpg" className="prfImg" />
                 <p className="text-center">
                   <span className="bold">かみーゆ/ 神守　由理子</span>
                   <br />
@@ -559,7 +558,7 @@ const aboutPost = ({ data, location }) => {
                     </li>
                   </ul>
                   <p className="w300">
-                    <Image filename="about/about3.jpg" />
+                    <Img filename="about/about3.jpg" />
                   </p>
                 </div>
                 <CvArea></CvArea>
@@ -572,17 +571,16 @@ const aboutPost = ({ data, location }) => {
           <section className="p-section">
             <h2 className="c-heading--lg--side">ジャンル</h2>
             <ul className="sideCateList">
-              {siteMetadata.category.map(item => {
+              {siteMetadata.category.map((item) => {
                 return (
                   <li>
                     <Link to={`/blogs/${item.slug}/`}>{item.name}</Link>
                   </li>
-                )
+                );
               })}
             </ul>
           </section>
           <div class="inner">
-            <Search />
             <ul class="side-banner">
               <li>
                 <Link
@@ -590,7 +588,7 @@ const aboutPost = ({ data, location }) => {
                   target="_blank"
                   rel="noopener"
                 >
-                  <Image filename="common/twitter-banner.jpg" />
+                  <Img filename="common/twitter-banner.jpg" />
                 </Link>
               </li>
               <li>
@@ -599,7 +597,7 @@ const aboutPost = ({ data, location }) => {
                   target="_blank"
                   rel="noopener"
                 >
-                  <Image filename="common/youtube-banner.jpg" />
+                  <Img filename="common/youtube-banner.jpg" />
                 </Link>
               </li>
               <li class="iframe">
@@ -632,10 +630,10 @@ const aboutPost = ({ data, location }) => {
         </div>
       </Body>
     </Layout>
-  )
-}
+  );
+};
 
-export default aboutPost
+export default aboutPost;
 export const portfolioQuery = graphql`
   query {
     site {
@@ -662,7 +660,7 @@ export const portfolioQuery = graphql`
       }
     }
   }
-`
+`;
 
 const Body = styled.div`
   @media screen and (min-width: 768px) {
@@ -672,4 +670,4 @@ const Body = styled.div`
     margin: 0 auto;
     flex-wrap: wrap;
   }
-`
+`;

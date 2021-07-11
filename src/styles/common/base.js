@@ -1,7 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const BaseStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
   /*
     html5doctor.com Reset Stylesheet
     v1.6.1
@@ -128,4 +127,4 @@ export const BaseStyle = createGlobalStyle`
       height: auto;
       vertical-align: bottom;
   }
-`
+`;

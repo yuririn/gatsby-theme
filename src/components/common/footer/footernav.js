@@ -1,13 +1,13 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
   faInstagram,
   faYoutube,
   faSlideshare,
-} from "@fortawesome/free-brands-svg-icons"
+} from "@fortawesome/free-brands-svg-icons";
 
 const footernav = () => {
   return (
@@ -76,7 +76,7 @@ const footernav = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default footernav
+export default footernav;

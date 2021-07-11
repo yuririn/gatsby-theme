@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Header = styled.div`
   .c-article {
@@ -18,31 +18,30 @@ export const Header = styled.div`
         content: "";
         display: block;
         position: absolute;
-        background: url(/static/f06cabea092b70c1fc4d476ab9c36647/14b42/bg-main.jpg)
-          50% / cover;
+        background: url(/images/bg-main.webp) 50% / cover;
       }
 
       &--cms:before {
-        background-image: url(/static/9fb9fa4df8d1d3da0c6fe1d74cd70712/2244e/genre-cms.jpg);
+        background-image: url(/images//genre-cms.webp);
       }
 
       &--web-developer:before {
-        background-image: url(/static/f684234481e7fc4c2e76afafc9f6f43c/2244e/genre-web-developer.jpg);
+        background-image: url(/images/genre-web-developer.webp);
       }
       &--ginneko-tsuredure:before {
-        background-image: url(/static/080974e034b1312f6e2e3696e8edd54c/2244e/genre-ginneko-tsuredure.jpg);
+        background-image: url(/images/genre-ginneko-tsuredure.webp);
       }
       &--cms:before {
-        background-image: url(/static/9fb9fa4df8d1d3da0c6fe1d74cd70712/2244e/genre-cms.jpg);
+        background-image: url(/images/genre-cms.webp);
       }
       &--seo:before {
-        background-image: url(/static/0f5e983805a492892296241cee4f8db1/2244e/genre-seo.jpg);
+        background-image: url(/images/genre-seo.webp);
       }
       &--career:before {
-        background-image: url(/static/3bdad4eadd3fc56e6dc0a573d8195a88/2244e/genre-career.jpg);
+        background-image: url(/images/genre-career.webp);
       }
       &--overseas-freelancing:before {
-        background-image: url(/static/7dc6e0658207e9c08aee9a9e6aea2828/2244e/genre-overseas-freelancing.jpg);
+        background-image: url(/images/genre-overseas-freelancing.webp);
       }
     }
 
@@ -74,4 +73,4 @@ export const Header = styled.div`
       }
     }
   }
-`
+`;
