@@ -20,13 +20,11 @@ const category = ({ pageContext, data, location }) => {
 
   // console.log(siteMetadata.category)
   let cateName = "";
-  let cateEnName = "";
   let cateDescription = "";
   siteMetadata.category.forEach((cate) => {
     if (cate.slug === cateSlug) {
       cateDescription = cate.description;
       cateName = cate.name;
-      cateEnName = cate.enName;
     }
   });
   return (

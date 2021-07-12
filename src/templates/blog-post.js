@@ -27,15 +27,6 @@ import Tags from "../components/blogs/tag-list";
 import Genre from "../components/common/genre";
 import ProfBig from "../components/common/profile";
 
-import rehypeReact from "rehype-react";
-import Custom from "../components/blogs/blog-parts/custom";
-export const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: {
-    custom: Custom,
-  },
-}).Compiler;
-
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
