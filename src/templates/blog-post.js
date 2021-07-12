@@ -26,6 +26,18 @@ import FovoriteList from "../components/common/favorites";
 import Tags from "../components/blogs/tag-list";
 import Genre from "../components/common/genre";
 import ProfBig from "../components/common/profile";
+<<<<<<< HEAD
+=======
+
+import rehypeReact from "rehype-react";
+import Custom from "../components/blogs/blog-parts/custom";
+export const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: {
+    custom: Custom,
+  },
+}).Compiler;
+>>>>>>> 4884dd2f38be48520e148130fe793cd7076bebb8
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
