@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 
 import Seo from "../components/seo";
 
@@ -17,7 +17,6 @@ import Voice from "./portfolioParts/voice";
 import Works from "./portfolioParts/works";
 import Profile from "./portfolioParts/profile";
 import Contact from "./portfolioParts/contact";
-import firstview from "../components/top-first-view";
 
 const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"];

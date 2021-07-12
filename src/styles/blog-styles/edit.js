@@ -13,6 +13,7 @@ export const Edit = styled.div`
     border-radius: 50%;
     margin-bottom: 20px;
     margin: 0 auto 15px;
+    display: block;
   }
   .about-sns {
     display: flex;

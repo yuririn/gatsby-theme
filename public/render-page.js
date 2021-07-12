@@ -6353,8 +6353,8 @@ var plugins = [{
     "plugins": []
   }
 }, {
-  name: 'gatsby-plugin-sitemap',
-  plugin: __webpack_require__(/*! ./node_modules/gatsby-plugin-sitemap/gatsby-ssr */ "./node_modules/gatsby-plugin-sitemap/gatsby-ssr.js"),
+  name: 'gatsby-plugin-advanced-sitemap',
+  plugin: __webpack_require__(/*! ./node_modules/gatsby-plugin-advanced-sitemap/gatsby-ssr */ "./node_modules/gatsby-plugin-advanced-sitemap/gatsby-ssr.js"),
   options: {
     "plugins": [],
     "output": "/sitemap.xml",
@@ -6367,7 +6367,7 @@ var plugins = [{
     "plugins": [],
     "query": "\n          {\n            site {\n              siteMetadata {\n                title\n                description\n                siteUrl\n                site_url: siteUrl\n              }\n            }\n          }\n        ",
     "feeds": [{
-      "query": "\n              {\n                site {\n                  siteMetadata {\n                    title\n                    siteUrl\n                  }\n                }\n                allFile(\n                  filter: {\n                    sourceInstanceName: { eq: \"assets\" }\n                  }\n                ) {\n                  edges {\n                    node {\n                      name\n                      relativePath\n                      childImageSharp {\n                        sizes {\n                          src\n                        }\n                      }\n                    }\n                  }\n                }\n                allMarkdownRemark(\n                  limit: 20\n                  sort: { order: DESC, fields: [frontmatter___date] }\n                  filter: { frontmatter: { pagetype: { eq: \"blog\" } } }\n                ) {\n                  edges {\n                    node {\n                      html\n                      fields {\n                        slug\n                      }\n                      frontmatter {\n                        title\n                        description\n                        date\n                        hero\n                      }\n                    }\n                  }\n                }\n              }\n            ",
+      "query": "\n              {\n                site {\n                  siteMetadata {\n                    title\n                    siteUrl\n                  }\n                }\n                allFile(\n                  filter: {\n                    sourceInstanceName: { eq: \"assets\" }\n                  }\n                ) {\n                  edges {\n                    node {\n                      name\n                      relativePath\n                      childImageSharp {\n                        fixed {\n                          src\n                        }\n                      }\n                    }\n                  }\n                }\n                allMarkdownRemark(\n                  limit: 20\n                  sort: { order: DESC, fields: [frontmatter___date] }\n                  filter: { frontmatter: { pagetype: { eq: \"blog\" } } }\n                ) {\n                  edges {\n                    node {\n                      html\n                      fields {\n                        slug\n                      }\n                      frontmatter {\n                        title\n                        description\n                        date\n                        hero\n                      }\n                    }\n                  }\n                }\n              }\n            ",
       "output": "/rss.xml",
       "title": "銀ねこアトリエ RSS Feed",
       "feed_url": "https://ginneko-atelier.com/rss.xml"
@@ -7813,6 +7813,79 @@ function stripPrefix(str, prefix = ``) {
 
 /***/ }),
 
+/***/ "./node_modules/gatsby-plugin-advanced-sitemap/defaults.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/gatsby-plugin-advanced-sitemap/defaults.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = void 0; // These are the default options which can be overwritten
+// in gatsby-config.js
+
+var defaultOptions = {
+  query: "\n    {\n        allSitePage {\n            edges {\n                node {\n                    id\n                    slug: path\n                    url: path\n                }\n            }\n        }\n    }",
+  mapping: {
+    allSitePage: {
+      sitemap: "pages"
+    }
+  },
+  output: "/sitemap.xml",
+  exclude: ["/dev-404-page", "/404", "/404.html", "/offline-plugin-app-shell-fallback"],
+  createLinkInHead: true
+};
+var _default = defaultOptions;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/gatsby-plugin-advanced-sitemap/gatsby-ssr.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/gatsby-plugin-advanced-sitemap/gatsby-ssr.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+
+var _gatsby = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
+
+var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults */ "./node_modules/gatsby-plugin-advanced-sitemap/defaults.js"));
+
+exports.onRenderBody = function (_ref, pluginOptions) {
+  var setHeadComponents = _ref.setHeadComponents;
+
+  var _defaultOptions$plugi = (0, _extends2.default)({}, _defaults.default, pluginOptions),
+      output = _defaultOptions$plugi.output,
+      createLinkInHead = _defaultOptions$plugi.createLinkInHead;
+
+  if (!createLinkInHead) {
+    return;
+  }
+
+  if (output.charAt(0) !== "/") {
+    output = "/" + output;
+  }
+
+  setHeadComponents([/*#__PURE__*/_react.default.createElement("link", {
+    key: "gatsby-plugin-advanced-sitemap",
+    rel: "sitemap",
+    type: "application/xml",
+    href: (0, _gatsby.withPrefix)(output)
+  })]);
+};
+
+/***/ }),
+
 /***/ "./node_modules/gatsby-plugin-feed/gatsby-ssr.js":
 /*!*******************************************************!*\
   !*** ./node_modules/gatsby-plugin-feed/gatsby-ssr.js ***!
@@ -8407,93 +8480,6 @@ var onRenderBody = function onRenderBody(_ref) {
 };
 
 exports.onRenderBody = onRenderBody;
-
-/***/ }),
-
-/***/ "./node_modules/gatsby-plugin-sitemap/gatsby-ssr.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/gatsby-plugin-sitemap/gatsby-ssr.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var React = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
-
-var _gatsby = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
-
-var _path = __webpack_require__(/*! path */ "path");
-
-function _getRequireWildcardCache(nodeInterop) {
-  if (typeof WeakMap !== "function") return null;
-  var cacheBabelInterop = new WeakMap();
-  var cacheNodeInterop = new WeakMap();
-  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
-    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-  })(nodeInterop);
-}
-
-function _interopRequireWildcard(obj, nodeInterop) {
-  if (!nodeInterop && obj && obj.__esModule) {
-    return obj;
-  }
-
-  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
-    return {
-      default: obj
-    };
-  }
-
-  var cache = _getRequireWildcardCache(nodeInterop);
-
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-
-  for (var key in obj) {
-    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-
-  newObj.default = obj;
-
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-
-  return newObj;
-} // TODO: Remove for v3 - Fix janky path/asset prefixing
-
-
-var withPrefix = _gatsby.withAssetPrefix || _gatsby.withPrefix;
-
-exports.onRenderBody = function (_ref, pluginOptions) {
-  var setHeadComponents = _ref.setHeadComponents;
-  var output = pluginOptions.output,
-      createLinkInHead = pluginOptions.createLinkInHead;
-
-  if (!createLinkInHead) {
-    return;
-  }
-
-  setHeadComponents([/*#__PURE__*/React.createElement("link", {
-    key: "gatsby-plugin-sitemap",
-    rel: "sitemap",
-    type: "application/xml",
-    href: withPrefix(_path.posix.join(output, "/sitemap-index.xml"))
-  })]);
-};
 
 /***/ }),
 

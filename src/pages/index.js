@@ -6,7 +6,7 @@ import Seo from "../components/seo";
 
 import Img from "../components/img";
 import FirstView from "../components/top-first-view";
-// import Search from "../components/search/";
+import Search from "../components/search/";
 import styled from "styled-components";
 import Tags from "../components/blogs/tag-list";
 import FovoriteList from "../components/common/favorites";
@@ -116,15 +116,20 @@ const BlogIndex = ({ data, location }) => {
                 );
               })}
             </div>
+            <p className="u-text-center u-mblg">
+              <Link to="/blogs/" className="p-btn--detail">
+                Read More Blog
+              </Link>
+            </p>
           </section>
-          <p className="u-text-center u-mblg">
-            <Link to="/blogs/" className="p-btn--detail">
-              Read More Blog
-            </Link>
-          </p>
           <FovoriteList type="web" />
           <FovoriteList type="life" />
           <FovoriteList type="career" />
+
+          <section className="p-section">
+            <h2 className="c-heading--lg">記事を検索する</h2>
+            <Search />
+          </section>
           <div className="l-container">
             <section className="p-box--gray u-text-center">
               <h2 className="c-heading--lg">人気のタグ</h2>

@@ -34,7 +34,7 @@ const SEO = ({
       }
     `
   );
-  console.log(location);
+
   const domain = config.siteMetadata.siteUrl;
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
@@ -46,6 +46,15 @@ const SEO = ({
   const isRoot = `${domain}/` === blogUrl ? true : false;
   let page = isRoot ? "WebSite" : "WebPage";
   const modified = modifieddate ? modifieddate : date;
+
+  let portfolio = false;
+  if (location) {
+    for (let i in location) {
+      if (i === "pathname") {
+        if (location.pathname === "/portfolio/") portfolio = true;
+      }
+    }
+  }
 
   if (type === "archive" || type === "blogs") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "");
@@ -221,7 +230,7 @@ const SEO = ({
       ].concat(meta)}
     >
       <link rel="canonical" href={blogUrl}></link>
-      {location.pathname === "/portfolio/" ? (
+      {portfolio ? (
         <link
           href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap"
           rel="stylesheet"

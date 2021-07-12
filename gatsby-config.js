@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `銀ねこアトリエ`,
+    siteUrl: `https://ginneko-atelier.com/`,
     author: {
       name: `かみーゆ`,
       summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
@@ -173,9 +174,9 @@ module.exports = {
     },
     `gatsby-plugin-twitter`,
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
-        output: `/sitemap.xml`,
+        output: "/sitemap.xml",
         exclude: [
           `/blogs/page/*`,
           `/blogs/tags/*/page/*`,
@@ -208,6 +209,9 @@ module.exports = {
                     edge.node.frontmatter.hero
                   );
                 });
+
+                const imgSrc = image.node.childImageSharp.fixed.src;
+
                 return Object.assign({}, edge.node.frontmatter, {
                   title: edge.node.frontmatter.title,
                   description: edge.node.frontmatter.description,
@@ -215,20 +219,16 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   enclosure: {
-                    url:
-                      site.siteMetadata.siteUrl +
-                      image.node.childImageSharp.sizes.src,
+                    url: site.siteMetadata.siteUrl + imgSrc,
                     size: 1200,
-                    type: image.node.childImageSharp.sizes.src.includes("png")
-                      ? "image/png"
-                      : "image/jpeg",
+                    type: imgSrc.includes("png") ? "image/png" : "image/jpeg",
                   },
                   custom_elements: [
                     {
                       "content:encoded":
                         '<p><img src="' +
                         site.siteMetadata.siteUrl +
-                        image.node.childImageSharp.sizes.src +
+                        imgSrc +
                         '" width="1200" height="900" alt="' +
                         edge.node.frontmatter.title +
                         '"></p>' +
@@ -256,7 +256,7 @@ module.exports = {
                       name
                       relativePath
                       childImageSharp {
-                        sizes {
+                        fixed {
                           src
                         }
                       }
