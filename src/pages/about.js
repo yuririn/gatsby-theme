@@ -613,7 +613,7 @@ const aboutPost = ({ data, location }) => {
             <h2>お仕事のご依頼</h2>
             <p class="u-text-center">
               <a class="p-btn--detail" href="/contact/">
-                お問い合わせ
+                相談する
               </a>
             </p>
             <p class="u-text-center">

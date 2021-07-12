@@ -72,7 +72,7 @@ const bar = ({ cateId, title, tags }) => {
         <h2>お仕事のご依頼</h2>
         <p className="u-text-center">
           <a className="p-btn--detail" href="/contact/">
-            お問い合わせ
+            相談する
           </a>
         </p>
         <p className="u-text-center">
