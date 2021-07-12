@@ -1,13 +1,14 @@
 module.exports = {
   siteMetadata: {
     title: `銀ねこアトリエ`,
+    siteUrl: `https://ginneko-atelier.com/`,
     author: {
       name: `かみーゆ`,
       summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
     },
     description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
     siteUrl: `https://ginneko-atelier.com`,
-    image: `https://ginneko-atelier.com/static/734c25c8328e14e4d8df99abaea453a2/ee604/newogp.png`,
+    image: `https://ginneko-atelier.com/images/newogp.png`,
     social: {
       twitter: `lirioL`,
       instagram: `yurico.k`,
@@ -59,42 +60,10 @@ module.exports = {
         id: process.env.GTM_ID,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-gtag`,
-    //   options: {
-    //     trackingIds: [
-    //       process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-    //       process.env.GOOGLE_ADSENSE_ID,
-    //     ],
-    //     pluginConfig: {
-    //       head: true,
-    //     },
-    //   },
-    // },
-    // {
-    //   resolve: "gatsby-plugin-google-analytics",
-    //   options: {
-    //     trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-    //     head: true,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-google-adsense`,
-    //   options: {
-    //     publisherId: process.env.GOOGLE_ADSENSE_ID,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-hotjar-tracking`,
-    //   options: {
-    //     includeInDevelopment: false,
-    //     id: 2295862,
-    //     sv: 6,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-fontawesome-css`,
     },
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -117,13 +86,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 630,
-            },
-          },
-
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              withWebp: true,
             },
           },
           {
@@ -134,48 +97,48 @@ module.exports = {
             },
           },
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              target: "_blank",
-              rel: "nofollow nopener",
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          "gatsby-remark-prismjs-title",
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: true,
-              noInlineHighlight: false,
-            },
-          },
+          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
       },
     },
+    `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: `gatsby-plugin-sharp`,
       options: {
-        output: `/sitemap.xml`,
-        exclude: [
-          `/blogs/page/*`,
-          `/blogs/tags/*/page/*`,
-          `/blogs/*/page/*`,
-          `/contact/thanks/`,
-        ],
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 40,
+          breakpoints: [375, 750, 1080],
+          backgroundColor: `transparent`,
+        },
       },
     },
+    "gatsby-plugin-webpack-bundle-analyser-v2",
+    {
+      resolve: `gatsby-plugin-lodash`,
+      options: {
+        disabledFeatures: [`shorthands`, `cloning`],
+      },
+    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: `ADD YOUR TRACKING ID HERE`,
+    //   },
+    // },
 
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `銀ねこアトリエ`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
@@ -184,13 +147,44 @@ module.exports = {
         icon: `content/assets/common/icon.png`,
       },
     },
+    "gatsby-remark-prismjs-title",
+    {
+      resolve: `gatsby-remark-prismjs`,
+      options: {
+        classPrefix: "language-",
+        inlineCodeMarker: null,
+        aliases: {},
+        showLineNumbers: true,
+        noInlineHighlight: false,
+      },
+    },
+    `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-remark-external-links",
+      options: {
+        target: "_blank",
+        rel: "nofollow nopener",
+      },
+    },
     `gatsby-plugin-twitter`,
-    `gatsby-plugin-smoothscroll`,
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        output: "/sitemap.xml",
+        exclude: [
+          `/blogs/page/*`,
+          `/blogs/tags/*/page/*`,
+          `/blogs/*/page/*`,
+          `/contact/thanks/`,
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -209,12 +203,15 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark, allFile } }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                const image = allFile.edges.find(n => {
+              return allMarkdownRemark.edges.map((edge) => {
+                const image = allFile.edges.find((n) => {
                   return n.node.relativePath.includes(
                     edge.node.frontmatter.hero
-                  )
-                })
+                  );
+                });
+
+                const imgSrc = image.node.childImageSharp.fixed.src;
+
                 return Object.assign({}, edge.node.frontmatter, {
                   title: edge.node.frontmatter.title,
                   description: edge.node.frontmatter.description,
@@ -222,28 +219,24 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   enclosure: {
-                    url:
-                      site.siteMetadata.siteUrl +
-                      image.node.childImageSharp.sizes.src,
+                    url: site.siteMetadata.siteUrl + imgSrc,
                     size: 1200,
-                    type: image.node.childImageSharp.sizes.src.includes("png")
-                      ? "image/png"
-                      : "image/jpeg",
+                    type: imgSrc.includes("png") ? "image/png" : "image/jpeg",
                   },
                   custom_elements: [
                     {
                       "content:encoded":
                         '<p><img src="' +
                         site.siteMetadata.siteUrl +
-                        image.node.childImageSharp.sizes.src +
+                        imgSrc +
                         '" width="1200" height="900" alt="' +
                         edge.node.frontmatter.title +
                         '"></p>' +
                         edge.node.html,
                     },
                   ],
-                })
-              })
+                });
+              });
             },
             query: `
               {
@@ -263,7 +256,7 @@ module.exports = {
                       name
                       relativePath
                       childImageSharp {
-                        sizes {
+                        fixed {
                           src
                         }
                       }
@@ -300,4 +293,4 @@ module.exports = {
       },
     },
   ],
-}
+};

@@ -1,46 +1,70 @@
-import React from "react"
-import FearureStyles from "./css/feature.module.css"
-import CommonStyles from "./css/common.module.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFistRaised } from "@fortawesome/free-solid-svg-icons"
+import React from "react";
 
-const Fearure = () => (
-  <section className="l-container">
-    <header className={CommonStyles.headingMd}>
-      <h3>
-        <FontAwesomeIcon icon={faFistRaised} /> こんなことできるよ
-      </h3>
-    </header>
-    <p className={CommonStyles.center}>
-      得意、不得意は別としてできることを
-      <strong className={CommonStyles.strong}>タグクラウド風</strong>
-      にまとめておきます。
-    </p>
-    <ul className={FearureStyles.recomendPoint}>
-      <li className={FearureStyles.S}>イラスト</li>
-      <li className={FearureStyles.S}>画像加工</li>
-      <li>Adobe XD</li>
-      <li className={FearureStyles.SS}>Adobe Illustorator</li>
-      <li className={FearureStyles.SS}>Adobe Photoshop</li>
-      <li className={FearureStyles.LL}>HTML/CSSのコーディング</li>
-      <li className={FearureStyles.L}>Sass(SCSS)</li>
-      <li className={FearureStyles.L}>Pug(旧：Jade)</li>
-      <li>Gulp</li>
-      <li>バニラJS</li>
-      <li className={FearureStyles.S}>VueJS</li>
-      <li>WordPressサイト構築</li>
-      <li className={FearureStyles.L}>concrete5サイト構築</li>
-      <li className={FearureStyles.SS}>Vagrant</li>
-      <li className={FearureStyles.L}>メイク</li>
-      <li className={FearureStyles.LL}>ネイル（ネイリスト検定1級）</li>
-      <li className={FearureStyles.L}>おいしいハンバーク料理</li>
-      <li>ブリッジ</li>
-      <li>前後開脚</li>
-      <li className={FearureStyles.LL}>プランク２分以上</li>
-      <li>出来損ないの転回</li>
-      <li>ビサヤと英語をブレンドしたジョーク</li>
-    </ul>
-  </section>
-)
+import styled from "styled-components";
 
-export default Fearure
+const Fearure = () => {
+  return (
+        <Lists>
+            <li className="S">イラスト</li>
+            <li className="S">画像加工</li>
+            <li>Adobe XD</li>
+            <li className="SS">Adobe Illustorator</li>
+            <li className="SS">Adobe Photoshop</li>
+            <li className="LL">HTML/CSSのコーディング</li>
+            <li className="L">Sass(SCSS)</li>
+            <li className="L">Pug(旧：Jade)</li>
+            <li>Gulp</li>
+            <li>バニラJS</li>
+            <li className="S">VueJS</li>
+            <li>WordPressサイト構築</li>
+            <li className="L">concrete5サイト構築</li>
+            <li className="SS">Vagrant</li>
+            <li className="L">メイク</li>
+            <li className="LL">ネイル（ネイリスト検定1級）</li>
+            <li className="L">おいしいハンバーク料理</li>
+            <li>ブリッジ</li>
+            <li>前後開脚</li>
+            <li className="LL">プランク２分以上</li>
+            <li>出来損ないの転回</li>
+            <li>ビサヤと英語をブレンドしたジョーク</li>
+        </Lists>
+
+  );
+};
+
+export default Fearure;
+
+const Lists = styled.ul`
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px 20px;
+    margin-top: 30px;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    li {
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 10px;
+        &::after {
+            content: ',';
+        }
+
+        &:last-child::after {
+            content: none;
+        }
+
+        &.SS {
+            font-size: 0.7em;
+        }
+        &.S {
+            font-size: 0.9em;
+        }
+        &.LL {
+            font-size: 1.3em;
+        }
+        &.L {
+            font-size: 1.1em;
+        }
+    }
+`
+

@@ -1,7 +1,7 @@
-import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
-import Image from "../image"
-import styled from "styled-components"
+import React from "react";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import Img from "../img";
+import styled from "styled-components";
 
 const favoritesList = {
   web: {
@@ -16,96 +16,92 @@ const favoritesList = {
     title: "キャリアアップ・転職に関する人気の記事",
     items: ["460", "369", "461", "409", "425"],
   },
-}
+};
 
 const List = ({ item, url }) => {
-  const { title, date, hero } = item
+  const { title, hero } = item;
   return (
     <article className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small">
       <Link className="p-entryCard__img" to={url}>
         {hero ? (
-          <Image filename={hero} />
+          <Img filename={hero} alt={title} />
         ) : (
-          <Image filename="common/dummy.png" />
+          <Img filename="common/dummy.png" alt="" />
         )}
       </Link>
       <Link to={url} className="p-entryCard__body">
         <h3 className="p-entryCard__heading">{title}</h3>
       </Link>
     </article>
-  )
-}
+  );
+};
 
-export default ({ type }) => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          allMarkdownRemark {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                id
-                frontmatter {
-                  date(formatString: "YYYY.MM.DD")
-                  hero
-                  title
-                  cateId
-                  tags
-                }
+const Faves = ({ type }) => {
+  const { allMarkdownRemark } = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              id
+              frontmatter {
+                cateId
+                hero
+                date(formatString: "YYYY.MM.DD")
+                title
+                tags
+                pagetype
               }
             }
           }
         }
-      `}
-      render={data => {
-        const { title, items } = favoritesList[type]
-        let posts = []
+      }
+    `
+  );
+  const { title, items } = favoritesList[type];
+  let posts = [];
 
-        for (const item of items) {
-          if (item) {
-            const post = data.allMarkdownRemark.edges.filter(post => {
-              return post.node.fields.slug === `/blogs/entry${item}/`
-            })
-            // 配列を結合
-            posts = [...posts, ...post]
-          }
-        }
+  for (const item of items) {
+    if (item) {
+      const post = allMarkdownRemark.edges.filter((post) => {
+        return post.node.fields.slug === `/blogs/entry${item}/`;
+      });
+      // 配列を結合
+      posts = [...posts, ...post];
+    }
+  }
 
-        return (
-          <section className="p-section">
-            <h2 className="c-heading--lg">{title}</h2>
-            <Favorite>
-              <div className="c-grid add-numbering">
-                {posts.map(item => {
-                  return (
-                    <List
-                      item={item.node.frontmatter}
-                      url={item.node.fields.slug}
-                      key={item.node.fields.slug}
-                    />
-                  )
-                })}
-              </div>
-            </Favorite>
-          </section>
-        )
-      }}
-    />
-  )
-}
+  return (
+    <section className="p-section">
+      <h2 className="c-heading--lg">{title}</h2>
+      <Favorite>
+        <div className="c-grid add-numbering">
+          {posts.map((item) => {
+            return (
+              <List
+                item={item.node.frontmatter}
+                url={item.node.fields.slug}
+                key={item.node.fields.slug}
+              />
+            );
+          })}
+        </div>
+      </Favorite>
+    </section>
+  );
+};
+export default Faves;
 
 const Favorite = styled.div`
   counter-reset: num;
-
   @media screen and (min-width: 768px) {
     .add-numbering {
       justify-content: center;
     }
   }
-
   article {
     counter-increment: num;
     position: relative;
@@ -128,7 +124,6 @@ const Favorite = styled.div`
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     }
-
     &::after {
       color: #fff;
       position: absolute;
@@ -152,4 +147,4 @@ const Favorite = styled.div`
       transform: scale(1.1);
     }
   }
-`
+`;

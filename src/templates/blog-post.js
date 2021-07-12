@@ -1,42 +1,53 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from "react";
+import { Link, graphql } from "gatsby";
 
-import { Article } from "./../styles/blog-styles/article"
-import { Header } from "./../styles/blog-styles/header"
-import { Sidebar } from "./../styles/blog-styles/sidebar"
-import { Edit } from "./../styles/blog-styles/edit"
-import styled from "styled-components"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Image from "../components/image"
-import Toc from "../components/toc"
-import Category from "../components/blogs/category"
-import Description from "../components/blogs/descriotion"
-import TagsList from "../components/blogs/tagsBlog"
-import TagsListFooter from "../components/blogs/tagsBlogFooter"
-import RelatedList from "../components/blogs/relatedList"
-import FovoriteList from "../components/common/favorites"
-import Prof from "../components/blogs/smallProf"
-import Tags from "../components/blogs/tagList"
-import Search from "../components/search/"
-import BreadCrumbList from "../components/common/breadCrumbList"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faRss } from "@fortawesome/free-solid-svg-icons"
-import { siteMetadata } from "../../gatsby-config"
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+
+import { Article } from "./../styles/blog-styles/article";
+import { Header } from "./../styles/blog-styles/header";
+import { Edit } from "./../styles/blog-styles/edit";
+import { siteMetadata } from "./../../gatsby-config";
+
+import styled from "styled-components";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRss } from "@fortawesome/free-solid-svg-icons";
+import Img from "../components/img";
+import Category from "../components/blogs/category";
+import BreadCrumbList from "../components/common/bread-crumb-list";
+import Description from "../components/blogs/descriotion";
+import TagsList from "../components/blogs/tags-blog";
+import Prof from "../components/blogs/small-prof";
+import Toc from "../components/blogs/topic";
+import Sns from "../components/blogs/sns";
+import Sidebar from "../components/blogs/sidebar";
+import FovoriteList from "../components/common/favorites";
+import Tags from "../components/blogs/tag-list";
+import Genre from "../components/common/genre";
+import ProfBig from "../components/common/profile";
+
+import rehypeReact from "rehype-react";
+import Custom from "../components/blogs/blog-parts/custom";
+export const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: {
+    custom: Custom,
+  },
+}).Compiler;
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const { previous, next } = data;
+  const perfectUrl = `https://ginneko-atelier.com${location.pathname}`;
+  const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle);
   const src = data.allFile.edges[0]
-    ? data.allFile.edges[0].node.childImageSharp.fluid.src
-    : ""
-  const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
-  const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
-
+    ? `https://ginneko-atelier.com${data.allFile.edges[0].node.childImageSharp.gatsbyImageData.images.fallback.src}`
+    : "";
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
+      <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
         image={src}
@@ -57,11 +68,10 @@ const BlogPostTemplate = ({ data, location }) => {
               name={post.frontmatter.categoryId}
               id={post.frontmatter.cateId}
             />
-            {post.frontmatter.hero ? (
-              <Image filename={post.frontmatter.hero} />
-            ) : (
-              <Image filename="common/dummy.png" />
-            )}
+            <Img
+              filename={post.frontmatter.hero}
+              alt={post.frontmatter.title}
+            ></Img>
           </div>
         </div>
       </Header>
@@ -95,52 +105,7 @@ const BlogPostTemplate = ({ data, location }) => {
               </dl>
               <TagsList tags={post.frontmatter.tags} />
               <Description texts={post.frontmatter.lead} />
-
-              <ul className="c-snsBtns u-mblg">
-                <li className="c-snsBtns__item">
-                  <Link
-                    className="c-snsBtns__item--fb"
-                    to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`}
-                    target="_blank"
-                    target="_blank"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">Facebook</span>
-                  </Link>
-                </li>
-                <li className="c-snsBtns__item">
-                  <Link
-                    className="c-snsBtns__item--tw"
-                    to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`}
-                    target="_blank"
-                    target="_blank"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">Twitter</span>
-                  </Link>
-                </li>
-                <li className="c-snsBtns__item">
-                  <Link
-                    to={`https://b.hatena.ne.jp/entry/${perfectUrl}`}
-                    target="_blank"
-                    className="c-snsBtns__item--hateb"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">はてB!</span>
-                  </Link>
-                </li>
-                <li className="c-snsBtns__item">
-                  <Link
-                    className="c-snsBtns__item--pocket"
-                    to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`}
-                    target="_blank"
-                    target="_blank"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">Pocket</span>
-                  </Link>
-                </li>
-              </ul>
+              <Sns url={perfectUrl} title={perfectTitle} />
               <Prof></Prof>
               <Toc data={data.markdownRemark.tableOfContents} />
             </div>
@@ -151,71 +116,19 @@ const BlogPostTemplate = ({ data, location }) => {
                 itemProp="articleBody"
               />
             </Edit>
-            <div className="l-container--md">
-              <ul className="c-snsBtns u-mblg">
-                <li className="c-snsBtns__item">
-                  <Link
-                    className="c-snsBtns__item--fb"
-                    to={`https://www.facebook.com/sharer/sharer.php?u=${perfectUrl}`}
-                    target="_blank"
-                    target="_blank"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">Facebook</span>
-                  </Link>
-                </li>
-                <li className="c-snsBtns__item">
-                  <Link
-                    className="c-snsBtns__item--tw"
-                    to={`http://twitter.com/share?url=${perfectUrl}&text=${perfectTitle}`}
-                    target="_blank"
-                    target="_blank"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">Twitter</span>
-                  </Link>
-                </li>
-                <li className="c-snsBtns__item">
-                  <Link
-                    to={`https://b.hatena.ne.jp/entry/${perfectUrl}`}
-                    target="_blank"
-                    className="c-snsBtns__item--hateb"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">はてB!</span>
-                  </Link>
-                </li>
-                <li className="c-snsBtns__item">
-                  <Link
-                    className="c-snsBtns__item--pocket"
-                    to={`http://getpocket.com/edit?url=${perfectUrl}&text=${perfectTitle}`}
-                    target="_blank"
-                    target="_blank"
-                    rel="noopener nofollow"
-                  >
-                    <span className="c-snsBtns__label">Pocket</span>
-                  </Link>
-                </li>
-              </ul>
-              <dl className="c-article__tags">
-                <dt>Category</dt>
-                <dd className="cate">
-                  <Link to={`/blogs/${post.frontmatter.cateId}/`}>
-                    {siteMetadata.category.map(item => {
-                      return post.frontmatter.cateId === item.slug
-                        ? item.name
-                        : ""
-                    })}
-                  </Link>
-                </dd>
-              </dl>
-              <dl className="c-article__tags">
-                <dt>Tags</dt>
-                <dd>
-                  <TagsListFooter tags={post.frontmatter.tags} />
-                </dd>
-              </dl>
-            </div>
+            <Sns url={perfectUrl} title={perfectTitle} />
+            <dl className="c-article__tags">
+              <dt>Category</dt>
+              <dd className="cate">
+                <Link to={`/blogs/${post.frontmatter.cateId}/`}>
+                  {siteMetadata.category.map((item) => {
+                    return post.frontmatter.cateId === item.slug
+                      ? item.name
+                      : "";
+                  })}
+                </Link>
+              </dd>
+            </dl>
             <Feedly>
               <h2> 「銀ねこアトリエ」のブログを定期購読しよう</h2>
               <a
@@ -246,92 +159,37 @@ const BlogPostTemplate = ({ data, location }) => {
             </ol>
           </nav>
         </Article>
-
-        <Sidebar>
-          <RelatedList
-            category={post.frontmatter.cateId}
-            title={post.frontmatter.title}
-            tags={post.frontmatter.tags}
-          ></RelatedList>
-          <section className="p-section">
-            <h2 className="c-heading--lg--side">ジャンル</h2>
-            <ul className="sideCateList">
-              {siteMetadata.category.map(item => {
-                return (
-                  <li>
-                    <Link to={`/blogs/${item.slug}/`}>{item.name}</Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </section>
-          <div class="inner">
-            <Search />
-            <ul class="side-banner">
-              <li>
-                <Link to="/about/">
-                  <Image filename="common/about-banner.jpg" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="https://twitter.com/LirioY"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <Image filename="common/twitter-banner.jpg" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <Image filename="common/youtube-banner.jpg" />
-                </Link>
-              </li>
-
-              <li class="iframe">
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/videoseries?list=PLRSXt39PZIMWu7Uj5VOOKaCEZMj9k5RHZ"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </li>
-            </ul>
-            <h2>お仕事のご依頼</h2>
-            <p class="u-text-center">
-              <a class="p-btn--detail" href="/contact/">
-                お問い合わせ
-              </a>
-            </p>
-            <p class="u-text-center">
-              <small>初見の方、30分無料相談承っております。</small>
-            </p>
+        <Sidebar
+          cateId={post.frontmatter.cateId}
+          title={post.frontmatter.title}
+          tags={post.frontmatter.tags}
+        />
+        <aside className="BigWhite">
+          <div className="p-section l-container">
+            <FovoriteList type="web" />
+            <FovoriteList type="life" />
+            <FovoriteList type="career" />
           </div>
-        </Sidebar>
-        <div className="p-section l-container">
-          <FovoriteList type="web" />
-          <FovoriteList type="life" />
-          <FovoriteList type="career" />
-        </div>
-        <div className="l-container">
-          <section className="p-box--gray p-section u-text-center">
-            <h2 className="c-heading--lg">人気のタグ</h2>
-            <Tags />
-          </section>
-        </div>
+          <div className="l-container">
+            <section className="p-box--gray p-section u-text-center">
+              <h2 className="c-heading--lg">人気のタグ</h2>
+              <Tags />
+            </section>
+          </div>
+          <div className="l-container">
+            <section className="p-section u-text-center">
+              <h2 className="c-heading--lg">人気のジャンル</h2>
+              <Genre />
+            </section>
+          </div>
+          <ProfBig />
+        </aside>
       </Body>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -354,11 +212,8 @@ export const pageQuery = graphql`
       edges {
         node {
           name
-          relativePath
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(formats: [AUTO, WEBP])
           }
         }
       }
@@ -397,7 +252,7 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
 
 const Body = styled.div`
   @media screen and (min-width: 768px) {
@@ -407,7 +262,7 @@ const Body = styled.div`
     margin: 0 auto;
     flex-wrap: wrap;
   }
-`
+`;
 
 const Feedly = styled.div`
   height: 150px;
@@ -418,7 +273,6 @@ const Feedly = styled.div`
   // border:1px solid #6cc655;
   flex-direction: column;
   margin: 0 15px;
-
   @media screen and (min-width: 768px) {
     margin-left: 0;
     margin-right: 0;
@@ -441,4 +295,4 @@ const Feedly = styled.div`
       margin-right: 10px;
     }
   }
-`
+`;

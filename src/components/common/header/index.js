@@ -1,16 +1,10 @@
-import React, { useState } from "react"
-import Logo from "./logo"
-import { Link } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faTwitter,
-  faInstagram,
-  faYoutube,
-  faSlideshare,
-} from "@fortawesome/free-brands-svg-icons"
-import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import Search from "../../search/"
-import styled from "styled-components"
+import * as React from "react";
+
+import Logo from "./logo";
+import { Link } from "gatsby";
+
+// import Search from "../../search/"
+import styled from "styled-components";
 
 const Header = ({ title, location }) => {
   return (
@@ -32,10 +26,10 @@ const Header = ({ title, location }) => {
         </div>
       </header>
     </HeaderWrapper>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
 
 const HeaderWrapper = styled.div`
   .l-header {
@@ -56,23 +50,19 @@ const HeaderWrapper = styled.div`
     padding-left: 15px;
     margin-bottom: 5px;
     padding-top: 5px;
-
     @media screen and (min-width: 768px) {
       padding-left: 30px;
     }
   }
-
   #header-logo svg {
     height: 34px;
     transition: 0.3s;
     margin-left: 15px;
     fill: var(--color-blue);
-
     @media screen and (min-width: 768px) {
       margin-left: 30px;
     }
   }
-
   #header-logo a {
     display: inline-block;
       @media screen and (min-width: 768px) {
@@ -83,4 +73,4 @@ const HeaderWrapper = styled.div`
       }
     }
   }
-`
+`;

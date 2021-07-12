@@ -1,14 +1,14 @@
-import React, { useState } from "react"
-import { graphql, Link } from "gatsby"
+import React, { useState } from "react";
+import { graphql, Link } from "gatsby";
 
-import LayoutSimple from "../components/layoutSimple"
-import SEO from "../components/seo"
-import Image from "../components/image"
-import BreadCrumbList from "../components/common/breadCrumbList"
-import ContactStyles from "./css/contact.module.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHome } from "@fortawesome/free-solid-svg-icons"
-import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons"
+import styled from "styled-components";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import Img from "../components/img";
+import BreadCrumbList from "../components/common/bread-crumb-list";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const types = [
   {
@@ -31,14 +31,12 @@ const types = [
     description:
       "そのほかご相談などございましたらお気軽にお問い合わせください。",
   },
-]
+];
 
 const Thanks = () => {
   return (
-    <div>
-      <h2 className={ContactStyles.title}>
-        お問い合わせフォームが送信されました
-      </h2>
+    <ThanksArea>
+      <h2>お問い合わせフォームが送信されました</h2>
       <p>
         お問い合わせフォームを送信いたしました。内容を拝見し、返信させていただきます。
       </p>
@@ -74,63 +72,62 @@ const Thanks = () => {
           <FontAwesomeIcon icon={faHome} /> Home
         </a>
       </p>
-    </div>
-  )
-}
+    </ThanksArea>
+  );
+};
 
 const Error = ({ name, email, agreement }) => {
   if (name === "" && email === "" && agreement === "") {
-    return ""
+    return "";
   } else if (name === true && email === true && agreement === true) {
-    return ""
+    return "";
   } else {
     return (
-      <p className={ContactStyles.error}>
-        ※ 必須項目に入力が漏れているか、入力に誤りがある可能性があります。
-      </p>
-    )
+      <p className="error">※ 必須項目に入力が漏れているか、入力に誤りがある可能性があります。</p>
+    );
   }
-}
+};
 const Detail = ({ name }) => {
-  let description = ""
-  types.map(value => {
-    if (name === value.name) description = value.description
-    return description
-  })
+  let description = "";
+  types.map((value) => {
+    if (name === value.name) description = value.description;
+    return description;
+  });
 
-  return <div>{description}</div>
-}
+  return <div>{description}</div>;
+};
 
 const Form = () => {
-  const [value, setValue] = useState("")
-  const [name, getName] = useState("")
-  const [email, getMail] = useState("")
-  const [emailError, setMailError] = useState("")
-  const [agreement, getAgreement] = useState("")
+  const [value, setValue] = useState("");
+  const [name, getName] = useState("");
+  const [email, getMail] = useState("");
+  const [emailError, setMailError] = useState("");
+  const [agreement, getAgreement] = useState("");
 
-  const onChange = e => {
-    setValue(e.target.value)
-  }
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
 
-  const setName = e => {
-    getName(e.target.value !== "" ? true : false)
-  }
+  const setName = (e) => {
+    getName(e.target.value !== "" ? true : false);
+  };
 
-  const setEmail = e => {
-    let flag = e.target.value !== "" ? true : false
-    const regexp = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/
+  const setEmail = (e) => {
+    let flag = e.target.value !== "" ? true : false;
+    const regexp =
+      /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
     if (regexp.test(e.target.value) === false && e.target.value !== "") {
-      setMailError("※ メールアドレスの形式が正しくありません")
+      setMailError("※ メールアドレスの形式が正しくありません");
     } else {
-      setMailError("")
+      setMailError("");
     }
-    flag = regexp.test(e.target.value)
-    getMail(flag)
-  }
+    flag = regexp.test(e.target.value);
+    getMail(flag);
+  };
 
-  const setAgreement = e => {
-    getAgreement(e.target.checked)
-  }
+  const setAgreement = (e) => {
+    getAgreement(e.target.checked);
+  };
 
   return (
     <div>
@@ -145,7 +142,7 @@ const Form = () => {
         <a href="/about/">About Me</a>
         をお読みいただいた方がスムーズです。
       </p>
-      <div className={ContactStyles.contact}>
+      <FormArea>
         <form
           name="contact"
           method="POST"
@@ -156,7 +153,7 @@ const Form = () => {
           <dl>
             <dt>ご相談の種類</dt>
             <dd>
-              {types.map(value => {
+              {types.map((value) => {
                 return (
                   <label>
                     <input
@@ -167,7 +164,7 @@ const Form = () => {
                     />
                     <span>{value.name}</span>
                   </label>
-                )
+                );
               })}
               <Detail name={value}></Detail>
             </dd>
@@ -182,14 +179,14 @@ const Form = () => {
             </dt>
             <dd>
               <input type="email" name="email" required onChange={setEmail} />
-              <p className={ContactStyles.error}>{emailError}</p>
+              <p className="error">{emailError}</p>
             </dd>
             <dt>メッセージ</dt>
             <dd>
               <textarea type="text" name="message" />
             </dd>
           </dl>
-          <p className={ContactStyles.agreement}>
+          <p className="agreement">
             <label>
               <input
                 type="checkbox"
@@ -197,7 +194,7 @@ const Form = () => {
                 required
                 onChange={setAgreement}
               />
-              <span></span>
+              <span className="error"></span>
             </label>
             <a href="/privacy-policy/" target="_blank">
               プライバシーポリシー
@@ -212,27 +209,27 @@ const Form = () => {
               送信する
             </button>
           </p>
-          <div className={ContactStyles.hidearea}>
+          <div class="hidden-area">
             <label for="message"></label>
             <input type="text" name="bot-field" v-model="botField" />
           </div>
           <Error name={name} email={email} agreement={agreement}></Error>
         </form>
-      </div>
+      </FormArea>
     </div>
-  )
-}
+  );
+};
 
 const contactTemplate = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const siteDescription = data.site.siteMetadata?.description
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const siteDescription = data.site.siteMetadata?.description;
   const src = data.allFile.edges[0]
     ? data.allFile.edges[0].node.childImageSharp.fluid.src
-    : ""
+    : "";
 
   return (
-    <LayoutSimple location={location} title={siteTitle}>
-      <SEO
+    <Layout location={location} title={siteTitle}>
+      <Seo
         title="お問い合わせ"
         description={siteDescription}
         image={src}
@@ -245,7 +242,7 @@ const contactTemplate = ({ data, location }) => {
             <h1 className="p-pageHeader__heading">Contact</h1>
             <p className="p-pageHeader__content">お問い合わせ</p>
           </div>
-          <Image filename="common/contact.jpg" className="p-pageHeader__img" />
+          <Img filename="common/contact.jpg" className="p-pageHeader__img" />
         </div>
         <section>
           <div className="l-container--md">
@@ -262,11 +259,11 @@ const contactTemplate = ({ data, location }) => {
           </div>
         </section>
       </div>
-    </LayoutSimple>
-  )
-}
+    </Layout>
+  );
+};
 
-export default contactTemplate
+export default contactTemplate;
 
 export const pageQuery = graphql`
   query {
@@ -289,4 +286,211 @@ export const pageQuery = graphql`
       }
     }
   }
+`;
+
+const ThanksArea = styled.div`
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-align: center;
+        @media screen and (min-width: 768px) {
+            font-size: 2.4rem;
+            margin-bottom: 30px;
+        }
+    }
+    p {
+        line-height: 1.8;
+    }
+    ul {
+        text-align: center;
+        li {
+            display: inline-block;
+            padding: 10px;
+        }
+    }
 `
+const FormArea = styled.div`
+    margin-top: 20px;
+    @media screen and (min-width: 768px) {
+        margin-top: 40px;
+
+        dl {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+    a {
+        text-decoration: underline;
+        color: #0029af;
+    }
+    dt {
+        font-weight: bold;
+        margin-bottom: 10px;
+        @media screen and (min-width: 768px) {
+            width: 200px;
+            margin-bottom: 15px;
+        }
+    }
+    dd {
+        margin-bottom: 25px;
+        @media screen and (min-width: 768px) {
+            width: calc(100% - 200px);
+        }
+    }
+    input,
+    textarea,
+    button {
+        appearance: none;
+        border: none;
+        background: none;
+    }
+    input[type="email"],
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 3px solid #ccc;
+    }
+    textarea {
+        width: 100%;
+        padding: 8px;
+        border: 3px solid #ccc;
+        height: 200px;
+    }
+    dd label input {
+        display: none;
+    }
+    dd label span {
+        display: inline-block;
+        padding-left: 24px;
+        position: relative;
+        display: block;
+        margin-bottom: 10px;
+    }
+    dd div {
+        margin-top: 30px;
+        line-height: 1.8;
+    }
+    dd label span::after,
+    dd label span::before {
+        content: "";
+        width: 18px;
+        height: 18px;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #ccc;
+        border-radius: 50%;
+    }
+    dd label span::after {
+        width: 14px;
+        height: 14px;
+        left: 2px;
+        top: 2px;
+        background: #c03363;
+        opacity: 0;
+        transition: 0.3s;
+    }
+    textarea,
+    button,
+    input[type="email"],
+    input[type="text"] {
+        box-sizing: border-box;
+    }
+    dd label input:checked + span::after {
+        opacity: 1;
+    }
+    .error {
+        color: #8f001d;
+        font-size: 1.4rem;
+    }
+    button {
+        display: block;
+        height: 60px;
+        width: 100%;
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 15px auto;
+        background: #fff;
+        border: 3px solid #c03363;
+        color: #c03363;
+
+        @media screen and (min-width: 768px) {
+            height: 80px;
+            margin-top: 50px;
+            transition: 0.3s;
+            &:hover {
+                background: #c03363;
+                color: #ffffff;
+                cursor: pointer;
+            }
+        }
+    }
+    button:disabled,
+    button[disabled="true"] {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+    .agreement input[type="checkbox"] {
+        display: none;
+    }
+    .agreement span {
+    width: 30px;
+    height: 20px;
+    display: block;
+    float: left;
+    position: relative;
+    }
+    .agreement span:before,
+    .agreement span:after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        background: #ccc;
+        display: block;
+    }
+    .agreement span:after {
+    background: none;
+    width: 10px;
+    height: 14px;
+    top: 1px;
+    left: 3px;
+    border-bottom: 3px solid #c03363;
+    border-right: 3px solid #c03363;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: 0.3s;
+    }
+    .agreement input:checked + span:after {
+        opacity: 1;
+    }
+    .hidden-area {
+        display: none;
+    }
+    dt span {
+        color: #c03363;
+        font-size: 1.2rem;
+        margin-left: 10px;
+    }
+    .title {
+    font-size: 1.4em;
+    margin-bottom: 1em;
+    font-weight: bold;
+    }
+    .title::after {
+    margin-top: 5px;
+    content: "";
+    display: block;
+    background: #c03363;
+    width: 30px;
+    height: 2px;
+    }
+
+    .error {
+        color: #c03363;
+        font-size: 1.4rem;
+    }
+`;
