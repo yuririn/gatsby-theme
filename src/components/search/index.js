@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { Link } from "gatsby"
-import TextHighlighter from "./texthighlighter"
-import style from "./style.module.css"
+import React, { useState, useEffect } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { Link } from "gatsby";
+import TextHighlighter from "./texthighlighter";
+import styled from "styled-components";
 
-const SearchResult = props => {
+const SearchResult = (props) => {
   // 全記事データ取得 //
   const tempData = useStaticQuery(graphql`
     query SearchData {
@@ -28,80 +28,80 @@ const SearchResult = props => {
         }
       }
     }
-  `)
-  const [data, setData] = useState([])
+  `);
+  const [data, setData] = useState([]);
   useEffect(() => {
-    const temp = []
-    tempData.allMarkdownRemark.edges.map(e => {
-      temp.push(e.node)
-    })
-    setData(temp)
-  }, [])
+    const temp = [];
+    tempData.allMarkdownRemark.edges.map((e) => {
+      temp.push(e.node);
+    });
+    setData(temp);
+  }, []);
 
   // 表示非表示の切り替え //
-  const [className, setClassName] = useState("")
+  const [className, setClassName] = useState("");
   useEffect(() => {
-    let id
+    let id;
     if (props.focus && props.value !== "") {
       id = setTimeout(() => {
-        setClassName("active")
-      }, 100)
+        setClassName("active");
+      }, 100);
     } else {
       id = setTimeout(() => {
-        setClassName("")
-      }, 100)
+        setClassName("");
+      }, 100);
     }
     return () => {
-      clearTimeout(id)
-    }
-  }, [props.focus, props.value])
+      clearTimeout(id);
+    };
+  }, [props.focus, props.value]);
 
   // 検索処理 //
-  const [result, setResult] = useState([])
+  const [result, setResult] = useState([]);
   const search = () => {
-    const value = props.value.toLowerCase()
-    const temp = data.filter(e => {
-      let tags = ""
-      let category = ""
-      let description = ""
+    const value = props.value.toLowerCase();
+    const temp = data.filter((e) => {
+      let tags = "";
+      let category = "";
+      let description = "";
       if (e.frontmatter.tags) {
-        tags = e.frontmatter.tags.join(" ").toLowerCase()
+        tags = e.frontmatter.tags.join(" ").toLowerCase();
       }
       if (e.frontmatter.description) {
-        description = e.frontmatter.description.toLowerCase()
+        description = e.frontmatter.description.toLowerCase();
       }
       if (e.frontmatter.category) {
-        category = e.frontmatter.category.toLowerCase()
+        category = e.frontmatter.category.toLowerCase();
       }
       const target = `
 				${e.frontmatter.title.toLowerCase()}
 				${category}
 				${tags}
 				${description}
-			`
-      return target.indexOf(value) !== -1
-    })
-    setResult(temp)
-  }
+			`;
+      return target.indexOf(value) !== -1;
+    });
+    setResult(temp);
+  };
   useEffect(() => {
     if (props.value !== "") {
-      search()
+      search();
     }
-  }, [props.value])
+  }, [props.value]);
 
   return (
-    <div className={className}>
+    <ResultList>
       <div className="result-inner">
         {result !== null && result.length !== 0 ? (
-          <p className={style.result}>
+          <p>
             <b>{result.length}</b>件ヒットしました
           </p>
         ) : (
           ""
         )}
 
-        <ul className={style.resultList}>
-          {result.map(e => {
+        <ul>
+          {result.map((e) => {
             return (
               <li key={e.fields.slug}>
                 <Link to={e.fields.slug}>
@@ -112,39 +112,105 @@ const SearchResult = props => {
                   />
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
       </div>
-    </div>
-  )
-}
+    </ResultList>
+  );
+};
 
-const Search = props => {
-  const [focus, setFocus] = useState(false)
-  const [value, setValue] = useState("")
+const Search = (props) => {
+  const [focus, setFocus] = useState(false);
+  const [value, setValue] = useState("");
   const onFocus = () => {
-    setFocus(true)
-  }
+    setFocus(true);
+  };
   const onBlur = () => {
-    setFocus(false)
-  }
-  const onChange = e => {
-    setValue(e.target.value)
-  }
+    setFocus(false);
+  };
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
   return (
-    <div focus={focus}>
-      <div className={style.searchBox}>
+    <SearchBox>
+      <div focus={focus}>
         <input
           type="text"
           placeholder="検索する"
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={onChange}
+          className="box"
         />
+        <SearchResult focus={focus} value={value} />
       </div>
-      <SearchResult focus={focus} value={value} />
-    </div>
-  )
-}
-export default Search
+    </SearchBox>
+  );
+};
+export default Search;
+
+const SearchBox = styled.div`
+  margin-bottom: 20px;
+  text-align: center;
+  .box {
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    border: solid 1px var(--color-blue);
+    box-sizing: border-box;
+    outline: none;
+    font-size: 1.6rem;
+    box-shadow: none;
+  }
+`;
+
+const ResultList = styled.div`
+  .result-inner{
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  ul {
+    margin-top: 20px;
+    background: #eee;
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 50px;
+    border-radius: 10px;
+  }
+  li {
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    line-height: 1.8;
+  }
+  li a {
+    color: var(--color-blue);
+  }
+
+  li time {
+    display: block;
+    font-weight: normal;
+    font-size: 1.2rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    li {
+      text-indent: -100px;
+      margin-left: 100px;
+    }
+    li a {
+      text-decoration: underline;
+    }
+
+    li time {
+      font-size: 1.4rem;
+      width: 100px;
+      text-indent: 0;
+      display: inline-block;
+      font-weight: bold;
+      color: var(--font-color);
+    }
+  }
+`;

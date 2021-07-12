@@ -1,18 +1,18 @@
-import React, { useState } from "react"
-import { graphql, Link } from "gatsby"
+import React, { useState } from "react";
+import { graphql, Link } from "gatsby";
 
-import LayoutS from "../components/layoutSimple"
-import SEO from "../components/seo"
-import styled from "styled-components"
-import { Edit } from "./../styles/blog-styles/edit"
-import Image from "../components/image"
-import Search from "../components/search/"
-import Genre from "../components/genre"
-import TagsList from "../components/blogs/tagList"
-import BreadCrumbList from "../components/common/breadCrumbList"
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import styled from "styled-components";
+import { Edit } from "./../styles/blog-styles/edit";
+import Img from "../components/img";
+import Search from "../components/search/";
+import Genre from "../components/common/genre";
+import TagsList from "../components/blogs/tag-list";
+import BreadCrumbList from "../components/common/bread-crumb-list";
 
 const Uranai = ({ value }) => {
-  const num = value - 1
+  const num = value - 1;
   const results = [
     {
       title: "集中力が低がる一日。特に、うっかり怪我に注意。",
@@ -60,7 +60,7 @@ const Uranai = ({ value }) => {
       thumbnail: "entry387.jpg",
       link: "/blogs/entry387/",
     },
-  ]
+  ];
   return (
     <div>
       <p className="mb-Md">
@@ -77,7 +77,7 @@ const Uranai = ({ value }) => {
         <dd className="is-last">
           <Link to={results[num].link}>
             {results[num].thumbnail ? (
-              <Image filename={results[num].thumbnail} />
+              <Img filename={results[num].thumbnail} />
             ) : (
               ""
             )}
@@ -86,16 +86,16 @@ const Uranai = ({ value }) => {
         </dd>
       </dl>
     </div>
-  )
-}
+  );
+};
 
-const Result = prop => {
-  let ranNum = Math.floor(Math.random() * 5) + 1
-  const [value, setValue] = useState("")
+const Result = (prop) => {
+  let ranNum = Math.floor(Math.random() * 5) + 1;
+  const [value, setValue] = useState("");
 
-  const onClick = e => {
-    setValue(e.target.value)
-  }
+  const onClick = (e) => {
+    setValue(e.target.value);
+  };
 
   if (prop.value === "item01") {
     return (
@@ -109,7 +109,7 @@ const Result = prop => {
           </Link>
         </p>
       </div>
-    )
+    );
   } else if (prop.value === "item02") {
     return (
       <section className="p-section">
@@ -119,7 +119,7 @@ const Result = prop => {
         </p>
         <Genre />
       </section>
-    )
+    );
   } else if (prop.value === "item03") {
     return (
       <section className="p-section">
@@ -131,7 +131,7 @@ const Result = prop => {
           <TagsList></TagsList>
         </ul>
       </section>
-    )
+    );
   } else if (prop.value === "item04") {
     return (
       <div className="result__item__inner l-container">
@@ -155,17 +155,17 @@ const Result = prop => {
           {value ? <Uranai value={value} /> : ""}
         </div>
       </div>
-    )
+    );
   } else {
-    return ""
+    return "";
   }
-}
+};
 const Menu = () => {
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState("");
 
-  const onChange = e => {
-    setValue(e.target.value)
-  }
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
   return (
     <div id="uranai" className="l-container">
       <ul className="uranai__list">
@@ -221,15 +221,15 @@ const Menu = () => {
       </p>
       <Search />
     </div>
-  )
-}
+  );
+};
 
 const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+  const siteTitle = data.site.siteMetadata.title;
 
   return (
-    <LayoutS location={location} title={siteTitle}>
-      <SEO location={location} title="お探しのページは見つかりませんでした" />
+    <Layout location={location} title={siteTitle}>
+      <Seo location={location} title="お探しのページは見つかりませんでした" />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">404</h1>
@@ -237,7 +237,7 @@ const NotFoundPage = ({ data, location }) => {
             お探しのページは見つかりませんでした
           </p>
         </div>
-        <Image filename="common/ganre-404.jpg" className="p-pageHeader__img" />
+        <Img filename="common/ganre-404.jpg" className="p-pageHeader__img" />
       </div>
       <P404>
         <div className="mb-Md mt-Xs l-container">
@@ -261,11 +261,11 @@ const NotFoundPage = ({ data, location }) => {
         </Edit>
         <Menu></Menu>
       </P404>
-    </LayoutS>
-  )
-}
+    </Layout>
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;
 
 export const pageQuery = graphql`
   query {
@@ -275,7 +275,7 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
 const P404 = styled.div`
   .l-container {
     max-width: 900px;
@@ -283,15 +283,12 @@ const P404 = styled.div`
   input[type="radio"] {
     display: none;
   }
-
   .mb-Md {
     margin-bottom: 20px;
   }
-
   .mt-Lg {
     margin-top: 100px;
   }
-
   .fortune__btn {
     width: 110px;
     height: 96px;
@@ -311,7 +308,6 @@ const P404 = styled.div`
       animation: dokidoki 0.5s infinite;
       opacity: 0.7;
     }
-
     &:after {
       z-index: -1;
       position: absolute;
@@ -323,7 +319,6 @@ const P404 = styled.div`
       border-top: 45px solid #c03363;
       border-right: 47px solid transparent;
     }
-
     &:before {
       z-index: -1;
       position: absolute;
@@ -338,7 +333,6 @@ const P404 = styled.div`
       background: #c03363;
     }
   }
-
   .p-section {
     li {
       padding-left: 0;
@@ -366,12 +360,10 @@ const P404 = styled.div`
       font-weight: 700;
       padding-left: 25px;
       display: block;
-
       input[type="radio"]:checked + span:before {
         transform: rotateX(540deg);
         opacity: 1;
       }
-
       input[type="radio"] + span {
         display: block;
         position: relative;
@@ -398,30 +390,25 @@ const P404 = styled.div`
       border-radius: 20px;
       display: flex;
       flex-wrap: wrap;
-
       li {
         width: 50%;
       }
     }
   }
-
   .fortune {
     padding: 20px 20px 5px;
     background: rgba(51, 51, 85, 0.2);
     border-radius: 15px;
-
     @media screen and (min-width: 768px) {
       padding: 30px 40px 5px;
       border-radius: 20px;
     }
-
     dt {
       font-weight: 700;
       padding-left: 15px;
       position: relative;
       line-height: 1.4;
       margin-bottom: 15px;
-
       &:before {
         position: absolute;
         display: block;
@@ -455,22 +442,18 @@ const P404 = styled.div`
       }
     }
   }
-
   @keyframes dokidoki {
     0% {
       transform: scale(0.85);
     }
-
     5% {
       transform: scale(0.82);
     }
-
     95% {
       transform: scale(0.82);
     }
-
     to {
       transform: scale(0.87);
     }
   }
-`
+`;

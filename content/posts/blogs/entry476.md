@@ -1,7 +1,7 @@
 ---
 title: 【GAS】 スプシにファイルアップロード機能をつけてドライブに保存・保存編
 date: 2021-06-26
-hero: 2021/entry476.jp
+hero: entry476.jp
 pagetype: blog
 cateId: 'web-developer'
 tags: ["GAS","JavaScript"]
@@ -9,6 +9,7 @@ description: プログラミングで事務作業を自動化してラクしよ�
 lead: ["プログラミングで事務作業を自動化してラクしよう！","前回に続き、Google Apps Scriptを使ってファイルを管理する方法を紹介します。 この記事では1.スプシ（Googleスプレッドシート）からファイルアップロード
 2.ルール通りにファイルをリネーム保存 3.スプシにファイル情報を自動で追記する方法を解説します。"]
 ---
+<custom></custom>
 ## スプシからファイルをアップロードしてドライブに保存するまでざっくり
 <div class="msg-baloon">
 <p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>

@@ -5,11 +5,11 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-import config from "../../gatsby-config"
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
+import config from "../../gatsby-config";
 
 const SEO = ({
   description,
@@ -33,22 +33,31 @@ const SEO = ({
         }
       }
     `
-  )
+  );
 
-  const domain = config.siteMetadata.siteUrl
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const domain = config.siteMetadata.siteUrl;
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
   const ogImage = image
     ? `${config.siteMetadata.siteUrl}${image}`
-    : config.siteMetadata.image
-  const pageName = `${title} | ${defaultTitle}`
-  let blogUrl = location ? location.href : domain
-  const isRoot = `${domain}/` === blogUrl ? true : false
-  let page = isRoot ? "WebSite" : "WebPage"
-  const modified = modifieddate ? modifieddate : date
+    : config.siteMetadata.image;
+  const pageName = `${title} | ${defaultTitle}`;
+  let blogUrl = location ? location.href : domain;
+  const isRoot = `${domain}/` === blogUrl ? true : false;
+  let page = isRoot ? "WebSite" : "WebPage";
+  const modified = modifieddate ? modifieddate : date;
+
+  let portfolio = false;
+  if (location) {
+    for (let i in location) {
+      if (i === "pathname") {
+        if (location.pathname === "/portfolio/") portfolio = true;
+      }
+    }
+  }
 
   if (type === "archive" || type === "blogs") {
-    blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
+    blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "");
   }
   const author = [
     {
@@ -61,7 +70,7 @@ const SEO = ({
         config.siteMetadata.social.instagram,
       ],
     },
-  ]
+  ];
 
   const publisher = {
     "@type": "Organization",
@@ -73,7 +82,7 @@ const SEO = ({
       width: 72,
       height: 72,
     },
-  }
+  };
 
   // JSON+LDの設定
   const jsonLdConfigs = [
@@ -88,7 +97,7 @@ const SEO = ({
       image: ogImage,
       description: metaDescription,
     },
-  ]
+  ];
 
   if (type === "article") {
     jsonLdConfigs.push({
@@ -110,11 +119,11 @@ const SEO = ({
       },
       author,
       publisher,
-    })
+    });
   }
 
   if (!isRoot) {
-    const breadCrumbList = []
+    const breadCrumbList = [];
     breadCrumbList.push({
       "@type": "ListItem",
       position: 1,
@@ -122,7 +131,7 @@ const SEO = ({
         "@id": domain,
         name: "ホーム",
       },
-    })
+    });
     if (type === "archive" || type === "article") {
       breadCrumbList.push({
         "@type": "ListItem",
@@ -131,7 +140,7 @@ const SEO = ({
           "@id": `${domain}/blogs/`,
           name: `ブログ一覧`,
         },
-      })
+      });
       breadCrumbList.push({
         "@type": "ListItem",
         position: 3,
@@ -139,7 +148,7 @@ const SEO = ({
           "@id": blogUrl,
           name: title,
         },
-      })
+      });
     } else {
       breadCrumbList.push({
         "@type": "ListItem",
@@ -148,14 +157,14 @@ const SEO = ({
           "@id": blogUrl,
           name: title,
         },
-      })
+      });
     }
 
     jsonLdConfigs.push({
       "@context": "http://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: breadCrumbList,
-    })
+    });
   }
 
   return (
@@ -221,18 +230,30 @@ const SEO = ({
       ].concat(meta)}
     >
       <link rel="canonical" href={blogUrl}></link>
+      {portfolio ? (
+        <link
+          href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap"
+          rel="stylesheet"
+        ></link>
+      ) : (
+        <link
+          href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap"
+          rel="stylesheet"
+        ></link>
+      )}
+
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>
     </Helmet>
-  )
-}
+  );
+};
 
 SEO.defaultProps = {
   lang: `ja`,
   meta: [],
   description: ``,
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
@@ -244,6 +265,6 @@ SEO.propTypes = {
   location: PropTypes.string,
   date: PropTypes.string,
   modifieddate: PropTypes.string,
-}
+};
 
-export default SEO
+export default SEO;

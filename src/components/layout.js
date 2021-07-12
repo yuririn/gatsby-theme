@@ -1,14 +1,12 @@
-import React from "react"
+import * as React from "react";
 
-import { createGlobalStyle } from "styled-components"
-import { BaseStyle } from "./../styles/common/base"
-import { CommonStyle } from "./../styles/common/common"
-import { Edit } from "./../styles/blog-styles/edit"
-import Footer from "../components/common/footer"
-import Header from "../components/common/header"
-import GNav from "../components/common/nav"
-import Profile from "../components/profile"
-import Genre from "../components/genre"
+import { BaseStyle } from "./../styles/common/base";
+import { CommonStyle } from "./../styles/common/common";
+import { createGlobalStyle } from "styled-components";
+
+import Header from "../components/common/header";
+import GNav from "../components/common/nav";
+import Footer from "../components/common/footer";
 
 const Layout = ({ location, title, children }) => {
   return (
@@ -19,33 +17,19 @@ const Layout = ({ location, title, children }) => {
       <Header title={title} location={location.pathname} />
       <GNav />
       <main id="top">{children}</main>
-      <aside class="BigWhite">
-        <div className="l-container">
-          <section className="p-section">
-            <h2 className="c-heading--lg">記事のジャンル</h2>
-            <Genre />
-          </section>
-          <Edit>
-            <Profile />
-          </Edit>
-        </div>
-      </aside>
       <Footer title={title} />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
 
 const GlobalStyle = createGlobalStyle`
-
   .p-entryCard {
     margin-bottom: 20px;
-
     &__footer {
       margin-top: 10px;
     }
-
     @media screen and (min-width: 768px) {
         margin-bottom: 40px;
       }
@@ -55,22 +39,18 @@ const GlobalStyle = createGlobalStyle`
           border-top: 1px solid #e9e9e9;
         }
       }
-
       &.is-small {
-
         @media screen and (max-width: 769px) {
         .p-entryCard__date {
             top: 2px;
             padding:5px 10px 5px 15px;
           }
-
           .p-entryCard__heading {
              display: -webkit-box;
             overflow: hidden;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
           }
-
           .p-entryCard__footer {
             display: -webkit-box;
             overflow: hidden;
@@ -78,8 +58,6 @@ const GlobalStyle = createGlobalStyle`
             -webkit-box-orient: vertical;
           }
         }
-
-
         @media screen and (max-width: 769px) {
           &+ .is-small {
             border-bottom: 1px solid #e9e9e9;
@@ -91,24 +69,19 @@ const GlobalStyle = createGlobalStyle`
           align-items: flex-start;
            position: relative;
            border-bottom: 1px solid #e9e9e9;
-
-
            .p-entryCard__heading {
               font-size: 1.6rem;
             }
-
             .p-entryCard__img {
               width: 33%;
               border-radius: 5px;
             }
-
             .p-entryCard__body {
               width: 67%;
               padding-left: 15px;
               box-sizing: border-box;
               p {
               }
-
             }
              .p-entryCard__footer {
               position: absolute;
@@ -117,15 +90,12 @@ const GlobalStyle = createGlobalStyle`
               width: 67%;
               padding-left: 15px;
             }
-
              .p-entryCard__date {
                font-size: 1.1rem;
              }
         }
       }
-
       &.is-first {
-
         .p-entryCard__body {
           p {
             line-height: 1.6;
@@ -141,19 +111,15 @@ const GlobalStyle = createGlobalStyle`
         .p-entryCard__heading {
             margin-bottom: 10px;
           }
-
          @media screen and (min-width: 768px) {
            width: 100%;
            display: flex;
            flex-wrap: wrap;
            align-items: flex-start;
            position: relative;
-
             .p-entryCard__img {
               width: 40%;
-
             }
-
             .p-entryCard__body {
               width: 60%;
               padding-left: 30px;
@@ -161,14 +127,11 @@ const GlobalStyle = createGlobalStyle`
               p {
                 font-size: 1.4rem;
               }
-
             }
-
             .p-entryCard__heading {
               font-size: 2.2rem;
               margin-bottom: 20px;
             }
-
             .p-entryCard__footer {
               position: absolute;
               bottom: 10px;
@@ -176,18 +139,12 @@ const GlobalStyle = createGlobalStyle`
               width: 60%;
               padding-left: 30px;
             }
-
          }
-
       }
-
-
-
       a {
         color: #335;
         text-decoration: none;
       }
-
       &__img {
         display: block;
         position: relative;
@@ -196,11 +153,9 @@ const GlobalStyle = createGlobalStyle`
         box-shadow: 0 0 4px rgb(0,0,0, .3);
         margin-bottom: 20px;
         transition: .5s;
-
         .gatsby-image-wrapper {
           transition: .5s;
         }
-
         img {
           display: block;
           width: 100%;
@@ -227,33 +182,26 @@ const GlobalStyle = createGlobalStyle`
         margin-bottom: 5px;
         letter-spacing: .1em;
     }
-
      @media screen and (min-width: 768px) {
        &:hover {
-
          .p-entryCard__heading {
           color: var(--color-blue);
         }
-
         &__img {
            box-shadow: 0 0 4px rgb(0,0,0, .3),0 0 9px rgb(0,0,0, .6);
         }
-
          .gatsby-image-wrapper {
            transform: scale(1.2,1.2) rotate(-2deg);;
            opacity: 0.8;
          }
        }
-
   }
-
   .p-tagList{
     margin-top: 10px;
     &__item {
       margin-right: 5px;
       margin-bottom: 10px;
       display: inline-block;
-
       a {
         font-size: 1rem;
         line-height: 1;
@@ -265,7 +213,6 @@ const GlobalStyle = createGlobalStyle`
         transition: .3s;
         white-space: nowrap;
         padding: 2px 3px 5px 2px;
-
         @media screen and (min-width: 768px) {
           font-size: 1.1rem;
           padding: 3px 3px 5px 3px;
@@ -274,7 +221,6 @@ const GlobalStyle = createGlobalStyle`
             color: #fff;
           }
         }
-
           &:before {
             content: "";
             width: 1em;
@@ -289,5 +235,4 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
-
-`
+`;

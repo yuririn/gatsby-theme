@@ -1,32 +1,28 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useState } from "react";
+import { Link } from "gatsby";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
   faInstagram,
   faYoutube,
   faSlideshare,
-} from "@fortawesome/free-brands-svg-icons"
-import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import Search from "../search/"
-import styled from "styled-components"
-import { siteMetadata } from "../../../gatsby-config"
+} from "@fortawesome/free-brands-svg-icons";
+import styled from "styled-components";
+import { siteMetadata } from "../../../gatsby-config";
 
 const GlobalNav = ({ title, location }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const move = e => {
-    isOpen == false
+  const move = (e) => {
+    isOpen === false
       ? document.body.classList.add("no-scroll")
-      : document.body.classList.remove("no-scroll")
-    setIsOpen(!isOpen)
-  }
+      : document.body.classList.remove("no-scroll");
+    setIsOpen(!isOpen);
+  };
 
   return (
     <NavWrapper>
       <nav className="c-grid--flex">
-        {/* <FontAwesomeIcon icon={faSearch} /> */}
-        {/* <Search /> */}
         <div className="c-nav">
           <button
             type="button"
@@ -45,14 +41,14 @@ const GlobalNav = ({ title, location }) => {
                   Blog
                 </Link>
                 <ul>
-                  {siteMetadata.category.map(item => {
+                  {siteMetadata.category.map((item, index) => {
                     return (
-                      <li>
+                      <li key={`nav${index}`}>
                         <Link to={`/blogs/${item.slug}/`} onClick={move}>
                           {item.name}
                         </Link>
                       </li>
-                    )
+                    );
                   })}
                 </ul>
               </li>
@@ -114,10 +110,10 @@ const GlobalNav = ({ title, location }) => {
         </div>
       </nav>
     </NavWrapper>
-  )
-}
+  );
+};
 
-export default GlobalNav
+export default GlobalNav;
 
 const NavWrapper = styled.div`
 	.c-nav__btn {
@@ -134,12 +130,10 @@ const NavWrapper = styled.div`
 		border: none;
 		outline: none;
 		z-index: 200;
-
 		@media only screen and (min-width: 768px) {
 			display: none;
 		}
 	}
-
 	.c-nav__btn::after, .c-nav__btn:before {
 		position: absolute;
 		top: 10px;
@@ -156,7 +150,6 @@ const NavWrapper = styled.div`
 		top: 26px;
 		left: 10px;
 	}
-
 	.c-nav__btn.is-active:before {
 		transform: rotate(45deg) translate(6px, 5px);
 		transform-origin: 50% 50%;
@@ -173,7 +166,6 @@ const NavWrapper = styled.div`
 	.c-grid--flex {
 		display: flex;
 	}
-
 	.c-nav {
 		position: relative;
 		width: 50px;
@@ -197,7 +189,6 @@ const NavWrapper = styled.div`
 		background: rgba(51,51,51,.8);
 		overflow: auto;
 		z-index: -9999;
-
 		@media only screen and (min-width: 768px) {
 			opacity: 1;
 			z-index: 200;
@@ -211,12 +202,10 @@ const NavWrapper = styled.div`
 			justify-content: flex-end;
 			overflow: inherit;
 		}
-
 		.c-nav__child {
 			max-width: 400px;
 			width: 100%;
 		    margin: auto;
-
 			@media only screen and (min-width: 768px) {
 				margin: 0;
 				height: 60px;
@@ -234,7 +223,6 @@ const NavWrapper = styled.div`
 					margin-bottom: 0;
 					padding: 10px 5px;
 					position: relative;
-
 					&:hover {
 						&::after {
 							width: 70%;
@@ -244,7 +232,6 @@ const NavWrapper = styled.div`
 							left: 85%;
 						}
 					}
-
 					&::before {
 						transform: scale(0,0);
 						position: absolute;
@@ -258,9 +245,7 @@ const NavWrapper = styled.div`
 						background: var(--color-accent);
 						transform: scale(0,0);
 						transition: .4s;
-
 					}
-
 					&::after {
 						position: absolute;
 						bottom: 0;
@@ -272,9 +257,7 @@ const NavWrapper = styled.div`
 						background: var(--color-accent);
 						transition: .4s;
 					}
-
 					a {
-
 						&:hover {
 							color: var(--color-link);
 						}
@@ -285,14 +268,12 @@ const NavWrapper = styled.div`
 						font-weight: bold;
 						height: 40px;
 						padding: 0 10px;
-
 						&::before {
 							content: none;
 						}
 					}
 				}
 				margin-bottom: 25px;
-
 				ul {
 				margin-top: 15px;
 				margin-bottom: -5px;
@@ -301,7 +282,6 @@ const NavWrapper = styled.div`
 					display: none;
 				}
 			}
-
 			li {
 				display: inline-block;
 				margin: 0 5px 10px;
@@ -323,11 +303,9 @@ const NavWrapper = styled.div`
 		max-width: 400px;
 	    margin: 0 auto;
 		text-align: center;
-
 		@media only screen and (min-width: 768px) {
 			display: none;
 		}
-
 		a {
 			background: #fff;
 			display: inline-block;
@@ -340,4 +318,4 @@ const NavWrapper = styled.div`
 			margin: 0  8px;
 		}
 	}
-`
+`;

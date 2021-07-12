@@ -342,7 +342,6 @@ summary {
   display: none;
 }
 
-
 img.is-view {
   opacity: 0;
 }
@@ -369,20 +368,21 @@ img:not(.is-view) {
   --color-ac: #c03363;
 }
 .c-grid--flex {
-    display: flex;
+  display: flex;
 }
-user agent stylesheet
-nav {
-    display: block;
+user agent stylesheet nav {
+  display: block;
 }
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 body {
-  font-family: Raleway,Yu Gothic Medium,"\6E38\30B4\30B7\30C3\30AF Medium",YuGothic,"\6E38\30B4\30B7\30C3\30AF\4F53","\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3","\30E1\30A4\30EA\30AA",sans-serif;
+  font-family: Raleway, Yu Gothic Medium, "\6E38\30B4\30B7\30C3\30AF Medium",
+    YuGothic, "\6E38\30B4\30B7\30C3\30AF\4F53",
+    "\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3", "\30E1\30A4\30EA\30AA", sans-serif;
   font-size: 1.6rem;
   line-height: 1.8;
-  color:var(--color);
+  color: var(--color);
 }
 
 .l-container {
