@@ -2,7 +2,6 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 
 import { Article } from "../styles/blog-styles/article";
-import { Header } from "../styles/blog-styles/header";
 import { Sidebar } from "../styles/blog-styles/sidebar";
 import { Edit } from "../styles/blog-styles/edit";
 import styled from "styled-components";
@@ -16,9 +15,7 @@ import BreadCrumbList from "../components/common/bread-crumb-list";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
-  faInstagram,
   faYoutube,
-  faSlideshare,
 } from "@fortawesome/free-brands-svg-icons";
 import CvArea from "../components/common/cv-area";
 
@@ -28,7 +25,6 @@ const aboutPost = ({ data, location }) => {
   const description =
     "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。";
   const modifiedDate = "2021-05-05";
-  const perfectUrl = `https://ginneko-atelier.com/about`;
   const img = data.allFile.edges[0].node.childImageSharp.fluid.src;
   console.log(data);
 
@@ -506,7 +502,9 @@ const aboutPost = ({ data, location }) => {
                   みなさんに寄り添い、ホームページ作りだけではなくIT技術でお悩みを解決しつつ、少しでもお役に立てるように頑張ります。
                 </p>
                 <h2>海外ノマドエンジニア・かみーゆはこんな人</h2>
+                <ProfImg>
                 <Img filename="common/camille.jpg" className="prfImg" />
+                </ProfImg>
                 <p className="text-center">
                   <span className="bold">かみーゆ/ 神守　由理子</span>
                   <br />
@@ -661,8 +659,16 @@ export const portfolioQuery = graphql`
     }
   }
 `;
+const ProfImg = styled.div`
+    * {
+        margin: 0 auto;
 
+    }
+`
 const Body = styled.div`
+    prfImg {
+        margin: 0 auto;
+    }
   @media screen and (min-width: 768px) {
     display: flex;
     position: relative;

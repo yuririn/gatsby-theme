@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 
 import styled from "styled-components";
 
@@ -22,9 +22,9 @@ const cvArea = () => {
         </small>
       </p>
       <p class="u-text-center">
-        <a class="p-btn--detail" href="/contact/">
+        <Link class="p-btn--detail" to="/contact/">
           無料で相談する
-        </a>
+        </Link>
       </p>
     </Area>
   );
@@ -36,6 +36,7 @@ const Area = styled.div`
   padding: 40px 40px 10px;
   background: #eeeeee;
   border-radius: 16px;
+
   h2 {
     padding-top: 30px;
     text-align: center;
