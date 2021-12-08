@@ -1,64 +1,111 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import styled from "styled-components"
+
+import Img from "../components/img"
+import FovoriteList from "../components/common/favorites"
+import FirstView from "../components/top-first-view"
+import Tags from "../components/blogs/tag-list"
+import Genre from "../components/common/genre"
+import Prof from "../components/common/profile"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
+  let cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="All posts" />
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+      <Seo
+        title="海外ノマド フリーランスエンジニアの日記"
+        // image={ogpSrc}
+        // location={location}
+      />
+      <FirstView />
+      <BigWhite>
+        <div className="l-container">
+          <section className="p-section">
+            <h2 className="c-heading--lg">
+              YouTube「かみーゆちゃんねる」やってるよ！
+            </h2>
+            <p className="u-text-center u-mblg">
+              海外ノマドやエンジニアライフについて配信中です。
+            </p>
 
-          return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
+            <p className="u-text-center u-mblg">
+              <a
+                className="p-btn--detail"
+                href="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
+                チャンネル登録する
+              </a>
+            </p>
+          </section>
+          <section className="p-section">
+            <h2 className="c-heading--lg">最新の記事</h2>
+            <div className="c-grid">
+              {posts.map((post, i) => {
+                if (i === 0) {
+                  cardClass =
+                    "p-entryCard c-grid__item--md6 c-grid__item--lg4 is-first"
+                } else if (i > 2) {
+                  cardClass =
+                    "p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
+                } else {
+                  cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
+                }
+
+                return (
+                  <article className={cardClass} key={`post${i}`}>
+                    <Link to={post.fields.slug} className="p-entryCard__img">
+                      <Img
+                        source={post.frontmatter.hero}
+                        alt={post.frontmatter.title}
+                        key={post.frontmatter.title}
+                      />
+                      <div className="p-entryCard__date">
+                        <time date={post.frontmatter.date.replace(/\./g, "-")}>
+                          {post.frontmatter.date}
+                        </time>
+                      </div>
                     </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
+                    <Link to={post.fields.slug} className="p-entryCard__body">
+                      <h3 className="p-entryCard__heading">
+                        {post.frontmatter.title}
+                      </h3>
+                      {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
+                    </Link>
+                  </article>
+                )
+              })}
+            </div>
+            <p className="u-text-center u-mblg">
+              <Link to="/blogs/" className="p-btn--detail">
+                Read More Blog
+              </Link>
+            </p>
+          </section>
+          <FovoriteList type="web" />
+          <FovoriteList type="life" />
+          <FovoriteList type="career" />
+          <div className="l-container">
+            <section className="p-box--gray u-text-center">
+              <h2 className="c-heading--lg">人気のタグ</h2>
+              <Tags />
+            </section>
+          </div>
+          <div className="l-container">
+            <h2 className="c-heading--lg">人気のジャンル</h2>
+            <Genre />
+          </div>
+        </div>
+        <Prof></Prof>
+      </BigWhite>
     </Layout>
   )
 }
@@ -72,7 +119,25 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allFile {
+      edges {
+        node {
+          name
+          childImageSharp {
+            gatsbyImageData(
+              blurredOptions: { width: 100 }
+              width: 600
+              placeholder: BLURRED
+            )
+          }
+        }
+      }
+    }
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 10
+      filter: { frontmatter: { pagetype: { eq: "blog" } } }
+    ) {
       nodes {
         excerpt
         fields {
@@ -80,10 +145,24 @@ export const pageQuery = graphql`
         }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
-          title
           description
+          title
+          tags
+          cateId
+          hero
+          pagetype
         }
       }
     }
+  }
+`
+const BigWhite = styled.div`
+  position: relative;
+  background-color: #fff;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 50px;
+    padding-top: 80px;
   }
 `

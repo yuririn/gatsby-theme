@@ -1,23 +1,65 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `銀ねこアトリエ`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `かみーゆ`,
+      summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
+    siteUrl: `https://ginneko-atelier.com`,
+    image: `https://ginneko-atelier.com/images/newogp.png`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `lirioL`,
+      instagram: `yurico.k`,
+      youtube: `https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw`,
     },
+    category: [
+      {
+        slug: "web-developer",
+        name: "ウェブ制作",
+        enName: "Web Developer",
+        description: "ウェブ制作に関するチップス",
+      },
+      {
+        slug: "cms",
+        name: "CMS",
+        enName: "Contents Management System",
+        description: "WordPressやconcrete5などCMSの記事",
+      },
+      {
+        slug: "seo",
+        name: "SEOとデジマ",
+        enName: "Seaarch Engine Optimization",
+        description: "SEOやデジタルマーケティングに関する記事",
+      },
+      {
+        slug: "overseas-freelancing",
+        name: "海外ノマド生活",
+        enName: "Overseas Freelancer",
+        description: "海外ノマド生活のリアル",
+      },
+      {
+        slug: "career",
+        name: "キャリアアップ・勉強",
+        enName: "Career Up",
+        description: "キャリアアップや勉強したことについて",
+      },
+      {
+        slug: "ginneko-tsuredure",
+        name: "私のポリシー",
+        enName: "My Policy",
+        description: "信念・思いや感じたことを気ままに綴ってます",
+      },
+    ],
   },
   plugins: [
+    `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
         name: `blog`,
+        path: `${__dirname}/content/blog`,
       },
     },
     {
