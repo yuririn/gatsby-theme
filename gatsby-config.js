@@ -1,81 +1,30 @@
 module.exports = {
   siteMetadata: {
-    title: `銀ねこアトリエ`,
-    siteUrl: `https://ginneko-atelier.com/`,
+    title: `Gatsby Starter Blog`,
     author: {
-      name: `かみーゆ`,
-      summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
+      name: `Kyle Mathews`,
+      summary: `who lives and works in San Francisco building useful things.`,
     },
-    description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
-    siteUrl: `https://ginneko-atelier.com`,
-    image: `https://ginneko-atelier.com/images/newogp.png`,
+    description: `A starter blog demonstrating what Gatsby can do.`,
+    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `lirioL`,
-      instagram: `yurico.k`,
-      youtube: `https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw`,
+      twitter: `kylemathews`,
     },
-    category: [
-      {
-        slug: "web-developer",
-        name: "ウェブ制作",
-        enName: "Web Developer",
-        description: "ウェブ制作に関するチップス",
-      },
-      {
-        slug: "cms",
-        name: "CMS",
-        enName: "Contents Management System",
-        description: "WordPressやconcrete5などCMSの記事",
-      },
-      {
-        slug: "seo",
-        name: "SEOとデジマ",
-        enName: "Seaarch Engine Optimization",
-        description: "SEOやデジタルマーケティングに関する記事",
-      },
-      {
-        slug: "overseas-freelancing",
-        name: "海外ノマド生活",
-        enName: "Overseas Freelancer",
-        description: "海外ノマド生活のリアル",
-      },
-      {
-        slug: "career",
-        name: "キャリアアップ・勉強",
-        enName: "Career Up",
-        description: "キャリアアップや勉強したことについて",
-      },
-      {
-        slug: "ginneko-tsuredure",
-        name: "私のポリシー",
-        enName: "My Policy",
-        description: "信念・思いや感じたことを気ままに綴ってます",
-      },
-    ],
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: process.env.GTM_ID,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-fontawesome-css`,
-    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/posts`,
-        name: `posts`,
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     {
@@ -86,14 +35,6 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 630,
-              withWebp: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              icon: false,
-              maintainCase: false,
             },
           },
           {
@@ -109,82 +50,13 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        defaults: {
-          formats: [`auto`, `webp`],
-          placeholder: `dominantColor`,
-          quality: 40,
-          breakpoints: [375, 750, 1080],
-          backgroundColor: `transparent`,
-        },
-      },
-    },
-    "gatsby-plugin-webpack-bundle-analyser-v2",
-    {
-      resolve: `gatsby-plugin-lodash`,
-      options: {
-        disabledFeatures: [`shorthands`, `cloning`],
-      },
-    },
+    `gatsby-plugin-sharp`,
     // {
     //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {
     //     trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
-
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `銀ねこアトリエ`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `content/assets/common/icon.png`,
-      },
-    },
-    "gatsby-remark-prismjs-title",
-    {
-      resolve: `gatsby-remark-prismjs`,
-      options: {
-        classPrefix: "language-",
-        inlineCodeMarker: null,
-        aliases: {},
-        showLineNumbers: true,
-        noInlineHighlight: false,
-      },
-    },
-    `gatsby-plugin-smoothscroll`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-    {
-      resolve: "gatsby-remark-external-links",
-      options: {
-        target: "_blank",
-        rel: "nofollow nopener",
-      },
-    },
-    `gatsby-plugin-twitter`,
-    {
-      resolve: `gatsby-plugin-advanced-sitemap`,
-      options: {
-        output: "/sitemap.xml",
-        exclude: [
-          `/blogs/page/*`,
-          `/blogs/tags/*/page/*`,
-          `/blogs/*/page/*`,
-          `/contact/thanks/`,
-        ],
-      },
-    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -202,95 +74,59 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark, allFile } }) => {
-              return allMarkdownRemark.edges.map((edge) => {
-                const image = allFile.edges.find((n) => {
-                  return n.node.relativePath.includes(
-                    edge.node.frontmatter.hero
-                  );
-                });
-
-                const imgSrc = image.node.childImageSharp.fixed.src;
-
-                return Object.assign({}, edge.node.frontmatter, {
-                  title: edge.node.frontmatter.title,
-                  description: edge.node.frontmatter.description,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  enclosure: {
-                    url: site.siteMetadata.siteUrl + imgSrc,
-                    size: 1200,
-                    type: imgSrc.includes("png") ? "image/png" : "image/jpeg",
-                  },
-                  custom_elements: [
-                    {
-                      "content:encoded":
-                        '<p><img src="' +
-                        site.siteMetadata.siteUrl +
-                        imgSrc +
-                        '" width="1200" height="900" alt="' +
-                        edge.node.frontmatter.title +
-                        '"></p>' +
-                        edge.node.html,
-                    },
-                  ],
-                });
-              });
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ "content:encoded": node.html }],
+                })
+              })
             },
             query: `
               {
-                site {
-                  siteMetadata {
-                    title
-                    siteUrl
-                  }
-                }
-                allFile(
-                  filter: {
-                    sourceInstanceName: { eq: "assets" }
-                  }
-                ) {
-                  edges {
-                    node {
-                      name
-                      relativePath
-                      childImageSharp {
-                        fixed {
-                          src
-                        }
-                      }
-                    }
-                  }
-                }
                 allMarkdownRemark(
-                  limit: 20
-                  sort: { order: DESC, fields: [frontmatter___date] }
-                  filter: { frontmatter: { pagetype: { eq: "blog" } } }
+                  sort: { order: DESC, fields: [frontmatter___date] },
                 ) {
-                  edges {
-                    node {
-                      html
-                      fields {
-                        slug
-                      }
-                      frontmatter {
-                        title
-                        description
-                        date
-                        hero
-                      }
+                  nodes {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      date
                     }
                   }
                 }
               }
             `,
             output: "/rss.xml",
-            title: "銀ねこアトリエ RSS Feed",
-            feed_url: "https://ginneko-atelier.com/rss.xml",
+            title: "Gatsby Starter Blog RSS Feed",
           },
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Gatsby Starter Blog`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    `gatsby-plugin-react-helmet`,
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
-};
+}

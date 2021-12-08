@@ -5,23 +5,12 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
-import config from "../../gatsby-config";
+import * as React from "react"
+import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({
-  description,
-  lang,
-  meta,
-  title,
-  image,
-  location,
-  modifieddate,
-  date,
-  type,
-}) => {
+const Seo = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -29,143 +18,17 @@ const SEO = ({
           siteMetadata {
             title
             description
+            social {
+              twitter
+            }
           }
         }
       }
     `
-  );
+  )
 
-  const domain = config.siteMetadata.siteUrl;
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
-  const ogImage = image
-    ? `${config.siteMetadata.siteUrl}${image}`
-    : config.siteMetadata.image;
-  const pageName = `${title} | ${defaultTitle}`;
-  let blogUrl = location ? location.href : domain;
-  const isRoot = `${domain}/` === blogUrl ? true : false;
-  let page = isRoot ? "WebSite" : "WebPage";
-  const modified = modifieddate ? modifieddate : date;
-
-  let portfolio = false;
-  if (location) {
-    for (let i in location) {
-      if (i === "pathname") {
-        if (location.pathname === "/portfolio/") portfolio = true;
-      }
-    }
-  }
-
-  if (type === "archive" || type === "blogs") {
-    blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "");
-  }
-  const author = [
-    {
-      "@type": "Person",
-      name: config.siteMetadata.author.name,
-      description: config.siteMetadata.author.summary,
-      url: domain,
-      sameAs: [
-        config.siteMetadata.social.twitter,
-        config.siteMetadata.social.instagram,
-      ],
-    },
-  ];
-
-  const publisher = {
-    "@type": "Organization",
-    name: config.siteMetadata.title,
-    description: config.siteMetadata.description,
-    logo: {
-      "@type": "ImageObject",
-      url: `${domain}/icons/icon-72x72.png`,
-      width: 72,
-      height: 72,
-    },
-  };
-
-  // JSON+LDの設定
-  const jsonLdConfigs = [
-    {
-      "@context": "http://schema.org",
-      "@type": page,
-      inLanguage: "ja",
-      url: blogUrl,
-      name: pageName,
-      author,
-      publisher,
-      image: ogImage,
-      description: metaDescription,
-    },
-  ];
-
-  if (type === "article") {
-    jsonLdConfigs.push({
-      "@context": "http://schema.org",
-      "@type": "BlogPosting",
-      url: blogUrl,
-      name: title,
-      headline: title,
-      image: {
-        "@type": "ImageObject",
-        url: ogImage,
-      },
-      description: description,
-      datePublished: date.replace(/\./g, "-"),
-      dateModified: modified.replace(/\./g, "-"),
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": blogUrl,
-      },
-      author,
-      publisher,
-    });
-  }
-
-  if (!isRoot) {
-    const breadCrumbList = [];
-    breadCrumbList.push({
-      "@type": "ListItem",
-      position: 1,
-      item: {
-        "@id": domain,
-        name: "ホーム",
-      },
-    });
-    if (type === "archive" || type === "article") {
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@id": `${domain}/blogs/`,
-          name: `ブログ一覧`,
-        },
-      });
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 3,
-        item: {
-          "@id": blogUrl,
-          name: title,
-        },
-      });
-    } else {
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@id": blogUrl,
-          name: title,
-        },
-      });
-    }
-
-    jsonLdConfigs.push({
-      "@context": "http://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: breadCrumbList,
-    });
-  }
+  const metaDescription = description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title
 
   return (
     <Helmet
@@ -173,7 +36,7 @@ const SEO = ({
         lang,
       }}
       title={title}
-      titleTemplate={pageName}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
@@ -192,28 +55,12 @@ const SEO = ({
           content: `website`,
         },
         {
-          property: `og:image`,
-          content: ogImage,
-        },
-        {
-          name: `google-site-verification`,
-          content: `UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`,
-        },
-        {
           name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-          name: `thumbnail`,
-          content: ogImage,
-        },
-        {
-          name: `twitter:image`,
-          content: ogImage,
+          content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: config.siteMetadata.social.twitter || ``,
+          content: site.siteMetadata?.social?.twitter || ``,
         },
         {
           name: `twitter:title`,
@@ -223,48 +70,22 @@ const SEO = ({
           name: `twitter:description`,
           content: metaDescription,
         },
-        {
-          property: `og:url`,
-          content: blogUrl,
-        },
       ].concat(meta)}
-    >
-      <link rel="canonical" href={blogUrl}></link>
-      {portfolio ? (
-        <link
-          href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap"
-          rel="stylesheet"
-        ></link>
-      ) : (
-        <link
-          href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap"
-          rel="stylesheet"
-        ></link>
-      )}
+    />
+  )
+}
 
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLdConfigs)}
-      </script>
-    </Helmet>
-  );
-};
-
-SEO.defaultProps = {
-  lang: `ja`,
+Seo.defaultProps = {
+  lang: `en`,
   meta: [],
   description: ``,
-};
+}
 
-SEO.propTypes = {
+Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-  image: PropTypes.string,
-  type: PropTypes.string,
-  location: PropTypes.string,
-  date: PropTypes.string,
-  modifieddate: PropTypes.string,
-};
+}
 
-export default SEO;
+export default Seo
