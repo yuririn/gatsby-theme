@@ -1,28 +1,7 @@
-import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import Img from "../img";
-import styled from "styled-components";
-
-const List = ({ item, url }) => {
-  const { title, hero } = item;
-  return (
-    <article className="p-entryCard is-small">
-      <Link className="p-entryCard__img" to={url}>
-        {hero ? (
-          <Img filename={hero} alt={title} />
-        ) : (
-          <Img filename="common/dummy.png" alt="" />
-        )}
-        {/* <div className="p-entryCard__date">
-					{date}
-				</div> */}
-      </Link>
-      <Link to={url} className="p-entryCard__body">
-        <h3 className="p-entryCard__heading">{title}</h3>
-      </Link>
-    </article>
-  );
-};
+import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import Img from "../img"
+import styled from "styled-components"
 
 const Lists = ({ category, title, tags }) => {
   const { allMarkdownRemark } = useStaticQuery(
@@ -48,57 +27,74 @@ const Lists = ({ category, title, tags }) => {
         }
       }
     `
-  );
-  let posts = allMarkdownRemark.edges.filter((post) => {
+  )
+  let posts = allMarkdownRemark.edges.filter(post => {
     if (post.node.frontmatter.title !== title) {
       // カテゴリーの一致出力
       if (post.node.frontmatter.cateId === category) {
-        return post.node.frontmatter.cateId === category;
+        return post.node.frontmatter.cateId === category
       }
       // タグの一致出力
       for (const tag of tags) {
         for (const item in post.node.frontmatter.tags) {
-          if (tag === post.node.frontmatter.tags[item]) return true;
+          if (tag === post.node.frontmatter.tags[item]) return true
         }
       }
     }
-    return false;
-  });
+    return false
+  })
 
-  if (!posts) return;
+  if (!posts) return
 
-  function shuffle(list) {
-    var i = list.length;
+  if (posts.length > 5) {
+    function shuffle(list) {
+      var i = list.length
 
-    while (--i) {
-      var j = Math.floor(Math.random() * (i + 1));
-      if (i === j) continue;
-      var k = list[i];
-      list[i] = list[j];
-      list[j] = k;
+      while (--i) {
+        var j = Math.floor(Math.random() * (i + 1))
+        if (i === j) continue
+        var k = list[i]
+        list[i] = list[j]
+        list[j] = k
+      }
+
+      return list
     }
 
-    return list;
+    shuffle(posts)
+    posts = posts.slice(0, 6)
   }
-
-  shuffle(posts);
-
-  posts = posts.slice(0, 6);
 
   return (
     <RelativeList>
       <h2 className="c-heading--lg--side">関連記事</h2>
       <div>
-        {posts.map((item) => {
+        {posts.map((item, index) => {
           return (
-            <List item={item.node.frontmatter} url={item.node.fields.slug} />
-          );
+            <article className="p-entryCard is-small" key={`relative${index}`}>
+              <Link className="p-entryCard__img" to={item.node.fields.slug}>
+                {item.node.frontmatter.hero ? (
+                  <Img
+                    source={item.node.frontmatter.hero}
+                    alt={item.node.frontmatter.title}
+                  />
+                ) : (
+                  <Img source="common/dummy.png" alt={title} />
+                )}
+              </Link>
+              <Link to={item.node.fields.slug} className="p-entryCard__body">
+                <h3 className="p-entryCard__heading">
+                  {item.node.frontmatter.title}
+                </h3>
+              </Link>
+            </article>
+          )
         })}
       </div>
     </RelativeList>
-  );
-};
-export default Lists;
+  )
+}
+export default Lists
 
 const RelativeList = styled.div`
   @media screen and (min-width: 768px) {
@@ -131,4 +127,4 @@ const RelativeList = styled.div`
       }
     }
   }
-`;
+`

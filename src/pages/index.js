@@ -1,13 +1,14 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
 import styled from "styled-components"
-
+import Seo from "../components/seo"
 import Img from "../components/img"
-import FovoriteList from "../components/common/favorites"
+
+import Layout from "../components/layout"
 import FirstView from "../components/top-first-view"
+import FovoriteList from "../components/common/favorites"
+import AddTagLink from "../components/common/add-tag-link"
 import Tags from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
@@ -19,11 +20,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        title="海外ノマド フリーランスエンジニアの日記"
-        // image={ogpSrc}
-        // location={location}
-      />
+      <Seo title="海外ノマド フリーランスエンジニアの日記" />
       <FirstView />
       <BigWhite>
         <div className="l-container">
@@ -80,6 +77,9 @@ const BlogIndex = ({ data, location }) => {
                       </h3>
                       {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
                     </Link>
+                    <div className="p-entryCard__footer">
+                      <AddTagLink tags={post.frontmatter.tags} />
+                    </div>
                   </article>
                 )
               })}
@@ -119,23 +119,8 @@ export const pageQuery = graphql`
         title
       }
     }
-    allFile {
-      edges {
-        node {
-          name
-          childImageSharp {
-            gatsbyImageData(
-              blurredOptions: { width: 100 }
-              width: 600
-              placeholder: BLURRED
-            )
-          }
-        }
-      }
-    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 10
       filter: { frontmatter: { pagetype: { eq: "blog" } } }
     ) {
       nodes {

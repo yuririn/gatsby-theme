@@ -1,8 +1,8 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const Img = ({ source, title, className }) => {
+const Img = ({ source, title, className, size }) => {
   const { allFile } = useStaticQuery(
     graphql`
       query {
@@ -12,8 +12,8 @@ const Img = ({ source, title, className }) => {
               name
               childImageSharp {
                 gatsbyImageData(
-                  blurredOptions: { width: 100 }
-                  width: 600
+                  blurredOptions: { width: 1200 }
+                  width: 1200
                   placeholder: BLURRED
                 )
               }
@@ -24,35 +24,29 @@ const Img = ({ source, title, className }) => {
     `
   )
   title = title ? title : ""
-  let img = allFile.edges.map(img => {
-    let resource =
-      source.split("/").length > 1
-        ? source.split("/")[source.split("/").length - 1]
-        : source
-    resource =
-      resource.split(".").length > 1 ? resource.split(".")[0] : resource
-    if (img.node.name === resource) {
-      return (
-        <GatsbyImage
-          image={getImage(img.node.childImageSharp)}
-          alt={title}
-          key={title}
-          className={className}
-        />
-      )
-    }
-  })
-  if (img) {
-    return img
+  let resource =
+    source.split("/").length > 1
+      ? source.split("/")[source.split("/").length - 1]
+      : source
+  resource = resource.split(".").length > 1 ? resource.split(".")[0] : resource
+
+  let img = allFile.edges.filter(img => img.node.name === resource)
+  if (img[0]) {
+    return (
+      <GatsbyImage
+        image={getImage(img[0].node.childImageSharp.gatsbyImageData)}
+        alt={title}
+        key={title}
+        className={className}
+      />
+    )
   } else {
     return (
-      <StaticImage
-        className="bio-avatar"
-        layout="constrained"
-        formats={["auto", "webp", "avif"]}
-        src="../images/common/dummy.png"
-        quality={95}
+      <GatsbyImage
+        image={getImage("dummy.png")}
         alt={title}
+        key={title}
+        className={className}
       />
     )
   }

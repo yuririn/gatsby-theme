@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Edit = styled.div`
   line-height: 2;
@@ -66,7 +66,7 @@ export const Edit = styled.div`
       font-size: 1.2rem;
       font-weight: bold;
 
-      img {
+      .msg-baloon--img {
         border-radius: 50%;
         margin-bottom: 15px;
       }
@@ -78,6 +78,10 @@ export const Edit = styled.div`
       padding: 15px;
       border-radius: 10px;
       position: relative;
+
+      span {
+        display: block;
+      }
 
       &::before {
         left: -15px;
@@ -99,7 +103,7 @@ export const Edit = styled.div`
         width: 100px;
         font-size: 1.3rem;
 
-        img {
+        .msg-baloon--img {
           border-radius: 50%;
           margin-bottom: 15px;
         }
@@ -111,6 +115,10 @@ export const Edit = styled.div`
         padding: 15px;
         border-radius: 10px;
         position: relative;
+
+        span {
+          display: block;
+        }
 
         &::before {
           right: -15px;
@@ -472,4 +480,4 @@ export const Edit = styled.div`
     margin: 0 auto;
     max-width: 300px;
   }
-`;
+`

@@ -53,13 +53,12 @@ module.exports = {
     ],
   },
   plugins: [
-    `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
         path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
@@ -88,6 +87,7 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          "gatsby-remark-component",
         ],
       },
     },
@@ -99,6 +99,8 @@ module.exports = {
     //     trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
+    `gatsby-plugin-smoothscroll`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {

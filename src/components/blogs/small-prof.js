@@ -1,19 +1,19 @@
-import React from "react";
-import Img from "../img";
-import { Link } from "gatsby";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react"
+import Img from "../img"
+import { Link } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faTwitter,
   faInstagram,
   faYoutube,
   faSlideshare,
-} from "@fortawesome/free-brands-svg-icons";
+} from "@fortawesome/free-brands-svg-icons"
 
 const smallProf = () => {
   return (
     <div className="profile">
       <span className="title">この記事を書いた人</span>
-      <Img filename="common/camille.jpg" className="prof__img__sm"></Img>
+      <Img source="camille-pic.jpg" className="prof__img__sm"></Img>
       <p className="name">かみーゆ/フロントエンドエンジニア</p>
       <p className="sns">
         <Link
@@ -54,6 +54,6 @@ const smallProf = () => {
         <Link to="/about/">Read More</Link>
       </p>
     </div>
-  );
-};
-export default smallProf;
+  )
+}
+export default smallProf

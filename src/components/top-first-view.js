@@ -1,19 +1,40 @@
 import React from "react"
 import styled from "styled-components"
-import { StaticImage } from "gatsby-plugin-image"
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+const Img = () => {
+  const { allFile } = useStaticQuery(
+    graphql`
+      query {
+        allFile(filter: { name: { eq: "mainvisual" } }) {
+          edges {
+            node {
+              name
+              childImageSharp {
+                gatsbyImageData(
+                  blurredOptions: {}
+                  webpOptions: { quality: 95 }
+                )
+              }
+            }
+          }
+        }
+      }
+    `
+  )
 
+  return (
+    <GatsbyImage
+      image={getImage(allFile.edges[0].node.childImageSharp)}
+      alt="背景"
+    ></GatsbyImage>
+  )
+}
 const firstview = () => {
   return (
     <Mainvisual>
       <div className="bg">
-        <StaticImage
-          className="bio-avatar"
-          layout="constrained"
-          formats={["auto", "webp", "avif"]}
-          src="../images/common/mainvisual.jpg"
-          quality={95}
-          alt="Profile picture"
-        />
+        <Img></Img>
       </div>
       <div className="p-mainvisual__hero">
         <div className="l-container">

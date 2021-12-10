@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { Edit } from "./../../styles/blog-styles/edit";
+import React from "react"
+import styled from "styled-components"
+import { Edit } from "./../../styles/blog-styles/edit"
 
-const Toc = (props) => {
-  const list = props.data.replace(/(ul>)/gi, "ol>");
+const Toc = props => {
+  const list = props.data.replace(/(ul>)/gi, "ol>")
 
   return (
     <Mokuji>
@@ -19,10 +19,10 @@ const Toc = (props) => {
         ></div>
       </Edit>
     </Mokuji>
-  );
-};
+  )
+}
 
-export default Toc;
+export default Toc
 
 const Mokuji = styled.div`
 	padding: 20px;
@@ -89,4 +89,4 @@ const Mokuji = styled.div`
     display: block;
 }
 }
-`;
+`

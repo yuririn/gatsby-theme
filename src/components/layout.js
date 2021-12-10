@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import { BaseStyle } from "./../styles/common/base"
 import { CommonStyle } from "./../styles/common/common"
 import { createGlobalStyle } from "styled-components"
@@ -10,30 +11,15 @@ import Footer from "./footer"
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  // let header
-
-  // if (isRootPath) {
-  //   header = (
-  //     <h1 className="main-heading">
-  //       <Link to="/">{title}</Link>
-  //     </h1>
-  //   )
-  // } else {
-  //   header = (
-  //     <Link className="header-link-home" to="/">
-  //       {title}
-  //     </Link>
-  //   )
-  // }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
+    <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
       <BaseStyle />
       <CommonStyle />
       <GlobalStyle />
       <GNav />
       <Header title={title} location={location.pathname} />
-      <main id="top">{children}</main>
+      <main>{children}</main>
       <Footer title={title} />
     </div>
   )

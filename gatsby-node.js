@@ -7,6 +7,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
+  const blogList = path.resolve(`./src/templates/blog-list.js`)
+
+  const tagList = path.resolve(`./src/templates/tag-list.js`)
+
+  const genreList = path.resolve(`./src/templates/genre-list.js`)
+
+  const pagePost = path.resolve(`./src/templates/page-post.js`)
+
+  const aboutPost = path.resolve(`./src/pages/about.js`)
+
   // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
@@ -19,6 +29,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+            }
+            frontmatter {
+              tags
+              cateId
+              hero
+              pagetype
             }
           }
         }
@@ -41,7 +57,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
-    posts.forEach((post, index) => {
+    const blogPosts = posts.filter(post => {
+      if (post.frontmatter.pagetype === "blog") return post
+    })
+
+    blogPosts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
@@ -55,6 +75,133 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       })
     })
+
+    // ページの生成
+    posts.forEach(post => {
+      if (post.frontmatter.pagetype === "page") {
+        if (!post) {
+          createPage({
+            path: post.fields.slug,
+            component: pagePost,
+            context: {
+              id: post.id,
+              hero: post.frontmatter.hero,
+            },
+          })
+        }
+      }
+    })
+
+    // ページの生成
+    posts.forEach(post => {
+      if (post.frontmatter.pagetype === "page") {
+        createPage({
+          path: post.fields.slug,
+          component: pagePost,
+          context: {
+            id: post.id,
+          },
+        })
+      }
+    })
+
+    // 一覧記事生成
+    const postsPerPage = 12
+    let numPages = Math.ceil(blogPosts.length / postsPerPage)
+
+    for (let index = 0; index < numPages; index++) {
+      const withPrefix = pageNumber =>
+        pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`
+      const pageNumber = index + 1
+      createPage({
+        path: withPrefix(pageNumber),
+        // 上で作成したblogPostList変数を使用します。
+        component: blogList,
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          current: pageNumber,
+          page: numPages,
+        },
+      })
+    }
+    //タグ一覧ページ
+    const tags = posts.reduce((tags, edge) => {
+      const edgeTags = edge["frontmatter"]["tags"]
+      return edgeTags ? tags.concat(edgeTags) : tags
+    }, [])
+
+    let counts = new Object()
+
+    for (const i in tags) {
+      let key = tags[i]
+      counts[key] = counts[key] ? counts[key] + 1 : 1
+    }
+
+    for (let tag in counts) {
+      const postsPerPage = 12
+      let count = counts[tag]
+      numPages = Math.ceil(count / postsPerPage)
+
+      for (let index = 0; index < numPages; index++) {
+        const withPrefix = pageNumber =>
+          pageNumber === 1
+            ? `/blogs/tags/${tag}/`
+            : `/blogs/tags/${tag}/page/${pageNumber}/`
+        const pageNumber = index + 1
+
+        createPage({
+          path: withPrefix(pageNumber),
+          component: tagList,
+          context: {
+            limit: postsPerPage,
+            skip: index * postsPerPage,
+            current: pageNumber,
+            page: numPages,
+            tag: tag,
+          },
+        })
+      }
+    }
+
+    //カテゴリー一覧
+    let cates = posts.reduce((cates, edge) => {
+      const edgeCates = edge["frontmatter"]["cateId"]
+      return edgeCates ? cates.concat(edgeCates) : cates
+    }, [])
+
+    let categories = new Object()
+    for (const i in cates) {
+      let key = cates[i]
+      categories[key] = categories[key] ? categories[key] + 1 : 1
+    }
+
+    for (cate in categories) {
+      const postsPerPage = 12
+      let count = categories[cate]
+      numPages = Math.ceil(count / postsPerPage)
+
+      for (let index = 0; index < numPages; index++) {
+        const withPrefix = pageNumber =>
+          pageNumber === 1
+            ? `/blogs/${cate}/`
+            : `/blogs/${cate}/page/${pageNumber}/`
+        const pageNumber = index + 1
+        const cateSlug = cate
+
+        createPage({
+          path: withPrefix(pageNumber),
+          component: genreList,
+          context: {
+            limit: postsPerPage,
+            skip: index * postsPerPage,
+            current: pageNumber,
+            page: numPages,
+            cateSlug,
+          },
+        })
+      }
+    }
   }
 }
 
@@ -102,10 +249,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       fields: Fields
     }
 
-    type Frontmatter {
+     type Frontmatter {
       title: String
       description: String
       date: Date @dateformat
+      modifieddate: Date @dateformat
       tags: [String]
       pagetype: String
       cateId: String
