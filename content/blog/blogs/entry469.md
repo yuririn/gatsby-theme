@@ -20,15 +20,7 @@ lead: ["2019年セブ島日系企業に就職したけど、昨年辞めてそ�
 
 あ、ちなみに現在のフィリピンからの日本への帰国は地獄です。
 
-<a class="article-link" href="/blogs/entry422/">
-<section><div class="article-link__img"><img alt="セブ島からNew Normalの帰国の仕方教えます（VISA手続き編）" src="/static/fab2762903989bf918db643f24a7000a/f836f/entry422.jpg"! width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">セブ島からNew Normalの帰国の仕方教えます（VISA手続き編）</div>
-<p class="description">親愛なる人がフィリピンセブ島から日本に帰還するまでの手記を託してくれ･･･</p>
-<p>
-<time datetime="2020-12-23">2020.12.23</time>
-</p>
-</div>
-</section></a>
+<card id="/blogs/entry422/"></card>
 
 
 
@@ -51,10 +43,7 @@ lead: ["2019年セブ島日系企業に就職したけど、昨年辞めてそ�
 
 <br>私、まだまだ40歳そこそこですが
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>ぶっちゃけその繰り返しで、死ぬほどうんざりしたのよね。<br>なんか、日本戻りたくないなあ。</p>
-</div>
+<msg txt="ぶっちゃけその繰り返しで、死ぬほどうんざりしたのよね。<br>なんか、日本戻りたくないなあ。"></msg>
 
 今はこちらでビジネスの準備中なので、現状できる範囲で仕事をしています。
 
@@ -86,10 +75,7 @@ lead: ["2019年セブ島日系企業に就職したけど、昨年辞めてそ�
 
 <br>そんな中気づいたことがあります。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>あれ？ちょっと待って。評価って人間が決めませんか？<br>本当にその評価定量的？本当に公平なんですか？</p>
-</div>
+<msg txt="あれ？ちょっと待って。評価って人間が決めませんか？<br>本当にその評価定量的？本当に公平なんですか？"></msg>
 
 私の偏見もあるかもですが、総じて評価って**評価する人の利害につながることが多かった**気がします。
 <br>だから評価される側の*ほとんどの人が忖度しちゃう*んでしょうね。
@@ -120,10 +106,7 @@ lead: ["2019年セブ島日系企業に就職したけど、昨年辞めてそ�
 
 <br><br>自分が変えられるのは自分くらい。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>苦しい状況に甘んじるのも自分の責任。<br>現状が耐えられないなら、耐える必要もないし、イヤなら自分が去ればいいんです。</p>
-</div>
+<msg txt="苦しい状況に甘んじるのも自分の責任。<br>現状が耐えられないなら、耐える必要もないし、イヤなら自分が去ればいいんです。"></msg>
 
 結果闘う必要もなくなり、解放されました。
 
@@ -147,10 +130,8 @@ lead: ["2019年セブ島日系企業に就職したけど、昨年辞めてそ�
 
 仕事が楽しくなりました。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>人生のほとんどの時間って仕事してますよね？<br>その間が幸せだったらサイコーじゃないですか？！！</p>
-</div>
+
+<msg txt="人生のほとんどの時間って仕事してますよね？<br>その間が幸せだったらサイコーじゃないですか？！！"></msg>
 
 ## おわりに
 

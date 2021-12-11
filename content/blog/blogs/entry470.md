@@ -20,17 +20,11 @@ lead: ["GASを使ってスプレッドシートからGoogleドライブにフォ
  └ プロジェクトC/
       ・・・
 ```
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>毎回同じ処理するのってすげーめんどくさい！！</p>
-</div>
+<msg txt="毎回同じ処理するのってすげーめんどくさい！！"></msg>
 
 プロジェクト名の接頭辞は連番にしたいし、自動化したいと思った結果...
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>そうだ！Google Apps Script（GAS）があるじゃないか！！</p>
-</div>
+<msg txt="そうだ！Google Apps Script（GAS）があるじゃないか！！"></msg>
 
 1. スプシにプロジェクト登録
 2. 個々の連番のプロジェクトフォルダー自動生成
@@ -39,10 +33,7 @@ lead: ["GASを使ってスプレッドシートからGoogleドライブにフォ
 
 <br>上記をGASなら自動で登録できる。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>これワンクリックでできたら、<em>仕事が楽（ラク）になる</em>んじゃないか？！</p>
-</div>
+<msg txt="これワンクリックでできたら、「仕事が楽（ラク）になる」んじゃないか？！"></msg>
 
 <br>そう信じて作ったGASコードをご紹介します。
 
@@ -341,27 +332,8 @@ function createProject() {
 
 <br>ァイルアップロードとリネームを自動化したい方はこちらもどうぞ！
 
-<a class="article-link" href="/blogs/entry475/">
-<section><div class="article-link__img"><img alt="【GAS】スプシからファイルアップロードし、ドライブに保存・UI編" src="/static/c54562085bca0c60e7c9a80b7acd3a29/f836f/entry475.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">【GAS】スプシからファイルアップロードし、ドライブに保存する・UI編</div>
-<p class="description">プログラミングで自動化してヒューマンエラーやルールのブレをを減らしたい！Google Apps Scriptを使ってスプシ（Googleスプレッドシート）から･･･</p>
-<p>
-<time datetime="2021-06-24">2021.06.24</time>
-</p>
-</div>
-</section>
-</a>
-
-<a class="article-link" href="/blogs/entry476/">
-<section><div class="article-link__img"><img alt="事例で紹介【GAS】スプシからファイルアップロードし、ドライブに保存・保存編" src="/static/b4bf1409820c6b3c49db0802a47b85d1/f836f/entry476.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">事例で紹介【GAS】スプシからファイルアップロードし、ドライブに保存・保存編</div>
-<p class="description">プログラミングで自動化してヒューマンエラーやルールのブレをを減らしたい！Google Apps Scriptを使ってスプシ（Googleスプレッドシート）から･･･</p>
-<p>
-<time datetime="2021-06-24">2021.06.24</time>
-</p>
-</div>
-</section>
-</a>
+<card id="/blogs/entry475/"></card>
+<card id="/blogs/entry476/"></card>
 
 この記事が皆さんの事務作業時短の一助となれば幸いです。
 

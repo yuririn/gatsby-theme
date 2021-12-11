@@ -12,6 +12,8 @@ import rehypeReact from "rehype-react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Img from "../components/img"
+import { faRss } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import BreadCrumbList from "../components/common/bread-crumb-list"
 import Category from "../components/blogs/category"
 import TagsList from "../components/blogs/tags-blog"
@@ -112,6 +114,29 @@ const BlogPostTemplate = ({ data, location }) => {
                 {renderAst(post.htmlAst)}
               </section>
             </Edit>
+            <Sns url={perfectUrl} title={perfectTitle} />
+            <dl className="c-article__tags">
+              <dt>Category</dt>
+              <dd className="cate">
+                <Link to={`/blogs/${post.frontmatter.cateId}/`}>
+                  {siteMetadata.category.map(item => {
+                    return post.frontmatter.cateId === item.slug
+                      ? item.name
+                      : ""
+                  })}
+                </Link>
+              </dd>
+            </dl>
+            <Feedly>
+              <h2> 「銀ねこアトリエ」のブログを定期購読しよう</h2>
+              <a
+                href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fginneko-atelier.com%2Frss.xml"
+                target="blank"
+              >
+                <FontAwesomeIcon icon={faRss} />
+                Feedlyに登録する
+              </a>
+            </Feedly>
             <nav className="p-section l-container">
               <ol className="c-pager--article">
                 <li className="c-pager--article__prev">
@@ -228,10 +253,9 @@ const Feedly = styled.div`
   background: #eee;
   // border:1px solid #6cc655;
   flex-direction: column;
-  margin: 0 15px;
+  margin: 20px 0 15px;
   @media screen and (min-width: 768px) {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0 0 30px;
   }
   h2 {
     margin-bottom: 20px;

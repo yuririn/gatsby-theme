@@ -11,10 +11,7 @@ lead: ["プログラミングで事務作業を自動化してラクしよう！
 ---
 <custom></custom>
 ## スプシからファイルをアップロードしてドライブに保存するまでざっくり
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>この記事は「人のやる作業を減らしたい」、「書類を管理するためにルールを厳格に守りたい」、「個人で会社や仕事を切り盛りしている」方にオススメです。</p>
-</div>
+<msg txt="この記事は「人のやる作業を減らしたい」、「書類を管理するためにルールを厳格に守りたい」、「個人で会社や仕事を切り盛りしている」方にオススメです。"></msg>
 
 この記事は、[【GAS】スプシからファイルアップロードし、ドライブに保存する・UI編]("/blogs/entry475/)の続編です。
 
@@ -33,16 +30,7 @@ lead: ["プログラミングで事務作業を自動化してラクしよう！
 
 1 ~ 4を確認したい方は前回の記事をお読みください。
 
-<a class="article-link" href="/blogs/entry475/">
-<section><div class="article-link__img"><img alt="【GAS】スプシからファイルアップロードし、ドライブに保存・UI編" src="/static/c54562085bca0c60e7c9a80b7acd3a29/f836f/entry475.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">【GAS】スプシからファイルアップロードし、ドライブに保存する・UI編</div>
-<p class="description">プログラミングで自動化してヒューマンエラーやルールのブレをを減らしたい！Google Apps Scriptを使ってスプシ（Googleスプレッドシート）から･･･</p>
-<p>
-<time datetime="2021-06-24">2021.06.24</time>
-</p>
-</div>
-</section>
-</a>
+<card id="/blogs/entry475/"></card>
 
 請求書の整理を例にとって進めていきます。
 
@@ -137,10 +125,7 @@ function sendForm(form) {
 
 できた！！
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>ドライブには同じ名前のファイルがアップロードできますよね？<br>ファイル名を自動でつけると重複することがないので、後々困らずにすみますよ！</p>
-</div>
+<msg txt="ドライブには同じ名前のファイルがアップロードできますよね？<br>ファイル名を自動でつけると重複することがないので、後々困らずにすみますよ！"></msg>
 
 ## スプシにファイル情報を書き出す
 ファイル以外のデータも取得します。
@@ -175,10 +160,7 @@ for(var i in clients){
 
 ![スプシの書き出し](./images/2021/06/entry476-4.jpg)
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>請求書などのファイルを一元管理！<br>IDのリンクからファイルに飛べるので、ファイルをいちいちドライブで探す必要がなくなりますヨ！</p>
-</div>
+<msg txt="請求書などのファイルを一元管理！<br>IDのリンクからファイルに飛べるので、ファイルをいちいちドライブで探す必要がなくなりますヨ！"></msg>
 
 ## sendFormのすべてのコード
 ファイルをリネームしてドライブに保存し、スプシに書き出すまでの処理です。
@@ -266,23 +248,11 @@ function setMenu(){
 ## まとめ・GASはやっぱり便利じゃわー（広島弁）
 今回は前回のアップロードフォームのパーツ表示に続き、ファイルにバリデーションをかけてアップロードし、スプシにデータを書き出す方法をご紹介しました。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>普段の事務作業を少しでも減らしたくてGASを使ってみたら便利だったのでこの記事を書きました</p>
-</div>
+<msg txt="普段の事務作業を少しでも減らしたくてGASを使ってみたら便利だったのでこの記事を書きました"></msg>
 
 フォルダー自動生成に関しては、こちらの記事を参考に！
 
-<a class="article-link" href="/blogs/entry470/">
-<section><div class="article-link__img"><img alt="Google Apps Script（GAS） でスプシからドライブにフォルダー自動生成" src="/static/250e1864a7205400c846e6381f082a1a/f836f/entry470.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">Google Apps Script（GAS） でスプシからドライブにフォルダー自動生成</div>
-<p class="description">GASを使ってスプレッドシートからGoogleドライブにフォルダーを自動追加する方法の紹介です･･･</p>
-<p>
-<time datetime="2021-06-08">2021.06.08</time>
-</p>
-</div>
-</section>
-</a>
+<card id="/blogs/entry470/"></card>
 
 皆さんの事務作業軽減の一助となれば幸いです。
 

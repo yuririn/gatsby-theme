@@ -26,14 +26,14 @@ const Msg = data => {
   )
   let txt = data.txt.split("<br>")
   let src = data.img ? data.img : "camille-pic.jpg"
-  let resource =
+  src =
     src.split("/").length > 1 ? src.split("/")[src.split("/").length - 1] : src
   src = src.split(".").length > 1 ? src.split(".")[0] : src
   let name = data.name ? data.name : "かみーゆ"
   let img = allFile.edges.filter(img => img.node.name === src)
-
+  let msgClass = data.cls ? data.cls : "msg-baloon"
   return (
-    <div className="msg-baloon">
+    <div className={msgClass}>
       <p>
         <GatsbyImage
           image={getImage(img[0].node.childImageSharp.gatsbyImageData)}

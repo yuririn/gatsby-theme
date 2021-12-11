@@ -18,23 +18,11 @@ lead: ["プログラミングで自動化してヒューマンエラーを減ら
 
 今回はGoogle Apps Script（GAS）を使って、請求書など分類としては一緒だけど**命名規則やファイル形式が違う書類を*スッキリ整理する方法***を具体的に紹介していきます。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>人間ほど間違えるイキモノっていないよね？<br>だったらルールを決めてしまって、ルール通りにファイルを管理しよう！！</p>
-</div>
+<msg txt="人間ほど間違えるイキモノっていないよね？<br>だったらルールを決めてしまって、ルール通りにファイルを管理しよう！！"></msg>
 
 ちなみにフォルダー管理を自動化したい方はこちらの記事を参考に。
 
-<a class="article-link" href="/blogs/entry470/">
-<section><div class="article-link__img"><img alt="Google Apps Script（GAS） でスプシからドライブにフォルダー自動生成" src="/static/250e1864a7205400c846e6381f082a1a/f836f/entry470.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">Google Apps Script（GAS） でスプシからドライブにフォルダー自動生成</div>
-<p class="description">GASを使ってスプレッドシートからGoogleドライブにフォルダーを自動追加する方法の紹介です･･･</p>
-<p>
-<time datetime="2021-06-08">2021.06.08</time>
-</p>
-</div>
-</section>
-</a>
+<card id="/blogs/entry470/"></card>
 
 
 ### スプシからファイルをアップロードしてドライブに保存するまでの大まかな作業の流れ
@@ -446,13 +434,4 @@ function sendForm(form) {
 ### 続きの記事も合わせてお読みください
 次は実際ドライブに保存し、ファイルの詳細を自動でスプシに追記します。
 
-<a class="article-link" href="/blogs/entry476/">
-<section><div class="article-link__img"><img alt="事例で紹介【GAS】スプシからファイルアップロードし、ドライブに保存・保存編" src="/static/b4bf1409820c6b3c49db0802a47b85d1/f836f/entry476.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">事例で紹介【GAS】スプシからファイルアップロードし、ドライブに保存・保存編</div>
-<p class="description">プログラミングで自動化してヒューマンエラーやルールのブレをを減らしたい！Google Apps Scriptを使ってスプシ（Googleスプレッドシート）から･･･</p>
-<p>
-<time datetime="2021-06-24">2021.06.24</time>
-</p>
-</div>
-</section>
-</a>
+<card id="/blogs/entry476/"></card>

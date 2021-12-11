@@ -13,23 +13,11 @@ lead: ["2021/6/12でんか塾に参加しました。当日の様子をまとめ
 
 でんかじゅくについてさらに詳しく知りたい方は前回の様子も併せてお読みください。
 
-<a class="article-link" href="/blogs/entry457/">
-<section><div class="article-link__img"><img alt="Google検索 SEOで悪質対策事例などのLTしました@でんかじゅく" src="/static/42516f2f40dadc7b2bea79afbbd4615f/f836f/entry457.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">Google検索 SEOで悪質対策事例などのLTしました@でんかじゅく</div>
-<p class="description">4/16、「でんかじゅく」という広島IT勉強会で悪質SEO対策などの事例を紹介するためにオンラインで登壇しました。この記事では･･･</p>
-<p>
-<time datetime="2021-04-17">2021.04.17</time>
-</p>
-</div>
-</section>
-</a>
+<card id="/blogs/entry457/"></card>
 
 この勉強会の主催者、でんかとは前日オンライン飲みをしていて勢いで参加することになりました。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>酔った勢いほど怖いものはない！！</p>
-</div>
+<msg txt="酔った勢いほど怖いものはない！！"></msg>
 
 [オンラインでんかじゅくON ZOOM](https://connpass.com/event/215979/)
 
@@ -45,10 +33,7 @@ lead: ["2021/6/12でんか塾に参加しました。当日の様子をまとめ
 ### でんか・SEOの入り口的お話
 何か困ったら「ぴえん」と野太い声で言う[でんか](https://twitter.com/sassga)です。SEOをクライアントに対して普段わかりやすく説明しているので、今回初心者向けの内容でした。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>私も日々反省してますが、専門用語が多いと専門外の人にはわかりにくいですよね。。。</p>
-</div>
+<msg txt="私も日々反省してますが、専門用語が多いと専門外の人にはわかりにくいですよね。。。"></msg>
 
 私の元同僚がいつもアインシュタインの言葉を引用して「**6歳児にもわかるように説明できなければ理解したと言えない**」、と言っていたのを思い出しました。
 
@@ -95,19 +80,13 @@ GoogleはCore Web Vitals（コア ウェブ バイタル）をランキング要
 
 ここで私の言う「*やめる*」とは、**一般的に常識だけど本当はやりたくないと思いつつやっていることを*やめる***ことです。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>「これ、しないと社会人としてダメなんじゃないか？」とか<br>「ねばならないこと」って、ある種強迫観念にも近い気がします。</p>
-</div>
+<msg txt="「これ、しないと社会人としてダメなんじゃないか？」とか<br>「ねばならないこと」って、ある種強迫観念にも近い気がします。"></msg>
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/yQnAy54IytrPEl" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/yurikamimori/ss-249332007" title="やめる勇気 〜人生も仕事も想像以上にシンプル〜" target="_blank">やめる勇気 〜人生も仕事も想像以上にシンプル〜</a> </strong> from <strong><a href="https://www.slideshare.net/yurikamimori" target="_blank">Yuriko Kamimori</a></strong> </div>
 
 最近、日本にいる人とたまに話していて感じることがあります。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>日本って「ねばならない」が溢れかえっていて生き辛そうだなぁ。。。<br>それの考え方をやめたらもっとラクになるだろうに。</p>
-</div>
+<msg txt="日本って「ねばならない」が溢れかえっていて生き辛そうだなぁ。。。<br>それの考え方をやめたらもっとラクになるだろうに。"></msg>
 
 私の今回のLT、実は「*嫌われる勇気*」の影響を受けてお話しさせていただきました。
 
@@ -141,10 +120,8 @@ IT業界の技術や情報って自分が意識してインプットしていな
 
 もちろん、インプットして満足している人、次回ぜひアウトプットしてもらいたいですね。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>アウトプットとインプットはセットです！！</p>
-</div>
+<msg txt="アウトプットとインプットはセットです！！"></msg>
+
 
 そして、マインドもアウトプットとインプットするのって大事。健康な心が学びへの探究心を育みますから！
 

@@ -76,6 +76,9 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 630,
+              withWebp: true,
+              // withAvif: true,
+              linkImagesToOriginal: false,
             },
           },
           {
@@ -88,6 +91,21 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           "gatsby-remark-component",
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              rel: "noopener noreferrer",
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `30`,
+              icon: false,
+              className: `custom-class`,
+              maintainCase: true,
+            },
+          },
         ],
       },
     },
@@ -101,6 +119,7 @@ module.exports = {
     // },
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -149,7 +168,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "銀ねこアトリエ RSS Feed",
           },
         ],
       },
@@ -173,4 +192,7 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+  flags: {
+    FAST_DEV: true,
+  },
 }

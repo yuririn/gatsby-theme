@@ -270,10 +270,7 @@ CVに至るまでにたくさんイベントを登録するかと思いますが
 
 私のサイトはついでにHotjar、Adsenseもタグマネから追加しました。一元管理サイコー。
 
-<div class="msg-baloon">
-<p><img src="/static/ecd737bbd9e6b99fd33fbd308f2b88e8/f836f/camille.jpg">かみーゆ</p>
-<p>こんなにラクならさっさと導入すればよかった。。。</p>
-</div>
+<msg txt="こんなにラクならさっさと導入すればよかった。。。"></msg>
 
 皆さんのSEOライフの一助となれば幸いです。
 

@@ -307,12 +307,4 @@ YouTubeなどの良質な学習コンテンツはありますし、公式リフ�
 
 学習方法ではなく、年齢やキャリアで悩んでいる方はこちらの記事も併せてお読みください。
 
-<a class="article-link" href="/blogs/entry369/">
-<section><div class="article-link__img"><img alt="駆け出しエンジニアの君へ。30才過ぎても転職はできる" src="/static/892bb87f5521b76614fa49c895bc8df3/f836f/entry369.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">駆け出しエンジニアの君へ。30才過ぎても転職はできる</div>
-<p class="description">「ITエンジニア、Webデザイナーに転職したい」。そんな相談を受けることがあります。10年前IT業界へ転職したときに･･</p>
-<p>
-<time datetime="2020-07-01">2020.07.01</time>
-</p>
-</div>
-</section></a>
+<card id="/blogs/entry369/"></card>

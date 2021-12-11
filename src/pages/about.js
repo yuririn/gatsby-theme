@@ -42,7 +42,7 @@ const aboutPost = ({ data, location }) => {
           <h1 className="p-pageHeader__heading">About Me</h1>
           <p className="p-pageHeader__content">かみーゆってどんな人？</p>
         </div>
-        <Img source="common/about.jpg" className="p-pageHeader__img" />
+        <Img source="common/about-bg.jpg" className="p-pageHeader__img" />
       </div>
       <div className="l-container">
         <BreadCrumbList current={pageTitle} />
