@@ -56,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        id: process.env.GTM_ID,
+        id: "GTM-KPH3R92",
       },
     },
     `gatsby-plugin-image`,
