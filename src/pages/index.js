@@ -28,25 +28,6 @@ const BlogIndex = ({ data, location }) => {
       <BigWhite>
         <div className="l-container">
           <section className="p-section">
-            <h2 className="c-heading--lg">
-              YouTube「かみーゆちゃんねる」やってるよ！
-            </h2>
-            <p className="u-text-center u-mblg">
-              海外ノマドやエンジニアライフについて配信中です。
-            </p>
-
-            <p className="u-text-center u-mblg">
-              <a
-                className="p-btn--detail"
-                href="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                チャンネル登録する
-              </a>
-            </p>
-          </section>
-          <section className="p-section">
             <h2 className="c-heading--lg">最新の記事</h2>
             <div className="c-grid">
               {posts.map((post, i) => {

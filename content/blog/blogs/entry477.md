@@ -6,7 +6,7 @@ pagetype: blog
 cateId: 'web-developer'
 tags: ["Gatsby","React","JavaScript"]
 description: ウェブサイトのリニューアルがようやく終わりました。WebP対応しつつv3にアップグレードする予定たったのですが、Gatsby cliでのインストールのエラーでひっかかってできませんでした。v2からv4にアップグレードで突っかかって困っている人へ私が解決できた方法をご紹介します。
-lead: ["お久しぶりです!!!","2021年7月から進めていたウェブサイトのリニューアルがようやく終わりました！涙","WebP対応しつつv3にアップグレードする予定たったのですが、","starter kit のインストールのエラーでひっかかってできませんでした。","この記事はGatsbyJSでブログなどを運用していてv4にアップグレードしたいけどエラーで引っかかってインストールできない方への記事です。","私がどうやってエラーを解決したかをご紹介します。"]
+lead: ["お久しぶりです!!!念願の久々更新です。","2021年7月から進めていたウェブサイトのリニューアルがようやく終わりました！涙","WebP対応しつつv3にアップグレードする予定たったのですが、","starter kit のインストールのエラーでひっかかってできませんでした。","この記事はGatsbyJSでブログなどを運用していてv4にアップグレードしたいけどエラーで引っかかってインストールできない方への記事です。","私がどうやってエラーを解決したかをご紹介します。"]
 ---
 ## 静的サイトジェネレーターに乗り換えた経緯
 
@@ -54,7 +54,7 @@ sudo npm i
 npm cache clean --force
 ```
 
-その後、すでに[https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-blog/](v4に対応済みの gatsby starter blog)を入れてみます。
+その後、すでにv4に対応済みの [gatsby starter blog](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-blog/) を入れてみます。
 
 ```ssh
 npx gatsby new gatsby-starter-blog https://github.com/gatsbyjs/gatsby-starter-blog
