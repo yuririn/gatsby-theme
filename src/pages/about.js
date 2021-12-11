@@ -36,6 +36,7 @@ const aboutPost = ({ data, location }) => {
         date="2021-05-05"
         image={ogp}
         modifieddate={modifiedDate}
+        location={location}
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
@@ -482,6 +483,7 @@ export const portfolioQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     allFile(

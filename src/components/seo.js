@@ -44,8 +44,10 @@ const Seo = ({
   const pagetype = isRoot ? "webSite" : "webPage"
   const ogSrc = domain + (ogp ? ogp : "/images/ogp.png")
   const cate = config.siteMetadata.category.filter(cat => cat.name === title)
-  console.log(cate)
-
+  let portfolio = false
+  if (location) {
+    portfolio = location.pathname === "/portfolio/" ? true : false
+  }
   if (type === "blogs" || type === "tags" || type === "genre") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
@@ -56,7 +58,7 @@ const Seo = ({
     description: config.siteMetadata.description,
     logo: {
       "@type": "ImageObject",
-      url: `${domain}/icon.png`,
+      url: `${domain}/images/icon.png`,
       width: 72,
       height: 72,
     },
@@ -89,7 +91,7 @@ const Seo = ({
     },
   ]
 
-  if (type === "article") {
+  if (type === "blog") {
     jsonLdConfigs.push({
       "@context": "http://schema.org",
       "@type": "BlogPosting",
@@ -248,6 +250,17 @@ const Seo = ({
       ].concat(meta)}
     >
       <link rel="canonical" href={blogUrl}></link>
+      {portfolio ? (
+        <link
+          href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap"
+          rel="stylesheet"
+        ></link>
+      ) : (
+        <link
+          href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap"
+          rel="stylesheet"
+        ></link>
+      )}
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>

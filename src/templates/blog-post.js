@@ -52,6 +52,7 @@ const BlogPostTemplate = ({ data, location }) => {
         title={siteTitle}
         description={post.frontmatter.description || post.excerpt}
         ogp={ogp}
+        location={location}
         date={post.frontmatter.date.replace(/\./g, "-")}
         modified={
           post.frontmatter.modifieddate

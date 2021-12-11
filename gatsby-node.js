@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const pagePost = path.resolve(`./src/templates/page-post.js`)
 
-  const aboutPost = path.resolve(`./src/pages/about.js`)
+  const contact = path.resolve(`./src/templates/contact.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -41,6 +41,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   )
+
+  createPage({
+    path: "/contact/",
+    component: contact,
+    context: {},
+  })
+
+  createPage({
+    path: "/contact/thanks/",
+    component: contact,
+    context: {},
+  })
 
   if (result.errors) {
     reporter.panicOnBuild(

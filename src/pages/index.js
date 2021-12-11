@@ -20,7 +20,10 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="海外ノマド フリーランスエンジニアの日記" />
+      <Seo
+        title="海外ノマド フリーランスエンジニアの日記"
+        location={location}
+      />
       <FirstView />
       <BigWhite>
         <div className="l-container">

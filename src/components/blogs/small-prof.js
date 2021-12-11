@@ -13,7 +13,7 @@ const smallProf = () => {
   return (
     <div className="profile">
       <span className="title">この記事を書いた人</span>
-      <Img source="camille-pic.jpg" className="prof__img__sm"></Img>
+      <Img source="common/camille-pic.jpg" className="prof__img__sm"></Img>
       <p className="name">かみーゆ/フロントエンドエンジニア</p>
       <p className="sns">
         <Link
