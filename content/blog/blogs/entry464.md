@@ -1,7 +1,7 @@
 ---
 title: ありのままを伝えたいからセブ島のスラム街にお邪魔してきました
 date: 2021-05-20
-hero: 2021/entry464.jpg
+hero: thumbnail/2021/entry464.jpg
 pagetype: blog
 cateId: 'overseas-freelancing'
 tags: ["子ども服をセブに送るプロジェクト"]

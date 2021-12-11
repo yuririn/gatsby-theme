@@ -1,7 +1,7 @@
 ---
 title: 【GA4】 Analytics と Google タグマネージャーを連携（画像解説28枚アリ）
 date: 2021-06-20
-hero: 2021/entry474.jpg
+hero: thumbnail/2021/entry474.jpg
 pagetype: blog
 cateId: 'seo'
 tags: ["Web解析"]

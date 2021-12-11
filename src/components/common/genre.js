@@ -19,7 +19,10 @@ const genre = () => {
                   <h3 className="p-localNav__heading">{item.enName}</h3>
                   <p className="p-localNav__content">{item.description}</p>
                 </div>
-                <Img source={`genre-${item.slug}.jpg`} alt={item.enName} />
+                <Img
+                  source={`common/genre-${item.slug}.jpg`}
+                  alt={item.enName}
+                />
               </Link>
             </li>
           )

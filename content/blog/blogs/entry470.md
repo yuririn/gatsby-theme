@@ -1,7 +1,7 @@
 ---
 title: Google Apps Script（GAS） でスプシからドライブにフォルダー自動生成
 date: 2021-06-08
-hero: 2021/entry470.jpg
+hero: thumbnail/2021/entry470.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["GAS","JavaScript"]

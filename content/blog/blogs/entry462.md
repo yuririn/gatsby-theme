@@ -1,7 +1,7 @@
 ---
 title: 全部使ったことある？便利なCSS関数12選！！
 date: 2021-05-21
-hero: 2021/entry462.jpg
+hero: thumbnail/2021/entry462.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["CSS"]

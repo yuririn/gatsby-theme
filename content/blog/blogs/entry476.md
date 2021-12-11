@@ -1,7 +1,7 @@
 ---
 title: 【GAS】 スプシにファイルアップロード機能をつけてドライブに保存・保存編
 date: 2021-06-26
-hero: entry476.jp
+hero: thumbnail/2021/entry476.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["GAS","JavaScript"]

@@ -1,7 +1,7 @@
 ---
 title: 海外ノマドになって「やめたこと」についてLTしました@でんかじゅく
 date: 2021-06-14
-hero: 2021/entry471.jpg
+hero: thumbnail/2021/entry471.jpg
 pagetype: blog
 cateId: 'career'
 tags: ["ライフスタイル"]

@@ -45,7 +45,7 @@ const RelativeCard = data => {
             />
           </div>
           <div className="article-link__main">
-            <div class="article-link__main__title">
+            <div className="article-link__main__title">
               {article.frontmatter.title}
             </div>
             <p className="description">{description}</p>

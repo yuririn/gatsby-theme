@@ -9,7 +9,7 @@ const Img = ({ source, title, className, size }) => {
         allFile(filter: { sourceInstanceName: { eq: "images" } }) {
           edges {
             node {
-              name
+              relativePath
               childImageSharp {
                 gatsbyImageData(
                   blurredOptions: { width: 1200 }
@@ -24,13 +24,9 @@ const Img = ({ source, title, className, size }) => {
     `
   )
   title = title ? title : ""
-  let resource =
-    source.split("/").length > 1
-      ? source.split("/")[source.split("/").length - 1]
-      : source
-  resource = resource.split(".").length > 1 ? resource.split(".")[0] : resource
+  let resource = source ? source : "common/dummy.png"
 
-  let img = allFile.edges.filter(img => img.node.name === resource)
+  let img = allFile.edges.filter(img => img.node.relativePath === resource)
   if (img[0]) {
     return (
       <GatsbyImage
@@ -41,14 +37,7 @@ const Img = ({ source, title, className, size }) => {
       />
     )
   } else {
-    return (
-      <GatsbyImage
-        image={getImage("dummy.png")}
-        alt={title}
-        key={title}
-        className={className}
-      />
-    )
+    return ""
   }
 }
 export default Img

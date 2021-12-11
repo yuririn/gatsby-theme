@@ -1,7 +1,7 @@
 ---
 title: IT業界で耳にする【かぶれた用語】10選
 date: 2021-05-29
-hero: 2021/entry467.jpg
+hero: thumbnail/2021/entry467.jpg
 pagetype: blog
 cateId: 'ginneko-tsuredure'
 tags: ["おもしろ"]

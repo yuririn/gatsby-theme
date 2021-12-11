@@ -7,7 +7,7 @@ module.exports = {
     },
     description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
     siteUrl: `https://ginneko-atelier.com`,
-    image: `https://ginneko-atelier.com/images/newogp.png`,
+    image: `https://ginneko-atelier.com/images/ogp.png`,
     social: {
       twitter: `lirioL`,
       instagram: `yurico.k`,
@@ -53,6 +53,12 @@ module.exports = {
     ],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: process.env.GTM_ID,
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -184,7 +190,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,

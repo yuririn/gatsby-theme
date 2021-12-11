@@ -1,7 +1,7 @@
 ---
 title: 【WordPress】GitHubリポジトリにコミットしたプラグインを自動更新可能にする
 date: 2021-05-24
-hero: 2021/entry466.jpg
+hero: thumbnail/2021/entry466.jpg
 pagetype: blog
 cateId: 'cms'
 tags: ["WordPress"]

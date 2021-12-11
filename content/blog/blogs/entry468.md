@@ -1,7 +1,7 @@
 ---
 title: 【WordPress】カウントダウンタイマープラグイン作りました！〜かみーゆ開発工房始めます〜
 date: 2021-06-03
-hero: 2021/entry468.jpg
+hero: thumbnail/2021/entry468.jpg
 pagetype: blog
 cateId: 'cms'
 tags: ["WordPress","かみーゆ工房"]

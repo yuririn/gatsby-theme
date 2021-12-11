@@ -39,16 +39,26 @@ const renderAst = new rehypeReact({
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const { title, siteUrl } = data.site.siteMetadata
+  const siteTitle = `${post.frontmatter.title} | ${title}`
   const { previous, next } = data
-  const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
+  const perfectUrl = `${siteUrl}${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
+  const ogp = `${siteUrl}${data.allFile.edges[0].node.publicURL}`
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title={post.frontmatter.title}
+        title={siteTitle}
         description={post.frontmatter.description || post.excerpt}
+        ogp={ogp}
+        date={post.frontmatter.date.replace(/\./g, "-")}
+        modified={
+          post.frontmatter.modifieddate
+            ? post.frontmatter.modifieddate.replace(/\./g, "-")
+            : ""
+        }
+        type="blog"
       />
       <Header>
         <div
@@ -194,10 +204,24 @@ export const pageQuery = graphql`
     $id: String!
     $previousPostId: String
     $nextPostId: String
+    $hero: String
   ) {
     site {
       siteMetadata {
         title
+        siteUrl
+      }
+    }
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "images" }
+        relativePath: { eq: $hero }
+      }
+    ) {
+      edges {
+        node {
+          publicURL
+        }
       }
     }
     markdownRemark(id: { eq: $id }) {

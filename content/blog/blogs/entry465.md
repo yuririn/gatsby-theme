@@ -1,7 +1,7 @@
 ---
 title: 【WordPress】管理画面に独自メニューを追加して、ajax（非同期）で値を保存する
 date: 2021-05-23
-hero: 2021/entry465.jpg
+hero: thumbnail/2021/entry465.jpg
 pagetype: blog
 cateId: 'cms'
 tags: ["WordPress"]

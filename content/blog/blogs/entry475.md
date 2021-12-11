@@ -1,7 +1,7 @@
 ---
 title: 【GAS】スプシからファイルアップロードし、ドライブに保存・UI編
 date: 2021-06-24
-hero: 2021/entry475.jpg
+hero: thumbnail/2021/entry475.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["GAS","JavaScript"]

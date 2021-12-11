@@ -1,7 +1,7 @@
 ---
 title: 女性エンジニアが海外ノマドに ~仕事も人生も想像以上にシンプルだった~
 date: 2021-06-07
-hero: 2021/entry469.jpg
+hero: thumbnail/2021/entry469.jpg
 pagetype: blog
 cateId: 'ginneko-tsuredure'
 tags: ["ライフスタイル","海外移住"]

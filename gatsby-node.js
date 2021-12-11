@@ -72,6 +72,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId,
+          hero: post.frontmatter.hero
+            ? post.frontmatter.hero
+            : "common/dummy.png",
         },
       })
     })
@@ -85,7 +88,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             component: pagePost,
             context: {
               id: post.id,
-              hero: post.frontmatter.hero,
+              hero: post.frontmatter.hero
+                ? post.frontmatter.hero
+                : "common/dummy.png",
             },
           })
         }

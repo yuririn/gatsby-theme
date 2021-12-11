@@ -1,7 +1,7 @@
 ---
 title: セブ島の歴史が丸分かり！Museo Sugbo（セブ博物館）に行ってきました
 date: 2021-06-15
-hero: 2021/entry472.jpg
+hero: thumbnail/2021/entry472.jpg
 pagetype: blog
 cateId: 'overseas-freelancing'
 tags: ["セブ島エンジニア生活"]

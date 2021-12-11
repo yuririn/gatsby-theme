@@ -1,7 +1,7 @@
 ---
 title: 期待と責任？だから辛い長女の性格を考察してみた
 date: 2021-06-18
-hero: 2021/entry473.jpg
+hero: thumbnail/2021/entry473.jpg
 pagetype: blog
 cateId: 'ginneko-tsuredure'
 tags: ["ライフスタイル"]

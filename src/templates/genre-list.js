@@ -28,7 +28,7 @@ const category = ({ pageContext, data, location }) => {
         title={`${cateName}`}
         description={cateDescription}
         location={location}
-        type="archive"
+        type="genre"
       />
 
       <div className="p-pageHeader">
