@@ -246,23 +246,15 @@ const NotFoundPage = ({ data, location }) => {
               <em>内容が気に入らないから削除してしまった</em>
               可能性があります。誠に申し訳ありません。
             </p>
+            <p>
+              でも少し立ち止まって考えてみてください。これってひょっとしたら、普段頑張りすぎているあなたに少し休憩した方がいいっていう神様のアドバイスなのかもしれません。
+            </p>
+            <p>
+              そんなあなたのために「銀ねこアトリエ」はいくつかオプションを用意しました。お好きな項目をお選びください。
+            </p>
           </div>
         </Edit>
-        <div className="mb-Md">
-          <p className="u-text-center mb-Md">
-            <Link className="p-btn--detail" to="/">
-              トップページヘ
-            </Link>
-          </p>
-          <section className="p-section mb-Md l-container">
-            <h2 className="c-heading--lg">記事のジャンルから探す</h2>
-            <Genre />
-          </section>
-          <section className="p-section mb-Md l-container">
-            <h2 className="c-heading--lg">タグから探す</h2>
-            <TagsList></TagsList>
-          </section>
-        </div>
+        <Menu></Menu>
       </P404>
     </Layout>
   )

@@ -12,8 +12,8 @@ const Img = ({ source, title, className, size }) => {
               relativePath
               childImageSharp {
                 gatsbyImageData(
-                  blurredOptions: { width: 1200 }
-                  width: 1200
+                  blurredOptions: { width: 100 }
+                  width: 640
                   placeholder: BLURRED
                 )
               }
