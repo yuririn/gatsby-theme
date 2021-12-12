@@ -52,7 +52,7 @@ const Seo = ({
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
 
-  console.log(ogSrc)
+  console.log(location)
 
   const publisher = {
     "@type": "Organization",

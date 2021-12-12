@@ -24,7 +24,6 @@ const Portfolio = ({ data, location }) => {
 
   const ogp = `${data.allFile.edges[0].node.publicURL}`
 
-  console.log(data.allFile.edges[0].node)
   const menuEvent = () => {
     setIsOpen(!isOpen)
   }

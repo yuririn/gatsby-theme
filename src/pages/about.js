@@ -25,7 +25,7 @@ const aboutPost = ({ data, location }) => {
     "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
   const modifiedDate = "2021-05-05"
   const ogp = `${data.allFile.edges[0].node.publicURL}`
-  console.log(data)
+
   return (
     <Layout location="about" title="銀ねこアトリエ">
       <Seo
