@@ -14,6 +14,11 @@ export const Edit = styled.div`
     margin-bottom: 20px;
     margin: 0 auto 15px;
     display: block;
+
+    img {
+      border-radius: 50%;
+      overflow: hidden;
+    }
   }
   .about-sns {
     display: flex;
@@ -60,18 +65,23 @@ export const Edit = styled.div`
       width: 100px;
       height: 100px;
     }
-    p:first-child {
+    .msg-baloon--img__wrapper {
       text-align: center;
       width: 100px;
       font-size: 1.2rem;
       font-weight: bold;
+
+      img {
+        border-radius: 50%;
+        oveflow: hidden;
+      }
 
       .msg-baloon--img {
         border-radius: 50%;
         margin-bottom: 15px;
       }
     }
-    p:last-child {
+    & > p {
       width: calc(100% - 130px);
       margin-left: 30px;
       background: #eeeeee;
@@ -98,17 +108,21 @@ export const Edit = styled.div`
       margin: 3em 0;
       flex-direction: row-reverse;
       align-items: start;
-      p:first-child {
+      .msg-baloon--img__wrapper {
         text-align: center;
         width: 100px;
         font-size: 1.3rem;
+        img {
+          border-radius: 50%;
+          oveflow: hidden;
+        }
 
         .msg-baloon--img {
           border-radius: 50%;
           margin-bottom: 15px;
         }
       }
-      p:last-child {
+      & > p {
         width: calc(100% - 130px);
         margin-right: 30px;
         background: #eeeeee;

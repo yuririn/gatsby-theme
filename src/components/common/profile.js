@@ -58,6 +58,10 @@ const Profile = styled.div`
     border-radius: 50%;
     display: block;
     margin: 0 auto 30px;
+    img {
+      border-radius: 50%;
+      overflow: hidden;
+    }
   }
   ul + *,
   p + * {

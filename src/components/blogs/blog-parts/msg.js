@@ -33,16 +33,16 @@ const Msg = data => {
   if (img.length == 1) {
     return (
       <div className={msgClass}>
-        <p>
+        <div className="msg-baloon--img__wrapper">
           <GatsbyImage
             image={getImage(img[0].node.childImageSharp.gatsbyImageData)}
             alt={name}
             key={name}
             className="msg-baloon--img"
           />
-          {name}
-        </p>
-        <p>
+          <span>{name}</span>
+        </div>
+        <p className="msg-baloon--txt">
           {txt.map((t, index) => {
             return <span>{t}</span>
           })}
