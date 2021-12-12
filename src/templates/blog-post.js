@@ -41,12 +41,15 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
+  const ogpSrc = `${data.allFile.edges[0].node.publicURL}`
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        date={post.frontmatter.date.replace(/\./g, "-")}
+        ogp={ogpSrc}
       />
       <Header>
         <div
@@ -73,7 +76,7 @@ const BlogPostTemplate = ({ data, location }) => {
       <Body>
         <Article>
           <article
-            className="blog-post l-container"
+            className="blog-post"
             itemScope
             itemType="http://schema.org/Article"
           >
@@ -182,10 +185,24 @@ export const pageQuery = graphql`
     $id: String!
     $previousPostId: String
     $nextPostId: String
+    $hero: String
   ) {
     site {
       siteMetadata {
         title
+        siteUrl
+      }
+    }
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "images" }
+        relativePath: { eq: $hero }
+      }
+    ) {
+      edges {
+        node {
+          publicURL
+        }
       }
     }
     markdownRemark(id: { eq: $id }) {

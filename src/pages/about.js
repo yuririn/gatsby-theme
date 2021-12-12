@@ -24,8 +24,8 @@ const aboutPost = ({ data, location }) => {
   const description =
     "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
   const modifiedDate = "2021-05-05"
-  // const img = data.allFile.edges[0].node.childImageSharp.fluid.src
-
+  const ogp = `${data.allFile.edges[0].node.publicURL}`
+  console.log(data)
   return (
     <Layout location="about" title="銀ねこアトリエ">
       <Seo
@@ -33,9 +33,9 @@ const aboutPost = ({ data, location }) => {
         description={description}
         location={location}
         date="2021-05-05"
-        // image={img}
+        ogp={ogp}
         modifieddate={modifiedDate}
-        type="article"
+        type="blog"
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
@@ -486,19 +486,13 @@ export const portfolioQuery = graphql`
     }
     allFile(
       filter: {
+        sourceInstanceName: { eq: "images" }
         relativePath: { eq: "about/about-ogp.jpg" }
-        sourceInstanceName: { eq: "assets" }
       }
     ) {
       edges {
         node {
-          name
-          relativePath
-          childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
+          publicURL
         }
       }
     }

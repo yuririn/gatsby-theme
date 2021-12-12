@@ -14,8 +14,8 @@ const Msg = data => {
               relativePath
               childImageSharp {
                 gatsbyImageData(
-                  blurredOptions: { width: 100 }
-                  width: 100
+                  blurredOptions: { width: 200 }
+                  width: 200
                   placeholder: BLURRED
                 )
               }

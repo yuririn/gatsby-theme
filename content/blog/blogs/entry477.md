@@ -17,7 +17,7 @@ lead: ["お久しぶりです!!!念願の久々更新です。","2021年7月か�
 理由は、表示スピード改善と私がフロントエンドエンジニアでJS製のブログを運用したかったため。
 
 運用は快適で履歴も管理できるのでめちゃめちゃお気に入りでした。<br>
-GatsbyJSにブログを乗り換えた関する記事は[こちら](http://localhost:8000/blogs/tags/Gatsby/)をお読みください。
+GatsbyJSにブログを乗り換えに関する記事は[こちら](http://localhost:8000/blogs/tags/Gatsby/)をお読みください。
 
 gatsbyJSの難点は*日本語のリファレンスが少ないこと*です。<br>
 concreteCMSの時もそうでしたが英語アレルギーの人には構築がかなり辛いと思いますwww
@@ -26,7 +26,7 @@ concreteCMSの時もそうでしたが英語アレルギーの人には構築が
 
 ## v3、v4でgatsby starter blog のインストールが走らない
 
-gatsby starter blog をベースにリファクタリング（※コードを綺麗にすること）を試みようと思ったのですが、なぜか走らない。
+gatsby starter blog をベースに構築し直そうと試みようと思ったのですが、なぜか走らない。
 
 gatsby cli を v4 用にアップグレードしたもののエラーをもとにググったら、グローバルの node module がいくつか足りないみたい。
 
@@ -36,6 +36,7 @@ sudo npm -g i cordova-res
 ```
 
 それでも走らないので、npmのキャッシュを強制的にクリア。
+<br>キャッシュで不具合が起きてたのかはちょっと不明です。
 
 ```ssh
 npm cache clean --force
@@ -48,7 +49,7 @@ sudo npm install node-addon-api -g
 sudo npm i
 ```
 
-上記を入れた際には1回キャッシュクリアしてください。
+上記を入れた際にもキャッシュクリアしてください。
 
 ```ssh
 npm cache clean --force

@@ -21,9 +21,10 @@ import Contact from "./portfolioParts/contact"
 const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]
   const [isOpen, setIsOpen] = useState(false)
-  const { siteUrl } = data.site.siteMetadata
 
-  const ogp = `${siteUrl}${data.allFile.edges[0].relativePath}`
+  const ogp = `${data.allFile.edges[0].node.publicURL}`
+
+  console.log(data.allFile.edges[0].node)
   const menuEvent = () => {
     setIsOpen(!isOpen)
   }
@@ -33,7 +34,8 @@ const Portfolio = ({ data, location }) => {
       <Seo
         title="広島生まれ、広島育ちのIT戦士を紹介するサイト"
         description="広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。"
-        image={ogp}
+        ogp={ogp}
+        date="2021-06-03"
         location={location}
       />
       <Header>

@@ -52,6 +52,8 @@ const Seo = ({
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
 
+  console.log(ogSrc)
+
   const publisher = {
     "@type": "Organization",
     name: config.siteMetadata.title,
