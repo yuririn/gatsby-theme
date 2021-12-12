@@ -8,13 +8,15 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 
 const PagePostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-
+  const { title, siteUrl } = data.site.siteMetadata
+  const siteTitle = `${post.frontmatter.title} | ${title}`
+  const ogp = `${siteUrl}${data.allFile.edges[0].node.publicURL}`
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        ogp={ogp}
         location={location}
         date={post.frontmatter.date}
         modifieddate={post.frontmatter.modifieddate}
@@ -44,10 +46,22 @@ const PagePostTemplate = ({ data, location }) => {
 export default PagePostTemplate
 
 export const pageQuery = graphql`
-  query PagePostBySlug($id: String!) {
+  query PagePostBySlug($id: String!, $hero: String) {
     site {
       siteMetadata {
         title
+      }
+    }
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "images" }
+        relativePath: { eq: $hero }
+      }
+    ) {
+      edges {
+        node {
+          publicURL
+        }
       }
     }
     markdownRemark(id: { eq: $id }) {

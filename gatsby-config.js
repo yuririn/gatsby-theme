@@ -7,7 +7,7 @@ module.exports = {
     },
     description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
     siteUrl: `https://ginneko-atelier.com`,
-    image: `https://ginneko-atelier.com/images/ogp.png`,
+    image: `https://ginneko-atelier.com/images/newogp.png`,
     social: {
       twitter: `lirioL`,
       instagram: `yurico.k`,
@@ -53,12 +53,6 @@ module.exports = {
     ],
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: "GTM-KPH3R92",
-      },
-    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -81,9 +75,8 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 640,
               withWebp: true,
-              // withAvif: true,
               linkImagesToOriginal: false,
             },
           },
@@ -97,12 +90,6 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           "gatsby-remark-component",
-          {
-            resolve: "gatsby-remark-external-links",
-            options: {
-              rel: "noopener noreferrer",
-            },
-          },
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
@@ -123,9 +110,14 @@ module.exports = {
     //     trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
+    {
+      resolve: "gatsby-remark-external-links",
+      options: {
+        rel: "noopener noreferrer",
+      },
+    },
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -174,7 +166,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "銀ねこアトリエ RSS Feed",
+            title: "Gatsby Starter Blog RSS Feed",
           },
         ],
       },
@@ -182,8 +174,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `銀ねこアトリエ | セブ島在住海外ノマド フロントエンジニアの日記`,
+        short_name: `銀ねこアトリエ`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
@@ -198,7 +190,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-  flags: {
-    FAST_DEV: true,
-  },
 }

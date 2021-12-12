@@ -12,8 +12,6 @@ import rehypeReact from "rehype-react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Img from "../components/img"
-import { faRss } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import BreadCrumbList from "../components/common/bread-crumb-list"
 import Category from "../components/blogs/category"
 import TagsList from "../components/blogs/tags-blog"
@@ -39,27 +37,16 @@ const renderAst = new rehypeReact({
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
-  const { title, siteUrl } = data.site.siteMetadata
-  const siteTitle = `${post.frontmatter.title} | ${title}`
+  const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  const perfectUrl = `${siteUrl}${location.pathname}`
+  const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
-  const ogp = `${siteUrl}${data.allFile.edges[0].node.publicURL}`
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title={siteTitle}
+        title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        ogp={ogp}
-        location={location}
-        date={post.frontmatter.date.replace(/\./g, "-")}
-        modified={
-          post.frontmatter.modifieddate
-            ? post.frontmatter.modifieddate.replace(/\./g, "-")
-            : ""
-        }
-        type="blog"
       />
       <Header>
         <div
@@ -86,7 +73,7 @@ const BlogPostTemplate = ({ data, location }) => {
       <Body>
         <Article>
           <article
-            className="blog-post l-container"
+            className="blog-post"
             itemScope
             itemType="http://schema.org/Article"
           >
@@ -138,16 +125,6 @@ const BlogPostTemplate = ({ data, location }) => {
                 </Link>
               </dd>
             </dl>
-            <Feedly>
-              <h2> 「銀ねこアトリエ」のブログを定期購読しよう</h2>
-              <a
-                href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fginneko-atelier.com%2Frss.xml"
-                target="blank"
-              >
-                <FontAwesomeIcon icon={faRss} />
-                Feedlyに登録する
-              </a>
-            </Feedly>
             <nav className="p-section l-container">
               <ol className="c-pager--article">
                 <li className="c-pager--article__prev">
@@ -205,24 +182,10 @@ export const pageQuery = graphql`
     $id: String!
     $previousPostId: String
     $nextPostId: String
-    $hero: String
   ) {
     site {
       siteMetadata {
         title
-        siteUrl
-      }
-    }
-    allFile(
-      filter: {
-        sourceInstanceName: { eq: "images" }
-        relativePath: { eq: $hero }
-      }
-    ) {
-      edges {
-        node {
-          publicURL
-        }
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -278,9 +241,10 @@ const Feedly = styled.div`
   background: #eee;
   // border:1px solid #6cc655;
   flex-direction: column;
-  margin: 20px 0 15px;
+  margin: 0 15px;
   @media screen and (min-width: 768px) {
-    margin: 0 0 30px;
+    margin-left: 0;
+    margin-right: 0;
   }
   h2 {
     margin-bottom: 20px;

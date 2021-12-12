@@ -196,6 +196,10 @@ const Seo = ({
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
+          name: `robots`,
+          content: `noindex`,
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
@@ -231,6 +235,7 @@ const Seo = ({
           name: `twitter:card`,
           content: `summary_large_image`,
         },
+
         {
           name: `twitter:creator`,
           content: site.siteMetadata?.social?.twitter || ``,

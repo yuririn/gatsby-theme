@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import { BaseStyle } from "./../styles/common/base"
 import { CommonStyle } from "./../styles/common/common"
 import { createGlobalStyle } from "styled-components"

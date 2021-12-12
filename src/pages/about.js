@@ -19,13 +19,12 @@ import Card from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 
 const aboutPost = ({ data, location }) => {
-  const { siteUrl } = data.site.siteMetadata
   const pageTitle =
     "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
   const description =
     "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
   const modifiedDate = "2021-05-05"
-  const ogp = `${siteUrl}${data.allFile.edges[0].node.publicURL}`
+  // const img = data.allFile.edges[0].node.childImageSharp.fluid.src
 
   return (
     <Layout location="about" title="銀ねこアトリエ">
@@ -34,16 +33,16 @@ const aboutPost = ({ data, location }) => {
         description={description}
         location={location}
         date="2021-05-05"
-        image={ogp}
+        // image={img}
         modifieddate={modifiedDate}
-        location={location}
+        type="article"
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">About Me</h1>
           <p className="p-pageHeader__content">かみーゆってどんな人？</p>
         </div>
-        <Img source="common/about-bg.jpg" className="p-pageHeader__img" />
+        <Img source="common/about.jpg" className="p-pageHeader__img" />
       </div>
       <div className="l-container">
         <BreadCrumbList current={pageTitle} />
@@ -90,7 +89,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="そうだ！！紙に描かなくても爪に描けばいいじゃん！"
-                  img="about/camille-y.jpg"
+                  img="camille-y.jpg"
                   name="かみーゆ（20代）"
                 ></Msg>
                 <p>夜間のネイリスト養成講座に通い、ネイリストになりました。</p>
@@ -124,7 +123,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="なんで私、子どもを犠牲にしてまで働いているんだろう。。。"
-                  img="about/camille-y.jpg"
+                  img="camille-y.jpg"
                   name="かみーゆ（20代）"
                 ></Msg>
                 <p>
@@ -133,11 +132,11 @@ const aboutPost = ({ data, location }) => {
                 <p>
                   <small>※ ちなみにこの頃離婚しました。</small>
                 </p>
-                <Msg
-                  txt="美容インストラクターなら今までのキャリアもいかせるかも！？"
-                  name="かみーゆ（20代）"
-                  img="about/camille-y.jpg"
-                ></Msg>
+                {/* <Msg
+                    txt="美容インストラクターなら今までのキャリアもいかせるかも！？"
+                    name="かみーゆ（20代）"
+                    img="about/camille-y.jpg"
+                  ></Msg> */}
                 <p>
                   世の中、甘くありませんでした。
                   <br />
@@ -151,7 +150,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="既に死んでしまったキャリアなんてもういらない！<br>どうせなら新しいことを始めようかな。。。"
-                  img="about/camille-y.jpg"
+                  img="camille-y.jpg"
                   name="かみーゆ（20代）"
                 ></Msg>
                 <h3>
@@ -177,7 +176,7 @@ const aboutPost = ({ data, location }) => {
                 <h3>再び、会社員へ</h3>
                 <Msg
                   txt="フリーランスは不安定だし不安。<br>子どもを最低限は進学させたいし、やっぱり会社員として再び働きたい。"
-                  img="about/camille-m.jpg"
+                  img="camille-m.jpg"
                   name="かみーゆ（30代）"
                 ></Msg>
                 <p>
@@ -192,7 +191,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="たくさんの人に助けてもらったなぁ。これからは教育にも力を注いで恩返ししたいな！"
-                  img="about/camille-m.jpg"
+                  img="camille-m.jpg"
                   name="かみーゆ（30代）"
                 ></Msg>
                 <p>教育に携わりたいので職業訓練校などの講師も始めました。</p>
@@ -211,7 +210,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="よし！！<br>この先はMac Book Proとスーツケースだけで生きていこう！！"
-                  img="about/camille-o.jpg"
+                  img="camille-o.jpg"
                   name="かみーゆ（40代）"
                 ></Msg>
                 <p>
@@ -233,7 +232,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="あれ？<br>なんで私、南の島まで来てすり減るほど仕事してるんだろう。。。"
-                  img="about/camille-o.jpg"
+                  img="camille-o.jpg"
                   name="かみーゆ（40代）"
                 ></Msg>
 
@@ -483,18 +482,23 @@ export const portfolioQuery = graphql`
     site {
       siteMetadata {
         title
-        siteUrl
       }
     }
     allFile(
       filter: {
-        sourceInstanceName: { eq: "images" }
         relativePath: { eq: "about/about-ogp.jpg" }
+        sourceInstanceName: { eq: "assets" }
       }
     ) {
       edges {
         node {
-          publicURL
+          name
+          relativePath
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }

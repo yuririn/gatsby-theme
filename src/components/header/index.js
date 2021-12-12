@@ -12,14 +12,13 @@ const Header = ({ title, location }) => {
       <header className="l-header">
         <div>
           <div id="header-logo">
+            <span>セブ島在住海外ノマド フロントエンジニアの日記</span>
             {location === "/" ? (
               <h1>
-                <span>セブ島在住海外ノマド フロントエンジニアの日記</span>
                 <Logo />
               </h1>
             ) : (
               <Link to="/">
-                <span>セブ島在住海外ノマド フロントエンジニアの日記</span>
                 <Logo />
               </Link>
             )}
@@ -49,8 +48,8 @@ const HeaderWrapper = styled.div`
     display: block;
     font-size: 1rem;
     padding-left: 15px;
+    margin-bottom: 5px;
     padding-top: 5px;
-
     @media screen and (min-width: 768px) {
       padding-left: 30px;
     }
@@ -65,8 +64,6 @@ const HeaderWrapper = styled.div`
     }
   }
   #header-logo a {
-    text-decoration: none;
-    color: var(--color-blue);
     display: inline-block;
       @media screen and (min-width: 768px) {
         &:hover svg {
