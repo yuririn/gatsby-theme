@@ -54,12 +54,9 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        trackingIds: [`GTM-KPH3R92`],
-        pluginConfig: {
-          head: true,
-        },
+        id: `GTM-KPH3R92`,
       },
     },
     `gatsby-plugin-image`,
