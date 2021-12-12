@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語1~インストールからNetlifyデプロイまで~
 date: 2020-11-26
-modifieddate: 2021-01-12
+modifieddate: 2021-12-12
 hero: thumbnail/2020/entry401.jpg
 pagetype: blog
 cateId: web-developer
@@ -262,7 +262,7 @@ Continuous DeploymentからGitHubを選択。
 これで少し待ったら、デプロイのステータスがpublishedとなるはずです！！
 
 
-### Nodeのバージョンにご注意
+### Node のバージョンにご注意（2021/12/12追記）
 初期デプロイ時にデフォルトで最新の安定バージョンのNodeがインストールされます。以後引き続き最初インストールされたNodeが使用されます。 現段階（2021/12/12）ではNetlifyは現在12.x.x以上でないと使えません。
 
 *ビルドでコケます*。
@@ -274,15 +274,14 @@ Site setting > Build & deploy > Environment に移動。
 ![Site5s/2020/11/entry401-14.png)
 
 
-
 Environment variables に Key => `NODE_VERSION` value => `x.x.x`（設定したいバージョン）をセットして保存（Save）します。
-![Site setting](./images/2020/11/entry401-16.png)
+![Environment variables](./images/2020/11/entry401-16.png)
 
 
 必ず、Netlifyで使用できるバージョンを確認しておいた方がいいいです。
 
 これで次回のデプロイ時から、新しいバージョンが使えます。
-![Site setting](./images/2020/11/entry401-1.png)
+![デプロイ時から、新しいバージョンが使える](./images/2020/11/entry401-1.png)
 
 ## まとめ
 いかがでしたでしょうか？<br>

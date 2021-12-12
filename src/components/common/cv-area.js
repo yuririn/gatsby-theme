@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from "react"
+import { Link } from "gatsby"
 
-import styled from "styled-components";
+import styled from "styled-components"
 
 const cvArea = () => {
   return (
@@ -21,15 +21,15 @@ const cvArea = () => {
           お問い合わせ内容によってはご希望に添えないこともございます。ご了承くださいませ。
         </small>
       </p>
-      <p class="u-text-center">
-        <Link class="p-btn--detail" to="/contact/">
+      <p className="u-text-center">
+        <Link className="p-btn--detail" to="/contact/">
           無料で相談する
         </Link>
       </p>
     </Area>
-  );
-};
-export default cvArea;
+  )
+}
+export default cvArea
 
 const Area = styled.div`
   margin-top: 30px;
@@ -44,4 +44,4 @@ const Area = styled.div`
       content: none;
     }
   }
-`;
+`

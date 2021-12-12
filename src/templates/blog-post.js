@@ -73,7 +73,7 @@ const BlogPostTemplate = ({ data, location }) => {
       <Body>
         <Article>
           <article
-            className="blog-post"
+            className="blog-post l-container"
             itemScope
             itemType="http://schema.org/Article"
           >
