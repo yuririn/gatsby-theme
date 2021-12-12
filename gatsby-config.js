@@ -118,6 +118,7 @@ module.exports = {
     },
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {

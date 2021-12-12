@@ -250,8 +250,10 @@ Netlifyをgitと連携してMasterにpushされたデータが反映するよう
 
 Continuous DeploymentからGitHubを選択。
 
-![「New site from Git」からからリポジトリを追加](./images/2020/11/entry401-11.png)
+<p>
+  ![「New site from Git」からからリポジトリを追加](./images/2020/11/entry401-11.png)
 
+</p>
 勝手に公開用のディレクトリpublicとbuildコマンド`gatsby build`が選ばれます。<br>
 あとは「Deploy site」ボタンをクリックするだけです！
 
@@ -259,16 +261,32 @@ Continuous DeploymentからGitHubを選択。
 
 これで少し待ったら、デプロイのステータスがpublishedとなるはずです！！
 
+
+### Nodeのバージョンにご注意
+初期デプロイ時にデフォルトで最新の安定バージョンのNodeがインストールされます。以後引き続き最初インストールされたNodeが使用されます。 現段階（2021/12/12）ではNetlifyは現在12.x.x以上でないと使えません。
+
+*ビルドでコケます*。
+
+古くなってしまった場合は、Nodeのバージョンを設定し直します。
+
+Site setting > Build & deploy > Environment に移動。
+
+![Site5s/2020/11/entry401-14.png)
+
+
+
+Environment variables に Key => `NODE_VERSION` value => `x.x.x`（設定したいバージョン）をセットして保存（Save）します。
+![Site setting](./images/2020/11/entry401-16.png)
+
+
+必ず、Netlifyで使用できるバージョンを確認しておいた方がいいいです。
+
+これで次回のデプロイ時から、新しいバージョンが使えます。
+![Site setting](./images/2020/11/entry401-1.png)
+
 ## まとめ
 いかがでしたでしょうか？<br>
 githubと連携して、gitのコマンドでmasterにpushするだけで公開できるようになったかと思います。
-
-ちなみに以下は移行中の銀ねこアトリエです。<br>
-現在リライトしつつ選定しつつ、本日時点でローカル環境には62記事移し終えました。。。
-
-[移行中の銀ねこアトリエ](https://ginneko-demo.netlify.app/)
-
-リライトつらたん。。。。
 
 次回はCSSを移行して、記事にサムネイルを足す方法をご紹介します！
 

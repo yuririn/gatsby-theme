@@ -2,7 +2,7 @@
 title: WordPressに独自ショートコードを実装する【サンプルコード付き】
 date: 2014-12-21
 modifieddate: 2021-06-06
-hero: thumbnail/2014/entry211.jpg
+hero: thumbnail/2014/entry211.png
 pagetype: blog
 cateId: 'cms'
 tags: ["WordPress"]
