@@ -96,7 +96,7 @@ const Seo = ({
       "@context": "http://schema.org",
       "@type": "BlogPosting",
       url: blogUrl,
-      name: title,
+      name: `${title} | ${defaultTitle}`,
       headline: title,
       image: {
         "@type": "ImageObject",
@@ -205,7 +205,7 @@ const Seo = ({
         },
         {
           property: `og:title`,
-          content: title,
+          content: `${title} | ${defaultTitle}`,
         },
         {
           property: `og:image`,
@@ -238,7 +238,7 @@ const Seo = ({
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: `${title} | ${defaultTitle}`,
         },
         {
           property: `twitter:image`,
