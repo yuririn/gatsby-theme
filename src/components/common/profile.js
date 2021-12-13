@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const profile = () => {
   return (
-    <Profile>
+    <Profile className="l-container">
       <h2 className="c-heading--lg">管理人について</h2>
 
       <Img source="common/camille-pic.jpg" alt="管理人" className="prfImg" />

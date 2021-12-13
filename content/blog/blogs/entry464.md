@@ -171,7 +171,7 @@ YouTubeでも配信しています！併せてご覧ください。
 
 私がこの活動をする目的はあくまで、**世界の一人でも多くの子どもたちが健康に大人になれたらいい**です。
 
-どのNGO団体関係なく、私の小さな力でもお役に立てるなら協力します。
+どのNGO団が、とか体関係なく私の小さな力でもお役に立てるなら協力します。
 
 そういう一個人の気持ちでこの活動していることだけ知ってもらえたら幸いです。
 
@@ -186,8 +186,8 @@ YouTubeでも配信しています！併せてご覧ください。
     <li>中村 亜夜 様</li>
     <li>満井 美恵 様</li>
     <li><a href="https://kdl.design/" rel="nofollow noopner" target="_blank">栗原デザイン室 様</a></li>
-    <li><a href="https://tantan.work/" rel="nofollow noopner" target="_blank">TanTan</a></li>
-    <li><a href="https://www.dream-tech.jp/" rel="nofollow noopner" target="_blank">ハッピーちゃい夢</a></li>
+    <li><a href="https://tantan.work/" rel="nofollow noopner" target="_blank">TanTan 様</a></li>
+    <li><a href="https://www.dream-tech.jp/" rel="nofollow noopner" target="_blank">ハッピーちゃい夢 様</a></li>
   </ul>
   <h4>洋服の支援元</h4>
   <ul>

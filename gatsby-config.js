@@ -59,6 +59,15 @@ module.exports = {
         id: `GTM-KPH3R92`,
       },
     },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        //自分の好きなファイル名にしたい場合はoutputを追加。デフォルトは「sitemap.xml」
+        output: `/sitemap.xml`,
+        //除外したいページを指定する。「*」でワイルドカードも使える。
+        excludes: [`/blogs/*`],
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -105,6 +114,12 @@ module.exports = {
               maintainCase: true,
             },
           },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              rel: "noopener noreferrer",
+            },
+          },
         ],
       },
     },
@@ -116,16 +131,11 @@ module.exports = {
     //     trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
-    {
-      resolve: "gatsby-remark-external-links",
-      options: {
-        rel: "noopener noreferrer",
-      },
-    },
+
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-twitter`,
-    `gatsby-plugin-sitemap`,
+
     {
       resolve: `gatsby-plugin-feed`,
       options: {

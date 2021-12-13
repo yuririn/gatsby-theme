@@ -129,25 +129,25 @@ const BlogPostTemplate = ({ data, location }) => {
                 </Link>
               </dd>
             </dl>
-            <nav className="p-section l-container">
-              <ol className="c-pager--article">
-                <li className="c-pager--article__prev">
-                  {previous && (
-                    <Link to={previous.fields.slug} rel="prev">
-                      {previous.frontmatter.title}
-                    </Link>
-                  )}
-                </li>
-                <li className="c-pager--article__next">
-                  {next && (
-                    <Link to={next.fields.slug} rel="next">
-                      {next.frontmatter.title}
-                    </Link>
-                  )}
-                </li>
-              </ol>
-            </nav>
           </article>
+          <nav className="p-section l-container">
+            <ol className="c-pager--article">
+              <li className="c-pager--article__prev">
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li className="c-pager--article__next">
+                {next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+            </ol>
+          </nav>
         </Article>
         <Sidebar
           cateId={post.frontmatter.cateId}

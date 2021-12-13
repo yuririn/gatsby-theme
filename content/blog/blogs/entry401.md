@@ -271,7 +271,7 @@ Continuous DeploymentからGitHubを選択。
 
 Site setting > Build & deploy > Environment に移動。
 
-![Site5s/2020/11/entry401-14.png)
+![Site setting](./images/2020/11/entry401-14.png)
 
 
 Environment variables に Key => `NODE_VERSION` value => `x.x.x`（設定したいバージョン）をセットして保存（Save）します。
@@ -282,6 +282,9 @@ Environment variables に Key => `NODE_VERSION` value => `x.x.x`（設定した�
 
 これで次回のデプロイ時から、新しいバージョンが使えます。
 ![デプロイ時から、新しいバージョンが使える](./images/2020/11/entry401-15.png)
+
+Gatsby ではバージョンごとに*Nodeの求められるversionが違う*ので注意してください。
+<card id="/blogs/entry477/"></card>
 
 ## まとめ
 いかがでしたでしょうか？<br>

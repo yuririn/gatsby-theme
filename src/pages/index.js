@@ -77,7 +77,7 @@ const BlogIndex = ({ data, location }) => {
           <FovoriteList type="web" />
           <FovoriteList type="life" />
           <FovoriteList type="career" />
-          <div className="l-container">
+          <div className="l-container u-mblg">
             <section className="p-box--gray u-text-center">
               <h2 className="c-heading--lg">人気のタグ</h2>
               <Tags />
