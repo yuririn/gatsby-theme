@@ -60,7 +60,7 @@ lead: ["「子ども服をセブに送るプロジェクト」！第2弾の洋�
 ### Daredemo Heroさんのラーニングセンターで洋服を配布させていただきました
 今回はご好意でDaredemo Heroさんのラーニングセンターの中で洋服を配布させていただきました。
 
-ラーニングセンターといっても実はお墓の中です。
+ラーニングセンターといっても実はお墓です。
 
 早速棺の上に洋服を並べて、配布スタートです。
 
@@ -192,4 +192,4 @@ Daredemoスタッフの英語講師でもあるMayさんがビサヤ語と英語
 支援物資送料寄付のお願い
 ](https://docs.google.com/presentation/d/1arV9Jb5vQHyKqKlpG0HS_nTLt4n9hdbw/edit?usp=sharing&ouid=117160028250625203295&rtpof=true&sd=true)をご覧ください。
 
-支援に興味がある方は、[DAREDEMO HERO Inc.](https://daredemohero.com/)に直接お問い合わせください。
+DAREDEMO HERO Inc.の支援に興味がある方は、に直接[お問い合わせ](https://daredemohero.com/)ください。
