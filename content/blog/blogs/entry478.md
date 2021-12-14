@@ -192,4 +192,4 @@ Daredemoスタッフの英語講師でもあるMayさんがビサヤ語と英語
 支援物資送料寄付のお願い
 ](https://docs.google.com/presentation/d/1arV9Jb5vQHyKqKlpG0HS_nTLt4n9hdbw/edit?usp=sharing&ouid=117160028250625203295&rtpof=true&sd=true)をご覧ください。
 
-DAREDEMO HERO Inc.の支援に興味がある方は、に直接[お問い合わせ](https://daredemohero.com/)ください。
+DAREDEMO HERO Inc.の支援に興味がある方は、直接[お問い合わせ](https://daredemohero.com/)ください。
