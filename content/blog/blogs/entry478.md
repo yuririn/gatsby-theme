@@ -184,7 +184,7 @@ Daredemoスタッフの英語講師でもあるMayさんがビサヤ語と英語
   </ul>
   <h4>洋服の支援元</h4>
   <ul>
-    <li><a href="https://www.lynks.jp/t" rel="nofollow noopner" target="_blank">Lyncs 様</a></li>
+    <li><a href="https://www.lynks.jp/t" rel="nofollow noopner" target="_blank">Lynks 様</a></li>
   </ul>
 </div>
 

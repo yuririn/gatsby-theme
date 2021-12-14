@@ -191,7 +191,7 @@ YouTubeでも配信しています！併せてご覧ください。
   </ul>
   <h4>洋服の支援元</h4>
   <ul>
-    <li><a href="https://www.lynks.jp/t" rel="nofollow noopner" target="_blank">Lyncs 様</a></li>
+    <li><a href="https://www.lynks.jp/t" rel="nofollow noopner" target="_blank">Lynks 様</a></li>
   </ul>
 </div>
 
