@@ -150,22 +150,22 @@ sqlファイルがあった場合のデータベースのリストア方法で�
 `dump.sql` というファイルをリストアしたい場合、ルートディレクトリに直置きしてコマンドを叩きます。
 
 ```
-docker exec -i qqkids_mysql_1 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】' < dump.sql
+docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】' < dump.sql
 ```
 .env で設定した定数をはめるとこんな感じです。
 ```
-docker exec -i qqkids_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' < wordpress.sql
+docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' < wordpress.sql
 ```
 
 ### データベースのダンプ
 ダンプ方法です。
 
 ```
-docker exec -i qqkids_mysql_1 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】'> latest.sql
+docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】'> latest.sql
 ```
 .env で設定した定数をはめるとこんな感じです。
 ```
-docker exec -i qqkids_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' > latest.sql
+docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' > latest.sql
 ```
 
 以下のようなDBができているはずです。
