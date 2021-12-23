@@ -1,6 +1,7 @@
 ---
 title: DockerでシンプルなWordPress環境を作る
 date: 2021-12-22
+modifieddate: 2021-12-24
 hero: thumbnail/2021/entry480.jpg
 pagetype: blog
 cateId: 'cms'
@@ -137,6 +138,20 @@ docker-compose down -v
 
 他ブログでは自動で〜、という記事が散見されましたが、逆に自由度が低く不便でした。
 
+
+`exec`でコンテナにコマンドを実行してデータベースの操作をします。
+
+|オプション| |
+|-|-|
+|*-d, --detach=false*|デタッチド・モード: コマンドをバックグラウンドで実行|
+|*--detach-keys*|デタッチド・コンテナに特定のエスケープ・キー・シーケンスを設定|
+|*--help=false*|使い方の表示|
+|*-i, --interactive=false*|アタッチしていなくても STDIN をオープンにし続ける|
+|*--privileged=false*|コマンドに拡張 Linux ケーパビリティの追加|
+|*-t, --tty=false*|疑似ターミナル (pseudo-TTY) の割り当て|
+|*-u, --user=*|ユーザ名か UID (書式: <名前|uid>[:<グループ|gid>])|
+
+
 ### データベースのリストア
 sqlファイルがあった場合のデータベースのリストア方法です。
 
@@ -147,15 +162,19 @@ sqlファイルがあった場合のデータベースのリストア方法で�
 ├ dump.sql
 └ .env
 ```
+
 `dump.sql` というファイルをリストアしたい場合、ルートディレクトリに直置きしてコマンドを叩きます。
 
 ```
 docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】' < dump.sql
 ```
 .env で設定した定数をはめるとこんな感じです。
+
 ```
 docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' < wordpress.sql
 ```
+コンテナ名は任意で名前をつけなければ*ルートディレクトリ名_コンテナ名_1*となるようです。<br>
+名付け方はまた追記します。
 
 ### データベースのダンプ
 ダンプ方法です。
@@ -164,6 +183,7 @@ docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' <
 docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】'> latest.sql
 ```
 .env で設定した定数をはめるとこんな感じです。
+
 ```
 docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' > latest.sql
 ```
@@ -177,6 +197,47 @@ docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' >
 └ .env
 ```
 
+### データベースの確認や削除
+Dockerからデータベースの確認をします。
+
+```
+docker exec -it 【データベース名】 mysql -u【ユーザー名】 -p
+```
+
+実際のコマンドはこんな感じ。パスワードを聞かれたら入力します。
+
+```
+docker exec -it wordpress_mysql_1 mysql -uwp_user -p
+```
+データベースを確認します。
+
+![データベースを確認](./images/2021/12/entry480-4.jpg)
+
+```sql
+mysql> show databases;
+```
+
+```sql
+mysql> use wordpress;
+```
+
+テーブルを確認します。
+
+![テーブルを確認](./images/2021/12/entry480-5.jpg)
+```sql
+mysql> show tables;
+```
+削除したい場合はデータベース名を指定して`drop`。
+```sql
+mysql> drop wordpress;
+```
+
+sqlの終了。
+
+```sql
+mysql>  exit;
+```
+
 ## dockerを完全に削除
 
 オプションの意味は[dockerを終了](#dockerを終了)を参考にしてください。
@@ -188,6 +249,8 @@ docker-compose down --rmi all --volumes --remove-orphans
 
 ## まとめ・Dockerやってみたらカンタンだった
 imageも用意されていて `docker-compose.yml`にカンタンなコードを書くだけなのでDockerでWordPressを構築するのは楽勝でした。
+
+<msg txt="個人的には管理もメンテナンスもVagrantよりカンタンです"></msg>
 
 私の場合、どうしても古い php と WordPress で環境を作る必要があり、今回めちゃ重宝しました。
 

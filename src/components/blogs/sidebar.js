@@ -32,12 +32,11 @@ const bar = ({ cateId, title, tags }) => {
             </Link>
           </li>
           <li>
-            <Link
-              to="https://twitter.com/LirioY"
-              target="_blank"
-              rel="noopener"
-            >
-              <Img source="common/twitter-banner.jpg" alt="Twitterやってるよ" />
+            <Link to="/blogs/tags/子ども服をセブに送るプロジェクト/">
+              <Img
+                source="common/cebu-cloths-banner.jpg"
+                alt="捨てるなんてもったいない！子ども服をセブに送るプロジェクト"
+              />
             </Link>
           </li>
           <li>

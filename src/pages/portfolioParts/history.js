@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const History = () => (
   <Dl>
@@ -74,10 +74,14 @@ const History = () => (
     <dd>
       仕事するのイヤになりました。すっかりきっぱり辞めて3か月限定でセブ島で充電生活をしてみることに。英語やプログラミングの勉強をし、身も心もリフレッシュ。
     </dd>
+    <dt>会社設立奮闘中</dt>
+    <dd>
+      ロックダウンでセブの現実を直視し、みるみる経済が悪化し、仕事がないからご飯が食べられないフィリピン人を見て人生最大のショックを受けた。「雇用を生みたい！」。会社を立ち上げるために、セブでビジネスパートナーと奮闘中。2021年8月にデスマの最中二度目のロックダウンを経験。
+    </dd>
   </Dl>
-);
+)
 
-export default History;
+export default History
 
 const Dl = styled.dl`
   background: #fff;
@@ -114,4 +118,4 @@ const Dl = styled.dl`
       margin-bottom: 20px;
     }
   }
-`;
+`
