@@ -6,7 +6,7 @@ hero: thumbnail/2021/entry480.jpg
 pagetype: blog
 cateId: 'cms'
 tags: ["WordPress","Docker"]
-description: 最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さはVagrantより良い気がし、乗り換えました。個人的に。今回はDockerでWordPress環境を構築する方法をまとめます。phpやwordpressの古いバージョンにも対応しています。
+description: 最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さはVagrantより良い気がし、乗り換えました。今回はDockerでWordPress環境を構築する方法をまとめます。phpやwordpressの古いバージョンにも対応しています。
 lead: ["最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さはVagrantより良い気がし、乗り換えました。今回はDockerでWordPress環境を構築する方法をまとめます。","ちなみに、私の住む、フィリピン・セブは現在台風直撃し大被害でエライコッチャでまとめるのやっとなので、誤字脱字は大目にみてください。"]
 ---
 ## Dockerインストール
