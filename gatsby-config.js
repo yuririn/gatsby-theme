@@ -65,7 +65,7 @@ module.exports = {
         //自分の好きなファイル名にしたい場合はoutputを追加。デフォルトは「sitemap.xml」
         output: `/sitemap.xml`,
         //除外したいページを指定する。「*」でワイルドカードも使える。
-        excludes: [`/blogs/*`],
+        excludes: [`/blogs/page/*`],
       },
     },
     `gatsby-plugin-image`,

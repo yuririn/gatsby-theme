@@ -251,7 +251,7 @@ function show_event_schedule() {
 	$d       = array( '日', '月', '火', '水', '木', '金', '土' );
 
 	$table  = '<table>';
-	$table .= '<caption>' . $c_year . '年' . $month . '月</caption>';
+	$table .= '<caption>' . $c_year . '年' . $c_month . '月</caption>';
 	for ( $i = 1; $i <= $lastday; $i++ ) {
 		$c_date   = $c_year . '-' . $c_month . '-' . str_pad( $i, 2, 0, STR_PAD_LEFT );
 		$week     = gmdate( 'w', strtotime( $c_date ) );
@@ -285,8 +285,7 @@ function show_event_schedule() {
 }
 add_shortcode( 'show_event_schedule', 'show_event_schedule' );
 ```
-
-これで、記事などにもショートコードで貼れます。
+`add_shortcode`でショートコードとして登録してあるので、記事などにも出力できます。
 
 ```html
 [show_event_schedule]
