@@ -28,14 +28,14 @@ const Msg = data => {
   let txt = data.txt.split("<br>")
   let src = data.img ? data.img : "common/camille-pic.jpg"
   let name = data.name ? data.name : "かみーゆ"
-  let img = allFile.edges.filter(img => img.node.relativePath === src)
+  let img = allFile.edges.find(img => img.node.relativePath === src)
   let msgClass = data.cls ? data.cls : "msg-baloon"
-  if (img.length == 1) {
+  if (img) {
     return (
       <div className={msgClass}>
         <div className="msg-baloon--img__wrapper">
           <GatsbyImage
-            image={getImage(img[0].node.childImageSharp.gatsbyImageData)}
+            image={getImage(img.node.childImageSharp.gatsbyImageData)}
             alt={name}
             key={name}
             className="msg-baloon--img"
@@ -44,7 +44,7 @@ const Msg = data => {
         </div>
         <p className="msg-baloon--txt">
           {txt.map((t, index) => {
-            return <span>{t}</span>
+            return <span key={`txt${index}`}>{t}</span>
           })}
         </p>
       </div>

@@ -1,5 +1,5 @@
 ---
-title: スプシのデータをJSON化してウェブサイトに取り込む
+title: スプシのデータをJSON化してPHPに取り込む（GAS使います）
 date: 2021-12-24
 hero: thumbnail/2021/entry455.jpg
 pagetype: blog
@@ -175,12 +175,12 @@ function get_event_deta() {
 	$url = デプロイしたURL;
 	if ( file_get_contents( $url ) ) {
     //URLが取得できた場合
-		$data        = mb_convert_encoding( file_get_contents( $url ), 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN' );
+		$data = mb_convert_encoding( file_get_contents( $url ), 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN' );
 		$json_decode = json_decode( $data, true );
-		$events      = array();
+		$events = array();
 		foreach ( $json_decode as $value ) {
-      $branch            = $value['branch'];
-			$schedule          = explode( ',', $value['detail'] );
+			$branch = $value['branch'];
+			$schedule = explode( ',', $value['detail'] );
 			$events[ $branch ] = $schedule;
 		}
 	} else {
@@ -195,7 +195,7 @@ $events  = get_event_deta();
 $lastday = gmdate( 'd', strtotime( 'last day of this month' ) );
 $c_year  = gmdate( 'Y' );
 $c_month = gmdate( 'm' );
-$d       = array( '日', '月', '火', '水', '木', '金', '土' );
+$d = array( '日', '月', '火', '水', '木', '金', '土' );
 
 if ( 'error' === $events ) {
 	echo '<p class="text-center mt-5">カレンダーの読み込みに失敗しました。<p>';
@@ -203,8 +203,8 @@ if ( 'error' === $events ) {
 	echo '<table>';
 	echo '<caption>' . $c_year . '年' . $c_month . '月</caption>';
 	for ( $i = 1; $i <= $lastday; $i++ ) {
-		$c_date   = $c_year . '-' . $c_month . '-' . str_pad( $i, 2, 0, STR_PAD_LEFT );
-		$week     = date( 'w', strtotime( $c_date ) );
+		$c_date = $c_year . '-' . $c_month . '-' . str_pad( $i, 2, 0, STR_PAD_LEFT );
+		$week = date( 'w', strtotime( $c_date ) );
 		$bg_color = '';
 
 		if ( 0 === (int) $week ) {
@@ -246,12 +246,12 @@ if ( 'error' === $events ) {
  */
 function get_event_data() {
   $url = デプロイしたURL;
-	$json        = wp_remote_get( $data );
+	$json = wp_remote_get( $data );
 	if ( ! $json->errors ) {
-    $events      = array();
+		$events = array();
 		foreach ( $json_decode as $value ) {
-      $json              = $value['branch'];
-			$schedule          = explode( ',', $value['detail'] );
+			$json = $value['branch'];
+			$schedule = explode( ',', $value['detail'] );
 			$events[ $branch ] = $schedule;
 		}
   } else {
@@ -278,13 +278,13 @@ function show_event_schedule() {
 	$lastday = gmdate( 'd', strtotime( 'last day of this month' ) );
 	$c_year  = gmdate( 'Y' );
 	$c_month = gmdate( 'm' );
-	$d       = array( '日', '月', '火', '水', '木', '金', '土' );
+	$d = array( '日', '月', '火', '水', '木', '金', '土' );
 
 	$table  = '<table>';
 	$table .= '<caption>' . $c_year . '年' . $c_month . '月</caption>';
 	for ( $i = 1; $i <= $lastday; $i++ ) {
-		$c_date   = $c_year . '-' . $c_month . '-' . str_pad( $i, 2, 0, STR_PAD_LEFT );
-		$week     = gmdate( 'w', strtotime( $c_date ) );
+		$c_date = $c_year . '-' . $c_month . '-' . str_pad( $i, 2, 0, STR_PAD_LEFT );
+		$week = gmdate( 'w', strtotime( $c_date ) );
 		$bg_color = '';
 
 		if ( 0 === (int) $week ) {
@@ -324,7 +324,7 @@ WordPressのコーディング規約に関しての記事もよろしければ�
 <card id="/blogs/entry452/"></card>
 
 ## まとめ・スプシをJSONすると便利
-ブログが更新できずに気になってはいましたが、ようやく記事まとめることができました。。。
+ブログが更新できず気になってはいましたが、ようやく記事まとめることができました。。。
 
 この記事を参考になさっていた方、長らくお待たせしてすみません。
 

@@ -26,11 +26,11 @@ const Img = ({ source, title, className, size }) => {
   title = title ? title : ""
   let resource = source ? source : "common/dummy.png"
 
-  let img = allFile.edges.filter(img => img.node.relativePath === resource)
-  if (img[0]) {
+  let img = allFile.edges.find(img => img.node.relativePath === resource)
+  if (img) {
     return (
       <GatsbyImage
-        image={getImage(img[0].node.childImageSharp.gatsbyImageData)}
+        image={getImage(img.node.childImageSharp.gatsbyImageData)}
         alt={title}
         key={title}
         className={className}
