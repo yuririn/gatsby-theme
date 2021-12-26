@@ -167,7 +167,7 @@ const Menu = () => {
     setValue(e.target.value)
   }
   return (
-    <div id="uranai" className="l-container">
+    <section id="uranai" className="l-container">
       <ul className="uranai__list">
         <li>
           <label>
@@ -215,7 +215,7 @@ const Menu = () => {
         </li>
       </ul>
       <Result value={value}></Result>
-    </div>
+    </section>
   )
 }
 
@@ -272,7 +272,7 @@ export const pageQuery = graphql`
   }
 `
 
-const P404 = styled.div`
+const P404 = styled.section`
   margin-bottom: 50px;
   .l-container {
     max-width: 900px;

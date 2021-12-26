@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Edit = styled.div`
+export const Edit = styled.section`
   line-height: 2;
   p {
     margin-bottom: 1.5em;
