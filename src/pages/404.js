@@ -99,7 +99,7 @@ const Result = prop => {
   if (prop.value === "item01") {
     return (
       <div>
-        <p className="u-text-center">
+        <p className="u-text-center mb-Md">
           まずは、トップページに戻って心を落ち着かせましょう。
         </p>
         <p className="u-text-center">
@@ -273,6 +273,7 @@ export const pageQuery = graphql`
 `
 
 const P404 = styled.div`
+  margin-bottom: 50px;
   .l-container {
     max-width: 900px;
   }
