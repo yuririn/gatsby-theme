@@ -1,6 +1,7 @@
 ---
 title: スプシのデータをJSON化してPHPに取り込む（GAS使います）
 date: 2021-12-24
+modifieddate: 2021-12-26
 hero: thumbnail/2021/entry455.jpg
 pagetype: blog
 cateId: 'web-developer'
@@ -87,20 +88,23 @@ function doGet() {
 
 ```JS
 // ~ 省略
-const data = [];
+let data = [];
 
-for(const value in values){
-  if(parseInt(value)  !== 0) {
-    const detail = values[value];
-    const param = {};
-    for(const item in detail){
-      param[values[0][item]] = detail[item];
-    }
-    data.push(param);
+values.forEach((value, index)=>{
+  const keys = values[0];
+  if(index !== 0){
+    const param = {}
+    value.forEach((item, i)=>{
+      param[keys[i]] = item
+    })
+    data = [...data, param]
   }
-}
+})
 console.log(data)
 ```
+今回`forEach`や *スプレッド構文(...)* も使っています。使い方が分からない方は以下記事も参考にしてください。
+<card id="/blogs/entry482/"></card>
+
 デバッグして出力されたデータを確認。
 
 ![スプシのデータを加工します](./images/2021/12/entry481-4.jpg)
@@ -112,10 +116,10 @@ console.log(data)
 GASでContentServiceを使ってブラウザに値を返す。
 
 ```JS
-const result = ContentService.createTextOutput();
-result.setMimeType(ContentService.MimeType.JSON);
-result.setContent(JSON.stringify(data));
-return result;
+const result = ContentService.createTextOutput()
+result.setMimeType(ContentService.MimeType.JSON)
+result.setContent(JSON.stringify(data))
+return result
 ```
 
 ### すべてのコード
@@ -127,23 +131,23 @@ function doGet() {
   const app = SpreadsheetApp.openById(SPREAD_SHEET_ID);
   const sheet = app.getSheetByName(SHEET_NAME);
   const values = sheet.getDataRange().getValues();
-  const data = [];
+  let data = [];
 
-  for(const value in values){
-    if(parseInt(value)  !== 0) {
-      const detail = values[value];
-      const param = {};
-      for(const item in detail){
-        param[values[0][item]] = detail[item];
-      }
-      data.push(param);
+  values.forEach((value, index)=>{
+    const keys = values[0]
+    if(index !== 0){
+      const param = {}
+      value.forEach((item, i)=>{
+        param[keys[i]] = item
+      })
+      data = [...data, param]
     }
-  }
+  })
 
-  const result = ContentService.createTextOutput();
-  result.setMimeType(ContentService.MimeType.JSON);
-  result.setContent(JSON.stringify(data));
-  return result;
+  const result = ContentService.createTextOutput()
+  result.setMimeType(ContentService.MimeType.JSON)
+  result.setContent(JSON.stringify(data))
+  return result
 }
 ```
 ### JSONデータをPHPで受け取るための設定

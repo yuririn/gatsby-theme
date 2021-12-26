@@ -5,10 +5,10 @@ hero: thumbnail/2018/entry267.png
 pagetype: blog
 cateId: 'web-developer'
 tags: [ "JavaScript"]
-description: ES6以降多様化した配列のループでどの方法を使うべきかこんがらがるので、改めてまとめてみました。命令文for...of、for...in、メソッドmap、forEachでのループの仕方。find、filter、includes、some、everyとスプレッド構文(...)などの使い方について使い方を紹介します。
-lead: ["ES6以降多様化した配列のループでどの方法を使うべきかこんがらがるので、改めてまとめてみました。","命令文for...of、for...in、メソッドmap、forEachでのループの仕方。find、filter、includes、some、everyとスプレッド構文(...)などの使い方について使い方を紹介します。"]
+description: ES6以降多様化した配列のループでどの方法を使うべきかこんがらがるので、改めてまとめてみました。命令文for...of、for...in、メソッドmap、forEachでのループの仕方。find、filter、includes、some、everyとスプレッド構文(...)などについて使い方を紹介します。
+lead: ["ES6以降多様化した配列のループでどの方法を使うべきかこんがらがるので、改めてまとめてみました。","命令文for...of、for...in、メソッドmap、forEachでのループの仕方。find、filter、includes、some、everyとスプレッド構文(...)などについて使い方を紹介します。"]
 ---
-## 昔はfor文で回したけどたくさん種類が増えたよね
+## 昔は配列もfor文で回したけどたくさん種類が増えたよね
 昔（10年前くらい）はfor文でループさせるのが定石でしたね。
 `length`で配列の長さを取得して、0から配列の数だけ回すという取得の仕方をしていました。
 
@@ -19,9 +19,10 @@ for( var i = 0, arr.length < i, i++ ) {
 }
 ```
 
-2015年にES6（ECMAScript6 ECMAScript）以降ループ処理がめちゃくちゃ便利になりました（現在ES2021）。
+2015年にES6（ECMAScript6 ECMAScript）以降配列のループ処理がめちゃくちゃ便利になりました。<br>
+<small>※ 現在はES2021です。</small>
 
-当時はIE対応しなくてはいけなくて、倦厭していましたがIEももう気にする必要もほぼないのでこれからはどんどん遠慮なく使っていけばいいと思います。
+<br>当時はIE対応しなくてはいけなくて、倦厭（けんえん）していましたがIEももう気にする必要もほぼないのでこれからはどんどん遠慮なく使っていきましょう。
 
 ### おさらい・配列
 
