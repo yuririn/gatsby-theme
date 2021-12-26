@@ -70,6 +70,7 @@ module.exports = {
           `/contact/thanks/`,
           `/404?(.*)`,
           `/blogs/*/page/*`,
+          `/blogs/tags/*`,
         ],
       },
     },
