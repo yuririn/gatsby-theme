@@ -358,7 +358,7 @@ console.log(numbers2)
 ```js
 const person1 = { name: 'かみーゆ', job: 'フロントエンドエンジニア' }
 const gender = { gender: 'female' }
-console.log({...arr, ...person1})
+console.log({...person1, ...gender})
 // 結果
 // { name: 'かみーゆ', job: 'フロントエンドエンジニア', gender: 'female' }
 ```

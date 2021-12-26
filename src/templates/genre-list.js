@@ -26,9 +26,9 @@ const category = ({ pageContext, data, location }) => {
     <Layout location={location} title={siteMetadata.title}>
       <Seo
         title={`${cateName}`}
-        description={cateDescription}
+        description={`「${cateName}」の記事一覧。${cateDescription}。${data.site.siteMetadata.description}`}
         location={location}
-        type="archive"
+        type="genre"
       />
 
       <div className="p-pageHeader">
@@ -117,6 +117,11 @@ export default category
 
 export const pageQuery = graphql`
   query ($cateSlug: String, $limit: Int!, $skip: Int!) {
+    site {
+      siteMetadata {
+        description
+      }
+    }
     allMarkdownRemark(
       limit: $limit
       skip: $skip

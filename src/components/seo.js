@@ -37,13 +37,19 @@ const Seo = ({
   const domain = config.siteMetadata.siteUrl
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
-  const pageName = `${title} | ${defaultTitle}`
+
   let blogUrl = location ? location.href : domain
   const isRoot = `${domain}/` === blogUrl ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
   const pagetype = isRoot ? "webSite" : "webPage"
   const ogSrc = domain + (ogp ? ogp : "/images/ogp.png")
   const cate = config.siteMetadata.category.filter(cat => cat.name === title)
+  let pageName =
+    type === "tags" || type === "genre"
+      ? `${title}|記事一覧|${defaultTitle}`
+      : isRoot
+      ? `${defaultTitle}|${title}`
+      : `${title}|${defaultTitle}`
   let portfolio = false
   if (location) {
     portfolio = location.pathname === "/portfolio/" ? true : false
@@ -96,13 +102,13 @@ const Seo = ({
       "@context": "http://schema.org",
       "@type": "BlogPosting",
       url: blogUrl,
-      name: `${title} | ${defaultTitle}`,
+      name: pageName,
       headline: title,
       image: {
         "@type": "ImageObject",
         url: ogSrc,
       },
-      description: description,
+      description: metaDescription,
       datePublished: date.replace(/\./g, "-"),
       dateModified: modified ? modified.replace(/\./g, "-") : "",
       mainEntityOfPage: {
@@ -140,7 +146,7 @@ const Seo = ({
         position: 2,
         item: {
           "@id": `${domain}/blogs/`,
-          name: `ブログ一覧`,
+          name: `${title}一覧`,
         },
       })
       breadCrumbList.push({
@@ -158,7 +164,7 @@ const Seo = ({
         position: 2,
         item: {
           "@id": `${domain}/blogs/`,
-          name: `ブログ一覧`,
+          name: `${title}の記事一覧`,
         },
       })
       breadCrumbList.push({
@@ -192,8 +198,8 @@ const Seo = ({
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      title={pageName}
+      // titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
@@ -205,7 +211,7 @@ const Seo = ({
         },
         {
           property: `og:title`,
-          content: `${title} | ${defaultTitle}`,
+          content: pageName,
         },
         {
           property: `og:image`,
@@ -238,7 +244,7 @@ const Seo = ({
         },
         {
           name: `twitter:title`,
-          content: `${title} | ${defaultTitle}`,
+          content: pageName,
         },
         {
           property: `twitter:image`,

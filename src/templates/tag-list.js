@@ -13,12 +13,13 @@ import Prof from "../components/common/profile"
 
 const tags = ({ pageContext, data, location }) => {
   const { current, page, tag } = pageContext
+
   const posts = data.allMarkdownRemark.nodes
   return (
     <Layout location={location} title="銀ねこアトリエ">
       <Seo
-        title="ブログ一覧"
-        description="「銀ねこアトリエ」の最新ブログ一覧です。30代で転職し、セブ島に移住。主には仕事で使ったチップスを書きだめています。フロントエンド技術、WordPress、海外移住、キャリアアップ、たまにふざけてます。"
+        title={tag}
+        description={`「${tag}」の記事一覧。${data.site.siteMetadata.description}`}
         location={location}
         type="tags"
       />
@@ -111,6 +112,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     allMarkdownRemark(

@@ -233,7 +233,7 @@ const contactTemplate = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo
         title="お問い合わせ"
-        description={siteDescription}
+        description={`お問い合わせに関するページです。${siteDescription}`}
         image={src}
         location={location}
       />
@@ -272,6 +272,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     allFile(filter: { sourceInstanceName: { eq: "assets" } }) {

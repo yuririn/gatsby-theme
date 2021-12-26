@@ -21,7 +21,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title="海外ノマド フリーランスエンジニアの日記"
+        title="セブ島在住海外ノマド フロントエンジニアの日記"
         location={location}
       />
       <FirstView />

@@ -29,14 +29,33 @@ export const Article = styled.div`
     }
 
     &__date {
-      margin-bottom: 20px;
-      dt,
-      dd {
+      margin-bottom: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      dt {
+        width: 120px;
         font-weight: 700;
-        display: inline-block;
+        margin-bottom: 5px;
       }
       dd {
-        margin-left: 10px;
+        margin-bottom: 5px;
+        font-weight: 700;
+        width: calc(100% - 120px);
+      }
+      @media screen and (min-width: 768px) {
+        margin-bottom: 20px;
+        dt,
+        dd {
+          width: inherit;
+          display: inline-block;
+          margin-bottom: 0;
+        }
+        dt ~ dt {
+          margin-left: 15px;
+        }
+        dd {
+          margin-left: 10px;
+        }
       }
     }
     &__tags {

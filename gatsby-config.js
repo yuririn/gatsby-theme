@@ -3,7 +3,7 @@ module.exports = {
     title: `銀ねこアトリエ`,
     author: {
       name: `かみーゆ`,
-      summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
+      summary: `セブ島に住むフロントエンドエンジニアです。`,
     },
     description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
     siteUrl: `https://ginneko-atelier.com`,
@@ -63,9 +63,14 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         //自分の好きなファイル名にしたい場合はoutputを追加。デフォルトは「sitemap.xml」
-        output: `/sitemap.xml`,
         //除外したいページを指定する。「*」でワイルドカードも使える。
-        excludes: [`/blogs/page/*`],
+        output: `/`,
+        excludes: [
+          `/blogs/page/*`,
+          `/contact/thanks/`,
+          `/404?(.*)`,
+          `/blogs/*/page/*`,
+        ],
       },
     },
     `gatsby-plugin-image`,

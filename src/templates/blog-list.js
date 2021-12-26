@@ -18,9 +18,9 @@ const blogs = ({ pageContext, data, location }) => {
     <Layout location={location} title="銀ねこアトリエ">
       <Seo
         title="ブログ一覧"
-        description="「銀ねこアトリエ」の最新ブログ一覧です。30代で転職し、セブ島に移住。主には仕事で使ったチップスを書きだめています。フロントエンド技術、WordPress、海外移住、キャリアアップ、たまにふざけてます。"
+        description={`「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`}
         location={location}
-        // type="blogs"
+        type="blogs"
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
@@ -103,6 +103,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     allMarkdownRemark(
