@@ -4,6 +4,7 @@ import RelatedList from "./related-list"
 import { Sidebar } from "./../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
+import Search from "../search"
 
 const bar = ({ cateId, title, tags }) => {
   return (
@@ -22,6 +23,8 @@ const bar = ({ cateId, title, tags }) => {
         </ul>
       </section>
       <div className="inner">
+        <h2 className="c-heading--lg">記事を探す</h2>
+        <Search></Search>
         <ul className="side-banner">
           <li>
             <Link to="/about/">

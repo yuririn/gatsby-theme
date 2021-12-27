@@ -333,6 +333,7 @@ function createProject() {
 <br>ァイルアップロードとリネームを自動化したい方はこちらもどうぞ！
 
 <card id="/blogs/entry475/"></card>
+
 <card id="/blogs/entry476/"></card>
 
 この記事が皆さんの事務作業時短の一助となれば幸いです。

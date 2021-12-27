@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import Seo from "../components/seo"
 import Img from "../components/img"
+import Search from "../components/search"
 
 import Layout from "../components/layout"
 import FirstView from "../components/top-first-view"
@@ -73,6 +74,10 @@ const BlogIndex = ({ data, location }) => {
                 Read More Blog
               </Link>
             </p>
+          </section>
+          <section>
+            <h2 className="c-heading--lg">記事を検索する</h2>
+            <Search></Search>
           </section>
           <FovoriteList type="web" />
           <FovoriteList type="life" />
