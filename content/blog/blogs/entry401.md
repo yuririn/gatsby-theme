@@ -1,19 +1,19 @@
 ---
 title: Gatsbyブログサイト移行物語1~インストールからNetlifyデプロイまで~
 date: 2020-11-26
-modifieddate: 2021-12-12
+modifieddate: 2021-12-28
 hero: thumbnail/2020/entry401.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: 現在、前から気になる静的サイトジェネレーターのGatsbyでブログを作り直しています。今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。concrete5は別の形で運用しようと思います。*Macでのやり方となります。
-lead: ["現在、前から気になる静的サイトジェネレーターのGatsbyJSでブログを作り直しています。","今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。","このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。","concrete5は別の形で運用しようと思います。","※ Mac以外では検証してません。ご了承ください。"]
+description: 現在、前から気になる静的サイトジェネレーターのGatsbyでブログを作り直しています。今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。※ Macでのやり方となります。※ 2021/12/28v4対応のためリライトしました。
+lead: ["現在、前から気になる静的サイトジェネレーターのGatsbyJSでブログを作り直しています。","今回はインストールして、Netlifyでデプロイしてウェブサイトを公開するまでの方法をご紹介します。","このサイト表示の重さに耐えかねて、サクラのレンサバ×concrete5でブログ書くのを断念することにしました。","※ Mac以外では検証してません。ご了承ください。","※ 2021年12月28日v4対応のためリライトしました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
-1. インストールからNetlifyデプロイまで（←イマココ）
-2. [投稿ページの充実と画像の方法](/blogs/entry406/)
+1. *インストールからNetlifyデプロイまで*（←イマココ）
+2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
@@ -22,14 +22,16 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
 9. [関連記事一覧出力](/blogs/entry430/)
 
+<small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
+
 ## Gatsby(JS)とは？
-Gatsby(JS)はReactで作られた**静的サイトジェネレーター**です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>
+Gatsby(JS)はReactで作られた **静的サイトジェネレーター** です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>
 
 ![Gatsbyとは？](./images/2020/11/entry401-1.png)
 
 [公式サイト](https://www.gatsbyjs.com/)
 
-生成される静的サイトは**SPA（シングルページアプリケーション）**でもあるので、表示速度も速く感動します。
+生成される静的サイトは **SPA（シングルページアプリケーション）** でもあるので、表示速度も速く感動します。
 
 ### Gatsby(JS)の気になる難易度
 難易度はJS触れる人ならなんとかいけると思います。<br>
@@ -37,13 +39,19 @@ Gatsby(JS)はReactで作られた**静的サイトジェネレーター**です�
 Reactの入口としてはオススメです。コンポーネント作る練習にもなります。
 
 ES6以上の記述方法がある程度知っている。<br>
-あとGraphQLの使い方知らないと慣れるまでしんどいかもしれません。
+あと*GraphQL*の使い方知らないと慣れるまでしんどいかもしれません。
 
-React、GraphQLについてはこのブログの最後の方に説明足してます。興味あったら読んでください。
+*React*、*GraphQL*についてはこのブログの最後の方に説明足してます。興味あったら読んでください。
 
 ## Gatsby JS をインストール
 まずは、Gatsbyをグローバルにインストールします。
-インストールできない場合は、sudo実行してください。
+インストールできない場合は、`sudo`実行してください。
+
+> Minimal Node.js version 14.15.0
+
+現時点でのv4で必要とするNodeの最低バージョンは*14.15.0*です。バージョンの上げ方が分からない方はこちらをご覧ください。
+
+<card id="/blogs/entry477/"></card>
 
 ```pash
 npm install -g gatsby-cli
@@ -56,29 +64,31 @@ sudo npm install -g gatsby-cli
 ## スターター用テンプレートをインストール
 まずはスターター用テンプレートをインストールしましょう。
 
-[456 Gatsby Starters](https://www.gatsbyjs.com/starters/?v=2)
+[Gatsby Starter Library](https://www.gatsbyjs.com/starters/)
 
 一番メジャーでベーシックな**Gatsby Starter Blog**をインストールします。
 
 ![Gatsbyとは？](./images/2020/11/entry401-3.png)
 
-Install this starter locally:とある下のコードをコピーします。
+公式ページのStarterの中に「[gatsby-starter-blog](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-blog/)」があるので「Install with gatsby-cli」から以下コードをコピーします。
 
 ```bash
-gatsby new my-gatsby-project https://github.com/gatsbyjs/gatsby-starter-blog
+npx gatsby new gatsby-starter-blog https://github.com/gatsbyjs/gatsby-starter-blog
 ```
 
-my-gatsby-project はお好みで変えてください。
-
-私はプロジェクトを1つのディレクトリーに並列に置いて管理しているので、そこにgatsby用のディレクトリをおく場合はそのディレクトリに移動してください。
-
+gatsby-starter-blog はディレクトリー名なのでお好みで変えてください。
 
 ```bash
-cd projects
+npx gatsby new my-project https://github.com/gatsbyjs/gatsby-starter-blog
 ```
-例えばprojectsで各プロジェクトを管理しているのであれば、cdコマンドでそのディレクトリーに移動しておきましょう。
 
-私は普段VS Code からコマンドを使います！Gatsbyのディレクトリーができたら、そのディレクトリをVS Codeで開くことをオススメします。
+cdコマンドで移動します。
+
+```bash
+cd my-project
+```
+
+<msg txt="私は普段 VS Code からコマンドを使います！Gatsbyのディレクトリーができたら、そのディレクトリをVS Codeで開くことをオススメします。"></msg>
 
 Netlifyにデプロイしたいのでgitにも追加します。
 
@@ -124,9 +134,9 @@ git remote add origin git@github.com:yuririn/gatsby-theme.git
 設定の仕方はこちらを参考に。
 [GitHubでssh接続する手順~公開鍵・秘密鍵の生成から~](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)
 
-とりあえず今回はmasterへプッシュできるようにしておきましょう！！
+とりあえず今回は mainブランチ へプッシュできるようにしておきましょう！！
 ```bash
-git push --set-upstream origin master
+git push --set-upstream origin main
 ```
 追加できているか確認。
 ```bash
@@ -137,20 +147,21 @@ git remote -v
 
 以下コードでタスクランナーが走ります。
 ```bash
-gatsby develop
+npm start
 ```
-他にもコマンドがいくつかありますが、頻繁に使うのは`gatsby clean`ぐらいです。
+他にもコマンドがいくつかありますが、頻繁に使うのは`npm run clean`ぐらいです。
 
 |コマンド|詳細|
 |-|-|
-|gatsby develop| 開発サーバーを起動|
-|gatsby build|ビルド|
-|gatsby info|デバッグの環境情報を取得|
-|gatsby clean|ローカルのキャッシュクリア|
+|*npm start*| 開発サーバーを起動|
+|*npm run build*|ビルド|
+|*npm run serve*|ビルドした内容を動かす|
+|*npm run format*|コードの整形|
+|*npm run clean*|ローカルのキャッシュなどの削除|
 
 
 ## 初期設定等を変更しよう
-ファイル・gatsby-config.jsから初期設定を変更しておきましょう！
+ファイル *gatsby-config.js* から初期設定を変更しておきましょう！
 
 サイトメタ情報変更
 
@@ -174,7 +185,6 @@ siteMetadata: {
 
 記事はcontent/blog内に格納されています。
 
-設定を変えたい場合はgatsby-config.jsを修正する必要があります。
 ```js
 plugins: [
   {
@@ -187,7 +197,7 @@ plugins: [
 ],
 ```
 ### 投稿：test.mdを追加してみよう
-/blogディレクトリー直下にtest.mdを追加してみましょう！
+/blogディレクトリー直下に*test.md*を追加してみましょう！
 
 構造は以下の通り。
 
@@ -204,9 +214,9 @@ description: この記事はテスト投稿です
 ```
 以下はSEO的に大切なので抜かりなく記述しておきましょう。
 
-* title ... タイトル
-* date ... 日にち。-（ハイフン）でくぎる
-* description ... 記事の説明
+* *title* ... タイトル
+* *date* ... 日にち。-（ハイフン）でくぎる
+* *description* ... 記事の説明
 
 それに続けて適当に本文を書いてみましょう！
 
@@ -216,7 +226,7 @@ description: この記事はテスト投稿です
 初めての投稿です！ワクワク、ドキドキハート！
 ```
 
-今回はテスト練習なので、これでコミットしてデプロイしてみます。
+今回はテスト練習なので、これでコミット&プッシュしてデプロイしてみます。
 
 **ファイルの追加**
 ```bash
@@ -234,7 +244,7 @@ git commit -F- <<EOM
 >テスト記事を投稿する
 ```
 ## Netlifyへデプロイする
-Netlifyをgitと連携してMasterにpushされたデータが反映するように設定しましょう！
+Netlify を git と連携して mainブランチ に push されたデータが反映するように設定しましょう！
 
 [Netlify公式サイト](https://www.netlify.com/)
 
@@ -288,7 +298,7 @@ Gatsby ではバージョンごとに*Nodeの求められるversionが違う*の
 
 ## まとめ
 いかがでしたでしょうか？<br>
-githubと連携して、gitのコマンドでmasterにpushするだけで公開できるようになったかと思います。
+Github と連携して、gitのコマンドで mainブランチ に push するだけで公開できるようになったかと思います。
 
 次回はCSSを移行して、記事にサムネイルを足す方法をご紹介します！
 

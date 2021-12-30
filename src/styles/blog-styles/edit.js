@@ -323,7 +323,6 @@ export const Edit = styled.section`
   }
   code[class*="language-"],
   pre[class*="language-"] {
-    font-family: monospace;
     text-shadow: none;
   }
   blockquote {

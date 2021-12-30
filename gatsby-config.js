@@ -29,7 +29,7 @@ module.exports = {
       {
         slug: "seo",
         name: "SEOとデジマ",
-        enName: "Seaarch Engine Optimization",
+        enName: "Search Engine Optimization",
         description: "SEOやデジタルマーケティングに関する記事",
       },
       {

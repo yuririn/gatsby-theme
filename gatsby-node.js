@@ -181,7 +181,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
 
-    //カテゴリー一覧
+    //重複を排除し、カテゴリーの配列を作成
     let cates = posts.reduce((cates, edge) => {
       const edgeCates = edge["frontmatter"]["cateId"]
       return edgeCates ? cates.concat(edgeCates) : cates
