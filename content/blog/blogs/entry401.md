@@ -1,5 +1,5 @@
 ---
-title: Gatsbyブログサイト移行物語1~インストールからNetlifyデプロイまで~
+title: Gatsbyブログサイト移行物語~インストールからNetlifyデプロイまで~
 date: 2020-11-26
 modifieddate: 2021-12-28
 hero: thumbnail/2020/entry401.jpg
@@ -13,6 +13,7 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
 1. *インストールからNetlifyデプロイまで*（←イマココ）
+2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
@@ -23,6 +24,11 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 9. [関連記事一覧出力](/blogs/entry430/)
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
+
+
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+
+今回は[install-deploy](https://github.com/yuririn/gatsby-blog/tree/install-deploy)にあります。
 
 ## Gatsby(JS)とは？
 Gatsby(JS)はReactで作られた **静的サイトジェネレーター** です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>
@@ -163,7 +169,7 @@ npm start
 ## 初期設定等を変更しよう
 ファイル *gatsby-config.js* から初期設定を変更しておきましょう！
 
-サイトメタ情報変更
+サイトメタ情報変更。お好みで変更してください。
 
 ```js
 siteMetadata: {
@@ -221,9 +227,9 @@ description: この記事はテスト投稿です
 それに続けて適当に本文を書いてみましょう！
 
 ```md
-初めての投稿！！
 ## 見出し2
-初めての投稿です！ワクワク、ドキドキハート！
+はじめての投稿です！ワクワク、ドキドキ！
+
 ```
 
 今回はテスト練習なので、これでコミット&プッシュしてデプロイしてみます。
@@ -232,8 +238,12 @@ description: この記事はテスト投稿です
 ```bash
 git add .
 ```
+通常のコミット。
+```bash
+git commit -m '記事追加'
+```
 
-次のように**コミットメッセージを概要と詳細**に分けたい時は間に改行を挟みます。
+今回は次のように**コミットメッセージを概要と詳細**に分けたい時は間に改行を挟みます。
 
 ![コミットメッセージを概要と詳細に分ける](./images/2020/11/entry401-13.png)
 
@@ -242,7 +252,12 @@ git commit -F- <<EOM
 >記事追加
 >
 >テスト記事を投稿する
+>EOM
 ```
+EOM入力で終了できます。
+
+もしコミットのコメントを間違えたと思ったらctrl + cで一旦抜けて入力しなおしましょう。
+
 ## Netlifyへデプロイする
 Netlify を git と連携して mainブランチ に push されたデータが反映するように設定しましょう！
 
@@ -260,10 +275,9 @@ Netlify を git と連携して mainブランチ に push されたデータが�
 
 Continuous DeploymentからGitHubを選択。
 
-<p>
-  ![「New site from Git」からからリポジトリを追加](./images/2020/11/entry401-11.png)
 
-</p>
+![「New site from Git」からからリポジトリを追加](./images/2020/11/entry401-11.png)
+
 勝手に公開用のディレクトリpublicとbuildコマンド`gatsby build`が選ばれます。<br>
 あとは「Deploy site」ボタンをクリックするだけです！
 

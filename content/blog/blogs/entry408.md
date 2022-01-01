@@ -1,5 +1,5 @@
 ---
-title: Gatsbyブログサイト移行物語3~ブログ記事、カテゴリー、タグ一覧の出力~
+title: Gatsbyブログサイト移行物語~ブログ記事、カテゴリー、タグ一覧の出力~
 date: 2020-12-03
 modifieddate: 2022-12-30
 hero: thumbnail/2020/entry401.jpg
@@ -13,6 +13,7 @@ lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテ
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
+2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
 3. *ブログ記事、カテゴリー、タグ一覧の出力*（←イマココ）
 4. [プラグインを利用して目次出力](/blogs/entry410/)
@@ -23,6 +24,10 @@ lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテ
 9. [関連記事一覧出力](/blogs/entry430/)
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
+
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+
+今回のソースは[blog-list](https://github.com/yuririn/gatsby-blog/tree/blog-list)ブランチにあります。
 
 
 ### このシリーズではテーマGatsby Starter Blogを改造
@@ -36,17 +41,31 @@ lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテ
 
 Gatsby Starter Blogでは、テンプレートはsrc/templates内に収められています。<br>
 まずは、以下にblogs-list.jsという名前で格納します。
+
+一覧の出力を確認したいのでダミーの記事も用意しておきます。
 ```
 src/
-├ pages/
-|   ├ index.js （これをコピー）
-|   └ 404.js
-├ templates/
-|   ├ blog-post.js
-|   └ blogs-list.js（ここに格納）
-├ components/
-├ style.css
-└ normalize.css
+  ├ pages/
+  |  ├ index.js （これをコピー）
+  |  └ 404.js
+  ├ templates/
+  |  ├ blog-post.js
+  |  └ blogs-list.js（ここに格納）
+  └ images/
+    └ thumbnail/
+      （記事のサムネイル出力画像）
+      ├ entry01.jpg
+      ├ entry02.jpg
+      └ entry03.jpg
+content/blog/
+  └ blogs
+  （一覧出力の確認用にいくつかダミーの記事を作っておく）
+    ├ entry1.md
+    ├ entry2.md
+    ├ entry3.md
+    ├ entry4.md
+    ├ entry5.md
+    └ entry6.md
 ```
 
 blogs-list.js の変数名を変更。
@@ -65,32 +84,31 @@ export default BlogList
 ## gatsby-node.jsで一覧を作成するためのコードを書く
 gatsbyjsは静的ページを生成するので各一覧を生成するためのコードを書きます。
 
-前回、[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)では投稿した日付昇順にソートし、 `pagetype` が `blog` の記事だけを上限に1000件絞り込みました。
-
-データは変数 **gatsby-node.js** の `result` に格納されています。
+出力する元となるデータは **gatsby-node.js** の `result` に格納されています。
 ```javascript
 // Get all markdown blog posts sorted by date
 const result = await graphql(
-`
-{
-allMarkdownRemark(
-sort: { fields: [frontmatter___date], order: ASC }
-filter: {frontmatter: {pagetype: {eq: "blog"}}}
-limit: 1000
-) {
-totalCount
-nodes {
-id
-fields {
-slug
-}
-frontmatter {
-hero
-}
-}
-}
-}
-`)
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: ASC }
+          limit: 1000
+        ) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              hero
+              pagetype
+            }
+          }
+        }
+      }
+    `
+  )
 
 if (result.errors) {
 reporter.panicOnBuild(
@@ -103,19 +121,11 @@ return
 const posts = result.data.allMarkdownRemark.nodes
 ```
 
-GraphQLで絞り込み&並び替えた記事データを変数 `posts` に格納されています。
+記事データは変数 `posts` に格納してあります。
 
-当銀ねこアトリエの記事のパスは、`/blogs/entry+数字` です。<br>
-数字順に並べ替えたい場合は、以下のようにするとOK。
+### テンプレートを使ってブログ記事の一覧を生成する
 
-```js
-sort: { fields: fields___slug, order: ASC }
-```
-
-先ほど作ったblog-list.jsからクエリを投げて、`createPage()`でページを生成します。
-
-## ブログ記事の一覧を生成する
-gatyby-node.jsに createPageを実行するテンプレートを追加します。
+gatyby-node.jsにテンプレート(blog-list.js)を追加します。
 
 ```javascript
 // 省略
@@ -129,91 +139,107 @@ const blogList = path.resolve(`./src/templates/blog-list.js`)//テンプレー�
 // 省略
 }
 ```
-ページネーションなどないプレーンな一覧を取得するコードを追加します。<br>
-投稿ページの生成しているコードの下あたりに追加します。
+
+ブログ記事として扱う投稿にはfrontmatter内にpagetype・blogをセットしてあります。
+
+```md
+---
+title: 記事2
+date: 2021-12-26
+# ↓frontmatterのpagetypeにblogを付与している
+pagetype: blog
+# 省略
+```
+前回ブログ詳細ページでも[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry408/)、`posts`の中から**pagetypeがblogのデータだけ抽出**しました。
+
+ブログ詳細を出力しているコードの下に`createPage`を使って一覧を出力するコードを追加します。
 
 ```javascript
 //省略
 if (posts.length > 0) {
-const blog = posts.filter(post => post.frontmatter.pagetype === "blog")
+const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
 
-blog.forEach((post, index) => {
-//省略
-})
+  //ブログ詳細出力
+  blogPosts.forEach((post, index) => {
+  //省略
+  })
 
-// 以下追加
-createPage({
-path: '/blogs/',
-component: blogList,
-})
+  // 一覧を出力するコードを追加
+  createPage({
+    path: '/blogs/',
+    component: blogList,
+  })
 }
 //省略
 ```
+[localhost:8000/blogs/](localhost:8000/blogs/)にアクセスします。
+
+![blog以外の記事も取得](./images/2020/12/entry408-1.jpg)
+
+blog以外の記事も取得されています。
+
 ## pagetypeがblogの記事のみを取得する
-blog-list.jsを編集しましょう。記事一覧と、総数を取得し表示できるように改造します。
-
-理想はこんな感じにしたい。
-
-![記事一覧と、総数を取得](./images/2020/12/entry408-1.png)
+blog-list.jsを編集しましょう。記事一覧と、総数を取得し表示できるようにします。
 
 コードを以下のように追記して、GraphQLで `totalCount` (記事の総数)も取得します。
 
-前回の[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)とほぼ一緒ですが、 `blosQyery` の `allMarkdownRemark` に `totalCount` を追記します。
+`blosQyery` の `allMarkdownRemark` に `totalCount` を追記します。
 
 ```javascript
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+{/*省略*/}
 
-const blogs = ({ data, location }) => {
-const { totalCount, nodes } = data.allMarkdownRemark
-const posts = nodes //書き換える
-console.log(totalCount)//デバッグ
+const BlogList = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const posts = data.allMarkdownRemark.nodes
+  console.log(data.allMarkdownRemark.totalCount) //デバッグ
 
-return (
-<Layout location={location} title="銀ねこアトリエ">
-{/* 省略 */}
-</Layout>
-)
+  {/*省略*/}
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      {/*省略*/}
+    </Layout>
+  )
 }
-export default blogs
+
+export default BlogList
+
 export const pageQuery = graphql`
-query blosQyery {
-site {
-siteMetadata {
-title
-}
-}
-allMarkdownRemark(
-sort: {fields: [frontmatter___date], order: DESC }
-# pagetype=blogで絞り込む
-filter: {frontmatter: {pagetype: { eq: "blog" } } }
-)
-{
-# 記事総数取得
-totalCount
-nodes {
-excerpt
-fields {
-slug
-}
-frontmatter {
-title
-date(formatString: "YYYY.MM.DD")
-description
-# 画像を引っ張り出すのに使います
-hero
-# カテゴリーやタグを出力したいなら
-cate
-tags
-}
-}
-}
-}
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      # pagetype=blogで絞り込む
+      filter: { frontmatter: { pagetype: { eq: "blog" } } }
+    ) {
+      # 記事総数取得
+      totalCount
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "YYYY.MM.DD")
+          title
+          description
+          # 画像を引っ張り出すのに使います
+          hero
+          # カテゴリーやタグを出力したいなら
+          cate
+          tags
+        }
+      }
+    }
+  }
 `
+
 ```
-記事詳細の出力時と違い、GraghQLでfilterを使ってpagetype=blogで絞り込んでいます。
+GraghQLでfilterを使ってpagetype=blogで絞り込んでいます。
 ```
 filter: {frontmatter: {pagetype: { eq: "blog" } } }
 ```
@@ -222,7 +248,7 @@ filter: {frontmatter: {pagetype: { eq: "blog" } } }
 ```
 src/
 └ components/
-└ img.js（追加）
+  └ img.js（追加）
 ```
 img.js を src/components/内に格納します。
 ```js
@@ -231,113 +257,278 @@ import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Img = ({ image, alt, className }) => {
-const { allFile } = useStaticQuery(
-graphql`
-query {
-allFile(filter: { sourceInstanceName: { eq: "images" } }) {
-edges {
-node {
-  relativePath
-  childImageSharp {
-    gatsbyImageData(
-      blurredOptions: { width: 100 }
-      width: 640
-      formats: [AUTO, WEBP, AVIF]
-      placeholder: BLURRED
-    )
-  }
-}
-}
-}
-}
-`
-)
-// 代替文字
-alt = alt ? alt : ""
-//画像がない場合はダミーをセット
-let imagePath = image ? image : "common/dummy.png"
+  const { allFile } = useStaticQuery(
+    graphql`
+      query {
+        allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+          edges {
+            node {
+              relativePath
+              childImageSharp {
+                gatsbyImageData(
+                  blurredOptions: { width: 100 }
+                  width: 640
+                  formats: [AUTO, WEBP, AVIF]
+                  placeholder: BLURRED
+                )
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+  // 代替文字
+  alt = alt ? alt : ""
+  //画像がない場合はダミーをセット
+  let imagePath = image ? image : "common/dummy.png"
 
-// findで条件と同じ画像を探す
-let img = allFile.edges.find(img => img.node.relativePath === imagePath)
-if (img) {
-return (
-<GatsbyImage
-image={getImage(img.node.childImageSharp.gatsbyImageData)}
-alt={alt}
-key={alt}
-className={className}
-/>
-)
-} else {
-return ""
-}
+  // findで条件と同じ画像を探す
+  let img = allFile.edges.find(img => img.node.relativePath === imagePath)
+  if (img) {
+    return (
+      <GatsbyImage
+        image={getImage(img.node.childImageSharp.gatsbyImageData)}
+        alt={alt}
+        key={alt}
+        className={className}
+      />
+    )
+  } else {
+    return ""
+  }
 }
 export default Img
 ```
-コンポーネントを読み込み、画像を表示するために記事を改造します。
+blog-list.jsを編集します。`<Bio/>`は使わないので削除します。
 ```js
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import Bio from "../components/bio"
+<Bio/>
+```
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import Img from "../components/img" //画像読み込み
+Imgコンポーネントを読み込み、画像を表示するために記事を改造します。
+```js
+// 省略
+
+//画像読み込み
+import Img from "../components/img"
 
 const BlogList = ({ data, location }) => {
-const { totalCount, nodes } = data.allMarkdownRemark
-const posts = nodes
-const title = "記事一覧"
-console.log(totalCount)
+  const { totalCount, nodes } = data.allMarkdownRemark
+  const posts = nodes
+  const title = "記事一覧"
 
-return (
-<Layout location={location} title={title}>
-<Seo title={title} />
-<header>
-<h1>{title}</h1>
-<p>現在 {totalCount} 記事あります。</p>
-</header>
+  if (posts.length === 0) {
+    // 省略
+  }
 
-<ol style={{ listStyle: `none` }}>
-{posts.map(post => {
-const title = post.frontmatter.title || post.fields.slug
+  return (
+    <Layout location={location} title={title}>
+      <Seo title="All posts" />
+      <header>
+        <h1>{title}</h1>
+        <p>現在 {totalCount} 記事あります</p>
+      </header>
+      <ol style={{ listStyle: `none` }}>
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
 
-return (
-<li key={post.fields.slug}>
-  <article
-    className="post-list-item"
-    itemScope
-    itemType="http://schema.org/Article"
-  >
-    <Link to={post.fields.slug} itemProp="url">
-      <Img alt={title} image={post.frontmatter.hero}></Img>
-      <time dateTime={post.frontmatter.date}>
-        {post.frontmatter.date}
-      </time>
-      <h2>{title}</h2>
-      <p
-        dangerouslySetInnerHTML={{
-          __html: post.frontmatter.description || post.excerpt,
-        }}
-        itemProp="description"
-      />
-    </Link>
-  </article>
-</li>
-)
-})}
-</ol>
-</Layout>
-)
-}
+          return (
+            <li key={post.fields.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <Link to={post.fields.slug} itemProp="url">
+                  <Img alt={title} image={post.frontmatter.hero}></Img>
+                  <small>
+                    <time datetime={post.frontmatter.date}>
+                      {post.frontmatter.date}
+                    </time>
+                  </small>
+                </Link>
+                <h2>
+                  <Link to={post.fields.slug} itemProp="url">
+                    <span itemProp="headline">{title}</span>
+                  </Link>
+                </h2>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
+      </ol>
+    </Layout>
+  )
 // 省略
 ```
 
-CSSが効いてないとこんなもんですが、一応出力はできました。
+見た目は悪いですが、出力できました。
 
 ![仕上がり](./images/2020/12/entry408-4.jpg)
 
+### styled-componentsで見た目をきれいにする
+
+ブログ一覧用のスタイルを作成します。外部ファイルで、styled-componentsコンポーネントを作ります。
+```
+src/
+└ style/
+  └ blog-list-style.js
+```
+一覧全体の見出し用と、一覧用のコンポーネントを一つのファイルに作成します。
+```js
+import styled from "styled-components"
+
+export const BlogListHeader = styled.header`
+  text-align:center;
+  h1 {
+    &:after {
+      margin: 0 auto;
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: rgb(29, 104, 88);
+    }
+  }
+`
+export const BlogListWrapper = styled.ol`
+  list-style: none;
+  padding: 0;
+  li {
+    margin-bottom: 20px;
+
+    a {
+        color: var(--black);
+        text-decoration: none ;
+    }
+    h2 {
+        font-size: 18px;
+    }
+  }
+  .thumbnail {
+    position: relative;
+
+    time {
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+      top: 10px;
+      background: rgba(255,255,255,.7);
+      padding: 0 10px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    li {
+        box-sizing: border-box;
+        padding: 15px;
+        width: 33.33%;
+
+        h2 {
+          font-size: 22px;
+
+          a {
+              &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+
+      .thumbnail {
+        transition: .3s;
+
+        &:hover {
+            opacity: 0.5;
+        }
+      }
+    }
+  }
+`
+```
+
+```js
+import Img from "../components/img"
+// ↓追加↓
+import { BlogListWrapper, BlogListHeader } from "../style/blog-list-style"
+
+const BlogList = ({ data, location }) => {
+  // 省略
+
+
+  return (
+    <Layout location={location} title={title}>
+      <Seo title="All posts" />
+      {/* タグ変更 */}
+      <BlogListHeader>
+        <h1>{title}</h1>
+        <p>現在 {totalCount} 記事あります</p>
+      </BlogListHeader>
+      {/* タグ変更 */}
+      <BlogListWrapper>
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
+
+          return (
+            <li key={post.fields.slug}>
+              <article
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                {/* クラス追加 */}
+                <Link
+                  to={post.fields.slug}
+                  itemProp="url"
+                  className="thumbnail"
+                >
+                  <Img alt={title} image={post.frontmatter.hero}></Img>
+                  <small>
+                    <time datetime={post.frontmatter.date}>
+                      {post.frontmatter.date}
+                    </time>
+                  </small>
+                </Link>
+                <h2>
+                  <Link to={post.fields.slug} itemProp="url">
+                    <span itemProp="headline">{title}</span>
+                  </Link>
+                </h2>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
+      </BlogListWrapper>
+    </Layout>
+  )
+}
+
+export default BlogList
+//省略
+```
+シンプルですがサイトとして見れるレベルまでになりました。
+![仕上がり](./images/2020/12/entry408-5.jpg)
+
 ## カテゴリーを追加する
-frontmatterにcategory項目を追加します。
+category項目の一覧も追加します。
 
 ブログを設計するときに、カテゴリーの数は6個と決めていました。
 
@@ -347,64 +538,66 @@ frontmatterにcategory項目を追加します。
 
 ```js
 module.exports = {
-siteMetadata: {
-title: `銀ねこアトリエ`,
-author: {
-name: `かみーゆ`,
-summary: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニア`,
-},
-description: `「銀ねこアトリエ」はセブ島に住むフロントエンドエンジニアの気ままな日記です。`,
-siteUrl: `https://ginneko-atelier.com/`,
-social: {
-twitter: `lirioL`,
-instagram: `yurico.k`,
-},
-category: [
-{
-slug: `cms`,
-name: `Contents Management System`,
-description: `WordPressやconcrete5などCMSの記事`,
-},
-{
-slug: `frontend`,
-name: `Front End`,
-description: `HTML、CSS、JSなどの書き留めたチップス`,
-},
-{
-slug: `backend`,
-name: `Back End`,
-description: `PHP、黒い画面、DBが中心`
-},
-{
-slug: `seo`,
-name: `Seaarch Engine Optimization`,
-description: `SEOやコンテンツマーケティングに関する記事`
-},
-{
-slug: `career`,
-name: `ITセミナー`,
-description: `勉強会の開催/登壇について書いてます`
-},
-{
-slug: `ginneko-tsuredure`,
-name: `Life Hack`,
-description: `思ったことを気ままに書いてます`
-},
-]
-},
+  siteMetadata: {
+    title: `銀ねこアトリエ`,
+    author: {
+      name: `かみーゆ`,
+      summary: `セブ島に住むフロントエンドエンジニア`,
+    },
+    description: `セブ島に住むフロントエンドエンジニアの気ままな日記`,
+    siteUrl: `https://ginneko-atelier.com/`,
+    social: {
+      twitter: `lirioY`,
+      instagram: `yurico.k`,
+      youtube: `https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw`,
+    },
+    category: [
+      {
+        slug: `cms`,
+        name: `Contents Management System`,
+        description: `WordPressやconcrete5などCMSの記事`,
+      },
+      {
+        slug: `frontend`,
+        name: `Front End`,
+        description: `HTML、CSS、JSなどの書き留めたチップス`,
+      },
+      {
+        slug: `backend`,
+        name: `Back End`,
+        description: `PHP、黒い画面、DBが中心`,
+      },
+      {
+        slug: `seo`,
+        name: `Seaarch Engine Optimization`,
+        description: `SEOやコンテンツマーケティングに関する記事`,
+      },
+      {
+        slug: `career`,
+        name: `ITセミナー`,
+        description: `勉強会の開催/登壇について書いてます`,
+      },
+      {
+        slug: `ginneko-tsuredure`,
+        name: `Life Hack`,
+        description: `思ったことを気ままに書いてます`,
+      },
+    ],
+  },
+  省略
 ]
 ```
 mdファイルの `cate` には `siteMetadata` の `slug` を記述するというルールを設けます。
 
 ```
 ---
-title: Webサイトの表示速度を真剣に考える
-date: 2019-06-21
-hero: entry325.png
+title: 記事サンプル2
+date: 2021-12-26
 pagetype: blog
-cate: seo
-tags: [表示速度,SEOコーディング]
-description: 昔いた会社で、画像の圧縮、CSSなどの外部ファイルを徹底して不要ファイルを削除して圧縮してさらにワンソース化した結果、50位から20位以内に順位が改善したことがあります。今日はWebサイトの軽量化とスピードについて真剣に考えようと思います。
+hero: thumbnail/entry02.jpg
+description: この記事はテスト投稿です
+cate: frontend
+tags: ['Gatsby', 'React']
 ---
 ```
 
@@ -413,157 +606,105 @@ blog-list.jsをsrc/templates/内に複製し、category.jsを作成します。
 gatsby-node.jsのクエリに`cate`を追加します。
 
 ```jS
-const result = await graphql(
-`
-{
-allMarkdownRemark(
-sort: {fields: fields___slug, order: ASC }
-limit: 1000
-) {
-nodes {
-id
-fields {
-slug
-}
-frontmatter {
-pagetype
-cate
-hero
-}
-}
-}
-}
-`
-)
+ const result = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: ASC }
+          limit: 1000
+        ) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              hero
+              pagetype
+              # ↓追加
+              cate
+            }
+          }
+        }
+      }
+    `
+  )
 ```
 
 cate-list.jsをテンプレートとしたすべての記事からcateを絞り込んだそれぞれの一覧を出力するページを生成します。
 
 ```javascript
-// テンプレ追加
+// カテゴリー一覧出力用テンプレ追加
 const cateList = path.resolve(`./src/templates/cate-list.js`);
 ```
 
 ```js
+// 一覧出力
+createPage({
+  path: "/blogs/",
+  component: blogList,
+  context: {},
+})
+
 //カテゴリー一覧追加
 //カテゴリーのリスト取得
 let cates = posts.reduce((cates, edge) => {
-const edgeCates = edge.frontmatter.cate
-return edgeCates ? cates.concat(edgeCates) : cates
+  const edgeCates = edge.frontmatter.cate
+  return edgeCates ? cates.concat(edgeCates) : cates
 }, [])
 // 重複削除
 cates = [...new Set(cates)]
 // カテゴリー分ページを作成
 cates.forEach(cate => {
-const cateSlug = cate
-createPage({
-path: `/blogs/${cate}/`,
-component: cateList,
-context: {
-cateSlug,
-},
-})
+  const cateSlug = cate
+  createPage({
+    path: `/blogs/${cate}/`,
+    component: cateList,
+    context: {
+      cateSlug,
+    },
+  })
 })
 ```
 `cateSlug`（カテゴリーID）はcreatePageの`context`に格納され、引数`pageContext`で取得できます。
 
-`import { siteMetadata } from "../../gatsby-config"`であらかじめgatsby-config.jsに設定したカテゴリーのslug、name、descriptionを取得し、`cateSlug`と一致するデータのみを使用します。
-
-CSSさえ実装されていればこんな感じに表示したい。
-
-![カテゴリー一覧の取得](./images/2020/12/entry408-2.png)
-
+`cateSlug`と一致するデータのみを使用します。
 
 ```javascript
-import * as React from "react"
-import { Link, graphql } from "gatsby"
-
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import Img from "../components/img"
-
-import { siteMetadata } from "../../gatsby-config"
-
-const BlogList = ({ pageContext, data, location }) => {
-// カテゴリースラッグ取得
-const { cateSlug } = pageContext
-const { nodes } = data.allMarkdownRemark
-const posts = nodes
-// cateSlugと一致するカテゴリーを取得する
-const cate = siteMetadata.category.find(item => item.slug === cateSlug)
-
-return (
-<Layout location={location} title={cate.name}>
-<Seo title={cate.name} />
-<header>
-<h1>{cate.name}</h1>
-<p>{cate.description}</p>
-</header>
-
-<ol style={{ listStyle: `none` }}>
-{posts.map(post => {
-const title = post.frontmatter.title || post.fields.slug
-
-return (
-<li key={post.fields.slug}>
-  <article
-    className="post-list-item"
-    itemScope
-    itemType="http://schema.org/Article"
-  >
-    <Link to={post.fields.slug} itemProp="url">
-      <Img alt={title} image={post.frontmatter.hero}></Img>
-      <time dateTime={post.frontmatter.date}>
-        {post.frontmatter.date}
-      </time>
-      <h2>{title}</h2>
-      <p
-        dangerouslySetInnerHTML={{
-          __html: post.frontmatter.description || post.excerpt,
-        }}
-        itemProp="description"
-      />
-    </Link>
-  </article>
-</li>
-)
-})}
-</ol>
-</Layout>
-)
-}
-
-export default BlogList
-
+// 省略
 export const pageQuery = graphql`
-query ($cateSlug: String) {
-site {
-siteMetadata {
-title
-}
-}
-allMarkdownRemark(
-sort: { fields: fields___slug, order: ASC }
-filter: {
-frontmatter: { pagetype: { eq: "blog" }, cate: { eq: $cateSlug } }
-}
-) {
-nodes {
-excerpt
-fields {
-slug
-}
-frontmatter {
-date(formatString: "YYYY-MM-DD")
-title
-description
-hero
-}
-}
-}
-}
+  query ($cateSlug: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      # pagetype=blogかつ cateが $cateSlugと一致するものだけ絞り込む
+      filter: {
+        frontmatter: { pagetype: { eq: "blog" }, cate: { eq: $cateSlug } }
+      }
+    ) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "YYYY.MM.DD")
+          title
+          description
+          # 画像を引っ張り出すのに使います
+          hero
+          # カテゴリーやタグを出力したいなら
+          cate
+          tags
+        }
+      }
+    }
+  }
 `
-
 ```
 取得する一覧は、gatsby-node.jsからスラッグを受け取って
 ```
@@ -574,47 +715,139 @@ query ($cateSlug: String){
 ```
 # 省略
 filter: {
-frontmatter: { pagetype: { eq: "blog" }, cate: { eq: $cateSlug } }
+  frontmatter: { pagetype: { eq: "blog" }, cate: { eq: $cateSlug } }
 }
 # 省略
 ```
-## タグを追加する
-この銀ねこアトリエではタグは複数設定OKというルールを設けてるので以下のように追加します。
+`import { siteMetadata } from "../../gatsby-config"`であらかじめgatsby-config.jsに設定したカテゴリーのslug、name、descriptionを取得しページ全体の見出しや説明として利用します。
+
+```js
+import * as React from "react"
+import { Link, graphql } from "gatsby"
+
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import { BlogListWrapper, BlogListHeader } from "../style/blog-list-style"
+
+//画像読み込み
+import Img from "../components/img"
+// 追加
+import { siteMetadata } from "../../gatsby-config"
+
+const CateList = ({ pageContext, data, location }) => {
+  const { cateSlug } = pageContext
+  const { nodes } = data.allMarkdownRemark
+  const posts = nodes
+
+  const cate = siteMetadata.category.find(item => item.slug === cateSlug)
+
+  if (posts.length === 0) {
+    return (
+      <Layout location={location} title="記事一覧">
+        <Seo title="All posts" />
+        <p>
+          No blog posts found. Add markdown posts to "content/blog" (or the
+          directory you specified for the "gatsby-source-filesystem" plugin in
+          gatsby-config.js).
+        </p>
+      </Layout>
+    )
+  }
+
+  return (
+    <Layout location={location} title={cate.name}>
+      <Seo title={cate.name} />
+      <BlogListHeader>
+        <h1>{cate.name}</h1>
+        <p>{cate.description}</p>
+      </BlogListHeader>
+      <BlogListWrapper>
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
+
+          return (
+            <li key={post.fields.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <Link
+                  to={post.fields.slug}
+                  itemProp="url"
+                  className="thumbnail"
+                >
+                  <Img alt={title} image={post.frontmatter.hero}></Img>
+                  <small>
+                    <time datetime={post.frontmatter.date}>
+                      {post.frontmatter.date}
+                    </time>
+                  </small>
+                </Link>
+                <h2>
+                  <Link to={post.fields.slug} itemProp="url">
+                    <span itemProp="headline">{title}</span>
+                  </Link>
+                </h2>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
+      </BlogListWrapper>
+    </Layout>
+  )
+}
+
+export default CateList
+// 省略
+```
+![カテゴリの完成形](./images/2020/12/entry408-6.jpg)
+## タグ一覧ページを追加する
+この銀ねこアトリエではタグは複数設定OKというルールを設けています。
 ```markdown
 ---
-title: Webサイトの表示速度を真剣に考える
-date: 2019-06-21
-hero: entry325.png
+title: 記事サンプル
+date: 2021-11-26
 pagetype: blog
-cate: seo
-tags: [表示速度,SEOコーディング]
-description: 昔いた会社で、画像の圧縮、CSSなどの外部ファイルを徹底して不要ファイルを削除して圧縮してさらにワンソース化した結果、50位から20位以内に順位が改善したことがあります。今日はWebサイトの軽量化とスピードについて真剣に考えようと思います。
+hero: thumbnail/entry01.jpg
+description: この記事はテスト投稿です
+cate: frontend
+tags: ['Gatsby', '表示スピード']
 ---
 ```
 gatsby-node.js側のqueryに `tags` を追記します。
 ```javascript
 const result = await graphql(
-`
-{
-allMarkdownRemark(
-sort: { fields: [frontmatter___date], order: ASC }
-limit: 1000
-) {
-nodes {
-id
-fields {
-slug
-}
-frontmatter {
-hero
-pagetype
-cate
-tags
-}
-}
-}
-}
-`
+  `
+    {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: ASC }
+        limit: 1000
+      ) {
+        nodes {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            hero
+            pagetype
+            cate
+            # ↓追加
+            tags
+          }
+        }
+      }
+    }
+  `
 )
 ```
 カテゴリー同様すべてのブログ記事一覧を表示させるためのblogs-list.jsを複製しtag-list.jsをテンプレートとして使用します。
@@ -624,36 +857,33 @@ tags
 
 どのタグの記事が何件あるかは表示したかったので、カテゴリーで説明のところに表示されていた文章を以下のようにしました。
 
-理想を言えば、CSSを整えてこんな感じで実装したい。
-
-![タグの一覧の取得](./images/2020/12/entry408-3.png)
-
 gatsby-node.js側にタグのページを生成するためのコードを追記します。
 
 ```javascript
 //タグページを作成
 const tagList= path.resolve(`./src/templates/tag-list.js`);
 ```
-タグ一覧のテンプレートへの出力。categoryを改造しただけです。
+タグ一覧のテンプレートへの出力。カテゴリーを改造しただけのコードです。カテゴリー一覧出力コードの下のあたりに記述します。
+
 ```javascript
-//タグの一覧作成
+//タグの一覧作成追加
 let tags = posts.reduce((tags, edge) => {
-const edgeTags = edge.frontmatter.tags
-return edgeTags ? tags.concat(edgeTags) : tags
+  const edgeTags = edge.frontmatter.tags
+  return edgeTags ? tags.concat(edgeTags) : tags
 }, [])
 // 重複削除
 tags = [...new Set(tags)]
 
 // カテゴリー分ページを作成
 tags.forEach(item => {
-const tag = item
-createPage({
-path: `/blogs/tags/${item}/`,
-component: tagList,
-context: {
-tag,
-},
-})
+  const tag = item
+  createPage({
+    path: `/blogs/tags/${item}/`,
+    component: tagList,
+    context: {
+      tag,
+    },
+  })
 })
 ```
 tag-list.js です。
@@ -661,63 +891,6 @@ tag-list.js です。
 ポイントはテンプレート側クエリのフィルターが配列なので`filter: {frontmatter: {tags: { in: [$tag] } } }`で絞り込んでいる点です。
 
 ```javascript
-import * as React from "react"
-import { Link, graphql } from "gatsby"
-
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import Img from "../components/img"
-
-import { siteMetadata } from "../../gatsby-config"
-
-const BlogList = ({ pageContext, data, location }) => {
-const { totalCount, nodes } = data.allMarkdownRemark
-const posts = nodes
-const tag = pageContext.tag
-
-return (
-<Layout location={location} title={tag}>
-<Seo title={tag} />
-<header>
-<h1>{tag}</h1>
-<p>現在 {totalCount} 記事あります。</p>
-</header>
-
-<ol style={{ listStyle: `none` }}>
-{posts.map(post => {
-const title = post.frontmatter.title || post.fields.slug
-
-return (
-<li key={post.fields.slug}>
-  <article
-    className="post-list-item"
-    itemScope
-    itemType="http://schema.org/Article"
-  >
-    <Link to={post.fields.slug} itemProp="url">
-      <Img alt={title} image={post.frontmatter.hero}></Img>
-      <time dateTime={post.frontmatter.date}>
-        {post.frontmatter.date}
-      </time>
-      <h2>{title}</h2>
-      <p
-        dangerouslySetInnerHTML={{
-          __html: post.frontmatter.description || post.excerpt,
-        }}
-        itemProp="description"
-      />
-    </Link>
-  </article>
-</li>
-)
-})}
-</ol>
-</Layout>
-)
-}
-
-export default BlogList
-
 export const pageQuery = graphql`
   query ($tag: String) {
     site {
@@ -726,76 +899,212 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { fields: fields___slug, order: ASC }
+      sort: { fields: [frontmatter___date], order: DESC }
+      # pagetype=blogで絞り込む
       filter: {
         frontmatter: { pagetype: { eq: "blog" }, tags: { in: [$tag] } }
       }
     ) {
-    totalCount
-    nodes {
-      excerpt
-      fields {
-        slug
-      }
-      frontmatter {
-          date(formatString: "YYYY-MM-DD")
+      # 記事総数取得
+      totalCount
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "YYYY.MM.DD")
           title
           description
+          # 画像を引っ張り出すのに使います
           hero
+          # カテゴリーやタグを出力したいなら
+          cate
           tags
         }
       }
     }
   }
 `
+```
+`pageContext`からタグ名を取得してタイトルとして利用します。
+```js
+// 省略
+
+const TagList = ({ pageContext, data, location }) => {
+  const { tag } = pageContext
+  const { totalCount, nodes } = data.allMarkdownRemark
+  const posts = nodes
+  const title = "記事一覧"
+
+  if (posts.length === 0) {
+    return (
+      <Layout location={location} title={title}>
+        <Seo title="All posts" />
+        <p>
+          No blog posts found. Add markdown posts to "content/blog" (or the
+          directory you specified for the "gatsby-source-filesystem" plugin in
+          gatsby-config.js).
+        </p>
+      </Layout>
+    )
+  }
+
+  return (
+    <Layout location={location} title={tag}>
+      <Seo title="All posts" />
+      <BlogListHeader>
+        <h1>{tag}</h1>
+        <p>現在 {totalCount} 記事あります</p>
+      </BlogListHeader>
+      <BlogListWrapper>
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
+
+          return (
+            <li key={post.fields.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <Link
+                  to={post.fields.slug}
+                  itemProp="url"
+                  className="thumbnail"
+                >
+                  <Img alt={title} image={post.frontmatter.hero}></Img>
+                  <small>
+                    <time datetime={post.frontmatter.date}>
+                      {post.frontmatter.date}
+                    </time>
+                  </small>
+                </Link>
+                <h2>
+                  <Link to={post.fields.slug} itemProp="url">
+                    <span itemProp="headline">{title}</span>
+                  </Link>
+                </h2>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
+      </BlogListWrapper>
+    </Layout>
+  )
+}
+
+export default TagList
+// 省略
+```
+
+![タグの見出し](./images/2020/12/entry408-7.jpg)
+
+## 記事詳細にカテゴリやタグのリンクを追加する
+せっかくなので[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)で作った、カテゴリやタグにリンクを貼りたいですよね？
+
+![タグの見出し](./images/2020/12/entry408-8.jpg)
 
 ```
-記事一覧の記事ごとにタグへのリンクを付与したければGraghQLでデータを取得し、配列で回します。
-```js
-<li key={post.fields.slug}>
-  <article
-    className="post-list-item"
-    itemScope
-    itemType="http://schema.org/Article"
-  >
-    <Link to={post.fields.slug} itemProp="url">
-      <Img alt={title} image={post.frontmatter.hero}></Img>
-      <time dateTime={post.frontmatter.date}>
-        {post.frontmatter.date}
-      </time>
-      <h2>{title}</h2>
-      <p
-        dangerouslySetInnerHTML={{
-          __html: post.frontmatter.description || post.excerpt,
-        }}
-        itemProp="description"
-      />
-    </Link>
-    {post.frontmatter.tags
-      ? post.frontmatter.tags.map(item => {
-          return (
-            <Link
-              to={`/blogs/tags/${item}/`}
-              itemProp="url"
-              key={item}
-            >
-              {item}
-            </Link>
-          )
-        })
-      : ""}
-  </article>
-</li>
+src/
+  └ templates/
+    └ blog-post.js（こちらを編集）
 ```
+カテゴリーの詳細が取得できるようにします。
+
+```js
+// 省略
+import { siteMetadata } from "../../gatsby-config"
+
+const BlogPostTemplate = ({ data, location }) => {
+  // 省略
+  const { cate, tags } = data.markdownRemark.frontmatter
+
+  const cateName = siteMetadata.category.find(item => item.slug === cate).name
+  // 省略
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      {/* 省略 */}
+
+        <Dl>
+          <dt>カテゴリ</dt>
+          <dd>
+            {/* リンク追加 */}
+            <Link to={`/blogs/${cate}/`}>{cateName}</Link>
+          </dd>
+        </Dl>
+        <Dl>
+          <dt>タグ</dt>
+          {tags.map((tag, index) => {
+            return (
+              <dd key={`tag${index}`}>
+                {/* リンク追加 */}
+                <Link to={`/blogs/tags/${tag}/`}>{tag}</Link>
+              </dd>
+            )
+          })}
+        </Dl>
+
+      {/* 省略 */}
+     </Layout>
+  )
+}
+// 省略
+```
+Dlコンポーネントにスタイルを当てます。
+```js
+const Dl = styled.dl`
+  display: flex;
+  margin: 0;
+
+  dt {
+    width: 80px;
+    font-weight: 700;
+  }
+  dd {
+    font-size: 14px;
+    margin-left: 0;
+    padding-left: 0;
+
+    a {
+      text-decoration: none;
+      border-radius: 3px;
+      color:#fff;
+      background: rgb(41, 46, 114);
+      padding: 2px 5px;
+
+      &:hover {
+        opacity: .5;
+      }
+
+    }
+
+    & + dd {
+      margin-left: 15px;
+      margin-bottom: 5px;
+    }
+  }
+`
+```
+これで記事のからお好みのジャンルの記事を探せるようになりました。
+
+![](./images/2020/12/entry408-9.jpg)
 
 ## まとめ
 これですべてのブログ記事、カテゴリー、タグの一覧が取得できるようになったと思います！
 
-2020年前半までのGatsby関連の記事をググると最新のテンプレートに即しているものが少なく、手探りでなんとか一覧を表示できるようなりました。
+2020年末からGatsbyでのブログ運用を始め、2021年末v4になり今記事を修正しているところです。
 
-駆け出しエンジニアにはキツイと思います^ ^
-
-まだまだコードがモダンじゃないのでテコ入れしてこの記事もブラッシュアップしアップデートします！<br>生暖かい目で見守ってください。
+<msg txt="できるだけ早く全記事修正します。生暖かい目で見守ってください。"></msg>
 
 この記事がみなさんのコーディングライフの一助となれば幸いです。
 

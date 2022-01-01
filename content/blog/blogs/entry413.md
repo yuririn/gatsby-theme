@@ -1,26 +1,31 @@
 ---
-title: Gatsbyブログサイト移行物語5~プラグインナシで一覧にページネーション実装~
+title: Gatsbyブログサイト移行物語~プラグインナシで一覧にページネーション実装~
 date: 2020-12-09
-modifieddate: 2021-01-12
+modifieddate: 2022-01-02
 hero: thumbnail/2020/entry401.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
 description: 記事数が増えると一覧にペーネーションが欲しくなりますよね？複数ページネーションを実装するためのプラグインがあるにもかかわらず自作して実装してしまいました。プラグインに頼らず実装したい人のために、やり方をシェアします。
-lead: ["記事数が増えると一覧にペーネーションが欲しくなりますよね？","複数ページネーションを実装するためのプラグインがあるにもかかわらず自作して実装してしまいました。","プラグインに頼らず実装したい人のために、やり方をシェアします。"]
+lead: ["記事数が増えると一覧にペーネーションが欲しくなりますよね？","複数ページネーションを実装するためのプラグインがあるにもかかわらず自作して実装してしまいました。","プラグインに頼らず実装したい人のために、やり方をシェアします。","※ 2021年12月v4バージョンアップに伴いリライトしました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
+2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
-5. プラグインナシで一覧にページネーション実装（←イマココ）
+5. *プラグインナシで一覧にページネーション実装*（←イマココ）
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
 9. [関連記事一覧出力](/blogs/entry430/)
+
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+
+今回のソースは[pagination](https://github.com/yuririn/gatsby-blog/tree/pagination)ブランチにあります。
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -41,12 +46,12 @@ WordPressなど、その他のCMSに慣れていると*一覧を分割しペー�
 
 ```
 / (プロジェクトディレクトリー)
-    ├ gatsby-node.js（ページを生成するところ）
-    ├ src/
-    |    ├ templates/
-    |    |   └ blogs.js（一覧を出力するところ）
-    └ components/
-         └ pagination.js（新規作成）
+  ├ gatsby-node.js（ページを生成するところ）
+  ├ src/
+  |  └ templates/
+  |    └ blogs.js（一覧を出力するところ）
+  └ components/
+    └ pagination.js（新規作成）
 ```
 
 <br>gatsby-node.jsのブログ詳細ページを生成しているコードを利用して、数量を数えます。<br>
@@ -59,29 +64,19 @@ frontmatterのpagetypeがblogのみカウントします。
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // ~ 省略 ~
-
-  let count = 0 //追加
-
   if (posts.length > 0) {
-  //ブログ詳細ページを生成しているコード
-    posts.forEach((post, index) => {
-    if (post.frontmatter.pagetype === 'blog') {
-        const previousPostId = index === 0 ? null : posts[index - 1].id
-        const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+    const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
 
-        createPage({
-          path: post.fields.slug,
-          component: blogPost,
-          context: {
-            id: post.id,
-            previousPostId,
-            nextPostId,
-            hero: post.frontmatter.hero,
-          },
-        })
-        count++ //追加
-      }
-	})
+    // 省略
+    let count = blogPosts.length
+    console.log(count);
+
+    // 一覧を出力するコードを追加
+    createPage({
+      path: "/blogs/",
+      component: blogList,
+      context: {},
+    })
 
   // ~ 省略 ~
 
@@ -93,51 +88,49 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 ```
 <br>続けて以下のコードを追記します。今回は1ページに12記事を表示します。
 
-contextに値を追加します。
+たとえばブログが45記事あったら、 4つのページに分割します。
 
-`limit`はループ数、`skip`はオフセット（どこからループを始めるか）数です。
+* /blogs/
+* /blogs/page/2/
+* /blogs/page/3/
+* /blogs/page/4/
 
-`current`には現在どのページを表示しているか値を格納し、`page`にはトータルのページ数を格納します。
+どこからどこまでの記事を出力するか、テンプレートblog-list.js側に値を渡します。
 
-これで一覧ページのテンプレートpages.jsに各値を渡せます。
-
-```js
-  // ~ 省略 ~
-  count++
-})
-
-// ここから
-const postsPerPage = 12 //追加
-let numPages = Math.ceil(count / postsPerPage) //追加
-
-for (let index = 0; index < numPages; index++) {
-  const withPrefix = pageNumber => pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`//追加
-  const pageNumber = index + 1//追加
-
-  createPage({
-    path: withPrefix(pageNumber), //修正
-    component: blogList,
-    context: {
-      limit: postsPerPage, //追加
-      skip: index * postsPerPage, //追加
-      current: pageNumber, //追加
-      page: numPages, //追加
-    }
-  })
-}
-```
-<br>こんなまどろっこしいコードを書かなくても、構造によっては`posts.length`で記事数を取得できます。
-
-私の場合mdファイルの出力をループするもの（一覧出力）とそうでないもので分けています。なので、タイプ分けする必要のない人は`let count = 0`も`count++`も必要ありません。<br><br>
-
-`let count = 0`をこちらのコードに差し替えてください。
+* `limit`...ループ数
+* `skip`...オフセット（どこからループを始めるか）数
+* `current`...現在何番目
+* `page`...トータルのページ数
 
 ```js
+  const postsPerPage = 12 //1ページに表示する記事の数
 
-const count = posts.length
+  // 一覧を出力するコードを追加
+  let count = blogPosts.length //記事の長さ
+  let numPages = Math.ceil(count / postsPerPage) //分割されるページの数
+  for (let index = 0; index < numPages; index++) {
+    const withPrefix = pageNumber =>
+      pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`
+    const pageNumber = index + 1
+    createPage({
+      path: withPrefix(pageNumber), //出力されるパス
+      component: blogList,
+      context: {
+        limit: postsPerPage, //1ページに表示される最大記事数
+        skip: index * postsPerPage, //追加
+        current: pageNumber, //追加
+        page: numPages, //追加
+      },
+    })
+  }
 ```
+ページが出力されたか簡単に調べる方法があります。
 
-### pages.jsで値を受け取る
+404ページにアクセスすると、出力されているページ一覧が確認できます。
+
+![](./images/2020/12/entry413-1.jpg)
+
+### blog-list.jsで値を受け取る
 次にpages.js側で値を受け取ります。
 
 `query blosQyery()`に`$limit: Int!`と`$skip: Int!`を追加します。
@@ -147,52 +140,35 @@ const count = posts.length
 `Int!`が原因でエラーを吐いている場合は、gatyby-node.js側で間違ったコードを書いている可能性があるのでよく確かめてみましょう。
 
 ```js
-import React from "react"
-
 // ~ 省略 ~
-
-const blogs = ({ pageContext, data, location }) => { //なければpageContextを追加
-  // ~ 省略 ~
-})
-
+// pageContextを追加
+const BlogList = ({ pageContext, data, location }) => {
+// ~ 省略 ~
+}
 export default blogs
-
 export const pageQuery = graphql`
-  query blosQyery(
-    $limit: Int!
-      $skip: Int!
-    ) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(
-      limit: $limit
-      skip: $skip
-      sort: {fields: [frontmatter___date], order: DESC }
-      filter: {frontmatter: {pagetype: { eq: "blog" } } }
-    )
-    {
-
-    totalCount
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-        title
-        date(formatString: "YYYY.MM.DD")
-        description
-        category
-        cateId
-        hero
-        tags
-        }
-      }
+# $limit、$skip追加
+query ($limit: Int!, $skip: Int!) {
+  site {
+    siteMetadata {
+      title
     }
   }
+  allMarkdownRemark(
+    # $limit、$skip追加
+    limit: $limit
+    skip: $skip
+    sort: { fields: [frontmatter___date], order: DESC }
+    # pagetype=blogで絞り込む
+    filter: { frontmatter: { pagetype: { eq: "blog" } } }
+  ) {
+    # 記事総数取得
+    totalCount
+    nodes {
+      # 省略
+    }
+  }
+}
 `
 ```
 
@@ -213,57 +189,144 @@ const blogs = ({ pageContext, data, location }) => {
 ```
 
 ### ページネーションを出力するコンポーネントを作る
-前と次へ移動する簡易的なページネーションの実装の仕方をご紹介します。
+最初と最後、前と次へ移動する簡易的なページネーションの実装の仕方をご紹介します。
 
-![ページネーション](./images/2020/12/entry413-1.png)
+![](./images/2020/12/entry413-2.jpg)
 
 src/components/にpagination.jsを作成します。
 
 ```js
 import { Link } from "gatsby"
 import React from "react"
-
-const Prev = ({ current, type }) => {
-	if (current === 1) {
-		return (
-			<li class="pagination__prev not-work"><span>Newer</span></li>
-		)
-	} else if (current === 2) {
-		return (
-			<li class="pagination__prev"><Link to={`/blogs/${type}/`}>Newer</Link></li>
-		)
-	} else {
-		return (
-			<li class="pagination__prev"><Link to={`/blogs/${type}page/${current - 1}/`}>Newer</Link></li>
-		)
-	}
-}
-
-const Next = ({ num, current, type }) => {
-	if (current === num) {
-		return (
-			<li class="pagination__next not-work"><span>Older</span></li>
-		)
-	} else {
-		return (
-
-			current === '' ? <li class="pagination__next"><Link to={`/blogs/${type}page/2/`}>Older</Link></li> :
-				<li class="pagination__next"><Link to={`/blogs/${type}page/${current + 1}/`}>Older</Link></li>
-		)
-	}
-}
-
+import styled from "styled-components" //追加
 const Pagination = ({ num, current, type }) => {
-	return (
-		<ul class="pagination">
-			<Prev current={current} num={num} type={type} />
-			page {current}/{num}
-			<Next current={current} num={num} type={type} />
-		</ul>
-	)
+  let first
+  let prev
+  let next
+  let last
+
+  if (current === 1) {
+    first = (
+      <li className="not-work" key="pagination0">
+        <span>最新</span>
+      </li>
+    )
+  } else {
+    first = (
+      <li key="pagination0">
+        <Link to={`/blogs/${type}${type ? "/" : ""}`}>最新</Link>
+      </li>
+    )
+  }
+
+  if (current === 1) {
+    prev = (
+      <li className="not-work" key="pagination1">
+        <span>次へ</span>
+      </li>
+    )
+  } else if (current === 2) {
+    prev = (
+      <li key="pagination1">
+        <Link to={`/blogs/${type}${type ? "/" : ""}`}>次へ</Link>
+      </li>
+    )
+  } else {
+    prev = (
+      <li key="pagination1">
+        <Link to={`/blogs/${type}${type ? "/" : ""}page/${current - 1}/`}>
+          次へ
+        </Link>
+      </li>
+    )
+  }
+
+  if (current === num) {
+    next = (
+      <li className="not-work" key="pagination3">
+        <span>前へ</span>
+      </li>
+    )
+  } else if (current === "") {
+    next = (
+      <li key="pagination3">
+        <Link to={`/blogs/${type}${type ? "/" : ""}page/2/`}>前へ</Link>
+      </li>
+    )
+  } else {
+    next = (
+      <li key="pagination3">
+        <Link to={`/blogs/${type}${type ? "/" : ""}page/${current + 1}/`}>
+          前へ
+        </Link>
+      </li>
+    )
+  }
+
+  if (current === num) {
+    last = (
+      <li className="not-work" key="paginatio4">
+        <span>最後</span>
+      </li>
+    )
+  } else {
+    last = (
+      <li key="pagination4">
+        <Link to={`/blogs/${type}${type ? "/" : ""}page/${num}/`}>最後</Link>
+      </li>
+    )
+  }
+  console.log(num)
+  if (num > 1) {
+    return (
+      <PaginationWrapper>
+        <ul>
+          {first}
+          {prev}
+          <li key="pagination0">
+            page {current}/{num}
+          </li>
+          {next}
+          {last}
+        </ul>
+      </PaginationWrapper>
+    )
+  } else {
+    return ""
+  }
 }
 
 export default Pagination
+
+const PaginationWrapper = styled.nav`
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+
+    li {
+      padding: 0 10px;
+
+      &.not-work span {
+        background: rgb(41, 46, 114);
+        color: #fff;
+        opacity: 0.5;
+      }
+
+      span,
+      a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        color: rgb(41, 46, 114);
+        border-radius: 8px;
+        border: 1px solid rgb(41, 46, 114);
+        padding: 0 10px;
+      }
+    }
+  }
+`
 ```
 
 <br>あとは表示したいところにコードを追記してください。
@@ -279,7 +342,7 @@ const blogs = ({ pageContext, data, location }) => {
 	// ~ 省略 ~
 
 	return (
-		<Layout location={location} title="銀ねこアトリエ">
+		<Layout location={location} title="記事一覧">
 			{/* ~ 省略 ~*/}
 			<Pagination num={page} current={current} type="" />
 			{/* ~ 省略 ~*/}
@@ -291,8 +354,11 @@ const blogs = ({ pageContext, data, location }) => {
 <br>カテゴリーやタグ一覧でもページネーションを実装したいときは`type`を追加してください。
 
 ```js
-<Pagination num={page} current={current} type={tags} />
+<Pagination num={page} current={current} type={cateSlug} />
 ```
+
+カテゴリーやタグもページネーションを実装したい方はGitHubの[pagination](https://github.com/yuririn/gatsby-blog/tree/pagination)ブランチのコードを参考にしてください。
+
 ### もっと複雑なページネーションを実装したい方へ
 
 記事数が多くなるとより詳細なページネーションが欲しいですよね。
@@ -318,8 +384,6 @@ Gatsbyはプラグインが豊富でいくらでもプラグインで実装で�
 
 ## まとめ
 ページネーションが実装され、安心してたくさん記事が書けるようになりました。
-
-次回「*Gatsbyブログサイト移行物語*」ではprivacypolicyなど、ループに含めたくないけどmdファイルで管理したいページの[実装方法をご紹介](/blogs/entry416/)（掲載済）します！
 
 皆さんのコーディングライフの一助となれば幸いです。
 

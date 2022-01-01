@@ -1,20 +1,21 @@
 ---
-title: Gatsbyブログサイト移行物語2~投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加~
+title: Gatsbyブログサイト移行物語~投稿テンプレにカテゴリやらキービジュアル（アイキャッチ）追加~
 date: 2020-11-30
 modifieddate: 2021-12-30
 hero: thumbnail/2020/entry401.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: GatsbyJSでサイトのリニューアル！ブログのファーストビューって大切ですよね。アイキャッチ次第で読むか読まないか考えますもん。今回はブログページを充実させるためにアイキャッチなどを追加する方法をご紹介します。CSSの調整も行いました！※ Mac以外では検証してません。ご了承ください。※ 2021年12月28日v4対応のためリライトしました。
-lead: ["GatsbyJSでサイトのリニューアル！","ブログのファーストビューって大切ですよね。アイキャッチ次第で読むか読まないか考えますもん。","今回はブログページを充実させるためにアイキャッチなどを追加する方法をご紹介します。","※ Mac以外では検証してません。ご了承ください。","※ 2021年12月28日v4対応のためリライトしました。"]
+description: GatsbyJSでサイトのリニューアル！ブログのファーストビューって大切ですよね。キービジュアル次第（記事の最初に目を引く画像）で読むか読まないか考えますもん。今回はブログページを充実させるためにキービジュアルなどを追加する方法をご紹介します。CSSの調整も行いました！※ Mac以外では検証してません。ご了承ください。※ 2021年12月28日v4対応のためリライトしました。
+lead: ["GatsbyJSでサイトのリニューアル！","ブログのファーストビューって大切ですよね。キービジュアル次第（記事の最初に目を引く画像）で読むか読まないか考えますもん。","今回はブログページを充実させるためにキービジュアルなどを追加する方法をご紹介します。","※ Mac以外では検証してません。ご了承ください。","※ 2021年12月28日v4対応のためリライトしました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>
 制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
-2. *投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加*（←イマココ）
+2. [ヘッダーとフッターを追加する](/blogs/entry484/)
+2. *投稿テンプレにカテゴリやらキービジュアル（アイキャッチ）追加*（←イマココ）
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
@@ -25,16 +26,24 @@ lead: ["GatsbyJSでサイトのリニューアル！","ブログのファース�
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+
+今回のソースは[add-mainvisual](https://github.com/yuririn/gatsby-blog/tree/add-mainvisual)ブランチにあります。
+
 ### このシリーズではテーマGatsby Starter Blogを改造します
 この記事は一番メジャーなテンプレート、 Gatsby Starter Blogを改造しています。同じテーマでないと動かない可能性があります。
 
 ### 今回やりたいこと
-ブログ記事のmdファイルだけを取得し、投稿ごとにアイキャッチ画像やカテゴリーなどの属性を追加し、テンプレートに表示したい。
+ブログ記事のmdファイルだけを取得し、投稿ごとにキービジュアル画像やカテゴリーなどの属性を追加し、テンプレートに表示したい。
 
 さらに、、、
 <msg txt="頻繁に投稿するものと、そうでないもののテンプレを分けたい!"></msg>
 
 まずは普段更新する記事用のテンプレを作ります。長いですが、目次を活用しながら読み進めてください。
+
+完成目標です。
+
+![完成目標](./images/2020/11/entry406-3.jpg)
 
 
 ## 記事と記事中の画像などの格納フォルダーの設定
@@ -61,7 +70,7 @@ gatsby-node.jsのコメントから。
   └ content/
     ├ src
     |  └ images/ 汎用で使う画像全般を格納
-    |    └ thumbnail/ 記事のアイキャッチ&サムネイル用の画像
+    |    └ thumbnail/ 記事のキービジュアル&サムネイル用の画像
     └ blog/
       ├ 個別のページ
       └ blogs/
@@ -107,7 +116,7 @@ v4以降、ディレクトリー構造の変更方が分かっておらず、blo
   ├ src/
   |  └ images/
   |    ├ common/dummy.png（追加）
-  |    └ thumbnail/eye-catch.png（追加）
+  |    └ thumbnail/thumbnail/main-visual.png（追加）
   └ content/
     └ blog/
       └ blogs/entry1.md （追加）
@@ -121,18 +130,18 @@ description: この記事はテスト投稿です
 ---
 ```
 
-デフォルトではこんなものだと思いますので、アイキャッチ（hero）、記事のタイプ(pagetypetype)を追加します。<br>
+デフォルトではこんなものだと思いますので、キービジュアル（hero）、記事のタイプ(pagetypetype)を追加します。<br>
 ちなみに私のブログでは**categoryは1つ、タグは複数OK**というルールとしました。
 
 <msg txt="ルールが煩雑だと記事も破綻しますからね。。。"></msg>
 
-#### entry1.md に Frontmatter を追記する
+#### entry1.md を新たに作り Frontmatter を編集する
 ```md
 ---
-title: テスト投稿
+title: 記事1
 date: 2021-11-26
 pagetype: blog
-hero: thumbnail/eye-catch.png
+hero: thumbnail/main-visual.png
 # ↑src/images/ディレクトリを参照している↑
 description: この記事はテスト投稿です
 cate: web-developer
@@ -201,7 +210,7 @@ GraghQLのコメントは#を頭に付与するだけ。
 
 GraphQLは*クエリ言語*なので、mdファイルのfrontmatter(---で囲んだ部分)の設定もここから読み取ることができます。
 
-データの並べ替えを行なっている `result` に `frontmatter`、`hero` をgatsby-node.jsの上の方に追記します。
+取得するデータは `result` に格納設定されています。 `frontmatter`に、`hero`、`pagetype`をgatsby-node.jsの上の方に追記します。
 
 ```js
 // 省略
@@ -213,7 +222,6 @@ exports.createPages = async ({ graphQL, actions, reporter }) => {
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: ASC }
-          filter: { frontmatter: {pagetype: { eq: "blog" }}}
           limit: 1000
         ) {
           nodes {
@@ -221,9 +229,12 @@ exports.createPages = async ({ graphQL, actions, reporter }) => {
             fields {
               slug
             }
+            # ↓追記↓
             frontmatter {
               hero
+              pagetpe
             }
+            # ↑追記↑
           }
         }
       }
@@ -233,23 +244,23 @@ exports.createPages = async ({ graphQL, actions, reporter }) => {
     // 省略
 ```
 
-さらに、先ほど編集した少し下のあたりも修正。
+さらに、上記（変数 `result`）のコードの少し下のあたりも修正。
 
-* heroの値をテンプレート側で受け取れるようにします。万が一アイキャッチの設定がなかった時のために、ダミー画像用のコードもセットしておきます。
-* pagetype blogだけに絞り込んで出力
-* prev nextボタンもpagetype blogのみ動くように修正
+* `hero`の値をテンプレート側で受け取れるようにします。万が一キービジュアルの設定がなかった時のために、ダミー画像用のコードもセットしておきます。
+* `pagetype` `blog`だけに絞り込んで出力
+* prev nextボタンも`pagetype` `blog`のみ動くように修正
 
 ```js
 // 省略
 if (posts.length > 0) {
   // filterでpagetypeがblogのものだけ抽出
-  const blog = posts.filter(post => post.frontmatter.pagetype === "blog")
-  blog.forEach((post, index) => {
-     //書き換える
-    const previousPostId = index === 0 ? null : blog[index - 1].id
+  const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
+  blogPosts.forEach((post, index) => {
+    //書き換える
+    const previousPostId = index === 0 ? null : blogPosts[index - 1].id
     //書き換える
     const nextPostId =
-      index === blog.length - 1 ? null : blog[index + 1].id
+      index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
 
     createPage({
       path: post.fields.slug,
@@ -258,7 +269,8 @@ if (posts.length > 0) {
         id: post.id,
         previousPostId,
         nextPostId,
-        hero: post.frontmatter.hero ? post.frontmatter.hero: "common/dummy.png",//追記
+        //↓追記
+        hero: post.frontmatter.hero ? post.frontmatter.hero: "common/dummy.png",
       },
     })
   })
@@ -266,7 +278,7 @@ if (posts.length > 0) {
 // 省略
 ```
 
-これでテンプレート側のGraphQLで指定した画像データを参照できるようになります。
+これでmd側に書かれている画像パスを参照できるようになります。
 
 ## 出力するテンプレートを改造し、画像を出力する。
 
@@ -282,8 +294,11 @@ if (posts.length > 0) {
 
 ### GraghQLで受け取るクエリを変更
 
-*blog-post.js* の `pageQuery` でmdファイルから *gatsby-node.js* 経由で受け取る値を `$hero: String` 追加します。
+`pageQuery`の設定を変更します。
 
+`$hero: String` 追加し、mdファイルから *gatsby-node.js* 経由で画像パスを取得します。
+
+このように取得した値は、絞り込みなどに使えます。
 
 ```js
 export const pageQuery = GraphQL`
@@ -297,11 +312,11 @@ export const pageQuery = GraphQL`
     //省略
   }
 ```
-`site` と `markdownRemark` の間に `allFile` を追加します。
 
 `allFile` にはすべてのファイル情報（mdや画像）が格納されています。
+`site` と `markdownRemark` の間に **$heroの値と一致するファイルを取得する**
 
-`allFile` の中から `sourceInstanceName`（gatsby-config.jsで指定したディレクトリ名） が *images* で `relativePath` かつ *$hero* と一致するデータを参照します。
+*gatsby-image-plugin* 出力するための値を取得しておきます。
 
 ```
 //省略
@@ -313,7 +328,9 @@ site {
 # ↓追加
 allFile(
   filter: {
+    # ↓ 画像パスが$heroと一緒のファイルを探す
     relativePath: { eq: $hero }
+    # ↓ 画像を格納してある場所がimages（gatsby-config.jsで指定した名）
     sourceInstanceName: { eq: "images" }
   }
 ) {
@@ -334,16 +351,15 @@ allFile(
 markdownRemark(id: { eq: $id }) {
 //省略
 ```
-`gatsbyImageData` に出力したい内容を設定します。
 
-Gatsbyは *WebP（ウェッピー）* や *AVIF（エーブアイエフ）* も対応しています。`formats` を指定しなければ、元の画像形式とWebPのみを取得します。。
+Gatsbyは *WebP（ウェッピー）* や *AVIF（エーブアイエフ）* も対応しています。`formats` を指定しなければ、従来の画像形式（pngやjpgなど）とWebPのみで出力できます。
 
 > WebP（ウェッピー）という画像形式をご存知でしょうか？　長い間、webの静止画は大部分がJPEG/GIF/PNGのいずれかでした。WebPはこのすべてを置き換えることができる次世代のフォーマットです。2020年9月リリースのiOS 14がWebPをサポートしたことで、主要なモダンブラウザーの足並みがようやく揃いました。<br>
 > [次世代画像形式のWebP、そしてAVIFへ](https://ics.media/entry/201001/)
 
 WebPはサファリも対応したので、IEガン無視の人は十分使えます。
 
-Gatsby-image-plugin は loding Lazy 対応してあります。 `placeholder` は loding Lazy で画像が表示されるまでに、代わりに表示される画像です。`DOMINANT_COLOR`がデフォルトですが、`BLURRED` にしておくと、表示したい画像のぼやけたものを表示してくれ、代替画像から画像実物にきりわかる時が自然です。<br>
+gatsby-image-plugin は loding Lazy 対応してあります。 `placeholder` は loding Lazy で画像が表示されるまでに、代わりに表示される画像です。`DOMINANT_COLOR`がデフォルトですが、`BLURRED` にしておくと、表示したい画像のぼやけたものを表示してくれ、代替画像から画像実物にきりわかる時が自然です。<br>
 不要であれば `NONE` にしておきましょう。
 
 ```
@@ -361,8 +377,8 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-  const eyeCatchImg = data.allFile.edges[0].node.childImageSharp;
-  console.log(eyeCatchImg) //デバッグ
+  const keyVisual = data.allFile.edges[0].node.childImageSharp;
+  console.log(keyVisual) //デバッグ
   // 省略
   return (
     <Layout location={location} title={siteTitle}>
@@ -427,16 +443,7 @@ const BlogPostTemplate = ({ data, location }) => {
 ```js
 {cate: "web-developer", tags: (2) ['Gatsby', 'React']}
 ```
-
-## アイキャッチ画像やタグを出力
-実際、テンプレートファイル blog-post.js にアイキャッチやタグを出力してみましょう。
-
-```
-プロジェクト/
-  └ src/
-    └ templates/blog-post.js（編集）
-```
-### アイキャッチを出力
+### gatsby-plugin-imageでキービジュアルを出力
 
 starter blog にデフォルトで入っている `gatsby-plugin-image` をインポートします。
 
@@ -448,7 +455,9 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+// gatsby-plugin-image追加
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
 // 省略
 ```
 
@@ -457,30 +466,44 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 確かv3以降、gatsby-plugin-imageに画像の取り扱いが変わりました。出力方法も変わります。
 </div>
 
-<br>今回、 `<GatsbyImage/>`でアイキャッチ画像を出力するのですが、使い方は以下のように `childImageSharp`の値を丸ごと `getImage` に渡します。
+<br>今回、 `<GatsbyImage/>`でキービジュアル画像を出力するのですが、使い方は以下のように `childImageSharp`の値を丸ごと `getImage` に渡します。
 ```js
-<GatsbyImage image={getImage(childImageSharp)} alt={alt属性} key={キー} className={必要に応じて}/>
+<GatsbyImage
+  image={getImage(childImageSharp)}
+  alt={alt属性}
+  key={キー}
+  className={必要に応じて}
+/>
 ```
 
-では実際にテンプレートの `header` 内に実装してみます。
+では実際にテンプレートの `header` タグ内に実装してみます。
 
 ```js
-// 省略
-<article
-  className="blog-post"
-  itemScope
-  itemType="http://schema.org/Article"
->
-  <header>
-    <h1 itemProp="headline">{post.frontmatter.title}</h1>
-    <GatsbyImage
-      image={getImage(eyeCatchImg)}
-      alt={post.frontmatter.title}
-      key={post.frontmatter.title}
-    />
-    <p>{post.frontmatter.date}</p>
-  </header>
-// 省略
+  // 省略
+  const { previous, next } = data
+  const eyeCatchImg = data.allFile.edges[0].node.childImageSharp//追加
+  // 省略
+  return (
+    // 省略
+    <article
+      className="blog-post"
+      itemScope
+      itemType="http://schema.org/Article"
+    >
+      <header>
+        <h1 itemProp="headline">{post.frontmatter.title}</h1>
+        <GatsbyImage
+          image={getImage(eyeCatchImg)}
+          alt={post.frontmatter.title}
+          key={post.frontmatter.title}
+        />
+        <p><time datetime={post.frontmatter.date}>{post.frontmatter.date}</time></p>
+      </header>
+    // 省略
+```
+日時も`time`タグで書き直します。
+```html
+<p><time datetime={post.frontmatter.date}>{post.frontmatter.date}</time></p>
 ```
 
 出力コードはこんな感じ。何も設定しなくても、`decoding="async"`が付与されています。
@@ -495,13 +518,22 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 /static/734c25c8328e14e4d8df99abaea453a2/ba986/eye-catch.png 1200w" alt="テスト投稿" style="object-fit: cover; opacity: 1;"></picture><noscript></noscript></div>
 ```
 
-### カテゴリーやタグを出力
+
+CSSを追加してないのでちょっとダサいけど出力できました。
+![画像](./images/2020/11/entry406-2.png)
+
+
+## カテゴリやタグを出力
 
 テンプレートにカテゴリーを追加します。
 
+### カテゴリの出力
+まずはカテゴリーのみ出力します。
+
 ```js
   //省略
-  const { cate, tags } = data.markdownRemark.frontmatter
+  const { cate } = data.markdownRemark.frontmatter
+
   return (
     <Layout location={location} title={siteTitle}>
     //省略
@@ -512,7 +544,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
         alt={post.frontmatter.title}
         key={post.frontmatter.title}
       />
-      <p>{post.frontmatter.date}</p>
+      <p><time datetime={post.frontmatter.date}>{post.frontmatter.date}</p>
     </header>
     {/* カテゴリー追加 */}
     <dl>
@@ -528,6 +560,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 タグも追加。タグは複数あるので `map` で出力します。
 
 ```js
+  const { cate, tags } = data.markdownRemark.frontmatter
+  //省略
+  return (
+    <Layout location={location} title={siteTitle}>
     {/* カテゴリー追加 */}
     <dl>
       <dt>カテゴリ</dt>
@@ -540,6 +576,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
         return <dd key={`tag${index}`}>{tag}</dd>
       })}
     </dl>
+    {/* 省略 */}
 ```
 Reactではmapのようなループ系の処理で *key* がないと怒られるので、必ずセットしてください。
 
@@ -547,9 +584,7 @@ Reactではmapのようなループ系の処理で *key* がないと怒られ�
 react.development.js:220 Warning: Each child in a list should have a unique "key" prop.
 ```
 
-CSSが効いてないのでこんなもんですが、できました。
-
-![出力結果](./images/2020/11/entry406-1.jpg)
+今は単に文字だけを表示してますが、次の[ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)でカテゴリやタグの一覧ができるのでその時にリンクを付与します。
 
 ### next（次の記事へ） と previous（前の記事へ）の挙動
 最初から実装されている next（次の記事へ） と previous（前の記事へ）のボタンが動くか確かめます。
@@ -560,7 +595,7 @@ entry1.mdを複製してentry2.mdを作ります。
 
 ```md
 ---
-title: テスト投稿2
+title: 記事2
 date: 2021-12-22
 pagetype: blog
 hero: thumbnail/eye-catch.png
@@ -572,10 +607,156 @@ tags: ['Gatsby', 'React']
 
 元々あった「hello,world」などへのリンクがnext（次の記事へ） と previous（前の記事へ）に表示されなくなっていればOKです。
 
+## 全体のスタイルをstyled-componentsで整える
+前回同様、`styled-components`を使います。
+
+インストール方法は[ヘッダーとフッターを追加する - せっかくなのでstyled-componentsでスタイルを入れてみる](/blogs/entry484/#せっかくなのでstyled-componentsでスタイルを入れてみる)を参考にしてください。
+
+```js
+// 省略
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
+import styled from "styled-components"// 追加
+
+const BlogPostTemplate = ({ data, location }) => {
+// 省略
+```
+styled-components用にタグを書き直します。
+
+1. articleからArticleへ
+2. 画像のラッパーを増やす
+3. 日付用のクラス追加と少しコード修正
+3. カテゴリ、タグのdlをDlへ
+4. 記事の本文出力を内包しているsectionをBlogEntryへ
+4. 記事の本文出力を内包しているsectionをBlogEntryへ
+5. ページ送りのnavをBlogPostNavにし、ulのインラインスタイルを削除
+```js
+  // 省略
+  return (
+      {/* 1articleからArticleへ */}
+      <Article
+        className="blog-post"
+        itemScope
+        itemType="http://schema.org/Article"
+      >
+        <header>
+          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          {/* 2画像のラッパーを増やす */}
+          <div className="keyvisual">
+            <GatsbyImage
+              image={getImage(keyVisual)}
+              alt={post.frontmatter.title}
+              key={post.frontmatter.title}
+            />
+          </div>
+          {/* 日付用のクラス追加 */}
+          <p className="date">
+            更新日：
+            <time datetime={post.frontmatter.date}>
+              {post.frontmatter.date}
+            </time>
+          </p>
+        </header>
+        {/* dlからDlへ */}
+        <Dl>
+          <dt>カテゴリ</dt>
+          <dd>{cate}</dd>
+        </Dl>
+        <Dl>
+          <dt>タグ</dt>
+          {tags.map((tag, index) => {
+            return <dd key={`tag${index}`}>{tag}</dd>
+          })}
+        </Dl>
+        {/* sectionからBlogEntryへ */}
+        <BlogEntry
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          itemProp="articleBody"
+        />
+        <footer>
+          <Bio />
+        </footer>
+      </Article>
+      {/*navからBlogPostNavへ*/}
+      <BlogPostNav>
+        <ul>
+          {/*省略*/}
+        </ul>
+      </BlogPostNav>
+    {/*省略*/}
+
+```
+少しデザインを整えます。
+```js
+const Article = styled.article`
+  max-width: 750px;
+  margin: 0 auto;
+
+  .date {
+    font-weight: 700;
+
+    time {
+      font-size: 1.4rem;
+    }
+  }
+
+  .keyvisual {
+    text-align: center;
+  }
+`
+const BlogEntry = styled.section`
+  margin: 15px 0 30px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+`
+const BlogPostNav = styled.nav`
+  max-width: 750px;
+  margin: 0 auto;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+  }
+`
+const Dl = styled.dl`
+  display: flex;
+  margin: 0;
+
+  dt {
+    width: 80px;
+    font-weight: 700;
+  }
+
+  dd {
+    font-size: 14px;
+    margin-left: 0;
+    padding-left: 0;
+
+    & + dd {
+      margin-left: 15px;
+      margin-bottom: 5px;
+    }
+  }
+`
+```
+
+![少しましになった](./images/2020/11/entry406-4.jpg)
 ## プロフィール（bio.js）のコンポーネントを改造してみよう
 プロフィール用のコンポーネントをbio.jsを改造しましょう！
+```
+プロジェクト/
+  ├ gatsby-config.js（必要に応じて修正）
+  └  src/
+     ├ components/
+     | └ bio.js（修正）
+     └ images/
+       └ common/profile-pic.jpg（追加）
+```
 
-その前に、gatsby-config.jsの基本情報が設定されている `siteMetadata` を編集します。
+その前に、gatsby-config.jsの基本情報が設定されている `siteMetadata` を確認し、必要があれば編集、追記してください。
+
+SNSを少し追記してみました。
 ```js
 module.exports = {
   siteMetadata: {
@@ -594,25 +775,22 @@ module.exports = {
   },
 }
 ```
-gatsby-config.js の `siteMetadata` にはどのコンポネントやテンプレートからでも、基本情報にアクセスできます。
+gatsby-config.js の `siteMetadata` にはどのコンポネントやテンプレートからでも、アクセスできます。
 
-`useStaticQuery` で `siteMetadata` を取得しつつ、 `<StaticImage />` を使って画像を表示します。
+アクセス方法はいろいろありますがbio.jsでは、 `useStaticQuery` を使って取得しています。
+
+`<StaticImage />` を使ってプロフィール画像を表示してあるので今回差し替えます。
 
 
 ```js
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
-import { useStaticQuery, GraphQL } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
+import styled from "styled-components" //追加
+
 const Bio = () => {
-  const data = useStaticQuery(GraphQL`
+  const data = useStaticQuery(graphql`
     query BioQuery {
       site {
         siteMetadata {
@@ -622,8 +800,10 @@ const Bio = () => {
           }
           social {
             twitter
+            # ↓追加
             instagram
             youtube
+            # ↑追加
           }
         }
       }
@@ -635,21 +815,23 @@ const Bio = () => {
   const social = data.site.siteMetadata?.social
 
   return (
-    <div>
+    <BioWrapper>
+      <h2>この記事を書いた人</h2>
       <StaticImage
+        className="bio-avatar"
         layout="fixed"
         formats={["auto", "webp", "avif"]}
-        src="../images/common/camille-pic.jpg"
+        {/* 画像サイズやパスを変更 */}
+        src="../images/common/profile-pic.jpg"
         width={100}
         height={100}
         quality={95}
-        alt={author.name}
+        alt="Profile picture"
       />
       {author?.name && (
-        <section>
-          <h2>この記事を書いた人</h2>
+        <>
           <p>
-            <strong>{author.name}</strong> {author?.summary || null}
+            <strong>{author.name}</strong>/{author?.summary || null}
           </p>
           <ul>
             <li>
@@ -661,6 +843,7 @@ const Bio = () => {
                 Twitter
               </a>
             </li>
+            {/* insta追加 */}
             <li>
               <a
                 href={`https://www.instagram.com/${social?.instagram || ``}`}
@@ -670,6 +853,7 @@ const Bio = () => {
                 Instagram
               </a>
             </li>
+            {/* youtube追加 */}
             <li>
               <a
                 href={`${social?.youtube || ``}`}
@@ -680,23 +864,13 @@ const Bio = () => {
               </a>
             </li>
           </ul>
-        </section>
+        </>
       )}
-    </div>
+    </BioWrapper>
   )
 }
 
 export default Bio
-```
-あとはお好きなところにコンポーネントをインポートしてタグを追記するだけ。
-
-```js
-import Bio from "../components/bio"
-
-省略
-
-<Bio />
-省略
 ```
 
 `<StaticImage />` コンポーネントを使うと複数のオプションを組み合わせて直接画像を指定できます。
@@ -722,20 +896,177 @@ const src = '../images/common/camille-pic.jpg'
 return <StaticImage src={src}/>
 ```
 
-### CSSを追加したり、変更したい場合は？
-今回記事の移行だけだったので、CSSは以前作ったものをそのまま再利用しました。
+### SNSリンクにアイコンを付与
+せっかくなのでfontAwesomeを使えるようにします。
 
-ルートディレクトリにあるgatsby-browser.jsを以下のように書き換えました。<br>
-リセットCSSをコメントアウトし、style.cssの中身を書き換えただけです。
-
-必要あればgatsby-browser.jsにCSSファイルをを追記してください。
-
-```js
-// normalize CSS across browsers
-// import "./src/normalize.css"
-import "./src/style.css"
 ```
+npm i @fortawesome/free-brands-svg-icons @fortawesome/free-brands-svg-icons
+```
+bio.jsに以下コードを追加。
+```js
+import { StaticImage } from "gatsby-plugin-image"
+// ↓追加↓
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faTwitter,
+  faInstagram,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons"
+```
+アイコン用のタグを追加します。
+```js
+<li>
+  <a
+    href={`https://twitter.com/${social?.twitter || ``}`}
+    target="_blank"
+    rel="noopener"
+  >
+    <FontAwesomeIcon icon={faTwitter} />
+    Twitter
+  </a>
+</li>
+<li>
+  <a
+    href={`https://www.instagram.com/${social?.instagram || ``}`}
+    target="_blank"
+    rel="noopener"
+  >
+    <FontAwesomeIcon icon={faInstagram} /> Instagram
+  </a>
+</li>
+<li>
+  <a
+    href={`${social?.youtube || ``}`}
+    target="_blank"
+    rel="noopener"
+  >
+    <FontAwesomeIcon icon={faYoutube} />
+    YouTube
+  </a>
+</li>
+```
+### styled-components でスタイルを整える
+styled-componentsを使うためにタグを書き換えます。
+```js
+return (
+    {/*変更*/}
+    <BioWrapper>
+      <h2>この記事を書いた人</h2>
+      <StaticImage
+        className="bio-avatar"
+        layout="fixed"
+        formats={["auto", "webp", "avif"]}
+        src="../images/common/profile-pic.jpg"
+        width={100}
+        height={100}
+        quality={95}
+        alt="Profile picture"
+      />
+      {author?.name && (
+        <>
+          <p>
+            <strong>{author.name}</strong>/{author?.summary || null}
+          </p>
+          {/*変更*/}
+          <Sns>
+            <li>
+              <a
+                href={`https://twitter.com/${social?.twitter || ``}`}
+                target="_blank"
+                rel="noopener"
+                {/*クラス追加*/}
+                className="tw"
+              >
+                <FontAwesomeIcon icon={faTwitter} />
+                Twitter
+              </a>
+            </li>
+            <li>
+              <a
+                href={`https://www.instagram.com/${social?.instagram || ``}`}
+                target="_blank"
+                rel="noopener"
+                {/*クラス追加*/}
+                className="insta"
+              >
+                <FontAwesomeIcon icon={faInstagram} /> Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href={`${social?.youtube || ``}`}
+                target="_blank"
+                rel="noopener"
+                {/*クラス追加*/}
+                className="yt"
+              >
+                <FontAwesomeIcon icon={faYoutube} />
+                YouTube
+              </a>
+            </li>
+          </Sns>
+        </>
+      )}
+    </BioWrapper>
+  )
+}
 
+export default Bio
+```
+スタイルも同じファイルの下の方に追記します。
+```js
+const BioWrapper = styled.div`
+  text-align:center;
+
+  .bio-avatar {
+    display: block;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  h2 {
+      font-size: 18px;
+  }
+`
+const Sns = styled.ul`
+  list-style: none;
+  display: flex;
+  margin: 0 0 15px;
+  padding: 0;
+  justify-content: center;
+
+  li {
+      margin: 0 5px;
+  }
+  a {
+      text-decoration: none;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+      border: solid 2px;
+      font-weight: 700;
+      border-radius: 10px;
+      color: #fff;
+      padding: 0 20px;;
+
+      &.tw {
+          background: #04A0F6;
+      }
+      &.insta {
+          background: #CF2E92;
+      }
+      &.yt {
+          background:#C4302B ;
+      }
+  }
+  svg {
+      margin-right: 10px;
+  }
+`
+```
+完成はこんな感じ。
+
+![完成目標](./images/2020/11/entry406-3.jpg)
 ## まとめ
 
 記事詳細ページはアレンジできるようになりました！

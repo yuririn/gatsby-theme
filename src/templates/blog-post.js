@@ -41,7 +41,9 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
-  const ogpSrc = `${data.allFile.edges[0].node.publicURL}`
+  const ogpSrc = data.allFile.edges[0]
+    ? `${data.allFile.edges[0].node.publicURL}`
+    : "images/ogp.png"
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -211,7 +213,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       htmlAst
-      tableOfContents
+      tableOfContents(maxDepth: 3)
       frontmatter {
         title
         date(formatString: "YYYY.MM.DD")

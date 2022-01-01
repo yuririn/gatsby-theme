@@ -69,13 +69,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
-    const blogPosts = posts.filter(post => {
-      if (post.frontmatter.pagetype === "blog") return post
-    })
+    const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
 
     blogPosts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+      const previousPostId = index === 0 ? null : blogPosts[index - 1].id
+      const nextPostId =
+        index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
 
       createPage({
         path: post.fields.slug,
@@ -91,35 +90,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
 
-    // ページの生成
-    posts.forEach(post => {
-      if (post.frontmatter.pagetype === "page") {
-        if (!post) {
-          createPage({
-            path: post.fields.slug,
-            component: pagePost,
-            context: {
-              id: post.id,
-              hero: post.frontmatter.hero
-                ? post.frontmatter.hero
-                : "common/dummy.png",
-            },
-          })
-        }
-      }
-    })
+    const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog")
 
     // ページの生成
-    posts.forEach(post => {
-      if (post.frontmatter.pagetype === "page") {
-        createPage({
-          path: post.fields.slug,
-          component: pagePost,
-          context: {
-            id: post.id,
-          },
-        })
-      }
+    pagePosts.forEach(post => {
+      createPage({
+        path: post.fields.slug,
+        component: pagePost,
+        context: {
+          id: post.id,
+          hero: post.frontmatter.hero
+            ? post.frontmatter.hero
+            : "common/dummy.png",
+        },
+      })
     })
 
     // 一覧記事生成

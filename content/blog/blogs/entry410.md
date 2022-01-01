@@ -1,26 +1,33 @@
 ---
-title: Gatsbyブログサイト移行物語4~プラグインを利用して目次出力~
+title: Gatsbyブログサイト移行物語~プラグインを利用して目次出力~
 date: 2020-12-07
-modifieddate: 2021-01-12
+modifieddate: 2022-01-01
 hero: thumbnail/2020/entry401.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
 description: 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。
-lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。","ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。"]
+lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。","ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。","※ 2021年12月v4バージョンアップに伴いリライトしました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
+2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
 3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
-4. プラグインを利用して目次出力（←イマココ）
+4. *プラグインを利用して目次出力*（←イマココ）
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
 9. [関連記事一覧出力](/blogs/entry230/)
+
+<small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
+
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+
+今回のソースは[table-of-content](https://github.com/yuririn/gatsby-blog/tree/table-of-content)ブランチにあります。
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -37,7 +44,7 @@ gatsby-remark-autolink-headersはプラグインの1つです。<br>
 [gatsby-remark-autolink-headers](https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/)
 
 ### gatsby-remark-autolink-headersをインストール
-`npm`コマンドで手軽にインストールできます。
+`npm`インストールします。
 
 ```bash
 npm install gatsby-remark-autolink-headers
@@ -88,10 +95,13 @@ module.exports = {
 ```
 
 ### gatsby-remark-autolink-headersを実装
+オプションを設定しなければ、以下のように無駄なコードも出力されます。
 
-今回はシンプルにアイコンなし。以下のように設定しました。
+![](./images/2020/12/entry410-1.jpg)
 
 [オプション](#オプションの一覧)の説明については記事の後ろに記載します。
+
+
 ```js
 module.exports = {
   plugins: [
@@ -112,16 +122,21 @@ module.exports = {
   ]
 }
 ```
+
+今回はシンプルにアイコンなし。以下のように設定しました。
+
+![](./images/2020/12/entry410-2.jpg)
+
 ### 目次を出力するコンポーネントを作成する
 次に目次を出力するコンポーネントを作成します。
 
-src/components/内にtopics.jsを追加します。
+src/components/内にtable-of-content.jsを追加します。
 ```
 src/
     ├ templates/
     |   └ blog-post.js
     └ components/
-        └ topics.js（新規作成）
+        └ table-of-content.js（新規作成）
 ```
 
 コードはこんな感じです。
@@ -147,18 +162,28 @@ export default Topic;
 ```
 リスト化されたデータは`data.markdownRemark.tableOfContents`に格納されます。
 
-blog-post.jsのクエリの`markdownRemark()`内に`tableOfContents`を*必ず追記*してください。
+blog-post.jsのGraghQLのスキーマ`markdownRemark()`内に`tableOfContents`を追記します。
+
+<br>ポイントは`maxDepth`を指定することによって表示する**見出しの深さを調整**できます。
+
+```
+tableOfContents(maxDepth: 3)
+```
+
+<msg txt="目次のネスト（入れ子）が深いのはあまり好きじゃないんだよね"></msg>
+
+ということで、見出し3（*maxDepth: 3*）まで取得することにしました。
 
 あとは記事の読み込みたい場所にコンポーネントを出力するだけです。
 
 ```js
-import Topic from "../components/topic"
+import TOC from "../components/table-of-content"
 
 //~コード省略~
 
 const BlogPostTemplate = ({ data, location }) => {
   {/*読み込みたい場所に挿入*/}
-  <Topic data={data.markdownRemark.tableOfContents} />
+  <TOC data={data.markdownRemark.tableOfContents} />
 
   //~コード省略~
 
@@ -172,8 +197,7 @@ export const pageQuery = graphql`
     $previousPostId: String
     $nextPostId: String
     $hero: String
-  )
-  {
+  ) {
     site {
       siteMetadata {
         title
@@ -181,72 +205,60 @@ export const pageQuery = graphql`
     }
     allFile(
       filter: {
-        relativePath: {eq: $hero}
-        sourceInstanceName: {eq: "assets"}
+        relativePath: { eq: $hero }
+        sourceInstanceName: { eq: "images" }
       }
-    ){
+    ) {
       edges {
         node {
-          name
           relativePath
           childImageSharp {
-          fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-            }
+            gatsbyImageData(
+              width: 640
+              formats: [AUTO, WEBP, AVIF]
+              placeholder: BLURRED
+            )
           }
         }
       }
-    markdownRemark(
-      id: {eq: $id }
-    ) {
-        id
-        excerpt(pruneLength: 160)
-        html
-        tableOfContents
-        frontmatter {
-          title
-          date(formatString: "YYYY.MM.DD")
-          description
-          lead
-          hero
-          category
-          cateId
-          tags
-          pagetype
-          modifieddate(formatString: "YYYY.MM.DD")
-        }
+    }
+    markdownRemark(id: { eq: $id }) {
+      id
+      excerpt(pruneLength: 160)
+      html
+      tableOfContents(maxDepth: 3)
+      frontmatter {
+        title
+        date(formatString: "YYYY-MM-DD")
+        description
+        cate
+        tags
       }
-      previous: markdownRemark(id: {eq: $previousPostId }) {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-        }
+    }
+    previous: markdownRemark(id: { eq: $previousPostId }) {
+      fields {
+        slug
       }
-      next: markdownRemark(id: {eq: $nextPostId }) {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-        }
+      frontmatter {
+        title
+      }
+    }
+    next: markdownRemark(id: { eq: $nextPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
       }
     }
   }
 `
 ```
-
 ## 出力されるタグをulからolに変え、開閉ボタンをつける
 リスト出力がul（アンオーダーリスト）なのは個人的にはちょっと気に入らないです。<br>
 なのでここから少し改変します。<br><br>
 
-このサイトではolはすでにカウンター関数を利用してスタイリングしてあります。
-
-<card id="/blogs/entry315/"></card>
-
-JSの`replace`で`ul>`から`ol>`に置換します。<br>（閉じタグもあるのでこのような形にしました）
+JavaScript`replace`で`ul>`から`ol>`に置換します。<br>（閉じタグもあるのでこのような形にしました）
 
 後ほどアコーディオン機能を実装します。チェックボックスを追加して`h2`を`label`に書き換えておきます。
 ```js
@@ -273,79 +285,125 @@ const Topic = props => {
 
 export default Topic;
 ```
-### アコーディオンはCSSで実装する
-アコーディオンは手間なのでCSSのみで実装しました。
+### スタイリングする
+
+カウンター関数を利用してスタイリング、アコーディオンは手間なのでCSSのみで実装しました。
 
 今回はコードしか紹介しませんので詳しく原理を知りたい方はこちらをご覧ください。
 
+<card id="/blogs/entry363/"></card>
+
 <card id="/blogs/entry315/"></card>
 
-HTMLはこんな感じで出力されます。コードが長いので省略しています。
-```html
-<div class="p-box--gray u-mblg">
-  <input type="checkbox" class="mokuji" id="mokuji">
-  <label class="c-content__heading" for="mokuji">目次</label>
-  <div class="c-editArea mokujiList">
-    <div>
-      <ol>
-    ここリストが出力されます
-      </ol>
-    </div>
-  </div>
-</div>
-```
-<br><br>CSSです。モジュール化してもいいですが私はCSSに直書きしました。<br>
-CSSモジュール化の仕方についてはポートフォリのページを作った際に実装したので改めて記事化しますね。
+```js
+import styled from "styled-components" //追加
 
+const TableOfContent = props => {
+  const list = props.data.replace(/(ul>)/gi, "ol>")
+
+  return (
+    <TOC>
+      <input type="checkbox" class="mokuji" id="mokuji" />
+      <label class="heading" for="mokuji">
+        目次
+      </label>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: list,
+        }}
+      ></div>
+    </TOC>
+  )
+}
+export default TableOfContent
+
+// 省略
+```
+style用のコンポーネントのコードです。
+
+コンポーネント化してスタイルを描きたい場合は、styled-componentsのインストールが必要です。
 ```css
-.mokuji {
-  display: none;
-}
+const TOC = styled.div`
+  border: 1px solid #aaa;
+  padding: 0;
+  margin: 20px 0;
 
-.mokuji:checked ~ .mokujiList {
-  max-height: 0;
-}
+  input {
+    display: none;
 
-.mokuji ~ .mokujiList {
-  max-height: 200vh;
-  transition: .3s;
-  overflow: hidden;
-}
+    &:checked ~ div {
+      max-height: 0;
+    }
+    &:checked ~ .heading::before {
+        transform: rotate(90deg);
+    }
+  }
+  div {
+    transition: .3s;
+    max-height: 200vh;
+    overflow: hidden;
+    p {
+      margin: 0;
+    }
 
-.mokuji + .c-content__heading {
-  position: relative;
-  display: block;
-}
+    ol {
+      counter-reset: cnt;
+      list-style: none;
+    }
+    & > ol {
+      margin: 0;
+      padding: 10px 20px;
+      border-top: 1px solid #aaa;
 
-.mokuji + .c-content__heading:before {
-  transition: .3s;
-  position: absolute;
-  content: "";
-  width: 30px;
-  height: 1px;
-  top: 10px;
-  right: 0px;
-  background: #464675;
-  display: block;
-}
+      li {
+        counter-increment: cnt;
+        position: relative;
+        padding-left: 2em;
+        &::before {
+          left: 0;
+          font-size: 1.4rem;
+          font-weight: 700;
+          position: absolute;
+          content: counters(cnt, " - ")'.' ;
+        }
+        ol {
+          padding-left: 0;
 
-.mokuji:checked + .c-content__heading:after {
-  transform: rotate(0deg);
-}
+          li {
+            padding-left: 3em;
+          }
+        }
+      }
+    }
+  }
+  .heading {
+    background: #eee;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 18px;
+    margin: 0;
+    position: relative;
 
-.mokuji+ .c-content__heading:after {
-  transform: rotate(90deg);
-  transition: .3s;
-  position: absolute;
-  content: "";
-  width: 30px;
-  height: 1px;
-  top: 10px;
-  right: 0px;
-  background: #464675;
-  display: block;
-}
+    &::after,
+    &::before {
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 20px;
+      background: #999;
+      right: 20px;
+      top: 19px;
+      transition: .3s;
+    }
+  }
+`
 ```
+
+![完成](./images/2020/12/entry410-3.jpg)
 
 <br><br>最初から閉じておきたい場合は、`input`に`checked`を付与しておきましょう。
 
@@ -366,9 +424,9 @@ CSSモジュール化の仕方についてはポートフォリのページを�
 |elements|リンクを自動挿入するためのタグ一覧を配列で指定|
 
 ## まとめ
-目次があるとこの記事は*どんなコンテンツが含まれてるか読者にわかりやすい*のでオススメです。
+目次があると記事の全貌がわかり、読むか読まないかの判断ができ、ユーザーに優しいです。
 
-サイト改修ついでにGatsbyのことを記事化してますが、このサイトがやっとサイトとして機能するようになり私もホッとしました。
+実際私のサイトでもヒートマップで確認すると、目次ってかなりクリックされているんですよ。
 
 この記事が皆さんのコーディングライフの一助となれば幸いです。
 

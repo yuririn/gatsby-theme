@@ -10,7 +10,9 @@ const PagePostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const { title, siteUrl } = data.site.siteMetadata
   const siteTitle = `${post.frontmatter.title} | ${title}`
-  const ogp = `${siteUrl}${data.allFile.edges[0].node.publicURL}`
+  const ogp = data.allFile.edges[0]
+    ? data.allFile.edges[0].node.publicURL
+    : "images/ogp.png"
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
