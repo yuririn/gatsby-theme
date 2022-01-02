@@ -2,12 +2,12 @@
 title: Gatsbyブログサイト移行物語~CSSコンポーネントでオリジナルページを作ろう！！~
 date: 2020-12-19
 modifieddate: 2021-01-12
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方を解説します！
-lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方を解説します！"]
+description: Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方を解説します！※ v4対応済み
+lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方を解説します！","※ v4対応済み"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -20,8 +20,12 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
-8. CSSコンポーネントでオリジナルページを作ろう！！（←イマココ）
+8. *CSSコンポーネントでオリジナルページを作ろう！！*（←イマココ）
 9. [関連記事一覧出力](/blogs/entry430/)
+
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+
+今回に関しては、ブランチは用意してません。ご了承ください。
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -29,7 +33,7 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 ## headerもfooterもまったく違うデザインのページを作ります
 今回GatsbyJS作るのはこのポートフォリオページです。
 
-私が2年前、テキトーに作ってヘッドハントされたきっかけとなったページです。**ぶっちゃけ中身はひどい**です。
+私が数年前、テキトーに作ってヘッドハントされたきっかけとなったページです。
 
 <card id="/portfolio/"></card>
 
@@ -48,19 +52,20 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 ```
 / (プロジェクトディレクトリー)
   └  gatsby-node.js（ページ生成に必要な設定をする）
-    └ src/
-        └ pages/
-            ├ portfolio.js （新規・ベースのページ）
-            └ portfolioParts/（新規・ポートフォリオに関するファイル類をすべてここに格納）
-                ├ css/ (CSSモジュールを格納)
-                |   ├ common.module.css（汎用的なCSSモジュール）
-                |   ├ header.module.css（header用CSSモジュール）
-                |   ├ voice.module.css（voiceに対応したCSSモジュール）
-                |   └  .... （コンポーネントに対応したCSSモジュール）
-                ├ voice.js（プロフィールのコンテンツ）
-                └  ....（パーツ出力用コンポーネント）
+    ├ src/
+    |  └ pages/
+    |    └ portfolio.js （新規・ベースのページ）
+    └ inc/
+      └ portfolioParts/（新規・ポートフォリオに関するファイル類をすべてここに格納）
+        ├ css/ (CSSモジュールを格納)
+        |  ├ common.module.css（汎用的なCSSモジュール）
+        |  ├ header.module.css（header用CSSモジュール）
+        |  ├ voice.module.css（voiceに対応したCSSモジュール）
+        |  └  .... （コンポーネントに対応したCSSモジュール）
+        ├ voice.js（プロフィールのコンテンツ）
+        └  ....（パーツ出力用コンポーネント）
 ```
-Gatsbyでは*CSSモジュール*と言って、パーツごとにスタイルを当てることができます。
+「[ヘッダーとフッターを追加する](/blogs/entry484/)」では*styled-components*でCSSを実装する方法も記事にしましたが、今回は*CSSモジュール*の使い方をご紹介します。パーツごとにスタイルを当てることができます。
 
 しかも、file名を*〇〇.module.css*と命名するだけでモジュール化できます。<br>
 
@@ -69,43 +74,26 @@ Gatsbyでは*CSSモジュール*と言って、パーツごとにスタイルを
 長年HTMLやCSSを書いていると直面する問題があります。別のパーツがCSSで汚染されたり再利用が難しかったり、それを防ぐために上書きを繰り返したりコードばっかり長くなります。<br>このように部品単位管理することで、汚染防止もできるし再利用が楽チンになります。<br>エコロジー！
 </div>
 
-## createPage()でページを生成
+## ページの作り方はカンタン。ファイルをpagesディレクトリに放り込むだけ
+mdを介さない、テンプレートではないページの作り方はカンタンです。
 
-gatsby-nodo.jsにコードを追記して、`createPage`関数でportfolio用のページを作ります。
+pagesディレクトリにページとして出力したいファイルを放り込むだけです。
 
-```js
-const path = require(`path`)
-const Promise = require('bluebird')
-const { createFilePath } = require(`gatsby-source-filesystem`)
-const slash = require('slash')
+〇〇.jsであればページ名のパスは`ドメイン/〇〇/`。〇〇/〇〇.jsであれば`ドメイン/〇〇/〇〇/`といった感じで公開されます。
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
-  // ~ 省略~
-
-  const portfolioPost = path.resolve(`./src/pages/portfolio.js`)
-
-  createPage({
-    path: 'portfolio',
-    component: portfolioPost,
-  });
-}
-// ~ 省略~
-```
 ## ベースになるportfolio.jsを作成
 portfolio.jsを作成します。
 headerやfooterなどあくまでベースになる部分を中心にコードを書きました。
 
-```js
+```js:title=portfolio.js
 import React from "react"
 import { Link } from "gatsby"
 
 import SEO from "../components/seo"
 
 // CSS
-import HeaderStyles from "./portfolioParts/css/header.module.css"
-import CommonStyles from "./portfolioParts/css/common.module.css"
+import HeaderStyles from "../inc/portfolioParts/css/header.module.css"
+import CommonStyles from "./inc/portfolioParts/css/common.module.css"
 
 const Portfolio = ({ location }) => {
   const nav = ['Profile', 'Works', 'Contact']
@@ -169,8 +157,8 @@ headerにスタイルを当てるためにheader.module.cssを作成し、Header
 
 header.module.cssから`default`というクラスのCSSを呼び出したい場合、`class`を`HeaderStyles.default`とします。
 
-```js
-import HeaderStyles from "./portfolioParts/css/header.module.css"
+```js{1}:title=portfolio.js
+import HeaderStyles from "../inc/portfolioParts/css/header.module.css"
 
 const Portfolio = ({ location }) => {
   // ~ 省略~
@@ -186,7 +174,7 @@ export default Portfolio
 
 これでheaderのスタイルが実装されます。
 
-```css
+```css:title=header.module.css
 @import url("https://fonts.googleapis.com/css?family=Archivo+Black");
 
 .default {
@@ -230,9 +218,9 @@ CSSモジュールごとにフォントも呼び出せます。
 今回は1つだけ紹介します。portfolioPartsに「お喜びの声」のパーツをvoice.jsを作成し、格納しておきます。
 
 portfolio.js側で呼び出せるようにしておきます。
-```js
+```js:title=portfolio.js
 // components
-import Voice from './portfolioParts/voice'
+import Voice from '../inc/portfolioParts/voice'
 
 const Portfolio = ({ location }) => {
   // ~ 省略~
@@ -248,7 +236,7 @@ export default Portfolio
 
 voice.module.cssを作成し、voice.jsに`VoiceStyles`という名前でimportします。
 
-```js
+```js:title=voice.js
 import React from 'react';
 import VoiceStyles from "./css/voice.module.css"
 
@@ -265,11 +253,12 @@ const Voice = () => (
 
 export default Voice;
 ```
-あとは、voice.module.cssにCSSを書くだけです。
+
+CSSを書くだけです。
 
 メディアクエリもCSSモジュール内に書けます。
 
-```css
+```css:title=voice.module.css
 .container {
   margin-top: 30px;
 }
@@ -300,35 +289,23 @@ portfolioページは手抜きなので、元のページでもアイコン類�
 
 `npm`か`yarn`でインストールします。
 
-```
-yarn add gatsby-plugin-fontawesome-css
+```bash:title=コマンド
+npm install --save gatsby-plugin-fontawesome-css
 
 or
 
-npm install --save gatsby-plugin-fontawesome-css
+yarn add gatsby-plugin-fontawesome-css
 ```
 
 さらに使いたいフォントも追加しておきます。私はTwitterやインスタアイコンを使いたかったので`free-brands-svg-icons`も追加しました。
 
-```
-yarn add @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons　@fortawesome/free-brands-svg-icons
-```
-
-gatsby-config.jsにプラグインを追加します。
-
-```js
-module.exports = {
-  plugins: [
-    {
-      resolve: `gatsby-plugin-fontawesome-css`
-    },
-  ]
-}
+```bash:title=コマンド
+npm i @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons　@fortawesome/free-brands-svg-icons
 ```
 
 iconをimportします。
 
-```js
+```js:title=portfolio.js
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullhorn } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'

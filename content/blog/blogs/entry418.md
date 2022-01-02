@@ -235,7 +235,7 @@ Seo.propTypes = {
 
 export default Seo
 ```
-補足すると、og:typeをトップページ以外はwebpageで判定しています。
+補足すると、og:typeをトップページ以外は判定してwebpageを出力しています。
 ```js
 {
   property: `og:type`,

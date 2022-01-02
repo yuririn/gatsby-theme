@@ -2,7 +2,7 @@
 title: 当ブログをGatsby v4 にアップグレードしました
 date: 2021-12-12
 modifieddate: 2021-12-13
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["Gatsby","React","JavaScript"]

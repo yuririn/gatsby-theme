@@ -13,10 +13,10 @@ import { faHome } from "@fortawesome/free-solid-svg-icons"
 import { faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 // components
-import Voice from "./portfolioParts/voice"
-import Works from "./portfolioParts/works"
-import Profile from "./portfolioParts/profile"
-import Contact from "./portfolioParts/contact"
+import Voice from "../inc/portfolioParts/voice"
+import Works from "../inc/portfolioParts/works"
+import Profile from "../inc/portfolioParts/profile"
+import Contact from "../inc/portfolioParts/contact"
 
 const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]

@@ -1,12 +1,13 @@
 ---
 title: Gatsbyブログサイト移行物語~関連記事一覧出力~
 date: 2021-01-12
-hero: thumbnail/2020/entry401.jpg
+modifieddate: 2022-01-05
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: 今回でGatsbyカスタマイズ9記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！
-lead: ["今回でGatsbyカスタマイズ9記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！"]
+description: 今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！※ 2021年12月アップデートに伴い、v4対応済みです。
+lead: ["今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！","※ 2021年12月アップデートに伴い、v4対応済みです。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -20,7 +21,11 @@ lead: ["今回でGatsbyカスタマイズ9記事！せっかく書いたブロ�
 6. [個別ページテンプレート作成](/blogs/entry416/)
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
-9. 関連記事一覧出力（←イマココ）
+9. *関連記事一覧出力*（←イマココ）
+
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+
+今回のソースは[related-list](https://github.com/yuririn/gatsby-blog/tree/related-list)ブランチにあります。
 
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
@@ -39,73 +44,116 @@ lead: ["今回でGatsbyカスタマイズ9記事！せっかく書いたブロ�
 ```
 /プロジェクト
   ├ components/
-  |  └ blogs/
-  |    └ relatedList.js(追加)
+  |  └ related-list.js(追加)
   └ templates/
-     └ blog-post.pug(追記)
+     └ blog-post.js(追記)
 ```
 ### 絞り込み機能を作る
-下記の条件でGraphQLをセットします。
+`useStaticQuery` を使ってGraphQLをセットします。
 
-```sql
-query {
-  allMarkdownRemark {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        id
-        frontmatter {
-          date(formatString: "YYYY.MM.DD")
-          hero
-          title
-          cateId
-          tags
-          pagetype
-        }
-      }
-    }
-  }
-}
-```
-取得したデータを絞り込みます。
+```js:title=related-list.js
+import * as React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
-当サイトではタグとカテゴリーの設定があり、カテゴリーは1種類、タグは複数選択可能というルールになっています。
-
-関連記事では同じ記事を除いた、類似記事を絞り込みます。
-
-```js
-render={
-  (data) => {
-    let posts = data.allMarkdownRemark.edges.filter(
-      (post) => {
-        // タイトルは除外
-        if (post.node.frontmatter.title !== title) {
-          // カテゴリーの一致出力
-          if (post.node.frontmatter.cateId === category) {
-            return (
-              post.node.frontmatter.cateId === category
-            )
-          }
-          // タグの一致出力
-          for (const tag of tags) {
-            for (const item in post.node.frontmatter.tags) {
-              if (tag === post.node.frontmatter.tags[item]) return true
+const Lists = ({ category, title, tags }) => {
+  const { allMarkdownRemark } = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark (
+          filter: { frontmatter: { pagetype: { eq: "blog" } } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              id
+              frontmatter {
+                cate
+                hero
+                date(formatString: "YYYY.MM.DD")
+                title
+                tags
+                pagetype
+              }
             }
           }
         }
       }
-	)/* end filter*/
-
-	// 省略
-  }
+    `
+  )
+  return ""
 }
+export default Lists
+```
+「Gatsbyブログサイト移行物語」では記事にはタグとカテゴリを設けており、*カテゴリは1種類*、*タグは複数選択可能* というルールになっています。
+
+あらかじめ関連記事を表示するコンポーネントを読み込んでおきます。
+
+```js{5,16-20}:title=blog-list.js
+import * as React from "react"
+import { Link, graphql } from "gatsby"
+// 省略
+
+import RetatedList from "../components/retated-list"
+
+const BlogPostTemplate = ({ data, location }) => {
+  // 省略
+
+  return (
+    <Layout location={location} title={siteTitle}>
+      {/*省略*/}
+      <BlogPostNav>
+        {/*省略*/}
+      </BlogPostNav>
+      <RetatedList
+        category={cate}
+        slug={post.fields.slug}
+        tags={tags}
+      ></RetatedList>
+    </Layout>
+  )
+}
+
+export default BlogPostTemplate
+
+// 省略
+```
+
+関連記事では現在表示中の記事をのぞきたいので、blog-list.jsのGraghQLのスキーマにslugを追加します。
+
+```js{7-9}:title=blog-list.js
+# 省略
+markdownRemark(id: { eq: $id }) {
+  id
+  excerpt(pruneLength: 160)
+  html
+  tableOfContents(maxDepth: 3)
+  fields {
+    slug
+  }
+  # 省略
+```
+filterで記事を絞り込んだ配列を作ります。
+```js:title=related-list.js
+let posts = allMarkdownRemark.edges.filter(post => {
+  // 表示中の記事とslugが一緒じゃないものを絞り込み
+  if (post.node.fields.slug !== slug) {
+    // カテゴリが一緒かつ
+    if (post.node.frontmatter.cate === category) {
+      return true
+    }
+    // 同じタグを含むもの
+    for (const tag of tags) {
+      return post.node.frontmatter.tags.includes(tag)
+    }
+  }
+})
 ```
 
 ### 関連記事が存在したらランダム出力する
 関連記事の条件に一致するものがなければ処理を中断し、あれば一覧をシャッフルし6記事に絞り込みます。
-```js
+```js:title=related-list.js
 // 一致するものがなければ処理しない
 if (!posts) return
 
@@ -131,12 +179,14 @@ shuffle(posts)
 posts = posts.slice(0, 6);
 ```
 
-<br>抽出結果を出力返します。
-```js
+### 結果を出力するコンポーネント作成
+
+抽出結果をコンポーネントを通じて出力します。とりあえずは最小のデータで確かめてみます。
+```js:title=related-list.js
 return (
-  <section class="p-section l-container is-view">
-  <h2 class="c-heading--lg">関連記事もあわせてお読みください</h2>
-    <div class="c-grid">
+  <section>
+    <h2>関連記事もあわせてお読みください</h2>
+    <div>
       {posts.map(item => {
           return <List item={item.node.frontmatter} url={item.node.fields.slug} />
         })
@@ -146,169 +196,194 @@ return (
 )
 ```
 
-### 結果を出力するコンポーネント作成
+スタイルが当たってないので見た目はこんなもんですが出力できました。
+![スタイルが当たってないので見た目はこんなもんですが出力](./images/2021/01/entry430-2.jpg)
 
-コンポーネントを通じて出力します。
+見た目が貧弱なので、そのほかのデータを出力します。
 
-```js
-const List = ({ item, url }) => {
+サムネ画像を追加し、スタイルもstyled-componentsから追加できるようにします。
 
-  const { title, date, hero } = item
-  return (
-    <article class="p-entryCard c-grid__item--md6 c-grid__item--lg4">
-      <Link class="p-entryCard__img" to={url}>
-        {hero ? <Image filename={hero} /> : <Image filename="common/dummy.png" />}
-        <div class="p-entryCard__date">
-          {date}
-        </div>
-      </Link>
-      <Link to={url} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
-    </article>
-  )
-}
+サムネ画像の追加方法は「[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)」を参考にしてください。
+
+styled-componentsは以下コマンドでインストール可能です。
+
+```bash:title=コマンド
+npm i styled-components
 ```
 
-### 関連記事を出力するコンポーネントのコードをまとめて書くと
-関連記事を出力するコンポーネントrelatedList.jsファイルをcomponents/blogs/に格納します。
+```js:title=related-list.js
+import Img from "../components/img"
+import styled from "styled-components"
 
-<small>※ Imageコンポーネントについては<a href="/blogs/entry406/">投稿ページの充実と画像設定</a>をご覧ください。</small>
+const Lists = ({ category, slug, tags }) => {
+  // 省略
+  const List = ({ item, url }) => {
+    return (
+      <article class="p-entryCard c-grid__item--md6 c-grid__item--lg4">
+        <Link class="p-entryCard__img" to={url}>
+          <Image filename={hero} /> : <Image filename="common/dummy.png" />}
+          <div class="p-entryCard__date">
+            {date}
+          </div>
+        </Link>
+        <Link to={url} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
+      </article>
+    )
+  }
+export default Lists
+```
 
-```js
-import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
-import Image from "../image"
+### 関連記事を出力するコンポーネントのコードをまとめて書く
 
-const List = ({ item, url }) => {
+スタイルも当ててまとめたコードがこちらです。
 
-  const { title, date, hero } = item
+```js:title=related-list.js
+import * as React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import Img from "../components/img"
 
-  return (
-    <article class="p-entryCard c-grid__item--md6 c-grid__item--lg4">
-      <Link class="p-entryCard__img" to={url}>
-        {hero ? <Image filename={hero} /> : <Image filename="common/dummy.png" />}
-        <div class="p-entryCard__date">
-          {date}
-        </div>
-      </Link>
-      <Link to={url} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
-    </article>
-  )
-}
+import styled from "styled-components"
 
-export default ({ category, title, tags }) => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          allMarkdownRemark {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-                id
-                frontmatter {
-                  date(formatString: "YYYY.MM.DD")
-                  hero
-                  title
-                  cateId
-                  tags
-                  pagetype
-                }
+const Lists = ({ category, slug, tags }) => {
+  const { allMarkdownRemark } = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark(
+          filter: { frontmatter: { pagetype: { eq: "blog" } } }
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              id
+              frontmatter {
+                cate
+                hero
+                date(formatString: "YYYY.MM.DD")
+                title
+                tags
+                pagetype
               }
             }
           }
-        }
-      `}
-      render={
-		(data) => {
-          let posts = data.allMarkdownRemark.edges.filter(
-            (post) => {
-              // タイトルは除外
-              if (post.node.frontmatter.title !== title) {
-                // カテゴリーの一致出力
-                if (post.node.frontmatter.cateId === category) {
-                  return (
-                    post.node.frontmatter.cateId === category
-                  )
-                }
-                // タグの一致出力
-                for (const tag of tags) {
-                  for (const item in post.node.frontmatter.tags) {
-                    if (tag === post.node.frontmatter.tags[item]) return true
-                  }
-                }
-              }
-            }
-          )
-          if (!posts) return
-
-          function shuffle(list) {
-            var i = list.length;
-
-            while (--i) {
-              var j = Math.floor(Math.random() * (i + 1));
-              if (i === j) continue;
-              var k = list[i];
-              list[i] = list[j];
-              list[j] = k;
-            }
-
-            return list;
-          }
-
-          shuffle(posts)
-
-          posts = posts.slice(0, 6);
-
-          return (
-            <section class="p-section l-container is-view"><h2 class="c-heading--lg">関連記事もあわせてお読みください</h2>
-              <div class="c-grid">
-                {
-				  posts.map( item => {
-                    return <List item={item.node.frontmatter} url={item.node.fields.slug} />
-                  })
-                }
-              </div>
-            </section>
-          )
         }
       }
-    />
+    `
   )
-}
-```
+  let posts = allMarkdownRemark.edges.filter(post => {
+    if (post.node.fields.slug !== slug) {
+      if (post.node.frontmatter.cate === category) {
+        return true
+      }
+      for (const tag of tags) {
+        return post.node.frontmatter.tags.includes(tag)
+      }
+    }
+  })
 
-## ブログ詳細に関連記事を出力
-コンポーネントを呼び出します。
+  if (!posts) return
 
-```js
-// ~省略~
-import RelatedList from "../components/blogs/relatedList"
+  if (posts.length > 5) {
+    function shuffle(list) {
+      var i = list.length
 
-const BlogPostTemplate = ({ data, location }) => {
-  // ~省略~
+      while (--i) {
+        var j = Math.floor(Math.random() * (i + 1))
+        if (i === j) continue
+        var k = list[i]
+        list[i] = list[j]
+        list[j] = k
+      }
+
+      return list
+    }
+
+    shuffle(posts)
+    posts = posts.slice(0, 6)
+  }
 
   return (
-    // ~省略~
-	<Layout location={location} title={siteTitle}>
-
-      {/*~省略~*/}
-
-      <RelatedList category={post.frontmatter.cateId} title={post.frontmatter.title} tags={post.frontmatter.tags}></RelatedList>
-
-      {/*~省略~*/}
-
-    </Layout>
+    <Related>
+      <h2>関連記事もあわせてお読みください</h2>
+      <RelatedList>
+        {posts.map((item, index) => {
+          return (
+            <article key={`relative${index}`}>
+              <Link className="p-entryCard__img" to={item.node.fields.slug}>
+                <Img
+                  alt={item.node.frontmatter.title}
+                  image={item.node.frontmatter.hero}
+                ></Img>
+                <time datetime={item.node.frontmatter.date}>
+                  {item.node.frontmatter.date}
+                </time>
+              </Link>
+              <h3>
+                <Link to={item.node.fields.slug}>
+                  {item.node.frontmatter.title}
+                </Link>
+              </h3>
+            </article>
+          )
+        })}
+      </RelatedList>
+    </Related>
   )
 }
+export default Lists
 
-export default BlogPostTemplate
+const Related = styled.div`
+  max-width: 700px;
+  margin: 0 auto;
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+`
+const RelatedList = styled.div`
+  article {
+    margin-bottom: 30px;
+  }
+  a {
+    color: var(--black);
+    text-decoration: none;
+    position: relative;
 
-// ~省略~
+    &:hover {
+      opacity: 0.3s;
+    }
+
+    time {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      left: 0;
+      top: 0;
+      line-height: 1;
+      padding: 5px 15px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+  }
+  h3 {
+    font-size: 1.7rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    article {
+      box-sizing: border-box;
+      width: 33.33%;
+      padding: 0 10px;
+    }
+  }
+`
 ```
-
-<br>これで関連記事び一覧が出力できるようになりました！わーい。
+これで関連記事び一覧が出力できるようになりました！わーい。
 
 読みこむたびに、ランダム表示されます。
 
