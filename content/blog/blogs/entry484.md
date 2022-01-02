@@ -1,12 +1,12 @@
 ---
 title: Gatsbyブログサイト移行物語~ヘッダーとフッターを追加する~
 date: 2021-12-31
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。色々やり方はあると思いますが、今回はコンポーネントを作って読み込む方法をご紹介します。※ 2021年12月v4バージョンアップに伴いv4以外ではうまく動かない可能性があります。
-lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。色々やり方はあると思いますが、今回はコンポーネントを作って読み込む方法をご紹介します。","※ 2021年12月v4バージョンアップに伴いv4以外ではうまく動かない可能性があります。"]
+description: Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。色々やり方はあると思いますが、今回はコンポーネントを作って読み込む方法をご紹介します。※ v4バージョンアップに追記した記事です。v4以外ではうまく動かない可能性があります。
+lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。色々やり方はあると思いますが、今回はコンポーネントを作って読み込む方法をご紹介します。","※ v4バージョンアップに追記した記事です。v4以外ではうまく動かない可能性があります。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -22,7 +22,7 @@ lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加�
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
 9. [関連記事一覧出力](/blogs/entry430/)
 
-このシリーズはGithub・gatsby-blogに各内容ごとにブランチごとで分けて格納しています。
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ごとにブランチごとで分けて格納しています。
 
 今回は[add-header-footer](https://github.com/yuririn/gatsby-blog/tree/add-header-footer)にあります。
 
@@ -47,7 +47,7 @@ Gatsby Starter Blog は layout というコンポーネントで全体のレイ�
 ## header.js 作成
 まずは、headerから作ります。components/配下に格納します。
 
-```js
+```js:title=header.js
 import * as React from "react"
 
 const Header = ({ location }) => {}
@@ -59,16 +59,21 @@ export default Header
 
 リンクを貼るために `Link` コンポーネントを使います。
 
-```js
-import * as React from "react"
-import { Link } from "gatsby"
+gatsby-config.jsから`siteMetadata`情報を取得。サイトタイトルを出力します。
 
+```js:title=header.js
+import * as React from "react"
+// Linkコンポーネント追加
+import { Link } from "gatsby"
+//このサイトの基本情報を取得
 import { siteMetadata } from "../../gatsby-config"
 
 const Header = ({ location }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let siteName
+
+  //トップページ以外はトップへのリンク
   if (isRootPath) {
     siteName = <h1>{siteMetadata.title}</h1>
   } else {
@@ -86,9 +91,7 @@ export default Header
 layout.jsを改造し、Headerコンポーネントをインポートします。
 
 以下コードをすべて削除します。
-```js
-import { Link } from "gatsby"
-
+```js:title=layout.js
 let header
 
 if (isRootPath) {
@@ -106,7 +109,7 @@ if (isRootPath) {
 }
 ```
 全体のコードはこちら。
-```js
+```js:title=layout.js
 import * as React from "react"
 import { Link } from "gatsby"
 import Header from "./header"
@@ -135,7 +138,7 @@ export default Layout
 ### ナビゲーションを作成
 まだページはありませんが、ナビゲーションの追加方法を紹介しておきます。
 
-```js
+```js:title=header.js
 import * as React from "react"
 import { Link } from "gatsby"
 
@@ -178,11 +181,11 @@ export default Header
 追加できました。
 
 ![ナビゲーションをheaderに追加](./images/2021/12/entry484-2.png)
-## footer.js を追加
+## フッターを追加
 
 footer.js を追加し、header同様読み込みます。
 
-```js
+```js:title=footer.js
 import * as React from "react"
 
 import { siteMetadata } from "../../gatsby-config"
@@ -198,8 +201,8 @@ const Footer = () => {
 }
 export default Footer
 ```
-layout.jsも編集。
-```js
+layout.jsに読み込む。
+```js:title=layout.js
 import * as React from "react"
 import Header from "./header"
 import Footer from "./footer"
@@ -221,16 +224,25 @@ export default Layout
 
 今回はシンプルに、コピーライトのみとしましたが、header.jsのコードを参考にお好みでナビゲーションやSNSのリンクを追加してください。
 
-## せっかくなのでstyled-componentsでスタイルを入れてみる
+## せっかくなのでスタイルを入れてみる
 仕上がったもののスタイルが当たってなくて限りなくダサいです。
 
-![仕上がりイメージ](./images/2021/12/entry484-3.png)
+せっかくなのでスタイルを当てます。
+
+![仕上がったもののスタイルが当たってなくて限りなくダサい](./images/2021/12/entry484-3.png)
 
 ### 汎用スタイルをstyle.cssに書く
+```
+プロジェクト/
+  └ src/
+     └ style.css
+```
+
 デザインはテンプレ臭いのでsrc/style.cssをまるっと削除し、以下を追加。
 
-ここには汎用的に使うスタイルを書いていきます。
-```css
+ここには汎用的に使うスタイルだけを書いていきます。
+
+```css:title=style.css
 :root {
   --font: font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
   --black: #333;
@@ -252,12 +264,10 @@ body {
   padding: 10px 15px;
 }
 ```
-### headerを装飾
+### プラグインstyled-componentsでheaderを装飾
 せっかくなので *styled-components* をインストールしてスタイルを当てましょう。
 
-styled-components を npm インストールします。
-
-```
+```sh:title=コマンド
 npm i styled-components
 ```
 
@@ -267,10 +277,13 @@ header.js にstyled-componentsをインポートし、`<header>`タグを`<Heade
 
 styled.タグ名でタグを指定でき、指定したタグ以下にスタイルを当てることができます。
 
-```js
+```js:title=header.js
 // 省略
 import { siteMetadata } from "../../gatsby-config"
-import styled from "styled-components"//追加
+
+//↓追加
+import styled from "styled-components"
+
 const Header = ({ location }) => {
 const Header = ({ location }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -314,8 +327,7 @@ const HeaderWrapper = styled.header`
 `
 ```
 cssを追記します。*styled-components* を使うとSASSチックにかけます。
-```js
-
+```js:title=header.js
 const HeaderWrapper = styled.header`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
@@ -362,7 +374,7 @@ const HeaderWrapper = styled.header`
 
 layout.jsの `main` に `className="container"` を追記します。
 
-```js
+```js:title=layout.js
   return (
     <div data-is-root-path={isRootPath}>
       <Header location={location} />
@@ -376,7 +388,7 @@ layout.jsの `main` に `className="container"` を追記します。
 
 footerも軽く装飾します。
 
-```js
+```js:title=footer.js
 import * as React from "react"
 
 import { siteMetadata } from "../../gatsby-config"
@@ -404,6 +416,8 @@ const FooterWrapper = styled.footer`
 
 ### まとめ・パーツをコンポーネント化して管理
 今回はヘッダーやフッターをコンポーネント化して管理できるようにしてみました。
+
+次は「[投稿テンプレにカテゴリやらキービジュアル（アイキャッチ）追加](/blogs/entry406)」」です。
 
 このブログをgatsbyでリニューアルしたのは昨年です。v4になってからいい意味でかなり変わったので、現在記事をリライト中です。
 

@@ -42,18 +42,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  createPage({
-    path: "/contact/",
-    component: contact,
-    context: {},
-  })
-
-  createPage({
-    path: "/contact/thanks/",
-    component: contact,
-    context: {},
-  })
-
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -90,24 +78,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
 
-    const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog")
-
-    // ページの生成
-    pagePosts.forEach(post => {
-      createPage({
-        path: post.fields.slug,
-        component: pagePost,
-        context: {
-          id: post.id,
-          hero: post.frontmatter.hero
-            ? post.frontmatter.hero
-            : "common/dummy.png",
-        },
-      })
-    })
+    // 記事の分割数
+    const postsPerPage = 12
 
     // 一覧記事生成
-    const postsPerPage = 12
     let numPages = Math.ceil(blogPosts.length / postsPerPage)
 
     for (let index = 0; index < numPages; index++) {
@@ -126,84 +100,109 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       })
     }
-    //タグ一覧ページ
-    const tags = posts.reduce((tags, edge) => {
-      const edgeTags = edge["frontmatter"]["tags"]
-      return edgeTags ? tags.concat(edgeTags) : tags
-    }, [])
-
-    let counts = new Object()
-
-    for (const i in tags) {
-      let key = tags[i]
-      counts[key] = counts[key] ? counts[key] + 1 : 1
-    }
-
-    for (let tag in counts) {
-      const postsPerPage = 12
-      let count = counts[tag]
-      numPages = Math.ceil(count / postsPerPage)
-
-      for (let index = 0; index < numPages; index++) {
-        const withPrefix = pageNumber =>
-          pageNumber === 1
-            ? `/blogs/tags/${tag}/`
-            : `/blogs/tags/${tag}/page/${pageNumber}/`
-        const pageNumber = index + 1
-
-        createPage({
-          path: withPrefix(pageNumber),
-          component: tagList,
-          context: {
-            limit: postsPerPage,
-            skip: index * postsPerPage,
-            current: pageNumber,
-            page: numPages,
-            tag: tag,
-          },
-        })
-      }
-    }
 
     //重複を排除し、カテゴリーの配列を作成
+    //カテゴリーのリスト取得
     let cates = posts.reduce((cates, edge) => {
-      const edgeCates = edge["frontmatter"]["cateId"]
+      const edgeCates = edge.frontmatter.cateId
       return edgeCates ? cates.concat(edgeCates) : cates
     }, [])
+    // 重複削除
+    cates = [...new Set(cates)]
 
-    let categories = new Object()
-    for (const i in cates) {
-      let key = cates[i]
-      categories[key] = categories[key] ? categories[key] + 1 : 1
-    }
-
-    for (cate in categories) {
-      const postsPerPage = 12
-      let count = categories[cate]
-      numPages = Math.ceil(count / postsPerPage)
+    // カテゴリー分ページを作成
+    cates.forEach(cate => {
+      const cateSlug = cate
+      const cateCount = posts.filter(
+        post => post.frontmatter.cateId === cate
+      ).length
+      const numPages = Math.ceil(cateCount / postsPerPage) //分割されるページの数
 
       for (let index = 0; index < numPages; index++) {
+        const pageNumber = index + 1
         const withPrefix = pageNumber =>
           pageNumber === 1
             ? `/blogs/${cate}/`
             : `/blogs/${cate}/page/${pageNumber}/`
-        const pageNumber = index + 1
-        const cateSlug = cate
 
         createPage({
           path: withPrefix(pageNumber),
           component: genreList,
           context: {
-            limit: postsPerPage,
-            skip: index * postsPerPage,
-            current: pageNumber,
-            page: numPages,
+            limit: postsPerPage, //追加
+            skip: index * postsPerPage, //追加
+            current: pageNumber, //追加
+            page: numPages, //追加
             cateSlug,
           },
         })
       }
-    }
+    })
+
+    //タグの一覧作成
+    let tags = posts.reduce((tags, edge) => {
+      const edgeTags = edge.frontmatter.tags
+      return edgeTags ? tags.concat(edgeTags) : tags
+    }, [])
+    // 重複削除
+    tags = [...new Set(tags)]
+
+    // タグ
+    tags.forEach(item => {
+      const tag = item
+      const tagsCount = blogPosts.filter(post =>
+        post.frontmatter.tags.includes(item)
+      ).length
+      const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
+      for (let index = 0; index < numPages; index++) {
+        const pageNumber = index + 1
+        const withPrefix = pageNumber =>
+          pageNumber === 1
+            ? `/blogs/tags/${tag}/`
+            : `/blogs/tags/${tag}/page/${pageNumber}/`
+        createPage({
+          path: withPrefix(pageNumber),
+          component: tagList,
+          context: {
+            limit: postsPerPage, //追加
+            skip: index * postsPerPage, //追加
+            current: pageNumber, //追加
+            page: numPages, //追加
+            tag,
+          },
+        })
+      }
+    })
+
+    // 個別ページの生成
+    const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog")
+
+    pagePosts.forEach(post => {
+      createPage({
+        path: post.fields.slug,
+        component: pagePost,
+        context: {
+          id: post.id,
+          hero: post.frontmatter.hero
+            ? post.frontmatter.hero
+            : "common/dummy.png",
+        },
+      })
+    })
   }
+
+  //お問い合わせ
+  createPage({
+    path: "/contact/",
+    component: contact,
+    context: {},
+  })
+  //サンクス
+  createPage({
+    path: "/contact/thanks/",
+    component: contact,
+    context: {},
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

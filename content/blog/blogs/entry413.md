@@ -2,7 +2,7 @@
 title: Gatsbyブログサイト移行物語~プラグインナシで一覧にページネーション実装~
 date: 2020-12-09
 modifieddate: 2022-01-02
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
@@ -59,7 +59,7 @@ WordPressなど、その他のCMSに慣れていると*一覧を分割しペー�
 
 frontmatterのpagetypeがblogのみカウントします。
 
-```js
+```js{9,10}:title=gatsby-node.js
 // ~ 省略 ~
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -102,8 +102,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 * `current`...現在何番目
 * `page`...トータルのページ数
 
-```js
-  const postsPerPage = 12 //1ページに表示する記事の数
+```js:title=gatsby-node.js
+  const postsPerPage = 12 //1ページに表示する記事の最大数
 
   // 一覧を出力するコードを追加
   let count = blogPosts.length //記事の長さ
@@ -131,7 +131,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 ![](./images/2020/12/entry413-1.jpg)
 
 ### blog-list.jsで値を受け取る
-次にpages.js側で値を受け取ります。
+次にblog-list.js側で値を受け取ります。
 
 `query blosQyery()`に`$limit: Int!`と`$skip: Int!`を追加します。
 
@@ -139,7 +139,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 `Int!`が原因でエラーを吐いている場合は、gatyby-node.js側で間違ったコードを書いている可能性があるのでよく確かめてみましょう。
 
-```js
+```js{3,9,17,18}:title=blog-list.js
 // ~ 省略 ~
 // pageContextを追加
 const BlogList = ({ pageContext, data, location }) => {
@@ -159,7 +159,6 @@ query ($limit: Int!, $skip: Int!) {
     limit: $limit
     skip: $skip
     sort: { fields: [frontmatter___date], order: DESC }
-    # pagetype=blogで絞り込む
     filter: { frontmatter: { pagetype: { eq: "blog" } } }
   ) {
     # 記事総数取得
@@ -178,12 +177,11 @@ query ($limit: Int!, $skip: Int!) {
 allMarkdownRemark(
   limit: $limit
   skip: $skip
-  sort: {fields: [frontmatter___date], order: DESC }
-  filter: {frontmatter: {pagetype: { eq: "blog" } } }
+  ...
 )
 ```
 <br>createPageから投げられた値は引数`pageContext`に格納されます。
-```js
+```
 const blogs = ({ pageContext, data, location }) => {
 }
 ```
@@ -193,9 +191,14 @@ const blogs = ({ pageContext, data, location }) => {
 
 ![](./images/2020/12/entry413-2.jpg)
 
-src/components/にpagination.jsを作成します。
+```
+/ (プロジェクトディレクトリー)
+  └ components/
+    └ pagination.js（新規作成）
+```
+pagination.jsを作成し、次のコードを記述します。
 
-```js
+```js:title=pagination.js
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components" //追加
@@ -283,7 +286,7 @@ const Pagination = ({ num, current, type }) => {
         <ul>
           {first}
           {prev}
-          <li key="pagination0">
+          <li key="pagination2">
             page {current}/{num}
           </li>
           {next}
@@ -331,8 +334,7 @@ const PaginationWrapper = styled.nav`
 
 <br>あとは表示したいところにコードを追記してください。
 
-```js
-
+```js{2,12}:title=blog-list.js
 // ~ 省略 ~
 import Pagination from "../components/blogList/pagination"
 // ~ 省略 ~
@@ -353,7 +355,7 @@ const blogs = ({ pageContext, data, location }) => {
 
 <br>カテゴリーやタグ一覧でもページネーションを実装したいときは`type`を追加してください。
 
-```js
+```html
 <Pagination num={page} current={current} type={cateSlug} />
 ```
 
@@ -384,6 +386,8 @@ Gatsbyはプラグインが豊富でいくらでもプラグインで実装で�
 
 ## まとめ
 ページネーションが実装され、安心してたくさん記事が書けるようになりました。
+
+次の記事は「[個別ページテンプレート作成](/blogs/entry416/)」です。
 
 皆さんのコーディングライフの一助となれば幸いです。
 

@@ -83,7 +83,7 @@ const Seo = ({
     },
   ]
   // JSON+LDの設定
-  const jsonLdConfigs = [
+  let jsonLdConfigs = [
     {
       "@context": "http://schema.org",
       "@type": page,
@@ -121,76 +121,52 @@ const Seo = ({
   }
 
   if (!isRoot) {
-    const breadCrumbList = []
-    breadCrumbList.push({
+    let breadCrumbList
+    const home = {
       "@type": "ListItem",
       position: 1,
-      item: {
-        "@id": domain,
-        name: "ホーム",
-      },
-    })
-    if (type === "archive") {
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@id": `${domain}/blogs/`,
-          name: `ブログ一覧`,
-        },
-      })
+      item: domain,
+      name: "ホーム",
     }
-    if (type === "genre") {
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@id": `${domain}/blogs/`,
-          name: `${title}一覧`,
-        },
-      })
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 3,
-        item: {
-          "@id": `${domain}/blogs/${cate[0].slug}/`,
+    const blogList = {
+      "@type": "ListItem",
+      position: 2,
+      item: `${domain}/blogs/`,
+      name: `ブログ一覧`,
+    }
+    if (type === "blog" || type === "genre-list" || type === "tag-list") {
+      breadCrumbList = [
+        home,
+        blogList,
+        {
+          "@type": "ListItem",
+          position: 3,
+          item: blogUrl,
           name: title,
         },
-      })
-    }
-    if (type === "tags") {
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@id": `${domain}/blogs/`,
-          name: `${title}の記事一覧`,
-        },
-      })
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 3,
-        item: {
-          "@id": `${domain}/blogs/${encodeURI(title)}/`,
-          name: title,
-        },
-      })
+      ]
+    } else if (type === "blog-list") {
+      breadCrumbList = [home, blogList]
     } else {
-      breadCrumbList.push({
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@id": blogUrl,
+      breadCrumbList = [
+        home,
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: blogUrl,
           name: title,
         },
-      })
+      ]
     }
 
-    jsonLdConfigs.push({
-      "@context": "http://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: breadCrumbList,
-    })
+    jsonLdConfigs = [
+      ...jsonLdConfigs,
+      {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadCrumbList,
+      },
+    ]
   }
 
   return (

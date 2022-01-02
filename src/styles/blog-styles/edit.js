@@ -263,6 +263,41 @@ export const Edit = styled.section`
     background: var(--color-d-blue);
     padding: 3px 5px;
   }
+  .gatsby-code-title {
+    font-weight: bold;
+    background: var(--color-blue);
+    display: inline-block;
+    padding: 6px 15px;
+    vertical-align: bottom;
+    line-height: 1;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .gatsby-code-title + .gatsby-highlight pre[class*="language-"] {
+    margin-top: 0;
+    border-top-left-radius: 0;
+  }
+  .gatsby-highlight-code-line {
+    display: block;
+    background: rgba(225, 225, 225, 0.2);
+    margin: 0 -1em;
+    padding: 0 1em;
+    position: relative;
+    min-width: 1000px;
+    min-height: 1em;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: "";
+      height: 100%;
+      width: 0.5em;
+      display: block;
+      background: var(--color-ac);
+    }
+  }
   pre[class*="language-"] {
     border-radius: 0.5em;
     border: none;
@@ -324,6 +359,7 @@ export const Edit = styled.section`
   code[class*="language-"],
   pre[class*="language-"] {
     text-shadow: none;
+    font-size: 1.4rem;
   }
   blockquote {
     background: #eee;

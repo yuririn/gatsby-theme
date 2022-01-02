@@ -35,7 +35,6 @@ const aboutPost = ({ data, location }) => {
         date="2021-05-05"
         ogp={ogp}
         modifieddate={modifiedDate}
-        type="blog"
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">

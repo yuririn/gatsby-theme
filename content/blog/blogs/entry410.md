@@ -2,7 +2,7 @@
 title: Gatsbyブログサイト移行物語~プラグインを利用して目次出力~
 date: 2020-12-07
 modifieddate: 2022-01-01
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
@@ -35,7 +35,7 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 ## 目次出力のためのプラグインgatsby-remark-autolink-headersを利用
 GatsbyJSは豊富なプラグインが魅力です。
 
-gatsby-remark-autolink-headersはプラグインの1つです。<br>
+*gatsby-remark-autolink-headers* はプラグインの1つです。<br>
 以下のようなことができます。
 
 * 見出しタグにidを振る
@@ -46,15 +46,15 @@ gatsby-remark-autolink-headersはプラグインの1つです。<br>
 ### gatsby-remark-autolink-headersをインストール
 `npm`インストールします。
 
-```bash
+```bash:title=コマンド
 npm install gatsby-remark-autolink-headers
 ```
 ### gatsby-config.jsにプラグインの追記
-gatsby-remark-autolink-headersはgatsby-transformer-remarkのサブプラグインです。<br>なので、gatsby-config.jsの*gatsby-transformer-remarkのoption*に記載します。
+*gatsby-remark-autolink-headers* は *gatsby-transformer-remark* のサブプラグインです。<br>なので、gatsby-config.jsの *gatsby-transformer-remarkのoption* に記載します。
 
-テーマGatsby Starter Blogを利用していればgatsby-transformer-remarkはインストールされているはずです。
+テーマGatsby Starter Blogを利用していれば*gatsby-transformer-remark*はインストールされているはずです。
 
-```js
+```js{6}:title=gatsby-config.js
 module.exports = {
   plugins: [
     {
@@ -68,7 +68,7 @@ module.exports = {
 
 ```
 
-<br><br>このプラグイン1コ問題があって、公式サイトによると*プラグインgatsby-remark-prismjsよりも前に読み込む必要があります*。
+<br><br>このプラグイン1コ問題があって、公式サイトによると**プラグインgatsby-remark-prismjsよりも前に読み込む**必要があります。
 
 ```js
 // good
@@ -95,14 +95,13 @@ module.exports = {
 ```
 
 ### gatsby-remark-autolink-headersを実装
-オプションを設定しなければ、以下のように無駄なコードも出力されます。
 
-![](./images/2020/12/entry410-1.jpg)
+実装します。
 
 [オプション](#オプションの一覧)の説明については記事の後ろに記載します。
 
 
-```js
+```js{6-12}:title=gatsby-config.js
 module.exports = {
   plugins: [
     {
@@ -122,15 +121,18 @@ module.exports = {
   ]
 }
 ```
-
 今回はシンプルにアイコンなし。以下のように設定しました。
 
 ![](./images/2020/12/entry410-2.jpg)
 
+オプションを設定しなければ、以下のように無駄なコードも出力されます。
+
+![](./images/2020/12/entry410-1.jpg)
+
 ### 目次を出力するコンポーネントを作成する
 次に目次を出力するコンポーネントを作成します。
 
-src/components/内にtable-of-content.jsを追加します。
+table-of-content.jsを追加します。
 ```
 src/
     ├ templates/
@@ -141,12 +143,12 @@ src/
 
 コードはこんな感じです。
 
-```js
+```js:title=table-of-content.js
 import React from "react";
 
 const Topic = props => {
   return (
-    <div class="mokujiList">
+    <div>
       <h2>目次</h2>
         <div
           dangerouslySetInnerHTML={{
@@ -174,19 +176,16 @@ tableOfContents(maxDepth: 3)
 
 ということで、見出し3（*maxDepth: 3*）まで取得することにしました。
 
-あとは記事の読み込みたい場所にコンポーネントを出力するだけです。
+あとは記事詳細テンプレの読み込みたい場所にコンポーネントを出力するだけです。
 
-```js
+```js{1,6,47}:title=blog-post.js
 import TOC from "../components/table-of-content"
 
 //~コード省略~
-
 const BlogPostTemplate = ({ data, location }) => {
-  {/*読み込みたい場所に挿入*/}
+  {/*~コード省略*/}
   <TOC data={data.markdownRemark.tableOfContents} />
-
-  //~コード省略~
-
+  {/*~コード省略*/}
 }
 
 export default BlogPostTemplate
@@ -235,43 +234,28 @@ export const pageQuery = graphql`
         tags
       }
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
+    # 省略
   }
 `
 ```
 ## 出力されるタグをulからolに変え、開閉ボタンをつける
-リスト出力がul（アンオーダーリスト）なのは個人的にはちょっと気に入らないです。<br>
+リスト出力がul（アンオーダーリスト・順不同リスト）なのは個人的にはちょっと気に入らないです。<br>
 なのでここから少し改変します。<br><br>
 
-JavaScript`replace`で`ul>`から`ol>`に置換します。<br>（閉じタグもあるのでこのような形にしました）
+JavaScript `replace` で `ul>` から `ol>` に置換します。<br>（閉じタグもあるのでこのような形にしました）
 
-後ほどアコーディオン機能を実装します。チェックボックスを追加して`h2`を`label`に書き換えておきます。
-```js
+後ほどアコーディオン機能を実装します。チェックボックスを追加して `h2` を `label` に書き換えておきます。
+```js{8,9}:title=table-of-content.js
 import React from "react";
 
 const Topic = props => {
   const list = props.data.replace(/(ul>)/gi, 'ol>');
 
   return (
-    <div class="p-box--gray u-mblg">
+    <div className="p-box--gray u-mblg">
       <input type="checkbox" class="mokuji" id="mokuji" />
-      <label class="c-content__heading" for="mokuji">目次</label>
-      <div class="c-editArea mokujiList">
+      <label className="c-content__heading" for="mokuji">目次</label>
+      <div className="c-editArea mokujiList">
         <div
           dangerouslySetInnerHTML={{
             __html: list,
@@ -295,7 +279,8 @@ export default Topic;
 
 <card id="/blogs/entry315/"></card>
 
-```js
+```js{2,8,18}:title=table-of-content.js
+import React from "react";
 import styled from "styled-components" //追加
 
 const TableOfContent = props => {
@@ -304,7 +289,7 @@ const TableOfContent = props => {
   return (
     <TOC>
       <input type="checkbox" class="mokuji" id="mokuji" />
-      <label class="heading" for="mokuji">
+      <label className="heading" for="mokuji">
         目次
       </label>
       <div
@@ -316,13 +301,11 @@ const TableOfContent = props => {
   )
 }
 export default TableOfContent
-
 // 省略
 ```
 style用のコンポーネントのコードです。
 
-コンポーネント化してスタイルを描きたい場合は、styled-componentsのインストールが必要です。
-```css
+```js:title=table-of-content.js
 const TOC = styled.div`
   border: 1px solid #aaa;
   padding: 0;
@@ -402,6 +385,11 @@ const TOC = styled.div`
   }
 `
 ```
+コンポーネント化してスタイルを書きたい場合は、styled-componentsのインストールが必要です。
+
+```bash:title=コマンド
+npm i styled-components
+```
 
 ![完成](./images/2020/12/entry410-3.jpg)
 
@@ -425,6 +413,8 @@ const TOC = styled.div`
 
 ## まとめ
 目次があると記事の全貌がわかり、読むか読まないかの判断ができ、ユーザーに優しいです。
+
+次の記事は「[プラグインナシで一覧にページネーション実装](/blogs/entry413/)」です。
 
 実際私のサイトでもヒートマップで確認すると、目次ってかなりクリックされているんですよ。
 

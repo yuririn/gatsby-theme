@@ -2,7 +2,7 @@
 title: Gatsbyブログサイト移行物語~プラグインHelmetでSEO調整~
 date: 2020-12-16
 modifieddate: 2022-01-03
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
@@ -44,26 +44,33 @@ Helmetは「*Gatsby Starter Blog*」に最初からインストールされて�
   |    ├ ogp.png（汎用ogp画像）
   |    └ logo.png（サイトのロゴ ）
   └ src/
+    |  ├ thumbnail/ 記事のキービジュアルが格納されている
     |  └ templates/
     |    └ blog-post.js
     └ components/
           └ seo.js（head内にmetaタグなどを出力する）
 ```
 
-
 ## OGP画像が取得できるように下準備
-og:imageや、twitter:card、meta:thumbnailに画像が追加できるようにします。
+Facebook、twitter、スマホでのGoogle検索一覧にも（運が良ければ）サムネイル画像が表示できるようにします。
 
-基本的には[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](http://localhost:8000/blogs/entry406/)で設定した、キービジュアル画像をOGP画像として使いますが、設定のないページでは共通のogp画像を使います。
+```html
+<!-- Facebookなど -->
+<meta property="og:image" content=" サムネイル画像の URL" />
+<!-- twitter -->
+<meta property="twitter:image" content="サムネイル画像の URL">
+<!-- スマホでのGoogle検索一覧 -->
+<meta name="thumbnail" content="サムネイル画像の URL">
+```
+OGP画像は以下のように出しわけします。
 
-static/images/に汎用画像ogp.pngをおいておきます。
-
-記事などはそれぞれのアイキャッチをOGPとして出力したいので、アイキャッチのフルパスが取得できるようにします。
+* ブログ記事...[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](http://localhost:8000/blogs/entry406/)で設定した、キービジュアル画像
+* ブログ記事以外（一覧やトップページなど）...共通画像
 
 ### 基本のアイキャッチの設定のあるblog-list.jsを改造する
-画像のパスを取得するため、allFileにpublicURLを追加します。
+画像のパスを取得するため、GraphQLのスキーマ `allFile` に `publicURL` を追加します。
 
-```js
+```js{21}:title=blog-list.js
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
@@ -84,7 +91,6 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          # ↓追加
           publicURL
           relativePath
           childImageSharp {
@@ -101,8 +107,8 @@ export const pageQuery = graphql`
   }
 `
 ```
-ogp画像のパスを取得し、seo.jsに値を渡します。
-```js
+`<Seo/>`コンポーネントに値を付与します。ogp画像のパスを取得し、seo.jsに値を渡します。
+```js{15,13}:title=blog-list.js
 // 省略
 const BlogPostTemplate = ({ data, location }) => {
   // 省略
@@ -120,23 +126,17 @@ const BlogPostTemplate = ({ data, location }) => {
         location={location}
       />
 ```
-トップページの判定をするためにすべてのテンプレに`location`属性を追加します。
+ページを出力しているすべてのテンプレに`location`属性を追加します。
 
 seo.jsを変更します。
 
-```js
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
+```js{7,28,30-31,45-48,61-64,81-84}:title=seo.js
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
+// img,location追加
 const Seo = ({ description, lang, meta, title, img, location }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -157,9 +157,9 @@ const Seo = ({ description, lang, meta, title, img, location }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
-  const imgPath = `${site.siteMetadata.siteUrl.replace(/\/$/, "")}${
-    img ? img : "/images/ogp.png"
-  }`
+  // 画像パス取得
+  const imgPath = `${site.siteMetadata.siteUrl.replace(/\/$/, "")}${img ? img : "/images/ogp.png"}`
+  // トップページか判定
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
@@ -234,11 +234,24 @@ Seo.propTypes = {
 }
 
 export default Seo
-
+```
+補足すると、og:typeをトップページ以外はwebpageで判定しています。
+```js
+{
+  property: `og:type`,
+  content: `${isRootPath ? "website" : "webpage"}`,
+},
+```
+Twitterカードもサイズをお好みで変えてください。
+```js
+{
+  name: `twitter:card`,
+  content: `summary_large_image`,
+},
 ```
 
 ## URLの正規化をする
-このサイトはページネーションがあるので投稿が増えると、一覧ページが無限に増えます。<br>
+このサイトは投稿が増えると、一覧ページが無限に増えます。<br>
 類似ページが何個もあると検索エンジンに認識されるのはSEO的にもよろしくないので、カノニカル属性を使ってURLを正規化します。 <br>※ FBシェアにおけるパラメーターの不具合を発見しcanonilcal属性を修正しました。
 ```html
 <link rel="canonical" href="URL"/>
@@ -248,13 +261,14 @@ export default Seo
 
 URLに`/page/数字/`を含む場合は除去し、そのURLをcanonical属性として出力します。
 
-```js
+```js{6,23}:title=seo.js
   // 省略
   const isRootPath = location.pathname === rootPath
 
   let blogUrl = location ? location.href : site.siteMetadata.siteUrl
-  // ページネーション削除
+  // 一覧の2ページ目以降は除去
   blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
+
   return (
     <Helmet
       htmlAttributes={{
@@ -277,15 +291,15 @@ URLに`/page/数字/`を含む場合は除去し、そのURLをcanonical属性�
 // 省略
 ```
 ## 構造化データ追加
-構造化データを追加します。トップページはtypeをWebSiteそれ以外はWebPageとします。
+構造化データを追加します。トップページはtypeを`WebSite`それ以外は`WebPage`とします。
 
 またブログが記事のもののみ、BlogPosting（*この投稿はブログだよ！！って検索エンジンに教えます*）の構造化データを追加します。
 ### ページのデータ
 seo.jsに構造化データのJSONを出力できるようにします。mdファイルも公開日はもちろん、更新日（modifieddate）が取得できるようにしておきます。
 
-更新されて、手が入っているページかが大事です。
+何が大事って、**更新されて、手が入っているページ**かです。古い記事でも更新していることをアピールできることが大事です。
 
-```
+```md{4}:title=mdファイル
 ---
 title: 記事サンプル
 date: 2020-11-26
@@ -298,14 +312,9 @@ tags: ['Gatsby', 'React']
 ---
 ```
 
-```js
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
+JSONデータを追記して、出力します。
 
+```js:title=seo.js
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
@@ -366,7 +375,7 @@ const Seo = props => {
   }
 
   // JSON+LDの設定
-  let jsonLdConfigs = [
+  let jsonLd = [
     {
       "@context": "http://schema.org",
       "@type": isRootPath ? "webSite" : "webPage",
@@ -400,7 +409,7 @@ const Seo = props => {
       author,
       publisher,
     }
-    jsonLdConfigs = [...jsonLdConfigs, article]
+    jsonLd = [...jsonLd, article]
   }
 
   return (
@@ -410,7 +419,7 @@ const Seo = props => {
       <link rel="canonical" href={blogUrl} />
       {/* 構造化データ出力 */}
       <script type="application/ld+json">
-        {JSON.stringify(jsonLdConfigs)}
+        {JSON.stringify(jsonLd)}
       </script>
     </Helmet>
   )
@@ -423,97 +432,233 @@ export default Seo
 ```
 ### パンくずリスト
 
-パンくずリストの構造化データも作成します。先ほどページ用に作ったJsonデータ`jsonLdConfigs`と結合させます。
+パンくずリストの構造化データも作成します。先ほどページ用に作ったJsonデータ`jsonLd`と結合させます。
 
-カテゴリーとタグのテンプレに`type`を追加します。
+現時点では目に見えたパンくずリストはありませんが、
 
-こちらはカテゴリーのテンプレのSeoコンポーネントです。
+ブログ・カテゴリー・タグのテンプレに`type`を追加します。こちらはカテゴリーのテンプレのSeoコンポーネントです。
 
 属性がちゃんとセットされているか確認しておきましょう。
 ```js
+{/*ブログ*/}
+<Seo
+  title={title}
+  location={location}
+  type="blog-list"
+  discription="ブログ一覧記事です。"
+/>
+{/*カテゴリー*/}
 <Seo
   title={cate.name}
   location={location}
-  type="list"
+  type="cate-list"
   discription={`${cate.name}一覧記事です。${cate.description}`}
 />
+{/*タグ*/}
+<Seo
+  title={tag}
+  location={location}
+  type="tag-list"
+  discription={`${tag}一覧記事です。`}
+/>
 ```
-
+トップページ以外にパンくずの構造化データを追加します。
 ```js
 if (!isRootPath) {
-    let breadCrumbList = [
+  let breadCrumbList
+  const home = {
+    "@type": "ListItem",
+    "position": 1,
+    "item": `${site.siteMetadata.siteUrl}/`,
+    "name": "ホーム",
+  }
+  const blogList = {
+    "@type": "ListItem",
+    "position": 2,
+    "item": `${site.siteMetadata.siteUrl}/blogs/`,
+    "name": `ブログ一覧`,
+  }
+
+  if (type === "blog" || type === "cate-list" || type === "tag-list") {
+    breadCrumbList = [
+      home,
+      blogList,
       {
         "@type": "ListItem",
-        position: 1,
-        item: {
-          "@id": `${site.siteMetadata.siteUrl}/`,
-          name: "ホーム",
-        },
-      },
+        "position": 3,
+        "item": blogUrl,
+        "name": title,
+      }
     ]
-    if (type === "blog") {
-      breadCrumbList = [
-        ...breadCrumbList,
-        {
-          "@type": "ListItem",
-          position: 2,
-          item: {
-            "@id": `${site.siteMetadata.siteUrl}/blogs/`,
-            name: `ブログ一覧`,
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          item: {
-            "@id": blogUrl,
-            name: title,
-          },
-        },
-      ]
-    } else if (type === "list") {
-      breadCrumbList = [
-        ...breadCrumbList,
-        {
-          "@type": "ListItem",
-          position: 2,
-          item: {
-            "@id": `${site.siteMetadata.siteUrl}/blogs/`,
-            name: `ブログ一覧`,
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          item: {
-            "@id": blogUrl,
-            name: title,
-          },
-        },
-      ]
-    } else {
-      breadCrumbList = [
-        ...breadCrumbList,
-        {
-          "@type": "ListItem",
-          position: 2,
-          item: {
-            "@id": blogUrl,
-            name: title,
-          },
-        },
-      ]
-    }
-    jsonLdConfigs = [
-      ...jsonLdConfigs,
+  } else if (type === "blog-list") {
+    breadCrumbList = [
+      home,
+      blogList
+    ]
+  } else {
+    breadCrumbList = [
+      home,
       {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: breadCrumbList,
-      },
+        "@type": "ListItem",
+        "position": 2,
+        "item": blogUrl,
+        "name": title,
+      }
     ]
   }
+  jsonLd = [
+    ...jsonLd,
+    {
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadCrumbList,
+    },
+  ]
+}
 ```
+コードがきちんと動いているか、エラーがないかなどは[リッチリザルトテスト](https://search.google.com/test/rich-results)で確認しましょう。
+
+![](./images/2020/12/entry418-6.jpg)
+
+## プラグインを使ってGoogleAnalyticsを追加（2021年4月6日追記！）
+
+プラグインを使ってGoogleアナリティクスで計測できるようにします。
+
+~~gatsby-plugin-google-analytics~~じゃなく、[gatsby-plugin-google-gtag](https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/)を使います！
+
+<small>※ 通常のGAタグのIDを使い、GA4と連携させます。</small>
+
+```bash:title=コマンド
+npm install gatsby-plugin-google-gtag
+```
+
+プラグインをインストールしたら、gatsby-node.jsに追記します。
+
+Googleアナリティクスはプラグインの一番上の方に追記してください。<br><br>
+
+トラッキングIDは直接書くこともできますが、**Netlifyであれば環境変数で設定する方がベター**です。
+
+```js:title=gatsby-node.js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          process.env.GOOGLE_ANALYTICS_TRACKING_ID,//トラッキングID
+          process.env.GOOGLE_ADSENSE_ID,//Adsenseもまとめて入れられる！！
+        ],
+        pluginConfig: {
+          head: true,//headerに追記
+        },
+      },
+    },
+  ],
+}
+```
+
+環境変数はNetlifyの管理画面から設定したいプロジェクトを選び、deploy build > environmentを開きます。
+
+あとはEnvironment valiables（環境変数）を登録するだけです。
+
+![Netlifyの管理画面からプロジェクトを選択し、deploy build environmentから設定](./images/2020/12/entry418-3.jpg)
+
+*process.env.プラス設定した変数名*で呼び出せます。
+```
+process.env.GOOGLE_ANALYTICS_TRACKING_ID
+```
+
+<br>念の為analyticsのトラッキングコードIDの調べ方です。
+
+Analyticsの管理画面から確認できます。
+
+![analyticsのトラッキングコードからIDのみ登録](./images/2020/12/entry418-4.jpg)
+
+
+ここまでできたらあとはディプロイしたらanalyticsでトラッキングできるようになります。<br>
+
+## Search consoleと連携
+search consoleも連携しましょう。メタタグにgoogle-site-verificationを追加するのが簡単です。
+
+メタタグはsearch consoleの管理画面 > 設定 > 所有者の確認 >「HTMLタグ」から調べることができます。
+
+![search consoleの管理画面 > 設定 > 所有者の確認から「HTML タグ」](./images/2020/12/entry418-5.jpg)
+
+```html
+<meta name="google-site-verification" content="値" />
+```
+```js:title=seo.js
+// ~ 省略 ~
+
+return (
+    <Helmet
+      htmlAttributes={{
+        lang,
+      }}
+      title={title}
+      titleTemplate={pageName}
+      meta={[
+
+    // ~ 省略 ~
+
+        {
+          name: `google-site-verification`,
+          content: `値`,
+    },
+
+        // ~ 省略 ~
+```
+
+## プラグインを使ってサイトマップを出力
+最後に、サイトマップの出力をしましょう。
+これでsearch consoleから、いつでも更新も通知できるようになります。
+
+[gatsby-plugin-sitemap](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/)
+
+```bash:title=コマンド
+npm install gatsby-plugin-sitemap
+```
+siteMetadata内のsiteUrlに必ずドメインを設定してください。
+
+```js{3}:title=gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    siteUrl: `https://ginneko-atelier.com`,
+  },
+  plugins: [`gatsby-plugin-sitemap`]
+}
+```
+
+私のケースではページネーションで生成されたページや404をサイトマップから除外しました。
+
+site-map.xmlはルートに出力するように設定しました。
+
+```js:title=gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/`,
+        excludes: [
+          `/blogs/page/*`,
+          `/404?(.*)`,
+          `/blogs/*/page/*`,
+          `/blogs/tags/*/page/*`,
+        ],
+      },
+    }
+  ]
+}
+```
+メインのサイトマップファイルは*sitemap-index.xml*として出力されます。
+
+ここにsitemap-0.xml、sitemap-1.xmlという感じで追加されていきます。
+
+Search Consoleからサイトマップを登録しておきます。
+
+![サチコから読み込んでおく](./images/2020/12/entry418-7.jpg)
+
 ## まとめ・SEO情報が更新されたらブログを書くのが楽しくなる！
 昨年は突貫でかなりやばいコードを書いていて申し訳な気持ちですが少しまともになりましたw。
 

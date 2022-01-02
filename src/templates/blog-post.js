@@ -53,6 +53,7 @@ const BlogPostTemplate = ({ data, location }) => {
         date={post.frontmatter.date.replace(/\./g, "-")}
         location={location}
         ogp={ogpSrc}
+        type="blog"
       />
       <Header>
         <div

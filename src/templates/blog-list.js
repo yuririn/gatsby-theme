@@ -15,12 +15,12 @@ const blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
   const posts = data.allMarkdownRemark.nodes
   return (
-    <Layout location={location} title="銀ねこアトリエ">
+    <Layout location={location} title="ブログ一覧">
       <Seo
         title="ブログ一覧"
         description={`「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`}
         location={location}
-        type="blogs"
+        type="blog-list"
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">

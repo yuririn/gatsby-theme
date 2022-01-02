@@ -1,8 +1,8 @@
 ---
 title: Gatsbyブログサイト移行物語~個別ページテンプレート作成~
 date: 2020-12-14
-modifieddate: 2021-01-12
-hero: thumbnail/2020/entry401.jpg
+modifieddate: 2022-01-01
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
@@ -52,7 +52,7 @@ gatsby-node.jsにページを生成するためのコードを追記しておき
 `createPage()`関数でページは生成されます。
 
 filterでfrontmatterの*pagetypeがblog以外のものを抽出*します。
-```js
+```js:title=gatsby-node.js
 // ~ 省略 ~
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // ~ 省略 ~
@@ -80,7 +80,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 記事のIDが一致するものを出力するように設定します。
 
-```js
+```js:title=page-post.js
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
@@ -156,7 +156,7 @@ const BlogEntry = styled.section`
 
 ![プライバシーポリシー](./images/2020/12/entry416-1.jpg)
 
-```
+```md:title=privacy-policy.md
 ---
 title: プライバシーポリシー
 description: 個人情報保護方針についてのページです
@@ -173,7 +173,7 @@ description: 個人情報保護方針についてのページです
 ## まとめ・個別ページの追加はとってもカンタン
 とってもカンタンでしたね！
 
-次回「*Gatsbyブログサイト移行物語*」ではGatsbyサイトでの[OGP画像出力やプラグインHelmetを使ったSEO対応](/blogs/entry418/)の記事です。
+次回はGatsbyサイトでの[OGP画像出力やプラグインHelmetを使ったSEO対応](/blogs/entry418/)の記事です。
 
 皆さんのコーディングライフの一助となれば幸いです。
 

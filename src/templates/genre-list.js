@@ -28,7 +28,7 @@ const category = ({ pageContext, data, location }) => {
         title={`${cateName}`}
         description={`「${cateName}」の記事一覧。${cateDescription}。${data.site.siteMetadata.description}`}
         location={location}
-        type="genre"
+        type="genre-list"
       />
 
       <div className="p-pageHeader">

@@ -2,7 +2,7 @@
 title: Gatsbyブログサイト移行物語~インストールからNetlifyデプロイまで~
 date: 2020-11-26
 modifieddate: 2021-12-28
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
@@ -59,11 +59,11 @@ ES6以上の記述方法がある程度知っている。<br>
 
 <card id="/blogs/entry477/"></card>
 
-```pash
+```bash:title=コマンド
 npm install -g gatsby-cli
 ```
 もしくは
-```pash
+```bash:title=コマンド
 sudo npm install -g gatsby-cli
 ```
 
@@ -78,19 +78,19 @@ sudo npm install -g gatsby-cli
 
 公式ページのStarterの中に「[gatsby-starter-blog](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-blog/)」があるので「Install with gatsby-cli」から以下コードをコピーします。
 
-```bash
+```bash:title=コマンド
 npx gatsby new gatsby-starter-blog https://github.com/gatsbyjs/gatsby-starter-blog
 ```
 
 gatsby-starter-blog はディレクトリー名なのでお好みで変えてください。
 
-```bash
+```bash:title=コマンド
 npx gatsby new my-project https://github.com/gatsbyjs/gatsby-starter-blog
 ```
 
 cdコマンドで移動します。
 
-```bash
+```bash:title=コマンド
 cd my-project
 ```
 
@@ -115,7 +115,7 @@ Netlifyにデプロイしたいのでgitにも追加します。
 
 コミットできるようにしておきます。<br>
 まずは「first commit」とコメントしてコミット。
-```bash
+```bash:title=コマンド
 git init
 git add .
 git commit -m 'first commit'
@@ -126,11 +126,11 @@ git commit -m 'first commit'
 ![リモートと連携します。連携するURLはgithubのリポジトリページから取得](./images/2020/11/entry401-6.png)
 
 以下のコマンドでリモートリポジトリと連携できます。
-```bash
+```bash:title=コマンド
 git remote add origin https://github.com/yuririn/gatsby-theme.git
 ```
 gitアカウントを複数使い分けている人は、**ssh接続じゃないとpushできない**ので以下のコマンドで。
-```bash
+```bash:title=コマンド
 git remote add origin git@github.com:yuririn/gatsby-theme.git
 ```
 注意！！！
@@ -141,18 +141,18 @@ git remote add origin git@github.com:yuririn/gatsby-theme.git
 [GitHubでssh接続する手順~公開鍵・秘密鍵の生成から~](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)
 
 とりあえず今回は mainブランチ へプッシュできるようにしておきましょう！！
-```bash
+```bash:title=コマンド
 git push --set-upstream origin main
 ```
 追加できているか確認。
-```bash
+```bash:title=コマンド
 git remote -v
 ```
 ## Gatsbyを起動してみる
 早速Gatsbyを起動してみましょう！
 
 以下コードでタスクランナーが走ります。
-```bash
+```bash:title=コマンド
 npm start
 ```
 他にもコマンドがいくつかありますが、頻繁に使うのは`npm run clean`ぐらいです。
@@ -171,7 +171,7 @@ npm start
 
 サイトメタ情報変更。お好みで変更してください。
 
-```js
+```js:title=gatsby-config.js
 siteMetadata: {
   title: `銀ねこアトリエ`,
   author: {
@@ -191,7 +191,7 @@ siteMetadata: {
 
 記事はcontent/blog内に格納されています。
 
-```js
+```js:title=gatsby-config.js
 plugins: [
   {
     resolve: `gatsby-source-filesystem`,
@@ -211,7 +211,7 @@ plugins: [
 ![タイトルやメタ情報を追記](./images/2020/11/entry401-7.png)
 
 以下の通りfrontmatterを書いてみます。
-```md
+```md:title=test.md
 ---
 title: テスト投稿
 date: 2020-11-26
@@ -226,7 +226,7 @@ description: この記事はテスト投稿です
 
 それに続けて適当に本文を書いてみましょう！
 
-```md
+```md:title=test.md
 ## 見出し2
 はじめての投稿です！ワクワク、ドキドキ！
 
@@ -235,11 +235,11 @@ description: この記事はテスト投稿です
 今回はテスト練習なので、これでコミット&プッシュしてデプロイしてみます。
 
 **ファイルの追加**
-```bash
+```bash:title=コマンド
 git add .
 ```
 通常のコミット。
-```bash
+```bash:title=コマンド
 git commit -m '記事追加'
 ```
 
@@ -247,7 +247,7 @@ git commit -m '記事追加'
 
 ![コミットメッセージを概要と詳細に分ける](./images/2020/11/entry401-13.png)
 
-```bash
+```bash:title=コマンド
 git commit -F- <<EOM
 >記事追加
 >
@@ -314,7 +314,7 @@ Gatsby ではバージョンごとに*Nodeの求められるversionが違う*の
 いかがでしたでしょうか？<br>
 Github と連携して、gitのコマンドで mainブランチ に push するだけで公開できるようになったかと思います。
 
-次回はCSSを移行して、記事にサムネイルを足す方法をご紹介します！
+次回は「[ヘッダーとフッターを追加する](/blogs/entry484/)」をご紹介します！
 
 最後までお読みいただきありがとうございました。
 

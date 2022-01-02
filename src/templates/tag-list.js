@@ -21,7 +21,7 @@ const tags = ({ pageContext, data, location }) => {
         title={tag}
         description={`「${tag}」の記事一覧。${data.site.siteMetadata.description}`}
         location={location}
-        type="tags"
+        type="tag-list"
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">

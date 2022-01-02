@@ -2,7 +2,7 @@
 title: Gatsbyブログサイト移行物語~投稿テンプレにカテゴリやらキービジュアル（アイキャッチ）追加~
 date: 2020-11-30
 modifieddate: 2021-12-30
-hero: thumbnail/2020/entry401.jpg
+hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
@@ -41,7 +41,7 @@ lead: ["GatsbyJSでサイトのリニューアル！","ブログのファース�
 
 まずは普段更新する記事用のテンプレを作ります。長いですが、目次を活用しながら読み進めてください。
 
-完成目標です。
+今回の完成目標です。
 
 ![完成目標](./images/2020/11/entry406-3.jpg)
 
@@ -51,10 +51,9 @@ lead: ["GatsbyJSでサイトのリニューアル！","ブログのファース�
 gatsby-node.jsのコメントから。
 
 > Explicitly define the siteMetadata {} object<br>
-> This way those will always be defined even if removed from gatsby-config.js<br
+> This way those will always be defined even if removed from gatsby-config.js<br>
 > Also explicitly define the Markdown frontmatter<br>
-> This way the "MarkdownRemark" queries will return `null` even when no<br>
-> blog posts are stored inside "content/blog" instead of returning an error<br><br>
+> This way the "MarkdownRemark" queries will return `null` even when no blog posts are stored inside "content/blog" instead of returning an error<br><br>
 > siteMetadata 内のデータ（オブジェクト）を明示的に定義します。<br>
 > gatsby-config.jsから削除された場合でも、これらは常に定義され。Markdown内のfrontmatterも明示的に定義します。
 > このように、「MarkdownRemark」クエリは、ブログの投稿は、エラーを返す代わりに「content/blog」内に保存されます。
@@ -79,7 +78,7 @@ gatsby-node.jsのコメントから。
 ```
 gatsby-config.jsを見ると */content/blog* と */src/images* 以下に画像が格納できるようになっているのでこのまま使います。
 
-```js
+```js{7,15}:title=gatsby-config.js
 module.exports = {
   plugins: [
     `gatsby-plugin-image`,
@@ -122,7 +121,7 @@ v4以降、ディレクトリー構造の変更方が分かっておらず、blo
       └ blogs/entry1.md （追加）
 ```
 
-```md
+```md:title=mdファイル
 ---
 title: テスト投稿
 date: 2021-11-26
@@ -136,7 +135,7 @@ description: この記事はテスト投稿です
 <msg txt="ルールが煩雑だと記事も破綻しますからね。。。"></msg>
 
 #### entry1.md を新たに作り Frontmatter を編集する
-```md
+```md:title=entry1.md
 ---
 title: 記事1
 date: 2021-11-26
@@ -176,7 +175,7 @@ gatsby-node.js ファイルから `exports.createSchemaCustomization` 〜とい�
 
 `type Frontmatter`に *cate*、*hero*、*pagetype* を追加します。
 
-```js
+```js{12-15}:title=gatsby-node.js
 //~ 省略
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
@@ -188,13 +187,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-
-      # ↓追加↓
       pagetype: String
       tags: [String]
       cate: String
       hero: String
-      # ↑追加↑
     }
 
     type Fields {
@@ -212,7 +208,7 @@ GraphQLは*クエリ言語*なので、mdファイルのfrontmatter(---で囲ん
 
 取得するデータは `result` に格納設定されています。 `frontmatter`に、`hero`、`pagetype`をgatsby-node.jsの上の方に追記します。
 
-```js
+```js{17-20}:title=gatsby-node.js
 // 省略
 
 exports.createPages = async ({ graphQL, actions, reporter }) => {
@@ -229,12 +225,10 @@ exports.createPages = async ({ graphQL, actions, reporter }) => {
             fields {
               slug
             }
-            # ↓追記↓
             frontmatter {
               hero
               pagetpe
             }
-            # ↑追記↑
           }
         }
       }
@@ -250,17 +244,16 @@ exports.createPages = async ({ graphQL, actions, reporter }) => {
 * `pagetype` `blog`だけに絞り込んで出力
 * prev nextボタンも`pagetype` `blog`のみ動くように修正
 
-```js
+```js{4,19,8-9}:title=gatsby-node.js
 // 省略
 if (posts.length > 0) {
   // filterでpagetypeがblogのものだけ抽出
   const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
+
   blogPosts.forEach((post, index) => {
     //書き換える
     const previousPostId = index === 0 ? null : blogPosts[index - 1].id
-    //書き換える
-    const nextPostId =
-      index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
+    const nextPostId = index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
 
     createPage({
       path: post.fields.slug,
@@ -300,7 +293,7 @@ if (posts.length > 0) {
 
 このように取得した値は、絞り込みなどに使えます。
 
-```js
+```js{7}:title=blog-post.js
 export const pageQuery = GraphQL`
   query BlogPostBySlug(
     $id: String!
@@ -318,7 +311,7 @@ export const pageQuery = GraphQL`
 
 *gatsby-image-plugin* 出力するための値を取得しておきます。
 
-```
+```js{11,13}:title=blog-post.js
 //省略
 site {
   siteMetadata {
@@ -371,7 +364,7 @@ placeholder: BLURRED
 必要なデータは`childImageSharp`に格納されています。
 
 
-```js
+```js{7}:title=blog-post.js
 // 省略
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -396,58 +389,11 @@ sources: (2) [{…}, {…}]
 layout: "constrained"
 //省略
 ```
-
-### タグやカテゴリも取得できるようにする
-
-`markdownRemark` に *cate*、*tags*、を追加します。
-
-```js
-//省略
-markdownRemark(id: { eq: $id }) {
-  id
-  excerpt(pruneLength: 160)
-  html
-  frontmatter {
-    title
-    date(formatString: "MMMM DD, YYYY")
-    description
-    # ↓追加
-    cate
-    tags
-    # ⇧追加
-  }
-}
-```
-
-お好みで日付フォーマットも変更しておきます。
-```js
-date(formatString: "YYYY-MM-DD")
-```
-
-デバッグ。
-
-```js
-// 省略
-const BlogPostTemplate = ({ data, location }) => {
-  // 省略
-  const { previous, next } = data
-  const eyeCatchImg = data.allFile.edges[0].node.childImageSharp
-  const { cate, tag } = data.markdownRemark.frontmatter//追記
-  console.log(cate, tag)//デバッグ
-
-  return (
-    <Layout location={location} title={siteTitle}>
-  // 省略
-```
-出力結果は以下の通り。ちゃんとmdファイルからfrontmatterのデータが取れました。
-```js
-{cate: "web-developer", tags: (2) ['Gatsby', 'React']}
-```
 ### gatsby-plugin-imageでキービジュアルを出力
 
 starter blog にデフォルトで入っている `gatsby-plugin-image` をインポートします。
 
-```js
+```js{9}:title=blog-post.js
 import * as React from "react"
 import { Link, GraphQL } from "gatsby"
 
@@ -478,7 +424,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 では実際にテンプレートの `header` タグ内に実装してみます。
 
-```js
+```js{14-18}:title=blog-post.js
   // 省略
   const { previous, next } = data
   const eyeCatchImg = data.allFile.edges[0].node.childImageSharp//追加
@@ -501,10 +447,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
       </header>
     // 省略
 ```
-日時も`time`タグで書き直します。
-```html
-<p><time datetime={post.frontmatter.date}>{post.frontmatter.date}</time></p>
-```
 
 出力コードはこんな感じ。何も設定しなくても、`decoding="async"`が付与されています。
 
@@ -518,6 +460,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 /static/734c25c8328e14e4d8df99abaea453a2/ba986/eye-catch.png 1200w" alt="テスト投稿" style="object-fit: cover; opacity: 1;"></picture><noscript></noscript></div>
 ```
 
+ついでに記事の公開日時も`time`タグで書き直します。`time`タグを使うと検索エンジンが「時」を表しているコンテンツであることを認識してくれます。
+```html
+<p><time datetime={post.frontmatter.date}>{post.frontmatter.date}</time></p>
+```
 
 CSSを追加してないのでちょっとダサいけど出力できました。
 ![画像](./images/2020/11/entry406-2.png)
@@ -527,10 +473,55 @@ CSSを追加してないのでちょっとダサいけど出力できました�
 
 テンプレートにカテゴリーを追加します。
 
+### タグやカテゴリも取得できるようにする
+
+`markdownRemark` に *cate*、*tags*、を追加します。
+
+```js{10-11}:title=blog-post.js
+//省略
+markdownRemark(id: { eq: $id }) {
+  id
+  excerpt(pruneLength: 160)
+  html
+  frontmatter {
+    title
+    date(formatString: "MMMM DD, YYYY")
+    description
+    cate
+    tags
+  }
+}
+```
+
+お好みで日付フォーマットも変更しておきます。
+```js
+date(formatString: "YYYY-MM-DD")
+```
+
+データが取れるか確認。
+
+```js{6-7}:title=blog-post.js
+// 省略
+const BlogPostTemplate = ({ data, location }) => {
+  // 省略
+  const { previous, next } = data
+  const eyeCatchImg = data.allFile.edges[0].node.childImageSharp
+  const { cate, tag } = data.markdownRemark.frontmatter//追記
+  console.log(cate, tag)//デバッグ
+
+  return (
+    <Layout location={location} title={siteTitle}>
+  // 省略
+```
+出力結果は以下の通り。ちゃんとmdファイルからfrontmatterのデータが取れました。
+```js
+{cate: "web-developer", tags: (2) ['Gatsby', 'React']}
+```
+
 ### カテゴリの出力
 まずはカテゴリーのみ出力します。
 
-```js
+```js{17-20}:title=blog-post.js
   //省略
   const { cate } = data.markdownRemark.frontmatter
 
@@ -559,7 +550,7 @@ CSSを追加してないのでちょっとダサいけど出力できました�
 ```
 タグも追加。タグは複数あるので `map` で出力します。
 
-```js
+```js{11-16}:title=blog-post.js
   const { cate, tags } = data.markdownRemark.frontmatter
   //省略
   return (
@@ -593,7 +584,7 @@ react.development.js:220 Warning: Each child in a list should have a unique "key
 
 entry1.mdを複製してentry2.mdを作ります。
 
-```md
+```md:title=entry2.md
 ---
 title: 記事2
 date: 2021-12-22
@@ -612,7 +603,7 @@ tags: ['Gatsby', 'React']
 
 インストール方法は[ヘッダーとフッターを追加する - せっかくなのでstyled-componentsでスタイルを入れてみる](/blogs/entry484/#せっかくなのでstyled-componentsでスタイルを入れてみる)を参考にしてください。
 
-```js
+```js{4}:title=blog-post.js
 // 省略
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -628,12 +619,11 @@ styled-components用にタグを書き直します。
 3. 日付用のクラス追加と少しコード修正
 3. カテゴリ、タグのdlをDlへ
 4. 記事の本文出力を内包しているsectionをBlogEntryへ
-4. 記事の本文出力を内包しているsectionをBlogEntryへ
 5. ページ送りのnavをBlogPostNavにし、ulのインラインスタイルを削除
-```js
+```js:title=blog-post.js
   // 省略
   return (
-      {/* 1articleからArticleへ */}
+      {/* 1 articleからArticleへ */}
       <Article
         className="blog-post"
         itemScope
@@ -641,7 +631,7 @@ styled-components用にタグを書き直します。
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          {/* 2画像のラッパーを増やす */}
+          {/* 2 画像のラッパーを増やす */}
           <div className="keyvisual">
             <GatsbyImage
               image={getImage(keyVisual)}
@@ -649,7 +639,7 @@ styled-components用にタグを書き直します。
               key={post.frontmatter.title}
             />
           </div>
-          {/* 日付用のクラス追加 */}
+          {/* 3 日付用のクラス追加 */}
           <p className="date">
             更新日：
             <time datetime={post.frontmatter.date}>
@@ -657,7 +647,7 @@ styled-components用にタグを書き直します。
             </time>
           </p>
         </header>
-        {/* dlからDlへ */}
+        {/* 4 dlからDlへ */}
         <Dl>
           <dt>カテゴリ</dt>
           <dd>{cate}</dd>
@@ -668,7 +658,7 @@ styled-components用にタグを書き直します。
             return <dd key={`tag${index}`}>{tag}</dd>
           })}
         </Dl>
-        {/* sectionからBlogEntryへ */}
+        {/* 5 sectionからBlogEntryへ */}
         <BlogEntry
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
@@ -677,7 +667,7 @@ styled-components用にタグを書き直します。
           <Bio />
         </footer>
       </Article>
-      {/*navからBlogPostNavへ*/}
+      {/* 6 navからBlogPostNavへ*/}
       <BlogPostNav>
         <ul>
           {/*省略*/}
@@ -686,8 +676,10 @@ styled-components用にタグを書き直します。
     {/*省略*/}
 
 ```
-少しデザインを整えます。
-```js
+デザインを整えます。ファイルの下の方にスタイルを追記します。
+
+```js:title=blog-post.js
+// 省略
 const Article = styled.article`
   max-width: 750px;
   margin: 0 auto;
@@ -756,8 +748,9 @@ const Dl = styled.dl`
 
 その前に、gatsby-config.jsの基本情報が設定されている `siteMetadata` を確認し、必要があれば編集、追記してください。
 
-SNSを少し追記してみました。
-```js
+SNSアカウント情報を足してみました。
+
+```js{12-13}:title=gatsby-config.js
 module.exports = {
   siteMetadata: {
     title: `銀ねこアトリエ`,
@@ -782,7 +775,7 @@ gatsby-config.js の `siteMetadata` にはどのコンポネントやテンプ�
 `<StaticImage />` を使ってプロフィール画像を表示してあるので今回差し替えます。
 
 
-```js
+```js{18-19,38-41,60-68,70-78}:title=bio.js
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
@@ -800,10 +793,8 @@ const Bio = () => {
           }
           social {
             twitter
-            # ↓追加
             instagram
             youtube
-            # ↑追加
           }
         }
       }
@@ -899,13 +890,13 @@ return <StaticImage src={src}/>
 ### SNSリンクにアイコンを付与
 せっかくなのでfontAwesomeを使えるようにします。
 
-```
+```bash:title=コマンド
 npm i @fortawesome/free-brands-svg-icons @fortawesome/free-brands-svg-icons
 ```
-bio.jsに以下コードを追加。
-```js
+以下コードを追加。
+```js{3-8}:title=bio.js
 import { StaticImage } from "gatsby-plugin-image"
-// ↓追加↓
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faTwitter,
@@ -914,7 +905,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 ```
 アイコン用のタグを追加します。
-```js
+```js{7,17,26}:title=bio.js
 <li>
   <a
     href={`https://twitter.com/${social?.twitter || ``}`}
@@ -947,7 +938,7 @@ import {
 ```
 ### styled-components でスタイルを整える
 styled-componentsを使うためにタグを書き換えます。
-```js
+```js:title=bio.js
 return (
     {/*変更*/}
     <BioWrapper>
@@ -1013,8 +1004,8 @@ return (
 
 export default Bio
 ```
-スタイルも同じファイルの下の方に追記します。
-```js
+スタイルは下の方に追記します。
+```js:title=bio.js
 const BioWrapper = styled.div`
   text-align:center;
 
@@ -1067,24 +1058,12 @@ const Sns = styled.ul`
 完成はこんな感じ。
 
 ![完成目標](./images/2020/11/entry406-3.jpg)
+
 ## まとめ
 
 記事詳細ページはアレンジできるようになりました！
 
-このサイトでは以下のようなことを実装しています。
-
-* ヘッダーフッター出し分け
-* 一覧（記事全体、カテゴリー、タグ）
-* ページネーション
-* 関連記事
-* OGP出力
-* 人気記事
-* markdownでオリジナルタグ出力
-* 検索機能
-* 外部リンクを別ウィンドウで開く
-
-順次更新してきます。<br>
-ページネーションはなぜか知らんけど、プラグインなしで実装する羽目になりました。
+次回は「[ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)」です。
 
 皆さんのコーディングライフの一助となれば幸いです。
 
