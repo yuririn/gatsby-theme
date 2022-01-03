@@ -22,8 +22,10 @@ lead: ["今回でGatsbyカスタマイズ10記事！せっかく書いたブロ�
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
 9. *関連記事一覧出力*（←イマココ）
+11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
+12. [パンくずリストを追加する](/blogs/entry487/)
 
-このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[related-list](https://github.com/yuririn/gatsby-blog/tree/related-list)ブランチにあります。
 
@@ -210,8 +212,9 @@ styled-componentsは以下コマンドでインストール可能です。
 ```bash:title=コマンド
 npm i styled-components
 ```
-
-```js:title=related-list.js
+styled-componentsを追加。
+```js{3}:title=related-list.js
+// 省略
 import Img from "../components/img"
 import styled from "styled-components"
 
@@ -273,11 +276,11 @@ const Lists = ({ category, slug, tags }) => {
   )
   let posts = allMarkdownRemark.edges.filter(post => {
     if (post.node.fields.slug !== slug) {
-      if (post.node.frontmatter.cate === category) {
-        return true
-      }
+      // カテゴリーの一致出力
+      if (post.node.frontmatter.cate === category) return true
+      // タグの一致出力。記事のタグの中に一致するものがあればtrueを返す。
       for (const tag of tags) {
-        return post.node.frontmatter.tags.includes(tag)
+        if (post.node.frontmatter.tags.includes(tag)) return true
       }
     }
   })
@@ -315,7 +318,7 @@ const Lists = ({ category, slug, tags }) => {
                   alt={item.node.frontmatter.title}
                   image={item.node.frontmatter.hero}
                 ></Img>
-                <time datetime={item.node.frontmatter.date}>
+                <time dateTime={item.node.frontmatter.date}>
                   {item.node.frontmatter.date}
                 </time>
               </Link>
@@ -400,6 +403,6 @@ Googleアナリティクスで見ても、記事の検索機能もつけたせ�
 
 ぜひ、Gatsbyで興味ある方は関連記事の実装チャレンジしてください。
 
-次回以前ちょっとツイッターで話題にしてもらった404ページの作り方をアイデアも含めて記事にします。
+次は「[タグクラウドコンポーネントを作成する](/blogs/entry486/)」です。
 
 最後までお読みいただきありがとうございました。

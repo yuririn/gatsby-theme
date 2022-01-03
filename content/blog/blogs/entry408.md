@@ -22,10 +22,12 @@ lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテ
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
 9. [関連記事一覧出力](/blogs/entry430/)
+11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
+12. [パンくずリストを追加する](/blogs/entry487/)
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
-このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[blog-list](https://github.com/yuririn/gatsby-blog/tree/blog-list)ブランチにあります。
 

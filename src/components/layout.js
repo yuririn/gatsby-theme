@@ -29,6 +29,7 @@ export default Layout
 
 const GlobalStyle = createGlobalStyle`
   .p-entryCard {
+    list-style: none;
     margin-bottom: 20px;
     &__footer {
       margin-top: 10px;
@@ -67,10 +68,12 @@ const GlobalStyle = createGlobalStyle`
             border-top: none;
             padding-top: 0;
           }
-          display: flex;
-          flex-wrap:wrap;
-          align-items: flex-start;
-           position: relative;
+          article {
+            display: flex;
+            flex-wrap:wrap;
+            align-items: flex-start;
+            position: relative;
+          }
            border-bottom: 1px solid #e9e9e9;
            .p-entryCard__heading {
               font-size: 1.6rem;
@@ -116,10 +119,12 @@ const GlobalStyle = createGlobalStyle`
           }
          @media screen and (min-width: 768px) {
            width: 100%;
-           display: flex;
-           flex-wrap: wrap;
-           align-items: flex-start;
-           position: relative;
+           article {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            position: relative;
+           }
             .p-entryCard__img {
               width: 40%;
             }

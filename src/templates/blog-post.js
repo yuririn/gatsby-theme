@@ -215,6 +215,9 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       htmlAst
       tableOfContents(maxDepth: 3)
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "YYYY.MM.DD")

@@ -20,17 +20,22 @@ const favoritesList = {
   },
 }
 
-const List = ({ item, url }) => {
+const List = ({ item, url, key }) => {
   const { title, hero } = item
   return (
-    <article className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small">
-      <Link className="p-entryCard__img" to={url}>
-        <Img source={hero} title={title} />
-      </Link>
-      <Link to={url} className="p-entryCard__body">
-        <h3 className="p-entryCard__heading">{title}</h3>
-      </Link>
-    </article>
+    <li
+      key={key}
+      className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
+    >
+      <article>
+        <Link className="p-entryCard__img" to={url}>
+          <Img source={hero} title={title} />
+        </Link>
+        <Link to={url} className="p-entryCard__body">
+          <h3 className="p-entryCard__heading">{title}</h3>
+        </Link>
+      </article>
+    </li>
   )
 }
 
@@ -76,7 +81,7 @@ const Faves = ({ type }) => {
     <section className="p-section">
       <h2 className="c-heading--lg">{title}</h2>
       <Favorite>
-        <div className="c-grid add-numbering">
+        <ol className="c-grid add-numbering">
           {posts.map(item => {
             return (
               <List
@@ -86,7 +91,7 @@ const Faves = ({ type }) => {
               />
             )
           })}
-        </div>
+        </ol>
       </Favorite>
     </section>
   )

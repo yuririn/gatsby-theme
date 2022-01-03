@@ -273,6 +273,8 @@ export const Edit = styled.section`
     color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
   }
   .gatsby-code-title + .gatsby-highlight pre[class*="language-"] {
     margin-top: 0;

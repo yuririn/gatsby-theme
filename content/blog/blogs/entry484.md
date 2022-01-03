@@ -21,8 +21,9 @@ lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加�
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
 9. [関連記事一覧出力](/blogs/entry430/)
+11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 
-このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ごとにブランチごとで分けて格納しています。
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納しています。
 
 今回は[add-header-footer](https://github.com/yuririn/gatsby-blog/tree/add-header-footer)にあります。
 

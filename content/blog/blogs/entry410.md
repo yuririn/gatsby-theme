@@ -22,10 +22,12 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry420/)
 9. [関連記事一覧出力](/blogs/entry230/)
+11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
+12. [パンくずリストを追加する](/blogs/entry487/)
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
-このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[table-of-content](https://github.com/yuririn/gatsby-blog/tree/table-of-content)ブランチにあります。
 

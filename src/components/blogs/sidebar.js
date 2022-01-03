@@ -6,10 +6,10 @@ import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
 
-const bar = ({ cateId, title, tags }) => {
+const bar = ({ cateId, title, tags, slug }) => {
   return (
     <Sidebar>
-      <RelatedList category={cateId} title={title} tags={tags}></RelatedList>
+      <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
       <section className="p-section">
         <h2 className="c-heading--lg--side">ジャンル</h2>
         <ul className="sideCateList">

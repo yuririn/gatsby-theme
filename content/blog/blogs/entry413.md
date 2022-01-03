@@ -22,8 +22,10 @@ lead: ["記事数が増えると一覧にペーネーションが欲しくなり
 7. [プラグインHelmetでSEO調整](/blogs/entry418/)
 8. [CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)
 9. [関連記事一覧出力](/blogs/entry430/)
+11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
+12. [パンくずリストを追加する](/blogs/entry487/)
 
-このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ごとにブランチごとで分けて格納しています。
+このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[pagination](https://github.com/yuririn/gatsby-blog/tree/pagination)ブランチにあります。
 

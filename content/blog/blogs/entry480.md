@@ -43,7 +43,7 @@ docker -v
 ### docker-compose.yml 作成
 `docker-compose.yml` を作成します。
 
-```yaml
+```yaml:title=docker-compose.yml
 version: '3' #　Composefileのバージョンを2に設定
 
 services:
@@ -74,7 +74,7 @@ services:
 
 `docker-compose.yml` で設定した wordpress と mysql の env_file に読み込まれます。
 
-```
+```env:title=.env
 WORDPRESS_DB_NAME=wordpress
 WORDPRESS_DB_USER=wp_user
 WORDPRESS_DB_PASSWORD=hogehoge
@@ -87,7 +87,7 @@ MYSQL_PASSWORD=hogehoge
 ## dockerを立ち上げる
 dockerを立ち上げます。
 
-```
+```bash:title=コマンド
 docker-compose up -d
 ```
 以下は`docker-compose up`のオプションです。
@@ -120,7 +120,7 @@ docker-compose up -d
 
 ## dockerを終了
 
-```
+```bash:title=コマンド
 docker-compose down -v
 ```
 オプションなしで `docker-compose down`を実行すると`docker-compose up`で作成したコンテナ・ネットワーク・ボリューム・イメージ全て削除されてしまいます。
@@ -165,12 +165,12 @@ sqlファイルがあった場合のデータベースのリストア方法で�
 
 `dump.sql` というファイルをリストアしたい場合、ルートディレクトリに直置きしてコマンドを叩きます。
 
-```
+```bash:title=コマンド
 docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】' < dump.sql
 ```
 .env で設定した定数をはめるとこんな感じです。
 
-```
+```bash:title=コマンド
 docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' < wordpress.sql
 ```
 コンテナ名は任意で名前をつけなければ*ルートディレクトリ名_コンテナ名_1*となるようです。<br>
@@ -179,12 +179,12 @@ docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' <
 ### データベースのダンプ
 ダンプ方法です。
 
-```
+```bash:title=コマンド
 docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】'> latest.sql
 ```
 .env で設定した定数をはめるとこんな感じです。
 
-```
+```bash:title=コマンド
 docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' > latest.sql
 ```
 
@@ -200,48 +200,48 @@ docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' >
 ### データベースの確認や削除
 Dockerからデータベースの確認をします。
 
-```
+```bash:title=コマンド
 docker exec -it 【データベース名】 mysql -u【ユーザー名】 -p
 ```
 
 実際のコマンドはこんな感じ。パスワードを聞かれたら入力します。
 
-```
+```bash:title=コマンド
 docker exec -it wordpress_mysql_1 mysql -uwp_user -p
 ```
 データベースを確認します。
 
 ![データベースを確認](./images/2021/12/entry480-4.jpg)
 
-```sql
+```sql:title=sql
 mysql> show databases;
 ```
 
-```sql
+```sql:title=sql
 mysql> use wordpress;
 ```
 
 テーブルを確認します。
 
 ![テーブルを確認](./images/2021/12/entry480-5.jpg)
-```sql
+```sql:title=sql
 mysql> show tables;
 ```
 削除したい場合はデータベース名を指定して`drop`。
-```sql
+```sql:title=sql
 mysql> drop wordpress;
 ```
 
 sqlの終了。
 
-```sql
+```sql:title=sql
 mysql>  exit;
 ```
 
 ## dockerを完全に削除
 
 オプションの意味は[dockerを終了](#dockerを終了)を参考にしてください。
-```
+```bash:title=コマンド
 docker-compose down --rmi all --volumes --remove-orphans
 ```
 

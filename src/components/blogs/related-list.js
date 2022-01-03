@@ -3,11 +3,13 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "../img"
 import styled from "styled-components"
 
-const Lists = ({ category, title, tags }) => {
+const Lists = ({ category, slug, tags }) => {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       query {
-        allMarkdownRemark {
+        allMarkdownRemark(
+          filter: { frontmatter: { pagetype: { eq: "blog" } } }
+        ) {
           edges {
             node {
               fields {
@@ -29,16 +31,12 @@ const Lists = ({ category, title, tags }) => {
     `
   )
   let posts = allMarkdownRemark.edges.filter(post => {
-    if (post.node.frontmatter.title !== title) {
+    if (post.node.fields.slug !== slug) {
       // カテゴリーの一致出力
-      if (post.node.frontmatter.cateId === category) {
-        return post.node.frontmatter.cateId === category
-      }
+      if (post.node.frontmatter.cate === category) return true
       // タグの一致出力
       for (const tag of tags) {
-        for (const item in post.node.frontmatter.tags) {
-          if (tag === post.node.frontmatter.tags[item]) return true
-        }
+        if (post.node.frontmatter.tags.includes(tag)) return true
       }
     }
     return false
@@ -68,29 +66,34 @@ const Lists = ({ category, title, tags }) => {
   return (
     <RelativeList>
       <h2 className="c-heading--lg--side">関連記事</h2>
-      <div>
+      <ol>
         {posts.map((item, index) => {
           return (
-            <article className="p-entryCard is-small" key={`relative${index}`}>
-              <Link className="p-entryCard__img" to={item.node.fields.slug}>
-                {item.node.frontmatter.hero ? (
-                  <Img
-                    source={item.node.frontmatter.hero}
-                    alt={item.node.frontmatter.title}
-                  />
-                ) : (
-                  <Img source="common/dummy.png" alt={title} />
-                )}
-              </Link>
-              <Link to={item.node.fields.slug} className="p-entryCard__body">
-                <h3 className="p-entryCard__heading">
-                  {item.node.frontmatter.title}
-                </h3>
-              </Link>
-            </article>
+            <li className="p-entryCard is-small" key={`relative${index}`}>
+              <article>
+                <Link className="p-entryCard__img" to={item.node.fields.slug}>
+                  {item.node.frontmatter.hero ? (
+                    <Img
+                      source={item.node.frontmatter.hero}
+                      alt={item.node.frontmatter.title}
+                    />
+                  ) : (
+                    <Img
+                      source="common/dummy.png"
+                      alt={item.node.frontmatter.title}
+                    />
+                  )}
+                </Link>
+                <Link to={item.node.fields.slug} className="p-entryCard__body">
+                  <h3 className="p-entryCard__heading">
+                    {item.node.frontmatter.title}
+                  </h3>
+                </Link>
+              </article>
+            </li>
           )
         })}
-      </div>
+      </ol>
     </RelativeList>
   )
 }
@@ -105,13 +108,16 @@ const RelativeList = styled.div`
     .p-entryCard.is-small {
       margin-left: 0;
       margin-right: 0;
-      flex-wrap: wrap;
-      display: flex;
-      align-items: flex-start;
       position: relative;
       border-bottom: 1px solid #e9e9e9;
       margin-bottom: 10px;
       padding-bottom: 10px;
+
+      article {
+        flex-wrap: wrap;
+        display: flex;
+        align-items: flex-start;
+      }
       .p-entryCard__img {
         width: 30%;
         border-radius: 5px;

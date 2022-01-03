@@ -30,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
         <div className="l-container">
           <section className="p-section">
             <h2 className="c-heading--lg">最新の記事</h2>
-            <div className="c-grid">
+            <ol className="c-grid">
               {posts.map((post, i) => {
                 if (i === 0) {
                   cardClass =
@@ -43,32 +43,36 @@ const BlogIndex = ({ data, location }) => {
                 }
 
                 return (
-                  <article className={cardClass} key={`post${i}`}>
-                    <Link to={post.fields.slug} className="p-entryCard__img">
-                      <Img
-                        source={post.frontmatter.hero}
-                        alt={post.frontmatter.title}
-                        key={post.frontmatter.title}
-                      />
-                      <div className="p-entryCard__date">
-                        <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                          {post.frontmatter.date}
-                        </time>
+                  <li key={`post${i}`} className={cardClass}>
+                    <article>
+                      <Link to={post.fields.slug} className="p-entryCard__img">
+                        <Img
+                          source={post.frontmatter.hero}
+                          alt={post.frontmatter.title}
+                          key={post.frontmatter.title}
+                        />
+                        <div className="p-entryCard__date">
+                          <time
+                            date={post.frontmatter.date.replace(/\./g, "-")}
+                          >
+                            {post.frontmatter.date}
+                          </time>
+                        </div>
+                      </Link>
+                      <Link to={post.fields.slug} className="p-entryCard__body">
+                        <h3 className="p-entryCard__heading">
+                          {post.frontmatter.title}
+                        </h3>
+                        {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
+                      </Link>
+                      <div className="p-entryCard__footer">
+                        <AddTagLink tags={post.frontmatter.tags} />
                       </div>
-                    </Link>
-                    <Link to={post.fields.slug} className="p-entryCard__body">
-                      <h3 className="p-entryCard__heading">
-                        {post.frontmatter.title}
-                      </h3>
-                      {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
-                    </Link>
-                    <div className="p-entryCard__footer">
-                      <AddTagLink tags={post.frontmatter.tags} />
-                    </div>
-                  </article>
+                    </article>
+                  </li>
                 )
               })}
-            </div>
+            </ol>
             <p className="u-text-center u-mblg">
               <Link to="/blogs/" className="p-btn--detail">
                 Read More Blog
@@ -136,6 +140,7 @@ const BigWhite = styled.div`
   background-color: #fff;
   padding-top: 50px;
   padding-bottom: 30px;
+
   @media screen and (min-width: 768px) {
     padding-bottom: 50px;
     padding-top: 80px;
