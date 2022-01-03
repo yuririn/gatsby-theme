@@ -53,35 +53,37 @@ const category = ({ pageContext, data, location }) => {
           )}
           <section className="p-section">
             <h2 className="c-heading--lg">最新記事</h2>
-            <div className="c-grid">
+            <ol className="c-grid">
               {edges.map(({ node }) => {
                 const { slug } = node.fields
                 const { title, hero, date, tags } = node.frontmatter
                 return (
-                  <article
+                  <li
                     className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
                     key={slug}
                   >
-                    <Link to={slug} className="p-entryCard__img">
-                      {hero ? (
-                        <Img source={hero} alt={title} />
-                      ) : (
-                        <Img source="common/dummy.png" alt="" />
-                      )}
-                      <div className="p-entryCard__date">
-                        <time date={date.replace(/\./g, "-")}>{date}</time>
+                    <article>
+                      <Link to={slug} className="p-entryCard__img">
+                        {hero ? (
+                          <Img source={hero} alt={title} />
+                        ) : (
+                          <Img source="common/dummy.png" alt="" />
+                        )}
+                        <div className="p-entryCard__date">
+                          <time date={date.replace(/\./g, "-")}>{date}</time>
+                        </div>
+                      </Link>
+                      <Link to={slug} className="p-entryCard__body">
+                        <h3 className="p-entryCard__heading">{title}</h3>
+                      </Link>
+                      <div className="p-entryCard__footer">
+                        <AddTagLink tags={tags} />
                       </div>
-                    </Link>
-                    <Link to={slug} className="p-entryCard__body">
-                      <h3 className="p-entryCard__heading">{title}</h3>
-                    </Link>
-                    <div className="p-entryCard__footer">
-                      <AddTagLink tags={tags} />
-                    </div>
-                  </article>
+                    </article>
+                  </li>
                 )
               })}
-            </div>
+            </ol>
           </section>
           {page > 1 ? (
             <Pagination

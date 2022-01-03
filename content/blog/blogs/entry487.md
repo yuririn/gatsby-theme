@@ -182,11 +182,9 @@ microdataは構造化データの一種で「ページ内のコンテンツを�
 
 現在埋め込み方法には*JSON-LD*、*microdata*、*RDFa* があり、私がよく使うのが*JSON-LD*です。
 
-以前、JSON-LDでの埋め込み方は「[プラグインHelmetでSEO調整](/blogs/entry418/)」で紹介してます。
+<small>※ 2021年 1月、data-vocabulary.org マークアップは Google のリッチリザルト機能でサポート終了の公式発表がありました。</small>
 
-JSON-LDでの実装の方は、microdataは必要ありません。
-
-<small>2021年 1月、data-vocabulary.org マークアップは Google のリッチリザルト機能でサポート終了の公式発表がありました。</small>
+<br>以前、JSON-LDでの埋め込み方は「[プラグインHelmetでSEO調整](/blogs/entry418/)」で紹介しました。すでにJSON-LDでの実装している方は、microdataの埋め込みは必要ありません。
 
 ### microdataを出力するためにコードを書き換える
 <msg txt="HTML（マークアップ言語）を書き慣れている方は、JSON-LDの複雑な入れ子にはパニックになりそうですよね汗"></msg>

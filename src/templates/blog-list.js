@@ -37,43 +37,45 @@ const blogs = ({ pageContext, data, location }) => {
         <BreadCrumbList type="blogs" current="ブログ一覧" />
         <section className="p-section">
           <h2 className="c-heading--lg">最新記事</h2>
-          <div className="c-grid">
+          <ol className="c-grid">
             {posts.map((post, index) => {
               return (
-                <article
+                <li
                   className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
                   key={`article-${index}`}
                 >
-                  <Link to={post.fields.slug} className="p-entryCard__img">
-                    {post.frontmatter.hero ? (
-                      <Img
-                        source={post.frontmatter.hero}
-                        alt={post.frontmatter.title}
-                      />
-                    ) : (
-                      <Img
-                        source="common/dummy.png"
-                        alt={post.frontmatter.title}
-                      />
-                    )}
-                    <div className="p-entryCard__date">
-                      <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                        {post.frontmatter.date}
-                      </time>
+                  <article>
+                    <Link to={post.fields.slug} className="p-entryCard__img">
+                      {post.frontmatter.hero ? (
+                        <Img
+                          source={post.frontmatter.hero}
+                          alt={post.frontmatter.title}
+                        />
+                      ) : (
+                        <Img
+                          source="common/dummy.png"
+                          alt={post.frontmatter.title}
+                        />
+                      )}
+                      <div className="p-entryCard__date">
+                        <time date={post.frontmatter.date.replace(/\./g, "-")}>
+                          {post.frontmatter.date}
+                        </time>
+                      </div>
+                    </Link>
+                    <Link to={post.fields.slug} className="p-entryCard__body">
+                      <h3 className="p-entryCard__heading">
+                        {post.frontmatter.title}
+                      </h3>
+                    </Link>
+                    <div className="p-entryCard__footer">
+                      <AddTagLink tags={post.frontmatter.tags} />
                     </div>
-                  </Link>
-                  <Link to={post.fields.slug} className="p-entryCard__body">
-                    <h3 className="p-entryCard__heading">
-                      {post.frontmatter.title}
-                    </h3>
-                  </Link>
-                  <div className="p-entryCard__footer">
-                    <AddTagLink tags={post.frontmatter.tags} />
-                  </div>
-                </article>
+                  </article>
+                </li>
               )
             })}
-          </div>
+          </ol>
         </section>
         <Pagination num={page} current={current} type=""></Pagination>
         <aside className="BigWhite">
