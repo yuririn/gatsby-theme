@@ -26,7 +26,7 @@ lead: ["Web制作をしていると、グロナビのホバーアニメの持ち
 
 下記コードでサイトタイトルとナビゲーションといったような、一般的なヘッダーができます。
 
-```html
+```html:title=HTML
 <header>
   <h1>サイトタイトル</h1>
   <nav>
@@ -39,7 +39,7 @@ lead: ["Web制作をしていると、グロナビのホバーアニメの持ち
   </nav>
 </header>
 ```
-```css
+```css{35}:title=CSS
 body {
   font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", メイリオ, sans-serif;
 }
@@ -85,7 +85,7 @@ nav ul li a {
 
 今回easingはデフォルトのまま使います。
 
-```css
+```css:title=CSS
 //アニメーション
 nav ul li a:hover {
   color: #ff1787;
@@ -98,7 +98,7 @@ nav ul li a:hover {
 
 ![グロナビ アニメその1・下線を横に広がる](./images/2021/03/entry449-1.gif)
 
-```css
+```css:title=CSS
 nav ul li a::after {
   content: '';
   display: block;
@@ -127,7 +127,7 @@ nav ul li a:hover::after {
 
 ![グロナビ アニメその2・下線が左からにゅっと伸びる](./images/2021/03/entry449-2.gif)
 
-```css
+```css:title=CSS
 nav ul li a::after {
   content: '';
   display: block;
@@ -157,7 +157,7 @@ nav ul li a:hover::after {
 
 ![グロナビ アニメその3・背景色をガツンと変える](./images/2021/03/entry449-3.gif)
 
-```css
+```css:title=CSS
 nav ul li a:hover {
   background:  #ff1787;
   color: #fff;
@@ -176,7 +176,7 @@ nav ul li a:hover {
 
 ![グロナビ アニメその4・色を変える](./images/2021/03/entry449-5.gif)
 
-```css
+```css:title=CSS
 li:nth-child(1) a{
   border-bottom: 2px solid #2b2bb3;
 }
@@ -223,7 +223,7 @@ li:nth-child(4) a:hover {
 
 ![グロナビ アニメその5・矢印がにゅっと伸びる](./images/2021/03/entry449-4.gif)
 
-```css
+```css:title=CSS
 nav ul li a::after {
   content: '';
   display: block;
@@ -274,7 +274,7 @@ nav ul li a:hover::before {
 
 ![グロナビ アニメその6・アイコンをくるくる回す](./images/2021/03/entry449-7.gif)
 
-```css
+```css:title=CSS
 nav ul li a::after {
   content: '';
   display: block;
@@ -306,7 +306,7 @@ YouTubeでマッチ棒パズルなるものを知った結果こうなりまし�
 
 ![グロナビ アニメその7・マッチ棒っぽいものを伸ばす](./images/2021/03/entry449-10.gif)
 
-```css
+```css:title=CSS
 nav ul li a::after {
   content: '';
   display: block;
@@ -357,7 +357,7 @@ nav ul li a:hover::before {
 background: linear-gradient(to left, #fff 34%,#3392af 34%,#3392af 66%,#01465a 66%);
 ```
 
-```css
+```css:title=CSS
 nav ul li {
   padding: 0 2px;
   height: 100%;
@@ -412,7 +412,7 @@ nav ul li a:hover::after{
 
 ![グロナビ アニメその8・グラデ背景を重ねる](./images/2021/03/entry449-12.gif)
 
-```css
+```css:title=CSS
 nav ul li a::after{
   position: absolute;
   content: '';
@@ -439,11 +439,11 @@ nav ul li a:hover::after{
 
 <br>たとえばhtmlで*data属性*を設定すると...
 
-```html
+```html:title=HTML
 <p data-text="サンプル2">サンプル</p>
 ```
 CSS側でcontentプロパティに渡すことができます。
-```css
+```css:title=CSS
 p::before {
   content: attr(data-text);
 }
@@ -459,14 +459,14 @@ p::before {
 ベタ塗りからのグラデーションはアニメーションが効かないので、最初から上に透明（`opacity`）な擬似要素を重ねておき、`opacity: 1`にしてアニメーションさせます。
 
 ![グロナビ アニメその10・文字をグラデに](./images/2021/03/entry449-9.gif)
-```html
+```html:title=HTML
 <li><a href="#" data-item="SERVICE">SERVICE</a></li>
 <li><a href="#" data-item="BLOG">BLOG</a></li>
 <li><a href="#" data-item="ABOUT">ABOUT</a></li>
 <li><a href="#"" data-item="CONTACT">CONTACT</a></li>
 ```
 
-```css
+```css:title=CSS
 a::before {
   content: attr(data-item);
   position: absolute;
@@ -495,7 +495,7 @@ a:hover::before {
 
 ![グロナビ アニメその11・文字をグラデかつ下線のアニメ追加](./images/2021/03/entry449-8.gif)
 
-```css
+```css:title=CSS
 a::before {
   content: attr(data-item);
   position: absolute;
@@ -538,7 +538,7 @@ a:hover::after {
 英語だとかっこいいけどちょっと日本人には意味不明になりがちです。
 
 なのでホバーした時に`attr()`関数を使って日本語表示を表示します。
-```html
+```html:title=HTML
 <li><a href="#" data-item="サービス">SERVICE</a></li>
 <li><a href="#" data-item="記事">BLOG</a></li>
 <li><a href="#" data-item="私たちについて">ABOUT</a></li>
@@ -546,7 +546,7 @@ a:hover::after {
 ```
 
 ![グロナビ アニメその12・文字の入れ替え](./images/2021/03/entry449-6.gif)
-```css
+```css:title=CSS
 nav ul li a {
   text-align: center;
   width: 150px;
@@ -600,3 +600,11 @@ nav ul li a:hover {
 今回は実践的に使えそうなスニペットをピックアップしました。参考にしていただければ幸いです。
 
 最後までお読みいただきありがとうございました。
+
+サイトのカスタマイズが楽しくなるコードをご紹介！あわせてお読みください。
+
+<card id="/blogs/entry370/"></card>
+
+<card id="/blogs/entry393/"></card>
+
+

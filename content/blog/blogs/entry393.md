@@ -109,8 +109,7 @@ z-indexは要素の重なり順を操作できるプロパティです。
 このままではマークの上をクリックしてもセレクトボックスが反応しないのでセレクトボックスの下にマークを潜り込ませます。<br>
 ラッパーには`z-index: 1`を、afterには`z-index: -1`を付与します。
 
-```html
-<!-- HTLM -->
+```html:title=HTML
 <div class="select">
   <select name="item">
     <option value="項目1">項目1</option>
@@ -120,8 +119,7 @@ z-indexは要素の重なり順を操作できるプロパティです。
 </div>
 ```
 
-```css
-// CSS
+```css:title=CSS
 /* 基本のセレクトボックスのカスタマイズ */
 .select {
   background: #cfcedb;
@@ -179,8 +177,7 @@ select {
 background: #cfcedb url(./assets/arrow.svg) no-repeat right 10px center / 16px auto;
 ```
 セレクトボックスのコードはこちら
-```html
-<!-- HTLM -->
+```html:title=HTML
 <select name="item">
   <option value="項目1">項目1</option>
   <option value="項目2">項目2</option>
@@ -188,8 +185,7 @@ background: #cfcedb url(./assets/arrow.svg) no-repeat right 10px center / 16px a
 </select>
 ```
 
-```css
-// CSS
+```css:title=CSS
 select {
   /* 初期化 */
   appearance: none;
@@ -208,12 +204,9 @@ select {
 ```
 [背景画像で矢印マークを仕込むパターンデモ|Code Pen](https://codepen.io/camile/pen/abZRgpa)
 
-##
-セレクトボックスのケース別スニペット集
+## セレクトボックスのケース別スニペット集
 セレクトボックスをコーディングしているときによく「これどうやるんだったっけ？」って思い出せないことがあります。
 ケース別でスニペットを作成しましたのでよろしければ参考にしてください。
-
-
 
 ### ケース1・セレクトボックス上「選択してください」を表示したいけど、その項目を選択肢から外したい
 ![ケース1・セレクトボックス上「選択してください」を表示したいけど、その項目を選択肢から外したい](./images/2020/11/entry393-3.gif)
@@ -226,8 +219,7 @@ select {
 * **selected**　選択された状態
 * **disabled**　操作不能
 
-```html
-<!-- HTLM -->
+```html:title=HTML
 <select name="item">
   <option selected disabled>選択してください</option>
   <option value="項目1">項目1</option>
@@ -236,8 +228,7 @@ select {
 </select>
 ```
 
-```css
-// CSS
+```css:title=CSS
 select {
   /* 初期化 */
   appearance: none;
@@ -268,8 +259,7 @@ option[selected][disabled] {
 **optgroup**を使ってまとめることができます。<br>
 たくさん項目がある際は、ユーザーの可読性も上がるので親切です。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <select>
   <optgroup label="フルーツ">
     <option value="オレンジ">オレンジ</option>
@@ -298,8 +288,7 @@ option[selected][disabled] {
 
 また時間があるときにもうちょい調べて追記します。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <select name="item" multiple>
   <option value="項目1">項目1</option>
   <option value="項目2">項目2</option>
@@ -309,8 +298,7 @@ option[selected][disabled] {
 </select>
 ```
 
-```css
-// CSS
+```css:title=CSS
 select {
   /* 初期化 */
   appearance: none;

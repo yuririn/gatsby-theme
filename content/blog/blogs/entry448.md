@@ -216,7 +216,7 @@ https://graph.facebook.com/v10.0/{instagram_business_account}?fields=name%2Cmedi
 
 ![出力例](./images/2021/03/entry448-21.jpg)
 
-```css
+```css:title=CSS
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -269,7 +269,7 @@ JavaScriptサンプルコードです。jQuery使ってサクッと取得しま�
 
 値を取得できるか試してみます。
 
-```js
+```js:title=jQuery
 $(function(){
   const limit = 10; //表示件数
   const accessToken = {user_access_token}; // アクセストークン
@@ -288,12 +288,12 @@ $(function(){
 
 取得したインスタ投稿データ一覧を格納する`div`タグを作っておきます。
 
-```html
+```html:title=HTML
 <div id="insta"></div>
 ```
 さっきの`div`タグに格納します。
 
-```js
+```js:title=jQuery
 $(function(){
   let list = '';
   const limit = 20; //表示件数
@@ -341,13 +341,13 @@ PHPでは以下のように実行してみました。
 3. セッションを実行<br><small>（CURLOPT_RETURNTRANSFERを設定するとサーバから取得した情報を保存可能）</small>
 4. ハンドルのセットを閉じる
 
-```php
+```php:title=PHP
 curl_setopt ( CurlHandle $handle , int $option , mixed $value )
 ```
 [curl_setopt | php](https://www.php.net/manual/ja/function.curl-setopt.php)
 
 
-```PHP
+```PHP:title=PHP
 $list = "";
 $instagram = null;
 $id = {instagram_bussiness_account_ID};

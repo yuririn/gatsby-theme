@@ -70,16 +70,14 @@ inputタグとlabelタグは隣接しているので隣接セレクターが利�
 
 ボタン用のbefore&afterは高さと幅を持った要素を作るためには`dispplay`を`block`か`inline-block`あたりに設定しておくのを忘れずに。
 
-#### HTML
-```html
+```html:title=HTML
 <p class="radio-btns">
   <input type="radio" value="ラベル1" name="radio" id="radio1"><label for="radio1">ラベル1</label>
   <input type="radio" value="ラベル2" name="radio" id="radio2"><label for="radio2">ラベル2</label>
   <input type="radio" value="ラベル3" name="radio" id="radio3"><label for="radio3">ラベル3</label>
 </p>
 ```
-#### CSS
-```css
+```css:title=CSS
 label ~ label {
   margin-left: 15px;
 }
@@ -171,15 +169,12 @@ transform: rotate(45deg); /*四角を45度傾ける*/
 border-right: 3px solid #c2004a;
 border-bottom: 3px solid #c2004a;
 ```
-#### HTML
-```html
+```html:title=HTML
 <p class="check-btns">
   <input type="checkbox" value="ラベル1" name="check" id="check1"><label for="check1">ラベル1</label><input type="checkbox" value="ラベル2" name="check" id="check2"><label for="check2">ラベル2</label><input type="checkbox" value="ラベル3" name="check" id="check3"><label for="check3">ラベル3</label>
 </p>
 ```
-
-#### CSS
-```css
+```css:title=CSS
 label ~ label {
   margin-left: 15px;
 }
@@ -250,7 +245,7 @@ HTMLはこちらを共通で使います。
 ### ズームしながら出現するチェックボックス
 ![ズームしながら出現するチェックボックス](./images/2020/07/entry370-6.gif)
 
-```css
+```css:title=CSS
 label ~ label {
   margin-left: 30px;
 }
@@ -301,7 +296,7 @@ label ~ label {
 ### 波紋が広がるラジオボタン
 ![波紋が広がるラジオボタン](./images/2020/07/entry370-7.gif)
 
-```css
+```css:title=CSS
 label ~ label {
   margin-left: 30px;
 }/* ベースのラジオボタン */
@@ -374,7 +369,7 @@ label ~ label {
 ### スマフォやアプリに使えるラジオボタン
 ![スマフォやアプリに使えるラジオボタン](./images/2020/07/entry370-8.gif)
 
-```css
+```css:title=CSS
 label ~ label {
   margin-left: 30px;
 }
@@ -438,7 +433,7 @@ label ~ label {
 [デモ : スマフォやアプリに使えるラジオボタン｜CodePen](https://codepen.io/camile/pen/JjGZLyy)
 ### スピンしながらチェックが入るラジオボタン
 ![スピンしながらチェックが入るラジオボタン](./images/2020/07/entry370-9.gif)
-```css
+```css:title=CSS
 .radio label {
   position: relative;
   padding-left: 25px;

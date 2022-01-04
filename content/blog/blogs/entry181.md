@@ -31,8 +31,7 @@ lead: ["aタグのクリックする範囲がズレたり、想像以上にク�
 
 `display: flex`でナビのliタグを横方向に並べ、幅を均等に振り分けます。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <ul>
   <li><a href="/">ホーム</a></li>
   <li><a href="blog/">ブログ</a></li>
@@ -41,8 +40,7 @@ lead: ["aタグのクリックする範囲がズレたり、想像以上にク�
 </ul>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 * {
   box-sizing: border-box;
 }
@@ -97,13 +95,11 @@ displayは要素の表示形式を指定するプロパティで`inline`を指�
 この現象は初心者あるあるです。
 
 解消法はCSSでimgタグに`vertical-align: bottom`をセットするだけです。
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="/"><img src="images/hogehoge.jpg" alt="hogehoge" width="200" height="200"></a>
 ```
 
-```css
-/* CSS */
+```css{11}:title=CSS
 a {
   display: block;
   width: 300px;
@@ -151,7 +147,7 @@ imgタグなどのインラインレベルの要素はこれらの文字と同�
 * `justify-content: center`
 * `align-items: center`
 
-```css
+```css:title=CSS
 * {
   box-sizing: border-box;
   line-height: 1.8;

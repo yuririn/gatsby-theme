@@ -59,13 +59,11 @@ CMSから吐き出すタグを**自分では書き換えられないけどCSS側
 
 ![ホバーで半透明](./images/2020/11/entry396-3.gif)
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--basic">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 a[class^=btn] { //btnから始まるクラス
   background: #FF9258;
   display: flex;
@@ -90,13 +88,11 @@ a[class^=btn] { //btnから始まるクラス
 ホバーすると、ボーダーが反転します。<br>
 他のボタンとサイズを合わせるためにbox-sizing: border-box;でborderを内側に含めています。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--border">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--border {
   height: 46px;
   background: #FF9258;
@@ -124,13 +120,11 @@ a[class^=btn] { //btnから始まるクラス
 クリックしたとき、押した感が出るように`transformY`で位置をわずかに下げ、さらに`box-shadow`も同じ分量減らします。<br>
 これで不自然な挙動をしないボタンらしいボタンの完成です。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--button">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--button {
   position: relative;
   height: 50px;
@@ -181,13 +175,11 @@ a[class^=btn] { //btnから始まるクラス
 
 背景を半透明にしただけで、クリックとともに白っぽさが増します。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--skeleton">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--skeleton {
   background: rgba(255, 255, 255, .2);
   display: flex;
@@ -213,13 +205,11 @@ a[class^=btn] { //btnから始まるクラス
 クリアソープのように少し立体感をつけてみました。<br>
 box-shadowをinsetにして立体感をつけています。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--skeleton2">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--skeleton3 {
   background: rgba(255, 255, 255, .1);
   display: flex;
@@ -250,13 +240,11 @@ box-shadowをinsetにして立体感をつけています。
 
 ボーダーをbox-shadowだけで作って、ライトのようにしています。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--skeleton3">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--skeleton3 {
   background: rgba(255, 255, 255, .1);
   display: flex;
@@ -306,13 +294,11 @@ box-shadowをinsetにして立体感をつけています。
 
 あらかじめグラデーションを逆にした擬似要素をopacity:0で隠しておき、ホバー時に表示させグラデーションを反転させます。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--gradient">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--gradient {
   z-index: 1;
   display: flex;
@@ -364,13 +350,11 @@ hoverした時に`left: -100%`でアニメーションさせます。
 
 ![グラデーションが横にスライド](./images/2020/11/entry396-11.gif)
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--gradient2">BUTTON<i class="zmdi zmdi-chevron-right"></i></a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--gradient2 {
   z-index: 1;
   display: flex;
@@ -424,13 +408,11 @@ hoverした時に`left: -100%`でアニメーションさせます。
 ポイントはグラデの角度を315度の斜めにし左右の色をそれぞれ50%に設定します。<br>
 あとは先ほどのグラデーション横にスライドのようにアニメーションさせるだけです。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--gradient3">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--gradient3 {
   z-index: 1;
   display: flex;
@@ -485,13 +467,11 @@ hoverした時に`left: -100%`でアニメーションさせます。
 
 text-shadowとbox-shadowでエンボス風のボタンです。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--emboss">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--emboss {
   display: flex;
   width: 180px;
@@ -522,13 +502,11 @@ text-shadowとbox-shadowでエンボス風のボタンです。
 ![パキッとした影が広がるボタン](./images/2020/11/entry396-15.gif)
 
 box-shadowを2個重ねるだけで、クールなボタンができます。
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--shadow">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--shadow {
   display: flex;
   width: 180px;
@@ -557,13 +535,11 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 
 クリックすると波紋が広がります。
 
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--bubble">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--bubble {
   z-index: 1;
   display: flex;
@@ -632,13 +608,11 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 ![ボーダーがアニメーションするボタン](./images/2020/11/entry396-17.gif)
 
 ボーダーが左上と右下からアニメーションするボタンです。**heightとwidthを0から100%**に広げることで実現しています。
-```html
-<!-- HTML -->
+```html:title=HTML
 <a href="" class="btn--border">BUTTON</a>
 ```
 
-```css
-/* CSS */
+```css:title=CSS
 .btn--border {
   display: flex;
   width: 180px;

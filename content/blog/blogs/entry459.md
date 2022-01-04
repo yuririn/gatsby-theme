@@ -48,13 +48,13 @@ Gulpでの導入方法の紹介です。<br>
 まずはテキトーにプロジェクトを格納するフォルダーを作ります。<br>
 フォルダーをVS Codeなどのテキストエディターで開き、以下コマンドでpackage.jsonファイル作成。
 
-```
+```bash:title=コマンド
 npm init -y
 ```
 
 以下コマンドでまとめて、`gulp` `gulp-ejs` `gulp-rename` `plumber`をインストールします。
 
-```
+```bash:title=コマンド
 npm i -D gulp gulp-ejs gulp-rename plumber
 ```
 
@@ -71,7 +71,7 @@ npm i -D gulp gulp-ejs gulp-rename plumber
 ```
 `gulpfile.js`のコードを編集します。
 
-```js
+```js:title=gulpfile.js
 const gulp = require("gulp");
 const ejs = require("gulp-ejs");
 const rename = require("gulp-rename");
@@ -90,20 +90,20 @@ gulp.task("ejs", function (done) {
 
 EJSで文字列などをHTMLに出力する方法は以下。
 
-```js
+```ejs
 <!-- 出力 -->
 <%= 【出力内容】; %>。
 ```
 
 `ejs`フォルダーに`index.ejs`（ejsの拡張子は.ejsです）を作成し、テキトーなhtmlコードを追加します 。
 
-```js
+```ejs:title=index.ejs
 <h1><%= 'Hello, EJS'%></h1>
 ```
 
 以下コマンドでコンパイルします。
 
-```
+```bash:title=コマンド
 gulp ejs
 ```
 
@@ -130,7 +130,7 @@ gulp ejs
 
 Gulpのタスクを修正。接頭辞に`-（ハイフン）`がつくejsファイルはコンパイルから外します。
 
-```js
+```js:title=gulpfile.js
 gulp.task("ejs", function (done) {
   return gulp
     .src(["src/ejs/**/*.ejs", "!" + "src/ejs/**/_*.ejs"])//修正
@@ -140,7 +140,7 @@ gulp.task("ejs", function (done) {
   done();
 });
 ```
-```js
+```ejs
 <!-- 変数 -->
 <% let 【変数名】 = 【変数の中身】; %>
 <!-- ファイルのインクルード -->
@@ -149,7 +149,7 @@ gulp.task("ejs", function (done) {
 
 `index.ejs`の中身を書き換えます。
 
-```js
+```ejs:title=index.js
 <% let title = 'トップページ'; %>
 <% let description = 'ディスクリプション'; %>
 <% let pageId = 'home'; %>
@@ -162,7 +162,7 @@ gulp.task("ejs", function (done) {
 
 `_header.js`でif文を使って、トップページの時はサイト名をh1タグ、それ以外はトップに戻れるように調整します。
 
-```js
+```ejs:title=_header.js
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -184,7 +184,7 @@ gulp.task("ejs", function (done) {
   <main>
 ```
 `_footer.ejs`にもコンテンツを追加します。
-```js
+```ejs:title=_footer.js
   </main>
   <footer>
   フッター
@@ -197,7 +197,7 @@ gulp.task("ejs", function (done) {
 
 コードが長くなってしまいましたので`gulpfile.js`のコードごっそり載せます！
 
-```js
+```js:title=gulpfile.js
 const gulp = require("gulp");
 
 //ライブリロード
@@ -251,7 +251,7 @@ gulp.task(
 );
 ```
 以下のコマンドで起動します。
-```
+```bash:title=コマンド
 gulp
 ```
 こちらが出力されたコードです。うん、美しい❤️
@@ -263,11 +263,11 @@ EJSのいいところは、ファイル構造を保ったままコンパイル�
 データ管理するためにJSONデータを利用します。
 
 JSONデータをEJSで利用するために、node moduleの`fs`を追加します。
-```
+```bash:title=コマンド
 npm i fs -D
 ```
 `gulpfile.js`にコードを追加してください。
-```js
+```js:title=gulpfile.js
 const fs = require("fs");//追加
 
 //省略
@@ -318,7 +318,7 @@ gulp.task("ejs", function (done) {
 ```
 `site.json`ファイルを作成しdada/内に追加。基本のサイト情報やページごとの設定を書いていきます。
 
-```json
+```json:title=site.json
 {
   "siteInfo": {
     "name": "サイト名",
@@ -336,11 +336,11 @@ gulp.task("ejs", function (done) {
 ちゃんとデータが取得できるか確認します。<br>
 index.ejsの空きスペースに以下コードを仕込んでみてください。
 
-```js
+```ejs:title=index.ejs
 <% console.log(jsonData) %>
 ```
 `index.ejs`を修正します。<br>基本情報はJSONデータで管理するのでpageIdだけあればOKです。
-```js
+```ejs:title=index.ejs
 <% let pageId = 'home'; %>
 <%- include('./_inc/_header', { pageId: pageId }) %>
 
@@ -350,7 +350,7 @@ index.ejsの空きスペースに以下コードを仕込んでみてくださ�
 `_header.ejs`を修正します。<br>
 ページタイトルはトップページの時のみサイト名を出力するようにしています。<br>
 ページのメニューをforin文でループして書き出します。pageIdと項目名が一致する時は、リンクを外し、クラス`current`を付与しています。
-```js
+```ejs:title=_header.ejs
 <% let title = (pageId === 'home') ? jsonData.siteInfo.name : jsonData.pages[pageId].name + jsonData.siteInfo.name%>
 <% let description = jsonData.pages[pageId].description %>
 <!DOCTYPE html>
@@ -386,7 +386,7 @@ index.ejsの空きスペースに以下コードを仕込んでみてくださ�
   <main>
 ```
 `_footer.ejs`も似た感じで修正します。
-```js
+```ejs:title=_footer.ejs
   </main>
   <footer>
     <nav>
@@ -405,7 +405,7 @@ index.ejsの空きスペースに以下コードを仕込んでみてくださ�
 work、about、contactなどのファイルを作成します。<br>
 階層が変わるので*インクルードファイルのパス*を間違わないように注意してください。
 
-```js
+```ejs:title=work.ejs
 <% let pageId = 'work'; %>
 <%- include('./../_inc/_header', {pageId: pageId }) %>
 
@@ -413,7 +413,7 @@ work、about、contactなどのファイルを作成します。<br>
 <%- include('./../_inc/_footer', {pageId: pageId })  %>
 ```
 ![出力されたコードも美しい](./images/2021/05/entry459-4.jpg)
-## EJSお役立ち情報おまけ
+## おまけ。EJSお役立ち情報
 ### EJS使い方
 JSと使い方は一緒なので、特殊な書き方などだけ抜粋しておきます。
 

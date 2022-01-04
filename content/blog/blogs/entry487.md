@@ -199,7 +199,7 @@ const BreadCrumbList = ({ parent, title, location }) => {
   const domain = siteMetadata.siteUrl
   let List = [{ location: `${domain}`, title: "ホーム" }]
   if (parent === "blogs") {
-    List = [...List, { location: `${domain}/blogs/`, title: "記事一覧" }]
+    List = [...List, { location: `${domain}blogs/`, title: "記事一覧" }]
   }
   return (
     <BreadCrumbNav>
