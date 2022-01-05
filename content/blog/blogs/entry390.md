@@ -180,10 +180,10 @@ button {
 * [appearance - CSS: カスケーディングスタイルシート| MDN web](https://developer.mozilla.org/ja/docs/Web/CSS/appearance)
 * [appearance のデモ](https://codepen.io/camile/pen/rNLKOVE)
 
-## 4 columns 段落・段組みを超簡単に作れるプロパティ
+## 4 columns 段落・段組みを超カンタンに作れるプロパティ
 **プロパティcolumns**は段組みされた要素の段の幅や段数を設定できるプロパティです。
 
-![columns 段落・段組みを超簡単に作れるプロパティ](./images/2020/11/entry390-5.gif)
+![columns 段落・段組みを超カンタンに作れるプロパティ](./images/2020/11/entry390-5.gif)
 
 ### columns の使い方と使いどころ
 

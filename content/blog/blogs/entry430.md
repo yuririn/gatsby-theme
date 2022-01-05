@@ -6,8 +6,8 @@ hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: 今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！※ 2021年12月アップデートに伴い、v4対応済みです。
-lead: ["今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！","※ 2021年12月アップデートに伴い、v4対応済みです。"]
+description: 今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！関連記事をランダムで6記事ピックアップして出力します。※ 2021年12月アップデートに伴い、v4対応済みです。
+lead: ["今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！","関連記事をランダムで6記事ピックアップして出力します。","※ 2021年12月アップデートに伴い、v4対応済みです。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -15,7 +15,7 @@ lead: ["今回でGatsbyカスタマイズ10記事！せっかく書いたブロ�
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
@@ -32,14 +32,14 @@ lead: ["今回でGatsbyカスタマイズ10記事！せっかく書いたブロ�
 ### このシリーズではテーマGatsby Starter Blogを改造
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
 
-## StaticQueryタグを使って同じタグとカテゴリーの記事を絞り込む
+## StaticQueryタグを使って同じタグとカテゴリの記事を絞り込む
 類似記事を絞り込む条件です。
 
 * タイトルがかぶっていない
-* カテゴリーが一緒
-* タグが一緒
+* カテゴリが一緒
+* もしくは、タグが一緒
 
-上記の条件の記事をPickupしランダムで6記事程度出力します。
+上記の条件の記事をPickupしランダムで6記事出力します。
 
 今回触るファイルです。relatedList.jsを追加します。
 
@@ -51,7 +51,7 @@ lead: ["今回でGatsbyカスタマイズ10記事！せっかく書いたブロ�
      └ blog-post.js(追記)
 ```
 ### 絞り込み機能を作る
-`useStaticQuery` を使ってGraphQLをセットします。
+`useStaticQuery` を使ってGraphQLで出力したい内容のスキーマを書きます。
 
 ```js:title=related-list.js
 import * as React from "react"
@@ -69,14 +69,12 @@ const Lists = ({ category, title, tags }) => {
               fields {
                 slug
               }
-              id
               frontmatter {
                 cate
                 hero
                 date(formatString: "YYYY.MM.DD")
                 title
                 tags
-                pagetype
               }
             }
           }
@@ -136,7 +134,7 @@ markdownRemark(id: { eq: $id }) {
   }
   # 省略
 ```
-filterで記事を絞り込んだ配列を作ります。
+`filter`で記事を絞り込んだ配列を作ります。
 ```js:title=related-list.js
 let posts = allMarkdownRemark.edges.filter(post => {
   // 表示中の記事とslugが一緒じゃないものを絞り込み
@@ -154,7 +152,7 @@ let posts = allMarkdownRemark.edges.filter(post => {
 ```
 
 ### 関連記事が存在したらランダム出力する
-関連記事の条件に一致するものがなければ処理を中断し、あれば一覧をシャッフルし6記事に絞り込みます。
+配列をシャッフルし6記事に絞り込みます。
 ```js:title=related-list.js
 // 一致するものがなければ処理しない
 if (!posts) return
@@ -203,9 +201,9 @@ return (
 
 見た目が貧弱なので、そのほかのデータを出力します。
 
-サムネ画像を追加し、スタイルもstyled-componentsから追加できるようにします。
+サムネ画像出力用コンポーネントを追加し、スタイルはプラグインstyled-componentsでスタイル用コンポーネントを作ります。
 
-サムネ画像の追加方法は「[投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)」を参考にしてください。
+サムネ画像出力用コンポーネントの実装方法は「[ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408#サムネを出力するためのコンポーネント作成)」を参考にしてください。
 
 styled-componentsは以下コマンドでインストール可能です。
 
@@ -220,19 +218,6 @@ import styled from "styled-components"
 
 const Lists = ({ category, slug, tags }) => {
   // 省略
-  const List = ({ item, url }) => {
-    return (
-      <article class="p-entryCard c-grid__item--md6 c-grid__item--lg4">
-        <Link class="p-entryCard__img" to={url}>
-          <Image filename={hero} /> : <Image filename="common/dummy.png" />}
-          <div class="p-entryCard__date">
-            {date}
-          </div>
-        </Link>
-        <Link to={url} class="p-entryCard__body"><h3 class="p-entryCard__heading">{title}</h3></Link>
-      </article>
-    )
-  }
 export default Lists
 ```
 
@@ -276,7 +261,7 @@ const Lists = ({ category, slug, tags }) => {
   )
   let posts = allMarkdownRemark.edges.filter(post => {
     if (post.node.fields.slug !== slug) {
-      // カテゴリーの一致出力
+      // カテゴリの一致出力
       if (post.node.frontmatter.cate === category) return true
       // タグの一致出力。記事のタグの中に一致するものがあればtrueを返す。
       for (const tag of tags) {

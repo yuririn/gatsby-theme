@@ -15,7 +15,7 @@ lead: ["Gatsby記事もこれで8記事目となりました！！表示が早�
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
@@ -132,7 +132,7 @@ const BlogPostTemplate = ({ data, location }) => {
 
 seo.jsを変更します。
 
-```js{7,28,30-31,45-48,61-64,81-84}:title=seo.js
+```js{7,29,31-32,46-49,62-65,82-85,92}:title=seo.js
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
@@ -238,7 +238,7 @@ Seo.propTypes = {
 
 export default Seo
 ```
-補足すると、og:typeをトップページ以外は判定してwebpageを出力しています。
+補足。og:typeをトップページ以外を判定してwebpageを出力しています。
 ```js
 {
   property: `og:type`,
@@ -252,6 +252,14 @@ Twitterカードもサイズをお好みで変えてください。
   content: `summary_large_image`,
 },
 ```
+日本語にするのも忘れずに。
+```js
+Seo.defaultProps = {
+  lang: `ja`,
+  meta: [],
+  description: ``,
+}
+```
 
 ## URLの正規化をする
 このサイトは投稿が増えると、一覧ページが無限に増えます。<br>
@@ -262,7 +270,7 @@ Twitterカードもサイズをお好みで変えてください。
 > ### canonical属性とは？
 > canonical（カノニカル）属性とは、Google、Yahoo!、MSNなどの大手検索エンジンがサポートするURLを正規化するためのタグです。 同一のコンテンツが複数のURLで閲覧できる状態になっている場合、検索エンジンがインデックスするべきURLを統一させておく必要があります。 SEO対策において必須の内部対策です。
 
-URLに`/page/数字/`を含む場合は除去し、そのURLをcanonical属性として出力します。
+URLに`/page/数字/`を含む場合は除去し、URLをcanonical属性として出力します。
 
 ```js{6,23}:title=seo.js
   // 省略
@@ -293,12 +301,13 @@ URLに`/page/数字/`を含む場合は除去し、そのURLをcanonical属性�
 }
 // 省略
 ```
-## 構造化データ追加
-構造化データを追加します。トップページはtypeを`WebSite`それ以外は`WebPage`とします。
+## 構造化データ（JSON-LD）追加
+構造化データ（JSON-LD）を追加します。トップページはtypeを`WebSite`それ以外は`WebPage`とします。
 
 またブログが記事のもののみ、BlogPosting（*この投稿はブログだよ！！って検索エンジンに教えます*）の構造化データを追加します。
+
 ### ページのデータ
-seo.jsに構造化データのJSONを出力できるようにします。mdファイルも公開日はもちろん、更新日（modifieddate）が取得できるようにしておきます。
+seo.jsに構造化データのJSONを出力できるようにします。markdownファイルも公開日はもちろん、更新日（modifieddate）が取得できるようにしておきます。
 
 何が大事って、**更新されて、手が入っているページ**かです。古い記事でも更新していることをアピールできることが大事です。
 
@@ -377,7 +386,7 @@ const Seo = props => {
     },
   }
 
-  // JSON+LDの設定
+  // JSON-LDの設定
   let jsonLd = [
     {
       "@context": "http://schema.org",
@@ -435,11 +444,15 @@ export default Seo
 ```
 ### パンくずリスト
 
-パンくずリストの構造化データも作成します。先ほどページ用に作ったJsonデータ`jsonLd`と結合させます。
+パンくずリストの構造化データも作成します。先ほどページ用に作ったJSONデータを格納した変数`jsonLd`と結合させます。
 
-現時点では目に見えたパンくずリストはありませんが、
+現時点では目に見えたパンくずリストはありませんが（後日記事書きました）、SEO上重要です。検索画面で親ページが日本語で表示されます。
 
-ブログ・カテゴリー・タグのテンプレに`type`を追加します。こちらはカテゴリーのテンプレのSeoコンポーネントです。
+![Google検索でのパンくずリスト](./images/2022/01/entry487-2.jpg)
+
+ブログ・カテゴリ・タグのテンプレに`type`を追加します。こちらはカテゴリのテンプレのSeoコンポーネントです。
+
+<card id="/blogs/entry487/"></card>
 
 属性がちゃんとセットされているか確認しておきましょう。
 ```js
@@ -450,7 +463,7 @@ export default Seo
   type="blog-list"
   discription="ブログ一覧記事です。"
 />
-{/*カテゴリー*/}
+{/*カテゴリ*/}
 <Seo
   title={cate.name}
   location={location}
@@ -581,7 +594,7 @@ Analyticsの管理画面から確認できます。
 ここまでできたらあとはディプロイしたらanalyticsでトラッキングできるようになります。<br>
 
 ## Search consoleと連携
-search consoleも連携しましょう。メタタグにgoogle-site-verificationを追加するのが簡単です。
+search consoleも連携しましょう。**メタタグにgoogle-site-verificationを追加する**のがカンタンです。
 
 メタタグはsearch consoleの管理画面 > 設定 > 所有者の確認 >「HTMLタグ」から調べることができます。
 
@@ -613,8 +626,8 @@ return (
 ```
 
 ## プラグインを使ってサイトマップを出力
-最後に、サイトマップの出力をしましょう。
-これでsearch consoleから、いつでも更新も通知できるようになります。
+最後にサイトマップの出力をしましょう。<br>
+これでsearch consoleから、いつでもサイトマップを取得できるようになります。
 
 [gatsby-plugin-sitemap](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/)
 
@@ -634,7 +647,7 @@ module.exports = {
 
 私のケースではページネーションで生成されたページや404をサイトマップから除外しました。
 
-site-map.xmlはルートに出力するように設定しました。
+ルートに出力するように設定しました。
 
 ```js:title=gatsby-config.js
 module.exports = {
@@ -668,5 +681,7 @@ Search Consoleからサイトマップを登録しておきます。
 FBやTwitterでのシェアしてOGP画像が表示されるようになりました。
 
 皆さんのコーディングライフの一助となれば幸いです。
+
+次の記事は「[CSSコンポーネントでオリジナルページを作ろう！！](/blogs/entry421/)」です。
 
 最後までお読みいただきありがとうございました。

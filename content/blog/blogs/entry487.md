@@ -14,7 +14,7 @@ lead: ["Gatsbyブログにパンくずリストを追加します。今までの
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 3. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-4. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+4. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 5. [プラグインを利用して目次出力](/blogs/entry410/)
 6. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 7. [個別ページテンプレート作成](/blogs/entry416/)
@@ -29,7 +29,7 @@ lead: ["Gatsbyブログにパンくずリストを追加します。今までの
 今回は[breadcrumb-list](https://github.com/yuririn/gatsby-blog/tree/breadcrumb-list)にあります。
 
 ### このシリーズではテーマGatsby Starter Blogを改造します
-この記事は一番メジャーなテンプレート、 Gatsby Starter Blogを改造しています。同じテーマでないと動かない可能性があります。
+この記事は一番メジャーなテンプレート、 *Gatsby Starter Blog* を改造しています。同じテーマでないと動かない可能性があります。
 
 
 ## プレーンなパンくずリストを作ってみる
@@ -89,7 +89,11 @@ export default BreadCrumbList
   />
   <header>
 ```
-パンくずリストにstyled-componentsでスタイルを当てます。
+パンくずリストにstyled-componentsでスタイルを当てます。インストールしてない方は、プラグインをインストールしておきましょう。
+
+```bash:title=コマンド
+npm i styled-components
+```
 
 仕上がりはこんなイメージ。
 
@@ -164,6 +168,15 @@ const BreadCrumbNav = styled.nav`
 
 そのほかのテンプレートにも、`<BreadCrumbList/>`を追加しましょう。
 
+親ページがhomeの場合はparentの設定は不要です。
+
+```js:title=page-post.js
+<BreadCrumbList
+  location={location}
+  title={post.frontmatter.title}
+/>
+```
+
 ## 構造化データで検索結果のユーザビリティも向上させたい。microdataってなんぞ？
 microdataは構造化データの一種で「ページ内のコンテンツを説明するための、標準化されたデータ形式のこと」を指します。
 
@@ -184,7 +197,7 @@ microdataは構造化データの一種で「ページ内のコンテンツを�
 
 <small>※ 2021年 1月、data-vocabulary.org マークアップは Google のリッチリザルト機能でサポート終了の公式発表がありました。</small>
 
-<br>以前、JSON-LDでの埋め込み方は「[プラグインHelmetでSEO調整](/blogs/entry418/)」で紹介しました。すでにJSON-LDでの実装している方は、microdataの埋め込みは必要ありません。
+<br>以前、JSON-LDでの埋め込み方は「[プラグインHelmetでSEO調整](/blogs/entry418/)」で紹介しました。すでにJSON-LDでの実装している方は、microdataの埋め込む必要はありません。
 
 ### microdataを出力するためにコードを書き換える
 <msg txt="HTML（マークアップ言語）を書き慣れている方は、JSON-LDの複雑な入れ子にはパニックになりそうですよね汗"></msg>

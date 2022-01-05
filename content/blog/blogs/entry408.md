@@ -6,8 +6,8 @@ hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリ、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよくなりました。今回はそれぞれの一覧の出力の仕方についてまとめます。※ 2021年12月28日v4対応のためリライトしました。
-lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリ、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよくなりました。今回はそれぞれの一覧の出力の仕方についてまとめます。","※ Mac以外では検証してません。ご了承ください。","※ 2021年12月30日v4対応のためリライトしました。"]
+description: gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリ、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよくなりました。サムネ出力用のコンポーネントの作り方も紹介しています。今回はそれぞれの一覧の出力の仕方についてまとめます。※ 2021年12月28日v4対応のためリライトしました。
+lead: ["gatsbyのブログ用記事を抽出し一覧を作りました。カテゴリ、タグ一覧もぞれぞれ用意したのでだいぶ使い勝手がよくなりました。今回はそれぞれの一覧の出力の仕方についてまとめます。","サムネ出力用のコンポーネントの作り方も紹介しています。","※ 2021年12月30日v4対応のためリライトしました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -122,7 +122,7 @@ if (result.errors) {
 const posts = result.data.allMarkdownRemark.nodes
 ```
 
-記事データは変数 `posts` に格納してあります。
+記事データは変数 `posts` に格納されています。
 
 ### テンプレートを使ってブログ記事の一覧を生成する
 
@@ -156,7 +156,7 @@ pagetype: blog
 ```js{11-14}:title=gatsby-node.js
 //省略
 if (posts.length > 0) {
-const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
+  const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
 
   //ブログ詳細出力
   blogPosts.forEach((post, index) => {
@@ -182,7 +182,7 @@ blog-list.jsを編集しましょう。記事一覧と、総数を取得し表�
 
 コードを以下のように追記して、GraphQLで `totalCount` (記事の総数)も取得します。
 
-`blosQyery` の `allMarkdownRemark` に `totalCount`、`hero`を追記します。
+`blosQyery` の `allMarkdownRemark` に `totalCount`、`hero`を追記。
 
 ```js{6,23,26,37}:title=blog-list.js
 // 省略
@@ -220,10 +220,8 @@ export const pageQuery = graphql`
           date(formatString: "YYYY.MM.DD")
           title
           description
-          # 画像を引っ張り出すのに使います
+          # 画像
           hero
-          cate
-          tags
         }
       }
     }
@@ -235,7 +233,7 @@ GraghQLでfilterを使ってpagetype=blogで絞り込んでいます。
 ```
 filter: {frontmatter: {pagetype: { eq: "blog" } } }
 ```
-### サムネを出力するためのコンポーネント作成
+## サムネを出力するためのコンポーネント作成
 サムネを出力するためのコンポーネントを作成します。
 ```
 src/
@@ -377,7 +375,7 @@ src/
 └ style/
   └ blog-list-style.js
 ```
-一覧全体の見出し用と、一覧用のコンポーネントを一つのファイルに作成します。
+一覧全体の見出し用と、一覧用のコンポーネントを1つのファイルに作成します。
 
 ```js:title=blog-list-style.js
 import styled from "styled-components"
@@ -581,9 +579,9 @@ module.exports = {
   省略
 ]
 ```
-mdファイルの `cate` には `siteMetadata` の `slug` を記述するというルールを設けます。
+markdownファイルの `cate` には `siteMetadata` の `slug` を記述するというルールを設けます。
 
-```md:title=mdファイル
+```md{7}:title=mdファイル
 ---
 title: 記事サンプル2
 date: 2021-12-26
@@ -613,8 +611,8 @@ gatsby-node.jsのクエリに`cate`を追加します。
               slug
             }
             frontmatter {
-              hero
               pagetype
+              hero
               cate
             }
           }
@@ -817,7 +815,7 @@ tags.forEach(item => {
 })
 ```
 タグの一覧出力のフィルターの記述方法が、カテゴリと少し異なります。
-タグはmdファイル毎に複数設定してある（配列）なので`tags: { in: [$tag] } }`で絞り込んでいる点です。
+タグはmarkdownファイル毎に複数設定してある（配列）なので`tags: { in: [$tag] } }`で絞り込んでいる点です。
 
 タグ毎の記事の総数を表示したかったので、`totalCount`を取得しています。
 

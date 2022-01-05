@@ -15,7 +15,7 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 1. *インストールからNetlifyデプロイまで*（←イマココ）
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
@@ -33,7 +33,7 @@ lead: ["現在、前から気になる静的サイトジェネレーターのGat
 今回は[install-deploy](https://github.com/yuririn/gatsby-blog/tree/install-deploy)にあります。
 
 ## Gatsby(JS)とは？
-Gatsby(JS)はReactで作られた **静的サイトジェネレーター** です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理を簡単に行うことができます。<br>
+Gatsby(JS)はReactで作られた **静的サイトジェネレーター** です。内部的にGraphQLを用いてデータを取得し、markdownからHTMLを生成、などの処理をカンタンに行うことができます。<br>
 
 ![Gatsbyとは？](./images/2020/11/entry401-1.png)
 

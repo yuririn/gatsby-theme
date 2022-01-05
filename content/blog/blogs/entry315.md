@@ -9,14 +9,14 @@ tags: ["CSS"]
 description: 2022-01-04メンテナンス済。CSS3 アニメーションって便利ですよね？jQueryに依存しないと軽量になります。今回は「detailsとsummaryタグを使う新方法（追加）」「IEでも動くlabelとinputタグを使う旧方法」「JSも使ってさらにリッチに実装する方法（レスポンシブ対応のため修正）」の3パターンをご紹介します。原理を理解したい方は順を追った解説をまず読み進めてみてください。
 lead: ["CSS3 アニメーションって便利ですよね？","jQueryに依存しないと軽量になります。今回は「detailsとsummaryタグを使う新方法（追加）」「IEでも動くlabelとinputタグを使う旧方法」「JSも使ってさらにリッチに実装する方法（レスポンシブ対応のため修正）」の3パターンをご紹介します。","原理を理解したい方は順を追った解説をまず読み進めてみてください。"]
 ---
-## CSSだけで実装する理由
-メリットはJSのDOM操作よりCSSアニメーションの方が軽いということです。
+## CSSを主軸に実装する理由
+言うまでもなく、CSSアニメーションはJSのDOM操作より軽いです。
 
 ![メリットはJSのDOM操作よりCSSアニメーションの方が軽い](./images/2019/entry315-1.jpg)
 
-一方デメリットとしてははCSSが複雑かつコードが長くなり初学者は混乱しやすいです。
+一方デメリットとしてはCSSが複雑かつコードが長くなり初学者は混乱しやすいことです。
 
-「details&summaryを使う方法」「label&inputを使う方法」「JSも使って実装する方法」の3種類を紹介しますが、すべて一長一短あります。
+今回は「[details&summaryを使う方法](#details%E3%81%A8summary%E3%82%BF%E3%82%B0%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%952021-01-05%E8%BF%BD%E8%A8%98)」「[label&inputを使う方法](#labelとinputタグを使う旧方法ie動きます)」「[JSも使って実装する方法](#javascriptも利用してアクセシビリティも考慮しつつリッチにアコーディオンメニューを実装2021-01-05編集)」の3種類を紹介します。すべて一長一短あります。
 
 |種類|メリット|デメリット|
 |-|-|-|
@@ -29,14 +29,14 @@ lead: ["CSS3 アニメーションって便利ですよね？","jQueryに依存�
 ## detailsとsummaryタグを使う方法（2021-01-05追記）
 `details`と`summary`タグ（詳細折りたたみ要素）を使えば、アニメーションの滑らかさにはかけますが、CSSすら使わずにアコーディオンを実装できます。
 
-セマンティック（タグに意味を持たせる）コーディングという観点からもこちらのタグを使うのが良さそうですが問題もあります。
+セマンティック（タグに意味を持たせる）コーディングという観点からもこちらのタグを使うのが良さそうです。が、問題もあります。
 
-<msg txt="Safariはバグだらけ対応が大変。複雑なアニメーションは避けたほうがよさそう。"></msg>
+<msg txt="Safariはバグだらけで対応が大変。複雑なアニメーションは避けたほうがよさそう。"></msg>
 
-* detailsタグ内ではtransformのanimationやtransition系はちゃんと発動しない。animationは最初の1回だけしか動かなかった。
-* flexが効かない
+* `details`タグ内では`transform`プロパティの`animation`や`transition`系が動かないことがある。`animation`を実装してみたが最初の1回だけしか動かなかった。
+* `flex`が効かない
 
-こんなアイコンつけたかったけど諦めました。
+なので、こんなアイコンつけたかったけど諦めました。
 
 ![detailsのアコーディオン](./images/2019/entry315-9.jpg)
 
@@ -84,6 +84,8 @@ summary {::-webkit-details-marker {
 ```
 ![detailsでアコーディオン](./images/2019/entry315-3.gif)
 
+### パターン1：コンテンツの高さが決まっている場合
+
 実際にアニメーションを入れます。今回はheightを指定して入れてみました。
 
 `diplay:flex`も効かないので縦方向は`line-height`で真ん中に持ってきてます。
@@ -100,12 +102,15 @@ details {
   border: 1px solid #333;
   overflow: hidden;
 }
+
 details:last-child {
   margin-bottom: 0;
 }
+
 details[open] {
   height: 100px;
 }
+
 details summary {
   height: 50px;
   line-height: 50px;
@@ -116,12 +121,15 @@ details summary {
   color: #fff;
   position: relative;
 }
+
 details summary::-webkit-details-marker {
   display: none;
 }
+
 details div {
   padding: 0 15px;
 }
+
 details div p {
   height: 50px;
   line-height: 50px;
@@ -129,13 +137,77 @@ details div p {
 ```
 [デモ：detailsとsummaryタグを使う方法](https://codepen.io/camile/pen/vYejpvw)
 
-<div class="box">
-<h4>detailsとsummaryの実用はもうちょい先かも</h4>
-<p>セマンティックの観点からよさそうと思ったのですがSafariのバグが想像以上に多くて、複雑なデザインで使いたい時は他のタグを使ったほうがよさそうです。</p>
-</div>
+### パターン2：コンテンツの高さが決まっていない場合
 
-## labelとinputタグを使う旧方法（IEでも動きます）
-セマンティックの観点からは非推奨ですが、手軽さで言えば一番いいかもしれません。
+![detailsでアコーディオン](./images/2019/entry315-10.gif)
+
+`summary`以下の`div`に対してのアニメーションはSafariのバグでうまくいかず。<br>
+試行錯誤した結果、`summary`にCSSを追加してそれっぽいアコーディオンを作ってみました。
+
+![detailsでアコーディオンの原理](./images/2019/entry315-11.png)
+
+なかなかトリッキーなコードです。
+
+```css:title=css
+body {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+details {
+  transition: .5s;
+  overflow: hidden;
+  margin-top: -10px;
+  padding-bottom: 12px;
+}
+
+details:last-child {
+  margin-bottom: 0;
+}
+
+details summary {
+  transition: .5s;
+  transform: translateY(10px);
+  dixplay: block;
+  align-items: center;
+  list-style: none;
+  padding: 15px;
+  background: #fff;
+  position: relative;
+  border: 2px solid #333;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary{
+  transform: translateY(0);
+  background: #333;
+  color: #fff;
+}
+
+details[open] {
+  margin-top: 0;
+  padding-bottom: 2px;
+}
+
+details div p{
+  padding: 15px;
+}
+```
+
+[デモ：detailsとsummaryタグを使う方法2](https://codepen.io/camile/pen/mdBLpaN)
+
+
+## labelとinputタグを使う旧方法（IE動きます）
+手軽で複雑なアニメーションがCSSだけで実装できるのがlabelとinputタグを使う方法です。
+
+セマンティックの観点からは非推奨です。
 
 まずは開閉ボタンを実装しましょう！<br>
 タグにオンオフ（`:checked`）の状態があるタグ・チェックボックスもしくはラジオボタンを利用します。
@@ -433,15 +505,16 @@ input[type=checkbox]:checked + label + div {
 [デモ：アコーディオンするアイテムの高さが決まっている場合](https://codepen.io/camile/pen/JjKZeZK)
 
 ## JavaScriptも利用してアクセシビリティも考慮しつつリッチにアコーディオンメニューを実装（2021-01-05編集）
-今のところ、個人的にはJSとCSSを組み合わせるのが一番いい気がします。**WAI-ARIA**対応もしてアクセシビリティもいい感じです。
-
-**開閉のトリガーはJSに委ねて、アニメーションはCSSに任せるのが良い**と思っています。
+結論。**開閉のトリガーはJSに委ねて、アニメーションはCSSに任せるのが良い**。
+今のところ、個人的にはJSとCSSを組み合わせるのが一番いい気がします。**WAI-ARIA**対応（スクリーン読み込み）もできますのでアクセシビリティもいい感じです。
 
 そして自然なスライドアップとダウンをさせるためには要素の`height`の取得が不可欠です。
 
 初期状態では要素は開いた状態にしておき、開閉する要素の高さを`js`で0にしておきます。
 
 クリックしたらインラインスタイルで`height`を追加し、アニメーションする仕組みになっています。
+
+2021-01-05にリサイズ対応。レスポンシブでも使えるようにしてあります。
 
 ![JavaScriptも利用して不自然なタグを使わずカクツキなくリッチにアコーディオンメニューを実装](./images/2019/entry315-6.gif)
 
@@ -558,8 +631,6 @@ item.setAttribute('aria-expanded',"true")
 
 このコードではアコーディオンメニューが複数ページにあってもお互い干渉し合うことなく動きます。
 
-リサイズ対応してあるのでレスポンシブでも使えます。
-
 ## 今回使用した、CSS・JSのプロパティなど
 今回使用したHTML・CSS・JSのプロパティなどを紹介します。
 
@@ -621,7 +692,7 @@ console.log(fruit)
 
 アコーディオンメニューはjQueryに頼らなくても、CSS3だけやJSを利用して軽量に作ることができます。
 
-簡単なコードならライブラリに頼らないほうが軽量化できていい時もありますし、ライブラリに頼らず自ら書くことでCSSやJSの理解度も高まります。
+カンタンなコードならライブラリに頼らないほうが軽量化できていい時もありますし、ライブラリに頼らず自ら書くことでCSSやJSの理解度も高まります。
 
 正解はないので、まずは自由に実装してみてはいかがでしょうか？
 

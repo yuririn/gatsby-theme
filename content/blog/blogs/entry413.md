@@ -15,7 +15,7 @@ lead: ["記事数が増えると一覧にペーネーションが欲しくなり
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. *プラグインナシで一覧にページネーション実装*（←イマココ）
 6. [個別ページテンプレート作成](/blogs/entry416/)
@@ -41,7 +41,7 @@ WordPressなど、その他のCMSに慣れていると*一覧を分割しペー�
 ### ページネーションを実装するためにページを分割する
 まずはgatsby-node.jsにページを分割するためのコードを書いていきます。
 
-一覧ページの実装の仕方についてはこちらを参考にしてください。
+一覧ページの実装についてはこちらを参考にしてください。
 
 <card id="/blogs/entry408/"></card>
 
@@ -71,7 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     // 省略
     let count = blogPosts.length
-    console.log(count);
+    console.log(count)//デバッグ
 
     // 一覧を出力するコードを追加
     createPage({
@@ -90,7 +90,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 ```
 <br>続けて以下のコードを追記します。今回は1ページに12記事を表示します。
 
-たとえばブログが45記事あったら、 4つのページに分割します。
+たとえば*45記事*あったら **4つのページに分割される**、といった形になります。
 
 * /blogs/
 * /blogs/page/2/
@@ -99,10 +99,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 どこからどこまでの記事を出力するか、テンプレートblog-list.js側に値を渡します。
 
-* `limit`...ループ数
-* `skip`...オフセット（どこからループを始めるか）数
-* `current`...現在何番目
-* `page`...トータルのページ数
+* `limit` ... ループ数
+* `skip` ... オフセット（どこからループを始めるか）数
+* `current` ... 現在何番目
+* `page` ... トータルのページ数
 
 ```js:title=gatsby-node.js
   const postsPerPage = 12 //1ページに表示する記事の最大数
@@ -126,7 +126,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   }
 ```
-ページが出力されたか簡単に調べる方法があります。
+ページが出力されたか、カンタンに調べる方法があります。
 
 404ページにアクセスすると、出力されているページ一覧が確認できます。
 
@@ -182,7 +182,7 @@ allMarkdownRemark(
   ...
 )
 ```
-<br>createPageから投げられた値は引数`pageContext`に格納されます。
+<br>createPageから投げられた値は引数`pageContext`に格納されるので、それを利用します。
 ```
 const blogs = ({ pageContext, data, location }) => {
 }
@@ -355,13 +355,13 @@ const blogs = ({ pageContext, data, location }) => {
 })
 ```
 
-<br>カテゴリーやタグ一覧でもページネーションを実装したいときは`type`を追加してください。
+<br>カテゴリやタグ一覧でもページネーションを実装したいときは`type`を追加してください。
 
 ```html
 <Pagination num={page} current={current} type={cateSlug} />
 ```
 
-カテゴリーやタグもページネーションを実装したい方はGitHubの[pagination](https://github.com/yuririn/gatsby-blog/tree/pagination)ブランチのコードを参考にしてください。
+カテゴリやタグもページネーションを実装したい方はGitHubの[pagination](https://github.com/yuririn/gatsby-blog/tree/pagination)ブランチのコードを参考にしてください。
 
 ### もっと複雑なページネーションを実装したい方へ
 

@@ -15,7 +15,7 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. *プラグインを利用して目次出力*（←イマココ）
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
@@ -103,7 +103,7 @@ module.exports = {
 [オプション](#オプションの一覧)の説明については記事の後ろに記載します。
 
 
-```js{6-12}:title=gatsby-config.js
+```js{6-14}:title=gatsby-config.js
 module.exports = {
   plugins: [
     {
@@ -114,7 +114,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               icon: false,
-              maintainCase: true,
+              maintainCase: false,
             },
           },
         ],
@@ -130,6 +130,11 @@ module.exports = {
 オプションを設定しなければ、以下のように無駄なコードも出力されます。
 
 ![](./images/2020/12/entry410-1.jpg)
+
+<div class="box">
+<h4>optionのmaintainCaseをtrueにするとアンカーリングが効かなくなることも</h4>
+<p>maintainCaseをtrueにすると見出しに追加されるidに含まれるアルファベットは大文字が小文字に変換されます。目次のアンカーと差異ができて飛ばなくなることがあります。なのでここではfalseにしておきましょう。</p>
+</div>
 
 ### 目次を出力するコンポーネントを作成する
 次に目次を出力するコンポーネントを作成します。
@@ -405,13 +410,13 @@ npm i styled-components
 
 |オプション|用途|
 |-|-|
-|offsetY|リンクをクリックして移動した時の見出しの上の空き（オフセット）の調整。pxです|
-|icon|Boolean。デフォルトはtrueでホバーすると左にアイコンが表示されまます。|
-|class|アンカーに独自のクラス名を指定するそう|
-|maintainCase|Boolean。含まれる要は大文字小文字を維持するか指定できる。|
-|removeAccents|Boolean。アクセント削除。日本人のサイトにはまず必要なさそう。|
-|isIconAfterHeader|Boolean。アイコンの位置を右側に移動|
-|elements|リンクを自動挿入するためのタグ一覧を配列で指定|
+|*offsetY*|リンクをクリックして移動した時の見出しの上の空き（オフセット）の調整。pxです|
+|*icon*|Boolean。デフォルトはtrueでホバーすると左にアイコンが表示されまます。|
+|*class*|アンカーに独自のクラス名を指定するそう|
+|*maintainCase*|Boolean。含まれる要は大文字小文字を維持するか指定できる。|
+|*removeAccents*|Boolean。アクセント削除。日本人のサイトにはまず必要なさそう。|
+|*isIconAfterHeader*|Boolean。アイコンの位置を右側に移動|
+|*elements*|リンクを自動挿入するためのタグ一覧を配列で指定|
 
 ## まとめ
 目次があると記事の全貌がわかり、読むか読まないかの判断ができ、ユーザーに優しいです。

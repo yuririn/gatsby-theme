@@ -6,8 +6,8 @@ hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: GatsbyJSでサイトのリニューアル！ブログのファーストビューって大切ですよね。キービジュアル次第（記事の最初に目を引く画像）で読むか読まないか考えますもん。今回はブログページを充実させるためにキービジュアルなどを追加する方法をご紹介します。CSSの調整も行いました！※ Mac以外では検証してません。ご了承ください。※ 2021年12月28日v4対応のためリライトしました。
-lead: ["GatsbyJSでサイトのリニューアル！","ブログのファーストビューって大切ですよね。キービジュアル次第（記事の最初に目を引く画像）で読むか読まないか考えますもん。","今回はブログページを充実させるためにキービジュアルなどを追加する方法をご紹介します。","※ Mac以外では検証してません。ご了承ください。","※ 2021年12月28日v4対応のためリライトしました。"]
+description: 記事のmarkdownファイルの設定でカテゴリ、タグ、記事のキービジュアルを追加できるようにしました。主にはgatsby-plugin-imageを使って、キービジュアル画像などを追加する方法をご紹介します。※ Mac以外では検証してません。ご了承ください。※ 2021年12月28日v4対応のためリライトしました。
+lead: ["ブログのファーストビューって大切ですよね。キービジュアル次第（記事の最初に目を引く画像）で読むか読まないか考えますもん。","ということで記事のmarkdownファイルの設定でカテゴリ、タグ、記事のキービジュアルを追加できるようにしました。","主にはgatsby-plugin-imageを使って、キービジュアル画像などを追加する方法をご紹介します。","おまけで、「この記事を書いた人」的なパーツも改造しました。","※ 2021年12月28日v4対応のためリライトしました。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>
@@ -16,7 +16,7 @@ lead: ["GatsbyJSでサイトのリニューアル！","ブログのファース�
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. *投稿テンプレにカテゴリやらキービジュアル（アイキャッチ）追加*（←イマココ）
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
@@ -36,16 +36,15 @@ lead: ["GatsbyJSでサイトのリニューアル！","ブログのファース�
 この記事は一番メジャーなテンプレート、 Gatsby Starter Blogを改造しています。同じテーマでないと動かない可能性があります。
 
 ### 今回やりたいこと
-ブログ記事のmdファイルだけを取得し、投稿ごとにキービジュアル画像やカテゴリーなどの属性を追加し、テンプレートに表示したい。
-
-さらに、、、
-<msg txt="頻繁に投稿するものと、そうでないもののテンプレを分けたい!"></msg>
+ブログ記事のmarkdownファイルだけを取得し、投稿ごとにキービジュアル画像やカテゴリなどの属性を追加し、テンプレートに表示したい。
 
 まずは普段更新する記事用のテンプレを作ります。長いですが、目次を活用しながら読み進めてください。
 
 今回の完成目標です。
 
 ![完成目標](./images/2020/11/entry406-3.jpg)
+
+おまけで、「この記事を書いた人」的なコンポーネントも改造しました。かなりブログっぽいページにGrade Upできます！
 
 
 ## 記事と記事中の画像などの格納フォルダーの設定
@@ -60,7 +59,7 @@ gatsby-node.jsのコメントから。
 > gatsby-config.jsから削除された場合でも、これらは常に定義され。Markdown内のfrontmatterも明示的に定義します。
 > このように、「MarkdownRemark」クエリは、ブログの投稿は、エラーを返す代わりに「content/blog」内に保存されます。
 
-つまり、`content/blog`に格納されたmdファイルは記事として反映されます。
+つまり、`content/blog`に格納されたmarkdownファイルは記事として反映されます。
 
 記事内本文に表示したい画像もマークダウンファイルと同じblogフォルダーに格納します。
 
@@ -175,7 +174,7 @@ gatsby-node.js ファイルから `exports.createSchemaCustomization` 〜とい�
 
 `createTypes`内に設定された出力したいfrontmatterに応じて修正ます。
 
-`type Frontmatter`に *cate*、*hero*、*pagetype* を追加します。
+`type Frontmatter`に *cate*、*tags*, *hero*、*pagetype* を追加します。
 
 ```js{12-15}:title=gatsby-node.js
 //~ 省略
@@ -206,7 +205,7 @@ GraghQLのコメントは#を頭に付与するだけ。
 # コメント
 ```
 
-GraphQLは*クエリ言語*なので、mdファイルのfrontmatter(---で囲んだ部分)の設定もここから読み取ることができます。
+GraphQLは*クエリ言語*なので、markdownファイルのfrontmatter(---で囲んだ部分)の設定もここから読み取ることができます。
 
 取得するデータは `result` に格納設定されています。 `frontmatter`に、`hero`、`pagetype`をgatsby-node.jsの上の方に追記します。
 
@@ -229,7 +228,7 @@ exports.createPages = async ({ graphQL, actions, reporter }) => {
             }
             frontmatter {
               hero
-              pagetpe
+              pagetype
             }
           }
         }
@@ -285,13 +284,13 @@ if (posts.length > 0) {
     └ templates/blog-post.js（編集）
 ```
 
-このテンプレートでは *blog/* 以下のmdファイルから取得したコンテンツを出力します。
+このテンプレートでは *blog/* 以下のmarkdownファイルから取得したコンテンツを出力します。
 
 ### GraghQLで受け取るクエリを変更
 
 `pageQuery`の設定を変更します。
 
-`$hero: String` 追加し、mdファイルから *gatsby-node.js* 経由で画像パスを取得します。
+`$hero: String` 追加し、markdownファイルから *gatsby-node.js* 経由で画像パスを取得します。
 
 このように取得した値は、絞り込みなどに使えます。
 
@@ -352,7 +351,7 @@ Gatsbyは *WebP（ウェッピー）* や *AVIF（エーブアイエフ）* も�
 > WebP（ウェッピー）という画像形式をご存知でしょうか？　長い間、webの静止画は大部分がJPEG/GIF/PNGのいずれかでした。WebPはこのすべてを置き換えることができる次世代のフォーマットです。2020年9月リリースのiOS 14がWebPをサポートしたことで、主要なモダンブラウザーの足並みがようやく揃いました。<br>
 > [次世代画像形式のWebP、そしてAVIFへ](https://ics.media/entry/201001/)
 
-WebPはサファリも対応したので、IEガン無視の人は十分使えます。
+WebPはSafariも対応したので、IEガン無視の人は十分使えます。
 
 gatsby-image-plugin は loding Lazy 対応してあります。 `placeholder` は loding Lazy で画像が表示されるまでに、代わりに表示される画像です。`DOMINANT_COLOR`がデフォルトですが、`BLURRED` にしておくと、表示したい画像のぼやけたものを表示してくれ、代替画像から画像実物にきりわかる時が自然です。<br>
 不要であれば `NONE` にしておきましょう。
@@ -473,7 +472,7 @@ CSSを追加してないのでちょっとダサいけど出力できました�
 
 ## カテゴリやタグを出力
 
-テンプレートにカテゴリーを追加します。
+テンプレートにカテゴリを追加します。
 
 ### タグやカテゴリも取得できるようにする
 
@@ -515,13 +514,13 @@ const BlogPostTemplate = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
   // 省略
 ```
-出力結果は以下の通り。ちゃんとmdファイルからfrontmatterのデータが取れました。
+出力結果は以下の通り。ちゃんとmarkdownファイルからfrontmatterのデータが取れました。
 ```js
 {cate: "web-developer", tags: (2) ['Gatsby', 'React']}
 ```
 
 ### カテゴリの出力
-まずはカテゴリーのみ出力します。
+まずはカテゴリのみ出力します。
 
 ```js{17-20}:title=blog-post.js
   //省略
@@ -539,7 +538,7 @@ const BlogPostTemplate = ({ data, location }) => {
       />
       <p><time datetime={post.frontmatter.date}>{post.frontmatter.date}</p>
     </header>
-    {/* カテゴリー追加 */}
+    {/* カテゴリ追加 */}
     <dl>
       <dt>カテゴリ</dt>
       <dd>{cate}</dd>
@@ -557,7 +556,7 @@ const BlogPostTemplate = ({ data, location }) => {
   //省略
   return (
     <Layout location={location} title={siteTitle}>
-    {/* カテゴリー追加 */}
+    {/* カテゴリ追加 */}
     <dl>
       <dt>カテゴリ</dt>
       <dd>{cate}</dd>
@@ -577,7 +576,7 @@ Reactではmapのようなループ系の処理で *key* がないと怒られ�
 react.development.js:220 Warning: Each child in a list should have a unique "key" prop.
 ```
 
-今は単に文字だけを表示してますが、次の[ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)でカテゴリやタグの一覧ができるのでその時にリンクを付与します。
+今は単に文字だけを表示してますが、次の[ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)でカテゴリやタグの一覧ができるのでその時にリンクを付与します。
 
 ### next（次の記事へ） と previous（前の記事へ）の挙動
 最初から実装されている next（次の記事へ） と previous（前の記事へ）のボタンが動くか確かめます。
@@ -616,12 +615,12 @@ const BlogPostTemplate = ({ data, location }) => {
 ```
 styled-components用にタグを書き直します。
 
-1. articleからArticleへ
+1. `article`から`Article`へ
 2. 画像のラッパーを増やす
 3. 日付用のクラス追加と少しコード修正
-3. カテゴリ、タグのdlをDlへ
-4. 記事の本文出力を内包しているsectionをBlogEntryへ
-5. ページ送りのnavをBlogPostNavにし、ulのインラインスタイルを削除
+3. カテゴリ、タグの`dl`を`Dl`へ
+4. 記事の本文出力を内包している`section`を`BlogEntry`へ
+5. ページ送りの`nav`を`BlogPostNav`にし、`ul`のインラインスタイルを削除
 ```js:title=blog-post.js
   // 省略
   return (
@@ -776,7 +775,6 @@ gatsby-config.js の `siteMetadata` にはどのコンポネントやテンプ�
 
 `<StaticImage />` を使ってプロフィール画像を表示してあるので今回差し替えます。
 
-
 ```js{18-19,38-41,60-68,70-78}:title=bio.js
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
@@ -866,7 +864,9 @@ const Bio = () => {
 export default Bio
 ```
 
-`<StaticImage />` コンポーネントを使うと複数のオプションを組み合わせて直接画像を指定できます。
+gatsby-plugin-imageには `<GatsbyImage />` と `<StaticImage />` の画像の取得方法があります。
+
+`<StaticImage />` コンポーネントを使うとGraphQLのコードを書かずに直接画像を指定できます。
 
 ```js
 <StaticImage
@@ -889,7 +889,7 @@ const src = '../images/common/camille-pic.jpg'
 return <StaticImage src={src}/>
 ```
 
-### SNSリンクにアイコンを付与
+### @fortawesome/react-fontawesomeをインストールしてSNSリンクにアイコンを付与
 せっかくなのでfontAwesomeを使えるようにします。
 
 ```bash:title=コマンド
@@ -1065,7 +1065,7 @@ const Sns = styled.ul`
 
 記事詳細ページはアレンジできるようになりました！
 
-次回は「[ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)」です。
+次回は「[ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)」です。
 
 皆さんのコーディングライフの一助となれば幸いです。
 
@@ -1078,16 +1078,16 @@ const Sns = styled.ul`
 
 |オプション|デフォ値|説明|
 |-|-|-|
-|*ayout*|"constrained" / CONSTRAINED |リサイズの振る舞い|
+|*ayout*|"constrained" /<br>CONSTRAINED |リサイズの振る舞い|
 |*width/height*||画像サイズ|
 |*aspectRatio*||アスペクト比。通常は画像のアスペクト比に依存|
-|*placeholder*|"dominantColor"/DOMINANT_COLOR|画像がアップされるまでの一時的な画像|
-|*formats*|["auto","webp"]/[AUTO,WEBP]|画像のフォーマット|
-|*transformOptions*|{fit: "cover", cropFocus: "attention"}|グレースケールなどへ変換可能|
+|*placeholder*|"dominantColor"/<br>DOMINANT_COLOR|画像がアップされるまでの一時的な画像|
+|*formats*|["auto","webp"]/<br>[AUTO,WEBP]|画像のフォーマット|
+|*transformOptions*|{fit: "cover",<br>cropFocus: "attention"}|グレースケールなどへ変換可能|
 |*sizes*|自動作成|フルサイズの指定が欲しい時だけ使う|
 |*quality*|50|画像のクオリティ0 ~ 100|
-|*outputPixelDensities*|For fixed images: [1, 2]<br>For constrained: [0.25, 0.5, 1, 2]|生成する画像のピクセル密度。|
-|*breakpoints*|[750, 1080, 1366, 1920]|デフォで、一般的なデバイス解像度の幅が生成。ソース画像よりも大きな画像が生成されることはない。ブラウザに応じて自動かつ適切な画像サイズに切り替える。|
+|<em><span>outputPixel</span><span>Densities</span></em>|<span>For fixed images:</span>[1, 2]<br><span>For constrained:</span>[0.25, 0.5, 1, 2]|生成する画像のピクセル密度。|
+|*breakpoints*|[750, 1080,1366, 1920]|デフォで、一般的なデバイス解像度の幅が生成。ソース画像よりも大きな画像が生成されることはない。ブラウザに応じて自動かつ適切な画像サイズに切り替える。|
 |*blurredOptions*|なし|プレースホルダがぼやけてない限り無視される|
 |*tracedSVGOptions*|なし|SVG用のプレースホルダーオプション。|
 |*jpgOptions*|なし|jpegを生成するときシャープにするオプション|

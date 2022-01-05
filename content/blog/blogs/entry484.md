@@ -5,8 +5,8 @@ hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","React","Gatsby"]
-description: Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。色々やり方はあると思いますが、今回はコンポーネントを作って読み込む方法をご紹介します。※ v4バージョンアップに追記した記事です。v4以外ではうまく動かない可能性があります。
-lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。色々やり方はあると思いますが、今回はコンポーネントを作って読み込む方法をご紹介します。","※ v4バージョンアップに追記した記事です。v4以外ではうまく動かない可能性があります。"]
+description: Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。今回はプラグイン・styled-componentsを使って装飾しつつコンポーネントを作って読み込む方法をご紹介します。※ v4バージョンアップに伴い追加した記事です。v4以外ではうまく動かない可能性があります。
+lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。今回はプラグイン・styled-componentsを使って装飾しつつコンポーネントを作って読み込む方法をご紹介します。","※ v4バージョンアップに伴い追加した記事です。v4以外ではうまく動かない可能性があります。"]
 ---
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
@@ -14,7 +14,7 @@ lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加�
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. *ヘッダーとフッターを追加する*（←イマココ）
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. [個別ページテンプレート作成](/blogs/entry416/)
@@ -43,7 +43,7 @@ lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加�
 ```
 Gatsby Starter Blog は layout というコンポーネントで全体のレイアウト管理されています。
 
-今回はここにヘッダーとフッター用の子ポンポーネントを追加します。
+今回はここにヘッダーとフッター用の子コンポーネントを追加します。
 
 ## header.js 作成
 まずは、headerから作ります。components/配下に格納します。
@@ -235,13 +235,27 @@ export default Layout
 ### 汎用スタイルをstyle.cssに書く
 ```
 プロジェクト/
+  ├ gatsby-browser.js
   └ src/
-     └ style.css
+     └ style.css（編集）
+```
+cssはgatsby-browser.jsを通じて読み込まれています。必要な場合はこちらに追加します。
+```js{7}:title=gatsby-browser.js
+// custom typefaces
+import "typeface-montserrat"
+import "typeface-merriweather"
+// normalize CSS across browsers
+import "./src/normalize.css"
+// custom CSS styles
+import "./src/style.css"
+
+// Highlighting for code blocks
+import "prismjs/themes/prism.css"
 ```
 
-デザインはテンプレ臭いのでsrc/style.cssをまるっと削除し、以下を追加。
+今回はstyle.cssをいじるだけです。デザインがテンプレ臭いので中身をまるっと削除し書き直すだけ。
 
-ここには汎用的に使うスタイルだけを書いていきます。
+ここには共通で使う変数や汎用的に使うスタイルだけを書いていきます。
 
 ```css:title=style.css
 :root {
@@ -268,7 +282,7 @@ body {
 ### プラグインstyled-componentsでheaderを装飾
 せっかくなので *styled-components* をインストールしてスタイルを当てましょう。
 
-```sh:title=コマンド
+```bash:title=コマンド
 npm i styled-components
 ```
 

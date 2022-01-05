@@ -15,7 +15,7 @@ lead: ["GatsbyでプライバシーポリシーやAboutページなど記事一�
 1. [インストールからNetlifyデプロイまで](/blogs/entry401/)
 2. [ヘッダーとフッターを追加する](/blogs/entry484/)
 2. [投稿テンプレにカテゴリやらメインビジュアル（アイキャッチ）追加](/blogs/entry406/)
-3. [ブログ記事、カテゴリー、タグ一覧の出力](/blogs/entry408/)
+3. [ブログ記事、カテゴリ、タグ一覧の出力](/blogs/entry408/)
 4. [プラグインを利用して目次出力](/blogs/entry410/)
 5. [プラグインナシで一覧にページネーション実装](/blogs/entry413/)
 6. *個別ページテンプレート作成*（←イマココ）
@@ -131,7 +131,6 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
-      tableOfContents(maxDepth: 3)
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
@@ -153,7 +152,7 @@ const BlogEntry = styled.section`
   border-bottom: 1px solid #ccc;
 `
 ```
-### privacy-policy.mdファイルを追加し編集
+### privacy-policy.md ファイルを追加し編集
 プライバシーポリシーページを追加します。
 
 ![プライバシーポリシー](./images/2020/12/entry416-1.jpg)
