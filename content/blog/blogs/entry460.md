@@ -156,15 +156,7 @@ Slack上部に検索窓から検索できます。<br>フリーワードでも�
 ![高度な検索で大切な投稿を探そう！](./images/2021/05/entry460-16.jpg)
 
 余談ですがTwitterでもいろんな検索方法使えます^ ^
-<a class="article-link" href="/blogs/entry456/">
-<section><div class="article-link__img"><img alt="使いこなせたら超便利！Twitter検索術まとめ" src="/static/e66e0b73e5865d8d53ad7d332980f356/f836f/entry456.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">使いこなせたら超便利！Twitter検索術まとめ</div>
-<p class="description">最近、情報はTwitterの検索機能で収集することが多くなりました。とにかく最新の情報が手に入りやすいで･･･</p>
-<p>
-<time datetime="2021-04-15">2021.04.15</time>
-</p>
-</div>
-</section></a>
+<card id="/blogs/entry456/"></card>
 
 <br>Slackの検索機能はめちゃくちゃ高度で説明したらキリがないので、私がよくやるパターンを2つご紹介します。
 

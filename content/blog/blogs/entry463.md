@@ -18,7 +18,7 @@ lead: ["jQueryなし！バニラJSのカウントダウンタイマーを作っ�
 
 ## new Date()の使い方
 
-JavaScriptの` Date`オブジェクトにについて。
+JavaScriptの` Date`オブジェクトについて。
 
 > JavaScript の日時は、基本的に協定世界時 (UTC) の1970年1月1日深夜0時からの経過ミリ秒数で指定されます。この日付と時刻は、コンピューターに記録される日付と時刻の値の主な基準値である UNIX Epoch と同じです。
 
@@ -29,7 +29,7 @@ JavaScriptの` Date`オブジェクトにについて。
 const today = new Date();
 console.log(today);
 ```
-ちょっと小さいですが、現在の日時を取得できます。
+ちょっと画像が小さいですが、現在の日時を取得できます。
 
 ![Sun May 23 2021 06:38:22 GMT+0800 (フィリピン標準時)](./images/2021/05/entry463-1.jpg)
 

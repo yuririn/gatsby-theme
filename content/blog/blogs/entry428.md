@@ -57,7 +57,7 @@ npm install pug
 
 <br>今回は練習のため、`pug-practice`というディレクトリを作ってみましょう。ディレクトリー名とproject名が被らないように注意してください。
 
-npmのモジュールを管理できるようにpackage.jsonを作っておきます。VSコードであれば、ターミナルを`control + shift + @`で開くことができます。
+npmのモジュールを管理できるようにpackage.jsonを作っておきます。VS Codeであれば、ターミナルを`control + shift + @`で開くことができます。
 
 ### npm initでpackage.jsonを作成
 package.jsonを作成し、npmモジュールを管理しながら、進めていきます。
