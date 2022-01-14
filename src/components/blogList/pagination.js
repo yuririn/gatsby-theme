@@ -17,189 +17,155 @@ const Li = ({ num, current, path }) => {
     )
   }
 }
-
-const Prev = ({ current, type }) => {
-  if (current === 1) {
-    return (
-      <li className="c-pager--archive__prev not-work">
-        <span>Newer</span>
-      </li>
-    )
-  } else if (current === 2) {
-    return (
-      <li className="c-pager--archive__prev">
-        <Link to={`/blogs/${type}`}>Newer</Link>
-      </li>
-    )
-  } else {
-    return (
-      <li className="c-pager--archive__prev">
-        <Link to={`/blogs/${type}page/${current - 1}/`}>Newer</Link>
-      </li>
-    )
-  }
-}
-
-const Next = ({ num, current, type }) => {
-  if (current === num) {
-    return (
-      <li className="c-pager--archive__next not-work">
-        <span>Older</span>
-      </li>
-    )
-  } else {
-    return current === "" ? (
-      <li className="c-pager--archive__next">
-        <Link to={`/blogs/${type}page/2/`}>Older</Link>
-      </li>
-    ) : (
-      <li className="c-pager--archive__next">
-        <Link to={`/blogs/${type}page/${current + 1}/`}>Older</Link>
-      </li>
-    )
-  }
-}
-
-const Skip = ({ show }) => {
-  return show ? <li className="skip">...</li> : ""
+const Skip = ({ num }) => {
+  return (
+    <li className="skip" key={`pager${num}`}>
+      ...
+    </li>
+  )
 }
 
 const Pagination = ({ num, current, type }) => {
-  let array = []
-  for (let index = 1; index <= num; index++) {
-    array.push(index)
-  }
-
-  if (num < 6) {
+  const arr = [...Array(num).keys()].map(i => i + 1)
+  const newer =
+    current === 1 ? (
+      <li className="c-pager--archive__prev not-work" key="pager-newer">
+        <span>Newer</span>
+      </li>
+    ) : current === 2 ? (
+      <li className="c-pager--archive__prev" key="pager-newer">
+        <Link to={`/blogs/${type}`}>Newer</Link>
+      </li>
+    ) : (
+      <li className="c-pager--archive__prev" key="pager-newer">
+        <Link to={`/blogs/${type}page/${current - 1}/`}>Newer</Link>
+      </li>
+    )
+  const older =
+    current === num ? (
+      <li className="c-pager--archive__next not-work" key="pager-older">
+        <span>Newer</span>
+      </li>
+    ) : current === "" ? (
+      <li className="c-pager--archive__next" key="pager-older">
+        <Link to={`/blogs/${type}`}>Older</Link>
+      </li>
+    ) : (
+      <li className="c-pager--archive__next" key="pager-older">
+        <Link to={`/blogs/${type}page/${current + 1}/`}>Older</Link>
+      </li>
+    )
+  if (num > 0) {
     return (
       <PagerWrapper>
-        <ol className="c-pager--archive p-section">
-          <Prev current={current} num={num} type={type} />
-          {(array || []).map(i =>
-            i === 1 ? (
+        {newer}
+        {arr.map(i => {
+          const path = i === 1 ? `/blogs/${type}` : `/blogs/${type}page/${i}/`
+          if (num > 6) {
+            console.log(`pager${i}`)
+            if (current <= 3 || current === "") {
+              if (arr.length === i) {
+                return (
+                  <Li
+                    num={i}
+                    current={current === i}
+                    path={path}
+                    type={type}
+                    key={`pager-first`}
+                  ></Li>
+                )
+              } else if (arr.length - 1 === i) {
+                return <Skip key={i}></Skip>
+              } else if (i < 6) {
+                return (
+                  <Li
+                    num={i}
+                    current={current === i}
+                    path={path}
+                    type={type}
+                    key={`pager${i}`}
+                  ></Li>
+                )
+              }
+            } else if (current >= num - 3) {
+              if (i === 1) {
+                return (
+                  <Li
+                    num={i}
+                    current={current === i}
+                    path={path}
+                    type={type}
+                    key={`pager${i}`}
+                  ></Li>
+                )
+              }
+              if (i === 2) {
+                return <Skip key={i}></Skip>
+              } else if (arr.length - 5 < i) {
+                return (
+                  <Li
+                    num={i}
+                    current={current === i}
+                    path={path}
+                    type={type}
+                    key={`pager${i}`}
+                  ></Li>
+                )
+              }
+            } else {
+              if (i === 1) {
+                return (
+                  <Li
+                    num={i}
+                    current={current === i}
+                    path={path}
+                    type={type}
+                    key={`pager${i}`}
+                  ></Li>
+                )
+              } else if (i === 2) {
+                return <Skip key={i}></Skip>
+              } else if (current + 3 > i && current - 2 < i) {
+                return (
+                  <Li
+                    num={i}
+                    current={current === i}
+                    path={path}
+                    type={type}
+                    key={`pager${i}`}
+                  ></Li>
+                )
+              } else if (arr.length === i) {
+                return (
+                  <Li
+                    num={i}
+                    current={current === i}
+                    path={path}
+                    type={type}
+                    key={`pager${i}`}
+                  ></Li>
+                )
+              } else if (arr.length - 1 === i) {
+                return <Skip key={i}></Skip>
+              }
+            }
+          } else {
+            return (
               <Li
                 num={i}
                 current={current === i}
-                path={`/blogs/${type}`}
+                path={path}
                 type={type}
-              />
-            ) : (
-              <Li
-                num={i}
-                current={current === i}
-                path={`/blogs/${type}page/${i}/`}
-                type={type}
-              />
+                key={`pager${i}`}
+              ></Li>
             )
-          )}
-          <Next current={current} num={num} type={type} />
-        </ol>
+          }
+        })}
+        {older}
       </PagerWrapper>
     )
   } else {
-    if (num >= 8) {
-      if (current <= 3 || current === "") {
-        array = []
-        for (let index = 1; index <= 5; index++) {
-          array.push(index)
-        }
-
-        return (
-          <PagerWrapper>
-            <ol className="c-pager--archive p-section">
-              <Prev current={current} num={num} type={type} />
-              {(array || []).map(i =>
-                i === 1 ? (
-                  <Li
-                    num={i}
-                    current={current === i}
-                    path={`/blogs/${type}`}
-                    type={type}
-                  />
-                ) : (
-                  <Li
-                    num={i}
-                    current={current === i}
-                    path={`/blogs/${type}page/${i}/`}
-                    type={type}
-                  />
-                )
-              )}
-              <li className="skip">...</li>
-              <li className="c-pager--archive__num">
-                <Link to={`/blogs/${type}page/${num}/`}>{num}</Link>
-              </li>
-              <Next current={current} num={num} type={type} />
-            </ol>
-          </PagerWrapper>
-        )
-      } else if (current >= num - 3) {
-        array = []
-        for (let index = num - 4; index <= num; index++) {
-          array.push(index)
-        }
-        return (
-          <PagerWrapper>
-            <ol className="c-pager--archive p-section">
-              <Prev current={current} num={num} type={type} />
-              <li className="c-pager--archive__num">
-                <Link to={`/blogs/${type}`}>1</Link>
-              </li>
-              <li className="skip">...</li>
-              {(array || []).map(i =>
-                i === 1 ? (
-                  <Li
-                    num={i}
-                    current={current === i}
-                    path={`/blogs/${type}`}
-                    type={type}
-                  />
-                ) : (
-                  <Li
-                    num={i}
-                    current={current === i}
-                    path={`/blogs/${type}page/${i}/`}
-                    type={type}
-                  />
-                )
-              )}
-              <Next current={current} num={num} type={type} />
-            </ol>
-          </PagerWrapper>
-        )
-      } else {
-        array = []
-        for (let index = current - 1; index <= current + 2; index++) {
-          array.push(index)
-        }
-
-        return (
-          <PagerWrapper>
-            <ol className="c-pager--archive p-section">
-              <Prev current={current} num={num} type={type} />
-              <li className="c-pager--archive__num">
-                <Link to={`/blogs/${type}`}>1</Link>
-              </li>
-              <Skip show={current !== num + (current - 3)} />
-              {(array || []).map(i => (
-                <Li
-                  num={i}
-                  current={current === i}
-                  path={`/blogs/${type}page/${i}/`}
-                />
-              ))}
-              <Skip show={current !== num - (current + 3)} />
-              <li className="c-pager--archive__num">
-                <Link to={`/blogs/${type}page/${num}/`}>{num}</Link>
-              </li>
-              <Next current={current} num={num} type={type} />
-            </ol>
-          </PagerWrapper>
-        )
-      }
-    } else {
-      return ""
-    }
+    return ""
   }
 }
 

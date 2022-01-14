@@ -8,7 +8,7 @@ const Toc = props => {
   return (
     <Mokuji>
       <input type="checkbox" className="mokuji" id="mokuji" />
-      <label className="c-content__heading" for="mokuji">
+      <label className="c-content__heading" htmlFor="mokuji">
         目次
       </label>
       <Edit>
@@ -39,7 +39,7 @@ const Mokuji = styled.div`
 				90deg
 				);
 			}
-			&+ div {
+			& + * {
 				max-height: 100px;
 				position: relative;
 				&::after {

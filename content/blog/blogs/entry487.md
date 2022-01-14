@@ -23,6 +23,7 @@ lead: ["Gatsbyブログにパンくずリストを追加します。今までの
 10. [関連記事一覧出力](/blogs/entry430/)
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 12. *パンくずリストを追加する*（←イマココ）
+13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納してあります。
 

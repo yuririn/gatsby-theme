@@ -49,7 +49,7 @@ const RelativeCard = data => {
               {article.frontmatter.title}
             </div>
             <p className="description">{description}</p>
-            <time date={article.frontmatter.date.replace(/\./g, "-")}>
+            <time dateTime={article.frontmatter.date.replace(/\./g, "-")}>
               {article.frontmatter.date}
             </time>
           </div>
