@@ -54,12 +54,9 @@ Plugin Name: サンプル
 Description: サンプルだよーーーん
 Author: 銀ねこアトリエ
 Version: 1.0
-Author URI: http://172.16.54.25/
+Author URI: http://ginneko-atelier.com/
 */
 ```
-
-といった感じでファイルの冒頭に書くだけです。プラグイン一覧に以下のように出力されます。
-![プラグイン一覧に以下](./images/2018/entry283-1.png)
 
 ## さらに細分化して複数のファイルに機能を分けてフォルダにまとめたい場合
 例えば、SEO で必要なタイトルタグやメタディスクリプションなどをカスタムフィールドで投稿画面に実装することもあると思います。<br>
@@ -116,7 +113,7 @@ require_once(SEO__PLUGIN_DIR . 'ogp.php');
 
 よくキュー状態とか言いますよね？会社で複数人で一つのプリンターとか使った経験がある人ならわかるかも。
 
-```
+```php
 // CSS/JSの読み込み
 function custom_enqueue($hook_suffix)
 {

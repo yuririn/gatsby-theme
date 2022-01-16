@@ -1,6 +1,7 @@
 ---
 title: Gutenbergの記事一覧ブロックを自作する
 date: 2022-01-12
+modifieddate: 2022-01-15
 hero: thumbnail/2022/entry488.jpg
 pagetype: blog
 cateId: cms
@@ -18,6 +19,10 @@ lead: ["WordPressのテーマに組み込むブロックを作ってみました
 
 ## 環境を構築しよう！
 まずはWorPress環境を構築しましょう！
+
+WordPressはLocalなどのお手軽ツールでもいいのですが、Dockerでも作れます。
+
+<card id="/blogs/entry480/"></card>
 
 プレーンなコードを書いても実装できましたが、Reactを書くときイマイチだったので、今回は`@wordpress/scripts`を使って環境構築しました。
 ちなみに`@wordpress/scripts`はWebpackベースです。
@@ -80,6 +85,15 @@ export NODE_OPTIONS=--openssl-legacy-provider
 上記でうまく動かない場合は、前述のコマンド後、`node_modules` ディレクトリを削除、以下コマンド後 `npm install` or `npm i` を実行してみてください。
 ```bash:title=コマンド
 npm cache clean --force
+```
+### mini-css-extract-pluginでこける場合
+下記のようなエラーが出た場合はmini-css-extract-pluginのバージョンが足りてないことがあるので、
+```
+[webpack-cli] TypeError: MiniCSSExtractPlugin is not a constructor
+```
+バージョン上げてあげてください。
+```bash:title=コマンド
+npm i -D --save-exact mini-css-extract-plugin@2.4.5
 ```
 
 ## ブロックをスクリプトで出力する
@@ -173,9 +187,10 @@ function my_new_block() {
 		true
 	);
 }
-add_action( 'init', 'my_new_block' );
-
+add_action( 'enqueue_block_editor_assets', 'my_new_block' );
 ```
+公式ではフックに `init`を使ってますが、`enqueue_block_editor_assets` はブロックエディターが読み込まれる際に呼び出され、`wp_enqueue_script` で指定したJSファイルをエンキューできます。
+
 どこでもいいのでエディター画面でリロードし、開発者ツールなどでデバッグ内容が取得できているか確認します。
 
 ![開発者ツールなどでデバッグ内容が取得できているか確認](./images/2022/01/entry488-1.png)
@@ -227,7 +242,7 @@ icon: "list-view",
 今回は、いくつかのコンポーネントを使って作成します。
 
 条件は以下です。
-* 1ページに1、3、６、12、15記事と出力制限を設けた
+* 1ページに表示するのは最大30ページ
 * カテゴリーごとでも絞り込める
 
 ### 出力できる記事数の出力制限を設定
@@ -235,13 +250,16 @@ icon: "list-view",
 
 出力する記事数のデフォルトは6とします。
 
-既存のコンポーネント`PanelBody`と`SelectControl`を使って見た目を整えます。
-
-もし被ったら開発者ツール側でアラートが出るのですぐわかります。
+`InspectorControls`を使って、サイドバーからページ数やカテゴリーを操作できるようにします。
+`PanelBody`、`NumberControl`を使って見た目を整えます。
 
 ```js:title=index.js
 import { registerBlockType } from "@wordpress/blocks";
-import { PanelBody, SelectControl } from "@wordpress/components";
+import {
+  PanelBody,
+  __experimentalNumberControl as NumberControl,
+} from "@wordpress/components";
+  import { InspectorControls } from "@wordpress/
 
 registerBlockType("mybloc/list-block", {
   title: "記事一覧",
@@ -253,35 +271,34 @@ registerBlockType("mybloc/list-block", {
       default: 6,
     },
   },
-  edit: (props) => {
-    const {
-      attributes: { cnt },
-      setAttributes,
-    } = props;
+  edit: ({ attributes, setAttributes }) => {
     return (
-      <PanelBody>
-        <SelectControl
-          label="記事数"
-          value={cnt}
-          options={[
-            { label: 1, value: 1 },
-            { label: 3, value: 3 },
-            { label: 6, value: 6 },
-            { label: 12, value: 12 },
-            { label: 15, value: 15 },
-          ]}
-          onChange={(newCnt) => {
-            return setAttributes({ cnt: parseInt(newCnt) });
-          }}
-        />
-      </PanelBody>
+      <>
+        <InspectorControls>
+          <PanelBody>
+            <NumberControl
+              label="表示数"
+              isShiftStepEnabled="true"
+              shiftStep="1"
+              min="1"
+              max="30"
+              value={attributes.num}
+              onChange={(value) => setAttributes({ num: parseInt(value) })}
+            />
+          </PanelBody>
+        </InspectorControls>
+        <p style={{ padding: `20px`, backgroundColor: `#eee` }}>ここに{attributes.num}記事の一覧が出力されます。</p>
+      </>
     );
   },
 });
 
 ```
-こんなUIで仕上がります。
+サイドバーと記事でこんな仕上がりになりました。
+
 ![出力結果](./images/2022/01/entry488-4.png)
+
+挿入されたブロックは動的に値が変化します。
 
 少し解説です。blockから動的に値を設定するために `attributes` を設定する必要があります。
 
@@ -290,7 +307,7 @@ registerBlockType("mybloc/list-block", {
 ```js
 attributes: {
   cnt: {
-    type: "string",
+    type: "number",
     default: 6,
   },
 },
@@ -309,19 +326,22 @@ type（型）は以下から選択可能です。
 <br>値はセレクトボックスを通すと型がstring（文字列）に変わったのでperseIntでnumberに戻しています。**型が一致しないと保存できないので注意です**。
 
 ```js
-parseInt(newCnt)
+parseInt(value)
 ```
 
-`SelectControl` は、セレクトボックス用のコンポーネントです。ここではざっくりしか紹介してないので、プロパティの使い方は *Block Editor Handbook* を見てみてください。
+`NumberControl` は、数字入力専用のコンポーネントです。ここではざっくりしか紹介してないので、プロパティの使い方は *Block Editor Handbook* を見てみてください。
 
-[SelectControl](https://developer.wordpress.org/block-editor/reference-guides/components/select-control/)
+[NumberControl](https://developer.wordpress.org/block-editor/reference-guides/components/number-control/)
 
-```js:title=SelectControl
-<SelectControl
+```js:title=NumberControl
+<NumberControl
   label={ラベル}
+  isShiftStepEnabled={シフト（十字キーとか）入力できるようにする}
+  shiftStep={シフトで進む数}
+  min={最小}
+  max={最大}
   value={値}
-  options={[オプションに追加する配列]}
-  onChange={変更に関する条件}
+  onChange={変更があった時の処理}
 />
 ```
 
@@ -330,9 +350,12 @@ parseInt(newCnt)
 ### @wordpress/api-fetchを使ってカテゴリーを取得して絞り込めるようにする
 `@wordpress/api-fetch`を使ってカテゴリー一覧を取得します。
 
-```js{3}:title=index.js
+```js{6}:title=index.js
 // 省略
-import { PanelBody, SelectControl } from "@wordpress/components";
+import {
+  PanelBody,
+  __experimentalNumberControl as NumberControl,
+} from "@wordpress/components";
 import apiFetch from "@wordpress/api-fetch";
 // 省略
 ```
@@ -356,42 +379,69 @@ registerBlockType("mybloc/list-block", {
 出力結果はこちら。
 
 ![出力結果](./images/2022/01/entry488-5.png)
-```js{5-8,12,18-23}:title=index.js
+
+カテゴリーはコンポーネント`SelectControl`を使ってセレクトボックスを出力します。
+```js{5,10-15,21-26,30}:title=index.js
+// 省略
+import {
+  PanelBody,
+  __experimentalNumberControl as NumberControl,
+  SelectControl,
+} from "@wordpress/components";
+// 省略
 registerBlockType("mybloc/list-block", {
-  // 省略
-  attributes: {
-    // 省略
-    cateid: {
-      type: "number",
-      default: "-1",
-    },
-  },
-  edit: (props) => {
-    const {
-      attributes: { cnt, cateid },
-      setAttributes,
-    } = props;
+  edit: ({ attributes, setAttributes }) => {
+    const getCate = categories.filter((i) => {
+      if (i.value === attributes.cateid) {
+        return i;
+      }
+    });
+    const textCate = attributes.cateid !== -1 ? `「カテゴリー・${getCate[0].label}」` : "";
     return (
-      <PanelBody>
-        {/* 省略 */}
-        <SelectControl
-          label="カテゴリー"
-          value={cateid}
-          options={categories}
-          onChange={(newCate) => setAttributes({ cateid: parseInt(newCate) })}
-        />
-      </PanelBody>
+      <>
+        <InspectorControls>
+          <PanelBody>
+            {/*省略*/}
+            <SelectControl
+              label="カテゴリー"
+              value={attributes.cateid}
+              options={categories}
+              onChange={(value) => setAttributes({ cateid: value })}
+            />
+          </PanelBody>
+        </InspectorControls>
+        <p style={{ padding: `20px`, backgroundColor: `#eee` }}>
+          ここに{textCate}
+          {attributes.num}記事の一覧が出力されます。
+        </p>
+      </>
     );
   },
 });
 ```
 ![出力結果](./images/2022/01/entry488-6.png)
 
+`SelectControl` は、セレクトボックス用のコンポーネントです。ここではざっくりしか紹介してないので、プロパティの使い方は *Block Editor Handbook* を見てみてください。
+[SelectControl](https://developer.wordpress.org/block-editor/reference-guides/components/select-control/)
+```js:title=SelectControl
+<SelectControl
+  label={ラベル}
+  value={値}
+  options={[オプションに追加する配列]}
+  onChange={変更に関する条件}
+/>
+```
+### index.js すべてのコード
 ここまでのすべてのコードです。
 ```js:title=index.js
 import { registerBlockType } from "@wordpress/blocks";
-import { PanelBody, SelectControl } from "@wordpress/components";
+import {
+  PanelBody,
+  SelectControl,
+  __experimentalNumberControl as NumberControl,
+} from "@wordpress/components";
 import apiFetch from "@wordpress/api-fetch";
+import { InspectorControls } from "@wordpress/block-editor";
 
 const categories = [{ label: "すべて", value: -1 }];
 
@@ -415,34 +465,39 @@ registerBlockType("mybloc/list-block", {
       default: -1,
     },
   },
-  edit: (props) => {
-    const {
-      attributes: { cnt, cateid },
-      setAttributes,
-    } = props;
+ edit: ({ attributes, setAttributes }) => {
+   const getCate = categories.filter((i) => {
+      if (i.value === attributes.cateid) {
+        return i;
+      }
+    });
+    const textCate = attributes.cateid !== -1 ? `「カテゴリー・${getCate[0].label}」` : "";
     return (
-      <PanelBody>
-        <SelectControl
-          label="記事数"
-          value={cnt}
-          options={[
-            { label: 1, value: 1 },
-            { label: 3, value: 3 },
-            { label: 6, value: 6 },
-            { label: 12, value: 12 },
-            { label: 15, value: 15 },
-          ]}
-          onChange={(newCnt) => {
-            return setAttributes({ cnt: parseInt(newCnt) });
-          }}
-        />
-        <SelectControl
-          label="カテゴリー"
-          value={cateid}
-          options={categories}
-          onChange={(newCate) => setAttributes({ cateid: parseInt(newCate) })}
-        />
-      </PanelBody>
+      <>
+        <InspectorControls>
+          <PanelBody>
+            <NumberControl
+              label="表示数"
+              isShiftStepEnabled="true"
+              shiftStep="1"
+              min="1"
+              max="30"
+              value={attributes.num}
+              onChange={(value) => setAttributes({ num: parseInt(value) })}
+            />
+            <SelectControl
+              label="カテゴリー"
+              value={attributes.cateid}
+              options={categories}
+              onChange={(value) => setAttributes({ cateid: value })}
+            />
+          </PanelBody>
+        </InspectorControls>
+        <p style={{ padding: `20px`, backgroundColor: `#eee` }}>
+          ここに{textCate}
+          {attributes.num}記事の一覧が出力されます。
+        </p>
+      </>
     );
   },
 });
