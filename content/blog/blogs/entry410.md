@@ -5,7 +5,7 @@ modifieddate: 2022-01-01
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["JavaScript","React","Gatsby"]
+tags: ["React","Gatsby"]
 description: 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。
 lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。","ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。","※ 2021年12月v4バージョンアップに伴いリライトしました。"]
 ---

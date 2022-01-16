@@ -5,7 +5,7 @@ modifieddate: 2022-01-01
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["JavaScript","React","Gatsby"]
+tags: ["React","Gatsby"]
 description: GatsbyでプライバシーポリシーやAboutページなど記事一覧のループと分ける方法をご紹介します。
 lead: ["GatsbyでプライバシーポリシーやAboutページなど記事一覧のループと分ける方法をご紹介します。"]
 ---

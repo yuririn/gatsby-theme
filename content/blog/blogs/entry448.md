@@ -79,7 +79,7 @@ META for DeveloperはFacebookアカウントを持っていることが前提条
 
 ![あらかじめ「アプリID」、「app secret」をメモっておく！](./images/2021/03/entry448-13.jpg)
 
-公開して使用する予定があるのであれば、*プライバシーポリシーのURL* 、さらに必要があれば *利用規約のURL* も登録しておきましょう。
+公開して使用する予定があるのであれば、*プライバシーポリシーのURL* 、さらに必要があれば *利用規約のURL* も登録しておきましょう。登録がないと突然、表示されないなどの問題が起こる可能性があります（詳しい理由は[突然のエラーデータが取得できない](#突然のエラーデータが取得できない2021-12-24追記)を参照）。
 
 ### Graph APIアクセストークン取得
 アクセストークンを作成します。グローバルメニューのツールから「グラフAPIエクスプローラ」を選択します。
@@ -356,39 +356,38 @@ curl_setopt ( CurlHandle $handle , int $option , mixed $value )
 
 
 ```PHP:title=PHP
-$list = "";
+$list      = "";
 $instagram = null;
-$id = {instagram_bussiness_account_ID};
-$token = {user_access_token};
-$count = {表示数};
-$url = 'https://graph.facebook.com/v10.0/' . $id . '?fields=name,media.limit(' . $count. '){caption,media_url,thumbnail_url,permalink,like_count,comments_count,media_type}&access_token=' . $token;
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($curl);
-curl_close($curl);
+$id        = {instagram_bussiness_account_ID};
+$token     = {user_access_token};
+$count     = {表示数};
+$url       = 'https://graph.facebook.com/v10.0/' . $id . '?fields=name,media.limit(' . $count. '){caption,media_url,thumbnail_url,permalink,like_count,comments_count,media_type}&access_token=' . $token;
+
+$curl      = curl_init();
+curl_setopt( $curl, CURLOPT_URL, $url );
+curl_setopt( $curl, CURLOPT_CUSTOMREQUEST, 'GET' );
+curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+
+$response = curl_exec( $curl );
+curl_close( $curl );
 
 //エラー
-if($response){
-  $instagram = json_decode($response);
-  if(isset($instagram->error)){
+if ( $response ) {
+  $instagram = json_decode( $response );
+  if ( isset( $instagram->error ) ) {
     $instagram = null;
   }
 }
 
-foreach($instagram->media->data as $value){
+foreach ( $instagram->media->data as $value ) {
   //メディアのタイプがビデオの場合、サムネを取得
-  if($value->media_type=='VIDEO'){
-    $src=$value->thumbnail_url;
-    $video = '<span class="video"></span>';
-  }
-  else{
-    $src=$value->media_url;
-    $video = "";
+  if ( $value->media_type === 'VIDEO' ) {
+    $src = $value->thumbnail_url;
+  } else {
+    $src = $value->media_url;
   }
 
-  $list .= '<li><a href="'.$value->permalink.'" target="_blank"><img src="'.$src.'" alt="'.$value->caption.'">'.$video.'<span class="like"><i class="fa fa-heart"></i>'.$value->like_count.'</span></a></li>';
+  $list .= '<li><a href="' . $value->permalink . '" target="_blank"><img src="' . $src . '" alt="' . $value->caption . '"><span class="like"><i class="fa fa-heart"></i>' . $value->like_count . '</span></a></li>' ;
 }
 echo '<ul>' . $list . '</ul>';
 ```
@@ -406,7 +405,7 @@ echo '<ul>' . $list . '</ul>';
 > Facebookでは、データの使用状況の年次確認を行うことになりました。
 <small>2021年時点。Metaに変わったはずだが、テキストの改修に間に合ってない模様。。。</small>
 
-再三のメールのお知られがあったにも関わらず、気づかなくてページがエラーを吐いた状態になりました。
+再三のメールのお知らせがあったにもかかわらず、気づかなくてページがエラーを吐いた状態になりました。
 
 ![プライバシーポリシーのコンプライアンス](./images/2021/03/entry448-23.jpg)
 アプリのダッシュボードから*プライバシーポリシーのURL*と*利用規約のURL*を入力し、変更しておきましょう。

@@ -1,19 +1,19 @@
 ---
-title: WordPressのインスタ表示用ブロックを作る（axios、GraphAPI）
+title: WordPress インスタ表示用ブロックを作る（axios、GraphAPI）
 date: 2022-01-16
 hero: thumbnail/2022/entry490.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["WordPress","React","JS"]
-description: WordPressでインスタ用のブロック開発をしてみたので作り方をご紹介します。インスタ用のブロックを作るためにはアクセストークンとインスタのビジネスアカウントIDを用意しておく必要があります。GraphAPIはaxiosを使って非同期処理しました。
-lead: ["WordPressでインスタ用のブロック開発をしてみたので作り方をご紹介します。インスタ用のブロックを作るためにはアクセストークンとインスタのビジネスアカウントIDを用意しておく必要があります。GraphAPIはaxiosを使って非同期処理しました。"]
+tags: ["WordPress","React"]
+description: インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！インスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示。サンプルコードあり。
+lead: ["インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！","この記事ではその実装方法をご紹介します。","事前準備としてインスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示しています。","サンプルコードあります。"]
 ---
 ## 事前準備
 このブロックを作る前にやっておくことがあります。
 
-1. WordPressブロック開発のためnpmのインストールやpackage.jsonの編集など開発環境を作っておく
-2. Graph APIのアクセストークン取得とインスタビジネスアカウントIDを調べておく
-3. WordPress開発環境を自分のマシーンに用意しておく
+1. WordPressブロック開発用に **npmのインストールやpackage.jsonの編集** など環境を作っておく
+2. **Graph APIのアクセストークン取得** と **インスタビジネスアカウントID** を調べておく
+3. WordPress開発仮装環境などを自分のマシーンに用意しておく
 
 以下記事にGraph APIのアクセストークン取得とインスタビジネスアカウントIDの方法を紹介してますので参考にしてください。
 <card id="/blogs/entry448/"></card>
@@ -255,7 +255,7 @@ useEffect(() => {
           >
             <img
               src={
-                post.media_type == "VIDEO"
+                post.media_type === "VIDEO"
                   ? post.thumbnail_url
                   : post.media_url
               }
@@ -284,7 +284,7 @@ useEffect(() => {
 ```js
 <img
   src={
-    post.media_type == "VIDEO"
+    post.media_type === "VIDEO"
       ? post.thumbnail_url
       : post.media_url
   }
@@ -312,7 +312,7 @@ registerBlockType("myblock/insta-list", {
               <figure className="c-insta-list__img">
                 <img
                   src={
-                    post.media_type == "VIDEO"
+                    post.media_type === "VIDEO"
                       ? post.thumbnail_url
                       : post.media_url
                   }
@@ -334,7 +334,7 @@ registerBlockType("myblock/insta-list", {
   },
 });
 ```
-ページ側にはこんな感じでインスタグラムの投稿一覧が出力できるようになりました。
+ブロックを追加したページ側にはこんな感じでインスタグラムの投稿一覧が出力できるようになりました。
 ![サイト側](./images/2022/01/entry490-5.jpg)
 
 今回はCSSの紹介はしてません。[2022年版！GraphAPIでインスタグラム投稿一覧を出力（JS/PHPサンプルコードあり）](/blogs/entry448/)を参考にしていただくか、お好みでスタイルを当ててみてください。

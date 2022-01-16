@@ -207,6 +207,8 @@ export const Edit = styled.section`
   ul,
   ol {
     list-style: none;
+    margin-bottom: 1.5em;
+
     p {
       margin-bottom: 0.5em;
     }
@@ -214,7 +216,7 @@ export const Edit = styled.section`
   ul > li {
     padding-left: 1.5em;
     position: relative;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
 
     &::before {
       left: 8px;
@@ -233,8 +235,8 @@ export const Edit = styled.section`
   }
   ol {
     counter-reset: num;
-    ol ol {
-      display: none;
+    ol {
+      margin-bottom: 0;
     }
 
     li:first-child {
@@ -243,7 +245,7 @@ export const Edit = styled.section`
     li {
       padding-left: 2.3em;
       position: relative;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.2em;
     }
     li:before {
       counter-increment: num;
@@ -261,7 +263,7 @@ export const Edit = styled.section`
     box-shadow: none;
     border: none;
     background: var(--color-d-blue);
-    padding: 3px 5px;
+    padding: 2px 6px;
   }
   .gatsby-code-title {
     font-weight: bold;
@@ -350,13 +352,17 @@ export const Edit = styled.section`
     td,
     th {
       border: 1px solid #bbb;
-      padding: 0.4em 0.7em;
+      padding: 0.3em 0.7em;
     }
     th {
       font-size: 0.9em;
-      background: #eee;
+      background: var(--color);
+      color: #fff;
     }
     margin-bottom: 30px;
+    tr:nth-child(2n) {
+      background: #eee;
+    }
   }
   code[class*="language-"],
   pre[class*="language-"] {

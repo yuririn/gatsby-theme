@@ -1,5 +1,5 @@
 ---
-title: Gutenbergの記事一覧ブロックを自作する
+title: WordPressの記事一覧ブロック（Gutenberg）を自作する
 date: 2022-01-12
 modifieddate: 2022-01-15
 hero: thumbnail/2022/entry488.jpg
@@ -294,7 +294,7 @@ registerBlockType("mybloc/list-block", {
 });
 
 ```
-サイドバーと記事でこんな仕上がりになりました。
+エディターのサイドバーと記事入力部分はこんな仕上がりになりました。
 
 ![出力結果](./images/2022/01/entry488-4.png)
 
@@ -314,16 +314,17 @@ attributes: {
 ```
 
 type（型）は以下から選択可能です。
+|値|意味|
+|-|-|
+|*null*|値なし|
+|*boolean*|ブール、真偽値(true or false)|
+|*object*|オブジェクト型|
+|*array*|配列|
+|*string*|文字列|
+|*integer*|9桁または10桁の精度の整数|
+|*number (same as integer)*|integerと一緒|
 
-* null
-* boolean
-* object
-* array
-* string
-* integer
-* number (same as integer)
-
-<br>値はセレクトボックスを通すと型がstring（文字列）に変わったのでperseIntでnumberに戻しています。**型が一致しないと保存できないので注意です**。
+<br>値はセレクトボックスを通すと型がstring（文字列）に変わるので、`perseInt` で `number`（整数）に戻しています。**型が一致しないと保存できないので注意です**。
 
 ```js
 parseInt(value)

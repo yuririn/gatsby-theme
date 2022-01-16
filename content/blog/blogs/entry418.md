@@ -5,7 +5,7 @@ modifieddate: 2022-01-03
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["JavaScript","React","Gatsby"]
+tags: ["React","Gatsby"]
 description: Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。※GA4に対応しました。
 lead: ["Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。","※FBシェアのcanonilcal属性を修正しました。","※GA4に対応しました。","※ v4に対応しました。"]
 ---
