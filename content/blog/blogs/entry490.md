@@ -1,28 +1,28 @@
 ---
-title: WordPressにインスタ表示用ブロックを作る
-date: 2022-01-15
+title: WordPressのインスタ表示用ブロックを作る（axios、GraphAPI）
+date: 2022-01-16
 hero: thumbnail/2022/entry490.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["WordPress","React","JS"]
-description: WordPressでインスタ用のブロックを作ったので作り方をご紹介します。インスタ用のブロックを作るためにはアクセストークンとインスタのビジネスアカウントIDを用意しておく必要があります。axiosを使って非同期処理しました。
-lead: ["WordPressでインスタ用のブロックを作ったので作り方をご紹介します。インスタ用のブロックを作るためにはアクセストークンとインスタのビジネスアカウントIDを用意しておく必要があります。axiosを使って非同期処理しました。"]
+description: WordPressでインスタ用のブロック開発をしてみたので作り方をご紹介します。インスタ用のブロックを作るためにはアクセストークンとインスタのビジネスアカウントIDを用意しておく必要があります。GraphAPIはaxiosを使って非同期処理しました。
+lead: ["WordPressでインスタ用のブロック開発をしてみたので作り方をご紹介します。インスタ用のブロックを作るためにはアクセストークンとインスタのビジネスアカウントIDを用意しておく必要があります。GraphAPIはaxiosを使って非同期処理しました。"]
 ---
 ## 事前準備
 このブロックを作る前にやっておくことがあります。
 
-npmのインストールやpackage.jsonの編集など開発環境を作っておく必要があります。
+1. WordPressブロック開発のためnpmのインストールやpackage.jsonの編集など開発環境を作っておく
+2. Graph APIのアクセストークン取得とインスタビジネスアカウントIDを調べておく
+3. WordPress開発環境を自分のマシーンに用意しておく
 
-instagramのデータ一覧をGraph APIから取得するために、アクセストークンを取得しておく必要があります。
-
-以下記事にGraph APIのアクセストークン取得の仕方など紹介してますので参考にしてください。
+以下記事にGraph APIのアクセストークン取得とインスタビジネスアカウントIDの方法を紹介してますので参考にしてください。
 <card id="/blogs/entry448/"></card>
 
 自分のマシーンでのWordPress環境はLocalなどのお手軽ツールでもいいのですが、Dockerでも作れます。
 
 <card id="/blogs/entry480/"></card>
 
-## インスタをブロックで編集できるプラグインを作る
+## インスタ一覧をブロックエディターで追加編集できるプラグインを作る
 今回はプラグインで作ります！
 pluginsの中に、insta-galleryというディレクトリを作ります。
 
@@ -55,13 +55,15 @@ pluginsの中に、insta-galleryというディレクトリを作ります。
           └ index.js（追加）
 ```
 
-srcにindex.jsを作ったらコマンドを叩いて作業しましょう！
+srcディレクトリにindex.jsを作ったらコマンドを叩いて作業しましょう！
 
 ```bash:title=コマンド
 npm start
 ```
 ### my-insta-gallery.phpプラグインを登録できるようにする
 my-insta-gallery.phpに以下のようなコードを書きます。
+
+これはこのフォルダー以下をプラグイン化するためのコードです。
 
 ```php:title=my-insta-gallery.php
 <?php
@@ -70,7 +72,7 @@ my-insta-gallery.phpに以下のようなコードを書きます。
  *
  * @link https://ginneko-atelier.com
  * @package Insta gallery
- */
+*/
 
 /*
 Plugin Name: インスタグラムギャラリー
@@ -84,7 +86,7 @@ License: GPLv3
 */
 ```
 ![インストールできました](./images/2022/01/entry490-1.png)
-有効化します。
+インスタグラムギャラリーを有効化します。
 
 index.jsを読み込むコードを追記します。
 
@@ -161,17 +163,22 @@ registerBlockType("myblock/insta-list", {
   },
 });
 ```
-ブロックが追加されるので追加すると
+今回はinstagramのアイコンがあったので使ってみました。<br>
+「インスタグラムギャラリー」ブロックが増えるので追加すると
 
 ![インストールできました](./images/2022/01/entry490-2.png)
 
-ちゃんと反映しました！instagramのアイコンがあったので使ってみました。
+ちゃんと反映しました！
 ![インストールできました](./images/2022/01/entry490-3.png)
 
-ちなみに、インスタグラムビジネスアカウントIDのタイプをあえて`number`にしなかったのは数字が多すぎて認識できないからです。
+ちなみに、`insta_id`の`type`をあえて`number`にしなかったのは数字が多すぎて認識できなかったです。
 
+インスタグラムのビジネスアカウントIDは18桁くらいあるので無理もない。
+```js
+insta_id: { type: "string", default: "" }
+```
 ### instagramをエディター側で出力
-instagramをエディター側で出力します。`useEffect`と`axios`を使います。
+Graph APIから取得したinstagramの投稿のデータをエディター側で出力します。出力するためには`useEffect`と`axios`を使います。
 
 ```js{10-11}:title=index.js
 import { registerBlockType } from "@wordpress/blocks";
@@ -186,7 +193,7 @@ import { InspectorControls } from "@wordpress/block-editor";
 import { useEffect } from "@wordpress/element";
 import axios from "axios";
 ```
-Graph APIから値を取得します。追加した `attributes` の `insta_list` にインスタ一覧の配列を格納します。
+取得したデータは、新たに追加した `attributes`（属性）の `insta_list` に格納します。
 
 ```js{6-9,13-24}:title=index.js
 // 省略
@@ -220,7 +227,7 @@ registerBlockType("myblock/insta-list", {
 useEffect(() => {
 , [何かしら]);
 ```
-エディターでの出力用のコードを書きます。
+エディター側の出力用のコードを書きます。
 ```js:title=index.js
 {/*省略*/}
 </InspectorControls>
@@ -269,11 +276,11 @@ useEffect(() => {
 },
 // 省略
 ```
-エディター側の実装結果はこちら。
+エディター側の実装結果はこちら。今回は**どんな画像が何個表示されるのかだけわかればいい**ので最低限のスタイルだけ当てました。
 
 ![エディター側の実装結果](./images/2022/01/entry490-4.png)
 
-画像がビデオだった場合はサムネイルを取得するようにしています。
+インスタは写真だけではなく動画もUPできます。`media_type`が`VIDEO`だった場合は`media_url`がありません。なので、投稿のサムネイル（`thumbnail_url`）を取得するようにしています。
 ```js
 <img
   src={
@@ -290,7 +297,7 @@ useEffect(() => {
 ```
 
 ### 表側の実装
-サイトの表側にはいいねの数も表示するようにしました。今回はCSSの紹介はしてません。
+サイトの表側にはいいねの数も表示するようにしました。
 
 ```js:title=index.js
 // 省略
@@ -327,10 +334,12 @@ registerBlockType("myblock/insta-list", {
   },
 });
 ```
-ページにはこんな感じで出力できるようになりました。
+ページ側にはこんな感じでインスタグラムの投稿一覧が出力できるようになりました。
 ![サイト側](./images/2022/01/entry490-5.jpg)
 
-## まとめ・インスタをWordPressのブロックエディターで作るのは結構大変だった
+今回はCSSの紹介はしてません。[2022年版！GraphAPIでインスタグラム投稿一覧を出力（JS/PHPサンプルコードあり）](/blogs/entry448/)を参考にしていただくか、お好みでスタイルを当ててみてください。
+
+## まとめ・インスタをWordPressのブロック開発するのは大変だけど楽しかった
 この記事を書くにあたって、まだブロックエディターのことがよくわかってなくて、手探りで調べながら進めました。
 
 思わぬnpmインストールでハマりポイントなどもあり記事を書くのに丸1日かかりました笑
