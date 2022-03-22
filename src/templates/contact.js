@@ -213,7 +213,7 @@ const Form = () => {
           </p>
           <div className="hidden-area">
             <label for="message"></label>
-            <input type="text" name="bot-field" v-model="botField" />
+            <input type="text" name="bot-field" v-model="botField"/>
           </div>
           <Error name={name} email={email} agreement={agreement}></Error>
         </form>

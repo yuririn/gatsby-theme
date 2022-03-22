@@ -43,7 +43,7 @@ const Seo = ({
   let page = isRoot ? "WebSite" : "WebPage"
   const pagetype = isRoot ? "webSite" : "webPage"
   const ogSrc = domain + (ogp ? ogp : "/images/ogp.png")
-  const cate = config.siteMetadata.category.filter(cat => cat.name === title)
+  // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
   let pageName =
     type === "tags" || type === "genre"
       ? `${title}|記事一覧|${defaultTitle}`

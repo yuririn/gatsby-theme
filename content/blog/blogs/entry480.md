@@ -1,7 +1,7 @@
 ---
 title: DockerでシンプルなWordPress環境を作る
 date: 2021-12-22
-modifieddate: 2021-12-24
+modifieddate: 2022-03-21
 hero: thumbnail/2021/entry480.jpg
 pagetype: blog
 cateId: 'cms'
@@ -68,6 +68,20 @@ services:
 [dockerhub|wordpress](https://hub.docker.com/_/wordpress)
 
 マウントするディレクトリは`wp-content`や`themes`だけでいいのであれば適宜書き換えてください。
+
+#### mysql8でデータベースの接続ができなくなる問題
+mysql8を試そうとしたところ、データベースが接続できなくなりました。
+
+その場合は、`default-authentication-plugin`の設定を変える必要があります。
+
+```yaml:title=docker-compose.yml
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    env_file: .env
+    ports:
+      - "3306:3306" #ポート番号の設定
+```
 
 ### .envファイルを作成
 .envファイルに定数を定義します。
@@ -173,19 +187,20 @@ docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u
 ```bash:title=コマンド
 docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' < wordpress.sql
 ```
-コンテナ名は任意で名前をつけなければ*ルートディレクトリ名_コンテナ名_1*となるようです。<br>
+
 名付け方はまた追記します。
+
 
 ### データベースのダンプ
 ダンプ方法です。
 
 ```bash:title=コマンド
-docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】'> latest.sql
+docker exec -i 【コンテナ名】 sh -c 'mysqldump 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】'> latest.sql
 ```
 .env で設定した定数をはめるとこんな感じです。
 
 ```bash:title=コマンド
-docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' > latest.sql
+docker exec -i wordpress_mysql_1 sh -c 'mysqldump wordpress -u wp_user -phogehoge' > latest.sql
 ```
 
 以下のようなDBができているはずです。
@@ -238,6 +253,14 @@ sqlの終了。
 mysql>  exit;
 ```
 
+## コンテナ内に入る
+Web用のサーバー用に立ち上げたコンテナ内に入って、あれこれ調べたり、設定ファイルを確認したいときがあります。
+
+そんな時は以下コマンドで侵入します。
+
+```bash
+sudo docker exec -it [コンテナID] /bin/bash
+```
 ## dockerを完全に削除
 
 オプションの意味は[dockerを終了](#dockerを終了)を参考にしてください。
@@ -258,3 +281,16 @@ imageも用意されていて `docker-compose.yml`にカンタンなコードを
 
 最後までお読みいただきありがとうございました。
 
+### おまけ・よく使うコマンド
+
+```bash
+docker-compose kill
+```
+ネットワーク一覧を取得
+```bash
+docker network list
+```
+指定したネットワークを削除
+```bash
+docker network rm ID
+```

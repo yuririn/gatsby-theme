@@ -8,7 +8,7 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 
 const PagePostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
-  const { title, siteUrl } = data.site.siteMetadata
+  const { title } = data.site.siteMetadata
   const siteTitle = `${post.frontmatter.title} | ${title}`
   const ogp = data.allFile.edges[0]
     ? data.allFile.edges[0].node.publicURL

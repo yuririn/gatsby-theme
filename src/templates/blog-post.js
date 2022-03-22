@@ -258,35 +258,35 @@ const Body = styled.div`
   }
 `
 
-const Feedly = styled.div`
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eee;
-  // border:1px solid #6cc655;
-  flex-direction: column;
-  margin: 0 15px;
-  @media screen and (min-width: 768px) {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  h2 {
-    margin-bottom: 20px;
-  }
-  a {
-    background: #6cc655;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    padding: 0 20px;
-    color: #fff;
-    border-radius: 20px;
-    text-decoration: none;
-    svg {
-      margin-right: 10px;
-    }
-  }
-`
+// const Feedly = styled.div`
+//   height: 150px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: #eee;
+//   // border:1px solid #6cc655;
+//   flex-direction: column;
+//   margin: 0 15px;
+//   @media screen and (min-width: 768px) {
+//     margin-left: 0;
+//     margin-right: 0;
+//   }
+//   h2 {
+//     margin-bottom: 20px;
+//   }
+//   a {
+//     background: #6cc655;
+//     font-weight: bold;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 40px;
+//     padding: 0 20px;
+//     color: #fff;
+//     border-radius: 20px;
+//     text-decoration: none;
+//     svg {
+//       margin-right: 10px;
+//     }
+//   }
+// `

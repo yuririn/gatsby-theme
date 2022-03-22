@@ -444,8 +444,9 @@ export default Item;
 ```
 出力できました！わーい。
 
-すべてのCSSです。
 ![詳細ページの出力](./images/2022/02/entry491-8.png)
+
+すべてのCSSです。
 
 ```css:title=App.css
 .App {
