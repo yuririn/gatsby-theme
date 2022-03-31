@@ -1,37 +1,38 @@
 ---
 title: python でスクレイピングして検索上位100件をCVS出力
-date: 2022-03-29
+date: 2022-03-10
+modifieddate: 2022-03-30
 hero: thumbnail/2022/entry492.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["python"]
-description: 仕事を効率化したい！それだけの思いで、1週間前くらいからpythonの勉強始めました。seleniumを使って検索上位100件のデータををcsvに出力するプログラムを作ってみたので忘れないうちにメモっておきます。
-lead: ["仕事を効率化したい！それだけの思いで、1週間前くらいからpythonの勉強始めました。seleniumを使って検索上位100件のデータをcsvに出力するプログラムを作ってみたので忘れないうちにメモっておきます。"]
+description: 仕事を自動化して効率化したい！それだけの思いで、1週間前くらいからpythonの勉強始めました。今回はseleniumを使って検索上位100件のデータををcsvに出力するプログラムを作ってみたので忘れないうちにメモっておきます。
+lead: ["仕事を自動化して効率化したい！","それだけの思いで、1週間前くらいからpythonの勉強始めました。今回はseleniumを使って検索上位100件のデータをcsvに出力するプログラムを作ってみたので忘れないうちにメモっておきます。"]
 ---
 ## 前提条件
 
-<msg txt="今回はインストールとかの説明を省きます。ちなみにパソコン買い替えたてでM1チップで検証しました。"></msg>
-
-自分のマシーンのpythonはPython 3.10.4です。
+<msg txt="今回はインストールとかの説明を省きます。ちなみにパソコン買い替えたばかり。M1チップで検証しました。"></msg>
 
 homebrew経由でインストールしました。バージョンは以下コマンドで確認できます。
+<br><small>windowsは多少コマンドが違うのでご注意ください。</small>
 
-<small>windowsは多少コマンドが違うのでご注意ください。</small>
 
 ```bash:title=コマンド
 python3 -V
 ```
-Macだと以下コマンドだと2系になるので注意です。
+自分のマシーンにインストールしたpythonのバージョンはPython 3.10.4です。
+
+Macだと以下コマンドだとpythonの2系しか操作できないので必ずコマンドに<strong>python3 ...</strong>という感じで。
 
 ```bash:title=コマンド
 python -V
 ```
 ## 仮想環境を作る
 
-コマンドでルートディレクトリに移動しておきます。
+コマンドでpythonを書くファイル©を格納するルートディレクトリに移動しておきます。
 ```
 web-scraping/（ルートディレクトリ）
-  └ .env/（自動でできる）
+  └ .env/（後ほど自動で生成される）
 ```
 
 グローバルにあれこれ入れたくないので仮想環境を作ります。
@@ -44,30 +45,27 @@ python3 -m venv .env
 .envディレクトリが自動生成されます。
 
 ### 仮想環境を実行する
+仮想環境を立ち上げます。
+
 ```bash:title=コマンド
 source .env/bin/activate
 ```
 コマンドを実行をすると、頭に(.env)が付きます。
 ![コマンドを実行をすると、頭に(.env)が付きます](./images/2022/03/entry492-01.png)
-仮想環境をディアクティベート。
+仮想環境をディアクティベートする（落とす）ときは以下コマンド。
 ```bash:title=コマンド
 deactivate
 ```
 ## 検索結果を python で取得する
-web-scraping.pyファイルを追加します。
-pythonのファイルの拡張子は`.py`になります。
+<em>web-scraping.py</em>ファイルを追加します。
+python のファイルの拡張子は`.py`になります。
 ```
 web-scraping/（ルートディレクトリ）
   ├ .env/
   └ web-scraping.py（新規作成）
 ```
 
-今回はselenium を使ってchromeを操作し特定のキーワードを検索、検索結果を取得します。
-selenium は python のライブラリの一つでブラウザを操作できるライブラリです。
-
-ライブラリからは複数のモジュールが呼び出せます。
-
-モジュールはライブラリをインストールしなくても使えるものもあります。
+今回は selenium を使って Chrome を操作し特定のキーワードを検索、検索結果を取得します。<br>selenium は python のライブラリの一つでブラウザを操作できます。
 
 ### ライブラリ selenium をインストール
 selenium を仮想環境にインストールします。
@@ -86,30 +84,32 @@ pip3 list
 pip3 uninstall -y selenium
 ```
 ### webdriver で Chrome を操作する
-seleniumからwebdriverをimportします。
-今回はwebdriverを使ってChromeを操作します。
+ライブラリにはたいてい複数のモジュールが用意されているので、必要に応じて呼び出して使います。
 
-現在使用しているChromeのバージョンと同じものをDLします。
-バージョンはGoogle Chromeを起動して調べることができます。
+モジュールはライブラリをインストールしなくても使えるものもあります。
+
+selenium から webdriver(モジュール) を import します。<br>今回は webdriver を使ってChromeを操作します。
+
+現在使用しているChromeのバージョンと同じものをDLします。<br>バージョンは Google Chrome を起動して調べることができます。
 
 ![バージョンはGoogle Chromeから調べることができます](./images/2022/03/entry492-03.png)
 ![Google Chromeバージョン](./images/2022/03/entry492-04.png)
 
-以下よりダウンロード。
+以下URLよりダウンロードできます。
 
 https://chromedriver.chromium.org/downloads
 
 ![Google Chrome](./images/2022/03/entry492-05.png)
 
-chromedriverはdriverディレクトリに格納しておきます。
+chromedriver は driver ディレクトリに格納しておきます。
 
 ```
 web-scraping/（ルートディレクトリ）
   ├ .env/
-  ├ driver/chromedriver
-  └ web-scraping.py（新規作成）
+  ├ driver/chromedriver（格納）
+  └ web-scraping.py
 ```
-まずはwebdriverを使ってChromeを起動できるか確認してみましょう。
+まずは webdriver を使って Chrome を起動してみましょう。
 
 ```python:title=web-scraping.py
 import time
@@ -130,11 +130,11 @@ time.sleep(interval)
 driver.close()
 ```
 
-以下コマンドを実行します。
+以下コマンドで python を実行します。
 ```bash:title=コマンド
 python3 web-scraping.py
 ```
-Chromeが立ち上がり、5秒後に閉じるはずです。
+Chromeが立ち上がります。スリープ時間は5秒なので、5秒後に閉じるはずです。
 ![Google Chrome](./images/2022/03/entry492-06.png)
 
 ```python
@@ -142,25 +142,24 @@ driver_path = 'driver/chromedriver'
 chrome_service = service.Service(executable_path=driver_path)
 options = Options()
 options.add_argument('--window-size=1200,700')
-driver = webdriver.Chrome(service=chrome_service, options=options)
 ```
-optionsでウィンドウサイズなどの設定し、serviceを使ってchromedriverを呼び出します。
+options でウィンドウサイズなどの設定し、service を使って chromedriver を呼び出します。
 
-各設定はまとめて読み込みます。
+各設定はまとめて webdriver に読み込みます。
 
 ```python
 driver = webdriver.Chrome(service=chrome_service, options=options)
 ```
-
+ブラウザ起動し、閉じます。
 ```python
 time.sleep(interval) # 5秒スリープ
 driver.get(url) # Chromeのホーム画面を開く
 time.sleep(interval) # 5秒スリープ
 driver.close() # driverを閉じる
 ```
-intervalの値を変えるとスリープ時間を調整できます。あまり短縮しすぎると、処理が追いつかないこともあるので注意です。
+変数 interval の値を変えるとスリープ時間を調整できます。あまり短縮しすぎると、処理が追いつかないこともあるので注意です。
 
-Byを追加し、要素を操作します。
+モジュール By を追加し、Chromeホーム画面の要素を操作します。
 ```python{3,9-13}:title=web-scraping.py
 # 省略
 from selenium.webdriver.chrome.options import Options
@@ -194,7 +193,7 @@ chromedriverを使って取得したinputタグ（検索窓）にキーワード
 ### 100件分の検索結果を取得し、配列（リスト）に格納
 pythonでは単純な配列をリスト、連想配列をディクショナリーと呼ぶようです。
 
-```python{5-24}:title=web-scraping.py
+```python{5-23}:title=web-scraping.py
 # 省略
 driver.find_elements(By.NAME, 'btnK')[1].click()
 time.sleep(interval)
@@ -215,7 +214,7 @@ while True:
       break
   if flag:
     break
-  driver.find_element_by_id('pnnext').click()
+  driver.find_element(By.ID,'pnnext').click() # ページ送りをクリックして次のページに移動
   time.sleep(interval)
 driver.close() # 最後の行に移動
 ```
@@ -236,33 +235,79 @@ if g.find_element(By.TAG_NAME, 'h3').text != '' and g.find_element(By.CLASS_NAME
   result['title'] = g.find_element(By.TAG_NAME,'h3').text
   results.append(result)
 if len(results) >= 100:
+  flag = True
   break
-driver.find_element(By.ID,'pnnext').click()
-time.sleep(interval)
 ```
+要素の取得は以前は以下のような記述方法をしていましたが、非推奨となりました。
 
+Byで取得してください。
+
+```python
+# 非推奨
+driver.find_element_by_id('pnnext').click()
+
+# Byで取得
+driver.find_element(By.ID,'pnnext').click()
+```
+|セレクター|記述例|
+|-|-|
+|<em>class</em>|`driver.find_element(By.CLASS_NAME, "hoge")`|
+|<em>ID</em>|`driver.find_element(By.ID, "hoge")`|
+|<em>name</em>|`driver.find_element(By.NAME, "hoge")`|
+|<em>タグ</em>|`driver.find_element(By.TAG_NAME, "h1")`|
+
+タグやクラスなどは複数ある時、以下のような取得の仕方ができます。
+```python
+h3 = driver.find_elements(By.TAG_NAME, 'h3')
+
+# 三個目のh3タグのテキスト
+h3[2].text
+```
+他にもこんな指定ができる。
+```python
+# リンクの文字の一部一致
+driver.find_element(By.PARTIAL_LINK_TEXT, "element_partial_link_text")
+
+# リンクの文字の完全一致
+driver.find_element(By.LINK_TEXT, "element_link_text")
+
+# XPath
+driver.find_element(By.XPATH, "/html/body/h1")
+```
 ## 取得したデータをcsvに格納
 取得したデータをcsvに格納します。
 
-csv作成するだけでなく、命名時にタイムスタンプを付与したいので2つのモジュールを読み込みます。
+csv作成するだけでなく、命名時にタイムスタンプを付与したいので3つのモジュールを読み込みます。
 
-```python{2-3,8-14}:title=web-scraping.py
+```python{2-3,9-15}:title=web-scraping.py
 # 省略
-import csv
-from datetime import datetime
+import csv # csv操作のモジュール
+import math # 計算系のモジュール
+from datetime import datetime # 日付取得のモジュール
 
 # 省略
 driver.close()
 
 if len(results) > 0:
-  timestamp = datetime.isoformat(datetime.now())
+  timestamp = math.floor(datetime.now().timestamp())
   with open(f'output_{timestamp}.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerow(["URL", "title"])
     for result in results:
       writer.writerow([result["url"], result["title"]])
 ```
-実行すると`output_2022-03-29T19:28:27.837116.csv`みたいな感じでfileができます。
+
+実行すると`output_1648594514.csv`みたいな感じでファイルができます。
+
+以下コードでタイムスタンプが取得できますが、小数点以下が出ちゃうので、
+```python
+datetime.now().timestamp()
+```
+`math.floor()`で切り捨てます。
+```python
+timestamp = math.floor(datetime.now().timestamp())
+```
+
 
 ## いちいちブラウザが開くのは面倒
 いちいちブラウザが開くのが鬱陶しいときは、optionsに`--headless`を追加します。
@@ -272,14 +317,16 @@ options.add_argument('--headless')
 ```
 
 ## pythonは記述方法が簡潔で初心者には敷居が低いかも
-python書いてみた感想は記述方法が簡潔でビギナーでもとっつきやすい言語だと感じました。
+python書いてみた感想です。
+
+記述方法が簡潔でビギナーでも、とっつきやすい言語だと感じました。
 <msg txt="コマンド操作さえ乗り越えられればね！"></msg>
 
-今回はスクレイピングをご紹介しましたが、対象サイトや負荷を書けてしまう場合違法だったりもするので注意しましょう。
-<br>Twitterなんかはスクレイピング禁止みたいですしね。
+今回はスクレイピングをご紹介しましたが、対象サイトや負荷を書けてしまう場合、違法だったりもするので注意しましょう。
 
+<msg txt="Twitterなんかはスクレイピング禁止みたいですしね。"></msg>
 
-今はpandasの勉強中なのでまたブログにしようと思います。
+現在は pandas の勉強中です。<br>またブログにしようと思います。
 
 ぜひもっと仕事を自動化し、効率化できる役に立つサンプルをご紹介できたら幸いです。
 
