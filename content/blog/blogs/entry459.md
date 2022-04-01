@@ -1,12 +1,13 @@
 ---
 title: 【Gulp】EJSを使ってHTMLを量産する
 date: 2021-05-05
+modifieddate: 2022-04-01
 hero: thumbnail/2021/entry459.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: [ "JavaScript","npm"]
-description: 最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。
-lead: ["最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。","JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。"]
+description: 最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。この記事はGulp4バージョン用にコードを修正しました。
+lead: ["最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。","JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。この記事はGulp4バージョン用にコードを修正しました。"]
 ---
 ## このブログの対象者
 * CMSなしでHTMLを量産しなければならない
@@ -62,30 +63,38 @@ npm i -D gulp gulp-ejs gulp-rename plumber
 
 ```
 プロジェクトフォルダ/
-  ├ package.json
+  ├ package.json（編集）
   │ gulpfile.js（作成・編集）
   ├ src/（作成）
   │  ├ data/（作成）
   │  └ ejs/index.ejs
   └ dist/（自動生成）
 ```
+`package.json`の`scripts`に追記。
+```json:title=package.json
+"scripts": {
+  "start": "gulp"
+},
+```
+
 `gulpfile.js`のコードを編集します。
 
 ```js:title=gulpfile.js
-const gulp = require("gulp");
+const { src, dest, series, parallel, watch } = require("gulp");
 const ejs = require("gulp-ejs");
 const rename = require("gulp-rename");
 const plumber = require("gulp-plumber");//エラーでビルドを中止させない
 
-gulp.task("ejs", function (done) {
-  return gulp
-    .src(["src/ejs/**/*.ejs"])
+function ejs(done) {
+  src(["src/ejs/**/*.ejs"])
     .pipe(plumber())
     .pipe(ejs())
     .pipe(rename({ extname: ".html" }))
-    .pipe(gulp.dest("dist/"));
+    .pipe(dest("dist/"));
   done();
-});
+}
+
+exports.default = series(ejs);
 ```
 
 EJSで文字列などをHTMLに出力する方法は以下。
@@ -104,7 +113,7 @@ EJSで文字列などをHTMLに出力する方法は以下。
 以下コマンドでコンパイルします。
 
 ```bash:title=コマンド
-gulp ejs
+npm start
 ```
 
 `dist`フォルダー内にindex.htmlが生成されます。
@@ -131,14 +140,14 @@ gulp ejs
 Gulpのタスクを修正。接頭辞に`-（ハイフン）`がつくejsファイルはコンパイルから外します。
 
 ```js:title=gulpfile.js
-gulp.task("ejs", function (done) {
-  return gulp
-    .src(["src/ejs/**/*.ejs", "!" + "src/ejs/**/_*.ejs"])//修正
+function ejs(done) {
+  src(["src/ejs/**/*.ejs", "!" + "src/ejs/**/_*.ejs"])//修正
+    .pipe(plumber())
     .pipe(ejs())
     .pipe(rename({ extname: ".html" }))
-    .pipe(gulp.dest("dist/"));
+    .pipe(dest("dist/"));
   done();
-});
+}
 ```
 ```ejs
 <!-- 変数 -->
@@ -198,7 +207,7 @@ gulp.task("ejs", function (done) {
 コードが長くなってしまいましたので`gulpfile.js`のコードごっそり載せます！
 
 ```js:title=gulpfile.js
-const gulp = require("gulp");
+const { src, dest, series, parallel, watch } = require("gulp");
 
 //ライブリロード
 const bs = require("browser-sync").create();
@@ -206,10 +215,10 @@ const bs = require("browser-sync").create();
 const ejs = require("gulp-ejs");
 const rename = require("gulp-rename");
 const plumber = require("gulp-plumber");
-
 const htmlbeautify = require("gulp-html-beautify");
 
-gulp.task("bs-init", function () {
+// browserSync初期化
+function bsInit(done) {
   bs.init({
     server: {
       baseDir: "./dist",
@@ -217,16 +226,11 @@ gulp.task("bs-init", function () {
     reloadDelay: 1000,//リロードの遅延
     open: false, //起動時のライブリロードを止める
   });
-});
+  done();
+}
 
-// ファイルの監視
-gulp.task("watch", function () {
-  gulp.watch(["src/ejs/**/*.ejs"], gulp.task("ejs")); //追加
-});
-
-gulp.task("ejs", function (done) {
-  return gulp
-    .src(["src/ejs/**/*.ejs", "!" + "src/ejs/**/_*.ejs"])
+function ejs(done) {
+  src(["src/ejs/**/*.ejs", "!" + "src/ejs/**/_*.ejs"])
     .pipe(plumber())
     .pipe(ejs())
     .pipe(
@@ -240,19 +244,22 @@ gulp.task("ejs", function (done) {
       })
     )
     .pipe(rename({ extname: ".html" }))
-    .pipe(gulp.dest("dist/"))
-    .pipe(bs.stream());//追加
+    .pipe(bs.stream()) // 変更を感知
+    .pipe(dest("dist/"));
   done();
-});
+}
 
-gulp.task(
-  "default",
-  gulp.series(gulp.parallel("ejs"), gulp.parallel("watch", "bs-init"))
-);
+// ファイルの監視
+function watchTask(done) {
+  watch(["src/ejs/**/*.ejs"], ejs);
+  done();
+}
+
+exports.default = parallel(series(bsInit, ejs, watchTask));
 ```
 以下のコマンドで起動します。
 ```bash:title=コマンド
-gulp
+npm start
 ```
 こちらが出力されたコードです。うん、美しい❤️
 ![出力されたコードも美しい](./images/2021/05/entry459-3.jpg)
@@ -267,28 +274,23 @@ JSONデータをEJSで利用するために、node moduleの`fs`を追加しま�
 npm i fs -D
 ```
 `gulpfile.js`にコードを追加してください。
-```js:title=gulpfile.js
+```js{6-7,12-14}:title=gulpfile.js
 const fs = require("fs");//追加
 
 //省略
 
-gulp.task("ejs", function (done) {
-  //ここから追加
+function ejs(done) {
   const json_path = "./src/data/site.json";
   const json = JSON.parse(fs.readFileSync(json_path));
-  //ここまで追加
 
-  return gulp
-    .src(["src/ejs/**/*.ejs", "!" + "src/ejs/**/_*.ejs"])
+  src(["src/ejs/**/*.ejs", "!" + "src/ejs/**/_*.ejs"])
+    .pipe(plumber())
     .pipe(
-      //ここから追加
       ejs({
         jsonData: json,
       })
     )
-    //ここまで追加
     //省略
-    .pipe(gulp.dest("dist/"))
     .pipe(bs.stream());
   done();
 });
@@ -459,3 +461,7 @@ EJSでもエメットを使えるようにしておきましょう。<br>
 この記事が皆さんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+
+### EJSの関数に関しても記事を書きました
+関数についてはこちらを参考にしてください。
+<card id="/blogs/entry495/"></card>
