@@ -107,10 +107,9 @@ imgTag = function(src, width, height, alt="", className="", loding=true){
     <source
       sizes="(max-width: 480px) 440px,800px"
       srcset="/assets/images/${srcSp}.webp 480w,/assets/images/${src}.webp 800w"
-      type="image/webp" srcset="assets/images/${srcWebp}.webp 800w"
+      type="image/webp"
     >
     <img
-      src="/assets/images/top/${src}"
       sizes="(max-width: 480px) 440px,800px"
       srcset="/assets/images/${src} 480w,/assets/images/${src} 800w"
       src="assets/images/${srcSp}"
@@ -139,7 +138,7 @@ imgTag = function(src, width, height, alt="", className="", loding=true){
 ## おまけ・関数を連想配列に格納してまとめておく
 関数は連想配列（オブジェクト）にまとめておくこともできます。
 
-```js:title=EJS
+```js:title=_func.ejs
 <%
 functions = {
   fnc01: function(){
@@ -151,6 +150,10 @@ functions = {
 }
 %>
 <%- functions.fnc01() %>
+```
+インクルードすればどこからでも呼び出せます。
+```js:title=index.ejs
+<% include("./_func.ejs")%>
 ```
 ## まとめ・EJSを使うとブラウザや画像対応の複雑化したコードを簡略化できる
 
