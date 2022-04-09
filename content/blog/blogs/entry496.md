@@ -722,7 +722,7 @@ MENU
 
 デモとサンプルコード詳細は以下から（SCSS記法です）ご確認ください。
 
-[Real hamburger menu | Code Pen](https://codepen.io/camille-cebu/pen/MWrGZWR)
+[Real hamburger menu | Code Pen](https://codepen.io/camille-cebu/pen/bGaMOYO)
 ### 猫のファストフード・魚なメニュー
 
 実はこの魚メニューをどうしても実装したいのがきっかけでこの記事を書きました。
