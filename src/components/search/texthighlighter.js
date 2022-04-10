@@ -8,7 +8,7 @@ const TextHighlighter = props => {
   const item = str.slice(start, end)
   const res = str.replace(
     item,
-    `<span style="background: linear-gradient(to top, var(--yellow) 30%, transparent 30%)">${item}</span>`
+    `<span style="background: linear-gradient(to top, yellow 30%,transparent 30%); color: var(--color-accent)">${item}</span>`
   )
   return <span dangerouslySetInnerHTML={{ __html: res }} />
 }

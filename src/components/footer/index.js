@@ -21,6 +21,7 @@ const Footer = ({ title }) => {
 };
 
 export default Footer;
+
 const FooterWrapper = styled.div`
   z-index: 10;
   position: relative;

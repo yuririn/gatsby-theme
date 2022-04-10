@@ -361,6 +361,12 @@ img:not(.is-view) {
   font-display: swap;
 }
 
+:root {
+  --color: #335;
+  --color-sec: #464675;
+  --color-ac: #c03363;
+  --color-ac: #c03363;
+}
 .c-grid--flex {
   display: flex;
 }
@@ -377,7 +383,6 @@ body {
   font-size: 1.6rem;
   line-height: 1.8;
   color: var(--color);
-  background: var(--background);
 }
 
 .l-container {

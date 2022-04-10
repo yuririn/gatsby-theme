@@ -11,9 +11,11 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
-  const setTheme = newTheme => (document.body.className = newTheme)
-  const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
-  setTheme(mode)
+  if( typeof window !== "undefined") {
+    const setTheme = newTheme => (document.body.className = newTheme)
+    const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
+    setTheme(mode)
+  }
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
@@ -213,6 +215,7 @@ const GlobalStyle = createGlobalStyle`
       margin-right: 5px;
       margin-bottom: 10px;
       display: inline-block;
+
       a {
         font-size: 1rem;
         line-height: 1;
@@ -224,6 +227,7 @@ const GlobalStyle = createGlobalStyle`
         transition: .3s;
         white-space: nowrap;
         padding: 2px 3px 5px 2px;
+
         @media screen and (min-width: 768px) {
           font-size: 1.1rem;
           padding: 3px 3px 5px 3px;

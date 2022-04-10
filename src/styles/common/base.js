@@ -100,7 +100,7 @@ export const BaseStyle = createGlobalStyle`
     --footer-background: #264785;
     --move-to: rgba(255, 255, 255, 0.8);
     --nav-bg: rgba(51,51,51,.8);
-    --border-color: #e9e9e9;
+    --border-color: var(--border-color);
   }
 
   body.dark {
@@ -138,11 +138,13 @@ export const BaseStyle = createGlobalStyle`
   html {
     font-family: 'Raleway', monospace, "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "メイリオ", sans-serif;
     font-size: 62.5%;
+
   }
 
   main {
     display: block;
     background: var(--background);
+    padding-bottom: 1px;
   }
 
   body {

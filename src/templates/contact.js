@@ -292,7 +292,6 @@ export const pageQuery = graphql`
     }
   }
 `
-
 const ContentArea = styled.div`
 a {
   color: var(--color-link);
@@ -301,11 +300,12 @@ a {
 const ThanksArea = styled.div`
   h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     text-align: center;
+
     @media screen and (min-width: 768px) {
       font-size: 2.4rem;
-      margin-bottom: 30px;
+      padding-bottom: 30px;
     }
   }
   p {
@@ -331,7 +331,7 @@ const FormArea = styled.div`
   }
   a {
     text-decoration: underline;
-    color: var(--link-color);
+    color: var(--color-link);
   }
   dt {
     font-weight: bold;

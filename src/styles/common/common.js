@@ -47,6 +47,7 @@ export const CommonStyle = createGlobalStyle`
 
   .l-main_contents {
     margin-top: 0;
+
     margin-bottom: 50px;
 
     &.is-page {

@@ -22,7 +22,7 @@ export const Sidebar = styled.div`
       margin-bottom: 20px;
       a {
         display: block;
-        border: 1px solid #ccc;
+        border: 1px solid var(--border-color);
         img {
           width: 100%;
         }

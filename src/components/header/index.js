@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import * as React from "react"
 
 import Logo from "./logo"
 import { Link } from "gatsby"
@@ -7,17 +7,6 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Header = ({ title, location }) => {
-  useEffect(() => {
-    if (document.documentElement.classList.value !== "dark") {
-      document.documentElement.classList.toggle("dark")
-    }
-  })
-  const theme =() =>  {
-    // Gatsbyのbuildエラー対策
-    if (typeof window !== undefined) {
-      document.documentElement.classList.toggle("dark")
-    }
-  }
   return (
     <HeaderWrapper>
       <header className="l-header">
