@@ -93,7 +93,6 @@ export const BaseStyle = createGlobalStyle`
     --shadow: 0 0 4px rgba(0,0,0, .3);
     --milk: rgba(225,225,225, .9);
     --background: #fff;
-    --code-bg: #131a37;
     --pale-gray: #eeeeee;
     --yellow: #edef5c;
     --header-background: rgba(255,255,255, .9);
@@ -109,13 +108,12 @@ export const BaseStyle = createGlobalStyle`
     --light-color: #18347a;
     --font-color: #f4fffe;
     --color-blue: #c9e9fc;
-    --color-link: #96d0fc;
+    --color-link: #dffdff;
     --color-d-blue: #f9fdff;
     --color-sec: #c5fff4;
-    --code-bg: #23354d;
     --color-accent: #d45c84;
-    --background: #232326;
-    --pale-gray: #444345;
+    --background: rgb(24, 24, 24);
+    --pale-gray: #4a4a4a;
     --yellow: #abae00;
     --header-background: rgba(255,255,255, .6);
     --header-color:#264f85;
@@ -164,4 +162,4 @@ export const BaseStyle = createGlobalStyle`
       height: auto;
       vertical-align: bottom;
   }
-`;
+`

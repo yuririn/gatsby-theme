@@ -51,7 +51,7 @@ export const CommonStyle = createGlobalStyle`
     margin-bottom: 50px;
 
     &.is-page {
-      padding-top: 80px;
+      margin-top: 80px;
     }
   }
 

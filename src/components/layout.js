@@ -91,10 +91,6 @@ const GlobalStyle = createGlobalStyle`
             .p-entryCard__img {
               width: 33%;
               border-radius: 5px;
-
-              img {
-                border-radius: 5px;
-              }
             }
             .p-entryCard__body {
               width: 67%;
@@ -141,9 +137,6 @@ const GlobalStyle = createGlobalStyle`
            }
             .p-entryCard__img {
               width: 40%;
-              img {
-                border-radius: 5px;
-              }
             }
             .p-entryCard__body {
               width: 60%;
@@ -185,7 +178,6 @@ const GlobalStyle = createGlobalStyle`
           display: block;
           width: 100%;
           transition: .5s;
-          border-radius: 5px;
       }
     }
     &__date {

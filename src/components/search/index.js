@@ -160,14 +160,14 @@ const SearchBox = styled.div`
     padding: 10px;
     margin: 0 auto;
     width: 100%;
-    background: var(--background);
-    color: var(--font-color);
     max-width: 500px;
     border: solid 1px var(--color-blue);
     box-sizing: border-box;
     outline: none;
     font-size: 1.6rem;
     box-shadow: none;
+    background: var(--background);
+    color: var(--font-color)
   }
 `
 

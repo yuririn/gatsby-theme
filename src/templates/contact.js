@@ -353,7 +353,6 @@ const FormArea = styled.div`
     appearance: none;
     border: none;
     background: none;
-
   }
   input[type="email"],
   input[type="text"] {
