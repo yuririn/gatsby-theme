@@ -307,7 +307,7 @@ export const Edit = styled.section`
   pre[class*="language-"] {
     border-radius: 0.5em;
     border: none;
-    background: #131a37;
+    background: var(--code-bg);
     box-shadow: none;
     margin: 30px 0 40px;
     overflow: auto;
