@@ -353,18 +353,21 @@ const FormArea = styled.div`
     appearance: none;
     border: none;
     background: none;
+
   }
   input[type="email"],
   input[type="text"] {
     width: 100%;
     padding: 8px;
     border: 3px solid #ccc;
+    color: var(--font-color);
   }
   textarea {
     width: 100%;
     padding: 8px;
     border: 3px solid #ccc;
     height: 200px;
+    color: var(--font-color);
   }
   dd label input {
     display: none;

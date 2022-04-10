@@ -122,6 +122,10 @@ const RelativeList = styled.div`
         width: 30%;
         border-radius: 5px;
         margin-bottom: 0;
+
+        img {
+          border-radius: 5px;
+        }
       }
       .p-entryCard__body {
         width: 70%;
