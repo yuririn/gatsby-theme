@@ -166,6 +166,8 @@ const SearchBox = styled.div`
     outline: none;
     font-size: 1.6rem;
     box-shadow: none;
+    background: var(--background);
+    color: var(--font-color)
   }
 `
 
@@ -180,7 +182,7 @@ const ResultList = styled.div`
   }
   ul {
     margin-top: 20px;
-    background: #eee;
+    background: var(--pale-gray);
     max-height: 300px;
     overflow: auto;
     margin-bottom: 50px;
