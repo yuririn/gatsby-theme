@@ -133,6 +133,7 @@ const Form = () => {
 
   return (
     <div>
+      <ContentArea>
       <p>
         銀ねこアトリエでは各種相談を受けつけております。
         <br />
@@ -144,6 +145,7 @@ const Form = () => {
         <a href="/about/">About Me</a>
         をお読みいただいた方がスムーズです。
       </p>
+      </ContentArea>
       <FormArea>
         <form
           name="contact"
@@ -291,6 +293,11 @@ export const pageQuery = graphql`
   }
 `
 
+const ContentArea = styled.div`
+a {
+  color: var(--color-link);
+}
+`
 const ThanksArea = styled.div`
   h2 {
     font-size: 2rem;
@@ -324,7 +331,7 @@ const FormArea = styled.div`
   }
   a {
     text-decoration: underline;
-    color: #0029af;
+    color: var(--link-color);
   }
   dt {
     font-weight: bold;

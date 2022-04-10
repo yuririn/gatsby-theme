@@ -11,6 +11,10 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
+  const setTheme = newTheme => (document.body.className = newTheme)
+  const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
+  setTheme(mode)
+
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
       <BaseStyle />
@@ -39,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
       @media screen and (max-width: 769px) {
        &:not(.is-small) + .is-small {
           padding-top: 20px;
-          border-top: 1px solid #e9e9e9;
+          border-top: 1px solid var(--border-color);
         }
       }
       &.is-small {
@@ -63,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
         }
         @media screen and (max-width: 769px) {
           &+ .is-small {
-            border-bottom: 1px solid #e9e9e9;
+            border-bottom: 1px solid var(--border-color);
             border-top: none;
             padding-top: 0;
           }
@@ -73,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
             align-items: flex-start;
             position: relative;
           }
-           border-bottom: 1px solid #e9e9e9;
+           border-bottom: 1px solid var(--border-color);
            .p-entryCard__heading {
               font-size: 1.6rem;
             }
@@ -149,7 +153,7 @@ const GlobalStyle = createGlobalStyle`
          }
       }
       a {
-        color: #335;
+        color: var(--color-blue);
         text-decoration: none;
       }
       &__img {
@@ -180,7 +184,7 @@ const GlobalStyle = createGlobalStyle`
       z-index: 2;
       left: -5px;
       top: 10px;
-      color: #FFF;
+      color: var(--background);
     }
     &__heading {
         font-weight: 700;
@@ -192,7 +196,7 @@ const GlobalStyle = createGlobalStyle`
      @media screen and (min-width: 768px) {
        &:hover {
          .p-entryCard__heading {
-          color: var(--color-blue);
+          color: var(--color-link);
         }
         &__img {
            box-shadow: 0 0 4px rgb(0,0,0, .3),0 0 9px rgb(0,0,0, .6);
@@ -216,7 +220,7 @@ const GlobalStyle = createGlobalStyle`
         display: block;
         border-radius: 4px;
         border: 1px solid var(--color-blue);
-        background: #fff;
+        background: var(--background);
         transition: .3s;
         white-space: nowrap;
         padding: 2px 3px 5px 2px;
@@ -225,7 +229,7 @@ const GlobalStyle = createGlobalStyle`
           padding: 3px 3px 5px 3px;
           &:hover {
             background-color: var(--color-blue);
-            color: #fff;
+            color: var(--background);
           }
         }
           &:before {
@@ -235,7 +239,7 @@ const GlobalStyle = createGlobalStyle`
             vertical-align: -.2em;
             display: inline-block;
             border-radius: 50%;
-            background: #fff;
+            background: var(--background);
             border: 2px solid var(--color-blue);
             transform: scale(.5);
         }

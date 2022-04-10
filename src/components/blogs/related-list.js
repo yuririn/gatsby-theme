@@ -109,7 +109,7 @@ const RelativeList = styled.div`
       margin-left: 0;
       margin-right: 0;
       position: relative;
-      border-bottom: 1px solid #e9e9e9;
+      border-bottom: 1px solid var(--border-color);
       margin-bottom: 10px;
       padding-bottom: 10px;
 

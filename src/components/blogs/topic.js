@@ -27,7 +27,7 @@ export default Toc
 const Mokuji = styled.div`
 	padding: 20px;
     border-radius: 8px;
-    background: #eee;
+    background: var(--pale-gray);
     position: relative;
     overflow: hidden;
 		margin-bottom: 50px;
@@ -48,7 +48,7 @@ const Mokuji = styled.div`
 					height: 2em;
 					width: 100%;
 					display: block;
-					background: linear-gradient(to top,#eee 10%, rgba(238,238,238,0) 100% );
+					background: linear-gradient(to top,var(--pale-gray) 10%, rgba(238,238,238,0) 100% );
 					bottom: 0;
 					left: 0;
 				}
@@ -57,6 +57,7 @@ const Mokuji = styled.div`
 		& +.c-content__heading {
 		position: relative;
 		display: block;
+
 		& + *{
 			max-height: 200vh;
 			transition: .3s;
@@ -71,7 +72,7 @@ const Mokuji = styled.div`
 			height: 1px;
 			top: 10px;
 			right: 0;
-			background: #464675;
+			background: var(--color-link);
 			display: block;
 	}
 	&:after {
@@ -85,7 +86,7 @@ const Mokuji = styled.div`
     height: 1px;
     top: 10px;
     right: 0;
-    background: #464675;
+    background: var(--color-blue);
     display: block;
 }
 }

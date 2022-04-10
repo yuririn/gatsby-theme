@@ -31,7 +31,7 @@ const FooterWrapper = styled.div`
     border: none;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--move-to);
     border: 1px solid var(--color-blue);
     border-radius: 50%;
     content: "";
@@ -56,13 +56,13 @@ const FooterWrapper = styled.div`
         background: var(--color-blue);
         transform: translateY(-10px);
         &::before {
-          border-color: #fff;
+          border-color: var(--light-color);
         }
       }
     }
   }
   .l-footer {
-    background: var(--color-blue);
+    background: var( --footer-background);
     padding: 50px 0 30px;
     color: #fff;
     line-height: 1;

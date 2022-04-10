@@ -137,7 +137,7 @@ export const pageQuery = graphql`
 `
 const BigWhite = styled.div`
   position: relative;
-  background-color: #fff;
+  background-color: var(--background);
   padding-top: 50px;
   padding-bottom: 30px;
 

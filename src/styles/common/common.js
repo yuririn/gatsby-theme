@@ -13,9 +13,9 @@ export const CommonStyle = createGlobalStyle`
     font-size: 1.2rem;
   }
 
-  .BigWhite{
+  .var(--pale-gray){
     position:relative;
-    background-color:#fff;
+    background-color:var(--backgrond);
     padding-top: 50px;
     @media screen and (min-width: 768px){
       padding-top: 80px;
@@ -24,7 +24,7 @@ export const CommonStyle = createGlobalStyle`
   .p-box--gray {
     padding: 20px;
     border-radius: 8px;
-    background: #eee;
+    background: var(--pale-gray);
     position: relative;
     overflow: hidden;
   }
@@ -82,7 +82,7 @@ export const CommonStyle = createGlobalStyle`
     font-size: 1.6rem;
     overflow: hidden;
     text-decoration: none;
-    background: #fff;
+    background: var(--background);
     max-width: 400px;
 
     &:before {
@@ -104,7 +104,7 @@ export const CommonStyle = createGlobalStyle`
   }
   @media screen and (min-width: 768px) {
     .c-form__submit:hover, .c-nav__navLink:hover, .p-btn--detail:hover{
-      color: #fff;
+      color: var(--background);
       &::before {
         left: 0;
       }

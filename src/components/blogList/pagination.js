@@ -180,7 +180,7 @@ const PagerWrapper = styled.div`
   }
   a {
     text-decoration: none;
-    color: #fff;
+    color: var(--background);
   }
   .c-pager--archive__next--current:before,
   .c-pager--archive__next:before {
@@ -207,7 +207,7 @@ const PagerWrapper = styled.div`
     top: 0;
     position: absolute;
     border-radius: 5px;
-    color: #fff;
+    color: var(--background);
     transition: 0.5s;
   }
   .c-pager--archive__prev--current:before,
@@ -249,7 +249,7 @@ const PagerWrapper = styled.div`
   }
   .c-pager--archive__next--current a,
   .c-pager--archive__next a {
-    color: #fff;
+    color: var(--background);
   }
   .c-pager--archive__prev,
   .c-pager--archive__prev--current {
@@ -313,12 +313,12 @@ const PagerWrapper = styled.div`
       margin-left: 5px;
       margin-right: 5px;
       background: var(--color-blue);
-      color: #fff;
+      color:var(--background);
       @media screen and (min-width: 768px) {
         transition: 0.3s;
         &:hover {
           color: var(--color-blue);
-          background: #fff;
+          background: var(--background);
         }
       }
     }

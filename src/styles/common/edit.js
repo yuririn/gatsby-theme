@@ -46,10 +46,8 @@ export const Edit = styled.section`
   .style .token.string {
     background: none;
   }
-  p > code[class*="language-"] {
-    color: var(--light-color);
-  }
-  pre[class*="language-"] code[class*="language-"]{
+  code[class*="language-"],
+  pre[class*="language-"] {
     color: #fff;
   }
   .text-center {
@@ -274,7 +272,7 @@ export const Edit = styled.section`
     padding: 6px 15px;
     vertical-align: bottom;
     line-height: 1;
-    color: var(--light-color);
+    color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     font-size: 1.4rem;
@@ -359,7 +357,7 @@ export const Edit = styled.section`
     th {
       font-size: 0.9em;
       background: var(--color);
-      color: var(--light-color);
+      color: #fff;
     }
     margin-bottom: 30px;
     tr:nth-child(2n) {
@@ -473,7 +471,7 @@ export const Edit = styled.section`
       flex-wrap: wrap;
       align-items: flex-start;
       padding: 15px;
-      background:var(--background);
+      background: #f7f7f7;
       overflow: hidden;
       border: 1px solid var(--color-blue);
       position: relative;

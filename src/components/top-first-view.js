@@ -167,7 +167,7 @@ const Mainvisual = styled.div`
     z-index: 1;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     width: 100%;
-    background: #fff;
+    background: var(--background);
     padding: 15px 0;
     position: relative;
     color: #fff;
@@ -178,7 +178,7 @@ const Mainvisual = styled.div`
     );
     margin-top: 300px;
     svg {
-      fill: var(--color-blue);
+      fill: #264785;
       stroke: #fff;
       position: absolute;
       width: 320px;

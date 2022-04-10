@@ -79,6 +79,50 @@ export const BaseStyle = createGlobalStyle`
     border-spacing:0;
   }
   /* change border colour to suit your needs */
+
+
+  body {
+    --color: #335;
+    --light-color: #fff;
+    --font-color: #232a41;
+    --color-sec: #464675;
+    --color-blue: #264785;
+    --color-link: #1231b8;
+    --color-d-blue: #18347a;
+    --color-accent: #c03363;
+    --shadow: 0 0 4px rgba(0,0,0, .3);
+    --milk: rgba(225,225,225, .9);
+    --background: #fff;
+    --pale-gray: #eeeeee;
+    --yellow: #edef5c;
+    --header-background: rgba(255,255,255, .9);
+    --header-color:#264785;
+    --footer-background: #264785;
+    --move-to: rgba(255, 255, 255, 0.8);
+    --nav-bg: rgba(51,51,51,.8);
+    --border-color: #e9e9e9;
+  }
+
+  body.dark {
+    --color: #fff;
+    --light-color: #18347a;
+    --font-color: #f4fffe;
+    --color-blue: #c9e9fc;
+    --color-link: #dffdff;
+    --color-d-blue: #f9fdff;
+    --color-sec: #c5fff4;
+    --color-accent: #d45c84;
+    --background: #333;
+    --pale-gray: #4a4a4a;
+    --yellow: #abae00;
+    --header-background: rgba(255,255,255, .6);
+    --header-color:#264f85;
+    --footer-background: #264f85;
+     --move-to: rgba(255, 255, 255, 0.1);
+      --nav-bg: rgba(58, 58, 58, 0.95);
+      --border-color: #787878;
+  }
+
   hr {
     display:block;
     height:1px;
@@ -91,18 +135,6 @@ export const BaseStyle = createGlobalStyle`
     vertical-align:middle;
   }
 
-  :root {
-    --color: #335;
-    --font-color: #232a41;
-    --color-sec: #464675;
-    --color-blue: #264785;
-    --color-link: #1231b8;
-    --color-d-blue: #18347a;
-    --color-accent: #c03363;
-    --shadow: 0 0 4px rgba(0,0,0, .3);
-    --milk: rgba(225,225,225, .9);
-  }
-
   html {
     font-family: 'Raleway', monospace, "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "メイリオ", sans-serif;
     font-size: 62.5%;
@@ -110,13 +142,14 @@ export const BaseStyle = createGlobalStyle`
 
   main {
     display: block;
-    background: #fff;
+    background: var(--background);
   }
 
   body {
     font-weight: 400;
     font-size: 1.4rem;
     color: var(--font-color);
+    background: var(--baackground);
 
     @media screen and (min-width: 768px) {
       font-size: 1.6rem;

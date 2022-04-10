@@ -155,6 +155,8 @@ const SearchBox = styled.div`
   margin-bottom: 20px;
 
   .box {
+    background: var(--background);
+    color: var(--color);
     display: block;
     border-radius: 10px;
     padding: 10px;
@@ -180,7 +182,7 @@ const ResultList = styled.div`
   }
   ul {
     margin-top: 20px;
-    background: #eee;
+    background: var(--pale-gray);
     max-height: 300px;
     overflow: auto;
     margin-bottom: 50px;

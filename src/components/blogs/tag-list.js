@@ -73,7 +73,7 @@ const TagList = styled.div`
     display: block;
     border-radius: 4px;
     border: 1px solid var(--color-blue);
-    background: #fff;
+    background: var(--background);
     transition: 0.3s;
     white-space: nowrap;
     &:before {
@@ -84,7 +84,7 @@ const TagList = styled.div`
       display: inline-block;
       margin-right: 3px;
       border-radius: 50%;
-      background: #fff;
+      background: var(--background);
       border: 2px solid var(--color-blue);
       transform: scale(0.5);
     }

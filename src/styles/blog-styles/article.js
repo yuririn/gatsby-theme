@@ -185,14 +185,14 @@ export const Article = styled.div`
   }
   .profile {
     margin-top: 30px;
-    border: 6px solid #eee;
+    border: 6px solid var(--pale-gray);
     padding: 15px;
     position: relative;
     border-radius: 15px;
     margin-bottom: 30px;
     .title {
       position: absolute;
-      background: #fff;
+      background: var(--background);
       top: -20px;
       padding: 10px 15px;
       left: 50%;
@@ -321,6 +321,7 @@ export const Article = styled.div`
       transform: skew(45deg);
     }
     a {
+      color: var(--light-color);
       text-decoration: none;
       white-space: nowrap;
       overflow: hidden;
@@ -328,11 +329,10 @@ export const Article = styled.div`
       position: relative;
       z-index: 1;
       border-radius: 5px;
-      background: #fff;
+      background: var(--background);
       border: 1px solid var(--color-blue);
       padding: 15px 20px;
       display: block;
-      color: #fff;
     }
 
     .c-pager--article__next,

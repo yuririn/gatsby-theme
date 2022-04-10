@@ -61,7 +61,7 @@ export const Header = styled.div`
 
     &__cat {
       position: absolute;
-      fill: var(--color-blue);
+      fill: #264785;
       stroke: #fff;
       stroke-width: 1px;
       height: 30px;

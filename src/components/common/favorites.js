@@ -8,11 +8,11 @@ import Img from "../img"
 const favoritesList = {
   web: {
     title: "Web制作に関する人気の記事",
-    items: ["448", "336", "393", "370", "181"],
+    items: ["448", "393", "336", "181", "370"],
   },
   life: {
     title: "海外ノマド・ライフスタイルに関する人気の記事",
-    items: ["420", "473", "278", "464", "478"],
+    items: [ "473","420", "278", "464", "478"],
   },
   career: {
     title: "キャリアアップ・転職に関する人気の記事",
@@ -137,15 +137,18 @@ const Favorite = styled.div`
       left: 15px;
       font-weight: 700;
     }
-    &:first-child::before {
+
+  }
+  li{
+     &:first-child article::before {
       background: #9a8904;
       transform: scale(1.3);
     }
-    &:nth-child(2):before {
+    &:nth-child(2) article::before {
       background: #656565;
       transform: scale(1.1);
     }
-    &:nth-child(3):before {
+    &:nth-child(3) article::before {
       background: #674822;
       transform: scale(1.1);
     }

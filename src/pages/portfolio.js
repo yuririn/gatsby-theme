@@ -44,11 +44,20 @@ const Portfolio = ({ data, location }) => {
           <p className="logo">Camille Site</p>
           <span
             onClick={menuEvent}
-            className="nav-btn"
+            className={isOpen ? "nav-btn active" : "nav-btn"}
             role="button"
-            aria-label="ナビゲーションボタン"
             id="menuBtn"
-          ></span>
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 100.5">
+            <path d="M0,45.5C0,13.83,34.7,0,77.5,0s77.5,13.83,77.5,45.5H0Z" class="pan-top"/>
+            <path  d="M0,80.5c0,13.92,34.7,20,77.5,20s77.5-6.08,77.5-20H0Z" class="pan-bottom"/>
+            <g class="gu">
+            <path class="lettuce" d="M116.13,74.77l-17.82-3.74-20.85,3.73-17.2-3.73-17.87,3.73-19.97-3.74-18.95,3.64c-1.35,.26-2.67-.63-2.93-1.98-.26-1.36,.63-2.67,1.98-2.93l19.88-3.82,19.93,3.73,17.94-3.74,17.27,3.74,20.83-3.73,17.78,3.73,19-3.74,17.38,3.85c1.35,.3,2.2,1.63,1.9,2.98-.3,1.35-1.63,2.2-2.98,1.9l-16.36-3.62-18.97,3.73Z"/>
+            <path class="hanburg" d="M148.08,50.31H6.92c-3.04,0-5.5,2.46-5.5,5.5s2.46,5.5,5.5,5.5H148.08c3.04,0,5.5-2.46,5.5-5.5s-2.46-5.5-5.5-5.5Z"/>
+            </g>
+            </svg>
+            {isOpen ? "EAT?" : "MENU"}
+          </span>
           <nav className={isOpen ? "globalNavOpen" : "globalNav"}>
             <ul>
               <li>
@@ -202,6 +211,9 @@ const Body = styled.div`
   color: #333;
 
   line-height: 1.8;
+  main {
+    background:#fff;
+  }
 
   .bg-gray {
     background: #eee;
@@ -273,20 +285,67 @@ const Header = styled.div`
     display: block;
     width: 44px;
     height: 100%;
-    background-image: linear-gradient(
-      -45deg,
-      rgba(233, 80, 20, 0.5) 25%,
-      rgba(0, 0, 0, 0) 25%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(233, 80, 20, 0.5) 50%,
-      rgba(233, 80, 20, 0.5) 75%,
-      rgba(0, 0, 0, 0) 75%,
-      rgba(0, 0, 0, 0)
-    );
-    background-size: 30px 30px;
-    background-position: center 4px;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+    font-size: 10px;
+    text-align:center;
+    padding-top: 26px;
+    &::after,
+&::before {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 12px;
+  height: 3px;
+  width: 20px;
+  border-radius: 3px;
+  background: #7F6844;
+  transition: transform .3s;
+}
+&::after {
+  top: 8px;
+  box-shadow: 0 7px 0 #3A682A;
+}
+&::before {
+  top: 22px;
+}
+    &.active{
+
+    &::after,
+
+    &::before {
+    transform: scaleX(0);
+    }
+     svg{
+         .pan-bottom{
+  animation: fall 0.7s forwards;
+}
+.pan-top {
+  animation: fall 0.7s 1s forwards;
+}
+.gu{
+  animation: fall 0.7s 0.5s forwards;
+}
+     }
+    }
+    svg {
+        left: 5px;
+        top: 5px;
+        width: 32px;
+      position: absolute;
+      .pan-bottom,
+        .pan-top {
+        fill: #7F6844;
+        opacity: 0;
+        }
+        .gu{
+        opacity: 0;
+        }
+        .lettuce {
+  fill: #3A682A;
+}
+.hanburg {
+  fill: #591C09;
+}
+    }
   }
 
   nav.is-open ul {
@@ -310,7 +369,7 @@ const Header = styled.div`
     .globalNavOpen ul {
       display: block;
       position: absolute;
-      top: 43px;
+      top: 47px;
       left: 0;
       height: 100vh;
       background: rgba(0, 0, 0, 0.5);
@@ -487,6 +546,29 @@ const Header = styled.div`
       opacity: 1;
     }
   }
+  @keyframes fall{
+  0% {
+    opacity: 0;
+    transform:translateY(-100%);
+  }
+  30% {
+    opacity: 1;
+    transform:translateY(-100%);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform:translateY(0);
+  }
+
+}
 `
 
 const Firstview = styled.div`

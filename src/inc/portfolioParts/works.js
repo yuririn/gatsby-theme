@@ -153,7 +153,7 @@ const Grid = styled.div`
 `
 const Article = styled.article`
   padding: 10px 3px 3px;
-  border: 8px solid #eee;
+  border: 8px solid var(--pale-gray);
   margin-bottom: 4px;
 
   @media screen and (min-width: 426px) {
