@@ -112,7 +112,7 @@ export const BaseStyle = createGlobalStyle`
     --color-d-blue: #f9fdff;
     --color-sec: #c5fff4;
     --color-accent: #d45c84;
-    --background: rgb(24, 24, 24);
+    --background: #333;
     --pale-gray: #4a4a4a;
     --yellow: #abae00;
     --header-background: rgba(255,255,255, .6);
@@ -162,4 +162,4 @@ export const BaseStyle = createGlobalStyle`
       height: auto;
       vertical-align: bottom;
   }
-`
+`;

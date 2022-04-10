@@ -359,14 +359,12 @@ const FormArea = styled.div`
     width: 100%;
     padding: 8px;
     border: 3px solid #ccc;
-    color: var(--font-color);
   }
   textarea {
     width: 100%;
     padding: 8px;
     border: 3px solid #ccc;
     height: 200px;
-    color: var(--font-color);
   }
   dd label input {
     display: none;

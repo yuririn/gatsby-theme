@@ -8,7 +8,7 @@ import Img from "../img"
 const favoritesList = {
   web: {
     title: "Web制作に関する人気の記事",
-    items: ["448", "393", "336", "370", "181"],
+    items: ["448", "336", "393", "370", "181"],
   },
   life: {
     title: "海外ノマド・ライフスタイルに関する人気の記事",

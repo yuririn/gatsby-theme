@@ -47,10 +47,11 @@ export const CommonStyle = createGlobalStyle`
 
   .l-main_contents {
     margin-top: 0;
+
     margin-bottom: 50px;
 
     &.is-page {
-      padding-top: 80px;
+      margin-top: 80px;
     }
   }
 
