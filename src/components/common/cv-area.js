@@ -34,7 +34,7 @@ export default cvArea
 const Area = styled.div`
   margin-top: 30px;
   padding: 40px 40px 10px;
-  background: #eeeeee;
+  background: var(--pale-gray);
   border-radius: 16px;
 
   h2 {

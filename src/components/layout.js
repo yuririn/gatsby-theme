@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { BaseStyle } from "./../styles/common/base"
 import { CommonStyle } from "./../styles/common/common"
 import { createGlobalStyle } from "styled-components"
@@ -6,16 +6,21 @@ import { createGlobalStyle } from "styled-components"
 import Header from "./header"
 import GNav from "./nav"
 import Footer from "./footer"
+export const Mode = React.createContext()
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
+  let darkMode = false
 
   if( typeof window !== "undefined") {
-    const setTheme = newTheme => (document.body.className = newTheme)
-    const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
-    setTheme(mode)
+    darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? true : false
   }
+
+  const setTheme = newTheme => (document.body.className = newTheme)
+
+  setTheme(darkMode? "dark":"right")
+
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
