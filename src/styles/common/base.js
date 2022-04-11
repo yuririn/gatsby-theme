@@ -112,8 +112,8 @@ export const BaseStyle = createGlobalStyle`
     --color-d-blue: #f9fdff;
     --color-sec: #c5fff4;
     --color-accent: #d45c84;
-    --background: #333;
-    --pale-gray: #4a4a4a;
+    --background: rgb(21, 21, 21);
+    --pale-gray: #373738;
     --yellow: #abae00;
     --header-background: rgba(255,255,255, .6);
     --header-color:#264f85;
