@@ -78,7 +78,7 @@ export const Article = styled.div`
         font-weight: 700;
         line-height: 1;
         padding: 3px 15px;
-        color: #fff;
+        color: var(--light-color);
         display: inline-block;
         border-radius: 4px;
         border: 1px solid var(--color-blue);
