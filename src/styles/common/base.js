@@ -101,6 +101,7 @@ export const BaseStyle = createGlobalStyle`
     --move-to: rgba(255, 255, 255, 0.8);
     --nav-bg: rgba(51,51,51,.8);
     --border-color: var(--border-color);
+    --code-bg: #131a37;
   }
 
   body.dark {
@@ -110,6 +111,7 @@ export const BaseStyle = createGlobalStyle`
     --color-blue: #c9e9fc;
     --color-link: #dffdff;
     --color-d-blue: #f9fdff;
+    --code-bg: #1b2845;
     --color-sec: #c5fff4;
     --color-accent: #d45c84;
     --background: rgb(21, 21, 21);
