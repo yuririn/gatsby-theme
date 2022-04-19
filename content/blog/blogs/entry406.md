@@ -354,7 +354,7 @@ Gatsbyは *WebP（ウェッピー）* や *AVIF（エーブアイエフ）* も�
 
 WebPはSafariも対応したので、IEガン無視の人は十分使えます。
 
-gatsby-image-plugin は loding Lazy 対応してあります。 `placeholder` は loding Lazy で画像が表示されるまでに、代わりに表示される画像です。`DOMINANT_COLOR`がデフォルトですが、`BLURRED` にしておくと、表示したい画像のぼやけたものを表示してくれ、代替画像から画像実物にきりわかる時が自然です。<br>
+gatsby-image-plugin は loading Lazy 対応してあります。 `placeholder` は loading Lazy で画像が表示されるまでに、代わりに表示される画像です。`DOMINANT_COLOR`がデフォルトですが、`BLURRED` にしておくと、表示したい画像のぼやけたものを表示してくれ、代替画像から画像実物にきりわかる時が自然です。<br>
 不要であれば `NONE` にしておきましょう。
 
 ```

@@ -262,7 +262,7 @@ useEffect(() => {
               width="400"
               height="400"
               alt=""
-              loding="lazy"
+              loading="lazy"
               decoding="assyc"
             />
         </li>
@@ -291,7 +291,7 @@ useEffect(() => {
   width="400"
   height="400"
   alt=""
-  loding="lazy"
+  loading="lazy"
   decoding="assyc"
 />
 ```
@@ -319,7 +319,7 @@ registerBlockType("myblock/insta-list", {
                   width="400"
                   height="400"
                   alt=""
-                  loding="lazy"
+                  loading="lazy"
                   decoding="assyc"
                 />
                 <figcaption>

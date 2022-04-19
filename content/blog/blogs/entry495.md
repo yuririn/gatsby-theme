@@ -71,7 +71,7 @@ pictureタグはブラウザやユーザーの環境（モバイルとかPC）�
 
 例えば、以下のように画像をWebP対応してあるブラウザの場合はWebPを、それ以外はPNG画像を表示、さらにウィンドウ幅に合わせて画像サイズを変えます。
 
-さらに、`loding="lazy"`Lazy Loadや`decoding="async"`デコード処理を非同期したらたった一箇所に画像を出力するためにこれだけのコードを書かなければなりません。
+さらに、`loading="lazy"`Lazy Loadや`decoding="async"`デコード処理を非同期したらたった一箇所に画像を出力するためにこれだけのコードを書かなければなりません。
 ```html:title=HTML
 <picture>
   <source
@@ -86,7 +86,7 @@ pictureタグはブラウザやユーザーの環境（モバイルとかPC）�
     alt="画像"
     width="1200"
     height="800"
-    loding="lazy"
+    loading="lazy"
     decoding="async"
   >
 </picture>
@@ -99,10 +99,10 @@ pictureタグはブラウザやユーザーの環境（モバイルとかPC）�
 ```js:title=EJS
 <%
 //webp書き出し用の変数
-imgTag = function(src, width, height, alt="", className="", loding=true){
+imgTag = function(src, width, height, alt="", className="", loading=true){
   const srcSp = src.replace('.','＠480.')
   const srcWebp = src.split('.')[0]
-  let prop = loding ? ` loding="lazy" decoding="async"` : ''
+  let prop = loading ? ` loading="lazy" decoding="async"` : ''
   return `<picture class="${className}">
     <source
       sizes="(max-width: 480px) 440px,800px"
@@ -124,13 +124,13 @@ imgTag = function(src, width, height, alt="", className="", loding=true){
 
 <%- imgTag("works-01.jpg", 1200, 1200, "画像", "img")%>
 ```
-`loding="lazy"`や`decoding="async"`は最初に表示される場所（ファーストビュー）では使えないので、属性を付与するか否かは引数でコントロールします。
+`loading="lazy"`や`decoding="async"`は最初に表示される場所（ファーストビュー）では使えないので、属性を付与するか否かは引数でコントロールします。
 
 出力結果。
 ```html:title=HTML
 <picture class="img">
   <source sizes="(max-width: 480px) 440px,800px" srcset="/assets/images/works-01＠480.jpg.webp 480w,/assets/images/works-01.jpg.webp 800w" type="image/webp">
-  <img src="/assets/images/top/works-01.png" sizes="(max-width: 480px) 440px,800px" srcset="/assets/images/works-01.jpg 480w,/assets/images/works-01.jpg 800w" alt="画像" width="1200" height="1200" loding="lazy" decoding="async">
+  <img src="/assets/images/top/works-01.png" sizes="(max-width: 480px) 440px,800px" srcset="/assets/images/works-01.jpg 480w,/assets/images/works-01.jpg 800w" alt="画像" width="1200" height="1200" loading="lazy" decoding="async">
 </picture>
 ```
 これはあくまで例なので、もしこの関数を使う場合は適宜引数などを調整してみてください。
