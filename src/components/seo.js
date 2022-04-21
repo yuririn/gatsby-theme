@@ -20,6 +20,7 @@ const Seo = ({
   location,
   modified,
   date,
+  cateId = '',
   type,
 }) => {
   const { site } = useStaticQuery(
@@ -57,6 +58,8 @@ const Seo = ({
   if (type === "blogs" || type === "tags" || type === "genre") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
+  const cateInfo = cateId!==""?{ url:`/blogs/${cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === cateId })[0].name}:''
+
 
   const publisher = {
     "@type": "Organization",
@@ -132,15 +135,34 @@ const Seo = ({
       "@type": "ListItem",
       position: 2,
       item: `${domain}/blogs/`,
-      name: `ブログ一覧`,
+      name: `海外ノマドブログ`,
     }
-    if (type === "blog" || type === "genre-list" || type === "tag-list") {
+    const cateList = {
+      "@type": "ListItem",
+      position: 3,
+      item: `${domain}${cateInfo.url}`,
+      name: `${cateInfo.name}`,
+    }
+    if (type === "genre-list" || type === "tag-list") {
       breadCrumbList = [
         home,
         blogList,
         {
           "@type": "ListItem",
-          position: 3,
+          position:  3,
+          item: blogUrl,
+          name: title,
+        },
+      ]
+    }
+    else if (type === "blog") {
+      breadCrumbList = [
+        home,
+        blogList,
+        cateList,
+        {
+          "@type": "ListItem",
+          position: 4,
           item: blogUrl,
           name: title,
         },

@@ -226,6 +226,7 @@ class ContactForm extends AbstractController
 }
 ```
 `Core::make('helper/validation/strings')`にあるバリデーションを使って判定ができます。
+
 ```php
 $validation = Core::make('helper/validation/strings');
 var_dump($validation->email($this->post('email')));
@@ -447,7 +448,25 @@ class ContactForm extends AbstractController
     }
 }
 ```
+## ver8をお使いの方必読！脆弱性対策
+外部フォームを使わなくても以下対策をしておきましょう！
+> Concrete CMS Version 9 未満のサイトを運営している方は、Nginx や Apache の設定に、ヘッダーを一つ追加することで対策をしていただくことをお勧めします。<br>
+> Cross-Origin-Resource-Policy を「same-origin」か「same-site」に設定してください。どちらかが最適かがわからない場合は、以下のドキュメントを参考にしてください。<br>
+> https://developer.mozilla.org/ja/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)
 
+
+Nginx の場合: location ブロックの中に
+```
+add_header Cross-Origin-Resource-Policy "same-origin";
+```
+
+Apache の場合 (.htaccess もしくは同等の場所で)
+```
+Header set Cross-Origin-Resource-Policy "same-origin"
+```
+元記事は以下となります。
+
+[CVE-2021-22954 と V9 以前の Concrete への対応について](https://concrete5-japan.org/news/cve-2021-22954/)
 
 ## まとめ・外部フォームブロックを使えばCSRFへの対応をしたフォームを作成可能
 今回Ajaxのフォームを作ったことをきっかけに7年前に書いたこの記事もリライトしました。

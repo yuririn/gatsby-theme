@@ -44,6 +44,13 @@ const BlogPostTemplate = ({ data, location }) => {
   const ogpSrc = data.allFile.edges[0]
     ? `${data.allFile.edges[0].node.publicURL}`
     : "images/ogp.png"
+  const category = { url:`/blogs/${post.frontmatter.cateId}/`, name:
+                  siteMetadata.category.filter(item => {
+                    return post.frontmatter.cateId === item.slug
+                      ? item.name
+                      : ""
+                  })[0].name
+                }
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -53,6 +60,7 @@ const BlogPostTemplate = ({ data, location }) => {
         date={post.frontmatter.date.replace(/\./g, "-")}
         location={location}
         ogp={ogpSrc}
+        cateId={post.frontmatter.cateId}
         type="blog"
       />
       <Header>
@@ -75,7 +83,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </div>
       </Header>
       <div className="l-container">
-        <BreadCrumbList type="blog" current={post.frontmatter.title} />
+        <BreadCrumbList type="blog" current={post.frontmatter.title} cate={category}/>
       </div>
       <Body>
         <Article>
@@ -123,12 +131,8 @@ const BlogPostTemplate = ({ data, location }) => {
             <dl className="c-article__tags">
               <dt>Category</dt>
               <dd className="cate">
-                <Link to={`/blogs/${post.frontmatter.cateId}/`}>
-                  {siteMetadata.category.map(item => {
-                    return post.frontmatter.cateId === item.slug
-                      ? item.name
-                      : ""
-                  })}
+                <Link to={category.url}>
+                  {category.name}
                 </Link>
               </dd>
             </dl>

@@ -15,26 +15,26 @@ const blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
   const posts = data.allMarkdownRemark.nodes
   return (
-    <Layout location={location} title="ブログ一覧">
+    <Layout location={location} title="海外ノマドブログ">
       <Seo
-        title="ブログ一覧"
+        title="海外ノマドブログ"
         description={`「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`}
         location={location}
         type="blog-list"
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
-          <h1 className="p-pageHeader__heading">ブログ一覧</h1>
+          <h1 className="p-pageHeader__heading">海外ノマドブログ</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
         </div>
         <Img
           source="common/ganre_common.jpg"
-          alt="ブログ一覧"
+          alt="海外ノマドブログ"
           className="p-pageHeader__img"
         ></Img>
       </div>
       <div className="l-container">
-        <BreadCrumbList type="blogs" current="ブログ一覧" />
+        <BreadCrumbList type="blogs" current="海外ノマドブログ" />
         <section className="p-section">
           <h2 className="c-heading--lg">最新記事</h2>
           <ol className="c-grid">

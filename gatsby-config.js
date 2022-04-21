@@ -28,9 +28,9 @@ module.exports = {
       },
       {
         slug: "seo",
-        name: "SEOとデジマ",
+        name: "SEO対策・デジタルマーケ",
         enName: "Search Engine Optimization",
-        description: "SEOやデジタルマーケティングに関する記事",
+        description: "SEO対策やデジタルマーケティングに関する記事",
       },
       {
         slug: "overseas-freelancing",
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         slug: "ginneko-tsuredure",
-        name: "私のポリシー",
+        name: "かみーゆの徒然記事",
         enName: "My Policy",
         description: "信念・思いや感じたことを気ままに綴ってます",
       },

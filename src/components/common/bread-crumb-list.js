@@ -2,16 +2,24 @@ import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-const BreadCrumbList = ({ type, current }) => {
+const BreadCrumbList = ({ type, current, cate = '' }) => {
   return (
     <BreadCrumb>
       <ol>
         <li>
           <Link to="/">ホーム</Link>
         </li>
+
         {type === `blog` ? (
           <li>
-            <Link to="/blogs/">ブログ一覧</Link>
+            <Link to="/blogs/">海外ノマドブログ</Link>
+          </li>
+        ) : (
+          ""
+        )}
+        {cate !== '' ? (
+          <li>
+            <Link to={cate.url}>{cate.name}</Link>
           </li>
         ) : (
           ""
