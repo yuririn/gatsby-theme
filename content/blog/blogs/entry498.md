@@ -306,7 +306,7 @@ SVGを使った、汎用性の高いパンくずリストです。
 }
 ```
 全体のコードはこちら(SCSS)。<br>
-[breadcrumblist scroll| Code Pen](https://codepen.io/camille-cebu/pen/wvpOgbY)
+[breadcrumblist scroll| Code Pen](https://codepen.io/camille-cebu/pen/rNpRjpX)
 
 ### 長くなるとスクロールするパンくずリスト2
 先ほどとほぼ一緒ですが、少しデザインをアレンジしてみました。
@@ -383,12 +383,19 @@ body {
 }
 ```
 全体のコードはこちら(SCSS)。<br>
-[breadcrumblist scroll| Code Pen](https://codepen.io/camille-cebu/pen/wvpOgbY)
+[breadcrumblist scroll2| Code Pen](https://codepen.io/camille-cebu/pen/wvpOgbY)
 
 ## まとめ・パンくずリストは必ずサイトに設置しよう
-パンくずリストがSEOやユーザーにとってとても重要なパーツということおわかりいただけたと思います。
+パンくずリストがSEOやユーザーにとってとても重要なパーツということおわかりいただけたと思います。<br>ぜひ、設置してユーザーにもクローラーにも優しいサイトを作りましょう。
 
-ぜひ、設置してユーザーにもクローラーにも優しいサイトを作りましょう。
+他にもサイトでユーザビリティを上げるグロナビやハンバーガーメニューなど共通パーツの作り方をご紹介しています。
+
+<card id="/blogs/entry449/"></card>
+
+<card id="/blogs/entry496/"></card>
+
+
+
 
 この記事が皆さんのSEOライフの一助となれば幸いです。
 
