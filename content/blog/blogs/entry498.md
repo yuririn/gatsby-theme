@@ -36,6 +36,8 @@ lead: ["SEO対策でも有用なパンくずリストについて詳しく解説
 
 こちらはサーチコンソールです。
 
+![Googleのデータベースに登録](./images/2022/04/entry498-10.png)
+
 クロールされパンくずリストが見つかると、このようにインデックス(Googleのデータベースに登録)されます。
 
 インデックスされたページは、検索すると以下のようにパンくずがある状態で検索一覧に表示されます。
@@ -43,7 +45,7 @@ lead: ["SEO対策でも有用なパンくずリストについて詳しく解説
 ![検索すると以下のようにパンくずがある状態で検索一覧に並びます](./images/2022/04/entry498-5.png)
 
 パンくずリストがあるのとないのでは、目の引き方が変わります。
-<br><small>※今回この記事の執筆を機会にパンくずの設定を見直しました。</small>
+<br><small>※今回この記事の執筆を機会にパンくずリストの設定を見直しました。</small>
 
 <br>なので、パンくずリストとしてインデックスさせるためには、適切にコーディングする必要があるのです。
 
@@ -69,19 +71,25 @@ lead: ["SEO対策でも有用なパンくずリストについて詳しく解説
 
 具体的にはカテゴリーなどのリンクをはさみます。
 
-今回自分のサイトを見直したとき、検索結果でブログ一覧としか表示されてませんでした。
+今回自分のサイトを見直したとき、Google検索結果でブログ一覧としか表示されてませんでした。
 
-ブログ一覧なんて、どのサイトでもつけているのでよりユニークな名前、これを機会に関連づく名前に変えました。
+![カテゴリーなどのリンクをはさむ](./images/2022/04/entry498-12.png)
 
-検索一覧から見て、なんの記事なのか分かりづらかったので、カテゴリーを表示するようにしました。
+ブログ一覧なんて、どのサイトでもつけているのでよりユニークな名前かつこのブログに関連づくキーワードを含んだ名前に変えました。
 
-* *位置型パンくずリスト*...静的パンくずリストです。階層が辿れるのが特徴です。検索エンジンにインデックスされます。
+検索結果を改めてじっくり見てみましょう。<br>適切なパンくずリストを設置している記事は、パンくずリスト内に記事に関連するキーワード（カテゴリーなど）が散りばめられていて何の記事かわかりやすいです。
+
+![カテゴリーなどのリンクをはさむ](./images/2022/04/entry498-5.png)
+
+### パンくずリストは3種類あります
+
+* *位置型パンくずリスト*...静的に出力するパンくずリストです。階層が辿れるのが特徴です。検索エンジンにインデックスされます。
 * *属性型パンくずリスト*...ECなどに採用されてます。ユーザーが閲覧しているページがウェブサイト上のどの属性に当てはまるかを表します。
 * *パス型パンくずリスト*...履歴を辿れる動的パンくずリストです。ブラウザバックがあるのであまり採用されてません。
 
 通常パンくずリストを検索エンジンにインデックスさせるためには位置型パンくずリストを設置させる必要があります。
 
-しかし、パンくずリストが静的であれば必ずしも **実際のウェブサイトの階層通りでなくてもかまいません**。
+必ずしも **実際のウェブサイトの階層通りでなくてもかまいません**。
 
 
 ## パンくずリストの設置方法
@@ -96,12 +104,12 @@ lead: ["SEO対策でも有用なパンくずリストについて詳しく解説
 アクセシビリティ考慮するなら、スクリーンリーダーに読み上げれるようにしてあげると親切ですね。
 
 ```
-aria-label=“パンくずリスト”
+aria-label="パンくずリスト"
 ```
 この記事のパンくずリストを表示するなら、コードの例はこんな感じになります。
 
 ```html:title=HTML
-<div class="c-bread-crumb-list" aria-label=“パンくずリスト”>
+<div class="c-bread-crumb-list" aria-label="パンくずリスト">
   <ol>
     <li><a href="https://ginneko-atelier.com/">ホーム</a></li>
     <li><a href="https://ginneko-atelier.com/blogs/">海外ノマドブログ</a></li>
@@ -119,7 +127,7 @@ JSON+LD、RDFa、microdataで記述する方法があります。RDFaは今回�
 まずはmicrodataです。属性が増えるので一気にボリューミーになりますが、JSON+LDのようにscriptで書かなくてもいいので、とっつきやすいと思います。
 
 ```html:title=microdata
-<div class="c-bread-crumb-list" aria-label=“パンくずリスト”>
+<div class="c-bread-crumb-list" aria-label="パンくずリスト">
   <ol itemscope itemtype="http://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
       <a itemprop="item" href="https://ginneko-atelier.com/">
@@ -144,9 +152,9 @@ JSON+LD、RDFa、microdataで記述する方法があります。RDFaは今回�
 </div>
 ```
 
-私の大好きなJSON+LDです。Googleにも解析されやすく他の構造化データと1箇所にまとまるのがいいところです。このサイトもJSON+LDで記述してhead内に格納しています。
+私の大好きなJSON+LDです。***Google検索エンジンに解析されやすく*他の構造化データと1箇所にまとめることができる** のがいいところです。このサイトもJSON+LDで記述してhead内に格納しています。
 
-HTMLはそのまま使えます。
+HTMLは変える必要もありません。
 
 ```js:title=JSON+LD
 {
@@ -241,16 +249,24 @@ SVGを使った、汎用性の高いパンくずリストです。
 
 マウスオーバーで色が変わります。
 
+![マウスオーバーで色が変わります](./images/2022/04/entry498-11.png)
+
 ```css:title=CSS
 .c-bread-crumb-list ol {
   white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
   max-width: 1080px;
   margin: 0 auto;
   list-style: none;
   color: #333;
   font-weight: bold;
   font-size: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.c-bread-crumb-list ol::-webkit-scrollbar {
+  display:none;
 }
 .c-bread-crumb-list ol li {
   white-space: no-wrap;
@@ -305,6 +321,22 @@ SVGを使った、汎用性の高いパンくずリストです。
   border-right: 12px solid transparent;
 }
 ```
+スクロール時の縦軸のグラつき防止に`overflow-y: hidden`を入れています。
+```css
+overflow-x: auto;
+overflow-y: hidden;
+```
+スクロールバーが見えるとかっこ悪いので隠しています。
+```css
+.c-bread-crumb-list ol {
+  -ms-overflow-style: none;/* Edge */
+  scrollbar-width: none;/* Fire Fox */
+}
+.c-bread-crumb-list ol::-webkit-scrollbar {
+  display:none;/* Chrome Safari */
+}
+```
+
 全体のコードはこちら(SCSS)。<br>
 [breadcrumblist scroll| Code Pen](https://codepen.io/camille-cebu/pen/rNpRjpX)
 
@@ -315,19 +347,21 @@ SVGを使った、汎用性の高いパンくずリストです。
 
 ![長くなるとスクロールするパンくずリスト2](./images/2022/04/entry498-9.png)
 ```css:title=CSS
-body {
-  margin-top: 50px;
-}
-
 .c-bread-crumb-list ol {
   white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
   max-width: 1080px;
   margin: 0 auto;
   list-style: none;
   color: #333;
   font-weight: bold;
   font-size: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.c-bread-crumb-list ol::-webkit-scrollbar {
+  display:none;
 }
 .c-bread-crumb-list ol li {
   white-space: no-wrap;

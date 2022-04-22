@@ -42,7 +42,7 @@ const Seo = ({
   let blogUrl = location ? location.href : domain
   const isRoot = `${domain}/` === blogUrl ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
-  const pagetype = isRoot ? "webSite" : "webPage"
+  const pagetype = isRoot ? "webSite" : "article"
   const ogSrc = domain + (ogp ? ogp : "/images/ogp.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
   let pageName =
