@@ -8,6 +8,46 @@ export const Article = styled.div`
   @media screen and (min-width: 1020px) {
     width: calc(100% - 300px);
   }
+  .c-btn--donation {
+      background: var(--pale-gray);
+      text-align: center;
+      padding: 24px 16px;
+      border-radius: 16px;
+      @media screen and (min-width: 768px) {
+          padding: 24px;
+      }
+
+      a {
+          margin: 20px auto 0;
+          display: flex;
+          max-width: 320px;
+          width: 100%;
+          background: var(--color-ac);
+          border: 1px solid var(--color-ac)!important;
+          color: #fff;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          height: 56px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 18px;
+
+          svg {
+              margin-right: 8px;
+          }
+
+          @media screen and (min-width: 768px) {
+              transition: .3s;
+              &:hover {
+                  color: var(--color-ac);
+                  background: #fff;
+              }
+          }
+
+      }
+  }
   .l-container {
     @media screen and (min-width: 768px) {
       padding-left: 0;
@@ -15,6 +55,8 @@ export const Article = styled.div`
     }
   }
   .c-article {
+      margin: 50px auto 0;
+
     &__heading {
       font-size: 2.4rem;
       font-weight: 700;
@@ -112,7 +154,7 @@ export const Article = styled.div`
     }
   }
   .c-snsBtns {
-    margin-bottom: 24px;
+    margin-top: 50px;
     text-align: center;
     margin-bottom: 50px;
 

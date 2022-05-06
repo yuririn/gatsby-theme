@@ -27,6 +27,9 @@ import ProfBig from "../components/common/profile"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
+
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
@@ -127,9 +130,10 @@ const BlogPostTemplate = ({ data, location }) => {
                 {renderAst(post.htmlAst)}
               </section>
             </Edit>
-            <p className="c-btn--donation">
-              <a href="https://ofuse.me/o?uid=47415" target="_blank">銀ねこアトリエを応援する</a>
-            </p>
+            <div className="c-btn--donation" id="end_of_article">
+              <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
+              <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noopener"><FontAwesomeIcon icon={faHeart} />銀ねこアトリエを応援する</a>
+            </div>
             <Sns url={perfectUrl} title={perfectTitle} />
             <dl className="c-article__tags">
               <dt>Category</dt>
