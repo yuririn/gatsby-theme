@@ -127,6 +127,9 @@ const BlogPostTemplate = ({ data, location }) => {
                 {renderAst(post.htmlAst)}
               </section>
             </Edit>
+            <p className="c-btn--donation">
+              <a href="https://ofuse.me/o?uid=47415" target="_blank">銀ねこアトリエを応援する</a>
+            </p>
             <Sns url={perfectUrl} title={perfectTitle} />
             <dl className="c-article__tags">
               <dt>Category</dt>
