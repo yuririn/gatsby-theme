@@ -59,6 +59,7 @@ const Seo = ({
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
   const cateInfo = cateId!==""?{ url:`/blogs/${cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === cateId })[0].name}:''
+  const noindex = ['/blogs/entry218/','/blogs/entry285/','/blogs/entry208/','/blogs/entry312/','/blogs/entry403/','/blogs/entry272/','/blogs/entry424/']
 
 
   const publisher = {
@@ -254,6 +255,7 @@ const Seo = ({
         },
       ].concat(meta)}
     >
+      {noindex.includes(location.pathname)&&<meta content="noindex" name="robots"/>}
       <link rel="canonical" href={blogUrl}></link>
       {portfolio ? (
         <link
