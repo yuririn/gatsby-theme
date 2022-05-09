@@ -16,6 +16,9 @@ export const Article = styled.div`
       @media screen and (min-width: 768px) {
           padding: 24px;
       }
+      p {
+        line-height :1.8;
+      }
 
       a {
           margin: 20px auto 0;
