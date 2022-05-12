@@ -123,6 +123,36 @@ const Seo = ({
       publisher,
     })
   }
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+    "@type": "Question",
+    "name": "コーダーになるためにはどうすれば良いですか？",
+    "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "コーダーはスピード命。早くコーディングするために、ショートカットは必須。ひたすらコードを書きましょう。"
+    }
+    },
+    {
+    "@type": "Question",
+    "name": "IT業界は進歩が早くてついていくのが大変ではないですか？",
+    "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "はい、大変です。置いて行かれないよう、情報収集は欠かしません。学ぶことをやめたら泳ぐのをやめたマグロと一緒です。"
+    }
+    },
+    {
+    "@type": "Question",
+    "name": "かみーゆさんの好きな食べ物はなんですか？",
+    "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "肉とビールです。肉があればビールが3杯は飲めます。"
+    }
+    }
+    ]
+  }
 
   if (!isRoot) {
     let breadCrumbList
@@ -189,6 +219,12 @@ const Seo = ({
         "@type": "BreadcrumbList",
         itemListElement: breadCrumbList,
       },
+    ]
+  }
+  if (portfolio) {
+    jsonLdConfigs = [
+      ...jsonLdConfigs,
+      faq
     ]
   }
 
