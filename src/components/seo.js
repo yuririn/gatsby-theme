@@ -55,12 +55,12 @@ const Seo = ({
   if (location) {
     portfolio = location.pathname === "/portfolio/" ? true : false
   }
+  const canonicalUrl = blogUrl;
   if (type === "blogs" || type === "tags" || type === "genre") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
   const cateInfo = cateId!==""?{ url:`/blogs/${cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === cateId })[0].name}:''
-  const noindex = ['/blogs/entry218/','/blogs/entry285/','/blogs/entry208/','/blogs/entry312/','/blogs/entry403/','/blogs/entry272/','/blogs/entry424/']
-
+  const noindex = ['/blogs/entry218/','/blogs/entry285/','/blogs/entry208/','/blogs/entry312/','/blogs/entry403/','/blogs/entry272/','/blogs/entry424/','/blogs/entry461/','/blogs/entry414/']
 
   const publisher = {
     "@type": "Organization",
@@ -292,7 +292,7 @@ const Seo = ({
       ].concat(meta)}
     >
       {noindex.includes(location.pathname)&&<meta content="noindex" name="robots"/>}
-      <link rel="canonical" href={blogUrl}></link>
+      <link rel="canonical" href={canonicalUrl}></link>
       {portfolio ? (
         <link
           href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap"
