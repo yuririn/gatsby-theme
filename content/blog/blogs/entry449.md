@@ -433,9 +433,10 @@ nav ul li a:hover::after{
 ## グロナビ アニメ・コードスニペット上級編
 `attr()`関数を使いたい！
 
-`attr()`は*data属性*などをCSS側で取得できる便利な関数です。
+`attr()`は*カスタムデータ（data）属性*などをCSS側で取得できる便利な関数です。
 
-<small>※ Can I useを見る限り、多分IEは動きません。</small>
+<small>※ カスタムデータ（data）属性に関する記事はコチラ。</small>
+<card id="/blogs/entry267/"></card>
 
 <br>たとえばhtmlで*data属性*を設定すると...
 
@@ -448,6 +449,8 @@ p::before {
   content: attr(data-text);
 }
 ```
+
+
 
 [attr()|MSN Web Docs](https://developer.mozilla.org/ja/docs/Web/CSS/attr())
 
