@@ -80,7 +80,6 @@ module.exports = {
           `/blogs/entry272/`,
           `/blogs/entry424/`,
           `/blogs/entry311/`,
-          `/blogs/entry461/`,
           `/blogs/entry311/`,
           `/blogs/entry414/`,
         ],
