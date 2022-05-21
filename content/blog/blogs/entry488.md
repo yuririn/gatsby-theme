@@ -5,7 +5,7 @@ modifieddate: 2022-01-15
 hero: thumbnail/2022/entry488.jpg
 pagetype: blog
 cateId: cms
-tags: ["WordPress","React"]
+tags: ["WordPress","React",'ブロックエディタ']
 description: WordPressのテーマに組み込むブロックを作ってみました。今回作ったのはGutenberg用の一覧出力ブロックです。ブロック用に環境構築し、WordPress管理画面（エディター側）は@wordpress/scriptsを使ってReactでREST APIでカテゴリーを取得したりしながら構築、フロント部分はPHPで出力してみました。
 lead: ["WordPressのテーマに組み込むブロックを作ってみました。","今回作ったのはGutenberg用の一覧出力ブロックです。ブロック用に環境構築し、WordPress管理画面（エディター側）は@wordpress/scriptsを使ってReactでREST APIでカテゴリーを取得したりしながら構築、フロント部分はPHPで出力してみました。","とーっても長いので目次を利用してすっ飛ばして読んでください。"]
 ---
@@ -629,6 +629,12 @@ cssは入っていないので、こんな感じに仕上がりました。
 
 いろんな作り方があると思いますが、今回は初学者でもできそうな感じで実装してみました。
 
+プラグイン無し、ブロックエディタでの文字装飾ボタンの追加方法を紹介しています！
+
+<card id="/blogs/entry499/"></card>
+
 この記事がみなさんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+
+

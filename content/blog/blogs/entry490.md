@@ -4,7 +4,7 @@ date: 2022-01-16
 hero: thumbnail/2022/entry490.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["WordPress","React"]
+tags: ["WordPress","React",'ブロックエディタ']
 description: インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！インスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示。サンプルコードあり。
 lead: ["インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！","この記事ではその実装方法をご紹介します。","事前準備としてインスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示しています。","サンプルコードあります。"]
 ---

@@ -99,7 +99,7 @@ export default Faves
 
 const Favorite = styled.div`
 ol {
-  counter-increment: num;
+  counter-reset: num;
 }
 @media screen and (min-width: 768px) {
   .add-numbering {
@@ -108,6 +108,7 @@ ol {
 }
 li {
 
+  counter-increment: num;
   position: relative;
   &:before {
     color: #fff;
