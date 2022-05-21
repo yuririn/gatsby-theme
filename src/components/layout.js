@@ -73,12 +73,10 @@ const GlobalStyle = createGlobalStyle`
             border-top: none;
             padding-top: 0;
           }
-          article {
-            display: flex;
+           display: flex;
             flex-wrap:wrap;
             align-items: flex-start;
             position: relative;
-          }
            border-bottom: 1px solid var(--border-color);
            .p-entryCard__heading {
               font-size: 1.6rem;
@@ -127,12 +125,10 @@ const GlobalStyle = createGlobalStyle`
           }
          @media screen and (min-width: 768px) {
            width: 100%;
-           article {
-            display: flex;
+           display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
             position: relative;
-           }
             .p-entryCard__img {
               width: 40%;
               img {

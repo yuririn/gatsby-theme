@@ -69,8 +69,7 @@ const Lists = ({ category, slug, tags }) => {
       <ol>
         {posts.map((item, index) => {
           return (
-            <li className="p-entryCard is-small" key={`relative${index}`}>
-              <article>
+            <li className="p-entryCard is-small" key={`relative${index}`} role="article">
                 <Link className="p-entryCard__img" to={item.node.fields.slug}>
                   {item.node.frontmatter.hero ? (
                     <Img
@@ -89,7 +88,6 @@ const Lists = ({ category, slug, tags }) => {
                     {item.node.frontmatter.title}
                   </h3>
                 </Link>
-              </article>
             </li>
           )
         })}
@@ -112,12 +110,9 @@ const RelativeList = styled.div`
       border-bottom: 1px solid var(--border-color);
       margin-bottom: 10px;
       padding-bottom: 10px;
-
-      article {
         flex-wrap: wrap;
         display: flex;
         align-items: flex-start;
-      }
       .p-entryCard__img {
         width: 30%;
         border-radius: 5px;

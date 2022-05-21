@@ -43,8 +43,7 @@ const BlogIndex = ({ data, location }) => {
                 }
 
                 return (
-                  <li key={`post${i}`} className={cardClass}>
-                    <article>
+                  <li key={`post${i}`} className={cardClass} role="article">
                       <Link to={post.fields.slug} className="p-entryCard__img">
                         <Img
                           source={post.frontmatter.hero}
@@ -68,7 +67,7 @@ const BlogIndex = ({ data, location }) => {
                       <div className="p-entryCard__footer">
                         <AddTagLink tags={post.frontmatter.tags} />
                       </div>
-                    </article>
+
                   </li>
                 )
               })}

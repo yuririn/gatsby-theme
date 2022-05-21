@@ -88,7 +88,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="そうだ！！紙に描かなくても爪に描けばいいじゃん！"
-                  img="camille-y.jpg"
+                  img="about/camille-y.jpg"
                   name="かみーゆ（20代）"
                 ></Msg>
                 <p>夜間のネイリスト養成講座に通い、ネイリストになりました。</p>
@@ -122,7 +122,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="なんで私、子どもを犠牲にしてまで働いているんだろう。。。"
-                  img="camille-y.jpg"
+                  img="about/camille-y.jpg"
                   name="かみーゆ（20代）"
                 ></Msg>
                 <p>
@@ -149,7 +149,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="既に死んでしまったキャリアなんてもういらない！<br>どうせなら新しいことを始めようかな。。。"
-                  img="camille-y.jpg"
+                  img="about/camille-y.jpg"
                   name="かみーゆ（20代）"
                 ></Msg>
                 <h3>
@@ -158,7 +158,7 @@ const aboutPost = ({ data, location }) => {
                 <p>職業訓練校を経てIT業界へ転身しました。</p>
                 <Msg
                   txt="今はネットが使えどこでも仕事ができる時代。いざとなったら子どものそばにいることができる職種に転身したい！！"
-                  img="camille-m.jpg"
+                  img="about/camille-m.jpg"
                   name="かみーゆ（30代）"
                 ></Msg>
                 <p>
@@ -175,7 +175,7 @@ const aboutPost = ({ data, location }) => {
                 <h3>再び、会社員へ</h3>
                 <Msg
                   txt="フリーランスは不安定だし不安。<br>子どもを最低限は進学させたいし、やっぱり会社員として再び働きたい。"
-                  img="camille-m.jpg"
+                  img="about/camille-m.jpg"
                   name="かみーゆ（30代）"
                 ></Msg>
                 <p>
@@ -190,7 +190,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="たくさんの人に助けてもらったなぁ。これからは教育にも力を注いで恩返ししたいな！"
-                  img="camille-m.jpg"
+                  img="about/camille-m.jpg"
                   name="かみーゆ（30代）"
                 ></Msg>
                 <p>教育に携わりたいので職業訓練校などの講師も始めました。</p>
@@ -209,7 +209,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="よし！！<br>この先はMac Book Proとスーツケースだけで生きていこう！！"
-                  img="camille-o.jpg"
+                  img="about/camille-o.jpg"
                   name="かみーゆ（40代）"
                 ></Msg>
                 <p>
@@ -231,7 +231,7 @@ const aboutPost = ({ data, location }) => {
                 </p>
                 <Msg
                   txt="あれ？<br>なんで私、南の島まで来てすり減るほど仕事してるんだろう。。。"
-                  img="camille-o.jpg"
+                  img="about/camille-o.jpg"
                   name="かみーゆ（40代）"
                 ></Msg>
 

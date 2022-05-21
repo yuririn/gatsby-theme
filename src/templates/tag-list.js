@@ -44,8 +44,9 @@ const tags = ({ pageContext, data, location }) => {
                 <li
                   className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
                   key={`article-${index}`}
+                  role="article"
                 >
-                  <article>
+
                     <Link to={post.fields.slug} className="p-entryCard__img">
                       {post.frontmatter.hero ? (
                         <Img
@@ -72,7 +73,6 @@ const tags = ({ pageContext, data, location }) => {
                     <div className="p-entryCard__footer">
                       <AddTagLink tags={post.frontmatter.tags} />
                     </div>
-                  </article>
                 </li>
               )
             })}

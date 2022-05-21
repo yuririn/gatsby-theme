@@ -61,8 +61,9 @@ const category = ({ pageContext, data, location }) => {
                   <li
                     className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
                     key={slug}
+                    role="article"
                   >
-                    <article>
+
                       <Link to={slug} className="p-entryCard__img">
                         {hero ? (
                           <Img source={hero} alt={title} />
@@ -79,7 +80,7 @@ const category = ({ pageContext, data, location }) => {
                       <div className="p-entryCard__footer">
                         <AddTagLink tags={tags} />
                       </div>
-                    </article>
+
                   </li>
                 )
               })}

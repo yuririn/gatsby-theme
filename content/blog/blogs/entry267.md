@@ -346,6 +346,13 @@ removeAttr('data-id')
 
 ### おまけ。属性取得方法
 DOM操作で便利な値取得方法をまとめます。
+```js:title=JavaScript
+elm.src //ソース
+elm.height //高さ
+elm.width //幅
+elm.alt //代替テキスト
+elm.value //フォームなどの値
+```
 ```js:title=jQuery
 elm.attr('src') //ソース
 elm.attr('height') //高さ
@@ -353,10 +360,4 @@ elm.attr('width') //幅
 elm.attr('alt') //代替テキスト
 elm.value()//フォームなどの値
 ```
-```js:title=jQuery
-elm.src //ソース
-elm.height //高さ
-elm.width //幅
-elm.alt //代替テキスト
-elm.value //フォームなどの値
-```
+
