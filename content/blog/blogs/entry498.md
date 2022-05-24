@@ -1,6 +1,7 @@
 ---
 title: 【SEO効果アリ！リッチリザルトの鉄板】パンくずリスト徹底解剖(コードサンプルあり)
 date: 2022-04-21
+modifieddate: 2022-05-21
 pagetype: blog
 cateId: seo
 hero: thumbnail/2022/entry498.png

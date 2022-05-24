@@ -6,8 +6,8 @@ hero: thumbnail/2021/entry459.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: [ "JavaScript","npm"]
-description: 最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。この記事はGulp4バージョン用にコードを修正しました。
-lead: ["最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。","JavaScriptがそのまま書けるのでとても魅力的でした。もともと使っていたPugと比較しつつ、導入の仕方をご紹介いたします。この記事はGulp4バージョン用にコードを修正しました。"]
+description: 最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。JavaScriptがそのまま書けるのでとても魅力的でした。類似するPugと比較しつつ、導入の仕方、やincludeを始めとしたメソッドの使い方などをご紹介します。この記事はGulp4バージョン用にコードを修正しました。
+lead: ["最近GulpでEJSというテンプレートを使ってHTMLのファイルを量産しました。","JavaScriptがそのまま書けるのでとても魅力的でした。類似するPugと比較しつつ、導入の仕方、やincludeを始めとしたメソッドの使い方などをご紹介します。この記事はGulp4バージョン用にコードを修正しました。"]
 ---
 ## このブログの対象者
 * CMSなしでHTMLを量産しなければならない
