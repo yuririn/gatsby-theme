@@ -45,12 +45,14 @@ const Seo = ({
   const pagetype = isRoot ? "webSite" : "article"
   const ogSrc = domain + (ogp ? ogp : "/images/ogp.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
-  let pageName =
-    type === "tags" || type === "genre"
-      ? `${title}|記事一覧|${defaultTitle}`
-      : isRoot
-      ? `${defaultTitle}|${title}`
-      : `${title}|${defaultTitle}`
+  let pageName = `${title}-${defaultTitle}`
+  if(type === "tags" || type === "genre") {
+    pageName = `${title}-記事一覧-${defaultTitle}`
+  } else if (type === "blog") {
+    pageName = title
+  } else if (isRoot) {
+    pageName = `${defaultTitle}【${title}】`
+  }
   let portfolio = false
   if (location) {
     portfolio = location.pathname === "/portfolio/" ? true : false

@@ -62,7 +62,6 @@ const Pagination = ({ num, current, type }) => {
         {arr.map(i => {
           const path = i === 1 ? `/blogs/${type}` : `/blogs/${type}page/${i}/`
           if (num > 6) {
-            console.log(`pager${i}`)
             if (current <= 3 || current === "") {
               if (arr.length === i) {
                 return (
