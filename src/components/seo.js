@@ -51,7 +51,7 @@ const Seo = ({
   } else if (type === "blog") {
     pageName = title
   } else if (isRoot) {
-    pageName = `${defaultTitle}【${title}】`
+    pageName = `${title}【${defaultTitle}】`
   }
   let portfolio = false
   if (location) {
