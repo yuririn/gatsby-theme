@@ -521,6 +521,7 @@ export const Edit = styled.section`
   }
   .box {
     margin-top: 20px;
+    margin-bottom: 40px;
     h2,
     h3,
     h4 {
