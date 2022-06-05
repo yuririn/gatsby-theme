@@ -70,6 +70,11 @@ const ProfImg = styled.div`
   margin: 20px auto 30px;
   overflow: hidden;
 
+  img {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
   @media screen and (min-width: 769px) {
     width: 250px;
   }

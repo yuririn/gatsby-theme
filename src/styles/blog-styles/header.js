@@ -10,7 +10,7 @@ export const Header = styled.div`
       margin-bottom: 24px;
 
       &::before {
-        opacity: 0.6;
+        opacity: 0.8;
         filter: blur(2px);
         z-index: -1;
         width: 100%;

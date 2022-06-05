@@ -37,12 +37,14 @@ const Ganre = styled.div`
   .p-localNav__item {
     position: relative;
     height: 130px;
-    text-shadow: 0 0 3px rgb(0, 0, 0, 0.8);
+    text-shadow: 0 0 3px rgb(0, 0, 0, 0.8),0 0 16px rgb(0, 0, 0, 0.6);
     margin-bottom: 30px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 4px rgb(0, 0, 0, 0.3);
     background: var(--color-blue);
+    font-size: 1.4rem;
+    font-weight: bold;
     .gatsby-image-wrapper {
       height: 100%;
       width: 100%;

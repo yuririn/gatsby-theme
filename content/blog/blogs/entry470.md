@@ -336,6 +336,9 @@ function createProject() {
 
 <card id="/blogs/entry476/"></card>
 
+トリガーで定期的にメール送信したい方はこちらを参考にしてください。
+<card id="/blogs/entry504/"></card>
+
 この記事が皆さんの事務作業時短の一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。

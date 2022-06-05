@@ -116,8 +116,9 @@ export const CommonStyle = createGlobalStyle`
     height: 250px;
     overflow: hidden;
     margin-bottom: 20px;
-    text-shadow: 0 0 5px rgb(0 0 0 / 60%);
+    text-shadow: 0 0 5px rgb(0 0 0 / 60%), 0 0 12px rgb(0 0 0 / 40%);
     background: var(--color-blue);
+    font-weight: bold;
 
     &__img{
       opacity: 0.6;
