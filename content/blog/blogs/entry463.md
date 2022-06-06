@@ -1,6 +1,7 @@
 ---
 title: カウントダウンタイマーをバニラJSでシンプルに実装
 date: 2021-05-22
+modifieddate: 2022-06-06
 hero: thumbnail/2021/entry463.jpg
 pagetype: blog
 cateId: 'web-developer'
@@ -38,10 +39,12 @@ console.log(today);
 ### 現在と終了日の差分を取得する
 
 ```js
-const goal = new Date("2021-06-22 00:00:00");
+const goal = new Date("2021-06-22T00:00:00");
 const today = new Date();
 ```
-`getTime`で値の取得をします。
+<small>※ Chrome、Safariのバージョンアップに伴い、<code class="language-text">new Date("2022-08-23 8:40:00")</code>のような記述方法では動かない場合があります。</small>
+
+<br> `getTime` で値の取得をします。
 
 1970年1月1日深夜0時から指定した日時までのミリ秒を取得できます。
 
@@ -92,7 +95,7 @@ const days = Math.floor(rest / 1000 / 60 / 60 / 24);
 
 ### カウントダウンに必要なそれぞれの値を関数にまとめる
 ```JS
-const goal = new Date("2021-05-23 8:15:00");
+const goal = new Date("2021-05-23T08:15:00");
 function countDown(goal) {
   const now = new Date();
   const left = goal.getTime() - now.getTime();
@@ -186,7 +189,7 @@ if (条件式) {
 </div>
 ```
 ```js
-const goal = new Date("2021-05-23 8:15:00");
+const goal = new Date("2021-05-23T08:15:00");
 let count;
 function countDown(goal) {
   const now = new Date();
@@ -226,7 +229,7 @@ setCountDown();
 
 興味がある方はこちらもどうぞ^ ^
 
-[カウントダウンタイマー|CodePen](https://codepen.io/camile/pen/VwppBKg)
+[カウントダウンタイマー|CodePen](https://codepen.io/camille-cebu/pen/mdXjKmd)
 
 ## まとめ・カウントダウンはバニラJSだけでカンタンに実装できた!
 シンブルですがバニラJSでカウントダウンを実装してみました。

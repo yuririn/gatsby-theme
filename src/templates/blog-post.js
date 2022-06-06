@@ -29,6 +29,7 @@ import Msg from "../components/blogs/blog-parts/msg"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
+import Affili from "../components/affiliate";
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -121,15 +122,17 @@ const BlogPostTemplate = ({ data, location }) => {
               </dl>
               <TagsList tags={post.frontmatter.tags} />
               <Description texts={post.frontmatter.lead} />
-              <Sns url={perfectUrl} title={perfectTitle} />
+              <Affili size="horizontal"></Affili>
               <Prof></Prof>
               <Toc data={data.markdownRemark.tableOfContents} />
+              <Affili size="horizontal"></Affili>
             </header>
             <Edit>
               <section itemProp="articleBody">
                 {renderAst(post.htmlAst)}
               </section>
             </Edit>
+            <Affili size="horizontal"></Affili>
             <div className="c-btn--donation" id="end_of_article">
               <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
               <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noopener"><FontAwesomeIcon icon={faHeart} />銀ねこアトリエを応援する</a>
@@ -175,6 +178,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <FovoriteList type="life" />
             <FovoriteList type="career" />
           </div>
+          <Affili size="horizontal"></Affili>
           <div className="l-container">
             <section className="p-box--gray p-section u-text-center">
               <h2 className="c-heading--lg">人気のタグ</h2>
@@ -187,6 +191,7 @@ const BlogPostTemplate = ({ data, location }) => {
               <Genre />
             </section>
           </div>
+          <Affili size="horizontal"></Affili>
           <ProfBig />
         </aside>
       </Body>
