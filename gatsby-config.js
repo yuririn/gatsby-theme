@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `セブ島ノマドフロントエンジニアの日記【銀ねこアトリエ】`,
+    title: `セブ島ノマドエンジニアの日記【銀ねこアトリエ】`,
     author: {
       name: `かみーゆ`,
       summary: `セブ島海外ノマドフロントエンドエンジニアです。`,

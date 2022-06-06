@@ -3,106 +3,27 @@ import * as React from "react"
 import styled from "styled-components"
 
 const AffArry = [
-  {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="//af.moshimo.com/af/c/click?a_id=3455395&p_id=4316&pc_id=11041&pl_id=58742&guid=ON" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" data-gtm-click="moshimo-0001"><img src="//image.moshimo.com/af-img/3489/000000058742.jpg" width="600" height="500" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455395&p_id=4316&pc_id=11041&pl_id=58742" width="1" height="1" style="border:none;">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="//af.moshimo.com/af/c/click?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58319&guid=ON" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" data-gtm-click="moshimo-0002"><img src="//image.moshimo.com/af-img/3871/000000058319.png" width="600" height="500" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58319" width="1" height="1" style="border:none;">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="//af.moshimo.com/af/c/click?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58320&guid=ON" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" data-gtm-click="moshimo-0003"><img src="//image.moshimo.com/af-img/3871/000000058320.png" width="640" height="100" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58320" width="1" height="1" style="border:none;">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="//af.moshimo.com/af/c/click?a_id=3456077&p_id=4201&pc_id=10658&pl_id=57410&guid=ON" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" data-gtm-click="moshimo-0004"><img src="//image.moshimo.com/af-img/1736/000000057410.jpg" width="1208" height="592" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3456077&p_id=4201&pc_id=10658&pl_id=57410" width="1" height="1" style="border:none;">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="//af.moshimo.com/af/c/click?a_id=3456075&p_id=3253&pc_id=7683&pl_id=48628&guid=ON" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" data-gtm-click="moshimo-0004"><img src="//image.moshimo.com/af-img/2630/000000048628.png" width="640" height="100" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3456075&p_id=3253&pc_id=7683&pl_id=48628" width="1" height="1" style="border:none;">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="//af.moshimo.com/af/c/click?a_id=3455391&p_id=2312&pc_id=4967&pl_id=38397&guid=ON" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" data-gtm-click="moshimo-0006"><img src="//image.moshimo.com/af-img/1762/000000038397.png" width="336" height="280" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455391&p_id=2312&pc_id=4967&pl_id=38397" width="1" height="1" style="border:none;">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="//af.moshimo.com/af/c/click?a_id=3455389&p_id=16&pc_id=16&pl_id=53730&guid=ON" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" data-gtm-click="moshimo-0008"><img src="//image.moshimo.com/af-img/0003/000000053730.png" width="728" height="90" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455389&p_id=16&pc_id=16&pl_id=53730" width="1" height="1" style="border:none;">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3BQNO9+55R9IQ+320A+BXYE9" rel="nofollow" data-gtm-click="a8-0009"><img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=201118041312&wid=001&eno=01&mid=s00000014257002006000&mc=1"></a><img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3BQNO9+55R9IQ+320A+BXYE9" alt="">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3BQNO9+55R9IQ+320A+BXIYP" rel="nofollow" data-gtm-click="a8-0010"><img border="0" width="468" height="60" alt="" src="https://www27.a8.net/svt/bgt?aid=201118041312&wid=001&eno=01&mid=s00000014257002004000&mc=1"></a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3BQNO9+55R9IQ+320A+BXIYP" alt="">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3C9KZ6+2OM2+TVJ4X" rel="nofollow" data-gtm-click="a8-0011"><img border="0" width="640" height="200" alt="" src="https://www25.a8.net/svt/bgt?aid=210410078202&wid=001&eno=01&mid=s00000012521005018000&mc=1"></a><img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3H9TGE+3C9KZ6+2OM2+TVJ4X" alt="">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3C9KZ6+2OM2+TTLOX" rel="nofollow" data-gtm-click="a8-0012"><img border="0" width="250" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=210410078202&wid=001&eno=01&mid=s00000012521005009000&mc=1"></a><img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=3H9TGE+3C9KZ6+2OM2+TTLOX" alt="">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3BO5DE+3QHY+61JSH" rel="nofollow" data-gtm-click="a8-0013"><img border="0" width="728" height="90" alt="" src="https://www24.a8.net/svt/bgt?aid=210410078201&wid=001&eno=01&mid=s00000017431001015000&mc=1"></a><img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H9TGE+3BO5DE+3QHY+61JSH" alt="">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3BO5DE+3QHY+61RI9" rel="nofollow" data-gtm-click="a8-0014"><img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=210410078201&wid=001&eno=01&mid=s00000017431001016000&mc=1"></a><img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3H9TGE+3BO5DE+3QHY+61RI9" alt="">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGC+AM8B5E+3GWO+6LHDT" rel="nofollow" data-gtm-click="a8-0015"><img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=210410076642&wid=001&eno=01&mid=s00000016188001108000&mc=1"></a><img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H9TGC+AM8B5E+3GWO+6LHDT" alt="">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGC+AM8B5E+3GWO+6S4KX" rel="nofollow" data-gtm-click="a8-0016"><img border="0" width="728" height="90" alt="" src="https://www27.a8.net/svt/bgt?aid=210410076642&wid=001&eno=01&mid=s00000016188001139000&mc=1"></a><img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3H9TGC+AM8B5E+3GWO+6S4KX" alt="">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3BQNO9+54KEB6+4HHM+644DT" rel="nofollow" data-gtm-click="a8-0017"><img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=201118041310&wid=001&eno=01&mid=s00000020929001027000&mc=1"></a><img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3BQNO9+54KEB6+4HHM+644DT" alt="">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BCFDRM+4LXM+5ZMCH" rel="nofollow" data-gtm-click="a8-0018"><img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=201115000686&wid=001&eno=01&mid=s00000021505001006000&mc=1"></a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3BQLBS+BCFDRM+4LXM+5ZMCH" alt="">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BCFDRM+4LXM+614CX" rel="nofollow" data-gtm-click="a8-0000"><img border="0" width="468" height="60" alt="" src="https://www25.a8.net/svt/bgt?aid=201115000686&wid=001&eno=01&mid=s00000021505001013000&mc=1"></a><img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3BQLBS+BCFDRM+4LXM+614CX" alt="">`
-  },
- {
-    size:'rectangle',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3BHPWW+3KMEQ+2PEO+1I4QBL" rel="nofollow" data-gtm-click="a8-0020"><img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=200701040006&wid=001&eno=01&mid=s00000012624009092000&mc=1"></a><img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=3BHPWW+3KMEQ+2PEO+1I4QBL" alt="">`
-  },
- {
-    size:'horizontal',
-    ganre: "web",
-    code:`<a href="https://px.a8.net/svt/ejp?a8mat=3BHPWW+3KMEQ+2PEO+1I25Q9" rel="nofollow" data-gtm-click="a8-0021"><img border="0" width="728" height="90" alt="" src="https://www22.a8.net/svt/bgt?aid=200701040006&wid=001&eno=01&mid=s00000012624009080000&mc=1"></a><img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3BHPWW+3KMEQ+2PEO+1I25Q9" alt="">`
-  }
+{ 'size':'rectangle','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3455395&p_id=4316&pc_id=11041&pl_id=58742&guid=ON" rel="nofollow" data-gtm-click="moshimo-0001" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/3489/000000058742.jpg" loading="lazy" decoding="async" width="600" height="500" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455395&p_id=4316&pc_id=11041&pl_id=58742" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58319&guid=ON" rel="nofollow" data-gtm-click="moshimo-0002" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/3871/000000058319.png" loading="lazy" decoding="async" width="600" height="500" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58319" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58320&guid=ON" rel="nofollow" data-gtm-click="moshimo-0003" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/3871/000000058320.png" loading="lazy" decoding="async" width="640" height="100" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455394&p_id=4300&pc_id=10989&pl_id=58320" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3456075&p_id=3253&pc_id=7683&pl_id=48628&guid=ON" rel="nofollow" data-gtm-click="moshimo-0004" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/2630/000000048628.png" loading="lazy" decoding="async" width="640" height="100" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3456075&p_id=3253&pc_id=7683&pl_id=48628" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3456075&p_id=3253&pc_id=7683&pl_id=48627&guid=ON" rel="nofollow" data-gtm-click="moshimo-0005" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/2630/000000048627.png" loading="lazy" decoding="async" width="390" height="220" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3456075&p_id=3253&pc_id=7683&pl_id=48627" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3455391&p_id=2312&pc_id=4967&pl_id=38397&guid=ON" rel="nofollow" data-gtm-click="moshimo-0006" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/1762/000000038397.png" loading="lazy" decoding="async" width="336" height="280" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455391&p_id=2312&pc_id=4967&pl_id=38397" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3455389&p_id=16&pc_id=16&pl_id=53728&guid=ON" rel="nofollow" data-gtm-click="moshimo-0007" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0003/000000053728.png" loading="lazy" decoding="async" width="300" height="300" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455389&p_id=16&pc_id=16&pl_id=53728" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="//af.moshimo.com/af/c/click?a_id=3455389&p_id=16&pc_id=16&pl_id=53730&guid=ON" rel="nofollow" data-gtm-click="moshimo-0008" referrerpolicy="no-referrer-when-downgrade"><img src="//image.moshimo.com/af-img/0003/000000053730.png" loading="lazy" decoding="async" width="728" height="90" style="border:none;"></a><img src="//i.moshimo.com/af/i/impression?a_id=3455389&p_id=16&pc_id=16&pl_id=53730" loading="lazy" decoding="async" width="1" height="1" style="border:none;">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3BQNO9+55R9IQ+320A+BXYE9" rel="nofollow" data-gtm-click="a8-0009"><img border="0" loading="lazy" decoding="async" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=201118041312&wid=001&eno=01&mid=s00000014257002006000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3BQNO9+55R9IQ+320A+BXYE9" alt="">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3BQNO9+55R9IQ+320A+BXIYP" rel="nofollow" data-gtm-click="a8-0010"><img border="0" loading="lazy" decoding="async" width="468" height="60" alt="" src="https://www27.a8.net/svt/bgt?aid=201118041312&wid=001&eno=01&mid=s00000014257002004000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3BQNO9+55R9IQ+320A+BXIYP" alt="">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3C9KZ6+2OM2+TVJ4X" rel="nofollow" data-gtm-click="a8-0011"><img border="0" loading="lazy" decoding="async" width="640" height="200" alt="" src="https://www25.a8.net/svt/bgt?aid=210410078202&wid=001&eno=01&mid=s00000012521005018000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3H9TGE+3C9KZ6+2OM2+TVJ4X" alt="">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3C9KZ6+2OM2+TTLOX" rel="nofollow" data-gtm-click="a8-0012"><img border="0" loading="lazy" decoding="async" width="250" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=210410078202&wid=001&eno=01&mid=s00000012521005009000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=3H9TGE+3C9KZ6+2OM2+TTLOX" alt="">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3BO5DE+3QHY+61JSH" rel="nofollow" data-gtm-click="a8-0013"><img border="0" loading="lazy" decoding="async" width="728" height="90" alt="" src="https://www24.a8.net/svt/bgt?aid=210410078201&wid=001&eno=01&mid=s00000017431001015000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H9TGE+3BO5DE+3QHY+61JSH" alt="">'},
+{ 'size':'rectangle','genre':'web','code':' href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3BO5DE+3QHY+61RI9" rel="nofollow" data-gtm-click="a8-0014"><img border="0" loading="lazy" decoding="async" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=210410078201&wid=001&eno=01&mid=s00000017431001016000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3H9TGE+3BO5DE+3QHY+61RI9" alt="">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGC+AM8B5E+3GWO+6LHDT" rel="nofollow" data-gtm-click="a8-0015"><img border="0" loading="lazy" decoding="async" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=210410076642&wid=001&eno=01&mid=s00000016188001108000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H9TGC+AM8B5E+3GWO+6LHDT" alt="">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3H9TGC+AM8B5E+3GWO+6S4KX" rel="nofollow" data-gtm-click="a8-0016"><img border="0" loading="lazy" decoding="async" width="728" height="90" alt="" src="https://www27.a8.net/svt/bgt?aid=210410076642&wid=001&eno=01&mid=s00000016188001139000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3H9TGC+AM8B5E+3GWO+6S4KX" alt="">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3BQNO9+54KEB6+4HHM+644DT" rel="nofollow" data-gtm-click="a8-0017"><img border="0" loading="lazy" decoding="async" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=201118041310&wid=001&eno=01&mid=s00000020929001027000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3BQNO9+54KEB6+4HHM+644DT" alt="">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BCFDRM+4LXM+5ZMCH" rel="nofollow" data-gtm-click="a8-0018"><img border="0" loading="lazy" decoding="async" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=201115000686&wid=001&eno=01&mid=s00000021505001006000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3BQLBS+BCFDRM+4LXM+5ZMCH" alt="">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BCFDRM+4LXM+614CX" rel="nofollow" data-gtm-click="a8-0019"><img border="0" loading="lazy" decoding="async" width="468" height="60" alt="" src="https://www25.a8.net/svt/bgt?aid=201115000686&wid=001&eno=01&mid=s00000021505001013000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=3BQLBS+BCFDRM+4LXM+614CX" alt="">'},
+{ 'size':'rectangle','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3BHPWW+3KMEQ+2PEO+1I4QBL" rel="nofollow" data-gtm-click="a8-0020"><img border="0" loading="lazy" decoding="async" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=200701040006&wid=001&eno=01&mid=s00000012624009092000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=3BHPWW+3KMEQ+2PEO+1I4QBL" alt="">'},
+{ 'size':'horizontal','genre':'web','code':'<a href="https://px.a8.net/svt/ejp?a8mat=3BHPWW+3KMEQ+2PEO+1I25Q9" rel="nofollow" data-gtm-click="a8-0021"><img border="0" loading="lazy" decoding="async" width="728" height="90" alt="" src="https://www22.a8.net/svt/bgt?aid=200701040006&wid=001&eno=01&mid=s00000012624009080000&mc=1"></a><img border="0" loading="lazy" decoding="async" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=3BHPWW+3KMEQ+2PEO+1I25Q9" alt="">'}
 ]
 
 const Affili = ({size}) => {
