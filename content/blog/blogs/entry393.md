@@ -37,6 +37,7 @@ lead: ["フォームパーツのカスタマイズって難しいですよね？
   <option value="項目4">項目4</option>
 </select>
 ```
+<af size="horizontal" genre="web-developer"></af>
 
 ### ボタンやチェックボックスなどのフォームパーツのスタイリングがむずかしい理由
 HTMLのフォームパーツ（お問い合わせフォームなどで使うタグ）は標準で複雑なスタイリングを各ブラウザが用意しています。フォームパーツはサイト上で動的に操作できる要素です。
@@ -76,6 +77,8 @@ select::-ms-expand {
 }
 ```
 また、プルダウン表示されるoptionタグはブラウザや端末（iPhoneとか）に相当依存するのでカスタマイズはむずかしいということをあらかじめ知っておいた方が良いです。
+
+<af size="horizontal" genre="web-developer"></af>
 
 ### ラッパーを挟んで作る方法
 セレクトボックスといえば右端に矢印マークがあるイメージですよね？<br>
@@ -118,6 +121,8 @@ z-indexは要素の重なり順を操作できるプロパティです。
   </select>
 </div>
 ```
+
+<af size="horizontal" genre="web-developer"></af>
 
 ```css:title=CSS
 /* 基本のセレクトボックスのカスタマイズ */

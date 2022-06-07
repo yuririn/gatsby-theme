@@ -36,6 +36,7 @@ const renderAst = new rehypeReact({
   components: {
     card: RelativeCard,
     msg: Msg,
+    af: Affili,
   },
 }).Compiler
 
@@ -122,17 +123,17 @@ const BlogPostTemplate = ({ data, location }) => {
               </dl>
               <TagsList tags={post.frontmatter.tags} />
               <Description texts={post.frontmatter.lead} />
-              <Affili size="horizontal"></Affili>
+              <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
               <Prof></Prof>
               <Toc data={data.markdownRemark.tableOfContents} />
-              <Affili size="horizontal"></Affili>
+              <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
             </header>
             <Edit>
               <section itemProp="articleBody">
                 {renderAst(post.htmlAst)}
               </section>
             </Edit>
-            <Affili size="horizontal"></Affili>
+            <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
             <div className="c-btn--donation" id="end_of_article">
               <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
               <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noopener"><FontAwesomeIcon icon={faHeart} />銀ねこアトリエを応援する</a>
@@ -178,7 +179,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <FovoriteList type="life" />
             <FovoriteList type="career" />
           </div>
-          <Affili size="horizontal"></Affili>
+          <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
           <div className="l-container">
             <section className="p-box--gray p-section u-text-center">
               <h2 className="c-heading--lg">人気のタグ</h2>
@@ -191,7 +192,7 @@ const BlogPostTemplate = ({ data, location }) => {
               <Genre />
             </section>
           </div>
-          <Affili size="horizontal"></Affili>
+          <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
           <ProfBig />
         </aside>
       </Body>

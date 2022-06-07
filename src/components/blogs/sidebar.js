@@ -11,7 +11,7 @@ const bar = ({ cateId, title, tags, slug }) => {
   return (
     <Sidebar>
       <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
-      <Affili size="rectangle"></Affili>
+      <Affili size="rectangle" genre={cateId}></Affili>
       <section className="p-section">
         <h2 className="c-heading--lg--side">ジャンル</h2>
         <ul className="sideCateList">
@@ -29,7 +29,7 @@ const bar = ({ cateId, title, tags, slug }) => {
         <Search></Search>
 
         <ul className="side-banner">
-          <li><Affili size="rectangle"></Affili></li>
+          <li><Affili size="rectangle" genre={cateId}></Affili></li>
           <li>
             <Link to="/about/">
               <Img
@@ -77,7 +77,7 @@ const bar = ({ cateId, title, tags, slug }) => {
         <p className="u-text-center">
           <small>初見の方、30分無料相談承っております。</small>
         </p>
-        <Affili size="rectangle"></Affili>
+        <Affili size="rectangle" genre={cateId}></Affili>
       </div>
     </Sidebar>
   )
