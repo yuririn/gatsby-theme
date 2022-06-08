@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-const BreadCrumbList = ({ type, current, cate = '' }) => {
+const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
   return (
     <BreadCrumb>
       <ol>
@@ -12,7 +12,7 @@ const BreadCrumbList = ({ type, current, cate = '' }) => {
 
         {type === `blog` ? (
           <li>
-            <Link to="/blogs/">海外ノマドブログ</Link>
+            <Link to="/blogs/">ノマドブログ</Link>
           </li>
         ) : (
           ""
@@ -20,6 +20,13 @@ const BreadCrumbList = ({ type, current, cate = '' }) => {
         {cate !== '' ? (
           <li>
             <Link to={cate.url}>{cate.name}</Link>
+          </li>
+        ) : (
+          ""
+        )}
+        {tag !== '' ? (
+          <li>
+            <Link to={`/blogs/tags/${tag}`}>{tag}</Link>
           </li>
         ) : (
           ""

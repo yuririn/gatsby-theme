@@ -4,7 +4,7 @@ date: 2022-05-21
 pagetype: blog
 cateId: seo
 hero: thumbnail/2022/entry500.png
-tags: ["SEOライティング","Web解析"]
+tags: ["Web解析","SEOライティング"]
 description: Googleデータポータルで Search Console のインプレッション数や アナリティクス のPVを統合したデータの作り方をご紹介します。
 lead: ["先日、既存記事をリライトするためにGoogleデータポータルを使ってSearch ConsoleとGoogleのインプレッション数や アナリティクスのPVを合算したデータの表を作りました。","Googleデータポータルはクセがあり複雑な設定があるので、具体的にどう作業してデータを統合したのかをまとめました。","画像多めで詳しく解説しているので、敷居の高いGoogleデータポータルも一人で設定可能です。"]
 ---

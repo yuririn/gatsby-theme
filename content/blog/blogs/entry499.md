@@ -4,7 +4,7 @@ date: 2022-05-14
 pagetype: blog
 cateId: cms
 hero: thumbnail/2022/entry499.png
-tags: ["React",'WordPress','ブロックエディタ']
+tags: ['WordPress',"React",'ブロックエディタ']
 description: 【WordPress】【プラグイン無し】ブロックエディタで文字装飾（蛍光マーカーなど）を上部ツールバーボタンから追加する方法をご紹介します。
 lead: ["WordPressのブロックエディタって便利ですよね？","ただ、文字装飾がデフォルトの設定だけからだといまいち。そこで今回はブロックエディタの上部ツールバーに文字装飾（蛍光マーカーなど）ボタンをプラグイン無しで追加する方法をご紹介します。"]
 ---

@@ -25,7 +25,7 @@ const Msg = data => {
       }
     `
   )
-  let txt = data.txt.split("<br>")
+  let txt = data.txt
   let src = data.img ? data.img : "common/camille-pic.jpg"
   let name = data.name ? data.name : "かみーゆ"
   let img = allFile.edges.find(img => img.node.relativePath === src)
@@ -42,11 +42,7 @@ const Msg = data => {
           />
           <span>{name}</span>
         </div>
-        <p className="msg-baloon--txt">
-          {txt.map((t, index) => {
-            return <span key={`txt${index}`}>{t}</span>
-          })}
-        </p>
+        <p dangerouslySetInnerHTML={{__html:txt}} className="msg-baloon--txt"></p>
       </div>
     )
   } else {

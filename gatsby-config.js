@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         slug: "ginneko-tsuredure",
-        name: "かみーゆの徒然記事",
+        name: "かみーゆ徒然記",
         enName: "My Policy",
         description: "信念・思いや感じたことを気ままに綴ってます",
       },

@@ -21,6 +21,7 @@ const Seo = ({
   modified,
   date,
   cateId = '',
+  tag = '',
   type,
 }) => {
   const { site } = useStaticQuery(
@@ -184,11 +185,17 @@ const Seo = ({
       "@type": "ListItem",
       position: 2,
       item: `${domain}/blogs/`,
-      name: `海外ノマドブログ`,
+      name: `ノマドブログ`,
+    }
+    const tagList = {
+      "@type": "ListItem",
+      position: 3,
+      item: `${domain}/tags/${tag}`,
+      name: tag,
     }
     const cateList = {
       "@type": "ListItem",
-      position: 3,
+      position: 2,
       item: `${domain}${cateInfo.url}`,
       name: `${cateInfo.name}`,
     }
@@ -207,8 +214,8 @@ const Seo = ({
     else if (type === "blog") {
       breadCrumbList = [
         home,
-        blogList,
         cateList,
+        tagList,
         {
           "@type": "ListItem",
           position: 4,

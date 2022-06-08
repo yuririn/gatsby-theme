@@ -65,6 +65,7 @@ const BlogPostTemplate = ({ data, location }) => {
         date={post.frontmatter.date.replace(/\./g, "-")}
         location={location}
         ogp={ogpSrc}
+        tag={post.frontmatter.tags[0]}
         cateId={post.frontmatter.cateId}
         type="blog"
       />
@@ -88,7 +89,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </div>
       </Header>
       <div className="l-container">
-        <BreadCrumbList type="blog" current={post.frontmatter.title} cate={category}/>
+        <BreadCrumbList type="blog" current={post.frontmatter.title} cate={category} tag={post.frontmatter.tags[0]}/>
       </div>
       <Body>
         <Article>

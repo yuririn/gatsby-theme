@@ -4,7 +4,7 @@ date: 2022-02-19
 hero: thumbnail/2022/entry491.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["JavaScript","React"]
+tags: ["React","JavaScript"]
 description: 先日 スプレッドシートをJSONデータ化し、React 側で受け取ってページを量産しました。axios、react-router-domなどの使い方をご紹介します。
 lead: ["先日 スプレッドシートをJSONデータ化し、React 側で受け取ってページを量産しました。axios、react-router-domなどの使い方をご紹介します。"]
 ---
