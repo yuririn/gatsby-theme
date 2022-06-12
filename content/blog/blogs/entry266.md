@@ -22,9 +22,9 @@ VS Codeの基本操作方法とフロント系のコードを快適に書くた�
 
 <card id="/blogs/entry280/"></card>
 
-## Visual Studio Code とは？
+## Visual Studio Code とは？
 
-Visual Studio Code（以下、VS Code）は、2015年にMicrosoftによって開発されたソースコードエディターです。
+Visual Studio Code（以下、VS Code）は、2015年にMicrosoftによって開発されたソースコードエディターです。
 
 ![VS Codedown load](./images/2018/entry266-1.png)
 

@@ -5,7 +5,7 @@ modifieddate: 2022-03-30
 hero: thumbnail/2022/entry493.png
 pagetype: blog
 cateId: cms
-tags: ["Shopify"]
+tags: ["Shopify","git"]
 description: 最近 Shopify を触ることがあったので、環境構築の方法とテーマの作り方をメモします。このブログではShopify環境構築とベーシックテーマをインストールし修正できるまでを目標に記事にまとめます。
 lead: ["最近 Shopify を触ることがあったので、環境構築の方法とテーマの作り方をメモします。このブログではShopify環境構築とベーシックテーマをインストールし修正できるまでを目標に記事にまとめます。"]
 ---

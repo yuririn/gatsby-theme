@@ -55,18 +55,6 @@ const bar = ({ cateId, title, tags, slug }) => {
               <Img source="common/youtube-banner.jpg" alt="YouTubeやってるよ" />
             </Link>
           </li>
-
-          <li className="iframe">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/videoseries?list=PLRSXt39PZIMWu7Uj5VOOKaCEZMj9k5RHZ"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </li>
         </ul>
         <h2>お仕事のご依頼</h2>
         <p className="u-text-center">
