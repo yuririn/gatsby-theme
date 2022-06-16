@@ -10,7 +10,7 @@ lead: ["先日ブロックテーマで編集可能なテーマを作成しまし
 ---
 ## この記事は二部構成となっています
 * 前編・ベースのテンプレート作成（←イマココ）
-* 後編・記事一覧出力やページの追加（執筆予定）
+* [後編・記事一覧出力やページの追加](/blogs/entry509)
 
 ## ブロックテーマ（Block themes） とは?
 > A block theme is a type of WordPress theme built using blocks. You can edit all parts of a block theme in the Site Editor.<br>
@@ -392,21 +392,6 @@ add_action( 'wp_enqueue_scripts', 'set_styles' );
                 "vw"
             ]
         },
-        "layout": {
-            "contentSize": "768px",
-            "wideSize": "1120px"
-        }
-    }
-}
-```
-```json:title=theme.json
-{
-    "$schema": "https://schemas.wp.org/wp/5.9/theme.json",
-    "version": 2,
-    "settings": {
-        "color": {...},
-        "typography": {...},
-        "spacing": {...},
         "layout": {
             "contentSize": "768px",
             "wideSize": "1120px"

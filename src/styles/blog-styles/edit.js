@@ -519,6 +519,28 @@ export const Edit = styled.section`
       }
     }
   }
+  .gray-box {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    h2,
+    h3,
+    h4 {
+      color: var(--color-accent);
+    }
+    ol:last-child,
+    ul:last-child,
+    p:last-child {
+      margin-bottom: 0;
+    }
+    background: var(--pale-gray);
+    padding: 10px 15px;
+    border-radius: 8px;
+    @media screen and (min-width: 768px) {
+      margin-top: 30px;
+      padding: 20px 30px;
+      border-radius: 15px;
+    }
+  }
   .box {
     margin-top: 20px;
     margin-bottom: 40px;
@@ -526,6 +548,11 @@ export const Edit = styled.section`
     h3,
     h4 {
       color: var(--color-accent);
+    }
+    ol:last-child,
+    ul:last-child,
+    p:last-child {
+      margin-bottom: 0;
     }
     border: 2px solid var(--color-blue);
     padding: 10px 15px;

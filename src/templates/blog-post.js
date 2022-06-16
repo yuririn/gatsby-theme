@@ -173,7 +173,6 @@ const BlogPostTemplate = ({ data, location }) => {
           title={post.frontmatter.title}
           tags={post.frontmatter.tags}
         />
-
         <aside className="BigWhite">
           <div className="p-section l-container">
             <FovoriteList type="web" />

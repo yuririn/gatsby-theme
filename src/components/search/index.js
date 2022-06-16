@@ -168,6 +168,8 @@ const SearchBox = styled.div`
     outline: none;
     font-size: 1.6rem;
     box-shadow: none;
+
+
   }
 `
 

@@ -216,8 +216,6 @@ git stash list
 stash@{0}: WIP on [ブランチ]: ［HEADのコミットハッシュとコミットメッセージ］
 ```
 
-https://www.wenyanet.com/opensource/ja/5feef4b7771ee619bb70553d.html
-
 `stash` を戻します。
 
 ```bash:title=コマンド
@@ -255,3 +253,5 @@ git ではあるブランチを起点にしてそれをコピーして新しい�
 この記事がみなさんのバージョン管理ライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+
+<!-- https://www.wenyanet.com/opensource/ja/5feef4b7771ee619bb70553d.html -->

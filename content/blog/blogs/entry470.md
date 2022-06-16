@@ -1,14 +1,15 @@
 ---
-title: Google Apps Script（GAS） でスプシからドライブにフォルダー自動生成
+title: 【コピペOK】 Google Apps Script（GAS） でスプシからドライブにフォルダ自動作成
 date: 2021-06-08
+modifieddate: 2022-06-16
 hero: thumbnail/2021/entry470.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["GAS","JavaScript"]
-description: GASを使ってスプレッドシートからGoogleドライブにフォルダーを自動追加する方法の紹介です。GASはGoogleのサービス上で使えるスクリプトでスプシやGメールの自動化をするのにめちゃ便利で重宝しています。事務処理時間をグッと短縮できます！JavaScriptが理解できればわりとカンタンに使えます。2021年6月検証済み！
-lead: ["GASを使ってスプレッドシートからGoogleドライブにフォルダーを自動追加する方法の紹介です。","GASはGoogleのサービス上で使えるスクリプトでスプシやGメールの自動化をするのにめちゃ便利で重宝しています。事務処理時間をグッと短縮できます！","JavaScriptが理解できればわりとカンタンに使えます。","2021年6月検証済み！記事めっちゃ長いので目次から飛ばし読みしてください。"]
+description: GASでスプレッドシートからGoogleドライブにフォルダを自動作成する方法をくわしく解説（コピペOK）。GASはGoogleのサービス上で使えるスクリプトでスプシやGメールの自動化をするのにめちゃ便利。GASで自動化しておけば事務処理時間をグッと短縮できます！JavaScriptが理解できればわりとカンタンに使えます。2021年6月検証済み！
+lead: ["GASでスプレッドシートからGoogleドライブにフォルダを自動作成する方法をくわしく解説しました。","GASはGoogleのサービス上で使えるスクリプトでスプシやGメールの自動化をするのにめちゃ便利で重宝しています。事務処理時間をグッと短縮できます！","JavaScriptが理解できればわりとカンタンですが、JSが苦手な方でもコピペで使えるよう、サンプルコードもあります。","2021年6月検証済み！記事めっちゃ長いので目次から飛ばし読みしてください。"]
 ---
-私はプロジェクトの管理をするとき、こんな感じでGoogleドライブに同じ構造でフォルダーを作ってます。
+私はプロジェクトの管理をするとき、こんな感じでGoogleドライブに同じ構造でフォルダを作ってます。
 ```
 案件/
  ├ プロジェクトA/
@@ -27,8 +28,8 @@ lead: ["GASを使ってスプレッドシートからGoogleドライブにフォ
 <msg txt="そうだ！Google Apps Script（GAS）があるじゃないか！！"></msg>
 
 1. スプシにプロジェクト登録
-2. 個々の連番のプロジェクトフォルダー自動生成
-3. さらにその下に、書くプロジェクトごとに仕分けたいフォルダーを自動生成
+2. 個々の連番のプロジェクトフォルダ自動生成
+3. さらにその下に、書くプロジェクトごとに仕分けたいフォルダを自動生成
 4. ドライブのリンクをスプシに記録
 
 <br>上記をGASなら自動で登録できる。
@@ -37,13 +38,13 @@ lead: ["GASを使ってスプレッドシートからGoogleドライブにフォ
 
 <br>そう信じて作ったGASコードをご紹介します。
 
-## Googleドライブにプロジェクトを格納する親フォルダー作成
-プロジェクト格納用のフォルダーを*project*という名前で作成します。
+## Googleドライブにプロジェクトを格納する親フォルダ作成
+プロジェクト格納用のフォルダを*project*という名前で作成します。
 
-Googleドライブ上のフォルダーIDを調べます。
-![Googleドライブにプロジェクトを格納する親フォルダー作成](./images/2021/06/entry470-8.jpg)
+Googleドライブ上のフォルダIDを調べます。
+![Googleドライブにプロジェクトを格納する親フォルダ作成](./images/2021/06/entry470-8.jpg)
 
-フォルダー作成時に発行されたURLの`~folders/`以下になります。
+フォルダ作成時に発行されたURLの`~folders/`以下になります。
 ```
 https://drive.google.com/drive/u/0/folders/【ID】
 ```
@@ -56,7 +57,7 @@ https://drive.google.com/drive/u/0/folders/【ID】
 
 ![スプシの項目](./images/2021/06/entry470-2.jpg)
 
-セルB1に「*project（親）フォルダーのID*」を入力しておきます。<br>
+セルB1に「*project（親）フォルダのID*」を入力しておきます。<br>
 スプシは100行、D列まで表示し、シート名を*project*としておきました。
 
 
@@ -105,8 +106,8 @@ text([数字],"000")
 <p>この場合はA列とC列以外は保護してしまいます。</p>
 </div>
 
-## フォルダーの自動生成処理
-スクリプトエディタでフォルダーを自動生成するコードを書きます。
+## フォルダの自動生成処理
+スクリプトエディタでフォルダを自動生成するコードを書きます。
 
 メニューの「ツール」>「スクリプトエディタ」を開きます。
 ![スクリプトエディタ](./images/2021/06/entry470-1.jpg)
@@ -144,8 +145,8 @@ sheet.getRange(2, 3).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
 
 <small>※ 処理を実行すると何度か権限の許可を求められます。<a href="#各種アクセス権限を許可しておく">各種アクセス権限を許可しておく</a>を参考にしてください。</small>
 
-### 親フォルダーの取得
-親フォルダー(project)を取得します。`getFolders`でさらにその直下のフォルダーも取得し、フォルダー名を配列`hasChilds`に格納しておきます。
+### 親フォルダの取得
+親フォルダ(project)を取得します。`getFolders`でさらにその直下のフォルダも取得し、フォルダ名を配列`childrenList`に格納しておきます。
 ```js
 // 省略
 const parentFolderId = sheet.getRange('B1').getValue();
@@ -161,11 +162,11 @@ while(childFolders.hasNext()){
 
 `getRange('B1')`は`getRange(2,1)`のような書き方でもOKです。
 
-### 各行のデータを取得し、チェックが入っていればフォルダー作成する
+### 各行のデータを取得し、チェックが入っていればフォルダ作成する
 
 for文で処理を回します。A列のチェックが入っているもののみの行を処理します。
 
-今回はフォルダーの名前を`ID`+`_`+`名前`とします。
+今回はフォルダの名前を`ID`+`_`+`名前`とします。
 
 ```js
 // 省略
@@ -173,25 +174,25 @@ for(let i = 1; i<=last; i++){
   if(sheet.getRange(i, 1).getValue()=== true) {
     const name = sheet.getRange(i, 2).getValue() + '_' + sheet.getRange(i, 3).getValue();
 
-    if(!hasChilds.includes(name)){
+    if(!childrenList.includes(name)){
       let childrenFolder = parentFolder.createFolder(name);
     }
   }
 }
 // 省略
 ```
-`includes`メソッドを使って配列`hasChilds`に、変数`name`と同じ値が含まれてないかチェックし、なければ`name`と同じ名前のフォルダーを作成します。
+`includes`メソッドを使って配列 childrenList`に、変数`name`と同じ値が含まれてないかチェックし、なければ`name`と同じ名前のフォルダを作成します。
 
 ```js
-hasChilds.includes(name)
+childrenList.includes(name)
 ```
-### さらにフォルダーを作成する
-さらにデフォルトで孫フォルダーをセットしておきます。
+### さらにフォルダを作成する
+さらにデフォルトで孫フォルダをセットしておきます。
 ```js
   // 省略
   const gcFolders = ['議事録','受領物','納品物','その他'];
   // 省略
-  if(!hasChilds.includes(name)){
+  if(!childrenList.includes(name)){
     let childrenFolder = parentFolder.createFolder(name);
     for (var item in gcFolders){
       childrenFolder.createFolder(gcFolders[item]);
@@ -199,11 +200,11 @@ hasChilds.includes(name)
   }
   // 省略
 ```
-### スプシにフォルダー名とリンクを追加し、チェックを外す
-`setValue`で値を挿入します。A列は初期値*FALSE*に戻して、D列にはリンク付きでフォルダー名を追加します。
+### スプシにフォルダ名とリンクを追加し、チェックを外す
+`setValue`で値を挿入します。A列は初期値*FALSE*に戻して、D列にはリンク付きでフォルダ名を追加します。
 ```js
 // 省略
-if(!hasChilds.includes(name)){
+if(!childrenList.includes(name)){
   // 省略
   sheet.getRange(i, 4).setValue(`=HYPERLINK("${childrenFolder.getUrl()}","${name}")`);
   sheet.getRange(i, 1).setValue(`FALSE`);
@@ -241,7 +242,7 @@ HYPERLINK(リンク,名称)
 
 
 
-## フォルダーの自動生成処理を実行するメニュー追加
+## フォルダの自動生成処理を実行するメニュー追加
 `addMenu`でメニューを追加します。
 ラベル名は`name`、関数は`functionName`として配列に格納します。
 
@@ -279,26 +280,26 @@ function createProject() {
   const sheet = spreadsheet.getSheetByName('project');
   // 最終行取得
   const last = sheet.getRange(2, 3).getNextDataCell(SpreadsheetApp.Direction.DOWN).getRow();
-  // 孫フォルダー
+  // 孫フォルダ
   const gcFolders = ['議事録','受領物','納品物','その他'];
 
-  // Projegtフォルダー取得
+  // Projegtフォルダ取得
   const parentFolderId = sheet.getRange('B1').getValue();
   const parentFolder = DriveApp.getFolderById(parentFolderId);　
   const childFolders = parentFolder.getFolders();
 
-  // 既存フォルダーの名前を配列化
-  let hasChilds =[];
+  // 既存フォルダの名前を配列化
+  let childrenList =[];
   while(childFolders.hasNext()){
-    hasChilds.push(childFolders.next().getName());
+    childrenList.push(childFolders.next().getName());
   }
 
-  // 子フォルダー生成
+  // 子フォルダ生成
   for(let i = 1; i<=last; i++){
     if(sheet.getRange(i, 1).getValue()=== true) {
       const name = sheet.getRange(i, 2).getValue() + '_' + sheet.getRange(i, 3).getValue();
 
-      if(!hasChilds.includes(name)){
+      if(!childrenList.includes(name)){
         let childrenFolder = parentFolder.createFolder(name);
         for (var item in gcFolders){
           childrenFolder.createFolder(gcFolders[item]);
@@ -324,7 +325,7 @@ function createProject() {
 ![](./images/2021/06/entry476-8.jpg)
 
 ## まとめ・少しコードを書けばGoogle系のツールは自動化可能！
-煩わしいなあって思っていたフォルダー作成などの処理がボタン操作で可能になりました！
+煩わしいなあって思っていたフォルダ作成などの処理がボタン操作で可能になりました！
 
 シートを見れば一目瞭然になりました。
 
