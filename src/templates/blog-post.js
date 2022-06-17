@@ -174,11 +174,6 @@ const BlogPostTemplate = ({ data, location }) => {
           tags={post.frontmatter.tags}
         />
         <aside className="BigWhite">
-          <div className="p-section l-container">
-            <FovoriteList type="web" />
-            <FovoriteList type="life" />
-            <FovoriteList type="career" />
-          </div>
           <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
           <div className="l-container">
             <section className="p-box--gray p-section u-text-center">
