@@ -66,6 +66,7 @@ export const Article = styled.div`
       margin-bottom: 10px;
       color: var(--color-d-blue);
       line-height: 1.4;
+      margin-top:0;
 
       @media screen and (min-width: 768px) {
         font-size: 2.8rem;
@@ -228,70 +229,7 @@ export const Article = styled.div`
       }
     }
   }
-  .profile {
-    margin-top: 30px;
-    border: 6px solid var(--pale-gray);
-    padding: 15px;
-    position: relative;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    .title {
-      position: absolute;
-      background: var(--background);
-      top: -20px;
-      padding: 10px 15px;
-      left: 50%;
-      white-space: nowrap;
-      font-weight: 700;
-      transform: translateX(-50%);
-    }
-    .prof__img__sm {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      float: left;
-      margin-right: 30px;
-      overflow: hidden;
 
-      img {
-        overflow: hidden;
-        border-radius: 50%;
-      }
-    }
-
-    .name {
-      margin: 10px 0 15px;
-      font-weight: 700;
-    }
-    .sns a {
-      margin: 0 15px 10px 0;
-      display: inline-block;
-      color: var(--color-blue);
-    }
-    .message {
-      line-height: 1.6;
-      font-size: 0.9em;
-    }
-    .seemore {
-      margin-top: 10px;
-      text-align: right;
-      a {
-        text-decoration: none;
-        color: var(--color-link);
-        &:hover {
-          transform: translateX(5px);
-        }
-        letter-spacing: 0.2em;
-        transition: 0.3s;
-        font-size: 0.9em;
-        display: inline-block;
-        &:after {
-          font-size: 1.4rem;
-          content: ">";
-        }
-      }
-    }
-  }
 
   .c-pager--article {
     padding-top: 30px;

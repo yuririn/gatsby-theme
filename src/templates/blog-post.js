@@ -17,9 +17,9 @@ import Category from "../components/blogs/category"
 import TagsList from "../components/blogs/tags-blog"
 import Description from "../components/blogs/descriotion"
 import Sns from "../components/blogs/sns"
-import Prof from "../components/blogs/small-prof"
+// import Prof from "../components/blogs/small-prof"
 import Toc from "../components/blogs/topic"
-import FovoriteList from "../components/common/favorites"
+// import FovoriteList from "../components/common/favorites"
 import Sidebar from "../components/blogs/sidebar"
 import Tags from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
@@ -124,8 +124,6 @@ const BlogPostTemplate = ({ data, location }) => {
               </dl>
               <TagsList tags={post.frontmatter.tags} />
               <Description texts={post.frontmatter.lead} />
-              <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
-              <Prof></Prof>
               <Toc data={data.markdownRemark.tableOfContents} />
               <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
             </header>
@@ -135,6 +133,7 @@ const BlogPostTemplate = ({ data, location }) => {
               </section>
             </Edit>
             <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
+
             <div className="c-btn--donation" id="end_of_article">
               <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
               <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noopener"><FontAwesomeIcon icon={faHeart} />銀ねこアトリエを応援する</a>
@@ -148,6 +147,7 @@ const BlogPostTemplate = ({ data, location }) => {
                 </Link>
               </dd>
             </dl>
+
           </article>
           <nav className="p-section l-container">
             <ol className="c-pager--article">

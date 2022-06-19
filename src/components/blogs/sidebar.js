@@ -6,10 +6,12 @@ import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
 import Affili from "../affiliate";
+import Prof from "./small-prof";
 
 const bar = ({ cateId, title, tags, slug }) => {
   return (
     <Sidebar>
+      <Prof></Prof>
       <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
       <Affili size="rectangle" genre={cateId}></Affili>
       <section className="p-section">
