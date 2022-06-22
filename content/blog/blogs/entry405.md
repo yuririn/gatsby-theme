@@ -1,7 +1,7 @@
 ---
-title: 人魚（UMA）に会える!セブ島唯一の水族館オーシャンパーク体験談
+title: 【セブオーシャンパーク】人魚に会える!セブ島唯一の水族館体験談
 date: 2020-11-28
-modifieddate: 2022-06-16
+modifieddate: 2022-06-20
 hero: thumbnail/2020/entry405.jpg
 pagetype: blog
 cateId: 'overseas-freelancing'

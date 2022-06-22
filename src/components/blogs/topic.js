@@ -3,7 +3,8 @@ import styled from "styled-components"
 import { Edit } from "./../../styles/blog-styles/edit"
 
 const Toc = props => {
-  const list = props.data.replace(/(ul>)/gi, "ol>")
+  let list = props.data.replace(/(ul>)/gi, "ol>")
+  list = list.replace(/(<p>|<\/p>)/gi, "")
 
   return (
     <Mokuji>
@@ -57,6 +58,7 @@ const Mokuji = styled.div`
 		& +.c-content__heading {
 		position: relative;
 		display: block;
+    margin-bottom: 15px;
 
 		& + *{
 			max-height: 200vh;
