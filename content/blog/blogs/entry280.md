@@ -15,28 +15,10 @@ VS Codeをダウンロードし、ある程度設定できていることが前�
 
 第1弾では快適にコーディングできるところまでセッティングしました。
 
-<a class="article-link" href="/blogs/entry266/">
-<section><div class="article-link__img"><img alt="初心者コーダーに贈る！超軽量高機能エディターVS Code入門1" src="/static/35bb69d2db3044dfc04f5f7e89445f15/f836f/entry266.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">初心者コーダーに贈る！超軽量高機能エディターVS Code入門1</div>
-<p class="description">コーディング初心者に贈るVS Code完全マニュアル第一弾！インストールから拡張機能、カスタマイズまで、コーディング初心者･･</p>
-<p>
-<time datetime="2018-06-11">2018.06.11</time>
-</p>
-</div>
-</section></a>
+<card id="/blogs/entry266/"></card>
 
 本来こちらに書いていた、SCSSの設定などは3弾に記載しました！！
-
-<a class="article-link" href="/blogs/entry440/">
-<section><div class="article-link__img"><img alt="初心者コーダーに贈る！超軽量高機能エディターVS Code入門3" src="/static/35bb69d2db3044dfc04f5f7e89445f15/f836f/entry266.jpg" width="150" height="113" class=""></div><div class="article-link__main">
-<div class="article-link__main__title">初心者コーダーに贈る！超軽量高機能エディターVS Code入門3</div>
-<p class="description">コーディング初心者に贈るVS Code完全マニュアル第3弾！拡張機能をフルに生かして難しいことを出来るだけ飛ばしてHTMLやSCSSを書ける環境･･</p>
-<p>
-<time datetime="2018-07-23">2018.07.23</time>
-</p>
-</div>
-</section></a>
-
+<card id="/blogs/entry440/"></card>
 
 ### VS Codeの見取り図
 機能が多く迷子になりやすいので、わからなくなったらこちらを参考に。
