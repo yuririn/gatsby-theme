@@ -152,25 +152,32 @@ export const Edit = styled.section`
     padding-top: 50px;
     margin-top: -40px;
     color: var(--color-d-blue);
-    font-size: 2.08rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 
     &:after {
-      margin-top: 5px;
+      margin-top: 12px;
       content: "";
       display: block;
-      background: #c03363;
-      width: 30px;
+      background: linear-gradient(to right, var(--color-accent) 15%, var(--pale-gray)15%);
       height: 2px;
     }
   }
 
   h3 {
     color: var(--color-d-blue);
-    margin-bottom: 15px;
-    font-size: 2rem;
+    margin-bottom: 24px;
+    font-size: 1.9rem;
     font-weight: 700;
+     &:after {
+      margin-top: 4px;
+      content: "";
+      display: block;
+      background: var(--color-accent);
+      width: 30px;
+      height: 2px;
+    }
   }
   h4 {
     color: var(--color-blue);
