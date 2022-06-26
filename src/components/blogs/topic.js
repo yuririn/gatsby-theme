@@ -38,9 +38,10 @@ const Mokuji = styled.div`
       }
       counter-reset: num;
       li {
+        line-height:1.8;
         padding-left: 3em;
         position: relative;
-        margin-bottom: 0.6em;
+        margin-bottom: 0.5em;
         &:first-child {
           margin-top: 0.5em;
         }
