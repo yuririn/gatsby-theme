@@ -3,8 +3,7 @@ import styled from "styled-components"
 import { Edit } from "./../../styles/blog-styles/edit"
 
 const Toc = props => {
-  let list = props.data.replace(/(ul>)/gi, "ol>")
-  list = list.replace(/(<p>|<\/p>)/gi, "")
+  let list = props.data.replace(/(<p>|<\/p>)/gi, "")
 
   return (
     <Mokuji>
@@ -12,13 +11,11 @@ const Toc = props => {
       <label className="c-content__heading" htmlFor="mokuji">
         目次
       </label>
-      <Edit>
         <div
           dangerouslySetInnerHTML={{
             __html: list,
           }}
         ></div>
-      </Edit>
     </Mokuji>
   )
 }
@@ -32,8 +29,45 @@ const Mokuji = styled.div`
     position: relative;
     overflow: hidden;
 		margin-bottom: 50px;
+    ul {
+      a {
+        color: var(--color-link);
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      counter-reset: num;
+      li {
+        padding-left: 3em;
+        position: relative;
+        margin-bottom: 0.6em;
+        &:first-child {
+          margin-top: 0.5em;
+        }
+
+        &:before {
+          counter-increment: num;
+          content: counters(num, " - ");
+          position: absolute;
+          left: 0;
+          text-align: center;
+          width: 3em;
+          padding: 0 5px;
+          display: inline-block;
+          font-weight: 700;
+          color: var(--color-blue);
+        }
+         li {
+           padding-left: 4em;
+           &:before {
+            width: 4em;
+           }
+        }
+      }
+    }
 	.mokuji {
 		display: none;
+
 		&:checked+.c-content__heading{
 			&:after {
 				transform: rotate(
@@ -58,7 +92,8 @@ const Mokuji = styled.div`
 		& +.c-content__heading {
 		position: relative;
 		display: block;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+    font-weight:bold;
 
 		& + *{
 			max-height: 200vh;

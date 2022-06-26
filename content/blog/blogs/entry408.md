@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語~ブログ記事、カテゴリ、タグ一覧の出力~
 date: 2020-12-03
-modifieddate: 2022-12-30
+modifieddate: 2021-12-30
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer

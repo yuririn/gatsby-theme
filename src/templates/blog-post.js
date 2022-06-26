@@ -97,6 +97,7 @@ const BlogPostTemplate = ({ data, location }) => {
             className="blog-post l-container"
             itemScope
             itemType="http://schema.org/Article"
+            data-clarity-region="article"
           >
             <header>
               <h1 itemProp="headline" className="c-article__heading">

@@ -1,7 +1,7 @@
 ---
 title: データポータル（データスタジオ）で Search Console と Googleアナリティクス を統合する
 date: 2022-05-21
-modifieddate: 2022-06-22
+modifieddate: 2022-06-23
 pagetype: blog
 cateId: seo
 hero: thumbnail/2022/entry500.png
@@ -135,6 +135,12 @@ CONTAT("https://ginneko-atelier.com/", ランディング ページ)
 
 私の環境下（Mac Chrome）では適用をクリックしたあともモーダルが閉じません。モーダル外のどこかしらをクリックしたら閉じるので閉じない方はやってみてください。
 
+`REGEXP_REPLACE` 関数で *？以降のパラメーター* を取り除くこともできます。
+
+```js
+REGEXP_REPLACE(ランディング ページ,"(\\?.*)?$","")
+```
+
 #### Google アナリティクス と結合の設定と指標の設定
 結合の設定（Confiture join）で左外部結合、表1（スプシ）は*URL*、表3（アナリティクス）は*Perfect URL*のフィールドを選択します。
 
@@ -206,11 +212,11 @@ CONTAT("https://ginneko-atelier.com/", ランディング ページ)
 
 |アクション|指標|
 |-|-|
-|リライト|インプレッション数月間100以下|
+|リライト|公開3ヶ月以上インプレッション数月間100以下|
 |リライト|順位平均20位以下|
 |リライト|順位平均11 ~ 20位でクリック率平均3%以下|
 |リライト|直帰率/滞在時間90%以上/0秒|
-|noindexもしくは削除|impression10以下/ページビュー10以下|
+|noindexもしくは削除|公開半年以上経ったのにimpression10以下/ページビュー10以下|
 |-|ページビュー300以上|
 
 <card id="/blogs/entry444/"></card>
@@ -233,26 +239,36 @@ END
 ```
 まとめて書くとこんな感じになります。
 
-```sql
+```sql:title=計算式
 CASE
-WHEN Impressions IS NULL AND ページビュー数 IS NULL THEN "noindex"
-WHEN Impressions < 10 AND ページビュー数 < 10 THEN "noindex"
-WHEN Impressions < 10 AND ページビュー数 IS NULL THEN "noindex"
-WHEN Impressions IS NULL AND ページビュー数 < 10 THEN "noindex"
+WHEN Impressions IS NULL AND ページビュー数 IS NULL AND DATE_DIFF(TODAY("Asia/Tokyo"),DATE) > 180 THEN "noindex"
+WHEN Impressions < 10 AND ページビュー数 < 10 AND DATE_DIFF(TODAY("Asia/Tokyo"),DATE) > 180 THEN "noindex"
+WHEN Impressions < 10 AND ページビュー数 IS NULL AND DATE_DIFF(TODAY("Asia/Tokyo"),DATE) > 180 THEN "noindex"
+WHEN Impressions IS NULL AND ページビュー数 < 10 AND DATE_DIFF(TODAY("Asia/Tokyo"),DATE) > 180 THEN "noindex"
 WHEN ページビュー数 > 300 THEN "-"
-WHEN Impressions < 300 AND Impressions > 50 THEN "Phase 1"
+WHEN Impressions < 300 AND Impressions > 50 AND DATE_DIFF(TODAY("Asia/Tokyo"),DATE) > 90 THEN "Phase 1"
 WHEN Impressions > 300 AND Average Position > 20  AND Average Position > 50 THEN "Phase 2"
-WHEN Average Position > 10  AND Average Position < 20 AND URL CTR < 0.03 THEN "Phase 3"
+WHEN Average Position > 10  AND Average Position < 20 THEN "Phase 3"
 WHEN 直帰率 > 0.9 OR 平均ページ滞在時間 < 10 THEN "Phase 4"
 ELSE "-"
 END
+```
+いくつか関数をご紹介します。
+```sql:title=今日を取得
+TODAY("Asia/Tokyo")
+```
+```sql:title=値がnull
+〇〇 IS NULL
+```
+```sql:title=日の差分取得
+DATE_DIFF(終了日,開始日)
 ```
 
 リライトすべき記事が抽出できるようになります。
 
 ![データスタジオ](./images/2021/03/entry444-3.png)
 
-## 作成したデータをスプシに落とし、月ごとにまとめていきます。
+## 作成したデータを期間で区切ってスプなどに落とし作業ログを作る
 どのようにリライトしたかなどログを残しておきたいですよね？ログを記録するように作成したデータをさらにスプシに変換します。
 
 表の右上にケバブメニュー（縦3つのドット）があるのでそちらをクリックしエクスポートを選びます。
