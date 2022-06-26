@@ -13,7 +13,7 @@ lead: ["ClarityはMicrosoftのWebサイト上のユーザーの操作を「見�
 
 Clarity を使うとスクロール率やクリック箇所などが可視化されるので直感的に改善すべき箇所が探しやすくなります。
 
-私がよく見ている機能です。Analyticsではわからない箇所を中心に見ています。
+私がよく見ている機能です。Google アナリティクスではわからない箇所を中心に見ています。
 
 * ページごとのスクロール率
 * ページごとのクリック箇所
@@ -71,12 +71,12 @@ Google Tag ManagerやGoogle アナリティクスと連携しやすいので、G
 * *None-profit* ... 非営利
 * *Other* ... その他
 
-### Clarityのインストール(セットアップ含む)
+### Clarityのインストール（セットアップ含む）
 
 > To see how users engage with your site, you need to install a Clarity tracking code. It can take up to 2 hours to start seeing data.<br>
 > <small>サイトのユーザーのエンゲージを観測するためにはトラッキングコードをインストール（埋め込み）してください。最初のデータが見れるまでに2時間かかります。</small>
 
-直接タグを埋め込む方法とタグマネなどを介してインストールする（トラッキングコードを埋め込む）方法があります。
+直接タグを埋め込む方法とタグマネなどを介してインストール（トラッキングコードを埋め込む）する方法があります。
 
 ![直接タグを埋め込む方法とタグマネなどを介してインストールする（トラッキングコードを埋め込む）方法](./images/2022/06/entry510-8.png)
 
@@ -100,35 +100,35 @@ Googleアカウント経由でタグマネアカウントとGTMコンテナ名�
 Block my current IPにチェックを入れると現在の自分のIPを追加できます。
 
 ### Masking（マスキング） のセットアップ
-Clarityにはマスキング（隠す）という機能があります。
+Clarity にはコンテンツのマスキング（隠す）機能があります。
 
 > We mask all sensitive data on your site by default. You can mask additional content, too.<br>
 > <small>すべてのセンシティブなデータはマスキングで隠されています。マスキングはカスタマイズできます。</small>
 
 センシティブなコンテンツはデフォルトでマスキングされています。
 
-Strict、Balance、Relaxedとモードが3つあり、デフォルトはBalanceです。
+*Strict*、*Balance*、*Relaxed* とモードが3つあり、デフォルトは *Balance* です。
 
 ![Strict、Balance、Relaxedとモードが3つあり、デフォルトはBalance](./images/2022/06/entry510-10.png)
 
 * *Strict* ... すべてのテキストがマスク
-* *Balance* ... フォームや数字、iframe(Google map YouTube Google広告)はマスク
+* *Balance* ... フォームや数字、iframe（Google map YouTube Google広告）はマスク
 * *Relaxed* ... マスクなし
 
 さらに要素ごとにマスク有りなしをカスタマイズしてセットできます。録画されて困るものなどは個別にマスキングしておきます。
 
-add elementからマスクしたい要素を指定します。
+*add element* からマスクしたい要素を指定します。
 
 ![録画されて困るものなどは個別にマスキング](./images/2022/06/entry510-11.png)
 
 ### Content insights card のセットアップ
 Clarity にはユーザーの特定の行動を Insights（洞察） として計測できます。たとえば、デッドリンク（クリックできない要素）などを数値化してまとめてくれます。
-<br><small>※ Insightsに関する詳しい記述は<a href="#insights">こちら</a>。</small>
+<br><small>※ Insights に関する詳しい記述は <a href="#insights">こちら</a>。</small>
 
 > Content insights card is automatically applied for most WordPress blog sites. To view content insights on your Clarity dashboard, add the following attribute to the article element or tag on the DOM for article pages.<br>
-> <small>Content insights カードは殆どのWordPressでは自動的に設定されます。もし Content insights カードが表示されない場合、data-clarity-region="article"属性を手動で追加してください。</small>
+> <small>Content insights カードは殆どの WordPress では自動的に設定されます。もし Content insights カードが表示されない場合、専用の属性を手動で追加してください。</small>
 
-WordPress では自動的に設定される Content insights カードが表示されるのですが、私のブログみたいに GatsbyJS 製など WordPress 以外ではきちんと表示されないことがあります。
+WordPress では自動的に設定される Content insights カードが表示されるのですが、私のブログみたいに GatsbyJS 製など WordPress 以外のWebサイトではきちんと表示されないことがあります。
 
 表示させるためには記事が格納されているタグにカスタムデータ `data-clarity-region="article"` を付与する必要があります。
 
@@ -147,9 +147,9 @@ WordPress では自動的に設定される Content insights カードが表示�
 ### Google アナリティクスと連携
 アナリティクスと連携することもできます。
 
-連携しておくとClarity側でもデータが見れるのと、アナリティクス側でもClarityのイベントを取得できるようになります。ただし現在連携できるのはユニバーサルアナリティクスのみです。
+連携しておくと Clarity 側でもデータが見れるのと、アナリティクス側でも Clarity のイベントを取得できるようになります。ただし現在連携できるのはユニバーサルアナリティクスのみです。
 
-<msg txt="ClarityにひょうじされるGoogle アナリティクスのデータはみていません。アナリティクスで見ればいいことだし。"></msg>
+<msg txt="Clarityに表示されるGoogle アナリティクスのデータはみていません。アナリティクスで見ればいいことだし。"></msg>
 
 ![Google アナリティクスと連携](./images/2022/06/entry510-13.png)
 
@@ -165,16 +165,16 @@ Filters（フィルター）の機能を使って期間やページ項目など�
 |フィルター|説明|
 |-|-|
 |*User info*|Time Frame（期間）、Device（ディバイス）、Browser（ブラウザ）、Operation system（OS）、Country（国）、Clarity user ID|
-|*User actions*|[Insights(洞察)、Actions（行動）](#insights)、Clicked text（クリックしたテキスト）、 Page scroll depth（スクロール率・最大値と最小値） Goal setup（Google |リティクスのコンバージョン。ステータスはReached（達成）かDidn't reach(未達)か選択可能）|
+|*User actions*|[Insights(洞察)、Actions（行動）](#insights)、Clicked text（クリックしたテキスト）、 Page scroll depth（スクロール率・最大値と最小値）、Goal setup（Google アナリティクスのコンバージョン。ステータスはReached（達成）かDidn't reach(未達)か選択可能）|
 |*Path*|Entry URL(ランディングページ)、Exit URL(離脱ページ)、Visited(訪問ページ)|
-|*Traffic*|Referring site(URL直接入力)、Source(選択)、Medium(ダイレクト、オーガニック、リファラーから選択)、Campaign、Channel|
+|*Traffic*|Referring site(URL直接入力)、Source(選択)、Medium(ダイレクト、オーガニック、リファラーから選択)、Campaign（キャンペーン）、Channel（チャネル）|
 |*Session*|Session duration(セッション時間・最大値と最小値)、Session click count(セッション内でのクリック数)、Session page count(1セッションのページ遷移数)|
 |*Page*|Page duration(ページ滞在時間・最大値と最小値)、Page click count(クリック数)、Error（JSと画像）、Page size(ページサイズ)、Screan resolution（解像度）、Visible page(ユーザーへのページ表示時間)、Hidden page(ページは開かれているのに見られてない時間。たとえば別タブで開いているだけとか)|
 |*Custom filter*|カスタムでCustom tagsでフィルターを作れる。Custom tagsに関するドキュメントは[こちら](https://docs.microsoft.com/en-us/clarity/custom-tags)。|
 
 <span id="insights"></span>
 
-*User actions* の「Insights」「Actions」をもう少し掘り下げます。ClarityにおけるInsightsはいわゆるユーザーのネガティブな行動です。
+*User actions* の「Insights」「Actions」をもう少し掘り下げます。Clarity における Insights は **いわゆるユーザーのネガティブな行動** です。
 
 |Insights|説明|
 |-|-|
@@ -200,19 +200,23 @@ Filters（フィルター）の機能を使って期間やページ項目など�
 
 ![絞られた状態](./images/2022/06/entry510-17.png)
 
-よく使う Filters（フィルター）はSegmentsに登録して再利用します。
+よく使う Filters（フィルター）は Segments に登録して再利用します。
+
 <span id="path"></span>
-#### Path フィルターでの検索方法
 
-Path でのページの検索では3種類あります。
+#### Path フィルターでの絞り込み方法
 
-最初から`*`の手前まで一致するURL。
+Path からはページを絞り込めるのですが、方法は3種類あります。
+
+1.最初から `*` の手前まで一致するURL。
 
 ```bash
 https://ginneko-atelier.com/blogs/entry473/*
 ```
 
-正規表現は`~`を頭につけます。パラメーターを含むすべてのページを取得したい場合。
+2.正規表現は `~` を頭につけます。
+
+パラメーターを含むすべてのページを取得したい場合。
 
 
 ```bash
@@ -220,9 +224,10 @@ https://ginneko-atelier.com/blogs/entry473/*
 ```
 
 正規表現に関してはこちらを参考に。
+
 <card id="/blogs/entry336/"></card>
 
-何もつけなければ完全一致。
+3.何もつけなければ完全一致。
 ```bash
 https://ginneko-atelier.com/blogs/entry473/
 ```
@@ -230,9 +235,9 @@ https://ginneko-atelier.com/blogs/entry473/
 ### Dashboard（ダッシュボード）
 ダッシュボードでは全体を確認することができます。
 
-私はGoogle アナリティクスで見れる箇所は飛ばして見るようにしています。
+私は Google アナリティクスで見れる箇所は飛ばして見るようにしています。
 
-私が主に見る箇所は「Scroll depth」とInsightsを中心とした「Dead clicks」「Rage clicks」「JavaScript errors」の4つぐらいです。
+私が主に見る箇所は「Scroll depth」と Insights を中心とした「Dead clicks」「Rage clicks」「JavaScript errors」の4つぐらいです。
 
 先程 Filters（フィルター）で「Actions」の「Selected text」を絞り込みましたが、この銀ねこアトリエでは、コードサンプルが掲載されているページが圧倒的にデッドクリックがあることが分かります。
 
@@ -244,9 +249,9 @@ https://ginneko-atelier.com/blogs/entry473/
 
 ### Recording（録画）
 
-録画機能を使ってみます。今回は「JavaScript errors」が実際に起っているページを確認しに行きます。
+録画されたユーザーの行動を見ることができます。
 
-動画はRecording（録画）に移動すると、左側にカードが並んでいます。
+動画は Recording（録画）に移動すると、左側にカードが並んでいます。
 
 日時、撮影時間、Entry/Exit、ページ遷移数、クリック数等細かい情報が掲載されています。
 
@@ -272,9 +277,9 @@ SPの場合
 
 ### Heatmaps（ヒートマップ）
 
-Heatmaps（ヒートマップ）はページごとに確認可能です。
+Heatmaps（ヒートマップ）はクリック（タップ）、スクロール状態をヒートマップで可視化できます。
 
-直接検索窓にURLを打ち込んでページを検索できます。高度な絞り込みができます（絞り込み方法は<a href="#path">Path フィルターでの検索方法</a>参照）。
+Filters（フィルター）を使わなくても、左上の検索窓に直接URLを打ち込んでページを検索できます。もちろん、高度な絞り込みができます（絞り込み方法は<a href="#path">Path フィルターでの絞り込み方法</a>参照）。
 
 ![ Heatmaps（ヒートマップ）](./images/2022/06/entry510-30.png)
 
@@ -311,14 +316,14 @@ Heatmaps（ヒートマップ）はページごとに確認可能です。
 
 ![エリア](./images/2022/06/entry510-25.png)
 
-左のバーからサイトに表示されている順番で確認できます。こちらのデータを参考にすれば、修正すべき箇所があれば、CSSなどを探しやすいです。
+左のバーからサイトに表示されている順番で確認できます。
 
 ![エリア](./images/2022/06/entry510-29.png)
 
 ## まとめ・ヒートマップを活用するとより深くユーザーの行動を分析できる
 英語だからとっつきにくいと思っている方のために、かなり設定やツールの使い方をかなり詳しく説明しました。
 
-具体的にClarityを使って、いくつかUIも改善したことがあります。
+具体的に Clarity を使って、いくつか UI も改善したことがあります。
 
 まだまだ紹介しきれてない機能もありますが、また機会があれば追記しようと思います。
 
