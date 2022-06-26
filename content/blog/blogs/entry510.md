@@ -5,8 +5,8 @@ pagetype: blog
 cateId: seo
 hero: thumbnail/2022/entry510.jpg
 tags: ["Web解析","便利ツール"]
-description: Clarityとは、Webサイト上のユーザーの操作を「見える化」する無料のヒートマップ解析ツール。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどウェブサイト、URLのフィルターの使い方も紹介。改善に役立ててください。
-lead: ["ClarityはMicrosoftのWebサイト上のユーザーの操作を「見える化」する無料ヒートマップ解析ツールです。","英語だからとっつきにくいと思っている方も安心。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどの細かい設定やURLのフィルターの仕方など、相当詳しく紹介してあります！","ぜひこの記事を参考にウェブサイト改善に役立ててください。"]
+description: Clarityとは、Webサイト上のユーザーの操作を「見える化」する無料のヒートマップ解析ツール。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキング、IPブロック、URLのフィルターの使い方、Content Insightsの設定方法なども紹介。改善に役立ててください。
+lead: ["ClarityはMicrosoftのWebサイト上のユーザーの操作を「見える化」する無料ヒートマップ解析ツールです。","英語だからとっつきにくいと思っている方も安心。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどの細かい設定やURLのフィルターの仕方、Content Insightsの設定方法など相当詳しく紹介してあります！","ぜひこの記事を参考にウェブサイト改善に役立ててください。"]
 ---
 ## Clarityで分かること、できること
 ![Clarityで分かること、できること](./images/2022/06/entry510-2.jpg)
@@ -122,8 +122,10 @@ Clarity にはコンテンツのマスキング（隠す）機能があります
 ![録画されて困るものなどは個別にマスキング](./images/2022/06/entry510-11.png)
 
 ### Content insights card のセットアップ
-Clarity にはユーザーの特定の行動を Insights（洞察） として計測できます。たとえば、デッドリンク（クリックできない要素）などを数値化してまとめてくれます。
-<br><small>※ Insights に関する詳しい記述は <a href="#insights">こちら</a>。</small>
+Clarity には Content Insights（コンテンツの洞察） と言って記事エリアのエンゲージメントを計測していくことができます。
+<br><small>※ 何が観測できるかは <a href="#Contents insights">Dashboard（ダッシュボード）の Contents insights</a> で詳しく説明します。</small>
+
+![Clarity には Content Insights（コンテンツの洞察） を計測](./images/2022/06/entry510-31.png)
 
 > Content insights card is automatically applied for most WordPress blog sites. To view content insights on your Clarity dashboard, add the following attribute to the article element or tag on the DOM for article pages.<br>
 > <small>Content insights カードは殆どの WordPress では自動的に設定されます。もし Content insights カードが表示されない場合、専用の属性を手動で追加してください。</small>
@@ -237,7 +239,9 @@ https://ginneko-atelier.com/blogs/entry473/
 
 私は Google アナリティクスで見れる箇所は飛ばして見るようにしています。
 
-私が主に見る箇所は「Scroll depth」と Insights を中心とした「Dead clicks」「Rage clicks」「JavaScript errors」の4つぐらいです。
+![ダッシュボードでは全体を確認](./images/2022/06/entry510-32.png)
+
+私が主に見る箇所は「Scroll depth」、「Contents insights」、「JavaScript errors」とユーザーの行動（Insights）を中心とした「Dead clicks」「Rage clicks」です。
 
 先程 Filters（フィルター）で「Actions」の「Selected text」を絞り込みましたが、この銀ねこアトリエでは、コードサンプルが掲載されているページが圧倒的にデッドクリックがあることが分かります。
 
@@ -246,6 +250,38 @@ https://ginneko-atelier.com/blogs/entry473/
 ![絞られた状態](./images/2022/06/entry510-14.png)
 
 デッドリンクを減らすためにはソースをコピーボタンをつけるなど、対策を考えることができます。
+
+<span id="Contents insights"></span>
+
+#### Contents insights
+
+Contents insights では READER TYPE（読者のタイプ）、READING BEHAVIOR（読んでる最中の行動）など、記事中のエンゲージメントの中でキーとなる指標が取得できます。
+
+![Clarity には Content Insights（コンテンツの洞察） を計測](./images/2022/06/entry510-31.png)
+
+|READER TYPE（読者のタイプ）|説明|
+|-|-|
+|*One and done*|1セッションにつきたった1回|
+|*Casual*|1セッションにつき2~3記事|
+|*Serious*|1セッションにつき4記事以上|
+
+|READING BEHAVIOR（読んでる最中の行動）|説明|
+|-|-|
+|*Engaged*|記事を最後まで読んだ|
+|*Abandoned at headline*|記事の見出しだけしか読んでない|
+
+【GA4】タグマネで設置したイベントが計測できないときの対処法という記事で[要素の表示イベントを利用して「読了」を計測するタグ作成](/blogs/entry501/#要素の表示イベントを利用して「読了」を計測するタグ作成)を紹介しましたが、Clarity が入っていれば必要ないかもですね。
+
+まだ計測し始めたばかりですが、CLARITY CALLOUTS 内に分析結果をテキストで教えてくれます。
+
+![Clarity Callouts](./images/2022/06/entry510-33.png)
+
+ざっくり翻訳すると以下の事が書いてあります。
+
+1. オーガニックサーチ以外のチャネルからの訪問者は見出ししか読まずに離脱する可能性が7.3倍高い
+2. Casual（1セッションにつき2~3記事）な読者は100％フィリピンからの訪問
+
+<msg txt="フィリピンからの訪問…そりゃ私だよ！"></msg>
 
 ### Recording（録画）
 
