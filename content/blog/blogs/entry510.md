@@ -6,14 +6,14 @@ cateId: seo
 hero: thumbnail/2022/entry510.jpg
 tags: ["Web解析","便利ツール"]
 description: Clarityとは、Webサイト上のユーザーの操作を「見える化」する無料のヒートマップ解析ツール。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどウェブサイト、URLのフィルターの使い方も紹介。改善に役立ててください。
-lead: [" ClarityはMicrosoftのWebサイト上のユーザーの操作を「見える化」する無料ヒートマップ解析ツールです。","英語だからとっつきにくいと思っている方も安心。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどの細かい設定やURLのフィルターの仕方など、相当詳しく紹介してあります！","ぜひこの記事を参考にウェブサイト改善に役立ててください。"]
+lead: ["ClarityはMicrosoftのWebサイト上のユーザーの操作を「見える化」する無料ヒートマップ解析ツールです。","英語だからとっつきにくいと思っている方も安心。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどの細かい設定やURLのフィルターの仕方など、相当詳しく紹介してあります！","ぜひこの記事を参考にウェブサイト改善に役立ててください。"]
 ---
 ## Clarityで分かること、できること
 ![Clarityで分かること、できること](./images/2022/06/entry510-2.jpg)
 
 Clarity を使うとスクロール率やクリック箇所などが可視化されるので直感的に改善すべき箇所が探しやすくなります。
 
-私がよく見ている機能です。Google アナリティクスで分かるところも多いので端折ります。
+私がよく見ている機能です。Analyticsではわからない箇所を中心に見ています。
 
 * ページごとのスクロール率
 * ページごとのクリック箇所
@@ -26,23 +26,23 @@ Clarity を使うとスクロール率やクリック箇所などが可視化さ
 
 ### ClarityはUIの改善に役立つ
 
-デッドリンクといって、リンクじゃないけどデザインが紛らわしくてクリックしている箇所があるとユーザーはストレスを感じ離脱の原因になります。
+リンクやボタンじゃないのにクリックされている要素をデッドリンクといいます。
 
-Clarityではこのデッドリンクの箇所を特定できます。デッドリンクを実際見てどう紛らわしいか確認しデザインを変えることができます。
+大抵の原因はデザインが紛らわしくてクリックしている箇所があるとユーザーはストレスを感じ離脱の原因になります。
 
-ページごとのクリック箇所やユーザーの動きの動画を見ることによって具体的な改善方法を考えやすくなります。
+Clarityではこのデッドリンクを始めとするユーザーの行動箇所などを特定できます。デッドリンクが見つかれば、どう紛らわしいか確認し、デザインを改善することができます。
 
 ## 導入方法
 Google、Facebook、Microsoftのアカウントがあればすぐに始めることができます。
 
-[Clarity Docs(英語)](https://docs.microsoft.com/en-us/clarity/)
+![Microsoft Clarity](./images/2022/06/entry510-4.jpg)
 
-![Clarityで分かること、できること](./images/2022/06/entry510-4.jpg)
+[Microsoft Clarity](https://clarity.microsoft.com/)
 
 新規登録では *Sign Up* を選びます。
 
-* *Sign Up サインアップ*　=　新規登録
-* *Sign In サインイン*　=　登録済みの人のログイン
+* *Sign Up サインアップ* = 新規登録
+* *Sign In サインイン* = 登録済みの人のログイン
 
 Google Tag ManagerやGoogle アナリティクスと連携しやすいので、Googleアカウントを使って登録することをオススメします。
 
@@ -50,7 +50,7 @@ Google Tag ManagerやGoogle アナリティクスと連携しやすいので、G
 
 ![メールアドレスを入力](./images/2022/06/entry510-6.jpg)
 
-> I accept I accept the Crarity Terms of use
+> I accept I accept the Crarity Terms of use.
 利用規約に同意を求められるので、チェックを入れます。
 
 ### プロジェクトの追加
@@ -71,10 +71,10 @@ Google Tag ManagerやGoogle アナリティクスと連携しやすいので、G
 * *None-profit* ... 非営利
 * *Other* ... その他
 
-### Clarityのインストール
+### Clarityのインストール(セットアップ含む)
 
-> To see how users engage with your site, you need to install a Clarity tracking code. It can take up to 2 hours to start seeing data.
-サイトのユーザーのエンゲージを観測するためにはトラッキングコードをインストール（埋め込み）してください。最初のデータが見れるまでに2時間かかります。
+> To see how users engage with your site, you need to install a Clarity tracking code. It can take up to 2 hours to start seeing data.<br>
+> <small>サイトのユーザーのエンゲージを観測するためにはトラッキングコードをインストール（埋め込み）してください。最初のデータが見れるまでに2時間かかります。</small>
 
 直接タグを埋め込む方法とタグマネなどを介してインストールする（トラッキングコードを埋め込む）方法があります。
 
@@ -92,17 +92,18 @@ Googleアカウント経由でタグマネアカウントとGTMコンテナ名�
 
 <card id="/blogs/entry501/"></card>
 
-### IP blocking（IPブロック）
+### IP blocking（IPブロック） のセットアップ
 チームメンバーなどのIPアドレスをブロックできます。
 
 ![Strict、Balance、Relaxedとモードが3つあり、デフォルトはBalance](./images/2022/06/entry510-12.png)
 
 Block my current IPにチェックを入れると現在の自分のIPを追加できます。
 
-### Masking（マスキング）
-Clarityにはマスキング（隠す）という重要な機能があります。
+### Masking（マスキング） のセットアップ
+Clarityにはマスキング（隠す）という機能があります。
 
-> We mask all sensitive data on your site by default. You can mask additional content, too.
+> We mask all sensitive data on your site by default. You can mask additional content, too.<br>
+> <small>すべてのセンシティブなデータはマスキングで隠されています。マスキングはカスタマイズできます。</small>
 
 センシティブなコンテンツはデフォルトでマスキングされています。
 
@@ -114,17 +115,22 @@ Strict、Balance、Relaxedとモードが3つあり、デフォルトはBalance�
 * *Balance* ... フォームや数字、iframe(Google map YouTube Google広告)はマスク
 * *Relaxed* ... マスクなし
 
-要素ごとにマスク有りなしを設定できます。
+さらに要素ごとにマスク有りなしをカスタマイズしてセットできます。録画されて困るものなどは個別にマスキングしておきます。
 
-録画されて困るものなどは個別にマスキングしておきます。
+add elementからマスクしたい要素を指定します。
 
 ![録画されて困るものなどは個別にマスキング](./images/2022/06/entry510-11.png)
 
-### Insights のセットアップ
-> Content insights card is automatically applied for most WordPress blog sites. To view content insights on your Clarity dashboard, add the following attribute to the article element or tag on the DOM for article pages.
-WordPressでは自動的に設定されるInsightsという機能があるのですが、私のブログみたいにGatsbyとかだとデータは取れてますがきちんと計測すべきところをされてない可能性があります。
+### Content insights card のセットアップ
+Clarity にはユーザーの特定の行動を Insights（洞察） として計測できます。たとえば、デッドリンク（クリックできない要素）などを数値化してまとめてくれます。
+<br><small>※ Insightsに関する詳しい記述は<a href="#insights">こちら</a>。</small>
 
-的確に計測するためには記事が格納されているタグにカスタムデータ `data-clarity-region="article"` を付与する必要があります。
+> Content insights card is automatically applied for most WordPress blog sites. To view content insights on your Clarity dashboard, add the following attribute to the article element or tag on the DOM for article pages.<br>
+> <small>Content insights カードは殆どのWordPressでは自動的に設定されます。もし Content insights カードが表示されない場合、data-clarity-region="article"属性を手動で追加してください。</small>
+
+WordPress では自動的に設定される Content insights カードが表示されるのですが、私のブログみたいに GatsbyJS 製など WordPress 以外ではきちんと表示されないことがあります。
+
+表示させるためには記事が格納されているタグにカスタムデータ `data-clarity-region="article"` を付与する必要があります。
 
 ```html:title=html
 <html>
@@ -143,7 +149,7 @@ WordPressでは自動的に設定されるInsightsという機能があるので
 
 連携しておくとClarity側でもデータが見れるのと、アナリティクス側でもClarityのイベントを取得できるようになります。ただし現在連携できるのはユニバーサルアナリティクスのみです。
 
-<msg txt="個人的にはあまり使ってません。Google アナリティクスのデータはアナリティクスで見ればいいことだし。"></msg>
+<msg txt="ClarityにひょうじされるGoogle アナリティクスのデータはみていません。アナリティクスで見ればいいことだし。"></msg>
 
 ![Google アナリティクスと連携](./images/2022/06/entry510-13.png)
 
@@ -156,41 +162,24 @@ Filters（フィルター）の機能を使って期間やページ項目など�
 
 ![Filters（フィルター）の機能](./images/2022/06/entry510-15.png)
 
-* *User info* ... Time Frame（期間）、Device（ディバイス）、Browser（ブラウザ）、Operation system（OS）、Country（国）、Clarity user ID
-* *User actions* ... Insights(計測)、Actions（行動）、Clicked text（クリックしたテキスト）、 Page scroll depth（スクロール率・最大値と最小値） Goal setup（Google アナリティクスのコンバージョン。ステータスはReached（達成）かDidn't reach(未達)か選択可能）
-* *Path* ... Entry URL(ランディングページ)、Exit URL(離脱ページ)、Visited(訪問ページ)
-* *Traffic* ... Referring site(URL直接入力)、Source(選択)、Medium(ダイレクト、オーガニック、リファラーから選択)、Campaign、Channel
-* *Session* ... Session duration(セッション時間・最大値と最小値)、Session click count(セッション内でのクリック数)、Session page count(1セッションのページ遷移数)
-* *Page* ... Page duration(ページ滞在時間・最大値と最小値)、Page click count(クリック数)、Error（JSと画像）、Page size(ページサイズ)、Screan resolution（解像度）、Visible page(ユーザーへのページ表示時間)、Hidden page(ページは開かれているのに見られてない時間。たとえば別タブで開いているだけとか)
-* *Custom filter* ... カスタムでフィルターを作れる。ドキュメントはこちら[Custom tags](https://docs.microsoft.com/en-us/clarity/custom-tags)。
+|フィルター|説明|
+|-|-|
+|*User info*|Time Frame（期間）、Device（ディバイス）、Browser（ブラウザ）、Operation system（OS）、Country（国）、Clarity user ID|
+|*User actions*|[Insights(洞察)、Actions（行動）](#insights)、Clicked text（クリックしたテキスト）、 Page scroll depth（スクロール率・最大値と最小値） Goal setup（Google |リティクスのコンバージョン。ステータスはReached（達成）かDidn't reach(未達)か選択可能）|
+|*Path*|Entry URL(ランディングページ)、Exit URL(離脱ページ)、Visited(訪問ページ)|
+|*Traffic*|Referring site(URL直接入力)、Source(選択)、Medium(ダイレクト、オーガニック、リファラーから選択)、Campaign、Channel|
+|*Session*|Session duration(セッション時間・最大値と最小値)、Session click count(セッション内でのクリック数)、Session page count(1セッションのページ遷移数)|
+|*Page*|Page duration(ページ滞在時間・最大値と最小値)、Page click count(クリック数)、Error（JSと画像）、Page size(ページサイズ)、Screan resolution（解像度）、Visible page(ユーザーへのページ表示時間)、Hidden page(ページは開かれているのに見られてない時間。たとえば別タブで開いているだけとか)|
+|*Custom filter*|カスタムでCustom tagsでフィルターを作れる。Custom tagsに関するドキュメントは[こちら](https://docs.microsoft.com/en-us/clarity/custom-tags)。|
 
-Pathでのページの検索では3種類あります。
+<span id="insights"></span>
 
-最初から`*`の手前まで一致するURL。
-
-```bash
-https://ginneko-atelier.com/blogs/entry473/*
-```
-
-正規表現は`~`を頭につけます。
-パラメーターを含むすべてのページを取得したい場合。
-```bash
-~^https://ginneko-atelier\.com/blogs/entry473/(\?.*)?$
-```
-
-<card id="/blogs/entry336/"></card>
-
-何もつけなければ完全一致。
-```bash
-https://ginneko-atelier.com/blogs/entry473/
-```
-
-*User actions* の「Insights」「Actions」をもう少し掘り下げます。
+*User actions* の「Insights」「Actions」をもう少し掘り下げます。ClarityにおけるInsightsはいわゆるユーザーのネガティブな行動です。
 
 |Insights|説明|
 |-|-|
 |*Rage clicks*|狭いところを何度もカチカチクリック|
-|*Dead clicks*|リンクやボタンなどのクリック要素じゃないところをクリック|
+|*Dead clicks*|リンクやボタンなどのクリック要素ではないところをクリック|
 |*Excessive scrolling*|急なスクロール|
 |*Quick backs*|前のページに即座に戻られる|
 
@@ -212,17 +201,42 @@ https://ginneko-atelier.com/blogs/entry473/
 ![絞られた状態](./images/2022/06/entry510-17.png)
 
 よく使う Filters（フィルター）はSegmentsに登録して再利用します。
+<span id="path"></span>
+#### Path フィルターでの検索方法
+
+Path でのページの検索では3種類あります。
+
+最初から`*`の手前まで一致するURL。
+
+```bash
+https://ginneko-atelier.com/blogs/entry473/*
+```
+
+正規表現は`~`を頭につけます。パラメーターを含むすべてのページを取得したい場合。
+
+
+```bash
+~^https://ginneko-atelier\.com/blogs/entry473/(\?.*)?$
+```
+
+正規表現に関してはこちらを参考に。
+<card id="/blogs/entry336/"></card>
+
+何もつけなければ完全一致。
+```bash
+https://ginneko-atelier.com/blogs/entry473/
+```
 
 ### Dashboard（ダッシュボード）
-私はGoogle アナリティクスで見れる箇所は飛ばして見るようにしています。
-
 ダッシュボードでは全体を確認することができます。
+
+私はGoogle アナリティクスで見れる箇所は飛ばして見るようにしています。
 
 私が主に見る箇所は「Scroll depth」とInsightsを中心とした「Dead clicks」「Rage clicks」「JavaScript errors」の4つぐらいです。
 
-先程 Filters（フィルター）で「Actions」の「Selected text」を絞り込みましたが、等銀ねこアトリエでは、コードが掲載されているページが圧倒的にデッドクリックがあることが分かります。
+先程 Filters（フィルター）で「Actions」の「Selected text」を絞り込みましたが、この銀ねこアトリエでは、コードサンプルが掲載されているページが圧倒的にデッドクリックがあることが分かります。
 
-これはユーザーがソースコードのコピペの過程で起こっているデッドリンクだと分かります。
+これはユーザーがソースコードのコピペの過程で起こっているデッドリンクです。
 
 ![絞られた状態](./images/2022/06/entry510-14.png)
 
@@ -244,7 +258,7 @@ https://ginneko-atelier.com/blogs/entry473/
 
 ![絞られた状態](./images/2022/06/entry510-19.png)
 
-再生スピードを4倍から8倍、Skip inactivityにチェックを入れておけばサクサク動画を確認できます。
+再生スピードを *4倍から8倍*、*Skip inactivity にチェック* を入れておけばサクサク動画を確認できます。
 
 <msg txt="動体視力がない人は2倍ぐらいにしておきましょう"></msg>
 
@@ -260,27 +274,27 @@ SPの場合
 
 Heatmaps（ヒートマップ）はページごとに確認可能です。
 
-直接検索窓にURLを打ち込んでページを検索できます。
+直接検索窓にURLを打ち込んでページを検索できます。高度な絞り込みができます（絞り込み方法は<a href="#path">Path フィルターでの検索方法</a>参照）。
 
 ![ Heatmaps（ヒートマップ）](./images/2022/06/entry510-30.png)
 
-* ディバイス ... PC Tablet Mobile
-* ヒートマップの種類 ... クリック(タップ)、スクロール、エリアの3つ
+* *ディバイス* ... PC、Tablet、Mobile（スマホ）
+* *ヒートマップの種類* ... クリック（タップ）、スクロール、エリアの3つ
 
-![クリック(タップ)](./images/2022/06/entry510-28.png)
+![画面下のバーでページビュー数とクリック（タップ）数確認](./images/2022/06/entry510-28.png)
 
-画面下のバーでページビュー数とクリック(タップ)数が確認できます。
+画面下のバーでページビュー数とクリック（タップ）数が確認できます。
 一番活発な箇所は赤、さほど活発ではない箇所は青色で表示されます。
 
-![クリック(タップ)](./images/2022/06/entry510-23.png)
+![クリック（タップ）](./images/2022/06/entry510-23.png)
 
 
-クリック(タップ)です。どの要素がどのくらいクリックされているかも分かります。
+クリック（タップ）です。どの要素がどのくらいクリックされているかも分かります。
 
-![クリック(タップ)](./images/2022/06/entry510-22.png)
+![クリック（タップ）](./images/2022/06/entry510-22.png)
 
-クリック(タップ)数が多い順に番号が振られ、要素の詳細は左のバーで確認できます。
-![クリック(タップ)](./images/2022/06/entry510-26.png)
+クリック（タップ）数が多い順に番号が振られ、要素の詳細は左のバーで確認できます。
+![クリック（タップ）](./images/2022/06/entry510-26.png)
 
 
 スクロール量です。どのページもだいたい上の方が赤く下に行くにつれて青くはなりますが、早く離脱が起こっているページはすぐ青色になります。
@@ -293,7 +307,7 @@ Heatmaps（ヒートマップ）はページごとに確認可能です。
 
 ![スクロール量](./images/2022/06/entry510-27.png)
 
-エリアです。要素ごとのトータルクリック数(タップ)をパーセンテージで視覚化してくれます。
+エリアです。要素ごとのトータルクリック数（タップ）をパーセンテージで視覚化してくれます。
 
 ![エリア](./images/2022/06/entry510-25.png)
 
@@ -304,6 +318,11 @@ Heatmaps（ヒートマップ）はページごとに確認可能です。
 ## まとめ・ヒートマップを活用するとより深くユーザーの行動を分析できる
 英語だからとっつきにくいと思っている方のために、かなり設定やツールの使い方をかなり詳しく説明しました。
 
+具体的にClarityを使って、いくつかUIも改善したことがあります。
+
 まだまだ紹介しきれてない機能もありますが、また機会があれば追記しようと思います。
 
 相当長くなってしまいましたが、最後までお読みいただきありがとうございました。
+
+### 参考
+[Clarity Docs(英語)](https://docs.microsoft.com/en-us/clarity/)

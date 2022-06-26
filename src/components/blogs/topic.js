@@ -60,9 +60,6 @@ const Mokuji = styled.div`
         }
          li {
            padding-left: 4em;
-           &:before {
-            width: 4em;
-           }
         }
       }
     }

@@ -109,7 +109,7 @@ export const BaseStyle = createGlobalStyle`
     --light-color: #18347a;
     --font-color: #f4fffe;
     --color-blue: #c9e9fc;
-    --color-link: #dffdff;
+    --color-link:#65ceff;
     --color-d-blue: #f9fdff;
     --code-bg: #1b2845;
     --color-sec: #c5fff4;
