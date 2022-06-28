@@ -5,8 +5,8 @@ pagetype: blog
 cateId: seo
 hero: thumbnail/2022/entry510.jpg
 tags: ["Web解析","便利ツール"]
-description: Clarityとは、Webサイト上のユーザーの操作を「見える化」する無料のヒートマップ解析ツール。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキング、IPブロック、URLのフィルターの使い方、Content Insightsの設定方法なども紹介。改善に役立ててください。
-lead: ["ClarityはMicrosoftのWebサイト上のユーザーの操作を「見える化」する無料ヒートマップ解析ツールです。","英語だからとっつきにくいと思っている方も安心。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどの細かい設定やURLのフィルターの仕方、Content Insightsの設定方法など相当詳しく紹介してあります！","ぜひこの記事を参考にウェブサイト改善に役立ててください。"]
+description: Clarity とは、Webサイト上のユーザーの操作を「見える化」する無料のヒートマップ解析ツール。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキング、IPブロック、URLのフィルターの使い方、Content Insights の設定方法なども紹介。改善に役立ててください。
+lead: ["Clarity は Microsoft のWebサイト上のユーザーの操作を「見える化」する無料ヒートマップ解析ツールです。","英語だからとっつきにくいと思っている方も安心。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどの細かい設定やURLのフィルターの仕方、Content Insights の設定方法など相当詳しく紹介してあります！","ぜひこの記事を参考にウェブサイト改善に役立ててください。"]
 ---
 ## Clarityで分かること、できること
 ![Clarityで分かること、できること](./images/2022/06/entry510-2.jpg)
@@ -50,7 +50,7 @@ Google Tag ManagerやGoogle アナリティクスと連携しやすいので、G
 
 ![メールアドレスを入力](./images/2022/06/entry510-6.jpg)
 
-> I accept I accept the Crarity Terms of use.
+> I accept the Crarity Terms of use.
 利用規約に同意を求められるので、チェックを入れます。
 
 ### プロジェクトの追加
@@ -71,7 +71,7 @@ Google Tag ManagerやGoogle アナリティクスと連携しやすいので、G
 * *None-profit* ... 非営利
 * *Other* ... その他
 
-### Clarityのインストール（セットアップ含む）
+### Clarityのインストール
 
 > To see how users engage with your site, you need to install a Clarity tracking code. It can take up to 2 hours to start seeing data.<br>
 > <small>サイトのユーザーのエンゲージを観測するためにはトラッキングコードをインストール（埋め込み）してください。最初のデータが見れるまでに2時間かかります。</small>
@@ -128,9 +128,9 @@ Clarity には Content Insights（コンテンツの洞察） と言って記事
 ![Clarity には Content Insights（コンテンツの洞察） を計測](./images/2022/06/entry510-31.png)
 
 > Content insights card is automatically applied for most WordPress blog sites. To view content insights on your Clarity dashboard, add the following attribute to the article element or tag on the DOM for article pages.<br>
-> <small>Content insights カードは殆どの WordPress では自動的に設定されます。もし Content insights カードが表示されない場合、専用の属性を手動で追加してください。</small>
+> <small>Content insights カードはほとんどの WordPress では自動的に設定されます。もし Content insights カードが表示されない場合、専用の属性を手動で追加してください。</small>
 
-WordPress では自動的に設定される Content insights カードが表示されるのですが、私のブログみたいに GatsbyJS 製など WordPress 以外のWebサイトではきちんと表示されないことがあります。
+ほとんどの WordPress では自動的に設定される Content insights カードが表示されるのですが、私のブログみたいに GatsbyJS 製など WordPress 以外のWebサイトではきちんと表示されないことがあります。
 
 表示させるためには記事が格納されているタグにカスタムデータ `data-clarity-region="article"` を付与する必要があります。
 
@@ -151,7 +151,7 @@ WordPress では自動的に設定される Content insights カードが表示�
 
 連携しておくと Clarity 側でもデータが見れるのと、アナリティクス側でも Clarity のイベントを取得できるようになります。ただし現在連携できるのはユニバーサルアナリティクスのみです。
 
-<msg txt="Clarityに表示されるGoogle アナリティクスのデータはみていません。アナリティクスで見ればいいことだし。"></msg>
+<msg txt="Clarityに表示されるGoogle アナリティクスのデータは見ていません。アナリティクスで見ればいいことだし。"></msg>
 
 ![Google アナリティクスと連携](./images/2022/06/entry510-13.png)
 
@@ -255,7 +255,7 @@ https://ginneko-atelier.com/blogs/entry473/
 
 #### Contents insights
 
-Contents insights では READER TYPE（読者のタイプ）、READING BEHAVIOR（読んでる最中の行動）など、記事中のエンゲージメントの中でキーとなる指標が取得できます。
+Contents insights では READER TYPE（読者のタイプ）、READING BEHAVIOR（読んでる最中の行動）など、記事中のエンゲージメントの中でキーとなる指標が確認できます。
 
 ![Clarity には Content Insights（コンテンツの洞察） を計測](./images/2022/06/entry510-31.png)
 
@@ -270,7 +270,7 @@ Contents insights では READER TYPE（読者のタイプ）、READING BEHAVIOR�
 |*Engaged*|記事を最後まで読んだ|
 |*Abandoned at headline*|記事の見出しだけしか読んでない|
 
-【GA4】タグマネで設置したイベントが計測できないときの対処法という記事で[要素の表示イベントを利用して「読了」を計測するタグ作成](/blogs/entry501/#要素の表示イベントを利用して「読了」を計測するタグ作成)を紹介しましたが、Clarity が入っていれば必要ないかもですね。
+以前、【GA4】タグマネで設置したイベントが計測できないときの対処法という記事で[要素の表示イベントを利用して「読了」を計測するタグ作成](/blogs/entry501/#要素の表示イベントを利用して「読了」を計測するタグ作成)を紹介しましたが、Clarity が入っていれば必要ないかもですね。
 
 まだ計測し始めたばかりですが、CLARITY CALLOUTS 内に分析結果をテキストで教えてくれます。
 
