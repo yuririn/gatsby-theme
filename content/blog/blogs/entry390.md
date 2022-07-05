@@ -1,14 +1,66 @@
 ---
 title: 便利なのに使ってないの？！CSSプロパティ5選
 date: 2020-11-03
+modifieddate: 2022-07-05
 hero: thumbnail/2020/entry390.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["CSS"]
-description: エンジニアとしてフロント技術をキャッチアップしなきゃと、CSS、特にプロパティのおさらいをしました。columns、pointer-events、writing-modeなど普段使わないのでないでしょうか？知っていれば、コーディングの幅がグンと広がりますよ！！ということで、この記事では私がよく使うCSSのプロパティやバリューの使い方などをさらに掘り下げまとめてみました。
-lead: ["フロントエンドエンジニア、今はプータローのかみーゆです。","エンジニアとしてフロント技術をキャッチアップしなきゃと、CSS、特にプロパティのおさらいをしました。","columns、pointer-events、writing-modeなど普段使わないのでないでしょうか？","知っていれば、コーディングの幅がグンと広がりますよ！！","ということで、この記事では私がよく使うCSSのプロパティやバリューの使い方などをさらに掘り下げまとめてみました。"]
+description: appearanceなど、便利なCSSのプロパティ使いこなせていますか？。columns、pointer-events、writing-modeなど普段使わないのでないでしょうか？知っていれば、コーディングの幅がグンと広がりますよ！！ということで、この記事では私がよく使うCSSのプロパティやバリューの使い方などをさらに掘り下げまとめてみました。
+lead: ["CSSには便利なのにあまり使われていないプロパティがたくさんあります。","appearanceなどフォーム実装に不可欠なプロパティはもちろん、columns、pointer-events、writing-modeなど普段使わないようで便利なプロパティもたくさんあります。","知っていれば、コーディングの幅がグンと広がりますよ！！","ということで、この記事では私がよく使うCSSのプロパティやバリューの使い方などをさらに掘り下げまとめてみました。"]
 ---
-## 1 pointer-events 要素のクリックを禁止したい時に重宝
+## 1 appearance フォームパーツのCSSをリセットで重宝
+appearanceプロパティはチェックボックスやボタンなどの各フォームパーツの持っているスタイルを真似たり、もしくは打ち消す時に使います。
+
+### appearance の使い方と使いどころ
+ボタンのCSSしっかりスタイリングしたつもりでも、iPhoneで見たら角丸グラデになっていて他のブラウザとデザインが違ったってことはありませんか？
+
+フォームパーツはブラウザごとに結構独自のスタイルを持っています。
+
+![appearance の使い方と使いどころ](./images/2020/11/entry390-4.gif)
+
+上記の画像を見てもらってわかる通り、Safari と FireFox のボタン要素には軽いグラデがかかっています。
+
+とりわけ、**ボタンなどのフォームパーツは本当に厄介でCSSのリセットを相当こまめにやらなければいけません**。
+そんな時重宝するのが`appearance`プロパティです。
+
+どちらかというと他のフォームパーツのスタイルを真似ることはないと思います。
+```html:title=HTML
+<p><button>ボタン</button></p>
+<p><button class="none">ボタン</button></p>
+```
+```css:title=CSS
+button {
+  width: 200px;
+  height: 70px;
+}
+
+.none {
+  appearance: none;
+  border: none;
+  background: orange;
+}
+```
+#### appearance の値
+|値|説明|
+|-|-|
+|*none*|フォーム特有のスタイルを打ち消します|
+|*auto*|ユーザーエージェントが要素ごとにスタイルを適用します。|
+
+フォームパーツは`appearance`だけではデフォルトのスタイルは打ち消しきれないので `border`や`background`も合わせてよく確認してスタイリングしましょう。
+
+#### なぜフォームパーツがデフォルトで複雑なスタイリングになっているか考えたことはありますか？
+
+フォームパーツはブラウザ上で操作するための重要な要素です。<br>
+ユーザーが操作しやすいよう、目立たせたり操作に応じたリアクションが起こるように設計されています。<br>
+**デフォルトのデザインが気に入らないからという理由で、表面上のスタイリングをするのはユーザーフレンドリーではない**ですよね。<br>
+カスタマイズするときは、アクセシビリティを考慮してコーディングしていきましょう。
+
+#### appearance のデモとリファレンス
+* [appearance - CSS: カスケーディングスタイルシート| MDN web](https://developer.mozilla.org/ja/docs/Web/CSS/appearance)
+* [appearance のデモ](https://codepen.io/camile/pen/rNLKOVE)
+
+## 2 pointer-events 要素のクリックを禁止したい時に重宝
 プロパティ・`pointer-events`は要素のクリックイベントを禁止したい時に使います。
 
 個人的には使用頻度高めです。
@@ -20,26 +72,28 @@ lead: ["フロントエンドエンジニア、今はプータローのかみー
 パーツでいえばページネーションや、COMING SOONにしてリンクが貼れないバナーなどに使うことが多めです。<br>
 CMSから吐き出すタグを**自分では書き換えられないけどCSS側でクリックを禁止したい**、などのケースで重宝します。
 
-```
-<!-- HTML -->
+```html:title=HTML
 <a href="#" aria-disabled>クリック禁止</a>
 <a href="#">クリック可能</a>
+```
 
-// CSS
+```css:title=CSS
 a[aria-disabled] {
   pointer-events: none;
 }
 ```
 
 #### pointer-events の値
-* **auto**　プロパティが指定されていないときと同様にふるまいます。
-* **none**　クリックイベント発火禁止
+|値|説明|
+|-|-|
+|*auto*|プロパティが指定されていないときと同様にふるまいます。|
+|*none*|クリックイベント発火禁止|
+
 #### マジ? SVG に使えるの???!
 HTML で実験的にSVGでも使えるそうです。<br>
 JSと合わせて使ったら面白いギミックが作れそうですね！！
 
-```
-<!-- HTML -->
+```html:title=HTML
 <p class="fill">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
     <a xlink:href="#">
@@ -55,8 +109,8 @@ JSと合わせて使ったら面白いギミックが作れそうですね！！
     </a>
   </svg>
 </p>
-
-// CSS
+```
+```css:title=CSS
 svg {
   width: 100px;
 }
@@ -83,8 +137,11 @@ svg {
 ```
 ![pointer-eventsマジ? SVG に使えるの???!](./images/2020/11/entry390-2.gif)
 
-* **stroke**　線のところのみ
-* **fill**　塗りのところのみ
+|値|説明|
+|-|-|
+|*stroke*|線のところのみ|
+|*fill*|塗りのところのみ|
+
 pointer-events のデモとリファレンス<br>
 SVG用の値はさらに用意されています！<br>
 こちらをお読みください。
@@ -92,7 +149,7 @@ SVG用の値はさらに用意されています！<br>
 * [pointer-events - CSS: カスケーディングスタイルシート| MDN web docs](https://developer.mozilla.org/ja/docs/Web/CSS/pointer-events)
 * [pointer-events SVGのデモ](https://codepen.io/camile/pen/eYzKNWj)
 
-## 2 resize textarea などでおなじみのサイズ調整をどの要素でも可能に
+## 3 resize textarea などでおなじみのサイズ調整をどの要素でも可能に
 textarea がムダにビヨーンとん伸びてうざいことがありませんか？
 それを解消するのが**プロパティ・resize**です。
 ### resize の使い方と使いどころ
@@ -103,12 +160,11 @@ textarea がムダにビヨーンとん伸びてうざいことがありませ�
 
 一応他の要素でも使用可能です。使い所は今のところ思い当たりませんが。。。
 
-```
-<!-- HTML -->
+```html:title=HTML
 <textarea class="none">リサイズ不可</textarea>
 <textarea class="virtical">リサイズ不可</textarea>
-
-// CSS
+```
+```css:title=CSS
 .none {
   resize: none;
 }
@@ -121,64 +177,17 @@ textarea がムダにビヨーンとん伸びてうざいことがありませ�
 #### resize の値
 
 ![resize の使い方と使いどころ](./images/2020/11/entry390-3.gif)
-* **none**　リサイズ不可。サイズ調整用の右下のつまみがなくなる
-* **both**　縦横双方リサイズ可能です。textareaのデフォルト値
-* **vertical**　縦方向のみリサイズ可能
-* **horizontal**　横方向のみリサイズ可能
+
+|値|説明|
+|-|-|
+|*none*|リサイズ不可。サイズ調整用の右下のつまみがなくなる|
+|*both*|縦横双方リサイズ可能です。textareaのデフォルト値|
+|*vertical*|縦方向のみリサイズ可能|
+|*horizontal*|横方向のみリサイズ可能|
 
 #### resize のデモとリファレンス
 * [resize - CSS: カスケーディングスタイルシート| MDN web docs](https://developer.mozilla.org/ja/docs/Web/CSS/resize)
 * [resize のデモ](https://codepen.io/camile/pen/ZEORGRq)
-
-## 3 appearance フォームパーツのCSSをリセットで重宝
-appearanceプロパティはチェックボックスやボタンなどの各フォームパーツの持っているスタイルを真似たり、もしくは打ち消す時に使います。
-
-### appearance の使い方と使いどころ
-ボタンのCSSしっかりスタイリングしたつもりでも、iPhoneで見たら角丸グラデになっていて他のブラウザとデザインが違ったってことはありませんか？
-
-フォームパーツはブラウザごとに結構独自のスタイルを持っています。
-
-![appearance の使い方と使いどころ](./images/2020/11/entry390-4.gif)
-
-上記の画像を見てもらってわかる通り、Safari と FireFox のボタン要素には軽いグラデがかかっています。
-
-とりわけ、**ボタンなどのフォームパーツは本当に厄介でCSSのリセットを相当こまめにやらなければいけません**。
-そんな時重宝するのが`appearance`プロパティです。
-
-どちらかというと他のフォームパーツのスタイルを真似ることはないと思います。
-```
-<!-- HTML -->
-<p><button>ボタン</button></p>
-<p><button class="none">ボタン</button></p>
-
-// CSS
-button {
-  width: 200px;
-  height: 70px;
-}
-
-.none {
-  appearance: none;
-  border: none;
-  background: orange;
-}
-```
-#### appearance の値
-* **none**　フォーム特有のスタイルを打ち消します
-* **auto**　ユーザーエージェントが要素ごとにスタイルを適用します。
-
-フォームパーツは`appearance`だけではデフォルトのスタイルは打ち消しきれないので `border`や`background`も合わせてよく確認してスタイリングしましょう。
-
-#### なぜフォームパーツがデフォルトで複雑なスタイリングになっているか考えたことはありますか？
-
-フォームパーツはブラウザ上で操作するための重要な要素です。<br>
-ユーザーが操作しやすいよう、目立たせたり操作に応じたリアクションが起こるように設計されています。<br>
-**デフォルトのデザインが気に入らないからという理由で、表面上のスタイリングをするのはユーザーフレンドリーではない**ですよね。<br>
-カスタマイズするときは、アクセシビリティを考慮してコーディングしていきましょう。
-
-#### appearance のデモとリファレンス
-* [appearance - CSS: カスケーディングスタイルシート| MDN web](https://developer.mozilla.org/ja/docs/Web/CSS/appearance)
-* [appearance のデモ](https://codepen.io/camile/pen/rNLKOVE)
 
 ## 4 columns 段落・段組みを超カンタンに作れるプロパティ
 **プロパティcolumns**は段組みされた要素の段の幅や段数を設定できるプロパティです。
@@ -196,15 +205,14 @@ columnsには幅と数は設定できてどちらが前でも後ろでもOK。
 
 `column-gap`は列の間の隙間、`column-rule` は間に挟むボーダーなどの装飾をセットできます。
 
-```
-<!-- HTML -->
+```html:title=HTML
 <div class="columns">
   <p>セブ島在住の広島生まれのIT戦士。平和と納期を死守。フリーランス。飲み友大歓迎。</p>
   <p>好きな人といるだけでパワースポット！13歳から「生きたいように生きて死にたいように死ぬ」 がモットー。</p>
   <p>人/フロント全般/concrete5/SEO/コーチング/酒/肉/海外移住</p>
 </div>
-
-// CSS
+```
+```css:title=CSS
 .columns {
   columns: 3 auto;
   column-gap: 10px;
@@ -227,12 +235,12 @@ columnsには幅と数は設定できてどちらが前でも後ろでもOK。
 ### writing-mode の使い方と使いどころ
 昨今かなり紙のデザインのように、かなり自由なレイアウトが流行ってるので`flex`や`grid`などと組み合わせて、かっこいいデザインが作れそうです。
 
-```
-<!-- HTML -->
+```html:title=HTML
 <p class="vertical-rl">縦書き<br>右から左へ</p>
 <p class="vertical-lr">縦書き<br>左から右へ</p>
 
-// CSS
+```
+```css:title=css
 body {
   display: flex;
   flex-direction: column;
@@ -255,9 +263,11 @@ p {
 ```
 
 #### writing-mode の値
-* **horizontal-tb**　デフォルト。左から右へ流れる
-* **vertical-rl**　上から下へ垂直に流れ、次の垂直の行は、前の行の左に配置される
-* **vertical-lr**　コンテンツは上から下へ垂直に流れ、次の垂直の行は、前の行の右に配置される
+|値|説明|
+|-|-|
+|*horizontal-tb*|デフォルト。左から右へ流れる|
+|*vertical-rl*|上から下へ垂直に流れ、次の垂直の行は、前の行の左に配置される|
+|*vertical-lr*|コンテンツは上から下へ垂直に流れ、次の垂直の行は、前の行の右に配置される|
 
 **text-align: center**文字が縦方向にセンタリング、**text-align: right**で文字が下揃えになるので戸惑うかもしれません。<br>
 文字を中央揃えにしたい場合は、**flex**などで調整するのが良さそうです。

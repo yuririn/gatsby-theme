@@ -1,20 +1,20 @@
 ---
-title: CSSカウンターって知ってる？要素に自動ナンバリング（数字）しよう
+title: CSS カウンター（counter）って知ってる？要素に自動ナンバリング（数字）しよう
 date: 2020-03-29
-modifieddate: 2022-06-15
+modifieddate: 2022-07-05
 hero: thumbnail/2020/entry363.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: [CSS]
-description: 意外と知られてませんがCSSにカウンターcounter()という数字を自動で振ることができるCSS関数があります。普通のolタグや使うよりかっこいい実装ができます！実装方法はもちろん、コピペで使えるサンプルコードを紹介しているのでぜひ活用してください。
-lead: ["リストや見出しにナンバー（数字）が振られているサイトを見かけませんか？","私は何年も前に見かけた時、「ちょーかっこいいから真似したい」って思いました。","意外と知られてませんが昔からCSSにはカウンターcounter()という数字を自動で振ることができるCSS関数があります。普通のolタグや使うよりかっこいい実装ができます！","実装方法はもちろん、コピペで使えるサンプルコードを紹介しているのでぜひ活用してください。"]
+description: 意外と知られてませんが CSS にカウンター(counter)という数字を自動で振ることができるCSS関数があります。普通のolタグや使うよりかっこいい実装ができます！実装方法はもちろん、コピペで使えるサンプルコードを紹介しているのでぜひ活用してください。
+lead: ["リストや見出しにナンバー（数字）が振られているサイトを見かけませんか？","ブログ記事の目次などで見かけるおしゃれでかっこいいナンバリングされているリストなどです。","意外と知られてませんが昔から CSS にはカウンター(counter) という数字を自動で振ることができるCSS関数があります。普通の ol タグや使うよりコーディングもラクに実装ができます！","実装方法はもちろん、コピペで使えるサンプルコードを紹介しているのでぜひ活用してください。"]
 ---
 
-## CSSカウンターとは？
+## CSSカウンター（counter）とは？
 
-CSSカウンターとは、モジュール（CSS関数）の一種。自動で要素を数えてナンバリングする機能です。
+CSS カウンター（counter）とは、モジュール（CSS関数）の一種。自動で要素を数えてナンバリングするCSSの機能です。
 
-olタグに限らず知らなければうっかりナンバリングの数字を手動で振ってしまいそうですが装飾もできるし自動出力してくれるので便利です。
+ol タグに限らず知らなければうっかりナンバリングの数字を手動で振ってしまいそうですが装飾もできるし自動出力してくれるので便利です。
 
 ![自動で要素を数えてナンバリング](./images/2020/03/entry363-0.jpg)
 
@@ -26,9 +26,9 @@ CSS2／CSS2.1 ですでにあったモジュールで、使い方はいたって
 
 ## カウンターモジュールの基本の使い方
 
-親要素のなかで特定の要素を数えて、その値を擬似要素とcontentを使って出力といったようなものです。
+親要素のなかで特定の要素を数えて、その値を擬似要素(::before, ::after)と content を使って出力といったようなものです。
 
-最初に必ずプロパティ counter-reset で値を初期化しましょう。
+最初に必ずプロパティ `counter-reset` で値を初期化しましょう。
 
 コンピュータは 0 基準で始まるので、既定値は 0。
 
@@ -66,8 +66,8 @@ h2::before {
 
 ![超基本的なオーダーリスト2](./images/2020/03/entry363-2.jpg)
 
-HTML
-```html
+
+```html:title=HTML
 <ol>
   <li>番号のリスト</li>
   <li>番号のリスト</li>
@@ -75,8 +75,8 @@ HTML
   <li>番号のリスト</li>
 </ol>
 ```
-CSS
-```css
+
+```css:title=CSS
 ol {
   counter-reset: num;
   margin: 15px;
@@ -103,11 +103,9 @@ ol li::before {
 
 出力するナンバーは同じサイズで作ってプロパティ `transform: scale(倍率)` を使って縮小して調整するといい感じになります。
 
-CSS
-
 ![丸で囲って装飾する](./images/2020/03/entry363-3.jpg)
 
-```css
+```css:title=CSS
 ol.circle li {
   padding-left: 1.5em; /* 1.5文字分くらい */
   text-indent: -1.5em;
@@ -156,7 +154,7 @@ counter(num, 表示する形式)
 
 ![数字形式の表示方法の変更](./images/2020/03/entry363-4.jpg)
 
-```css
+```css:title=CSS
 ol.lower-roman li {
   padding-left: 1.5em; /* １.５文字分くらい */
   text-indent: -1.5em;
@@ -190,8 +188,7 @@ ol.lower-roman li::before {
 
 こういうレパートリーがあるとデザインないときに即興で作れて良いです。
 
-HTML
-```html
+```html:title=HTML
 <section class="card">
   <section>
     <h3>タイトル</h3>
@@ -220,9 +217,7 @@ HTML
 </section>
 ```
 
-CSS
-
-```css
+```css:title=CSS
 .card {
   counter-reset: num;
   display: flex;
@@ -282,7 +277,7 @@ counters関数を使うとさらに複雑にナンバーを入れ子にできま
 通常以下の子要素、孫要素と下の下まで指定できるのに対して、特定できて便利です。
 
 [CSSの子セレクターの指定の仕方について](http://www.htmq.com/csskihon/005.shtml)
-```css
+```css:title=CSS
 /* 子セレクタの指定 */
 ul > li {
   margin: 50px;　/* スタイルが直下の li にしか効かない */
@@ -295,7 +290,7 @@ ul li {
 ### リストの入れ子の正しい書き方
 `li` タグの中に改めて `ul` ないしは `ol` を書いて `li` タグを足します。
 
-```html
+```html:title=HTML
 <ul>
   <li>リスト</li>
   <li>リスト</li>
@@ -321,9 +316,7 @@ ul li {
 
 ![複雑な入れ子を正しく装飾する](./images/2020/03/entry363-6.jpg)
 
-HTML
-
-```html
+```html:title=HTML
 <ul class="has-child">
   <li>リスト</li>
   <li>リスト</li>
@@ -337,8 +330,7 @@ HTML
 </ul>
 ```
 
-CSS
-```css
+```css:title=CSS
 ul.has-child > li {
   text-indent: -1em;
   margin-left: 1em;
@@ -385,7 +377,7 @@ ul.has-child > li > ul > li::before{
 
 以下のように、親要素子要素もろともすべてに`counter-reset`をセットするのがポイントです。
 
-```css
+```css:title=CSS
 ol.ol-has-child, ol.ol-has-child ol {
   counter-reset: cnt;/* 親要素から子要素全てにcounter-resetをセットする*/
 }
@@ -398,7 +390,7 @@ ol.ol-has-child, ol.ol-has-child ol {
 
 なので子要素は**1 - 2**みたいな出力になります。
 
-```css
+```css:title=CSS
 ol.ol-has-child li::before {
   counter-increment: cnt;
   content: counters(cnt, " - ") ;
@@ -406,8 +398,7 @@ ol.ol-has-child li::before {
 ```
 ![複雑な入れ子を正しく装飾する](./images/2020/03/entry363-7.jpg)
 
-HTML
-```html
+```html:title=HTML
 <ol class="ol-has-child">
   <li>リスト</li>
   <li>リスト</li>
@@ -420,8 +411,7 @@ HTML
   <li>リスト</li>
 </ol>
 ```
-CSS
-```css
+```css:title=CSS
 ol.ol-has-child, ol.ol-has-child ol {
   counter-reset: cnt;/* 親要素から子要素全てにcounter-resetをセットする*/
 }
@@ -461,7 +451,7 @@ ol.ol-has-child > li > ol > li::before{
   text-indent: 0;
 }
 ```
-counters関数も通常のcounter関数同様、引数に表示形式を指定できます。
+*counters関数* も通常の *counter関数* 同様、引数に表示形式を指定できます。
 
 ```css
 counters(名前, コネクター, 表示形式) ;

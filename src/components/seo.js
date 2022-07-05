@@ -63,23 +63,22 @@ const Seo = ({
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
   const cateInfo = cateId!==""?{ url:`/blogs/${cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === cateId })[0].name}:''
-  const noindex = [`/blogs/entry208/`,
-`/blogs/entry272/`,
-`/blogs/entry424/`,
-`/blogs/entry414/`,
-`/blogs/entry365/`,
+  const noindex = [`/blogs/entry309/`,
+`/blogs/entry276/`,
+`/blogs/entry208/`,
 `/blogs/entry483/`,
-`/blogs/entry419/`,
-`/blogs/entry338/`,
-`/blogs/entry204/`,
-`/blogs/entry471/`,
-`/blogs/entry355/`,
-`/blogs/entry457/`,
 `/blogs/entry485/`,
-`/blogs/entry364/`,
-`/blogs/entry231/`,
-`/blogs/entry309/`,
-`/blogs/entry274/`]
+`/blogs/entry338/`,
+`/blogs/entry457/`,
+`/blogs/entry424/`,
+`/blogs/entry511/`,
+`/blogs/entry471/`,
+`/blogs/entry365/`,
+`/blogs/entry355/`,
+`/blogs/entry274/`,
+`/blogs/entry272/`,
+`/blogs/entry195/`,
+`/blogs/entry204/`]
 
   const publisher = {
     "@type": "Organization",

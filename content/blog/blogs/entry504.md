@@ -1,12 +1,13 @@
 ---
 title: 【GAS】スプシの更新内容をトリガーで定期的に自動で通知（メールとSlack）
 date: 2022-06-04
+modifieddate: 2022-07-05
 pagetype: blog
 cateId:  web-developer
 hero: thumbnail/2022/entry504.png
 tags: ["GAS","JavaScript"]
-description: スプレッドシート（Googleスプレッドシート）の最新の内容をトリガーを使って定期的にメールやSlackで通知するGoogle Apps Script（GAS）を作成しました。GASの設定方法などを詳しく解説します。
-lead: ["スプシで集計した内容を毎週末にクライアントに通知しないといけないケースがありました。","そこでスプレッドシート（Googleスプレッドシート）の最新の内容をトリガーを使って定期的にメールやSlackで通知するGoogle Apps Script（GAS）を作成しました。GASの設定方法などを解説します。","メールとSlackの方法を解説しているので目次を利用して必要な項目をお読みください。"]
+description: スプレッドシート（Googleスプレッドシート）の最新の内容をトリガーを使って定期的にGメールやSlackで通知するGoogle Apps Script（GAS）を作成しました。GASの設定方法などを詳しく解説します。コードサンプル有り。
+lead: ["スプレッドシート（Googleスプレッドシート）の最新の内容をトリガーを使って定期的にGメールやSlackで通知するGoogle Apps Script（GAS）を作成しました。GASの設定方法を解説します。コードサンプルもありますのでコピペ可能です。","今回は実際、スプシで集計した稼働時間を定期的に送ることを想定して、GASを組んであります。GメールとSlackの方法を紹介しているので目次を利用して必要な項目をお読みください。"]
 ---
 ## こんな人におすすめ
 人日（プロジェクト勤務時間）を管理したくて作成したGASです。
