@@ -1,5 +1,5 @@
 ---
-title: 母であることが苦しいなら今すぐ呪縛を手放すこと
+title: 母であることが辛いなら今すぐ呪縛を手放すこと
 date: 2022-06-05
 modifieddate: 2022-06-10
 pagetype: blog

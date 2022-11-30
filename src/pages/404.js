@@ -340,7 +340,7 @@ const P404 = styled.section`
   }
   .uranai__list {
     margin: 30px auto 0;
-    border: 5px solid rgba(51, 51, 85, 0.3);
+    border: 5px solid var(--color);
     color: #335;
     padding: 15px;
     border-radius: 20px;
@@ -357,6 +357,8 @@ const P404 = styled.section`
       font-weight: 700;
       padding-left: 25px;
       display: block;
+      color:var(--color);
+
       input[type="radio"]:checked + span:before {
         transform: rotateX(540deg);
         opacity: 1;
@@ -394,7 +396,7 @@ const P404 = styled.section`
   }
   .fortune {
     padding: 20px 20px 5px;
-    background: rgba(51, 51, 85, 0.2);
+    background: var(--pale-gray);
     border-radius: 15px;
     @media screen and (min-width: 768px) {
       padding: 30px 40px 5px;
