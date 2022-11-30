@@ -1,5 +1,5 @@
 ---
-title: プロボノとは？ボランティア団体へお金以外でできる支援活動
+title: プロボノとは？お金以外でできるボランティア支援活動
 date: 2022-11-30
 pagetype: blog
 cateId: 'overseas-freelancing'
