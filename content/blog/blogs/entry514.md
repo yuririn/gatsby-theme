@@ -1,5 +1,5 @@
 ---
-title: 軽量スライダーSwiperでスマホ（SP）のみ表示を切り替える方法（複数対応）
+title: 軽量スライダーSwiperでスマホ（SP）のみスライダー表示にする方法（複数対応）
 date: 2022-12-17
 pagetype: blog
 cateId: web-developer
