@@ -1,12 +1,13 @@
 ---
 title: 脱 jQuery！軽量のスクロール JS・MoveTo が便利
 date: 2018-12-14
+modifieddate: 2022-12-17
 hero: thumbnail/2018/entry267.png
 pagetype: blog
 cateId: 'web-developer'
 tags: ["JavaScript"]
-description: みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。
-lead: ["みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。"]
+description: jQueryなしで使える jsライブラリの MoveTo の使い方をご紹介します。別ページに遷移したときの対処法もご紹介。
+lead: ["みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。別ページに遷移したときの対処法もご紹介。"]
 ---
 
 ## GitHub からソースを拾ってこよう
@@ -18,7 +19,7 @@ Clone or download をクリック後、Download ZIPでおっけーです。
 dist/内に moveTo.js と moveTo.min.js がありますので、後者のミニファイ（圧縮）されたファイルの方を使いましょう。
 
 ## ページ内リンクをスムーズスクロール設定する
-```
+```js:title=JavaScript
 const moveto = new MoveTo({
   tolerance: 0,
   duration: 800,
@@ -34,13 +35,13 @@ const moveto = new MoveTo({
 
 初期値のままで使いたい場合は、以下のように指定します。
 
-```
+```js:title=JavaScript
 const moveto = new MoveTo()
 ```
 
 スクロール終了時に何かしら処理を加えることもできます。コールバックを指定したいときはこんな感じで書けばおっけー。
 
-```
+```js:title=JavaScript
 const moveto = new MoveTo({
   callback: function () {
     alert('スクロールしたよ！')
@@ -50,7 +51,7 @@ const moveto = new MoveTo({
 ### 個別に設定する
 class を js-trigger に設定するとスクロールの対象になります。<br>
 ターゲットの設定は aタグであれば href属性にまんま書いてもいいし、ボタンタグなどであればカスタム属性 data-taget の値に指定します。
-```
+```HTML:title=HTML
 <a class="js-trigger" data-mt-duration="300" href="#target">Trigger</a>
 <button class="js-trigger" data-mt-duration="300" data-target="#target" type="button">Trigger</button>
 ```
@@ -63,42 +64,37 @@ class を js-trigger に設定するとスクロールの対象になります�
 `forEach()`を使って一気に指定することも可能です。モダンブラウザであれば、`Array.prototype.slice.call`の指定は必要ありませんが、IE11では動きません！IE対策のために一行追加しましょう。
 
 moveto.registerTrigger()で何をクリックしたら、moveTo が動くかを設定してやります。
-```
-let anchorTags = document.querySelectorAll('a[href^="#"]')
-anchorTags = Array.prototype.slice.call(anchorTags, 0)//IE対策
+```js:title=JavaScript
+const anchorTags = document.querySelectorAll('a[href^="#"]')
 anchorTags.forEach((value) => {
   moveto.registerTrigger(value)
 })
 ```
-## webpack から追加してみる
-せっかくなので webpack で js もワンソース化しましょう。私は gulp と webpack 使ってます。`npm install` で追加してます。
 
-webpack が入っていない人は入れてください。後日 webpack の導入の仕方は別に記事書きます。
+## おまけ・アンカーのある遷移したページのスクロール位置を調整
+MoveToではヘッダーが固定されていてもページ内アンカーの移動はうまく動きますが、別ページに遷移をした時はうまく動きません。
 
-```
-$ npm install webpack webpack-stream -D
-```
-moveTo をインストールします。
-```
-$ npm install moveto -D
+なので遷移先でも `tolerance` のような処理をしたい場合は以下のようにJSで調整しておきます。
+
+スクロール位置をヘッダー分上に上がるように調整します。
+
+特にアニメーションする必要もないので、移動位置をシンプルにヘッダーの高さ分上に移動させるだけです。
+
+```js:title=JavaScript
+window.addEventListener('load', () => {
+  const urlHash      = location.hash;
+  const headerHeight = document.querySelector('.header').clientHeight;
+  if (urlHash) {
+    const id = location.hash.split('#')[1]
+    const position = document.getElementById(id).offsetTop - headerHeight;
+    scrollTo(0, position);
+  }
+}, false)
 ```
 
-### 最新の webpack の場合
-最新の webpack (4系)であれば webpack ムダに指示を書く必要はありません。<br>
-import で呼び出せます。なんて楽ちん。
-
-```
-import MoveTo from 'moveto'
-const moveto = new MoveTo()
-let anchorTags = document.querySelectorAll('a[href^="#"]')
-anchorTags = Array.prototype.slice.call(anchorTags, 0)//IE対策
-anchorTags.forEach(　(value) => {
-  moveto.registerTrigger(value)
-})
-```
+完全に読み込み終了しないと、位置がずれることがあるので `addEventListener('load')` を使ってページ読み込み終了後に実行します。
 
 ## まとめ
 いかがでしたか？<br>
 jQueryなしでわりかしカンタンに設定できるしとにかく軽いのは嬉しいです。ぜひ使ってみてください。
 
-追記 : 12/14に[指摘](https://twitter.com/eielh/status/1073557594751459328)を受け、記事を修正・追記いたしました。

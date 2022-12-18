@@ -1,7 +1,7 @@
 ---
 title: 【CSSコピペで使える】かわいいボタンデザインコード・コードスニペット集！
 date: 2020-11-14
-modifieddate: 2022-05-14
+modifieddate: 2022-12-17
 hero: thumbnail/2020/entry396.jpg
 pagetype: blog
 cateId: 'web-developer'
@@ -462,7 +462,7 @@ hoverした時に`left: -100%`でアニメーションさせます。
 
 [その他よりインタラクティブなボタン| Code Pen](https://codepen.io/camile/pen/QWEYOMb)
 
-#### 文字がエンボス
+### 文字がエンボス
 
 ![文字がエンボス](./images/2020/11/entry396-14.gif)
 
@@ -498,7 +498,7 @@ text-shadowとbox-shadowでエンボス風のボタンです。
   text-shadow: 2px 2px 2px #c8428f, -2px -2px 2px #ecaed2;
 }
 ```
-#### パキッとした影が広がるボタン
+### パキッとした影が広がるボタン
 
 ![パキッとした影が広がるボタン](./images/2020/11/entry396-15.gif)
 
@@ -530,7 +530,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   box-shadow: 6px 6px 0 #333, -6px -6px 0 #333;
 }
 ```
-#### クリックすると波紋が広がるボタン
+### クリックすると波紋が広がるボタン
 
 ![クリックすると波紋が広がるボタン](./images/2020/11/entry396-16.gif)
 
@@ -605,7 +605,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   }
 }
 ```
-#### ボーダーがアニメーションするボタン
+### ボーダーがアニメーションするボタン
 ![ボーダーがアニメーションするボタン](./images/2020/11/entry396-17.gif)
 
 ボーダーが左上と右下からアニメーションするボタンです。**heightとwidthを0から100%**に広げることで実現しています。
@@ -674,7 +674,65 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 }
 ```
 
-### まとめ・ウェブサイトと調和するボタンを設置しよう
+### グラデーション×シャドーを駆使した立地なボタン(2022/12/17追加)
+まるで画像で書き出したようですがCSSのみで実装できるボタンのご紹介です。
+![ボーダーがアニメーションするボタン](./images/2020/11/entry396-18.gif)
+```html:title=HTML
+<a href="" class="btn--rich">Button</a>
+```
+```css:title=CSS
+.btn--rich {
+  margin-left: 20px;
+  margin-top: 50px;
+  text-decoration: none;
+  color: #fff;
+  height: 90px;
+  z-index: 1;
+  letter-spacing: 0.1em;
+  position: relative;
+  background: #E77838;
+  width: 400px;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans JP", sans-serif;
+  border-radius: 50px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 900;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.btn--rich::after, .btn--rich::before {
+  position: absolute;
+  background: linear-gradient(to bottom, #FF9438 0%, #E77838 100%);
+  height: calc(100% - 16px);
+  width: calc(100% - 16px);
+  z-index: -1;
+  content: "";
+  display: block;
+  left: 8px;
+  top: 8px;
+  border-radius: 50px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.btn--rich::after {
+  opacity: 0;
+  background: linear-gradient(to top, #FF9438 0%, #E77838 100%);
+  box-shadow: none;
+  transition: 0.3s;
+}
+.btn--rich:hover {
+  background: #FF9438;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.３);
+}
+.btn--rich:hover::after {
+  opacity: 1;
+}
+```
+
+## まとめ・ウェブサイトと調和するボタンを設置しよう
 ボタンデザインたくさんあって目移りすると思いますが、凝りすぎているとサイトと調和するのが難しい場合もあります。
 
 サイトと調和するかよく考慮した上で、実装するのが◯ですね！

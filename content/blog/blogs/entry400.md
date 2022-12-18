@@ -1,12 +1,12 @@
 ---
 title: WordPress プラグインなしでカスタム投稿のカスタムフィールドにメディアを追加する方法
 date: 2020-11-21
-modifieddate: 2021-01-13
+modifieddate: 2022-12-17
 hero: thumbnail/2020/entry400.jpg
 pagetype: blog
 cateId: cms
 tags: [WordPress]
-description: プラグインを使わずにカスタムフィールドで画像を登録する方法のご紹介です。投稿画面から便利にかんたんに複数の画像登録したくて探していたらJavaScript APIが使えることを知りました。メディアを呼び出せるとリッチに画像をカスタムフィールドで登録できる機能を実装できます。
+description: 2022年12月にメンテナンス済み。プラグインを使わずにカスタムフィールドで画像を登録する方法のご紹介です。投稿画面から便利にかんたんに複数の画像登録したくて探していたらJavaScript APIが使えることを知りました。メディアを呼び出せるとリッチに画像をカスタムフィールドで登録できる機能を実装できます。
 lead: ["フロントエンドエンジニアのかみーゆです。みなさん、WordPressはお好きですか？","今回はプラグインを使わずにカスタムフィールドで画像を登録する方法のご紹介です。","投稿画面から便利にかんたんに複数の画像登録したくて探していたらJavaScript APIが使えることを知りました。","メディアを呼び出せるとリッチに画像をカスタムフィールドで登録できる機能を実装できます。"]
 ---
 ## 実例：商品登録などのカスタム投稿にスライドショーを追加するためにカスタムフィールドにメディアを追加
@@ -29,7 +29,7 @@ function.phpなどに`create_post_type`という関数を作って、新たに�
 
 今回はあくまで「カスタムフィールドにメディア（画像登録）を追加する方法」のご紹介なので、詳しい説明は割愛します。
 
-```php
+```php:title=functions.php
 
 add_action( 'init', 'create_post_type' );
 
@@ -73,7 +73,7 @@ function create_post_type() {
 
 [関数リファレンス/add meta box](https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/add_meta_box)
 
-```php
+```php:title=functions.php
 add_action( 'admin_menu', 'add_custom_fields' );
 
 function add_custom_fields() {
@@ -96,7 +96,7 @@ function add_custom_fields() {
 
 実際のデータはフォームタグをhiddenで仕込んでおき、JSで動的に値を格納できるようにしておきます。
 
-```php
+```php:title=functions.php
 function product_custom_fields() {
     $product_image_name = array();
     $product_image = arra();
@@ -108,6 +108,7 @@ function product_custom_fields() {
     }    //登録画面に出力
 ?>
     <table class="form-table">
+      <?php wp_nonce_field( 'my_action', 'my_nonce' ); ?>
         <?php for ( $i=0; $i < 3; $i++ ):?>
             <tr class="form-field">
                 <th scope="row">画像名<?php echo $i+ 1?></th>
@@ -141,11 +142,10 @@ function product_custom_fields() {
 
 [関数リファレンス/wp enqueue media](https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/wp_enqueue_media)
 
-```php
-add_action( 'admin_enqueue_scripts', add_api );
-
+```php:title=functions.php
+add_action( 'admin_enqueue_scripts', 'add_api' );
 function add_api() {
-    wp_enqueue_media();
+	wp_enqueue_media();
 }
 ```
 
@@ -156,10 +156,10 @@ function add_api() {
 
 ![JavaScript APIの調整](./images/2020/11/entry400-3.png)
 
-```php
-add_action( 'admin_footer', array ( $this, 'add_script' ) );
+```php:title=functions.php
+add_action( 'admin_footer', 'add_script' );
 
-public function add_script() {
+function add_script() {
 ?>
 <script>
     jQuery(document).ready(
@@ -200,32 +200,38 @@ public function add_script() {
 ### 画像と画像名を保存
 画像と画像名を保存できるようにします。
 
-*2021年1月13日追記*
-
-サイトをリロードやプレビューへ切り替えた際にデータが消えるバグを発見しました。
-
-```php
+```php:title=functions.php
 add_action( 'save_post', 'save_products' );
 
 function save_products( $post_id ) {
-    // 画像
-    for ( $i=0; $i < 3; $i++ ) {
-        if ( isset( $_POST['product-image-name_'.$i] ) ){
-			if ( $_POST['product-image-name_'.$i] !== '' ){
-				update_post_meta( $post_id, 'product-image-name_'.$i, $_POST['product-image-name_'.$i] );
-			} else {
-				delete_post_meta($post_id, 'product-image-name_'.$i);
-			}
-        }
-        // 画像の保存
-        if( isset( $_POST['product-image_' . $i] ) ) {
-			if( $_POST['product-image_' . $i] !== '' ) {
-				update_post_meta( $post_id, 'product-image_' . $i, $_POST['product-image_' . $i] );
-			} else {
-				delete_post_meta( $post_id, 'product-image_'.$i );
+	if( isset( $_REQUEST['my_nonce'] )) {
+		if(!wp_verify_nonce($_POST['my_nonce'], 'my_action')) {
+			return;
+		}
+		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+			return;
+		}
+		if(!current_user_can('edit_post', $post_id)) {
+			return;
+		}
+		for ( $i=0; $i < 3; $i++ ) {
+			if ( isset( $_POST['product-image-name_'.$i] ) ){
+				if ( $_POST['product-image-name_'.$i] !== '' ){
+					update_post_meta( $post_id, 'product-image-name_'.$i, $_POST['product-image-name_'.$i] );
+				} else {
+					delete_post_meta($post_id, 'product-image-name_'.$i);
 				}
-        }
-    }
+			}
+			// 画像の保存
+			if( isset( $_POST['product-image_' . $i] ) ) {
+				if( $_POST['product-image_' . $i] !== '' ) {
+					update_post_meta( $post_id, 'product-image_' . $i, $_POST['product-image_' . $i] );
+				} else {
+					delete_post_meta( $post_id, 'product-image_'.$i );
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -233,8 +239,6 @@ function save_products( $post_id ) {
 ぶっちゃけWordPressってプラグインの方が安定してますしすべての機能を網羅していて痒いところに手が届きます。しかも無料です。
 
 しかし **「すべての機能」を網羅しているがゆえに不要な機能もたくさん付いています**。<br><br>
-
-
 
 私のカスタマイズするメリットは以下のような感じです。
 
@@ -256,3 +260,11 @@ function save_products( $post_id ) {
 
 
 最後までお読みいただきありがとうございました。
+
+### 更新履歴
+*2021年1月13日追記*<br>
+サイトをリロードやプレビューへ切り替えた際にデータが消えるバグを発見し修正しました。
+
+*2022年12月17日追記*<br>
+セキュリティー対策のコードを追記しました。
+メディアを保存するためのJSの記載のある `add_script` で不具合が見つかったため書き換えました。
