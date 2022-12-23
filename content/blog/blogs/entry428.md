@@ -286,7 +286,7 @@ p hello,pug!
 ```
 これでファイルはコンパイルできましたね！！
 
-```html:title=html
+```html:title=HTML
 <p>hello,pug!</p>
 ```
 
@@ -296,7 +296,7 @@ div
   <p>hello,pug!</p>
 ```
 
-```html:title=html
+```html:title=HTML
 <div><p>hello,pug!</p></div>
 ```
 
@@ -305,7 +305,7 @@ div
 ```pug:title=pug
 p='こんにちは。IT戦士のかみーゆです。'
 ```
-```html:title=html
+```html:title=HTML
 <p>こんにちは。IT戦士のかみーゆです。</p>
 ```
 
@@ -319,7 +319,7 @@ p='見出し1は<h1>タグで囲みます'
 p!='見出し1は<h1>タグで囲みます'
 ```
 
-```html:title=html
+```html:title=HTML
 <p>見出し1は&lt;h1&gt;で囲みます。</p>
 
 <p>見出し1は<h1>で囲みます。</p>
@@ -346,7 +346,7 @@ header
   h1 hello, pug!
 ```
 
-```html:title=html
+```html:title=HTML
 <header>
   <h1>hello, pug!</h1>
 </header>
@@ -356,7 +356,7 @@ header
 ```pug:title=pug
 div: p test
 ```
-```html:title=html
+```html:title=HTML
 <div>
   <p>test</p>
 </div>
@@ -369,7 +369,7 @@ idは`#`、classは`.`でつなぐ。
 section#hoge
 div.piyo
 ```
-```html:title=html
+```html:title=HTML
 <section id="hoge"></section>
 <div class="piyo"></div>
 ```
@@ -387,7 +387,7 @@ img(src="image.jpg", alt="画像", width="300", height="200")
 
 a(href="./" target="_blank") トップページ
 ```
-```html:title=html
+```html:title=HTML
 <img src="image.jpg" alt="画像" width="300" height="200"/>
 
 <a href="./" target="_blank">トップページ</a>
@@ -410,7 +410,7 @@ input(
 )
 ```
 
-```html:title=html
+```html:title=HTML
 <input type="checkbox" name="agreement" checked="checked"/>
 ```
 
@@ -423,7 +423,7 @@ input(data-json=`
   }
 `)
 ```
-```html:title=html
+```html:title=HTML
 <input data-json="
   {
 	  &quot;very-long&quot;: &quot;piece of &quot;,
@@ -436,7 +436,7 @@ input(data-json=`
 ```pug:title=pug
 a(href="/")&attributes({'style':'color:white','target':'_blank'}) リンク
 ```
-```html:title=html
+```html:title=HTML
 <a href="/" style="color:white;" target="_blank">リンク</a>
 ```
 
@@ -452,7 +452,7 @@ a(href="/") HOME
 a(href="/blog") Blog
 ```
 
-```html:title=html
+```html:title=HTML
 <a href="/">HOME</a>
 <a href="/blog">Blog</a>
 ```
@@ -475,7 +475,7 @@ p これは#[strong テキスト]です
 ```
 前述したものに比べてこちらの方がはるかにカンタンなのでよく使います。
 
-```html:title=html
+```html:title=HTML
 <p>これは<strong>テキスト</strong>です</p>
 ```
 
@@ -493,7 +493,7 @@ script.
   let pug = 'Hello, pug!!!';
   console.log(pug);
 ```
-```html:title=html
+```html:title=HTML
 <style>
   a {
     color: #333;
@@ -520,7 +520,7 @@ pugでは変数が使えます。何気に便利。コンテンツとして出�
 p #{name}
 ```
 
-```html:title=html
+```html:title=HTML
 <p>aaa</p>
 ```
 
@@ -541,7 +541,7 @@ input(type="text" value=name + 'です')
 input(type="text" value=`${name}です`)
 ```
 
-```html:title=html
+```html:title=HTML
 <input type="text" value="aaa"/>
 <input type="text" value="aaaです"/>
 ```
@@ -554,7 +554,7 @@ input(type="text" value=`${name}です`)
 h1(class=toppage ? 'is-top' : 'is-lower') 見出し
 
 ```
-```html:title=html
+```html:title=HTML
 <h1 class="is-top">見出し</h1>
 ```
 
@@ -563,7 +563,7 @@ h1(class=toppage ? 'is-top' : 'is-lower') 見出し
 ```pug:title=pug
 p \#{pug}は変数です。
 ```
-```html:title=html
+```html:title=HTML
 <p>#{pug}は変数です。</p>
 ```
 
@@ -574,7 +574,7 @@ p \#{pug}は変数です。
 - attributes.target = '_blank';
 a(href="/")&attributes(attributes) リンク
 ```
-```html:title=html
+```html:title=HTML
 <a href="/" target="_blank">リンク</a>
 ```
 
@@ -590,7 +590,7 @@ if pageId == 'home'
 else
   p: a(href="/") #{pageName}
 ```
-```html:title=html
+```html:title=HTML
 <h1>my site</h1>
 ```
 
@@ -606,7 +606,7 @@ case pageTemplate
   default
     section
 ```
-```html:title=html
+```html:title=HTML
 <section class="contact"></section>
 ```
 breakで抜けることもできます。
@@ -634,7 +634,7 @@ ul
     li.item リスト0#{i}
   - }
 ```
-```html:title=html
+```html:title=HTML
 <ul>
   <li class="item">リスト00</li>
   <li class="item">リスト01</li>
@@ -657,7 +657,7 @@ ul
   each val in [1, 2, 3]
     li= val
 ```
-```html:title=html
+```html:title=HTML
 <ul>
   <li>1</li>
   <li>2</li>
@@ -670,7 +670,7 @@ ul
   each val, index in ['cat', 'dog', 'rabbit']
     li= index + ': ' + val
 ```
-```html:title=html
+```html:title=HTML
 <ul>
   <li>0: 猫</li>
   <li>1: 犬</li>
@@ -689,7 +689,7 @@ ul
   each val, key in menu
     li(class=key == pageId ? 'is-current' : '' ): a(href=`/${key}`)=val
 ```
-```html:title=html
+```html:title=HTML
 <ul>
   <li><a href="/cat">猫</a></li>
   <li><a href="/dog">犬</a></li>
@@ -702,7 +702,7 @@ ul
   each val in ['cat', 'dog', 'rabbit']
     li: a(href=`/${val}`)=val.toUpperCase()
 ```
-```html:title=html
+```html:title=HTML
 <ul>
   <li><a href="/cat">CAT</a></li>
   <li><a href="/dog">DOG</a></li>
@@ -720,7 +720,7 @@ mixin list
     li RABBIT
 +list
 ```
-```html:title=html
+```html:title=HTML
 <ul>
   <li>CAT</li>
   <li>DOG</li>
@@ -745,7 +745,7 @@ mixin pageHeader(pageId, pageName)
 + pageHeader(pageId, pageName)
 ```
 
-```html:title=html
+```html:title=HTML
 <header class="service">
   <p>SERVICE</p>
   <h1>私たちのサービス</h1>
@@ -757,7 +757,7 @@ mixin pageHeader(pageId, pageName)
 mixin pageHeader(pageId='top', pageName='トップページ')
 ```
 出力結果です。
-```html:title=html
+```html:title=HTML
 <header class="top">
 	<p>TOP</p>
   <h1>トップページ</h1>
@@ -772,7 +772,7 @@ mixin list(id, ...items)
       li= item
 +list('my-list', 1, 2, 3, 4)
 ```
-```html:title=html
+```html:title=HTML
 <ul id="my-list">
   <li>1</li>
   <li>2</li>
@@ -953,7 +953,7 @@ append content
 ```
 
 ### 出力結果
-```html:title=html
+```html:title=HTML
 <!DOCTYPE html>
 <html>
   <head>

@@ -135,7 +135,7 @@ Clarity には Content Insights（コンテンツの洞察） と言って記事
 
 表示させるためには記事が格納されているタグにカスタムデータ `data-clarity-region="article"` を付与する必要があります。
 
-```html:title=html
+```html:title=HTML
 <html>
    <head>
    <body>

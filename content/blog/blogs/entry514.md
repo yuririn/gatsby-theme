@@ -32,7 +32,7 @@ npm や CDN も用意されています。Angular、React や Vue などから�
 
 <br>CDN の JS&CSS のリンクを を head タグ内などに読み込みます。
 
-```html:title=html
+```html:title=HTML
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
@@ -43,7 +43,7 @@ npm や CDN も用意されています。Angular、React や Vue などから�
 
 <br>スライダーの HTML は以下。今回はクラス `swiper` を付与した要素にスライダーを適応します。もちろん、IDなどでも指定可能です。ページネーションなどの部品を追加したい場合はクラスを指定した要素を追加します。
 
-```html:title=html
+```html:title=HTML
 <!-- Slider のメインのコンテナー -->
 <div class="swiper">
   <!-- ラッパー -->
@@ -177,7 +177,7 @@ const options = {
 複数の場合は各スライダーにユニークな指定をする必要があります。
 
 この場合はそれぞれのスライダーにIDを `swiper01` 、 `swiper02` とします。
-```html:title=html
+```html:title=HTML
 <div class="swiper" id="swiper01">
   <div class="swiper-wrapper">
     <div class="swiper-slide">Slide 1</div>

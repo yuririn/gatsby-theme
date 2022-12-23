@@ -61,7 +61,7 @@ JSでクリックでクラスをつけたり外したりし、CSSでアニメー
 
 ボタンのHTMLのコードはこれだけです。
 
-```html:title=html
+```html:title=HTML
 <button class="c-nav-btn" type="button"></button>
 ```
 
@@ -216,7 +216,7 @@ skewとは斜めとか歪めるという意味です。
 
 ![棒の真ん中で折れて取り消しマークになる](./images/2022/04/entry496-05.gif)
 
-```html:title=html
+```html:title=HTML
 <button class="c-nav-btn" type="button"></button>
 ```
 `transition`だとヨーヨーのようにアニメーションを繰り返すだけで、きれいにタイミングをあわせられません。
@@ -306,7 +306,7 @@ skewとは斜めとか歪めるという意味です。
 サイト読み込み時のアニメーションが発動するのを止めます。
 
 HTMLに予めクラスを付与し、
-```html:title=html
+```html:title=HTML
 <button class="c-nav-btn load" type="button"></button>
 ```
 ボタンを操作するまではアニメーションさせないようにしておき、
@@ -340,7 +340,7 @@ navBtn.addEventListener("click", function(){
 ![アクセシビリティ抜群ハンバーガーメニュー](./images/2022/04/entry496-08.gif)
 
 ラベルを追加し、
-```html:title=html
+```html:title=HTML
 <button class="c-nav-btn" type="button">MENU</button>
 ```
 ラベル用のスタイルや枠を追加、色もアクティブ時には反転させます。
@@ -463,7 +463,7 @@ navBtn.addEventListener("click", function(){
 一度待機時間無しでアニメーションを作成して、いい感じになったらパーセンテージを計算し直しました（スプシの関数などを使うとかんたんに計算できます）。
 
 カスタムデータに「CLOSE」用のラベルを格納し、
-```html:title=html
+```html:title=HTML
 <button class="c-nav-btn load" type="button">
   <span data-label="CLOSE" class="c-nav-btn__label">MENU</span>
 </button>
@@ -627,7 +627,7 @@ SVGがCSSアニメーション、HTMLタグとしても使いやすく、色ん�
 
 SVGの各パーツにはクラス名をつけておきます。
 
-```html:title=html
+```html:title=HTML
 <button class="c-nav-btn" type="button">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 100.5">
 <path d="M0,45.5C0,13.83,34.7,0,77.5,0s77.5,13.83,77.5,45.5H0Z" class="pan-top"/>
