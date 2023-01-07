@@ -1,7 +1,7 @@
 ---
 title: WordPressの記事一覧ブロック（Gutenberg）を自作する
 date: 2022-01-12
-modifieddate: 2022-01-15
+modifieddate: 2023-01-07
 hero: thumbnail/2022/entry488.jpg
 pagetype: blog
 cateId: cms
@@ -259,7 +259,7 @@ import {
   PanelBody,
   __experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
-  import { InspectorControls } from "@wordpress/
+import { InspectorControls } from "@wordpress/block-editor";
 
 registerBlockType("mybloc/list-block", {
   title: "記事一覧",
