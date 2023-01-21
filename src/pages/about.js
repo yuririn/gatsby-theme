@@ -26,15 +26,19 @@ const aboutPost = ({ data, location }) => {
   const modifiedDate = "2021-05-05"
   const ogp = `${data.allFile.edges[0].node.publicURL}`
 
+  const yourData = {
+    title : pageTitle,
+    description : description,
+    location : location,
+    date : "2021-05-05",
+    ogp : ogp,
+    modifieddate : modifiedDate,
+  }
+
   return (
     <Layout location="about" title="銀ねこアトリエ">
       <Seo
-        title={pageTitle}
-        description={description}
-        location={location}
-        date="2021-05-05"
-        ogp={ogp}
-        modifieddate={modifiedDate}
+        data={yourData}
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">

@@ -2,6 +2,43 @@ import styled from "styled-components"
 
 export const Edit = styled.section`
   line-height: 2;
+  .p-faq__item {
+    margin-bottom: 16px;
+    background: var(--pale-gray);
+    border-radius: 16px;
+      dt {
+        padding: 16px 16px 4px;
+        font-weight: bold;
+        position: relative;
+        padding-left: 60px;
+        &::before {
+            color: var(--color-blue);
+            position: absolute;
+            left: 16px;
+            content: 'Q.';
+            font-size: 28px;
+            top: 14px;
+            line-height: 1;
+        }
+        border-bottom: 1px solid var(--background);
+    }
+    dd {
+        font-size: 14px;
+        position: relative;
+        padding: 4px 16px 16px;
+        padding-left: 60px;
+        &::before {
+            color: var(--color-accent);
+            top: 6px;
+            line-height: 1;
+            position: absolute;
+            left: 16px;
+            content: 'A.';
+            font-weight: bold;
+            font-size: 28px;
+        }
+      }
+  }
   p {
     margin-bottom: 1.5em;
   }

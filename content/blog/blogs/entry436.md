@@ -1,12 +1,15 @@
 ---
 title: 次世代CSSは論理プロパティ！margin-block、margin-inlineを徹底解剖！
 date: 2021-01-28
+modifieddate: 2023-01-21
 hero: thumbnail/2021/entry436.jpg
 pagetype: blog
 cateId: web-developer
 tags: ["CSS"]
 description: CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今今回は次世代の余白の考え方、margin-block、margin-inline、padding-block、padding-inlineを徹底解剖してみます！
 lead: ["CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今回は次世代の余白の考え方、margin-block、margin-inlineを徹底解剖してみます！"]
+faq: [['margin の数値が設定したものと違う','折りたたみマージンと言い、縦方向の余白は少ない方の値が相殺されます。','https://ginneko-atelier.com/blogs/entry335/'],['marginとpaddingの違いがわからない','要素と要素の距離をmargin、要素の内側の余白をpaddingといます。','https://ginneko-atelier.com/blogs/entry436/#%E3%82%8F%E3%82%8A%E3%81%A8%E9%9B%A3%E3%81%97%E3%81%84%E3%81%AE%E3%81%A7margin%E3%81%A8padding%E3%81%AE%E3%81%8A%E3%81%95%E3%82%89%E3%81%84'],['Webサイトに縦書きを実装したい！','CSSプロパティmargin-blockを使うと縦書きが実装できます。']]
+---
 ---
 ## わりと難しいのでmarginとpaddingのおさらい
 まずは`margin`と`padding`のおさらいから。
@@ -144,6 +147,20 @@ div {
 
 * 内側の余白を設定したいときは`padding-inline`プロパティを使えます。使い方は`margin-inline`と一緒です。
 
+#### 要素をたった一行でセンタリングできる
+プロパティ`margin-inline`を使うと要素をたった一行でセンタリングできます。
+
+```html:title=HTML
+<div class="center">
+  <p>center</p>
+</div>
+```
+```css:title=CSS
+div {
+  margin-inline: auto;
+}
+```
+![要素をたった一行でセンタリングできる](./images/2021/01/entry436-12.png)
 ### margin-inlineとmargin-blockを使って四方のマージンを設定する
 通常のプロパティ`margin`同様前後左右余白を設定するときのコードを紹介します。
 
@@ -203,7 +220,7 @@ CSSはコードが長くなりますね。
 
 ![縦書きの実装](./images/2021/01/entry436-9.jpg)
 
-```HTML
+```HTML:title=HTML
 <div class="vertical">
   <p>「銀ねこアトリエ」へようこそ。
   セブ島に住むフロントエンドエンジニア・かみーゆの気ままな日記です。<br>
@@ -212,9 +229,7 @@ CSSはコードが長くなりますね。
 </div>
 ```
 
-ちなみにSafariの場合、ショートハンドが使えないのでコードが長くなります。。。
-
-```css
+```css:title=CSS
 body {
   background: url(https://ginneko-atelier.com/static/f06cabea092b70c1fc4d476ab9c36647/14b42/bg-main.jpg) center / cover;
 }
@@ -243,13 +258,9 @@ body {
 
 [縦書きサンプル | CodePen](https://codepen.io/lscamille/pen/QWGLggz)
 
-実務レベルとして使うためには、まだまだかなーという印象でした。
-
 ちなみに[caiuse](https://caniuse.com/?search=margin-block)での実装状況です。
 
-ChromeとFirefox以外ショートハンドはまだ実装されていません。
-
-![ちなみにcaiuseでの実装状況](./images/2021/01/entry436-10.jpg)
+![ちなみにcaiuseでの実装状況](./images/2021/01/entry436-10.png)
 
 補足しておくと値は以下のように値は指定できます。
 
@@ -293,3 +304,4 @@ Firefoxで縦書きコンテンツの入った要素をセンタリングする�
 さらに掘り下げて知りたい方はcolisさんのサイトをご覧ください。
 
 [CSS知っておくと便利な論理プロパティ、ボックスモデルにおける古い方法とこれからの方法](https://coliss.com/articles/build-websites/operation/css/new-css-logical-properties.HTML)
+<faq id="/blogs/entry436/"></faq>

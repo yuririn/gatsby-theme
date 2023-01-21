@@ -13,16 +13,19 @@ const PagePostTemplate = ({ data, location }) => {
   const ogp = data.allFile.edges[0]
     ? data.allFile.edges[0].node.publicURL
     : "images/ogp.png"
+  const yourData ={
+    title : post.frontmatter.title,
+    description : post.frontmatter.description || post.excerpt,
+    ogp : ogp,
+    location : location,
+    date : post.frontmatter.date,
+    modifieddate : post.frontmatter.modifieddate,
+    type : "article"
+  }
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-        ogp={ogp}
-        location={location}
-        date={post.frontmatter.date}
-        modifieddate={post.frontmatter.modifieddate}
-        type="article"
+        data={yourData}
       />
       <div className="l-main_contents is-page">
         <div className="l-container--md mt-Md">

@@ -230,14 +230,17 @@ const contactTemplate = ({ data, location }) => {
   const src = data.allFile.edges[0]
     ? data.allFile.edges[0].node.childImageSharp.fluid.src
     : ""
-
+  const yourData = {
+    title : "お問い合わせ",
+      description : `お問い合わせに関するページです。${siteDescription}`,
+      image : src,
+      date : "2021-06-03",
+      location : location
+  }
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title="お問い合わせ"
-        description={`お問い合わせに関するページです。${siteDescription}`}
-        image={src}
-        location={location}
+        data={yourData}
       />
 
       <div className="l-main_contents">

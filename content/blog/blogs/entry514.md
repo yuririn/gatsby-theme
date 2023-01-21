@@ -1,12 +1,14 @@
 ---
 title: 軽量スライダーSwiperでスマホ（SP）のみスライダー表示にする方法（複数対応）
 date: 2022-12-17
+modifieddate: 2023-01-21
 pagetype: blog
 cateId: web-developer
 hero: thumbnail/2022/entry514.png
 tags: ["JavaScript","html"]
 description: jQuery不要軽量Swiper。レスポンシブでスライダー画像をスマホだけで表示したい場合の対応方法を綴ります。複数のスライダーに対応した方法のご紹介。
 lead: ["Webサイトでスライドショー（スライダー）は便利ですよね？私は jQuery 不要の軽量Swiper というライブラリを愛用しています。","昨今レスポンシブが主流となり UI も多様化してスマホではスライダー、PCでは適用しないなどの実装をすることもありますよね？","Swiper ではスライダーをスマホだけで表示したい場合もカンタンです。ただこれはスライダーが一つのみのお話。","複数のスライダーで切り替えをしたいときにはコツがあるのでその方法もご紹介します。"]
+faq: [['Swiper を複数設置したい。','プレーンなSwiperであればかんたんに複数設置可能です。場合によっては各Swiperにユニークな指定をする必要があります。','https://ginneko-atelier.com/blogs/entry514/#%E8%A4%87%E6%95%B0%E3%81%AEswiper%E3%82%92%E3%82%B9%E3%83%9E%E3%83%9Bpc%E3%81%A7%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95'],['Swiper をスマホのみ表示したい','Swiperはスマホ、PCなどのブレークポイントに応じて切り替えることができます。'],['Swiperが突然動かなくなった。','SwiperのCSSやJSをCDNで使っていませんか？最新のものに変えれば動くようになります。','https://ginneko-atelier.com/blogs/entry514/']]
 ---
 ## この記事の対象者
 <msg txt="以下心当たりのある方への必見お役立ち記事です。"></msg>
@@ -256,3 +258,5 @@ window.addEventListener('DOMContentLoaded', () => {
 同じことでハマっている人への一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+### FAQ
+<faq id="/blogs/entry514/"></faq>

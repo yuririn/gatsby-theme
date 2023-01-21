@@ -11,19 +11,7 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import config from "../../gatsby-config"
 
-const Seo = ({
-  description,
-  lang,
-  meta,
-  title,
-  ogp,
-  location,
-  modified,
-  date,
-  cateId = '',
-  tag = '',
-  type,
-}) => {
+const Seo = ({lang, meta, data}) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -37,32 +25,32 @@ const Seo = ({
     `
   )
   const domain = config.siteMetadata.siteUrl
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = data.description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
-  let blogUrl = location ? location.href : domain
+  let blogUrl = data.location ? data.location.href : domain
   const isRoot = `${domain}/` === blogUrl ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
   const pagetype = isRoot ? "webSite" : "article"
-  const ogSrc = domain + (ogp ? ogp : "/images/ogp.png")
+  const ogSrc = domain + (data.ogp ? data.ogp : "/images/ogp.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
-  let pageName = `${title}-${defaultTitle}`
-  if(type === "tags" || type === "genre") {
-    pageName = `${title}-記事一覧-${defaultTitle}`
-  } else if (type === "blog") {
-    pageName = title
+  let pageName = `${data.title}-${defaultTitle}`
+  if(data.type === "tags" || data.type === "genre") {
+    pageName = `${data.title}-記事一覧-${defaultTitle}`
+  } else if (data.type === "blog") {
+    pageName = data.title
   } else if (isRoot) {
     pageName = `${defaultTitle}`
   }
   let portfolio = false
-  if (location) {
-    portfolio = location.pathname === "/portfolio/" ? true : false
+  if (data.location) {
+    portfolio = data.location.pathname === "/portfolio/" ? true : false
   }
   const canonicalUrl = blogUrl;
-  if (type === "blogs" || type === "tags" || type === "genre") {
+  if (data.type === "blogs" || data.type === "tags" || data.type === "genre") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
   }
-  const cateInfo = cateId!==""?{ url:`/blogs/${cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === cateId })[0].name}:''
+  const cateInfo =  data.cateId ? { url:`/blogs/${data.cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === data.cateId })[0].name}:''
   const noindex = [`/blogs/entry309/`,
 `/blogs/entry276/`,
 `/blogs/entry208/`,
@@ -92,16 +80,35 @@ const Seo = ({
     },
   }
 
+
+
   const author = [
     {
       "@type": "Person",
       name: config.siteMetadata.author.name,
       description: config.siteMetadata.author.summary,
-      url: domain,
-      sameAs: [
-        config.siteMetadata.social.twitter,
-        config.siteMetadata.social.instagram,
+      jobTitle: ['CEO', 'concreteCMS エバンジェリスト'],
+      affiliation: [
+        {
+          "@type": "Organization",
+          name: 'Lenz Technolozies Inc.',
+        },
+        {
+          "@type":"Organization",
+          name: '銀ねこアトリエ',
+          url: domain,
+        }
       ],
+      url: domain+'/about/',
+      img: domain+'/images/about/camille-prof.png',
+      sameAs: [
+        'https://twitter.com/'+config.siteMetadata.social.twitter,
+        'https://www.instagram.com/'+config.siteMetadata.social.instagram,
+         config.siteMetadata.social.youtube,
+      ],
+      award: [
+        '2011年スマートフォンアプリ選手権アプリがいっぱい賞チームで優勝',
+      ]
     },
   ]
   // JSON+LDの設定
@@ -119,20 +126,20 @@ const Seo = ({
     },
   ]
 
-  if (type === "blog") {
+  if ( data.type === "blog") {
     jsonLdConfigs.push({
       "@context": "http://schema.org",
       "@type": "BlogPosting",
       url: blogUrl,
       name: pageName,
-      headline: title,
+      headline: data.title,
       image: {
         "@type": "ImageObject",
         url: ogSrc,
       },
       description: metaDescription,
-      datePublished: date.replace(/\./g, "-"),
-      dateModified: modified ? modified.replace(/\./g, "-") : "",
+      datePublished: data.date.replace(/\./g, "-"),
+      dateModified: data.modified ? data.modified.replace(/\./g, "-") : "",
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": blogUrl,
@@ -141,35 +148,26 @@ const Seo = ({
       publisher,
     })
   }
-  const faq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-    {
-    "@type": "Question",
-    "name": "コーダーになるためにはどうすれば良いですか？",
-    "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "コーダーはスピード命。早くコーディングするために、ショートカットは必須。ひたすらコードを書きましょう。"
+  if( data.faq ) {
+    const faqArry = data.faq
+    const faqList = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": []
     }
-    },
-    {
-    "@type": "Question",
-    "name": "IT業界は進歩が早くてついていくのが大変ではないですか？",
-    "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "はい、大変です。置いて行かれないよう、情報収集は欠かしません。学ぶことをやめたら泳ぐのをやめたマグロと一緒です。"
-    }
-    },
-    {
-    "@type": "Question",
-    "name": "かみーゆさんの好きな食べ物はなんですか？",
-    "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "肉とビールです。肉があればビールが3杯は飲めます。"
-    }
-    }
-    ]
+    faqArry.map((item)=>{
+      const link = item[2]?'<br><a href=\"'+item[2]+'\">こちら<\/a>':'';
+      const entry = {
+        "@type": "Question",
+        "name": item[0],
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item[1]+link
+        }
+      }
+      faqList['mainEntity'].push(entry);
+    })
+    jsonLdConfigs.push(faqList);
   }
 
   if (!isRoot) {
@@ -189,8 +187,8 @@ const Seo = ({
     const tagList = {
       "@type": "ListItem",
       position: 3,
-      item: `${domain}/tags/${tag}`,
-      name: tag,
+      item: `${domain}/tags/${data.tag}`,
+      name: data.tag,
     }
     const cateList = {
       "@type": "ListItem",
@@ -198,7 +196,7 @@ const Seo = ({
       item: `${domain}${cateInfo.url}`,
       name: `${cateInfo.name}`,
     }
-    if (type === "genre-list" || type === "tag-list") {
+    if ( data.type === "genre-list" ||  data.type === "tag-list") {
       breadCrumbList = [
         home,
         blogList,
@@ -206,11 +204,11 @@ const Seo = ({
           "@type": "ListItem",
           position:  3,
           item: blogUrl,
-          name: title,
+          name:  data.title,
         },
       ]
     }
-    else if (type === "blog") {
+    else if ( data.type === "blog") {
       breadCrumbList = [
         home,
         cateList,
@@ -219,10 +217,10 @@ const Seo = ({
           "@type": "ListItem",
           position: 4,
           item: blogUrl,
-          name: title,
+          name:  data.title,
         },
       ]
-    } else if (type === "blog-list") {
+    } else if ( data.type === "blog-list") {
       breadCrumbList = [home, blogList]
     } else {
       breadCrumbList = [
@@ -231,7 +229,7 @@ const Seo = ({
           "@type": "ListItem",
           position: 2,
           item: blogUrl,
-          name: title,
+          name:  data.title,
         },
       ]
     }
@@ -243,12 +241,6 @@ const Seo = ({
         "@type": "BreadcrumbList",
         itemListElement: breadCrumbList,
       },
-    ]
-  }
-  if (portfolio) {
-    jsonLdConfigs = [
-      ...jsonLdConfigs,
-      faq
     ]
   }
 
@@ -315,7 +307,7 @@ const Seo = ({
         },
       ].concat(meta)}
     >
-      {noindex.includes(location.pathname)&&<meta content="noindex" name="robots"/>}
+      {noindex.includes(data.location.pathname)&&<meta content="noindex" name="robots"/>}
       <link rel="canonical" href={canonicalUrl}></link>
       {portfolio ? (
         <link

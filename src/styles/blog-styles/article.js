@@ -8,6 +8,7 @@ export const Article = styled.div`
   @media screen and (min-width: 1020px) {
     width: calc(100% - 300px);
   }
+
   .c-btn--donation {
       background: var(--pale-gray);
       text-align: center;
@@ -57,8 +58,11 @@ export const Article = styled.div`
       padding-right: 0;
     }
   }
+
   .c-article {
       margin: 50px auto 0;
+
+
 
     &__heading {
       font-size: 2.4rem;

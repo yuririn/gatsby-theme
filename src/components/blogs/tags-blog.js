@@ -13,4 +13,5 @@ const Tags = ({ tags }) => (
   </p>
 );
 
+
 export default Tags;

@@ -15,13 +15,16 @@ const tags = ({ pageContext, data, location }) => {
   const { current, page, tag } = pageContext
 
   const posts = data.allMarkdownRemark.nodes
+  const yourData = {
+    title : tag,
+    description : `「${tag}」の記事一覧。${data.site.siteMetadata.description}`,
+    location : location,
+    type : "tag-list"
+  }
   return (
     <Layout location={location} title="銀ねこアトリエ">
       <Seo
-        title={tag}
-        description={`「${tag}」の記事一覧。${data.site.siteMetadata.description}`}
-        location={location}
-        type="tag-list"
+        data={yourData}
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">

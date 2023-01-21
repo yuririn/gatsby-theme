@@ -35,6 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               cateId
               hero
               pagetype
+              faq
             }
           }
         }

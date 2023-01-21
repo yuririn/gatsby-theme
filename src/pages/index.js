@@ -23,8 +23,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title="セブ島ノマドフロントエンジニアの日記【銀ねこアトリエ】"
-        location={location}
+        data={{title:"セブ島ノマドフロントエンジニアの日記【銀ねこアトリエ】", location:{location}}}
       />
       <FirstView />
       <BigWhite>

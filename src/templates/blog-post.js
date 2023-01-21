@@ -26,6 +26,7 @@ import Genre from "../components/common/genre"
 import ProfBig from "../components/common/profile"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
+import Faq from "../components/blogs/blog-parts/faq"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
@@ -36,6 +37,7 @@ const renderAst = new rehypeReact({
   components: {
     card: RelativeCard,
     msg: Msg,
+    faq: Faq,
     af: Affili,
   },
 }).Compiler
@@ -56,18 +58,21 @@ const BlogPostTemplate = ({ data, location }) => {
                       : ""
                   })[0].name
                 }
+  const seoData = {
+    title : post.frontmatter.title,
+    description : post.frontmatter.description || post.excerpt,
+    date : post.frontmatter.date.replace(/\./g, "-"),
+    location : location,
+    ogp : ogpSrc,
+    faq : post.frontmatter.faq?post.frontmatter.faq : '',
+    tag : post.frontmatter.tags[0],
+    cateId : post.frontmatter.cateId,
+    type : "blog"
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-        date={post.frontmatter.date.replace(/\./g, "-")}
-        location={location}
-        ogp={ogpSrc}
-        tag={post.frontmatter.tags[0]}
-        cateId={post.frontmatter.cateId}
-        type="blog"
+      <Seo data={seoData}
       />
       <Header>
         <div
@@ -240,6 +245,7 @@ export const pageQuery = graphql`
         cateId
         tags
         pagetype
+        faq
         modifieddate(formatString: "YYYY.MM.DD")
       }
     }

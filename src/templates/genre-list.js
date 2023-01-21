@@ -21,14 +21,17 @@ const category = ({ pageContext, data, location }) => {
 
   let cateName = cateMeta[0].name
   let cateDescription = cateMeta[0].description
+  const yourData = {
+    title : `${cateName}`,
+    description : `「${cateName}」の記事一覧。${cateDescription}。${data.site.siteMetadata.description}`,
+    location : location,
+    type : "genre-list"
+  }
 
   return (
     <Layout location={location} title={siteMetadata.title}>
       <Seo
-        title={`${cateName}`}
-        description={`「${cateName}」の記事一覧。${cateDescription}。${data.site.siteMetadata.description}`}
-        location={location}
-        type="genre-list"
+        data={yourData}
       />
 
       <div className="p-pageHeader">

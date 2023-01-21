@@ -23,7 +23,7 @@ Gulpからの実装の方法はこちらにまとめています。
 
 関数は変数に格納し、戻り値を取り出して使います。
 
-特殊な記述方法に関しては、[【Gulp】EJSを使ってHTMLを量産するのおまけejsお役立ち情報](http://localhost:8000/blogs/entry459/#%E3%81%8A%E3%81%BE%E3%81%91ejs%E3%81%8A%E5%BD%B9%E7%AB%8B%E3%81%A1%E6%83%85%E5%A0%B1)こちらを参照してください。
+特殊な記述方法に関しては、[【Gulp】EJSを使ってHTMLを量産するのおまけejsお役立ち情報](https://ginneko-atelier.com/blogs/entry459/#%E3%81%8A%E3%81%BE%E3%81%91ejs%E3%81%8A%E5%BD%B9%E7%AB%8B%E3%81%A1%E6%83%85%E5%A0%B1)こちらを参照してください。
 
 ```js:title=EJS
 <%

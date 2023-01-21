@@ -1,13 +1,14 @@
 ---
 title: 【ヒートマップ解析】Clarity の導入方法と使い方
 date: 2022-06-26
-modifieddate: 2022-12-21
+modifieddate: 2023-01-21
 pagetype: blog
 cateId: seo
 hero: thumbnail/2022/entry510.jpg
 tags: ["Web解析","便利ツール"]
 description: Clarity とは、Webサイト上のユーザーの操作を「見える化」する無料のヒートマップ解析ツール。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキング、IPブロック、URLのフィルターの使い方、Content Insights の設定方法なども紹介。2022年12月ヒートマップがうまく表示されないときの対処法を追記。改善に役立ててください。
 lead: ["Clarity は Microsoft のWebサイト上のユーザーの操作を「見える化」する無料ヒートマップ解析ツールです。","英語だからとっつきにくいと思っている方も安心。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキングやIPブロックなどの細かい設定やURLのフィルターの仕方、Content Insights の設定方法など相当詳しく紹介してあります！","2022年12月ヒートマップがうまく表示されないときの対処法も新たに追記しました。","ぜひこの記事を参考にウェブサイト改善に役立ててください。"]
+faq: [['ヒートマップとは何ですか？','サイトに訪れたユーザーのページ内での行動データを、色の濃淡でわかりやすく表現したものです。'],['Clarity 導入方法','Google、Facebook、Microsoftのアカウントがあればすぐに始めることができます。','https://ginneko-atelier.com/blogs/entry510/#%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95'],['Clarityのヒートマップ表示されない','見たいページの抽出をし直すと解決することがあります。','https://ginneko-atelier.com/blogs/entry510/#%E3%83%92%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%97%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%92%E5%B9%B4%EF%BC%91%EF%BC%92%E6%9C%88%E8%BF%BD%E8%A8%98']]
 ---
 ## Clarityで分かること、できること
 ![Clarityで分かること、できること](./images/2022/06/entry510-2.jpg)
@@ -358,7 +359,7 @@ Filters（フィルター）を使わなくても、左上の検索窓に直接U
 
 ![エリア](./images/2022/06/entry510-29.png)
 
-## ヒートマップ表示されない場合（２０２２年１２月追記）
+## ヒートマップ表示されない場合（2022年12月追記）
 <msg txt="あれれ？！ヒートマップ表示されないだけど。。。"></msg>
 
 Clarityではせっかくタップ/クリック箇所やヒートマップを見ようとしても「We couldn't find any clicks.」や「We couldn't find any scroll information.」とヒートマップ表示されなくなる事が多いです。
@@ -391,5 +392,9 @@ Clarity はページごとにヒートマップの状態を確認できます。
 
 相当長くなってしまいましたが、最後までお読みいただきありがとうございました。
 
+### FAQ
+<faq id="/blogs/entry510/"></faq>
+
 ### 参考
 [Clarity Docs(英語)](https://docs.microsoft.com/en-us/clarity/)
+

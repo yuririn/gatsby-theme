@@ -14,13 +14,16 @@ import Prof from "../components/common/profile"
 const blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
   const posts = data.allMarkdownRemark.nodes
+  const yourData = {
+    title : "ノマドブログ",
+    description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
+    location : location,
+    type : "blog-list"
+  }
   return (
     <Layout location={location} title="ノマドブログ">
       <Seo
-        title="ノマドブログ"
-        description={`「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`}
-        location={location}
-        type="blog-list"
+        data={yourData}
       />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">

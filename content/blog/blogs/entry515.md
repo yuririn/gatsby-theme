@@ -1,5 +1,5 @@
 ---
-title: JQuery 不要・noUiSliderレンジスライダーを使ってみよう
+title: jQuery 不要・noUiSliderレンジスライダーを使ってみよう
 date: 2022-12-23
 pagetype: blog
 cateId: web-developer
