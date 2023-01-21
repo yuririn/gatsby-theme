@@ -2,6 +2,14 @@ import styled from "styled-components"
 
 export const Edit = styled.section`
   line-height: 2;
+  .slide {
+     @media screen and (max-width: 1117px) {
+        max-width: 750px;
+        overflow-x: auto;
+        margin-right: -30px;
+        padding-right: 30px;
+     }
+  }
   .p-faq__item {
     margin-bottom: 16px;
     background: var(--pale-gray);
