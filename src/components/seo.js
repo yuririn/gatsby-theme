@@ -100,7 +100,6 @@ const Seo = ({lang, meta, data}) => {
         }
       ],
       url: domain+'/about/',
-      img: domain+'/images/about/camille-prof.png',
       sameAs: [
         'https://twitter.com/'+config.siteMetadata.social.twitter,
         'https://www.instagram.com/'+config.siteMetadata.social.instagram,
@@ -175,26 +174,38 @@ const Seo = ({lang, meta, data}) => {
     const home = {
       "@type": "ListItem",
       position: 1,
-      item: domain,
-      name: "ホーム",
+      "item": {
+        "@type": "WebSite",
+        "@id": domain,
+         name: "ホーム",
+      }
     }
     const blogList = {
       "@type": "ListItem",
       position: 2,
-      item: `${domain}/blogs/`,
-      name: `ノマドブログ`,
+      "item": {
+        "@type": "WebPage",
+        "@id": `${domain}/blogs/`,
+        name: `ノマドブログ`,
+      }
     }
     const tagList = {
       "@type": "ListItem",
       position: 3,
-      item: `${domain}/tags/${data.tag}`,
-      name: data.tag,
+      "item": {
+        "@type": "WebPage",
+        "@id": `${domain}/tags/${data.tag}`,
+        name: data.tag,
+      }
     }
     const cateList = {
       "@type": "ListItem",
-      position: 2,
-      item: `${domain}${cateInfo.url}`,
-      name: `${cateInfo.name}`,
+      "position": 2,
+      "item": {
+        "@type": "WebPage",
+        "@id":  `${domain}${cateInfo.url}`,
+        "name": `${cateInfo.name}`,
+      }
     }
     if ( data.type === "genre-list" ||  data.type === "tag-list") {
       breadCrumbList = [
@@ -203,8 +214,11 @@ const Seo = ({lang, meta, data}) => {
         {
           "@type": "ListItem",
           position:  3,
-          item: blogUrl,
-          name:  data.title,
+          "item": {
+            "@type": "WebPage",
+            "@id":  blogUrl,
+            "name": data.title
+          }
         },
       ]
     }
@@ -215,9 +229,12 @@ const Seo = ({lang, meta, data}) => {
         tagList,
         {
           "@type": "ListItem",
-          position: 4,
-          item: blogUrl,
-          name:  data.title,
+          "position": 4,
+          "item": {
+            "@type": "BlogPosting",
+            "@id":  blogUrl,
+            "name": data.title
+          }
         },
       ]
     } else if ( data.type === "blog-list") {
@@ -227,9 +244,11 @@ const Seo = ({lang, meta, data}) => {
         home,
         {
           "@type": "ListItem",
-          position: 2,
-          item: blogUrl,
-          name:  data.title,
+          "position": 2,
+          "item": {
+            "@id":  blogUrl,
+            "name": data.title
+          }
         },
       ]
     }
@@ -239,7 +258,7 @@ const Seo = ({lang, meta, data}) => {
       {
         "@context": "http://schema.org",
         "@type": "BreadcrumbList",
-        itemListElement: breadCrumbList,
+        "itemListElement": breadCrumbList,
       },
     ]
   }
