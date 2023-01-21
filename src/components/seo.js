@@ -309,17 +309,6 @@ const Seo = ({lang, meta, data}) => {
     >
       {noindex.includes(data.location.pathname)&&<meta content="noindex" name="robots"/>}
       <link rel="canonical" href={canonicalUrl}></link>
-      {portfolio ? (
-        <link
-          href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap"
-          rel="stylesheet"
-        ></link>
-      ) : (
-        <link
-          href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap"
-          rel="stylesheet"
-        ></link>
-      )}
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>

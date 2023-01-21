@@ -215,6 +215,11 @@ const Body = styled.div`
   color: #333;
 
   line-height: 1.8;
+   @font-face {
+    font-family: 'Archivo Black';
+    src: url('/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+    display: swap;
+  }
   main {
     background:#fff;
   }

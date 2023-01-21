@@ -47,6 +47,21 @@ export const BaseStyle = createGlobalStyle`
     content:'';
     content:none;
   }
+    @font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/Raleway-Light.ttf') format('truetype');
+    display: swap;
+    font-weight: normal;
+    font-style: normal;
+    }
+    @font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/Raleway-Bold.ttf') format('truetype');
+    display: swap;
+    font-weight: bold;
+    font-style: normal;
+    }
+
   a {
     margin:0;
     padding:0;
