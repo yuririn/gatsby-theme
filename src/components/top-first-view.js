@@ -13,7 +13,7 @@ const Img = () => {
               childImageSharp {
                 gatsbyImageData(
                   blurredOptions: {}
-                  webpOptions: { quality: 95 }
+                  webpOptions: { quality: 40 }
                 )
               }
             }
@@ -159,8 +159,10 @@ const Mainvisual = styled.div`
   }
   .gatsby-image-wrapper {
     height: 100%;
+    width: 100%;
+
     @media screen and (min-width: 1441px) {
-      filter: blur(1px);
+      filter: blur(2px);
     }
   }
   .p-mainvisual__hero {

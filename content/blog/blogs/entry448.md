@@ -125,7 +125,6 @@ META for DeveloperはFacebookアカウントを持っていることが前提条
 ![無期限トークン取得](./images/2021/03/entry448-15-3.jpg)
 
 デバッグをクリックします。
-<af size="horizontal" genre="web-developer"></af>
 
 ![無期限トークン取得](./images/2021/03/entry448-15-4.jpg)
 
@@ -222,8 +221,6 @@ https://graph.facebook.com/v12.0/{instagram_business_account}?fields=name%2Cmedi
 #### 共通CSS
 
 以下コードはあくまで参考です。
-
-<af size="horizontal" genre="web-developer"></af>
 
 アイコンはFontAwesomeを活用しました。自分の好みでスタイリングしてください。
 
@@ -352,8 +349,6 @@ PHPでは以下のように実行してみました。
 2. 送用オプション設定
 3. セッションを実行<br><small>（CURLOPT_RETURNTRANSFERを設定するとサーバから取得した情報を保存可能）</small>
 4. ハンドルのセットを閉じる
-
-<af size="horizontal" genre="web-developer"></af>
 
 ```php:title=PHP
 curl_setopt ( CurlHandle $handle , int $option , mixed $value )

@@ -22,7 +22,7 @@ const profile = () => {
             <li>疲れたので辞めてプータロー</li>
             <li>人生の充電中でセブ島ライフを満喫</li>
             <li>2021年セブ島でビジネスを始めるために仲間と奮闘</li>
-            <li>2022年9月セブ島で法人Lenz Technologies Inc. 設立（←イマココ）</li>
+            <li>2022年7月セブ島で法人Lenz Technologies Inc. 設立（←イマココ）</li>
           </ul>
           <p>
             {" "}

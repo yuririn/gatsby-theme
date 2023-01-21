@@ -30,7 +30,6 @@ import Faq from "../components/blogs/blog-parts/faq"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
-import Affili from "../components/affiliate";
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -38,7 +37,6 @@ const renderAst = new rehypeReact({
     card: RelativeCard,
     msg: Msg,
     faq: Faq,
-    af: Affili,
   },
 }).Compiler
 
@@ -131,14 +129,12 @@ const BlogPostTemplate = ({ data, location }) => {
               <TagsList tags={post.frontmatter.tags} />
               <Description texts={post.frontmatter.lead} />
               <Toc data={data.markdownRemark.tableOfContents} />
-              <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
             </header>
             <Edit>
               <section itemProp="articleBody">
                 {renderAst(post.htmlAst)}
               </section>
             </Edit>
-            <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
 
             <div className="c-btn--donation" id="end_of_article">
               <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
@@ -180,7 +176,6 @@ const BlogPostTemplate = ({ data, location }) => {
           tags={post.frontmatter.tags}
         />
         <aside className="BigWhite">
-          <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
           <div className="l-container">
             <section className="p-box--gray p-section u-text-center">
               <h2 className="c-heading--lg">人気のタグ</h2>
@@ -193,7 +188,6 @@ const BlogPostTemplate = ({ data, location }) => {
               <Genre />
             </section>
           </div>
-          <Affili size="horizontal" genre={post.frontmatter.cateId}></Affili>
           <ProfBig />
         </aside>
       </Body>

@@ -13,7 +13,6 @@ import AddTagLink from "../components/common/add-tag-link"
 import Tags from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
-import Affili from "../components/affiliate";
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -82,24 +81,20 @@ const BlogIndex = ({ data, location }) => {
             <h2 className="c-heading--lg">記事を検索する</h2>
             <Search></Search>
           </section>
-          <Affili size="horizontal"></Affili>
           <FovoriteList type="web" />
           <FovoriteList type="life" />
           <FovoriteList type="career" />
-          <Affili size="horizontal"></Affili>
           <div className="u-mblg">
             <section className="p-box--gray u-text-center">
               <h2 className="c-heading--lg">人気のタグ</h2>
               <Tags />
             </section>
           </div>
-          <Affili size="horizontal"></Affili>
           <div>
             <h2 className="c-heading--lg">人気のジャンル</h2>
             <Genre />
           </div>
         </div>
-        <Affili size="horizontal"></Affili>
         <Prof></Prof>
       </BigWhite>
     </Layout>

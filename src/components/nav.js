@@ -27,6 +27,7 @@ const GlobalNav = ({ title, location }) => {
           <button
             type="button"
             onClick={move}
+            aria-label="メニューボタン"
             className={isOpen ? "c-nav__btn open is-active" : "c-nav__btn"}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 311.65 104.12">

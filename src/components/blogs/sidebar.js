@@ -5,7 +5,6 @@ import { Sidebar } from "./../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
-import Affili from "../affiliate";
 import Prof from "./small-prof";
 
 const bar = ({ cateId, title, tags, slug }) => {
@@ -13,7 +12,6 @@ const bar = ({ cateId, title, tags, slug }) => {
     <Sidebar>
       <Prof></Prof>
       <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
-      <Affili size="rectangle" genre={cateId}></Affili>
       <section className="p-section">
         <h2 className="c-heading--lg--side">ジャンル</h2>
         <ul className="sideCateList">
@@ -31,7 +29,6 @@ const bar = ({ cateId, title, tags, slug }) => {
         <Search></Search>
 
         <ul className="side-banner">
-          <li><Affili size="rectangle" genre={cateId}></Affili></li>
           <li>
             <Link to="/about/">
               <Img
@@ -67,7 +64,6 @@ const bar = ({ cateId, title, tags, slug }) => {
         <p className="u-text-center">
           <small>初見の方、30分無料相談承っております。</small>
         </p>
-        <Affili size="rectangle" genre={cateId}></Affili>
       </div>
     </Sidebar>
   )

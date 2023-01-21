@@ -15,7 +15,7 @@ const Footer = ({ title }) => {
           </p>
         </div>
       </footer>
-      <button onClick={() => scrollTo("#top")}></button>
+      <button onClick={() => scrollTo("#top")} aria-label="戻るボタン"></button>
     </FooterWrapper>
   );
 };
