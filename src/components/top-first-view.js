@@ -13,7 +13,7 @@ const Img = () => {
               childImageSharp {
                 gatsbyImageData(
                   blurredOptions: {}
-                  webpOptions: { quality: 40 }
+                  webpOptions: { quality: 30 }
                 )
               }
             }

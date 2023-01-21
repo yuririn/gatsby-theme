@@ -13,7 +13,8 @@ const Img = ({ source, title, className, size }) => {
               childImageSharp {
                 gatsbyImageData(
                   blurredOptions: { width: 100 }
-                  width: 800
+                  width: 640
+                  quality: 50
                   placeholder: BLURRED
                 )
               }
