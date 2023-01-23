@@ -7,8 +7,14 @@ pagetype: blog
 cateId: 'web-developer'
 tags: [ "JavaScript"]
 description: 通常配列はもちろん連想配列など、配列のループでどの方法を使うべきか用途ごとに詳しく解説。命令文for...of、for...in、メソッドmap、forEachでのループの仕方。find、filter、includes、some、everyとスプレッド構文(...)などについて使い方を紹介します。
-lead: ["通常配列はもちろん連想配列など、配列のループでどの方法を使うべきか、ES6以降多様化した配列のループでどの方法を使うべきかこんがらがるので、改めてまとめてみました。","命令文for...of、for...in、メソッドmap、forEachでのループの仕方。find、filter、includes、some、everyとスプレッド構文(...)などについて使い方を紹介します。"]
 ---
+通常配列はもちろん連想配列など、配列のループでどの方法を使うべきか、ES6以降多様化した配列のループでどの方法を使うべきかこんがらがるので、改めてまとめてみました。
+
+命令文 `for...of`、`for...in`、メソッド `map`、`forEach` でのループの仕方。`find`、`filter`、`includes`、`some`、`every` とスプレッド構文(...)などについて使い方を紹介します。
+<prof></prof>
+
+<toc id="/blogs/entry482/"></toc>
+
 ## 昔は配列もfor文でしか回せなかったけどたくさん処理方法が増えたよね
 昔（10年前くらい）はfor文でループさせるのが定石でしたね。<br>
 `length`で配列の長さを取得して、0から配列の数だけ回すという取得の仕方をしていました。

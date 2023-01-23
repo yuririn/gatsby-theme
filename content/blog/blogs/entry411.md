@@ -6,8 +6,13 @@ pagetype: blog
 cateId: web-developer
 tags: ["Gatsby","npm"]
 description: GatsbyJSでサイト構築中、iPhoneやAndoroidでもチェックしたいですよね？同じWiFi繋がっているのなら、browser syncではExternalアドレスが使えるはず！やり方を調べていたら、見つかったのでそのやり方をメモしておきます。
-lead: ["GatsbyJSでサイト構築中、iPhoneやAndoroidでもチェックしたいですよね？","同じWiFi繋がっているのなら、browser syncみたいにExternalアドレスが使えるはず！","やり方を調べていたら、見つかったのでそのやり方をメモしておきます。"]
 ---
+GatsbyJSでサイト構築中、iPhoneやAndoroidでもチェックしたいですよね？
+
+同じWiFi繋がっているのなら、browser syncみたいにExternalアドレスが使えるはず！","やり方を調べていたら、見つかったのでそのやり方をメモしておきます。
+
+<prof></prof>
+
 ## PCのIPを指定するだけ
 カンタンです。<br>
 PCのIPアドレスを指定するだけです。

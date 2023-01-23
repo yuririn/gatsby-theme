@@ -56,15 +56,21 @@ const GlobalStyle = createGlobalStyle`
           }
           .p-entryCard__heading {
              display: -webkit-box;
-            overflow: hidden;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
+            overflow: hidden;
           }
           .p-entryCard__footer {
-            display: -webkit-box;
-            overflow: hidden;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
+            ul {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+            }
+            ul::-webkit-scrollbar {
+                display: none;
+            }
           }
         }
         @media screen and (max-width: 769px) {
@@ -79,17 +85,17 @@ const GlobalStyle = createGlobalStyle`
             position: relative;
            border-bottom: 1px solid var(--border-color);
            .p-entryCard__heading {
-              font-size: 1.6rem;
+              font-size: 1.4rem;
             }
             .p-entryCard__img {
-              width: 33%;
+              width: 35%;
               border-radius: 5px;
               img {
                 border-radius: 8px;
               }
             }
             .p-entryCard__body {
-              width: 67%;
+              width: 65%;
               padding-left: 15px;
               box-sizing: border-box;
               p {
@@ -99,7 +105,7 @@ const GlobalStyle = createGlobalStyle`
               position: absolute;
               bottom: 10px;
               right: 0;
-              width: 67%;
+              width: 65%;
               padding-left: 15px;
             }
              .p-entryCard__date {

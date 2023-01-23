@@ -246,6 +246,7 @@ const Seo = ({lang, meta, data}) => {
           "@type": "ListItem",
           "position": 2,
           "item": {
+            "@type": "WebPage",
             "@id":  blogUrl,
             "name": data.title
           }

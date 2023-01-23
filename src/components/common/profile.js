@@ -2,8 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 import Img from "../img"
 import styled from "styled-components"
+import config from "../../../gatsby-config"
 
 const profile = () => {
+  const author = config.siteMetadata.author;
   return (
     <Profile className="l-container--md">
       <h2 className="c-heading--lg">管理人について</h2>
@@ -25,11 +27,10 @@ const profile = () => {
             <li>2022年7月セブ島で法人Lenz Technologies Inc. 設立（←イマココ）</li>
           </ul>
           <p>
-            {" "}
             好きな人といるだけでパワースポット！今は大好きな仲間と消耗しない働き方をするためにセブ島に法人設立中。
             13歳の頃から「好きなように生きて好きなように死ぬ」が人生のKPI。
             <br />
-            「楽しいか」、「かっこいいか」でやることを判断・取捨択一しています。好きなものは肉とハイボール。
+            「楽しいか」、「かっこいいか」でやることを判断・取捨択一しています。
           </p>
         </div>
         <p className="u-text-center">

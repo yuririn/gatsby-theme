@@ -7,10 +7,14 @@ pagetype: blog
 cateId: web-developer
 tags: ["CSS"]
 description: CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今今回は次世代の余白の考え方、margin-block、margin-inline、padding-block、padding-inlineを徹底解剖してみます！
-lead: ["CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今回は次世代の余白の考え方、margin-block、margin-inlineを徹底解剖してみます！"]
 faq: [['margin の数値が設定したものと違う','折りたたみマージンと言い、縦方向の余白は少ない方の値が相殺されます。','https://ginneko-atelier.com/blogs/entry335/'],['marginとpaddingの違いがわからない','要素と要素の距離をmargin、要素の内側の余白をpaddingといます。','https://ginneko-atelier.com/blogs/entry436/#%E3%82%8F%E3%82%8A%E3%81%A8%E9%9B%A3%E3%81%97%E3%81%84%E3%81%AE%E3%81%A7margin%E3%81%A8padding%E3%81%AE%E3%81%8A%E3%81%95%E3%82%89%E3%81%84'],['Webサイトに縦書きを実装したい！','CSSプロパティmargin-blockを使うと縦書きが実装できます。']]
 ---
----
+CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今回は次世代の余白の考え方、margin-block、margin-inlineを徹底解剖してみます！
+
+<prof></prof>
+
+<toc id="/blogs/entry436/"></toc>
+
 ## わりと難しいのでmarginとpaddingのおさらい
 まずは`margin`と`padding`のおさらいから。
 

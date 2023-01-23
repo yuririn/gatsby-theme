@@ -3,7 +3,7 @@ module.exports = {
     title: `セブ島ノマドエンジニアの日記【銀ねこアトリエ】`,
     author: {
       name: `かみーゆ`,
-      summary: `セブ島海外ノマドフロントエンドエンジニアです。`,
+      summary: `資金ゼロからフィリピンで起業した海外ノマドエンジニア。IT業界10年以上でテクニカルディレクター（技術責任者）・エンジニア講師・ブリッジSEを経てLenzTechnologies Inc.を設立し、代表を務める。CMS concreteCMSエバンジェリスト。テックブログ以外も「磨耗しない人生」や「海外ノマド」のライフスタイルについて発信。好きなものは肉とハイボール。`,
     },
     description: `セブ島に住む女性フロントエンドエンジニアのライフログ。フロント技術を中心とした「ウェブ制作に関するチップス」、「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。`,
     siteUrl: `https://ginneko-atelier.com`,
@@ -112,6 +112,15 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: "目次",
+              tight: false,
+              fromHeading: 2,
+              toHeading: 3
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 640,
@@ -140,6 +149,7 @@ module.exports = {
               maintainCase: false,
             },
           },
+
           {
             resolve: "gatsby-remark-external-links",
             options: {

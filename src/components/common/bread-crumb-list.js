@@ -7,7 +7,7 @@ const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
     <BreadCrumb>
       <ol>
         <li>
-          <Link to="/">ホーム</Link>
+          <Link to="/">銀ねこアトリエ</Link>
         </li>
 
         {type === `blog` ? (

@@ -6,8 +6,12 @@ pagetype: blog
 cateId: 'career'
 tags: ["concrete5"]
 description: 11/16（日）「広島でコンクリ」concrete5勉強会vol4開催しました。コンクリートファイブジャパンのCCOのKatzさんをお招きして、concrere5の基本操作から、カスタム事例、本家PortlandLabsのレポートを聞くこともできました。
-lead: ["11/16（日）「広島でコンクリ」concrete5勉強会vol4開催しました。","コンクリートファイブジャパンのCCOのKatzさんをお招きして、concrere5の基本操作から、カスタム事例、本家PortlandLabsのレポートを聞くこともできました。。"]
 ---
+11/16（日）「広島でコンクリ」concrete5勉強会vol4開催しました。
+
+コンクリートファイブジャパンのCCOのKatzさんをお招きして、concrere5の基本操作から、カスタム事例、本家PortlandLabsのレポートを聞くこともできました。
+
+<prof></prof>
 
 ## 『広島でコンクリ』concrete5勉強会無事終了しました
 今回、本当にプログラマ、インフラ屋さん、デザイナー等幅広い層の人が来て、言葉の選び方にも困ったと思います(笑)<br>

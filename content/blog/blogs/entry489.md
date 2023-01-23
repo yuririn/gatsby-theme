@@ -6,8 +6,12 @@ pagetype: blog
 cateId: web-developer
 tags: ["Gatsby","React"]
 description: GatsbyJSでは記事はMarkdownで書くのですが、関連記事のカードなどをカッコよく挿入したくなります。以前は無理やりHTMLで書いてましたが、すんごい面倒だったので独自のコンポーネント（WordPressでいうショートコードみたいなもの）を追加できるようにしました。今回は実装方法のご紹介です。
-lead: [" GatsbyJSでは記事はMarkdownで書くのですが、関連記事のカードなどをカッコよく挿入したくなります。以前は無理やりHTMLで書いてましたが、すんごい面倒だったので独自のコンポーネント（WordPressでいうショートコードみたいなもの）を追加できるようにしました。今回は実装方法のご紹介です。"]
 ---
+GatsbyJSでは記事はMarkdownで書くのですが、関連記事のカードなどをカッコよく挿入したくなります。以前は無理やりHTMLで書いてましたが、すんごい面倒だったので独自のコンポーネント（WordPressでいうショートコードみたいなもの）を追加できるようにしました。今回は実装方法のご紹介です。
+
+<prof></prof>
+
+
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
@@ -25,6 +29,7 @@ lead: [" GatsbyJSでは記事はMarkdownで書くのですが、関連記事の�
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. *記事内で独自タグ（コンポーネント）を使えるようにする*（←イマココ）
 
+<toc id="/blogs/entry489/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納してあります。
 
 今回は[original-component](https://github.com/yuririn/gatsby-blog/tree/original-component)にあります。

@@ -6,8 +6,11 @@ pagetype: blog
 cateId: 'cms'
 tags: ["WordPress"]
 description: WordPressのカスタムフィールドに登録した画像のリサイズの仕方についてメモっておきます。
-lead: ["WordPressのカスタムフィールドに登録した画像のリサイズの仕方についてメモっておきます。"]
 ---
+WordPressのカスタムフィールドに登録した画像のリサイズの仕方についてメモっておきます。
+
+<prof></prof>
+
 ## functions.phpにリサイズを登録
 画像のリサイズをできるようにするためにはまず、アイキャッチを有効にしなければいけません。
 

@@ -1,16 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import Img from "../img"
 import RelatedList from "./related-list"
 import { Sidebar } from "./../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
-import Prof from "./small-prof";
 
-const bar = ({ cateId, title, tags, slug }) => {
+const bar = ({ cateId, topic, tags, slug }) => {
+  const tableOfContent = topic.replace(/(<p>|<\/p>)/gi, "")
+
   return (
     <Sidebar>
-      <Prof></Prof>
       <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
       <section className="p-section">
         <h2 className="c-heading--lg--side">ジャンル</h2>
@@ -24,10 +24,18 @@ const bar = ({ cateId, title, tags, slug }) => {
           })}
         </ul>
       </section>
-      <div className="inner">
-        <h2 className="c-heading--lg">記事を探す</h2>
+        <section className="p-section">
+         <h2 className="c-heading--lg">記事を探す</h2>
         <Search></Search>
-
+      </section>
+      <div className="inner">
+          <h2 className="side-topic--heading">目次</h2>
+        <div
+        className="side-topic"
+          dangerouslySetInnerHTML={{
+          __html: tableOfContent,
+        }}
+        ></div>
         <ul className="side-banner">
           <li>
             <Link to="/about/">

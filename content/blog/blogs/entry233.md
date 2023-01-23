@@ -6,8 +6,9 @@ pagetype: blog
 cateId: 'web-developer'
 tags: [XAMPP]
 description: Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。
-lead: ["Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。"]
 ---
+Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。
+<toc id="/blogs/entry233/"></toc>
 ## まずは、XAMPPをローカルにインストール
 まずはXAMPP(XAMPP v5.6.14 (PHP 5.6.14) )をインストール。
 ※現時点で最新版。
@@ -87,3 +88,5 @@ Windows7で検証ずみです。
 私のWindows10環境下だとUser Accountにアクセスしようとするとエラーが出てここまでたどりつけませんでした。手動で設定をつついたらいけるんでしょうが、コマンド叩いたほうが早いので諦めました。
 
 おそらく8でも動くんではないかと思います…。
+
+<prof></prof>

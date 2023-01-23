@@ -9,12 +9,15 @@ tags: ["Shopify","git"]
 description: 最近 Shopify を触ることがあったので、環境構築の方法とテーマの作り方をメモします。このブログではShopify環境構築とベーシックテーマをインストールし修正できるまでを目標に記事にまとめます。
 lead: ["最近 Shopify を触ることがあったので、環境構築の方法とテーマの作り方をメモします。このブログではShopify環境構築とベーシックテーマをインストールし修正できるまでを目標に記事にまとめます。"]
 ---
-## 前提条件
+
+*前提条件*
+
 * VS Code をインストールしてある
 * GitHub アカウントを持っている
 * Git 操作ができる
 
 この記事ではMacのみの開発方法を紹介しています。
+
 
 <!-- ## Shopify パートナープログラムに参加し開発用アカウントを作成する
 Shopify の開発用アカウントを作成します。
@@ -128,3 +131,5 @@ shopify theme serve
 
 <!-- 参考サイト:<br>
 https://tokyofreelance.jp/shopify_theme_self_made/#outline__1_1 -->
+
+<prof></prof>

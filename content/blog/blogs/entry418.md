@@ -7,8 +7,12 @@ pagetype: blog
 cateId: web-developer
 tags: ["React","Gatsby"]
 description: Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。※GA4に対応しました。
-lead: ["Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。","※FBシェアのcanonilcal属性を修正しました。","※GA4に対応しました。","※ v4に対応しました。"]
 ---
+Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。
+
+<p><small>※FBシェアのcanonilcal属性を修正しました。<br>※GA4に対応しました。<br>※ v4に対応しました。</small></p>
+<prof></prof>
+
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
@@ -26,6 +30,7 @@ lead: ["Gatsby記事もこれで8記事目となりました！！表示が早�
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
+<toc id="/blogs/entry418/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[seo](https://github.com/yuririn/gatsby-blog/tree/seo)ブランチにあります。

@@ -80,22 +80,22 @@ const blogs = ({ pageContext, data, location }) => {
           </ol>
         </section>
         <Pagination num={page} current={current} type=""></Pagination>
-        <aside className="BigWhite">
-          <div className="l-container">
-            <section className="p-box--gray p-section u-text-center">
-              <h2 className="c-heading--lg">人気のタグ</h2>
-              <Tags />
-            </section>
-          </div>
-          <div className="l-container">
-            <section className="p-section u-text-center">
-              <h2 className="c-heading--lg">人気のジャンル</h2>
-              <Genre />
-            </section>
-          </div>
-          <Prof />
-        </aside>
       </div>
+      <aside className="BigWhite">
+        <div className="l-container">
+          <section className="p-box--gray p-section u-text-center">
+            <h2 className="c-heading--lg">人気のタグ</h2>
+            <Tags />
+          </section>
+        </div>
+        <div className="l-container">
+          <section className="p-section u-text-center">
+            <h2 className="c-heading--lg">人気のジャンル</h2>
+            <Genre />
+          </section>
+        </div>
+        <Prof />
+      </aside>
     </Layout>
   )
 }

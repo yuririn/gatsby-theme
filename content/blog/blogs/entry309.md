@@ -6,8 +6,11 @@ pagetype: blog
 cateId: 'career'
 tags: ["Web Touch Meeting","XD"]
 description: 待望の Web Touch Meeting が帰ってきました。しかも大好きな XD スペシャルということで、LT すべく乗り込みました。ちなみに今回はSEOについてLTさせていただきました。
-lead: ["待望の Web Touch Meeting が帰ってきました。しかも大好きな XD スペシャルということで、LT すべく乗り込みました。ちなみに今回はSEOについてLTさせていただきました。"]
 ---
+待望の Web Touch Meeting が帰ってきました。しかも大好きな XD スペシャルということで、LT すべく乗り込みました。ちなみに今回はSEOについてLTさせていただきました。
+
+<prof></prof>
+
 ## Web Touch Meeting（ウェブタッチミーチング） とは？
 通称 WTM / ウェブタッチミーティングは、Web周りの知識をみんなでシェアしようと iai の藤本さんが始めたIT系勉強会です。
 Webの触り部分を勉強するということで、
@@ -16,6 +19,8 @@ Webの触り部分を勉強するということで、
 おさわり。。。
 
 一昨年、100回をめどに一旦区切りをつけました。
+
+<toc id="/blogs/entry309/"></toc>
 
 [Web Touch Meeting（ウェブタッチミーチング）](http://www.webtouchmeeting.com/)
 

@@ -6,8 +6,8 @@ export const Edit = styled.section`
      @media screen and (max-width: 1117px) {
         max-width: 750px;
         overflow-x: auto;
-        margin-right: -30px;
-        padding-right: 30px;
+        margin-right: -15px;
+        padding-right: 15px;
      }
   }
   .p-faq__item {

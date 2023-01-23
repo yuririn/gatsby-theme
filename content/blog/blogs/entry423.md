@@ -6,8 +6,12 @@ pagetype: blog
 cateId: web-developer
 tags: ["JavaScript","npm"]
 description: npm-scriptで画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。
-lead: ["npm-scriptで使って画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。"]
 ---
+npm-scriptで使って画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。
+<prof></prof>
+
+<toc id="/blogs/entry413/"></toc>
+
 ## npm-scriptでタスクを作って今までのプロジェクトのgulpやlaravel mixに差し込みたい
 
 私はフロント案件開発のタスクランナーとして昔gulp、現在はlaravel mix（webpack）を使っています。

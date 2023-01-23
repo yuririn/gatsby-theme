@@ -6,8 +6,16 @@ pagetype: blog
 cateId: web-developer
 tags: ["WordPress","React",'ブロックエディタ']
 description: インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！インスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示。サンプルコードあり。
-lead: ["インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！","この記事ではその実装方法をご紹介します。","事前準備としてインスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示しています。","サンプルコードあります。"]
 ---
+インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！
+
+この記事ではその実装方法をご紹介します。
+
+事前準備としてインスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示しています。<br>サンプルコードあります。
+
+<prof></prof>
+
+
 ## 事前準備
 このブロックを作る前にやっておくことがあります。
 
@@ -21,6 +29,8 @@ lead: ["インスタ一覧出力用のブロックを @wordpress/scripts（React
 自分のマシーンでのWordPress環境はLocalなどのお手軽ツールでもいいのですが、Dockerでも作れます。
 
 <card id="/blogs/entry480/"></card>
+
+<toc id="/blogs/entry490/"></toc>
 
 ## インスタ一覧をブロックエディターで追加編集できるプラグインを作る
 今回はプラグインで作ります！

@@ -1,9 +1,30 @@
 import React from "react"
 import styled from "styled-components"
 import { Edit } from "./../../styles/blog-styles/edit"
+import { useStaticQuery, graphql } from "gatsby"
 
-const Toc = props => {
-  let list = props.data.replace(/(<p>|<\/p>)/gi, "")
+const Toc = data => {
+  const { allMarkdownRemark } = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              tableOfContents( maxDepth: 3)
+            }
+          }
+        }
+      }
+    `
+  )
+  let tableOfContent = allMarkdownRemark.edges.filter(
+    item => item.node.fields.slug === data.id
+  )
+  tableOfContent = tableOfContent[0].node.tableOfContents;
+  tableOfContent = tableOfContent.replace(/(<p>|<\/p>)/gi, "")
 
   return (
     <Mokuji>
@@ -11,10 +32,11 @@ const Toc = props => {
       <label className="c-content__heading" htmlFor="mokuji">
         目次
       </label>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: list,
-          }}
+      <div
+        className="list"
+        dangerouslySetInnerHTML={{
+        __html: tableOfContent,
+        }}
         ></div>
     </Mokuji>
   )
@@ -28,40 +50,46 @@ const Mokuji = styled.div`
     background: var(--pale-gray);
     position: relative;
     overflow: hidden;
-		margin-bottom: 50px;
-    ul {
-      a {
-        color: var(--color-link);
-        &:hover {
-          text-decoration: none;
+    margin-top: 24px;
+    margin-bottom: 50px;
+    .list{
+        ul {
+            counter-reset: cnt;
+            margin-bottom: 0;
         }
-      }
-      counter-reset: num;
-      li {
-        line-height:1.8;
-        padding-left: 3em;
-        position: relative;
-        margin-bottom: 0.5em;
-        &:first-child {
-          margin-top: 0.5em;
-        }
+        li {
+            position: relative;
+            padding-left: 20px;
 
-        &:before {
-          counter-increment: num;
-          content: counters(num, " - ");
-          position: absolute;
-          left: 0;
-          text-align: center;
-          width: 3em;
-          padding: 0 5px;
-          display: inline-block;
-          font-weight: 700;
-          color: var(--color-blue);
+            li {
+                &:first-child {
+                    margin-top: 5px;
+                }
+                padding-left: 40px;
+                margin-bottom: 5px;
+            }
+
+            &::before {
+                counter-increment: cnt;
+                content: counters(cnt, " - ");
+                transform: rotate(0);
+                border: none;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+                top: 0;
+                white-space: nowrap;
+                color: var(--blue);
+            }
         }
-         li {
-           padding-left: 4em;
+        a {
+            color: var(--color-link);
+
+            &:hover {
+                text-decoration: none;
+            }
+
         }
-      }
     }
 	.mokuji {
 		display: none;
@@ -90,8 +118,8 @@ const Mokuji = styled.div`
 		& +.c-content__heading {
 		position: relative;
 		display: block;
-    margin-bottom: 5px;
-    font-weight:bold;
+        margin-bottom: 5px;
+        font-weight:bold;
 
 		& + *{
 			max-height: 200vh;
@@ -114,15 +142,15 @@ const Mokuji = styled.div`
 		transform: rotate(
 		0deg
 		);
-    transition: .3s;
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 1px;
-    top: 10px;
-    right: 0;
-    background: var(--color-blue);
-    display: block;
-}
+        transition: .3s;
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 1px;
+        top: 10px;
+        right: 0;
+        background: var(--color-blue);
+        display: block;
+    }
 }
 `

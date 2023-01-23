@@ -7,8 +7,17 @@ pagetype: blog
 cateId: cms
 tags: ["WordPress","React",'ブロックエディタ']
 description: WordPressのテーマに組み込むブロックを作ってみました。今回作ったのはGutenberg用の一覧出力ブロックです。ブロック用に環境構築し、WordPress管理画面（エディター側）は@wordpress/scriptsを使ってReactでREST APIでカテゴリーを取得したりしながら構築、フロント部分はPHPで出力してみました。
-lead: ["WordPressのテーマに組み込むブロックを作ってみました。","今回作ったのはGutenberg用の一覧出力ブロックです。ブロック用に環境構築し、WordPress管理画面（エディター側）は@wordpress/scriptsを使ってReactでREST APIでカテゴリーを取得したりしながら構築、フロント部分はPHPで出力してみました。","とーっても長いので目次を利用してすっ飛ばして読んでください。"]
 ---
+WordPressのテーマに組み込むブロックを作ってみました。
+
+今回作ったのはGutenberg用の一覧出力ブロックです。ブロック用に環境構築し、WordPress管理画面（エディター側）は@wordpress/scriptsを使ってReactでREST APIでカテゴリーを取得したりしながら構築、フロント部分はPHPで出力してみました。
+
+とーっても長いので目次を利用してすっ飛ばして読んでください。
+
+<prof></prof>
+
+<toc id="/blogs/entry488/"></toc>
+
 ## Gutenbergのブロックをテーマに組み込みます
 たくさん探しましたが、巷では紹介されているのがプラグインとしてカスタムブロックを紹介されていたので今回はテーマに組み込むためのブロックとして紹介します。
 

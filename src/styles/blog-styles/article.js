@@ -8,6 +8,123 @@ export const Article = styled.div`
   @media screen and (min-width: 1020px) {
     width: calc(100% - 300px);
   }
+    .profile {
+        border: 6px solid var(--pale-gray);
+        padding: 15px;
+        position: relative;
+        border-radius: 15px;
+        margin-bottom: 30px;
+
+        @media screen and (min-width: 768px) {
+            margin: 24px 0 24px;
+            padding: 20px 0 0 160px;
+        }
+
+        .title {
+            position: absolute;
+            background: var(--background);
+            top: -25px;
+            padding: 10px 15px;
+            left: 50%;
+            white-space: nowrap;
+            font-weight: 700;
+            transform: translateX(-50%);
+            @media screen and (min-width: 768px) {
+                left: 20px;
+                transform: translateX(0);
+            }//media query
+        }
+
+        .prof__img__sm {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 25px auto 15px;
+            overflow: hidden;
+            display: block;
+
+            img {
+                overflow: hidden;
+                border-radius: 50%;
+            }
+            @media screen and (min-width: 768px) {
+                position: absolute;
+                left: 24px;
+            }
+        }
+
+        .name {
+            margin: 10px 0 5px;
+            text-align: center;
+            font-size: 1.5rem;
+
+            @media screen and (min-width: 768px) {
+                margin: 10px 15px 5px;
+                font-size: 1.6rem;
+                text-align: left;
+            }
+
+            font-weight: 700;
+        }
+
+        .footer {
+            text-align: center;
+            margin: 10px 0 5px;
+            @media screen and (min-width: 768px) {
+                 margin: 0 15px 5px;
+                 text-align: right;
+                 br {
+                    display: none;
+                 }
+             }
+
+        }
+
+        .footer a {
+            margin: 0 10px 0px 10px;
+            display: inline-block;
+            color: var(--color-blue);
+        }
+
+        .message {
+            margin: 10px 0 5px;
+            line-height: 1.6;
+            font-size: 1.4rem;
+
+            @media screen and (min-width: 768px) {
+                margin: 0 15px 5px;
+            }
+        }
+
+        .seemore {
+            margin: 15px 0 0;
+
+            @media screen and (min-width: 768px) {
+                margin: 5px 15px 10px;
+            }
+
+            text-align: right;
+
+            a {
+                text-decoration: none;
+                color: var(--color-link);
+
+                &:hover {
+                    transform: translateX(5px);
+                }
+
+                letter-spacing: 0.2em;
+                transition: 0.3s;
+                font-size: 0.9em;
+                display: inline-block;
+
+                &:after {
+                    font-size: 1.4rem;
+                    content: ">";
+                }
+            }
+        }
+    }
 
   .c-btn--donation {
       background: var(--pale-gray);

@@ -6,13 +6,18 @@ pagetype: blog
 cateId: 'cms'
 tags: ["WordPress"]
 description: 自作のプラグイの更新を管理したい！そんな方にはPlugin Update Checkerが便利です。今回はその使い方をまとめました。
-lead: ["自作のプラグイの更新を管理したい！そんな方にはPlugin Update Checkerが便利です。今回はその使い方をまとめました。"]
 ---
+自作のプラグイの更新を管理したい！そんな方にはPlugin Update Checkerが便利です。今回はその使い方をまとめました。
+
+<prof></prof>
+
 *この記事の対象者*
 
 * 自作したプラグインの更新を一限管理したい
 * GitHubでプラグインを管理したい
 * 自作したプラグインを自動更新できるようにしたい
+
+<toc id="/blogs/entry466/"></toc>
 
 <msg txt="GitHubにリポジトリに自作したWordPressプラグインの更新を通知させたり自動更新可能にする方法を紹介します。"></msg>
 

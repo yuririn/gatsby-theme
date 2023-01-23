@@ -7,8 +7,14 @@ pagetype: blog
 cateId: web-developer
 tags: ["React","Gatsby"]
 description: 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。
-lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。","ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。","※ 2021年12月v4バージョンアップに伴いリライトしました。"]
 ---
+記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。
+
+ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。
+
+<p><small>※ 2021年12月v4バージョンアップに伴いリライトしました。</small></p>
+<prof></prof>
+
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
@@ -26,6 +32,7 @@ lead: ["記事に目次をつけたかったのでプラグインgatsby-remark-a
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
+<toc id="/blogs/entry410/"></toc>
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。

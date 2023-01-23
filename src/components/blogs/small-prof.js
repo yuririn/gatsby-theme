@@ -2,6 +2,7 @@ import React from "react"
 import Img from "../img"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import config from "../../../gatsby-config"
 import {
   faTwitter,
   faInstagram,
@@ -10,16 +11,21 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 
 const smallProf = () => {
+  const author = config.siteMetadata.author;
   return (
     <div className="profile">
       <span className="title">この記事を書いた人</span>
       <Img source="common/camille-pic.jpg" className="prof__img__sm"></Img>
-      <p className="name">かみーゆ/フロントエンドエンジニア</p>
-      <p className="sns">
+      <p className="name">{author.name}/フロントエンドエンジニア</p>
+
+      <p className="message">{ author.summary }
+      </p>
+      <p class="footer">
         <Link
           to="https://twitter.com/LirioY"
           target="_blank"
           rel="noopener nofollow"
+          title="Twitter"
         >
           <FontAwesomeIcon icon={faTwitter} />
         </Link>
@@ -27,6 +33,7 @@ const smallProf = () => {
           to="https://www.instagram.com/yurico.k"
           target="_blank"
           rel="noopener nofollow"
+          title="Instagram"
         >
           <FontAwesomeIcon icon={faInstagram} />
         </Link>
@@ -34,6 +41,7 @@ const smallProf = () => {
           to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
           target="_blank"
           rel="noopener nofollow"
+          title="YouTube"
         >
           <FontAwesomeIcon icon={faYoutube} />
         </Link>
@@ -41,15 +49,11 @@ const smallProf = () => {
           to="https://www2.slideshare.net/yurikamimori"
           target="_blank"
           rel="noopener nofollow"
+          title="SlideShare"
         >
           <FontAwesomeIcon icon={faSlideshare} />
         </Link>
-      </p>
-
-      <p className="message">
-        セブ島在住の気ままな海外ノマドエンジニア。IT業界10年以上。テクニカルディレクター（技術責任者）・エンジニア講師・ブリッジSEを経て今に至る。CMS concreteCMSエバンジェリスト。テックブログ以外も「磨耗しない人生の選択」や「海外生活」のライフスタイルについて発信。好きなものは肉とハイボール。
-      </p>
-      <p className="seemore">
+        <br></br>
         <Link to="/about/">Read More</Link>
       </p>
     </div>

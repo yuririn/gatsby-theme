@@ -7,8 +7,10 @@ pagetype: blog
 cateId: 'web-developer'
 tags: ["JavaScript"]
 description: jQueryなしで使える jsライブラリの MoveTo の使い方をご紹介します。別ページに遷移したときの対処法もご紹介。
-lead: ["みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。別ページに遷移したときの対処法もご紹介。"]
 ---
+みなさん、スムーズスクロールは好きですか？最近 jQueryなしで使える jsライブラリの MoveTo がお気に入りです。ということで、今日はMoveTo の使い方をご紹介します。別ページに遷移したときの対処法もご紹介。
+
+<toc id="/blogs/entry286/"></toc>
 
 ## GitHub からソースを拾ってこよう
 以下サイトよりダウンロードします。
@@ -98,3 +100,4 @@ window.addEventListener('load', () => {
 いかがでしたか？<br>
 jQueryなしでわりかしカンタンに設定できるしとにかく軽いのは嬉しいです。ぜひ使ってみてください。
 
+<prof></prof>

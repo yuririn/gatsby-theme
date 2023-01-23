@@ -32,18 +32,19 @@ export const CommonStyle = createGlobalStyle`
     max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 30px;
+
+    padding-left: 15px;
+        padding-right: 15px;
+    @media only screen and (min-width: 769px) {
+        padding-left: 30px;
     padding-right: 30px;
+
+    }
   }
   .l-container--md {
     max-width: 700px;
   }
-  @media only screen and (max-width: 769px) {
-    .l-container, .l-container--md {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-  }
+
 
   .l-main_contents {
     margin-top: 0;

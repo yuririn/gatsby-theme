@@ -1,23 +1,25 @@
 ---
 title: WordPress で自作した機能を plugin 化してまとめると幸せになれた
 date: 2018-08-14
+modifieddate: 2023-01-22
 hero: thumbnail/2015/entry235.png
 pagetype: blog
 cateId: cms
 tags: ["WordPress"]
 description: WordPress のfunctions.php に書いていく、自作した機能をプラグインごとにまとめたらめちゃめちゃ便利だったのでその方法をメモっておきます。
-lead: ["WordPress のfunctions.php に書いていく、自作した機能をプラグインごとにまとめたらめちゃめちゃ便利だったのでその方法をメモっておきます。"]
 ---
-## ねえねえ知ってる？ WordPress の自作した機能は整理しておかないと、めちゃめちゃカオスになるんだよ
+WordPress のfunctions.php に書いていく、自作した機能をプラグインごとにまとめたらめちゃめちゃ便利だったのでその方法をメモっておきます。
+
+<toc id="/blogs/entry283/"></toc>
+
+## WordPress の自作した機能は整理しておかないと、めちゃめちゃカオスになる
 WordPress で自作した機能はまとめておかないとめちゃめちゃカオスになります泣（経験者は語る）
 
 自作する機能が増えてくると、ついつい functions.php 内が長ーーいコードになってしまい、後から修正するときに何をどこに書いたか忘れてしまうということもあると思います。コメント入れていますが、どういう関数に書いたか、どんな機能を追加したかも忘れてしまう始末。
 
-**昨日食べたご飯もなにだったか忘れる**のに覚えてられるかーーーー！
-
 その対策として、私は今まで functions.php に機能ごとに分けてインクルードしていました。
 
-```php
+```php:title=functions.php
 // ショートコード----------------------------------------------
 require get_template_directory() . '/functions/shortcode.php';
 ```
@@ -43,7 +45,7 @@ require get_template_directory() . '/functions/shortcode.php';
 wp-content/plugins 内にファイルを突っ込むだけです。
 例えば sample.php といったファイルに機能を書くなら、中身はこんな感じです。
 
-```php
+```php:title=sample.php
 <?php
 /**
 * @package sample
@@ -81,7 +83,7 @@ seo_set/
 ```
 seo_set.php には以下のようなコードで他のファイル類を読み込みます。
 
-```php
+```php:title=seo_set.php
 <?php
 /**
 * @package seo_set
@@ -113,7 +115,7 @@ require_once(SEO__PLUGIN_DIR . 'ogp.php');
 
 よくキュー状態とか言いますよね？会社で複数人で一つのプリンターとか使った経験がある人ならわかるかも。
 
-```php
+```php:title=PHP
 // CSS/JSの読み込み
 function custom_enqueue($hook_suffix)
 {
@@ -136,4 +138,4 @@ admin_enqueue_scripts の用法もっと詳しく載ってないかなと思い�
 
 今回はプラグイン化の方法のみのご紹介です。
 
-中身は頑張って書いてくださいね。えへっ
+<prof></prof>

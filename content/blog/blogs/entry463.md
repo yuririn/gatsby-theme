@@ -7,15 +7,21 @@ pagetype: blog
 cateId: 'web-developer'
 tags: ["JavaScript"]
 description: jQueryなし！バニラJS（プレーンなJavaScript）のカウントダウンタイマーを作ってみたのでそのコードを紹介します。日、時間、分、秒を取得する方法やsetTimeout&clearTimeoutについて解説しています。サンプルコードもあるので参考にしてください。
-lead: ["jQueryなし！バニラJS（プレーンなJavaScript）のカウントダウンタイマーを作ってみたのでそのコードを紹介します。","日、時間、分、秒を取得する方法やsetTimeout&clearTimeoutについて解説しています。","サンプルコードもあるので参考にしてください。"]
 ---
+jQueryなし！バニラJS（プレーンなJavaScript）のカウントダウンタイマーを作ってみたのでそのコードを紹介します。
+
+日、時間、分、秒を取得する方法やsetTimeout&clearTimeoutについて解説しています。<br>サンプルコードもあるので参考にしてください。
+<prof></prof>
+
 *この記事の対象者*
+
 * JavaScriptが少しわかる
 * Webコーディング・プログラミング勉強中
 * jQuery使いたくない
 
-<msg txt="ライブラリーいらず！<br>バニラJS（プレーンなJavaScript）で実装するから、テキストエディターだけあれば実装できます！"></msg>
+<toc id="/blogs/entry453/"></toc>
 
+<msg txt="ライブラリーいらず！<br>バニラJS（プレーンなJavaScript）で実装するから、テキストエディターだけあれば実装できます！"></msg>
 
 ## new Date()の使い方
 

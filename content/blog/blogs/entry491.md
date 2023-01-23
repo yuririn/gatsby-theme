@@ -6,9 +6,10 @@ pagetype: blog
 cateId: web-developer
 tags: ["React","JavaScript"]
 description: 先日 スプレッドシートをJSONデータ化し、React 側で受け取ってページを量産しました。axios、react-router-domなどの使い方をご紹介します。
-lead: ["先日 スプレッドシートをJSONデータ化し、React 側で受け取ってページを量産しました。axios、react-router-domなどの使い方をご紹介します。"]
 ---
-## 前提条件
+先日 スプレッドシートをJSONデータ化し、React 側で受け取ってページを量産しました。axios、react-router-domなどの使い方をご紹介します。
+
+
 前提条件は以下です。
 * アイテム一覧のようなページを一度に量産する
 * ページ情報のスプシが準備できる
@@ -16,6 +17,7 @@ lead: ["先日 スプレッドシートをJSONデータ化し、React 側で受�
 * npmコマンドが使える
 * JSが分かりある程度Reactを使ったことがある
 
+<toc id="/blogs/entry491/"></toc>
 ## スプシの準備
 先にスプシを準備します。
 
@@ -623,3 +625,4 @@ export default NotFound;
 この記事が皆さんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+<prof></prof>

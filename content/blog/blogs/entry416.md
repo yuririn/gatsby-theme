@@ -7,8 +7,10 @@ pagetype: blog
 cateId: web-developer
 tags: ["React","Gatsby"]
 description: GatsbyでプライバシーポリシーやAboutページなど記事一覧のループと分ける方法をご紹介します。
-lead: ["GatsbyでプライバシーポリシーやAboutページなど記事一覧のループと分ける方法をご紹介します。"]
 ---
+GatsbyでプライバシーポリシーやAboutページなど記事一覧のループと分ける方法をご紹介します。
+<prof></prof>
+
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
@@ -26,6 +28,7 @@ lead: ["GatsbyでプライバシーポリシーやAboutページなど記事一�
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
+<toc id="/blogs/entry416/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[other](https://github.com/yuririn/gatsby-blog/tree/other)ブランチにあります。

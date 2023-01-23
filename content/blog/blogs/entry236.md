@@ -7,10 +7,20 @@ pagetype: blog
 cateId: 'cms'
 tags: ["concrete5"]
 description: concrete5（concreteCMS）の外部フォームを使ってフォーム作りました。2022年にAjax対応する記事執筆に伴い、大幅にリライトと加筆しました。フォームヘルパーやメールヘルパーの詳しい使い方も紹介しています。
-lead: ["concrete5（concreteCMS）の外部フォームを使ってフォーム作りました。","2022年にAjax対応する記事執筆に伴い、大幅にリライトと加筆しました。フォームヘルパーやメールヘルパーの詳しい使い方も紹介しています。"]
 ---
-※この記事ではconcrete5と表現してますが、現在concreteCMSに名前が変わりました。<br>
-※ver8のみで検証済み。
+concrete5（concreteCMS）の外部フォームを使ってフォーム作りました。
+
+2022年にAjax対応する記事執筆に伴い、大幅にリライトと加筆しました。フォームヘルパーやメールヘルパーの詳しい使い方も紹介しています。
+<p>
+  <small>
+    ※この記事ではconcrete5と表現してますが、現在concreteCMSに名前が変わりました。<br>
+    ※ver8のみで検証済み。
+  </small>
+</p>
+
+<prof></prof>
+
+<toc id="/blogs/entry236/"></toc>
 
 ## 外部フォームとは？
 concrete5には外部フォームというブロックがあります。<br>

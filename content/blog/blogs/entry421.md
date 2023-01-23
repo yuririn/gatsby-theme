@@ -7,8 +7,13 @@ pagetype: blog
 cateId: web-developer
 tags: ["React","Gatsby"]
 description: Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方も解説します！※ v4対応済み
-lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方も解説します！","※ v4対応済み"]
 ---
+Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方も解説します！
+
+<p><small>※ v4対応済み</small></p>
+
+<prof></prof>
+
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
@@ -26,6 +31,7 @@ lead: ["Gatsbyでオリジナルの個別のページを作ります。CSSモジ
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
+<toc id="/blogs/entry421/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回に関しては、ブランチは用意してません。ご了承ください。

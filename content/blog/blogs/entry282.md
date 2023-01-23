@@ -6,8 +6,10 @@ pagetype: blog
 cateId: cms
 tags: ["concrete5"]
 description: concrete5 でページリストブロックの検索結果をカスタマイズしなくてないけなくなったのでそのやり方をメモします。
-lead: ["concrete5 でページリストブロックの検索結果をカスタマイズしなくてないけなくなったのでそのやり方をメモします。"]
 ---
+concrete5 でページリストブロックの検索結果をカスタマイズしなくてないけなくなったのでそのやり方をメモします。
+<toc id="/blogs/entry282/"></toc>
+
 ## デフォルトでも十分優秀なページリストブロック
 ページリストブロックはデフォルトでもとても優秀なブロックで、記事の一覧を出力するのによく重宝します。
 
@@ -76,5 +78,8 @@ $choumei_set = AttributeSet::getByHandle('[セット名]')->getAttributeKeys();
 実際に私が実装したのは複数の属性を作って絞り込んだのでもっと複雑でしたが、このくらいミニマムなものを改造してチャレンジすると敷居が低くて良いと思います。
 もちろん、いろんな種類の属性でできます！
 以下公式サイトのURLを見ながら、ぜひやってみるといいと思います。
+
+<prof></prof>
+
 ### 参考サイト
 [PageList オブジェクトで検索・ソートを行う](https://concrete5-japan.org/help/5-7/developer/working-with-pages/searching-and-sorting-with-the-pagelist-object/)

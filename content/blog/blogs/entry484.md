@@ -6,8 +6,13 @@ pagetype: blog
 cateId: web-developer
 tags: ["React","Gatsby"]
 description: Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。今回はプラグイン・styled-componentsを使って装飾しつつコンポーネントを作って読み込む方法をご紹介します。※ v4バージョンアップに伴い追加した記事です。v4以外ではうまく動かない可能性があります。
-lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。今回はプラグイン・styled-componentsを使って装飾しつつコンポーネントを作って読み込む方法をご紹介します。","※ v4バージョンアップに伴い追加した記事です。v4以外ではうまく動かない可能性があります。"]
 ---
+Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。今回はプラグイン・styled-componentsを使って装飾しつつコンポーネントを作って読み込む方法をご紹介します。
+
+<p><small>※ v4バージョンアップに伴い追加した記事です。v4以外ではうまく動かない可能性があります。</small></p>
+<prof></prof>
+
+
 ## 今までのGatsbyの記事と注意点
 現在ここまで記載しています。<br>制作するまでを目標にUPしていくので順を追ったらGatsbyサイトが作れると思います。
 
@@ -23,6 +28,8 @@ lead: ["Gatsby Starter Blogを改造してヘッダーとフッターの追加�
 9. [関連記事一覧出力](/blogs/entry430/)
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
+
+<toc id="/blogs/entry484/"></toc>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納しています。
 

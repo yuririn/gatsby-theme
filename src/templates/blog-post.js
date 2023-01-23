@@ -17,7 +17,7 @@ import Category from "../components/blogs/category"
 import TagsList from "../components/blogs/tags-blog"
 import Description from "../components/blogs/descriotion"
 import Sns from "../components/blogs/sns"
-// import Prof from "../components/blogs/small-prof"
+import Prof from "../components/blogs/small-prof"
 import Toc from "../components/blogs/topic"
 // import FovoriteList from "../components/common/favorites"
 import Sidebar from "../components/blogs/sidebar"
@@ -37,6 +37,8 @@ const renderAst = new rehypeReact({
     card: RelativeCard,
     msg: Msg,
     faq: Faq,
+    prof: Prof,
+    toc: Toc
   },
 }).Compiler
 
@@ -128,7 +130,6 @@ const BlogPostTemplate = ({ data, location }) => {
               </dl>
               <TagsList tags={post.frontmatter.tags} />
               <Description texts={post.frontmatter.lead} />
-              <Toc data={data.markdownRemark.tableOfContents} />
             </header>
             <Edit>
               <section itemProp="articleBody">
@@ -174,6 +175,7 @@ const BlogPostTemplate = ({ data, location }) => {
           cateId={post.frontmatter.cateId}
           title={post.frontmatter.title}
           tags={post.frontmatter.tags}
+          topic={post.tableOfContents}
         />
         <aside className="BigWhite">
           <div className="l-container">
@@ -226,7 +228,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       htmlAst
-      tableOfContents(maxDepth: 3)
+      tableOfContents
       fields {
         slug
       }
