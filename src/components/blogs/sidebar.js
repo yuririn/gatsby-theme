@@ -29,7 +29,7 @@ const bar = ({ cateId, topic, tags, slug }) => {
         <Search></Search>
       </section>
       <div className="inner">
-          <h2 className="side-topic--heading">目次</h2>
+          <h2 className="side-topic--heading">この記事のサマリー</h2>
         <div
         className="side-topic"
           dangerouslySetInnerHTML={{

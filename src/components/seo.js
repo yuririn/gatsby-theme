@@ -329,6 +329,8 @@ const Seo = ({lang, meta, data}) => {
     >
       {noindex.includes(data.location.pathname)&&<meta content="noindex" name="robots"/>}
       <link rel="canonical" href={canonicalUrl}></link>
+      <link rel="preload" href="/fonts/Raleway-Bold.ttf" as="font" type="font/ttf" crossorigin></link>
+      <link rel="preload" href="/fonts/Raleway-Light.ttf" as="font" type="font/ttf" crossorigin></link>
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>

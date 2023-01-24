@@ -16,6 +16,7 @@ export const Sidebar = styled.div`
     }
   }
   .side-topic {
+    border: var(--color-blue) 2px solid;
     margin-bottom: 34px;
     max-height: 300px;
     overflow:auto;
@@ -24,7 +25,18 @@ export const Sidebar = styled.div`
         display:block;
     }
     &--heading {
+        text-align: left;
         display:none;
+        border: var(--color-blue) 2px solid;
+        border-bottom: none;
+        font-size: 1.4rem;
+
+        &::after {
+            content: none;
+        }
+
+        margin-bottom: 0;
+        padding: 8px 16px;
         @media screen and (min-width: 768px) {
             display:block;
         }
@@ -53,7 +65,7 @@ export const Sidebar = styled.div`
             background: var(--pale-gray);
             padding: 8px 16px;
             display:block;
-            color: var(--font-color);
+                color: var(--color-link);
             text-decoration: none;
             margin-bottom: 1px;
             @media screen and (min-width: 768px) {

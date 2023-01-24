@@ -49,15 +49,15 @@ export const BaseStyle = createGlobalStyle`
   }
     @font-face {
     font-family: 'Raleway';
-    src: url('/fonts/Raleway-Light.ttf') format('truetype');
     display: swap;
+    src: url('/fonts/Raleway-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     }
     @font-face {
     font-family: 'Raleway';
-    src: url('/fonts/Raleway-Bold.ttf') format('truetype');
     display: swap;
+    src: url('/fonts/Raleway-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     }
