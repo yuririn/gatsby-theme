@@ -62,7 +62,7 @@ description: いつも同じハンバーガーメニューばかりじゃ飽き�
 
 JSでクリックでクラスをつけたり外したりし、CSSでアニメーションさせます。
 
-![王道のハンバーガーメニュー](./images/2022/04/entry496-02.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-02.webp" width="468" height="136" alt="王道のハンバーガーメニュー" decoding="async" loading="lazy"></figure>
 
 ボタンのHTMLのコードはこれだけです。
 
@@ -140,7 +140,7 @@ $('.c-nav-btn').on("click", function(){
 ### 王道のハンバーガーメニュー180°回転プラス
 更に親要素の回転を増やして勢いをつけます。
 
-![王道のハンバーガーメニュー180°回転プラス](./images/2022/04/entry496-04.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-04.webp" width="468" height="136" alt="王道のハンバーガーメニュー180°回転プラス" decoding="async" loading="lazy"></figure>
 
 先程のコードに、少しコードを足します。
 
@@ -159,7 +159,7 @@ $('.c-nav-btn').on("click", function(){
 ### コロコロ転がるハンバーガー
 王道のハンバーガーメニュー180°回転プラスにアニメーションのタイミングを更にずらしてアレンジします。
 
-![コロコロ転がるハンバーガー](./images/2022/04/entry496-07.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-07.webp" width="468" height="136" alt="コロコロ転がるハンバーガー" decoding="async" loading="lazy"></figure>
 ```css:title=css
 .c-nav-btn {
   overflow: hidden;
@@ -200,7 +200,7 @@ $('.c-nav-btn').on("click", function(){
 ### ちょっと斜めったハンバーガーメニュー
 `transform`の`skew`を使って少し斜めったメニューボタンにします。
 
-![ちょっと斜めったハンバーガーメニュー](./images/2022/04/entry496-06.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-06.webp" width="468" height="136" alt="ちょっと斜めったハンバーガーメニュー" decoding="async" loading="lazy"></figure>
 
 skewとは斜めとか歪めるという意味です。
 
@@ -219,7 +219,7 @@ skewとは斜めとか歪めるという意味です。
 ### 棒の真ん中に一度集まって取り消しマークになる
 `animation`を使って、ボタンをクリックすると三本線が中央に集まり、真ん中でばってんになるアニメーションを実現してみました。
 
-![棒の真ん中で折れて取り消しマークになる](./images/2022/04/entry496-05.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-05.webp" width="468" height="136" alt="棒の真ん中で折れて取り消しマークになる" decoding="async" loading="lazy"></figure>
 
 ```html:title=HTML
 <button class="c-nav-btn" type="button"></button>
@@ -342,7 +342,7 @@ navBtn.addEventListener("click", function(){
 
 なので、本来ラベルや枠線で囲ってあげるのが親切です。
 
-![アクセシビリティ抜群ハンバーガーメニュー](./images/2022/04/entry496-08.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-08.webp" width="468" height="136" alt="アクセシビリティ抜群ハンバーガーメニュー" decoding="async" loading="lazy"></figure>
 
 ラベルを追加し、
 ```html:title=HTML
@@ -400,7 +400,7 @@ navBtn.addEventListener("click", function(){
 
 バックグラウンドは何重にも重ねることができるのでlinear-gradientを使ってドネルメニューを作ってみます。
 
-![linear-gradientで作るドネルメニュー](./images/2022/04/entry496-10.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-10.webp" width="468" height="136" alt="linear-gradientで作るドネルメニュー" decoding="async" loading="lazy"></figure>
 
 ```css:title=css
 .c-nav-btn::before {
@@ -447,7 +447,7 @@ navBtn.addEventListener("click", function(){
 
 メニューの文字も同じようにCSSでスライドさせています。
 
-![二本線のドネルメニュー](./images/2022/04/entry496-14.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-14.webp" width="468" height="136" alt="二本線のドネルメニュー" decoding="async" loading="lazy"></figure>
 
 2つのアニメを0.5秒ずつずらします。
 
@@ -515,7 +515,7 @@ navBtn.addEventListener("click", function(){
 
 シンプルにバッテンをマイナスに替えただけのケバブメニュー。
 
-![ケバブメニュー](./images/2022/04/entry496-13.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-13.webp" width="468" height="136" alt="ケバブメニュー" decoding="async" loading="lazy"></figure>
 
 コード自体は[棒の真ん中に一度集まって取り消しマークになる](#棒の真ん中に一度集まって取り消しマークになる)を改良したものです。
 
@@ -527,7 +527,7 @@ navBtn.addEventListener("click", function(){
 
 バッテンマークをマイナスマークに変えたケバブメニューの発展版。
 
-![ケバブメニュー](./images/2022/04/entry496-11.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-11.webp" width="468" height="136" alt="ケバブメニュー" decoding="async" loading="lazy"></figure>
 
 
 デモとサンプルコード詳細は以下から（SCSS記法です）ご確認ください。
@@ -545,7 +545,7 @@ navBtn.addEventListener("click", function(){
 
 ミートボールっぽさを演出するために、バッテンもボテッと太め。
 
-![回転するミートボールメニュー](./images/2022/04/entry496-17.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-17.webp" width="468" height="136" alt="回転するミートボールメニュー" decoding="async" loading="lazy"></figure>
 
 デモとサンプルコード詳細は以下から（SCSS記法です）ご確認ください。
 
@@ -561,7 +561,7 @@ navBtn.addEventListener("click", function(){
 
 ### 色の反転を利用したベントーメニュー
 
-![色の反転を利用したベントーメニュー](./images/2022/04/entry496-19.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-19.webp" width="468" height="136" alt="色の反転を利用したベントーメニュー" decoding="async" loading="lazy"></figure>
 
 疑似要素と`box-shadow`を使ってベントーの仕切りを作ります。
 
@@ -628,7 +628,7 @@ SVGがCSSアニメーション、HTMLタグとしても使いやすく、色ん�
 
 わずかにバウンスします。
 
-![リアルハンバーガーメニュー](./images/2022/04/entry496-20.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-20.webp" width="468" height="136" alt="リアルハンバーガーメニュー" decoding="async" loading="lazy"></figure>
 
 SVGの各パーツにはクラス名をつけておきます。
 
@@ -734,7 +734,7 @@ MENU
 
 実はこの魚メニューをどうしても実装したいのがきっかけでこの記事を書きました。
 
-![リアルハンバーガーメニュー](./images/2022/04/entry496-21.gif)
+<figure class="animation"><img src="/images/animation/2022/entry496-21.webp" width="468" height="136" alt="リアルハンバーガーメニュー" decoding="async" loading="lazy"></figure>
 
 身と骨のパスを作り、身だけ`transform:scaleY`で縦軸のサイズをコントロールしているだけの単純なアニメーションです。
 

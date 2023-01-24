@@ -10,6 +10,12 @@ export const Edit = styled.section`
         padding-right: 15px;
      }
   }
+  .animation {
+      img {
+        margin: 0 auto 24px;
+        display: block;
+    }
+  }
   .p-faq__item {
     margin-bottom: 16px;
     background: var(--pale-gray);
