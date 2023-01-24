@@ -29,7 +29,6 @@ const Img = ({ source, title, className, size }) => {
 
   let img = allFile.edges.find(img => img.node.relativePath === resource)
   if (img) {
-    // console.log(getImage(img.node.childImageSharp.gatsbyImageData));
     return (
       <GatsbyImage
         image={getImage(img.node.childImageSharp.gatsbyImageData)}

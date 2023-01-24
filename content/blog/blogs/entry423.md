@@ -1,5 +1,5 @@
 ---
-title: 【npm-script】imagemin-cliを使って画像圧縮する方法【imagemin v8対応】
+title: 【npm-script】imagemin-cliを使って画像圧縮する方法【v8対応】
 date: 2020-12-25
 modifieddate: 2023-01-25
 hero: thumbnail/2018/entry267.png
@@ -75,10 +75,6 @@ package.jsonに以下のコードを予め追記しておきます。
 ```
 ## 画像圧縮のjsファイルを作り処理を書く
 imagemin.mjsファイルを作り以下のコードを書きます。
-
-imageminのv8系からESMのみサポートしている模様。
-requireで読み込むことができないのでimportで読み込む必要がある。
-また、node.jsで実行するには拡張子を.mjsにするか、packege.jsonに"type": "module"を追加する必要がある。
 
 今回はこちらのブログ記事を参考にしました。
 
