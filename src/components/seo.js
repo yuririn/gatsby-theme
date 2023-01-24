@@ -42,10 +42,6 @@ const Seo = ({lang, meta, data}) => {
   } else if (isRoot) {
     pageName = `${defaultTitle}`
   }
-  let portfolio = false
-  if (data.location) {
-    portfolio = data.location.pathname === "/portfolio/" ? true : false
-  }
   const canonicalUrl = blogUrl;
   if (data.type === "blogs" || data.type === "tags" || data.type === "genre") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
@@ -262,6 +258,24 @@ const Seo = ({lang, meta, data}) => {
         "itemListElement": breadCrumbList,
       },
     ]
+  }
+
+  if( typeof window !== "undefined") {
+    let lazyloadads = false;
+    window.addEventListener("scroll", function() {
+    console.log(document.head)
+     if ((document.documentElement.scrollTop != 0 && lazyloadads === false) || (document.body.scrollTop != 0 && lazyloadads === false)) {
+        (function() {
+            const ad = document.createElement('script');
+            ad.setAttribute('data-ad-client', "ca-pub-2820767970621854")
+            ad.async = true;
+            ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+            const sc = document.getElementsByTagName('script')[0];
+            sc.parentNode.insertBefore(ad, sc);
+        })();
+        lazyloadads = true;
+    }
+  }, true)
   }
 
   return (
