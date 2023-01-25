@@ -2,6 +2,7 @@ import * as React from "react"
 
 import Logo from "./logo"
 import { Link } from "gatsby"
+import GNav from "./../nav";
 
 // import Search from "../../search/"
 import styled from "styled-components"
@@ -9,30 +10,24 @@ import styled from "styled-components"
 const Header = ({ title, location }) => {
   return (
     <HeaderWrapper>
-      <header className="l-header">
-        <div>
-          <div id="header-logo">
-            <span>セブ島在住海外ノマド フロントエンジニアの日記</span>
-            {location === "/" ? (
-              <h1>
-                <Logo />
-              </h1>
-            ) : (
-              <Link to="/">
-                <Logo />
-              </Link>
-            )}
-          </div>
-        </div>
-      </header>
+        {location === "/" ? (
+          <h1 id="header-logo">セブ島在住海外ノマド フロントエンジニアの日記
+            <Logo />
+          </h1>
+        ) : (
+          <Link to="/" id="header-logo">
+            セブ島在住海外ノマド フロントエンジニアの日記
+            <Logo />
+          </Link>
+        )}
+        <GNav></GNav>
     </HeaderWrapper>
   )
 }
 
 export default Header
 
-const HeaderWrapper = styled.div`
-  .l-header {
+const HeaderWrapper=styled.header`
     color: #232a41;
     position: fixed;
     left: 0;
@@ -44,26 +39,26 @@ const HeaderWrapper = styled.div`
     z-index: 100;
     display: flex;
     align-items: center;
-  }
-  #header-logo span {
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 0 20px;
+
+    #header-logo {
+    text-decoration: none;
+    color: #264785;
     display: block;
+    line-height: 1;
     font-size: 1rem;
-    padding-left: 15px;
-    padding-top: 5px;
-    @media screen and (min-width: 768px) {
-      padding-left: 30px;
-    }
+    white-space: nowrap;
   }
   #header-logo svg {
     height: 34px;
     transition: 0.3s;
-    margin-left: 15px;
     fill: #264785;
-    @media screen and (min-width: 768px) {
-      margin-left: 30px;
-    }
+    display: block;
+    margin-top: 3px;
   }
-  #header-logo a {
+  a#header-logo {
     display: inline-block;
       @media screen and (min-width: 768px) {
         &:hover svg {

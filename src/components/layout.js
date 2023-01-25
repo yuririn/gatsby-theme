@@ -4,7 +4,6 @@ import { CommonStyle } from "./../styles/common/common"
 import { createGlobalStyle } from "styled-components"
 
 import Header from "./header"
-import GNav from "./nav"
 import Footer from "./footer"
 
 const Layout = ({ location, title, children }) => {
@@ -22,7 +21,6 @@ const Layout = ({ location, title, children }) => {
       <BaseStyle />
       <CommonStyle />
       <GlobalStyle />
-      <GNav />
       <Header title={title} location={location.pathname} />
       <main>{children}</main>
       <Footer title={title} />

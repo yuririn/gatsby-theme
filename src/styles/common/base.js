@@ -95,6 +95,10 @@ export const BaseStyle = createGlobalStyle`
   }
   /* change border colour to suit your needs */
 
+  html {
+    scroll-behavior: smooth;
+  }
+
 
   body {
     --color: #335;
@@ -108,6 +112,7 @@ export const BaseStyle = createGlobalStyle`
     --shadow: 0 0 4px rgba(0,0,0, .3);
     --milk: rgba(225,225,225, .9);
     --background: #fff;
+    --filter: rgba(255, 255, 255, .5);
     --pale-gray: #eeeeee;
     --yellow: #edef5c;
     --header-background: rgba(255,255,255, .9);
@@ -130,6 +135,7 @@ export const BaseStyle = createGlobalStyle`
     --color-sec: #c5fff4;
     --color-accent: #d45c84;
     --background: rgb(21, 21, 21);
+    --filter: rgba(21, 21, 21, .5);
     --pale-gray: #373738;
     --yellow: #abae00;
     --header-background: rgba(255,255,255, .6);

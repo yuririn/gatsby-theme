@@ -1,42 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-const Img = () => {
-  const { allFile } = useStaticQuery(
-    graphql`
-      query {
-        allFile(filter: { name: { eq: "mainvisual" } }) {
-          edges {
-            node {
-              name
-              childImageSharp {
-                gatsbyImageData(
-                  blurredOptions: {}
-                  webpOptions: { quality: 30 }
-                )
-              }
-            }
-          }
-        }
-      }
-    `
-  )
 
-  return (
-    <GatsbyImage
-      image={getImage(allFile.edges[0].node.childImageSharp)}
-      alt="背景"
-    ></GatsbyImage>
-  )
-}
 const firstview = () => {
   return (
     <Mainvisual>
-      <div className="bg">
-        <Img></Img>
-      </div>
-      <div className="p-mainvisual__hero">
         <div className="l-container">
           <svg
             id="hero"
@@ -114,16 +81,13 @@ const firstview = () => {
             />
           </svg>
           <p>
-            「銀ねこアトリエ」へようこそ！
-            <br />
-            セブ島在住海外ノマドで女性エンジニア・かみーゆの気ままなライフログです。
+           セブ島在住海外ノマド＆女性エンジニアの気ままなライフログ「銀ねこアトリエ」。
             <br />
             フロント技術を中心とした「ウェブ制作に関するチップス」、
             <br />
             「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。
           </p>
         </div>
-      </div>
     </Mainvisual>
   )
 }
@@ -131,25 +95,42 @@ const firstview = () => {
 export default firstview
 
 const Mainvisual = styled.div`
-  .bg {
-    z-index: -10;
+  margin-bottom: 50px;
+  background: linear-gradient(135deg,
+      rgb(47, 89, 188) 0%,
+      rgb(93, 154, 173) 100%);
+    padding-top: 80px;
+    padding-bottom: 20px;
+    position: relative;
     overflow: hidden;
-    height: 300px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: 0.3s;
-    &.op0 {
-      opacity: 0;
+    &::before {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 300%;
+        height: 100px;
+        content: '';
+        opacity: .2;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 252.62"><path d="M237.53,36.5C158.35,10.11,79.18-1.95,0,.26V252.62H900V.02c-74.71-.56-149.41,11.58-224.12,36.48-146.12,48.71-292.23,48.71-438.35,0Z" fill="%23fff"/></svg>') bottom / 299px repeat-x;
+        animation:wave linear 30s infinite;
     }
-  }
-  img {
-    object-fit: cover;
-    height: 100%;
-  }
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 300%;
+        height: 100px;
+        content: '';
+        opacity: .1;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 252.62"><path d="M237.53,36.5C158.35,10.11,79.18-1.95,0,.26V252.62H900V.02c-74.71-.56-149.41,11.58-224.12,36.48-146.12,48.71-292.23,48.71-438.35,0Z" fill="%23fff"/></svg>') bottom / 299px repeat-x;
+        animation: wave linear 15s 15s infinite;
+    }
+
+
   p {
+    color: #fff;
     line-height: 1.8;
+    text-shadow: 0 0 2px #000;
     text-shadow: 0 0 2px rgb(47, 89, 188);
   }
   .l-container {
@@ -157,53 +138,36 @@ const Mainvisual = styled.div`
     z-index: 10;
     max-width: 700px;
   }
-  .gatsby-image-wrapper {
-    height: 100%;
-    width: 100%;
-
-    @media screen and (min-width: 1441px) {
-      filter: blur(2px);
-    }
-  }
-  .p-mainvisual__hero {
-    z-index: 1;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-    width: 100%;
-    background: var(--background);
-    padding: 15px 0;
-    position: relative;
-    color: #fff;
-    background: linear-gradient(
-      135deg,
-      rgb(47, 89, 188) 0%,
-      rgb(93, 154, 173) 100%
-    );
-    margin-top: 300px;
-    svg {
+  svg#hero {
       fill: #264785;
       stroke: #fff;
-      position: absolute;
       width: 320px;
-      top: -90px;
-      left: 15px;
       stroke-width: 1.5;
       paint-order: stroke;
-    }
+      margin-bottom: 10px;
+  }
+  @keyframes wave {
+      from {
+          transform: translate(0);
+      }
+
+      to {
+          transform: translate(-66.66%);
+      }
   }
   @media screen and (min-width: 768px) {
-    .bg {
-      overflow: hidden;
-      height: 400px;
-    }
-    .p-mainvisual__hero {
-      margin-top: 400px;
-      text-align: center;
-      margin-bottom: 0;
-      padding: 25px 0;
-      svg {
-        width: 100%;
-        top: -200px;
-      }
-    }
+    text-align: center;
+    padding-top: 160px;
+    padding-bottom: 30px;
+   svg#hero {
+    margin-bottom: 50px;
+       width: 100%;
+   }
+   &::before {
+    bottom: -40px;
+   }
+   &::after {
+    bottom: -30px;
+   }
   }
 `

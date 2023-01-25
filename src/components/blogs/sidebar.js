@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Img from "../img"
 import RelatedList from "./related-list"
 import { Sidebar } from "./../../styles/blog-styles/sidebar"
@@ -24,7 +24,7 @@ const bar = ({ cateId, topic, tags, slug }) => {
           })}
         </ul>
       </section>
-        <section className="p-section">
+      <section className="p-section search">
          <h2 className="c-heading--lg">記事を探す</h2>
         <Search></Search>
       </section>

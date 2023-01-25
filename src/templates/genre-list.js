@@ -9,7 +9,7 @@ import Pagination from "../components/blogList/pagination"
 import { Link, graphql } from "gatsby"
 import { siteMetadata } from "../../gatsby-config"
 import BreadCrumbList from "../components/common/bread-crumb-list"
-import TagsList from "../components/blogs/tag-list"
+// import TagsList from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 
@@ -99,19 +99,11 @@ const category = ({ pageContext, data, location }) => {
             ""
           )}
         </div>
-        <aside className="BigWhite">
-          <div className="l-container">
-            <section className="p-box--gray p-section u-text-center">
-              <h2 className="c-heading--lg">人気のタグ</h2>
-              <TagsList />
-            </section>
-          </div>
-          <div className="l-container">
-            <section className="p-section u-text-center">
-              <h2 className="c-heading--lg">人気のジャンル</h2>
-              <Genre />
-            </section>
-          </div>
+         <aside className="l-container">
+          <section className="p-section u-text-center">
+            <h2 className="c-heading--lg">人気のジャンル</h2>
+            <Genre />
+          </section>
           <Prof />
         </aside>
       </div>

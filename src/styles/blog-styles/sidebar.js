@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Sidebar = styled.div`
+
  & > div:nth-child(2),
   & > div:first-child {
     margin-bottom: 20px;
@@ -140,14 +141,23 @@ export const Sidebar = styled.div`
   }
   .p-section {
     margin-top: 60px;
+    &.search {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
     @media screen and (min-width: 768px) {
       margin-bottom: 20px;
+      &.search {
+          padding-left: 0;
+          padding-right: 0;
+      }
     }
   }
   .inner {
     padding: 0 15px 50px;
   }
   @media screen and (min-width: 768px) {
+    margin-bottom:50px;
     div.result-inner {
       margin-bottom: -30px !important;
     }

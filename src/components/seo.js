@@ -264,7 +264,7 @@ const Seo = ({lang, meta, data}) => {
     let lazyloadads = false;
     window.addEventListener("scroll", function() {
     console.log(document.head)
-     if ((document.documentElement.scrollTop != 0 && lazyloadads === false) || (document.body.scrollTop != 0 && lazyloadads === false)) {
+     if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {
         (function() {
             const ad = document.createElement('script');
             ad.setAttribute('data-ad-client', "ca-pub-2820767970621854")

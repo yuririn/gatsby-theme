@@ -4,7 +4,16 @@ export const CommonStyle = createGlobalStyle`
   body.no-scroll {
       @media only screen and (max-width: 769px) {
         overflow: hidden;
+        footer, main {
+          filter:blur(3px);
+          opacity: .5;
+        }
       }
+  }
+  footer, main {
+     @media only screen and (max-width: 769px) {
+      transition:.5s
+     }
   }
   .google-auto-placed {
     padding: 15px 0;
@@ -221,5 +230,9 @@ export const CommonStyle = createGlobalStyle`
   .google-auto-placed {
     background: #fff;
   }
-
+  @keyframes wave {
+    from { transform: translateX(0) }
+      to { transform: translateX(-1200px) }
+  }
+}
 `

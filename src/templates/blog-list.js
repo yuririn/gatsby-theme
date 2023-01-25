@@ -7,7 +7,7 @@ import Img from "../components/img"
 import AddTagLink from "../components/common/add-tag-link"
 import Pagination from "../components/blogList/pagination"
 import BreadCrumbList from "../components/common/bread-crumb-list"
-import Tags from "../components/blogs/tag-list"
+// import Tags from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 
@@ -81,19 +81,11 @@ const blogs = ({ pageContext, data, location }) => {
         </section>
         <Pagination num={page} current={current} type=""></Pagination>
       </div>
-      <aside className="BigWhite">
-        <div className="l-container">
-          <section className="p-box--gray p-section u-text-center">
-            <h2 className="c-heading--lg">人気のタグ</h2>
-            <Tags />
-          </section>
-        </div>
-        <div className="l-container">
-          <section className="p-section u-text-center">
-            <h2 className="c-heading--lg">人気のジャンル</h2>
-            <Genre />
-          </section>
-        </div>
+      <aside className="l-container">
+        <section className="p-section u-text-center">
+          <h2 className="c-heading--lg">人気のジャンル</h2>
+          <Genre />
+        </section>
         <Prof />
       </aside>
     </Layout>

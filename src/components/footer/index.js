@@ -1,35 +1,33 @@
 import React from "react";
-
+import { Link } from "gatsby";
 import FooterNav from "./footernav";
 import styled from "styled-components";
-import scrollTo from "gatsby-plugin-smoothscroll";
 
 const Footer = ({ title }) => {
   return (
     <FooterWrapper>
-      <footer className="l-footer">
         <div className="l-container">
           <FooterNav />
           <p className="u-text-center l-footer__copyright">
             <small>(C) {title}</small>
           </p>
         </div>
-      </footer>
-      <button onClick={() => scrollTo("#top")} aria-label="戻るボタン"></button>
+      <Link aria-label="戻るボタン" to="#top"></Link>
     </FooterWrapper>
   );
 };
 
 export default Footer;
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.footer`
   z-index: 10;
   position: relative;
-  button {
+  [aria-label] {
     position: fixed;
     bottom: 15px;
     right: 15px;
     border: none;
+    display: flex;
     width: 50px;
     height: 50px;
     background: var(--move-to);
@@ -37,14 +35,15 @@ const FooterWrapper = styled.div`
     border-radius: 50%;
     content: "";
     transition: 0.3s;
+    justify-content: center;
+    align-items: center;
     &::before {
       display: block;
       width: 10px;
       height: 10px;
       content: "";
-      position: absolute;
       left: 50%;
-      transform: translate(-50%, -30%) rotate(45deg);
+      transform: rotate(45deg);
       border-top: 2px solid var(--color-blue);
       border-left: 2px solid var(--color-blue);
       transition: 0.3s;
@@ -62,16 +61,14 @@ const FooterWrapper = styled.div`
       }
     }
   }
-  .l-footer {
-    background: var( --footer-background);
-    padding: 50px 0 30px;
-    color: #fff;
-    line-height: 1;
-    &__copyright {
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
+  background: var( --footer-background);
+  padding: 50px 0 30px;
+  color: #fff;
+  line-height: 1;
+    .l-footer__copyright {
+        font-size: 1.2rem;
+        letter-spacing: 0.1em;
     }
-  }
   .p-footerNav {
     margin-bottom: 25px;
   }
