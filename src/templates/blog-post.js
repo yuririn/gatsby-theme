@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import { siteMetadata } from "./../../gatsby-config"
 
@@ -15,7 +15,7 @@ import Img from "../components/img"
 import BreadCrumbList from "../components/common/bread-crumb-list"
 import Category from "../components/blogs/category"
 import TagsList from "../components/blogs/tags-blog"
-import Description from "../components/blogs/descriotion"
+// import Description from "../components/blogs/descriotion"
 import Sns from "../components/blogs/sns"
 import Prof from "../components/blogs/small-prof"
 import Toc from "../components/blogs/topic"
@@ -27,9 +27,6 @@ import ProfBig from "../components/common/profile"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 import Faq from "../components/blogs/blog-parts/faq"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -51,6 +48,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const ogpSrc = data.allFile.edges[0]
     ? `${data.allFile.edges[0].node.publicURL}`
     : "images/ogp.png"
+
   const category = { url:`/blogs/${post.frontmatter.cateId}/`, name:
                   siteMetadata.category.filter(item => {
                     return post.frontmatter.cateId === item.slug
@@ -69,6 +67,8 @@ const BlogPostTemplate = ({ data, location }) => {
     cateId : post.frontmatter.cateId,
     type : "blog"
   }
+
+
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -138,7 +138,7 @@ const BlogPostTemplate = ({ data, location }) => {
 
             <div className="c-btn--donation" id="end_of_article">
               <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
-              <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noreferrer"><FontAwesomeIcon icon={faHeart} />銀ねこアトリエを応援する</a>
+              <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noreferrer"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>銀ねこアトリエを応援する</a>
             </div>
             <Sns url={perfectUrl} title={perfectTitle} />
             <dl className="c-article__tags">

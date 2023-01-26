@@ -14,6 +14,11 @@ export const Article = styled.div`
         position: relative;
         border-radius: 15px;
         margin-bottom: 30px;
+        svg {
+          width:20px;
+          height: 20px;
+          display:inline-block;
+        }
 
         @media screen and (min-width: 768px) {
             margin: 24px 0 24px;
@@ -157,6 +162,8 @@ export const Article = styled.div`
 
           svg {
               margin-right: 8px;
+              width: 30px;
+              height: 30px;
           }
 
           @media screen and (min-width: 768px) {

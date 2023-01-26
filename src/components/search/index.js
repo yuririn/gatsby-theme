@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import TextHighlighter from "./texthighlighter"
 import styled from "styled-components"
 
-const SearchResult = props => {
+const SearchResult = React.memo( (props) => {
   // 全記事データ取得 //
   const tempData = useStaticQuery(graphql`
     query SearchData {
@@ -119,7 +119,7 @@ const SearchResult = props => {
       </div>
     </ResultList>
   )
-}
+})
 
 const Search = props => {
   const [focus, setFocus] = useState(false)

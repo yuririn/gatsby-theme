@@ -60,6 +60,12 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        devMode: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         //自分の好きなファイル名にしたい場合はoutputを追加。デフォルトは「sitemap.xml」
@@ -169,7 +175,6 @@ module.exports = {
     // },
 
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-twitter`,
 
     {
       resolve: `gatsby-plugin-feed`,

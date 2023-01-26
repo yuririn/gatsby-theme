@@ -48,14 +48,15 @@ export const BaseStyle = createGlobalStyle`
     content:none;
   }
     @font-face {
-    font-family: 'Raleway';
+    font-family: 'Raleway',sans-serif;
     display: swap;
     src: url('/fonts/Raleway-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     }
     @font-face {
-    font-family: 'Raleway';
+    font-family: 'Raleway',
+    sans-serif;
     display: swap;
     src: url('/fonts/Raleway-Bold.ttf') format('truetype');
     font-weight: bold;
@@ -135,15 +136,15 @@ export const BaseStyle = createGlobalStyle`
     --color-sec: #c5fff4;
     --color-accent: #d45c84;
     --background: rgb(21, 21, 21);
-    --filter: rgba(21, 21, 21, .5);
+    --filter: rgba(21, 21, 21, .8);
     --pale-gray: #373738;
     --yellow: #abae00;
     --header-background: rgba(255,255,255, .6);
     --header-color:#264f85;
     --footer-background: #264f85;
-     --move-to: rgba(255, 255, 255, 0.1);
-      --nav-bg: rgba(58, 58, 58, 0.95);
-      --border-color: #787878;
+    --move-to: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(58, 58, 58, 0.95);
+    --border-color: #787878;
   }
 
   hr {

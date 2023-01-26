@@ -7,10 +7,6 @@ import Seo from "../components/seo"
 import { BaseStyle } from "./../styles/common/base"
 import { CommonStyle } from "./../styles/common/common"
 import styled from "styled-components"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBullhorn } from "@fortawesome/free-solid-svg-icons"
-import { faHome } from "@fortawesome/free-solid-svg-icons"
-import { faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 // components
 import Voice from "../inc/portfolioParts/voice"
@@ -18,7 +14,7 @@ import Works from "../inc/portfolioParts/works"
 import Profile from "../inc/portfolioParts/profile"
 import Contact from "../inc/portfolioParts/contact"
 
-const Portfolio = ({ data, location }) => {
+const Portfolio = React.memo(({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]
   const [isOpen, setIsOpen] = useState(false)
 
@@ -118,7 +114,7 @@ const Portfolio = ({ data, location }) => {
             <section className="l-container">
               <Heading>
                 <h3>
-                  <FontAwesomeIcon icon={faBullhorn} /> お喜びの声
+                  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bullhorn" class="svg-inline--fa fa-bullhorn fa-w-18 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"></path></svg> お喜びの声
                 </h3>
               </Heading>
               <p className="p-mw900">
@@ -153,7 +149,7 @@ const Portfolio = ({ data, location }) => {
           <ul className="footer-nav">
             <li>
               <Link to="/">
-                <FontAwesomeIcon icon={faHome} />
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" class="svg-inline--fa fa-home fa-w-18 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
               </Link>
             </li>
             <li>
@@ -162,7 +158,7 @@ const Portfolio = ({ data, location }) => {
                 target="_blank"
                 rel="noopener nofollow"
               >
-                <FontAwesomeIcon icon={faTwitter} />
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="svg-inline--fa fa-twitter fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
               </Link>
             </li>
             <li>
@@ -171,7 +167,7 @@ const Portfolio = ({ data, location }) => {
                 target="_blank"
                 rel="noopener nofollow"
               >
-                <FontAwesomeIcon icon={faInstagram} />
+                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" class="svg-inline--fa fa-instagram fa-w-14 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
               </Link>
             </li>
           </ul>
@@ -182,7 +178,7 @@ const Portfolio = ({ data, location }) => {
       </Footer>
     </Body>
   )
-}
+})
 
 export default Portfolio
 export const portfolioQuery = graphql`
@@ -216,7 +212,8 @@ const Body = styled.div`
 
   line-height: 1.8;
    @font-face {
-    font-family: 'Archivo Black';
+    font-family: 'Archivo Black',
+    sans-serif;
     src: url('/fonts/ArchivoBlack-Regular.ttf') format('truetype');
     display: swap;
   }
@@ -336,6 +333,7 @@ const Header = styled.div`
      }
     }
     svg {
+
         left: 5px;
         top: 5px;
         width: 32px;
@@ -726,6 +724,8 @@ const Heading = styled.header`
       box-shadow: 5px -2px 0 #333;
     }
     svg {
+      width: 30px;
+      height: 30px;
       transform: rotate(-15deg);
     }
 
@@ -825,6 +825,10 @@ const Footer = styled.div`
     bottom: 0;
     left: 0;
     border-bottom: 2px solid #e95014;
+  }
+  svg {
+    width:20px;
+    height:20px;
   }
   .footer-btn::before {
     top: 14px;

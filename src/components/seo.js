@@ -12,21 +12,31 @@ import { useStaticQuery, graphql } from "gatsby"
 import config from "../../gatsby-config"
 
 const Seo = ({lang, meta, data}) => {
-  const { site } = useStaticQuery(
-    graphql`
+  const { thumbnail } = useStaticQuery(
+   graphql`
       query {
-        site {
-          siteMetadata {
-            title
-            description
+        allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+          edges {
+            node {
+              relativePath
+              childImageSharp {
+                gatsbyImageData(
+                  blurredOptions: { width: 100 }
+                  quality: 50
+                  placeholder: BLURRED
+                )
+              }
+            }
           }
         }
       }
     `
   )
+  // let thumbnailUrl = thumbnail.edges.find(img => img.node.relativePath === data.ogp)
+  console.log(thumbnail);
   const domain = config.siteMetadata.siteUrl
-  const metaDescription = data.description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = data.description || config.siteMetadata.description
+  const defaultTitle = config.siteMetadata?.title
 
   let blogUrl = data.location ? data.location.href : domain
   const isRoot = `${domain}/` === blogUrl ? true : false
@@ -151,7 +161,7 @@ const Seo = ({lang, meta, data}) => {
       "mainEntity": []
     }
     faqArry.map((item)=>{
-      const link = item[2]?'<br><a href=\"'+item[2]+'\">こちら<\/a>':'';
+      const link = item[2]?'<br>くわしくは<a href=\"'+item[2]+'\">こちら<\/a>。':'';
       const entry = {
         "@type": "Question",
         "name": item[0],
@@ -325,7 +335,7 @@ const Seo = ({lang, meta, data}) => {
 
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
+          content: config.siteMetadata?.social?.twitter || ``,
         },
         {
           name: `twitter:title`,

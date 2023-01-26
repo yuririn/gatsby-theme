@@ -88,7 +88,7 @@ const Uranai = ({ value }) => {
   )
 }
 
-const Result = prop => {
+const Result = React.memo( (prop) => {
   let ranNum = Math.floor(Math.random() * 5) + 1
   const [value, setValue] = useState("")
 
@@ -158,9 +158,9 @@ const Result = prop => {
   } else {
     return ""
   }
-}
+})
 
-const Menu = () => {
+const Menu =React.memo( () => {
   const [value, setValue] = useState("")
 
   const onChange = e => {
@@ -217,7 +217,7 @@ const Menu = () => {
       <Result value={value}></Result>
     </section>
   )
-}
+})
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
