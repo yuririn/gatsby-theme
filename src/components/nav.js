@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { siteMetadata } from "../../gatsby-config"
 
-const GlobalNav = React.memo(({ title, location }) => {
+const GlobalNav = ({ title, location }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const move = e => {
@@ -109,7 +109,7 @@ const GlobalNav = React.memo(({ title, location }) => {
       </nav>
     </NavWrapper>
   )
-})
+}
 
 export default GlobalNav
 

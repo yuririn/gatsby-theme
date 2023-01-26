@@ -14,7 +14,7 @@ import Works from "../inc/portfolioParts/works"
 import Profile from "../inc/portfolioParts/profile"
 import Contact from "../inc/portfolioParts/contact"
 
-const Portfolio = React.memo(({ data, location }) => {
+const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]
   const [isOpen, setIsOpen] = useState(false)
 
@@ -178,7 +178,7 @@ const Portfolio = React.memo(({ data, location }) => {
       </Footer>
     </Body>
   )
-})
+}
 
 export default Portfolio
 export const portfolioQuery = graphql`

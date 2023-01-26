@@ -97,7 +97,7 @@ const Detail = ({ name }) => {
   return <div>{description}</div>
 }
 
-const Form = React.memo(() => {
+const Form = () => {
   const [value, setValue] = useState("")
   const [name, getName] = useState("")
   const [email, getMail] = useState("")
@@ -220,7 +220,7 @@ const Form = React.memo(() => {
       </FormArea>
     </div>
   )
-})
+}
 
 const contactTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
