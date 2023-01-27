@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "fs": "^0.0.1-security",
+    "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.30",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",

@@ -1,8 +1,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const Thumbnail = ({ source, title, className }) => {
+const ThumbnailSm = ({ source}) => {
   const { allFile } = useStaticQuery(
     graphql`
       query {
@@ -13,8 +12,8 @@ const Thumbnail = ({ source, title, className }) => {
               childImageSharp {
                 gatsbyImageData(
                   blurredOptions: { width: 100 }
-                  width: 480
-                  quality: 40
+                  width: 165
+                  quality: 30
                   placeholder: BLURRED
                 )
               }
@@ -26,7 +25,6 @@ const Thumbnail = ({ source, title, className }) => {
   )
   title = title ? title : ""
   let resource = source ? source : "common/dummy.png"
-  let img = allFile.edges.find(img => img.node.relativePath === resource)
 
   if (img) {
     return (
@@ -41,4 +39,4 @@ const Thumbnail = ({ source, title, className }) => {
     return ""
   }
 }
-export default Thumbnail
+export default ThumbnailSm

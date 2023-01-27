@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import Img from "../img"
+import Img from "../smImg"
 import styled from "styled-components"
 
 const Lists = ({ category, slug, tags }) => {
@@ -70,24 +70,24 @@ const Lists = ({ category, slug, tags }) => {
         {posts.map((item, index) => {
           return (
             <li className="p-entryCard is-small" key={`relative${index}`} role="article">
-                <Link className="p-entryCard__img" to={item.node.fields.slug}>
-                  {item.node.frontmatter.hero ? (
-                    <Img
-                      source={item.node.frontmatter.hero}
-                      alt={item.node.frontmatter.title}
-                    />
-                  ) : (
-                    <Img
-                      source="common/dummy.png"
-                      alt={item.node.frontmatter.title}
-                    />
-                  )}
-                </Link>
-                <Link to={item.node.fields.slug} className="p-entryCard__body">
-                  <h3 className="p-entryCard__heading">
-                    {item.node.frontmatter.title}
-                  </h3>
-                </Link>
+              <Link to={item.node.fields.slug} className="p-entryCard__img">
+              {item.node.frontmatter.hero ? (
+                <Img
+                    source={item.node.frontmatter.hero}
+                    alt={item.node.frontmatter.title}
+                  />
+                ) : (
+                  <Img
+                    source="common/dummy.png"
+                    alt={item.node.frontmatter.title}
+                  />
+                )}
+              </Link>
+                  <Link to={item.node.fields.slug} className="p-entryCard__body">
+                <h3 className="p-entryCard__heading">
+                  {item.node.frontmatter.title}
+                </h3>
+              </Link>
             </li>
           )
         })}
@@ -96,6 +96,7 @@ const Lists = ({ category, slug, tags }) => {
   )
 }
 export default Lists
+
 
 const RelativeList = styled.div`
   @media screen and (min-width: 768px) {

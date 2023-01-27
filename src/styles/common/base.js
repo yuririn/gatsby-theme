@@ -50,7 +50,7 @@ export const BaseStyle = createGlobalStyle`
     @font-face {
     font-family: 'Raleway',sans-serif;
     display: swap;
-    src: url('/fonts/Raleway-Light.ttf') format('truetype');
+    src: url('https://ginneko-atelier.com/fonts/Raleway-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     }
@@ -58,7 +58,7 @@ export const BaseStyle = createGlobalStyle`
     font-family: 'Raleway',
     sans-serif;
     display: swap;
-    src: url('/fonts/Raleway-Bold.ttf') format('truetype');
+    src: url('https://ginneko-atelier.com/fonts/Raleway-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     }

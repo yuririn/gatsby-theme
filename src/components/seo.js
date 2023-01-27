@@ -12,28 +12,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import config from "../../gatsby-config"
 
 const Seo = ({lang, meta, data}) => {
-  const { thumbnail } = useStaticQuery(
-   graphql`
-      query {
-        allFile(filter: { sourceInstanceName: { eq: "images" } }) {
-          edges {
-            node {
-              relativePath
-              childImageSharp {
-                gatsbyImageData(
-                  blurredOptions: { width: 100 }
-                  quality: 50
-                  placeholder: BLURRED
-                )
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-  // let thumbnailUrl = thumbnail.edges.find(img => img.node.relativePath === data.ogp)
-  console.log(thumbnail);
   const domain = config.siteMetadata.siteUrl
   const metaDescription = data.description || config.siteMetadata.description
   const defaultTitle = config.siteMetadata?.title
@@ -43,6 +21,7 @@ const Seo = ({lang, meta, data}) => {
   let page = isRoot ? "WebSite" : "WebPage"
   const pagetype = isRoot ? "webSite" : "article"
   const ogSrc = domain + (data.ogp ? data.ogp : "/images/ogp.png")
+  const thumbnailSrc = domain + (data.thumnail ? data.thumnail : "/images/thumnail.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
   let pageName = `${data.title}-${defaultTitle}`
   if(data.type === "tags" || data.type === "genre") {
@@ -273,7 +252,6 @@ const Seo = ({lang, meta, data}) => {
   if( typeof window !== "undefined") {
     let lazyloadads = false;
     window.addEventListener("scroll", function() {
-    console.log(document.head)
      if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {
         (function() {
             const ad = document.createElement('script');
@@ -302,7 +280,7 @@ const Seo = ({lang, meta, data}) => {
         },
         {
           name: `thumbnail`,
-          content: ogSrc,
+          content: thumbnailSrc,
         },
         {
           property: `og:title`,
@@ -353,8 +331,8 @@ const Seo = ({lang, meta, data}) => {
     >
       {noindex.includes(data.location.pathname)&&<meta content="noindex" name="robots"/>}
       <link rel="canonical" href={canonicalUrl}></link>
-      <link rel="preload" href="/fonts/Raleway-Bold.ttf" as="font" type="font/ttf" crossorigin></link>
-      <link rel="preload" href="/fonts/Raleway-Light.ttf" as="font" type="font/ttf" crossorigin></link>
+      <link rel="preload" href={`${domain}/fonts/Raleway-Bold.ttf`} as="font" type="font/ttf"></link>
+      <link rel="preload" href={`${domain}/fonts/Raleway-Light.ttf`} as="font" type="font/ttf"></link>
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import { siteMetadata } from "./../../gatsby-config"
 
@@ -11,7 +11,6 @@ import rehypeReact from "rehype-react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Img from "../components/img"
 import BreadCrumbList from "../components/common/bread-crumb-list"
 import Category from "../components/blogs/category"
 import TagsList from "../components/blogs/tags-blog"
@@ -27,6 +26,7 @@ import ProfBig from "../components/common/profile"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 import Faq from "../components/blogs/blog-parts/faq"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -35,19 +35,24 @@ const renderAst = new rehypeReact({
     msg: Msg,
     faq: Faq,
     prof: Prof,
-    toc: Toc
+    toc: Toc,
+    test: Test
   },
 }).Compiler
 
 const BlogPostTemplate = ({ data, location }) => {
+
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
-  const ogpSrc = data.allFile.edges[0]
-    ? `${data.allFile.edges[0].node.publicURL}`
-    : "images/ogp.png"
+  const ogpSrc = data.siteOgImage
+    ? `${data.siteOgImage.childImageSharp.resize.src}`
+    : "/images/ogp.png"
+  const thumnailSrc = data.siteThumnailImage
+    ? `${data.siteThumnailImage.childImageSharp.resize.src}`
+    : "/images/thumnail.png"
 
   const category = { url:`/blogs/${post.frontmatter.cateId}/`, name:
                   siteMetadata.category.filter(item => {
@@ -65,6 +70,7 @@ const BlogPostTemplate = ({ data, location }) => {
     faq : post.frontmatter.faq?post.frontmatter.faq : '',
     tag : post.frontmatter.tags[0],
     cateId : post.frontmatter.cateId,
+    thumnail: thumnailSrc,
     type : "blog"
   }
 
@@ -86,10 +92,7 @@ const BlogPostTemplate = ({ data, location }) => {
               name={post.frontmatter.categoryId}
               id={post.frontmatter.cateId}
             />
-            <Img
-              source={post.frontmatter.hero}
-              alt={post.frontmatter.title}
-            ></Img>
+            <GatsbyImage image={getImage(data.dogImage)} alt={post.frontmatter.title} />
           </div>
         </div>
       </Header>
@@ -201,6 +204,39 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
+    siteOgImage: file(
+      relativePath: { eq: $hero }
+      sourceInstanceName: { eq: "images" }
+      ) {
+      childImageSharp {
+        resize(width: 1200, height:900, toFormat: PNG) {
+          src
+        }
+      }
+    }
+    dogImage: file(
+      relativePath: { eq: $hero }
+      sourceInstanceName: { eq: "images" }
+    ) {
+      childImageSharp {
+        gatsbyImageData (
+          blurredOptions: { width: 100 }
+          width: 400
+          quality: 40
+          placeholder: BLURRED
+        )
+      }
+    }
+    siteThumnailImage: file(
+      relativePath: { eq: $hero }
+      sourceInstanceName: { eq: "images" }
+      ) {
+      childImageSharp {
+        resize(width: 200, height: 200, toFormat: PNG) {
+          src
+        }
+      }
+    }
     allFile(
       filter: {
         sourceInstanceName: { eq: "images" }
@@ -213,6 +249,7 @@ export const pageQuery = graphql`
         }
       }
     }
+
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
@@ -292,5 +329,10 @@ const Body = styled.div`
 //     svg {
 //       margin-right: 10px;
 //     }
+// https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
 //   }
 // `
+
+const Test =({element})=>{
+  return <>{element}</>
+}

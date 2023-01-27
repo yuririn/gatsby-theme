@@ -5,9 +5,11 @@ export const Header = styled.div`
     &__mainvisual {
       position: relative;
       z-index: 1;
-      background: var(--color-d-blue);
       overflow: hidden;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
+      @media screen and (min-width: 768px) {
+          margin-bottom: 24px;
+          background: var(--color-d-blue);
 
       &::before {
         opacity: 0.8;
@@ -42,6 +44,7 @@ export const Header = styled.div`
       }
       &--overseas-freelancing:before {
         background-image: url(/images/genre-overseas-freelancing.webp);
+      }
       }
     }
 
