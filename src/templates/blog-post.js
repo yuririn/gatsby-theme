@@ -35,8 +35,7 @@ const renderAst = new rehypeReact({
     msg: Msg,
     faq: Faq,
     prof: Prof,
-    toc: Toc,
-    test: Test
+    toc: Toc
   },
 }).Compiler
 
@@ -332,7 +331,3 @@ const Body = styled.div`
 // https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
 //   }
 // `
-
-const Test =({element})=>{
-  return <>{element}</>
-}
