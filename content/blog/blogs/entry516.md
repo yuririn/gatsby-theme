@@ -1,6 +1,6 @@
 ---
 title: GatsbyJS でリサイズした画像のパスを取得する
-date: 2023-01-24
+date: 2023-01-05
 pagetype: blog
 hero: thumbnail/2020/entry401-v4.jpg
 cateId: web-developer

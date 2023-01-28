@@ -1,6 +1,6 @@
 ---
 title: WordPress で FAQブロックを作成し構造化データも出力する
-date: 2023-01-28
+date: 2023-01-15
 pagetype: blog
 hero: thumbnail/2023/entry517.png
 cateId: cms
@@ -141,7 +141,7 @@ WordPressにはその他、HTMLタグのエンティティ化（無害化）す�
 
 <card id="/blogs/entry452/"></card>
 
-```php:title=functions.php
+```php{33}:title=functions.php
 register_block_type(
 	'myblock/faq-block',
 	array(
