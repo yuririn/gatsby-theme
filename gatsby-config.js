@@ -91,12 +91,6 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-      options: {
-        devMode: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         //自分の好きなファイル名にしたい場合はoutputを追加。デフォルトは「sitemap.xml」
@@ -235,25 +229,21 @@ module.exports = {
                 })
               })
             },
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
+            query: `{
+  allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+    nodes {
+      excerpt
+      html
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        date
+      }
+    }
+  }
+}`,
             output: "/rss.xml",
             title: "Gatsby Starter Blog RSS Feed",
           },

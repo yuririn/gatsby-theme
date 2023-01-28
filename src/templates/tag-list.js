@@ -77,7 +77,7 @@ const tags = ({ pageContext, data, location }) => {
                       <AddTagLink tags={post.frontmatter.tags} />
                     </div>
                 </li>
-              )
+              );
             })}
           </ol>
         </section>
@@ -99,40 +99,38 @@ const tags = ({ pageContext, data, location }) => {
         <Prof />
       </aside>
     </Layout>
-  )
+  );
 }
 
 export default tags
 
-export const pageQuery = graphql`
-  query tagsQyery($limit: Int!, $skip: Int!, $tag: [String]) {
-    site {
-      siteMetadata {
-        title
-        description
-      }
+export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag: [String]) {
+  site {
+    siteMetadata {
+      title
+      description
     }
-    allMarkdownRemark(
-      limit: $limit
-      skip: $skip
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { pagetype: { eq: "blog" }, tags: { in: $tag } } }
-    ) {
-      totalCount
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          date(formatString: "YYYY.MM.DD")
-          description
-          cateId
-          hero
-          tags
-        }
+  }
+  allMarkdownRemark(
+    limit: $limit
+    skip: $skip
+    sort: {frontmatter: {date: DESC}}
+    filter: {frontmatter: {pagetype: {eq: "blog"}, tags: {in: $tag}}}
+  ) {
+    totalCount
+    nodes {
+      excerpt
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        date(formatString: "YYYY.MM.DD")
+        description
+        cateId
+        hero
+        tags
       }
     }
   }
-`
+}`

@@ -75,7 +75,7 @@ const blogs = ({ pageContext, data, location }) => {
                       <AddTagLink tags={post.frontmatter.tags} />
                     </div>
                 </li>
-              )
+              );
             })}
           </ol>
         </section>
@@ -89,40 +89,38 @@ const blogs = ({ pageContext, data, location }) => {
         <Prof />
       </aside>
     </Layout>
-  )
+  );
 }
 
 export default blogs
 
-export const pageQuery = graphql`
-  query blosQyery($limit: Int!, $skip: Int!) {
-    site {
-      siteMetadata {
-        title
-        description
-      }
+export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
+  site {
+    siteMetadata {
+      title
+      description
     }
-    allMarkdownRemark(
-      limit: $limit
-      skip: $skip
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { pagetype: { eq: "blog" } } }
-    ) {
-      totalCount
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          date(formatString: "YYYY.MM.DD")
-          description
-          cateId
-          hero
-          tags
-        }
+  }
+  allMarkdownRemark(
+    limit: $limit
+    skip: $skip
+    sort: {frontmatter: {date: DESC}}
+    filter: {frontmatter: {pagetype: {eq: "blog"}}}
+  ) {
+    totalCount
+    nodes {
+      excerpt
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        date(formatString: "YYYY.MM.DD")
+        description
+        cateId
+        hero
+        tags
       }
     }
   }
-`
+}`

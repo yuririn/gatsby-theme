@@ -7,12 +7,12 @@ import imageminPngquant from 'imagemin-pngquant';
 import imageminSvgo from 'imagemin-svgo';
 import imageminGifsicle from 'imagemin-gifsicle';
 
-const commonDir = process.cwd() + "/images/images/thumbnail/";
+// const commonDir = process.cwd() + "/images/images/thumbnail/";
 
-let imgDirs = fs.statSync(commonDir).isDirectory() ?
-  fs.readdirSync(commonDir) : [];
+// let imgDirs = fs.statSync(commonDir).isDirectory() ?
+//   fs.readdirSync(commonDir) : [];
 
-imgDirs = imgDirs.filter(i => fs.statSync(commonDir +'/'+ i ).isDirectory())
+// imgDirs = imgDirs.filter(i => fs.statSync(commonDir +'/'+ i ).isDirectory())
 
 ;(async () => {
   const file = await imagemin([`./images/blog/2023/01/*.{jpg,png}`], {

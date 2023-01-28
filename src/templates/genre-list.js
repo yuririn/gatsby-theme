@@ -85,7 +85,7 @@ const category = ({ pageContext, data, location }) => {
                       </div>
 
                   </li>
-                )
+                );
               })}
             </ol>
           </section>
@@ -108,39 +108,37 @@ const category = ({ pageContext, data, location }) => {
         </aside>
       </div>
     </Layout>
-  )
+  );
 }
 
 export default category
 
-export const pageQuery = graphql`
-  query ($cateSlug: String, $limit: Int!, $skip: Int!) {
-    site {
-      siteMetadata {
-        description
-      }
+export const pageQuery = graphql`query ($cateSlug: String, $limit: Int!, $skip: Int!) {
+  site {
+    siteMetadata {
+      description
     }
-    allMarkdownRemark(
-      limit: $limit
-      skip: $skip
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { cateId: { eq: $cateSlug } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date(formatString: "YYYY.MM.DD")
-            hero
-            cateId
-            tags
-          }
+  }
+  allMarkdownRemark(
+    limit: $limit
+    skip: $skip
+    sort: {frontmatter: {date: DESC}}
+    filter: {frontmatter: {cateId: {eq: $cateSlug}}}
+  ) {
+    totalCount
+    edges {
+      node {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date(formatString: "YYYY.MM.DD")
+          hero
+          cateId
+          tags
         }
       }
     }
   }
-`
+}`

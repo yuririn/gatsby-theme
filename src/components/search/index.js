@@ -6,30 +6,25 @@ import styled from "styled-components"
 
 const SearchResult =  (props) => {
   // 全記事データ取得 //
-  const tempData = useStaticQuery(graphql`
-    query SearchData {
-      allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-        limit: 1000
-      ) {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              date(formatString: "YYYY.MM.DD")
-              title
-              tags
-              cateId
-              description
-              hero
-            }
-          }
+  const tempData = useStaticQuery(graphql`query SearchData {
+  allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 1000) {
+    edges {
+      node {
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "YYYY.MM.DD")
+          title
+          tags
+          cateId
+          description
+          hero
         }
       }
     }
-  `)
+  }
+}`)
   const [data, setData] = useState([])
   useEffect(() => {
     const temp = []

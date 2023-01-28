@@ -64,7 +64,7 @@ const BlogIndex = ({ data, location }) => {
                   </div>
 
               </li>
-            )
+            );
           })}
         </ol>
         <p className="u-text-center u-mblg l-container">
@@ -82,39 +82,37 @@ const BlogIndex = ({ data, location }) => {
       </div>
       <Prof></Prof>
     </Layout>
-  )
+  );
 }
 
 export default BlogIndex
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+export const pageQuery = graphql`{
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 10
-      filter: { frontmatter: { pagetype: { eq: "blog" } } }
-    ) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "YYYY.MM.DD")
-          description
-          title
-          tags
-          cateId
-          hero
-          pagetype
-        }
+  }
+  allMarkdownRemark(
+    sort: {frontmatter: {date: DESC}}
+    limit: 10
+    filter: {frontmatter: {pagetype: {eq: "blog"}}}
+  ) {
+    nodes {
+      excerpt
+      fields {
+        slug
+      }
+      frontmatter {
+        date(formatString: "YYYY.MM.DD")
+        description
+        title
+        tags
+        cateId
+        hero
+        pagetype
       }
     }
   }
-`
+}`
 
