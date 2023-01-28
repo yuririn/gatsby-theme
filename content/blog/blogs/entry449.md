@@ -555,7 +555,8 @@ a:hover::after {
 <li><a href="#" data-item="お問い合わせ">CONTACT</a></li>
 ```
 
-![グロナビ アニメその12・文字の入れ替え](./images/2021/03/entry449-6.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-6.webp" width="654" height="78" alt="グロナビ アニメその12・文字の入れ替え" decoding="async" loading="lazy"></figure>
+
 ```css:title=CSS
 nav ul li a {
   text-align: center;

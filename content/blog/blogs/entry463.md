@@ -231,7 +231,7 @@ setCountDown();
 
 ここまでのコードではCSSを実装していないのですが、CSS付きでCodepenにサンプルをあげています。
 
-![見るからにいやらしいキャンペーン](./images/2021/05/entry463-2.gif)
+<figure class="animation"><img src="/images/animation/2021/entry463-2.webp" width="600" height="184" alt="見るからにいやらしいキャンペーン" decoding="async" loading="lazy"></figure>
 
 興味がある方はこちらもどうぞ^ ^
 

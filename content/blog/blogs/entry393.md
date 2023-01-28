@@ -36,7 +36,7 @@ faq: [['セレクトボックスの「選択してください」を選択肢か
 
 クリックしたら、こんな感じで項目が表示されます。
 
-![セレクトボックス（プルダウンメニュー）](./images/2020/11/entry393-1-1.gif)
+<figure class="animation"><img src="/images/animation/2020/entry393-1-1.webp" width="220" height="140" alt="セレクトボックス（プルダウンメニュー）" decoding="async" loading="lazy"></figure>
 
 ```html
 <select name="selectbox">
@@ -218,7 +218,7 @@ select {
 ケース別でスニペットを作成しましたのでよろしければ参考にしてください。
 
 ### ケース1・セレクトボックス上「選択してください」を表示したいけど、その項目を選択肢から外したい
-![ケース1・セレクトボックス上「選択してください」を表示したいけど、その項目を選択肢から外したい](./images/2020/11/entry393-3.gif)
+<figure class="animation"><img src="/images/animation/2020/entry393-3.webp" width="538" height="242" alt="ケース1・セレクトボックス上「選択してください」を表示したいけど、その項目を選択肢から外したい" decoding="async" loading="lazy"></figure>
 
 セレクトボックスにはプレースホルダーがないので、「選択してください」などの文字をoptionタグを使って表示させなければなりません。
 
@@ -289,7 +289,7 @@ option[selected][disabled] {
 複数選択させるためにはselectにmultiple属性を付与すればOKです。<br>
 ただしCSSに非常にクセがあって、とてもカスタマイズが難しかったです。。。
 
-![複数の項目を選択したい](./images/2020/11/entry393-5.gif)
+<figure class="animation"><img src="/images/animation/2020/entry393-5.webp" width="520" height="248" alt="複数の項目を選択したい" decoding="async" loading="lazy"></figure>
 
 選択した項目にチェックが入るところだけ、CSSで付与しました。<br>
 とりあえずチェックが入った時の背景色と文字色の変更が難しい。<br>

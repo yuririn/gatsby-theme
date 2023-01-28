@@ -133,7 +133,7 @@ $gap: 20px;//余白
 ## step関数でコマ送りアニメーションを実装
 最近のCSSアニメーションはめっちゃ優秀なんですが、*step関数*を使うとこんなものも作れます！
 
-![step関数でコマ送りアニメーションを実装](./images/2021/05/entry462-9.gif)
+<figure class="animation"><img src="/images/animation/2021/entry462-9.webp" width="176" height="158" alt="step関数でコマ送りアニメーションを実装" decoding="async" loading="lazy"></figure>
 
 コマ数分のイラストを置いた画像素材を作ります。並べる方向は縦でも横でもOK!!
 

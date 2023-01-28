@@ -79,7 +79,7 @@ li[data-tab-menu] {
 ### attr関数を使ってCSSだけでツールチップを実装する
 ツールチップとはマウスオーバーでヒントとか出てくるアレです。
 
-![ツールチップ](./images/2018/entry267-1.gif)
+<figure class="animation"><img src="/images/animation/2018/entry267-1.webp" width="300" height="100" alt="ツールチップ" decoding="async" loading="lazy"></figure>
 
 JSでゴニョゴニョして実装せずにカスタムデータ(data)属性とCSSの擬似クラス＆疑似要素の設定のみで実装可能です。
 
@@ -122,7 +122,7 @@ JSでゴニョゴニョして実装せずにカスタムデータ(data)属性と
 ### attr関数を使ったマウスオーバー時に文字を日本語から英語に切り替えるエフェクトアニメ
 前述の「カスタムデータ（data）属性でツールチップを実装する」の応用編です。
 
-![グロナビ アニメ文字の入れ替え](./images/2021/03/entry449-6.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-6.webp" width="654" height="78" alt="グロナビ アニメ文字の入れ替え" decoding="async" loading="lazy"></figure>
 
 マウスオーバーで文字を入れ替えるなど、[グロナビ アニメ・コードスニペット上級編](https://ginneko-atelier.com/blogs/entry449/#%E3%82%B0%E3%83%AD%E3%83%8A%E3%83%93-%E3%82%A2%E3%83%8B%E3%83%A1%E3%82%B3%E3%83%BC%E3%83%89%E3%82%B9%E3%83%8B%E3%83%9A%E3%83%83%E3%83%88%E4%B8%8A%E7%B4%9A%E7%B7%A8)で紹介しています。
 
@@ -179,7 +179,7 @@ console.log($('[data-attr-huga]').data('attrHuga'))//hoge
 ### 値を変更する(サンプルコード：メニューのトグルボタン)
 メニューのトグルボタンを例にとって値の変更方法をご紹介します。
 
-![トグルメニュー](./images/2018/entry267-2.gif)
+<figure class="animation"><img src="/images/animation/2018/entry267-2.webp" width="300" height="264" alt="トグルメニュー" decoding="async" loading="lazy"></figure>
 
 ```HTML:title=HTML
 <button data-toggle></button>
@@ -251,7 +251,7 @@ $('[data-toggle]').on('click',function(){
 
 メニューとコンテンツで同じ値を持ったタブを表示させます。
 
-![タブメニュー](./images/2018/entry267-3.gif)
+<figure class="animation"><img src="/images/animation/2018/entry267-3.webp" width="600" height="150" alt="タブメニュー" decoding="async" loading="lazy"></figure>
 
 ```html:title=HTML
 <ul class="tab-menu">
