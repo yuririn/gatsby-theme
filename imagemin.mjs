@@ -15,19 +15,19 @@ let imgDirs = fs.statSync(commonDir).isDirectory() ?
 imgDirs = imgDirs.filter(i => fs.statSync(commonDir +'/'+ i ).isDirectory())
 
 ;(async () => {
-  if(imgDirs.length !== 0) {
-    imgDirs.map(async (imgDir) => {
-      const file = await imagemin([`./images/images/thumbnail/${imgDir}/*.{jpg,png}`], {
-        destination: `./src/images/thumbnail/${imgDir}`,
-        plugins: [
-          imageminMozjpeg(),
-          imageminPngquant({
-            quality: [0.6, 0.8]
-          }),
-          imageminGifsicle(),
-          imageminSvgo()
-         ]
-      })
-    })
-  }
+  const file = await imagemin([`./images/blog/2023/01/*.{jpg,png}`], {
+    destination: `./content/blog/blogs/images/2023/01/`,
+    plugins: [
+      imageminMozjpeg(),
+      imageminPngquant({
+        quality: [0.6, 0.8]
+      }),
+      imageminGifsicle(),
+      imageminSvgo()
+     ]
+  })
+  // if(imgDirs.length !== 0) {
+  //   imgDirs.map(async (imgDir) => {
+  //   })
+  // }
 })()

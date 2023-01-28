@@ -5,7 +5,7 @@ modifieddate: 2022-01-01
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["React","Gatsby"]
+tags: ["GatsbyJS","React"]
 description: 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。
 ---
 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。

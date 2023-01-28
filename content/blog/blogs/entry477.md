@@ -5,7 +5,7 @@ modifieddate: 2021-12-13
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: 'web-developer'
-tags: ["Gatsby","React","JavaScript"]
+tags: ["GatsbyJS","React","JavaScript"]
 description: ウェブサイトのリニューアルがようやく終わりました。WebP対応しつつv3にアップグレードする予定たったのですが、Gatsby cliでのインストールのエラーでハマってできませんでした。v2からv4にアップグレードでハマって困っている人へ私が解決できた方法をご紹介します。
 ---
 お久しぶりです!!!念願の久々更新です。<br>2021年7月から進めていたウェブサイトのリニューアルがようやく終わりました！涙<br>WebP対応しつつv3にアップグレードする予定たったのですが、

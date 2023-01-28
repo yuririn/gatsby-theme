@@ -5,7 +5,7 @@ modifieddate: 2022-01-02
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["React","Gatsby"]
+tags: ["GatsbyJS","React"]
 description: 記事数が増えると一覧にペーネーションが欲しくなりますよね？複数ページネーションを実装するためのプラグインがあるにもかかわらず自作して実装してしまいました。プラグインに頼らず実装したい人のために、やり方をシェアします。
 ---
 記事数が増えると一覧にペーネーションが欲しくなりますよね？

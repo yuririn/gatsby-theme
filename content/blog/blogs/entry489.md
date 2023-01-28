@@ -4,7 +4,7 @@ date: 2022-01-14
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["Gatsby","React"]
+tags: ["GatsbyJS","React"]
 description: GatsbyJSでは記事はMarkdownで書くのですが、関連記事のカードなどをカッコよく挿入したくなります。以前は無理やりHTMLで書いてましたが、すんごい面倒だったので独自のコンポーネント（WordPressでいうショートコードみたいなもの）を追加できるようにしました。今回は実装方法のご紹介です。
 ---
 GatsbyJSでは記事はMarkdownで書くのですが、関連記事のカードなどをカッコよく挿入したくなります。以前は無理やりHTMLで書いてましたが、すんごい面倒だったので独自のコンポーネント（WordPressでいうショートコードみたいなもの）を追加できるようにしました。今回は実装方法のご紹介です。

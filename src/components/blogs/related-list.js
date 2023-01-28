@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "../smImg"
 import styled from "styled-components"
@@ -42,32 +42,31 @@ const Lists = ({ category, slug, tags }) => {
     return false
   })
 
-  if (!posts) return
-
-  if (posts.length > 5) {
-    function shuffle(list) {
-      var i = list.length
-
-      while (--i) {
-        var j = Math.floor(Math.random() * (i + 1))
-        if (i === j) continue
-        var k = list[i]
-        list[i] = list[j]
-        list[j] = k
-      }
-
-      return list
+  const result = useMemo(() => {
+    if (!posts) return;
+    if (posts.length > 5) {
+      shuffle(posts);
     }
+    return posts.slice(0, 6)
+  }, []);
 
-    shuffle(posts)
-    posts = posts.slice(0, 6)
+  function shuffle(list) {
+    var i = list.length
+
+    while (--i) {
+      var j = Math.floor(Math.random() * (i + 1))
+      if (i === j) continue
+      var k = list[i]
+      list[i] = list[j]
+      list[j] = k
+    }
+    return list
   }
-
   return (
     <RelativeList>
       <h2 className="c-heading--lg--side">関連記事</h2>
       <ol>
-        {posts.map((item, index) => {
+        {result.map((item, index) => {
           return (
             <li className="p-entryCard is-small" key={`relative${index}`} role="article">
               <Link to={item.node.fields.slug} className="p-entryCard__img">

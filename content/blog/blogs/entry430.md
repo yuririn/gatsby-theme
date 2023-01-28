@@ -5,7 +5,7 @@ modifieddate: 2022-01-05
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["React","Gatsby"]
+tags: ["GatsbyJS","React"]
 description: 今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！関連記事をランダムで6記事ピックアップして出力します。※ 2021年12月アップデートに伴い、v4対応済みです。
 ---
 今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！

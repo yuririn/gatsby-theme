@@ -41,7 +41,6 @@ WordPressはLocalなどのお手軽ツールでもいいのですが、Dockerで
 ルートディレクトリ/
   └ wp-content/
      ├ themes/
-     ├ functions.php(ブロックを読み込む)
      └ your-theme/（実装したいテーマフォルダ）
       ├ functions.php（ブロックを読み込むため編集）
       └ new-block/（ここにブロックを作成します）

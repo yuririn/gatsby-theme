@@ -5,7 +5,7 @@ modifieddate: 2022-01-03
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["React","Gatsby"]
+tags: ["GatsbyJS","React"]
 description: Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。※GA4に対応しました。
 ---
 Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。
@@ -115,7 +115,14 @@ export const pageQuery = graphql`
   }
 `
 ```
+OGP画像や検索などで表示されるサムネイル画像をアイキャッチと違う画像サイズを取得することもできます。リサイズされたパスを取得する方法についてはこちらをご覧ください。
+
+<card id="/blogs/entry516/"></card>
+
+<br/>
+
 `<Seo/>`コンポーネントに値を付与します。ogp画像のパスを取得し、seo.jsに値を渡します。
+
 ```js{15,13}:title=blog-list.js
 // 省略
 const BlogPostTemplate = ({ data, location }) => {

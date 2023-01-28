@@ -47,21 +47,6 @@ export const BaseStyle = createGlobalStyle`
     content:'';
     content:none;
   }
-    @font-face {
-    font-family: 'Raleway',sans-serif;
-    display: swap;
-    src: url('https://ginneko-atelier.com/fonts/Raleway-Light.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    }
-    @font-face {
-    font-family: 'Raleway',
-    sans-serif;
-    display: swap;
-    src: url('https://ginneko-atelier.com/fonts/Raleway-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    }
 
   a {
     margin:0;
@@ -160,7 +145,7 @@ export const BaseStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Raleway', monospace, "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "メイリオ", sans-serif;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "メイリオ", sans-serif;
     font-size: 62.5%;
 
   }

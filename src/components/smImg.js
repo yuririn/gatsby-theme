@@ -25,7 +25,6 @@ const Img = ({ source, title, className, size }) => {
 
   let img = allFile.edges.find(img => img.node.relativePath === resource)
   if (img) {
-    console.log();
     return (
       <img src={img.node.childImageSharp.resize.src} alt={title} width="254" height="190" loading="lazy" decoding="async">
       </img>

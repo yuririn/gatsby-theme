@@ -8,7 +8,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 import config from "../../gatsby-config"
 
 const Seo = ({lang, meta, data}) => {
@@ -272,7 +271,6 @@ const Seo = ({lang, meta, data}) => {
         lang,
       }}
       title={pageName}
-      // titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
@@ -331,8 +329,6 @@ const Seo = ({lang, meta, data}) => {
     >
       {noindex.includes(data.location.pathname)&&<meta content="noindex" name="robots"/>}
       <link rel="canonical" href={canonicalUrl}></link>
-      <link rel="preload" href={`${domain}/fonts/Raleway-Bold.ttf`} as="font" type="font/ttf"></link>
-      <link rel="preload" href={`${domain}/fonts/Raleway-Light.ttf`} as="font" type="font/ttf"></link>
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>

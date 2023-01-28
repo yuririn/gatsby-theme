@@ -4,7 +4,7 @@ date: 2022-01-04
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["React","Gatsby"]
+tags: ["GatsbyJS","React"]
 description: Gatsbyブログにパンくずリストを追加します。今までのコンポーネントの作り方を参考にすればできるのですが、今回はせっかくなので構造化データの一つmicrodataを埋め込みながらの作り方も紹介しようと思います。※ 2021年12月バージョンアップに伴いv4対応してあります。
 ---
 Gatsbyブログにパンくずリストを追加します。今までのコンポーネントの作り方を参考にすればできるのですが、今回はせっかくなので構造化データの一つmicrodataを埋め込みながらの作り方も紹介しようと思います。

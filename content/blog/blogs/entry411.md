@@ -4,7 +4,7 @@ date: 2020-12-07
 hero: thumbnail/2014/entry192.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["Gatsby","npm"]
+tags: ["GatsbyJS","npm"]
 description: GatsbyJSでサイト構築中、iPhoneやAndoroidでもチェックしたいですよね？同じWiFi繋がっているのなら、browser syncではExternalアドレスが使えるはず！やり方を調べていたら、見つかったのでそのやり方をメモしておきます。
 ---
 GatsbyJSでサイト構築中、iPhoneやAndoroidでもチェックしたいですよね？

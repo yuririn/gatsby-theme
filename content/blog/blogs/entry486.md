@@ -4,7 +4,7 @@ date: 2022-01-03
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["React","Gatsby"]
+tags: ["GatsbyJS","React"]
 description: タグクラウドのコンポーネントを作ります。記事一覧があることが前提です。また、今までご紹介した方法でトップページも整えました。※ v4バージョンアップ後に記事です。v4以外ではうまく動かない可能性があります。
 ---
 今回はタグクラウドのコンポーネントを作ります。記事一覧があることが前提です。また、今までご紹介した方法でトップページも整えました。
