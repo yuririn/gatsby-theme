@@ -279,7 +279,7 @@ nav ul li a:hover::before {
 
 本来はSVGがいいんでしょうけど。。。
 
-![グロナビ アニメその6・アイコンをくるくる回す](./images/2021/03/entry449-7.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-7.webp" width="440" height="62" alt="グロナビ アニメその6・アイコンをくるくる回す" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 nav ul li a::after {
@@ -311,7 +311,7 @@ nav ul li a:hover:after {
 
 YouTubeでマッチ棒パズルなるものを知った結果こうなりました。。。。
 
-![グロナビ アニメその7・マッチ棒っぽいものを伸ばす](./images/2021/03/entry449-10.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-10.webp" width="444" height="66" alt="グロナビ アニメその7・マッチ棒っぽいものを伸ばす" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 nav ul li a::after {
@@ -356,7 +356,7 @@ nav ul li a:hover::before {
 
 地味なテクニックですが重宝します。
 
-![グロナビ アニメその8・グラデ背景を重ねる](./images/2021/03/entry449-11.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-11.webp" width="566" height="72" alt="グロナビ アニメその8・グラデ背景を重ねる" decoding="async" loading="lazy"></figure>
 
 グラデーションは色と色の境目を0にすることでぱきっと色を分けることができます。
 
@@ -417,7 +417,7 @@ nav ul li a:hover::after{
 
 今回はパキッとさせてますが、グラデはお好みで滑らかにしてもいいかもです^ ^
 
-![グロナビ アニメその8・グラデ背景を重ねる](./images/2021/03/entry449-12.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-12.webp" width="448" height="70" alt="グロナビ アニメその8・グラデ背景を重ねる" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 nav ul li a::after{
@@ -468,12 +468,13 @@ p::before {
 
 ベタ塗りからのグラデーションはアニメーションが効かないので、最初から上に透明（`opacity`）な擬似要素を重ねておき、`opacity: 1`にしてアニメーションさせます。
 
-![グロナビ アニメその10・文字をグラデに](./images/2021/03/entry449-9.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-9.webp" width="508" height="82" alt="グロナビ アニメその10・文字をグラデに" decoding="async" loading="lazy"></figure>
+
 ```html:title=HTML
 <li><a href="#" data-item="SERVICE">SERVICE</a></li>
 <li><a href="#" data-item="BLOG">BLOG</a></li>
 <li><a href="#" data-item="ABOUT">ABOUT</a></li>
-<li><a href="#"" data-item="CONTACT">CONTACT</a></li>
+<li><a href="#" data-item="CONTACT">CONTACT</a></li>
 ```
 
 ```css:title=CSS
@@ -503,7 +504,7 @@ a:hover::before {
 
 グラデは左から徐々に右に広がります。下線も追加してさらにリッチに。
 
-![グロナビ アニメその11・文字をグラデかつ下線のアニメ追加](./images/2021/03/entry449-8.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-8.webp" width="472" height="60" alt="グロナビ アニメその11・文字をグラデかつ下線のアニメ追加" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 a::before {

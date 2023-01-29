@@ -103,3 +103,5 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+!\[(.*?)\]\((.+?)\/2021\/(.*?)\/entry(.+?).gif\)
+<figure class="animation"><img src="/images/animation/2021/entry$4.webp" width="" height="" alt="$1" decoding="async" loading="lazy"></figure>
