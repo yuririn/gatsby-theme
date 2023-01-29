@@ -6,6 +6,7 @@ pagetype: blog
 cateId: 'web-developer'
 tags: ["CSS"]
 description: CSSって関数があるのをご存知ですか？気づかず使っている人多いはずです。2022年6月15日にIEがいなくなるので、大手を振って使えるCSS関数がたくさんあります！私が普段使っている関数と今後バンバン使っていきたい関数を事例とともに12選紹介します！関数は目次にあるので、お好きなものだけ飛ばし読みしてください。
+faq: [['calc関数で幅を算出したい。','calc関数を使うと、パーセントやpxが混在した状態で計算できます。例えば2カラムのレイアウトで、サイドバーだけ300pxなどに固定したい場合便利です。'],['sassで変数を使うと関数がエラーになります','sassで関数を使う場合はコツがあり#{}で囲うと使えます。'],['CSSの比較関数の使い方がわからない','本記事では min(), max(), clamp()の使い方を詳しく解説しています。']]
 ---
 CSSって関数があるのをご存知ですか？気づかず使っている人多いはずです。
 
@@ -52,7 +53,6 @@ SCSS使います。
 $rightWidth: 200px;
 
 .row {
-  max-width:  100%;
   display: flex;
 }
 
@@ -64,12 +64,10 @@ $rightWidth: 200px;
   width: $rightWidth;
 }
 ```
-<small>※ flex&calcを併用する場合、IEで要素が無限に広がるバグが起こることもあります。対策でmax-widthを入れておくと回避できます。</small>
 
 [2カラムレイアウトで片方の幅を固定したい|CodePen](https://codepen.io/camile/pen/abJJZPM)
 <div class="box">
-<h4>gridを使ったらもっとカンタンだけどね。。。</h4>
-実はgridを使った方がカンタンですが、IE用のコードも書かなきゃいけなくめっちゃ長くなります。
+<h4>gridを使ったらもっとカンタンです。。。</h4>
 </div>
 
 ### 使用例その2・グリッドレイアウトを使いたいとき
@@ -569,16 +567,6 @@ body {
   color:var(--font-color);
 }
 ```
-
-すげー便利なんですが、IEで使えません。<br>なのでPolyfillで対応します。
-```html
-<script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-<script>
-cssVars({
-  rootElement: document
-});
-</script>
-```
 [css-vars-ponyfill|GitHub](https://jhildenbiddle.github.io/css-vars-ponyfill/#/)
 
 ## image-set関数で背景画像もディバイスごとに解像度を調整
@@ -614,8 +602,10 @@ img画像は解像度を変えたものを用意したらいい感じになる�
 ## まとめ・CSSの関数を使って便利に
 今回は12コのCSS関数を紹介させていただきました。
 
-他にもたくさんあるんですが、あげたらきりがないのでヘビーユーズとIEがなくなった後使えそうなものを厳選してみました。
+他にもたくさんあるんですが、厳選してみました。
 
 この記事が皆さんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+
+<faq id="/blogs/entry462/"></faq>

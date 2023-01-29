@@ -250,11 +250,8 @@ const contactTemplate = ({ data, location }) => {
           <Img source="common/contact.jpg" className="p-pageHeader__img" />
         </div>
         <section>
-          <div className="l-container">
-            <div className="mb-Md mt-Xs">
-              <BreadCrumbList current="お問い合わせ" />
-            </div>
-          </div>
+
+           <BreadCrumbList current="お問い合わせ"  className="mb-Md mt-Xs" />
           <div className="l-container">
             {location.pathname === `/contact/thanks/` ? (
               <Thanks />

@@ -33,7 +33,6 @@ const category = ({ pageContext, data, location }) => {
       <Seo
         data={yourData}
       />
-
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">{cateName}</h1>
@@ -44,69 +43,49 @@ const category = ({ pageContext, data, location }) => {
           className="p-pageHeader__img"
         ></Img>
       </div>
-      <div className="page-template-archive">
-        <div className="l-container">
-          <BreadCrumbList type="blog" current={cateName} />
-          {totalCount === 0 ? (
-            <p className="p-txt-center">
-              {category.name}に関する記事はまだありません
-            </p>
-          ) : (
-            ""
-          )}
-          <section className="p-section">
-            <h2 className="c-heading--lg">最新記事</h2>
-            <ol className="c-grid">
-              {edges.map(({ node }) => {
-                const { slug } = node.fields
-                const { title, hero, date, tags } = node.frontmatter
-                return (
-                  <li
-                    className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
-                    key={slug}
-                    role="article"
-                  >
+      <BreadCrumbList type="blog" current={cateName} />
+        <section className="p-section l-container">
+          <h2 className="c-heading--lg">最新記事</h2>
+          <ol className="c-grid">
+            {edges.map(({ node }) => {
+              const { slug } = node.fields
+              const { title, hero, date, tags } = node.frontmatter
+              return (
+                <li
+                  className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
+                  key={slug}
+                  role="article"
+                >
 
-                      <Link to={slug} className="p-entryCard__img">
-                        {hero ? (
-                          <Img source={hero} alt={title} />
-                        ) : (
-                          <Img source="common/dummy.png" alt="" />
-                        )}
-                        <div className="p-entryCard__date">
-                          <time date={date.replace(/\./g, "-")}>{date}</time>
-                        </div>
-                      </Link>
-                      <Link to={slug} className="p-entryCard__body">
-                        <h3 className="p-entryCard__heading">{title}</h3>
-                      </Link>
-                      <div className="p-entryCard__footer">
-                        <AddTagLink tags={tags} />
+                    <Link to={slug} className="p-entryCard__img">
+                      {hero ? (
+                        <Img source={hero} alt={title} />
+                      ) : (
+                        <Img source="common/dummy.png" alt="" />
+                      )}
+                      <div className="p-entryCard__date">
+                        <time date={date.replace(/\./g, "-")}>{date}</time>
                       </div>
+                    </Link>
+                    <Link to={slug} className="p-entryCard__body">
+                      <h3 className="p-entryCard__heading">{title}</h3>
+                    </Link>
+                    <div className="p-entryCard__footer">
+                      <AddTagLink tags={tags} />
+                    </div>
 
-                  </li>
-                );
-              })}
-            </ol>
-          </section>
-          {page > 1 ? (
-            <Pagination
-              num={page}
-              current={current}
-              type={`${cateSlug}/`}
-            ></Pagination>
-          ) : (
-            ""
-          )}
-        </div>
-         <aside className="l-container">
-          <section className="p-section u-text-center">
-            <h2 className="c-heading--lg">人気のジャンル</h2>
-            <Genre />
-          </section>
-          <Prof />
-        </aside>
-      </div>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+        <aside className="l-container">
+        <section className="p-section u-text-center">
+          <h2 className="c-heading--lg">人気のジャンル</h2>
+          <Genre />
+        </section>
+        <Prof />
+      </aside>
     </Layout>
   );
 }

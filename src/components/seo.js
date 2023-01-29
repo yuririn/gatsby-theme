@@ -23,14 +23,15 @@ const Seo = ({lang, meta, data}) => {
   const thumbnailSrc = domain + (data.thumnail ? data.thumnail : "/images/thumnail.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
   let pageName = isRoot ? defaultTitle : `${data.title} - ${defaultTitle}`
+
   if(data.type === "tags" || data.type === "genre") {
     pageName = `${data.title} - 記事一覧 - ${defaultTitle}`
   } else if (data.type === "blog") {
-    pageName = data.title
+    pageName = `${data.title}`
   }
   const canonicalUrl = blogUrl;
   if (data.type === "blogs" || data.type === "tags" || data.type === "genre") {
-    blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "")
+    blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "");
   }
   const cateInfo =  data.cateId ? { url:`/blogs/${data.cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === data.cateId })[0].name}:''
   const noindex = [`/blogs/entry309/`,
@@ -170,8 +171,8 @@ const Seo = ({lang, meta, data}) => {
       "@type": "FAQPage",
       "mainEntity": []
     }
-    faqArry.map((item)=>{
-      const link = item[2]?'<br>くわしくは<a href=\"'+item[2]+'\">こちら<\/a>。':'';
+    faqArry.forEach((item)=>{
+      const link = item[2]?'<br>くわしくは<a href="'+item[2]+'">こちら</a>。':'';
       const entry = {
         "@type": "Question",
         "name": item[0],
@@ -372,6 +373,7 @@ Seo.defaultProps = {
   lang: `ja`,
   meta: [],
   description: ``,
+  title: ``,
 }
 
 Seo.propTypes = {

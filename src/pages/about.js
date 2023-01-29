@@ -45,9 +45,7 @@ const aboutPost = ({ data, location }) => {
         </div>
         <Img source="common/about.jpg" className="p-pageHeader__img" />
       </div>
-      <div className="l-container">
-        <BreadCrumbList current={pageTitle} />
-      </div>
+      <BreadCrumbList type="blog"/>
       <Body>
         <Article>
           <article className="p-section">

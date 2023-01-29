@@ -6,31 +6,8 @@ import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
 
-const Toc = React.memo(({content})=>{
-  let toc = null;
-  if( typeof window !== "undefined") {
-    if(window.outerWidth > 768) {
-      toc = content
-    }
-  }
-  return (
-    <>
-    {toc !== null?
-      <div
-        className="side-topic"
-          dangerouslySetInnerHTML={{
-          __html: '<h2 class="side-topic--heading">この記事のサマリー</h2>' + toc,
-        }}
-        ></div>
-    :""
-    }
-    </>
-  )
-})
 const bar = ({ cateId, topic, tags, slug }) => {
   const tableOfContent = topic.replace(/(<p>|<\/p>)/gi, "")
-
-
   return (
     <Sidebar>
       <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
@@ -52,7 +29,12 @@ const bar = ({ cateId, topic, tags, slug }) => {
       </section>
       <div className="inner">
 
-        <Toc content={tableOfContent}></Toc>
+        <div
+        className="side-topic"
+          dangerouslySetInnerHTML={{
+          __html: '<h2 class="side-topic--heading">この記事のサマリー</h2>' + tableOfContent,
+        }}
+        ></div>
         <ul className="side-banner">
           <li>
             <Link to="/about/">

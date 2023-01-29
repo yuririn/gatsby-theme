@@ -235,9 +235,7 @@ const NotFoundPage = ({ data, location }) => {
         <Img source="common/ganre-404.jpg" className="p-pageHeader__img" />
       </div>
       <P404>
-        <div className="mb-Md mt-Xs l-container">
-          <BreadCrumbList current="お探しのページは見つかりませんでした" />
-        </div>
+        <BreadCrumbList current="お探しのページは見つかりませんでした" />
         <Edit>
           <div className="l-container">
             <h2>あなたのお探しのページにたどり着けなかったようです</h2>

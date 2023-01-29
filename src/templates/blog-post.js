@@ -96,9 +96,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </div>
         </div>
       </Header>
-      <div className="l-container">
-        <BreadCrumbList type="blog" current={post.frontmatter.title} cate={category} tag={post.frontmatter.tags[0]}/>
-      </div>
+      <BreadCrumbList type="blog" current={post.frontmatter.title} cate={category} tag={post.frontmatter.tags[0]}/>
       <Body>
         <Article>
           <article

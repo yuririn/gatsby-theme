@@ -17,8 +17,6 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes
   let cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
 
-  console.log(location);
-
   return (
     <Layout location={location} title={siteTitle}>
       <Seo

@@ -191,14 +191,14 @@ export const Article = styled.div`
     &__heading {
       font-size: 2.4rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 24px;
       color: var(--color-d-blue);
       line-height: 1.4;
       margin-top:0;
 
       @media screen and (min-width: 768px) {
         font-size: 2.8rem;
-        margin-bottom: 30px;
+        margin-bottom: 42px;
       }
     }
 

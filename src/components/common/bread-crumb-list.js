@@ -4,12 +4,10 @@ import styled from "styled-components";
 
 const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
   return (
-    <BreadCrumb>
-      <ol>
+    <BreadCrumb className={type === `blog` ? 'blog':''}>
         <li>
           <Link to="/">銀ねこアトリエ</Link>
         </li>
-
         {type === `blog` ? (
           <li>
             <Link to="/blogs/">ノマドブログ</Link>
@@ -30,26 +28,40 @@ const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
           </li>
         ) : (
           ""
+          )}
+        {type === `blog` ? (
+          ""
+        ):(
+          <li>{current}</li>
         )}
-        <li>{current}</li>
-      </ol>
     </BreadCrumb>
   );
 };
 
 export default BreadCrumbList;
 
-const BreadCrumb = styled.div`
-  ol {
-    list-style: none;
-    margin-bottom: 20px;
+const BreadCrumb = styled.ol`
+
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+        padding-left: 15px;
+    padding-right: 15px;
     @media screen and (min-width: 768px) {
-      margin-bottom: 30px;
-    }
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  list-style: none;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 30px;
+  }
+
     li {
       display: inline-block;
       font-size: 1.4rem;
       margin-bottom: 5px;
+
       a {
         color: var(--color-blue);
         @media screen and (min-width: 768px) {
@@ -57,9 +69,6 @@ const BreadCrumb = styled.div`
             text-decoration: none;
           }
         }
-      }
-      &:last-child::after {
-        content: none;
       }
       &::after {
         content: "";
@@ -71,6 +80,20 @@ const BreadCrumb = styled.div`
         border-top: 2px solid var(--color-blue);
         transform: rotate(45deg);
       }
+      &:last-child::after {
+        content: none;
+      }
     }
+    &.blog {
+      margin-bottom: 10px;
+      li:last-child::after {
+        content: "";
+      }
+      @media screen and (min-width: 768px) {
+        margin-bottom: 8px;
+        margin-top: 36px;
+      }
+    }
+
   }
 `;

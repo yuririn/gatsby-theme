@@ -37,9 +37,8 @@ const tags = ({ pageContext, data, location }) => {
           alt={tag}
         ></Img>
       </div>
-      <div className="l-container">
-        <BreadCrumbList type="blog" current={tag} />
-        <section className="p-section">
+      <BreadCrumbList type="blog" current={tag} />
+      <section className="p-section l-container">
           <h2 className="c-heading--lg">最新記事</h2>
           <ol className="c-grid">
             {posts.map((post, index) => {
@@ -80,17 +79,16 @@ const tags = ({ pageContext, data, location }) => {
               );
             })}
           </ol>
-        </section>
-        {page !== 1 ? (
-          <Pagination
-            num={page}
-            current={current}
-            type={`tags/${tag}/`}
-          ></Pagination>
-        ) : (
-          ""
-        )}
-      </div>
+          {page !== 1 ? (
+            <Pagination
+              num={page}
+              current={current}
+              type={`tags/${tag}/`}
+            ></Pagination>
+          ) : (
+            ""
+          )}
+      </section>
       <aside className="l-container">
         <section className="p-section u-text-center">
           <h2 className="c-heading--lg">人気のジャンル</h2>

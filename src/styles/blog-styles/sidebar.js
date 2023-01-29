@@ -23,6 +23,11 @@ export const Sidebar = styled.div`
     overflow:auto;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+        display:block;
+    }
 
     &--heading {
       border: var(--color-blue) 1px solid;
@@ -38,9 +43,7 @@ export const Sidebar = styled.div`
 
         margin-bottom: 0;
         padding: 10px 16px;
-        @media screen and (min-width: 768px) {
-            display:block;
-        }
+
     }
     & > ul {
       border: var(--color-blue) 1px solid;

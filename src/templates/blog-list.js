@@ -36,51 +36,49 @@ const blogs = ({ pageContext, data, location }) => {
           className="p-pageHeader__img"
         ></Img>
       </div>
-      <div className="l-container">
-        <BreadCrumbList type="blogs" current="ノマドブログ" />
-        <section className="p-section">
-          <h2 className="c-heading--lg">最新記事</h2>
-          <ol className="c-grid">
-            {posts.map((post, index) => {
-              return (
-                <li
-                  className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
-                  key={`article-${index}`} role="article"
-                >
+      <BreadCrumbList type="blogs" current="ノマドブログ" />
+      <section className="p-section l-container">
+        <h2 className="c-heading--lg">最新記事</h2>
+        <ol className="c-grid">
+          {posts.map((post, index) => {
+            return (
+              <li
+                className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
+                key={`article-${index}`} role="article"
+              >
 
-                    <Link to={post.fields.slug} className="p-entryCard__img">
-                      {post.frontmatter.hero ? (
-                        <Img
-                          source={post.frontmatter.hero}
-                          alt={post.frontmatter.title}
-                        />
-                      ) : (
-                        <Img
-                          source="common/dummy.png"
-                          alt={post.frontmatter.title}
-                        />
-                      )}
-                      <div className="p-entryCard__date">
-                        <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                          {post.frontmatter.date}
-                        </time>
-                      </div>
-                    </Link>
-                    <Link to={post.fields.slug} className="p-entryCard__body">
-                      <h3 className="p-entryCard__heading">
-                        {post.frontmatter.title}
-                      </h3>
-                    </Link>
-                    <div className="p-entryCard__footer">
-                      <AddTagLink tags={post.frontmatter.tags} />
+                  <Link to={post.fields.slug} className="p-entryCard__img">
+                    {post.frontmatter.hero ? (
+                      <Img
+                        source={post.frontmatter.hero}
+                        alt={post.frontmatter.title}
+                      />
+                    ) : (
+                      <Img
+                        source="common/dummy.png"
+                        alt={post.frontmatter.title}
+                      />
+                    )}
+                    <div className="p-entryCard__date">
+                      <time date={post.frontmatter.date.replace(/\./g, "-")}>
+                        {post.frontmatter.date}
+                      </time>
                     </div>
-                </li>
-              );
-            })}
-          </ol>
-        </section>
+                  </Link>
+                  <Link to={post.fields.slug} className="p-entryCard__body">
+                    <h3 className="p-entryCard__heading">
+                      {post.frontmatter.title}
+                    </h3>
+                  </Link>
+                  <div className="p-entryCard__footer">
+                    <AddTagLink tags={post.frontmatter.tags} />
+                  </div>
+              </li>
+            );
+          })}
+        </ol>
         <Pagination num={page} current={current} type=""></Pagination>
-      </div>
+      </section>
       <aside className="l-container">
         <section className="p-section u-text-center">
           <h2 className="c-heading--lg">人気のジャンル</h2>

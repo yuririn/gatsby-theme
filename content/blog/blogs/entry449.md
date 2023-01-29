@@ -103,7 +103,7 @@ nav ul li a:hover {
 
 そんな時は下線をつけるのですが、それだけだと芸がないので横に広げます。シンプルで使いやすいです。
 
-![グロナビ アニメその1・下線を横に広がる](./images/2021/03/entry449-1.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-1.webp" width="426" height="70" alt="グロナビ アニメその1・下線を横に広がる" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 nav ul li a::after {
@@ -132,7 +132,7 @@ nav ul li a:hover::after {
 ### グロナビ アニメその2・下線が左からにゅっと伸びる
 先ほどのアレンジバージョンです。左から右へ伸びると*ページ遷移するんだ*感が出ます。
 
-![グロナビ アニメその2・下線が左からにゅっと伸びる](./images/2021/03/entry449-2.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-2.webp" width="416" height="78" alt="グロナビ アニメその2・下線が左からにゅっと伸びる" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 nav ul li a::after {
@@ -162,7 +162,7 @@ nav ul li a:hover::after {
 
 もしくは色を調整してください。
 
-![グロナビ アニメその3・背景色をガツンと変える](./images/2021/03/entry449-3.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-3.webp" width="418" height="66" alt="グロナビ アニメその3・背景色をガツンと変える" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 nav ul li a:hover {
@@ -181,7 +181,7 @@ nav ul li a:hover {
 
 サイトによっては事故が起こるデザインなので要注意。
 
-![グロナビ アニメその4・色を変える](./images/2021/03/entry449-5.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-5.webp" width="454" height="66" alt="グロナビ アニメその4・色を変える" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 li:nth-child(1) a{
@@ -228,7 +228,7 @@ li:nth-child(4) a:hover {
 
 詳細はこちら的なリンクのあしらいとして使ってもかっこいいです。
 
-![グロナビ アニメその5・矢印がにゅっと伸びる](./images/2021/03/entry449-4.gif)
+<figure class="animation"><img src="/images/animation/2021/entry449-4.webp" width="440" height="60" alt="グロナビ アニメその5・矢印がにゅっと伸びる" decoding="async" loading="lazy"></figure>
 
 ```css:title=CSS
 nav ul li a::after {
