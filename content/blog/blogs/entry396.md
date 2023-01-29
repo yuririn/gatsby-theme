@@ -65,7 +65,7 @@ CMSから吐き出すタグを**自分では書き換えられないけどCSS側
 
 ### ホバーで半透明
 
-![ホバーで半透明](./images/2020/11/entry396-3.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-3.webp" width="194" height="80" alt="ホバーで半透明" decoding="async" loading="lazy"></figure>
 
 ```html:title=HTML
 <a href="" class="btn--basic">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
@@ -91,7 +91,7 @@ a[class^=btn] { //btnから始まるクラス
 
 ### 色が反転
 
-![色が反転](./images/2020/11/entry396-4.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-4.webp" width="214" height="88" alt="色が反転" decoding="async" loading="lazy"></figure>
 
 ホバーすると、ボーダーが反転します。<br>
 他のボタンとサイズを合わせるためにbox-sizing: border-box;でborderを内側に含めています。
@@ -122,7 +122,7 @@ a[class^=btn] { //btnから始まるクラス
 ```
 
 ### 定番の立体感のあるボタンらしいボタン
-![定番の立体感のあるボタンらしいボタン](./images/2020/11/entry396-5.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-5.webp" width="196" height="84" alt="定番の立体感のあるボタンらしいボタン" decoding="async" loading="lazy"></figure>
 
 定番のボタンらしいボタンを作るとき、私はかならずY軸に向かった`box-shadow`を使います。<br>
 クリックしたとき、押した感が出るように`transformY`で位置をわずかに下げ、さらに`box-shadow`も同じ分量減らします。<br>
@@ -179,7 +179,7 @@ a[class^=btn] { //btnから始まるクラス
 
 #### ベースのスケルトン
 
-![ベースのスケルトン](./images/2020/11/entry396-6.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-6.webp" width="270" height="114" alt="ベースのスケルトン" decoding="async" loading="lazy"></figure>
 
 背景を半透明にしただけで、クリックとともに白っぽさが増します。
 
@@ -208,7 +208,7 @@ a[class^=btn] { //btnから始まるクラス
 ```
 
 #### クリアソープのようなスケルトンボタン
-![ベースのスケルトン](./images/2020/11/entry396-7.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-7.webp" width="256" height="108" alt="ベースのスケルトン" decoding="async" loading="lazy"></figure>
 
 クリアソープのように少し立体感をつけてみました。<br>
 box-shadowをinsetにして立体感をつけています。
@@ -244,7 +244,7 @@ box-shadowをinsetにして立体感をつけています。
 ```
 
 #### ネオンのようなスケルトンボタン
-![ネオンのようなスケルトンボタン](./images/2020/11/entry396-8.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-8.webp" width="256" height="110" alt="ネオンのようなスケルトンボタン" decoding="async" loading="lazy"></figure>
 
 ボーダーをbox-shadowだけで作って、ライトのようにしています。
 

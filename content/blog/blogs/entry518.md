@@ -175,7 +175,7 @@ WebPアニメーションは FireFox、Chrome、Safari でも動くし、この�
 ```bash
 ffmpeg -i ***.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" ***.mp4
 
-ffmpeg -i ***.mp4 -vf fps=5 -c:v libwebp -loop 0 -lossless 0 -quality 75 -preset 5 -an -vsync 0 e***.webp
+ffmpeg -i ***.mp4 -vf fps=5 -c:v libwebp -loop 0 -lossless 0 -quality 75 -preset 5 -an -vsync 0 ***.webp
 ```
 これでかなり時短ができるようになりました。また機会があれば記事にまとめます。
 
