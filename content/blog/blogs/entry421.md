@@ -5,7 +5,7 @@ modifieddate: 2021-01-12
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方も解説します！※ v4対応済み
 ---
 Gatsbyでオリジナルの個別のページを作ります。CSSモジュールの追加の仕方とFontAwesomeプラグインの使い方も解説します！
@@ -31,6 +31,8 @@ Gatsbyでオリジナルの個別のページを作ります。CSSモジュー�
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
 <toc id="/blogs/entry421/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
@@ -40,7 +42,7 @@ Gatsbyでオリジナルの個別のページを作ります。CSSモジュー�
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
 
 ## headerもfooterもまったく違うデザインのページを作ります
-今回GatsbyJS作るのはこのポートフォリオページです。
+今回Gatsby作るのはこのポートフォリオページです。
 
 私が数年前、テキトーに作ってヘッドハントされたきっかけとなったページです。
 

@@ -141,7 +141,7 @@ Clarity には Content Insights（コンテンツの洞察） と言って記事
 > Content insights card is automatically applied for most WordPress blog sites. To view content insights on your Clarity dashboard, add the following attribute to the article element or tag on the DOM for article pages.<br>
 > <small>Content insights カードはほとんどの WordPress では自動的に設定されます。もし Content insights カードが表示されない場合、専用の属性を手動で追加してください。</small>
 
-ほとんどの WordPress では自動的に設定される Content insights カードが表示されるのですが、私のブログみたいに GatsbyJS 製など WordPress 以外のWebサイトではきちんと表示されないことがあります。
+ほとんどの WordPress では自動的に設定される Content insights カードが表示されるのですが、私のブログみたいに Gatsby 製など WordPress 以外のWebサイトではきちんと表示されないことがあります。
 
 表示させるためには記事が格納されているタグにカスタムデータ `data-clarity-region="article"` を付与する必要があります。
 

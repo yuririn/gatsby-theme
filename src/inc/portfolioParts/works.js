@@ -118,7 +118,7 @@ const Works = () => (
         <section>
           <h3>静的サイトジェネレーター</h3>
           <p>
-            当「銀ねこアトリエ」をGatsbyJSでフロントエンド魂をかけてリニューアル。GitHubでのデプロイ連携。SPAでもあるので表示サクサク。
+            当「銀ねこアトリエ」をGatsbyでフロントエンド魂をかけてリニューアル。GitHubでのデプロイ連携。SPAでもあるので表示サクサク。
           </p>
         </section>
         <Img source="portfolio/ginneko.jpg" className="img"></Img>

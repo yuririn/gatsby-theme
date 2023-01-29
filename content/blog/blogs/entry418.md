@@ -5,7 +5,7 @@ modifieddate: 2022-01-03
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。※FBシェアにおけるcanonilcal属性を修正しました。※GA4に対応しました。
 ---
 Gatsby記事もこれで8記事目となりました！！表示が早いだけではNG!!!サイトをちゃんと機能させるため、SEOで出力する情報を調整しました。パンくずやページの構造化データやOGP画像なども調整しています。
@@ -29,6 +29,9 @@ Gatsby記事もこれで8記事目となりました！！表示が早いだけ�
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
+
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
 
 <toc id="/blogs/entry418/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。

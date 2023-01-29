@@ -5,7 +5,7 @@ modifieddate: 2022-01-01
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。ulタグからolタグに変え、目次が長くなるので閉じるボタンをつけ、アコーディオンさせるなど少し改造しました。そのやり方について綴ります。
 ---
 記事に目次をつけたかったのでプラグインgatsby-remark-autolink-headersを利用して目次を実装しました。
@@ -32,6 +32,9 @@ ulタグからolタグに変え、目次が長くなるので閉じるボタン�
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
+
 <toc id="/blogs/entry410/"></toc>
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
@@ -43,7 +46,7 @@ ulタグからolタグに変え、目次が長くなるので閉じるボタン�
 この記事は一番メジャーなテンプレート、「*Gatsby Starter Blog*」を改造しています。同じテーマでないと動かない可能性があります。
 
 ## 目次出力のためのプラグインgatsby-remark-autolink-headersを利用
-GatsbyJSは豊富なプラグインが魅力です。
+Gatsbyは豊富なプラグインが魅力です。
 
 *gatsby-remark-autolink-headers* はプラグインの1つです。<br>
 以下のようなことができます。

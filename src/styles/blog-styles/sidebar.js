@@ -17,21 +17,17 @@ export const Sidebar = styled.div`
     }
   }
   .side-topic {
-    border: var(--color-blue) 1px solid;
+    border-bottom: var(--color-blue) 1px solid;
     margin-bottom: 34px;
     max-height: 300px;
     overflow:auto;
-    display:none;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    @media screen and (min-width: 768px) {
-        display:block;
-    }
+
     &--heading {
+      border: var(--color-blue) 1px solid;
+      border-bottom: none;
         text-align: left;
-        display:none;
-        border: var(--color-blue) 1px solid;
-        border-bottom: none;
         font-size: 1.4rem;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
@@ -46,12 +42,21 @@ export const Sidebar = styled.div`
             display:block;
         }
     }
+    & > ul {
+      border: var(--color-blue) 1px solid;
+    }
     ul {
         counter-reset: num;
         ul > li>  a {
             padding-left:24px;
             &::before {
                 width: 2.2em;
+            }
+        }
+        ul  ul >  li >  a  {
+            padding-left:60px;
+            &::before {
+                width: 4em;
             }
         }
     }

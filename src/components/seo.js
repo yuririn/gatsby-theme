@@ -16,19 +16,17 @@ const Seo = ({lang, meta, data}) => {
   const defaultTitle = config.siteMetadata?.title
 
   let blogUrl = data.location ? data.location.href : domain
-  const isRoot = `${domain}/` === blogUrl ? true : false
+  const isRoot = '/' === data.location.pathname ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
   const pagetype = isRoot ? "webSite" : "article"
   const ogSrc = domain + (data.ogp ? data.ogp : "/images/ogp.png")
   const thumbnailSrc = domain + (data.thumnail ? data.thumnail : "/images/thumnail.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
-  let pageName = `${data.title}-${defaultTitle}`
+  let pageName = isRoot ? defaultTitle : `${data.title} - ${defaultTitle}`
   if(data.type === "tags" || data.type === "genre") {
-    pageName = `${data.title}-記事一覧-${defaultTitle}`
+    pageName = `${data.title} - 記事一覧 - ${defaultTitle}`
   } else if (data.type === "blog") {
     pageName = data.title
-  } else if (isRoot) {
-    pageName = `${defaultTitle}`
   }
   const canonicalUrl = blogUrl;
   if (data.type === "blogs" || data.type === "tags" || data.type === "genre") {
@@ -36,21 +34,21 @@ const Seo = ({lang, meta, data}) => {
   }
   const cateInfo =  data.cateId ? { url:`/blogs/${data.cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === data.cateId })[0].name}:''
   const noindex = [`/blogs/entry309/`,
-`/blogs/entry276/`,
-`/blogs/entry208/`,
-`/blogs/entry483/`,
-`/blogs/entry485/`,
-`/blogs/entry338/`,
-`/blogs/entry457/`,
-`/blogs/entry424/`,
-`/blogs/entry511/`,
-`/blogs/entry471/`,
-`/blogs/entry365/`,
-`/blogs/entry355/`,
-`/blogs/entry274/`,
-`/blogs/entry272/`,
-`/blogs/entry195/`,
-`/blogs/entry204/`]
+                  `/blogs/entry276/`,
+                  `/blogs/entry208/`,
+                  `/blogs/entry483/`,
+                  `/blogs/entry485/`,
+                  `/blogs/entry338/`,
+                  `/blogs/entry457/`,
+                  `/blogs/entry424/`,
+                  `/blogs/entry511/`,
+                  `/blogs/entry471/`,
+                  `/blogs/entry365/`,
+                  `/blogs/entry355/`,
+                  `/blogs/entry274/`,
+                  `/blogs/entry272/`,
+                  `/blogs/entry195/`,
+                  `/blogs/entry204/`]
 
   const publisher = {
     "@type": "Organization",
@@ -63,9 +61,42 @@ const Seo = ({lang, meta, data}) => {
       height: 72,
     },
   }
-
-
-
+  const siteNavigation = {
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "hasPart": [
+      {
+        "@type": "WebPage",
+        "name": "ホーム",
+        "url": domain
+      },
+      {
+        "@type": "CollectionPage",
+        "name": "ウェブ制作",
+        "url": `{${domain}/blogs/web-developer/}`
+      },
+      {
+        "@type": "CollectionPage",
+        "name": "CMS",
+        "url": `{${domain}/blogs/cms/}`
+      },
+      {
+        "@type": "CollectionPage",
+        "name": "海外ノマド生活",
+        "url": `{${domain}/blogs/overseas-freelancing/}`
+      },
+      {
+        "@type": "CollectionPage",
+        "name": "ABOUT ME",
+        "url": `{${domain}/about/}`
+      },
+      {
+        "@type": "ContactPage",
+        "name": "お問い合わせ",
+        "url": `{${domain}/contact/}`
+      }
+    ]
+  }
   const author = [
     {
       "@type": "Person",
@@ -107,6 +138,7 @@ const Seo = ({lang, meta, data}) => {
       image: ogSrc,
       description: metaDescription,
     },
+    siteNavigation
   ]
 
   if ( data.type === "blog") {

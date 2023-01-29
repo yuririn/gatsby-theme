@@ -5,14 +5,17 @@ modifieddate: 2021-12-13
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: 'web-developer'
-tags: ["GatsbyJS","React","JavaScript"]
+tags: ["Gatsby","React","JavaScript"]
 description: ウェブサイトのリニューアルがようやく終わりました。WebP対応しつつv3にアップグレードする予定たったのですが、Gatsby cliでのインストールのエラーでハマってできませんでした。v2からv4にアップグレードでハマって困っている人へ私が解決できた方法をご紹介します。
 ---
 お久しぶりです!!!念願の久々更新です。<br>2021年7月から進めていたウェブサイトのリニューアルがようやく終わりました！涙<br>WebP対応しつつv3にアップグレードする予定たったのですが、
 
-starter kit のインストールのエラーでハマってできませんでした。<br>この記事はGatsbyJSでブログなどを運用していてv4にアップグレードしたいけどエラーでハマってインストールできない方への記事です。<br>私がどうやってエラーを解決したかをご紹介します。
+starter kit のインストールのエラーでハマってできませんでした。<br>この記事はGatsbyでブログなどを運用していてv4にアップグレードしたいけどエラーでハマってインストールできない方への記事です。<br>私がどうやってエラーを解決したかをご紹介します。
 
 <prof></prof>
+
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
 
 <toc id="/blogs/entry477/"></toc>
 

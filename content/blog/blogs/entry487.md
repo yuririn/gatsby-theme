@@ -4,7 +4,7 @@ date: 2022-01-04
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: Gatsbyブログにパンくずリストを追加します。今までのコンポーネントの作り方を参考にすればできるのですが、今回はせっかくなので構造化データの一つmicrodataを埋め込みながらの作り方も紹介しようと思います。※ 2021年12月バージョンアップに伴いv4対応してあります。
 ---
 Gatsbyブログにパンくずリストを追加します。今までのコンポーネントの作り方を参考にすればできるのですが、今回はせっかくなので構造化データの一つmicrodataを埋め込みながらの作り方も紹介しようと思います。
@@ -29,6 +29,9 @@ Gatsbyブログにパンくずリストを追加します。今までのコン�
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 12. *パンくずリストを追加する*（←イマココ）
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
+
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
 
 <toc id="/blogs/entry487/"></toc>
 

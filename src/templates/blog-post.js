@@ -22,7 +22,7 @@ import Toc from "../components/blogs/topic"
 import Sidebar from "../components/blogs/sidebar"
 // import Tags from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
-import ProfBig from "../components/common/profile"
+// import ProfBig from "../components/common/profile"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 import Faq from "../components/blogs/blog-parts/faq"
@@ -179,11 +179,10 @@ const BlogPostTemplate = ({ data, location }) => {
           slug={post.fields.slug}
         />
         <aside className="l-container">
-            <section className="p-section u-text-center">
-              <h2 className="c-heading--lg">人気のジャンル</h2>
-              <Genre />
-            </section>
-          <ProfBig />
+          <section className="p-section u-text-center">
+            <h2 className="c-heading--lg">人気のジャンル</h2>
+            <Genre />
+          </section>
         </aside>
       </Body>
     </Layout>

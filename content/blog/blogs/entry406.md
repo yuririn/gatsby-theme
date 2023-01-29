@@ -5,7 +5,7 @@ modifieddate: 2021-12-30
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: 記事のmarkdownファイルの設定でカテゴリ、タグ、記事のキービジュアルを追加できるようにしました。主にはgatsby-plugin-imageを使って、キービジュアル画像などを追加する方法をご紹介します。※ Mac以外では検証してません。ご了承ください。※ 2021年12月28日v4対応のためリライトしました。
 ---
 ブログのファーストビューって大切ですよね。キービジュアル次第（記事の最初に目を引く画像）で読むか読まないか考えますもん。
@@ -35,6 +35,9 @@ description: 記事のmarkdownファイルの設定でカテゴリ、タグ、�
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
+
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
 
 <toc id="/blogs/entry406/"></toc>
 

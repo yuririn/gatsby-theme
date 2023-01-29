@@ -4,7 +4,7 @@ date: 2021-12-31
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。今回はプラグイン・styled-componentsを使って装飾しつつコンポーネントを作って読み込む方法をご紹介します。※ v4バージョンアップに伴い追加した記事です。v4以外ではうまく動かない可能性があります。
 ---
 Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方について説明しました。今回はプラグイン・styled-componentsを使って装飾しつつコンポーネントを作って読み込む方法をご紹介します。

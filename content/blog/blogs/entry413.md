@@ -5,7 +5,7 @@ modifieddate: 2022-01-02
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: 記事数が増えると一覧にペーネーションが欲しくなりますよね？複数ページネーションを実装するためのプラグインがあるにもかかわらず自作して実装してしまいました。プラグインに頼らず実装したい人のために、やり方をシェアします。
 ---
 記事数が増えると一覧にペーネーションが欲しくなりますよね？
@@ -31,6 +31,9 @@ description: 記事数が増えると一覧にペーネーションが欲しく�
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
+
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
 
 <toc id="/blogs/entry413/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。

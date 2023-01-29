@@ -60,6 +60,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-lodash`,
+      options: {
+        disabledFeatures: [`shorthands`, `cloning`],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-netlify',
       options: {
         headers: {

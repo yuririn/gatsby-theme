@@ -399,6 +399,7 @@ export const Edit = styled.section`
     color: #5bfff1;
   }
   strong {
+    text-shadow: 0 0 4px var(--background),0 0 1px var(--background);
     font-weight: 700;
     background: linear-gradient(transparent 60%, var(--yellow) 0);
     font-weight: bolder;

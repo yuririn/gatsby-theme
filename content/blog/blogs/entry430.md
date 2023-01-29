@@ -5,7 +5,7 @@ modifieddate: 2022-01-05
 hero: thumbnail/2020/entry401-v4.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["GatsbyJS","React"]
+tags: ["Gatsby","React"]
 description: 今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！関連記事をランダムで6記事ピックアップして出力します。※ 2021年12月アップデートに伴い、v4対応済みです。
 ---
 今回でGatsbyカスタマイズ10記事！せっかく書いたブログ記事、たくさん読んで欲しいですよね？そこでブログ詳細での関連記事出力のコンポーネントを作ります！
@@ -31,6 +31,9 @@ description: 今回でGatsbyカスタマイズ10記事！せっかく書いた�
 9. *関連記事一覧出力*（←イマココ）
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 12. [パンくずリストを追加する](/blogs/entry487/)
+
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
 
 <toc id="/blogs/entry430/"></toc>
 

@@ -123,7 +123,7 @@ export const BaseStyle = createGlobalStyle`
     --background: rgb(21, 21, 21);
     --filter: rgba(21, 21, 21, .8);
     --pale-gray: #373738;
-    --yellow: #abae00;
+    --yellow: rgba(247, 255, 3, 0.4);
     --header-background: rgba(255,255,255, .6);
     --header-color:#264f85;
     --footer-background: #264f85;

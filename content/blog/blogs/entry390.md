@@ -28,7 +28,7 @@ appearanceプロパティはチェックボックスやボタンなどの各フ�
 
 フォームパーツはブラウザごとに結構独自のスタイルを持っています。
 
-![appearance の使い方と使いどころ](./images/2020/11/entry390-4.gif)
+![appearance の使い方と使いどころ](./images/2020/11/entry390-4.png)
 
 上記の画像を見てもらってわかる通り、Safari と FireFox のボタン要素には軽いグラデがかかっています。
 
@@ -76,8 +76,7 @@ button {
 
 個人的には使用頻度高めです。
 
-![pointer-events](./images/2020/11/entry390-1.gif)
-
+![pointer-events](./images/2020/11/entry390-1.png)
 
 ### pointer-events の使い方と使いどころ
 パーツでいえばページネーションや、COMING SOONにしてリンクが貼れないバナーなどに使うことが多めです。<br>
@@ -146,7 +145,7 @@ svg {
   stroke-width: 20px;
 }
 ```
-![pointer-eventsマジ? SVG に使えるの???!](./images/2020/11/entry390-2.gif)
+![pointer-eventsマジ? SVG に使えるの???!](./images/2020/11/entry390-2.png)
 
 |値|説明|
 |-|-|
@@ -187,7 +186,7 @@ textarea がムダにビヨーンとん伸びてうざいことがありませ�
 
 #### resize の値
 
-![resize の使い方と使いどころ](./images/2020/11/entry390-3.gif)
+![resize の使い方と使いどころ](./images/2020/11/entry390-3.png)
 
 |値|説明|
 |-|-|
@@ -203,7 +202,7 @@ textarea がムダにビヨーンとん伸びてうざいことがありませ�
 ## 4 columns 段落・段組みを超カンタンに作れるプロパティ
 **プロパティcolumns**は段組みされた要素の段の幅や段数を設定できるプロパティです。
 
-![columns 段落・段組みを超カンタンに作れるプロパティ](./images/2020/11/entry390-5.gif)
+![columns 段落・段組みを超カンタンに作れるプロパティ](./images/2020/11/entry390-5.png)
 
 ### columns の使い方と使いどころ
 
@@ -241,7 +240,7 @@ columnsには幅と数は設定できてどちらが前でも後ろでもOK。
 
 **プロパティ・writing-mode**はテキストの行のレイアウトを横書きにするか縦書きにするか、ブロックのフロー方向を左向きにするか右向きにするかを設定することができます。
 
-![writing-mode 最近流行り？の縦書き](./images/2020/11/entry390-6.gif)
+![writing-mode 最近流行り？の縦書き](./images/2020/11/entry390-6.png)
 
 ### writing-mode の使い方と使いどころ
 昨今かなり紙のデザインのように、かなり自由なレイアウトが流行ってるので`flex`や`grid`などと組み合わせて、かっこいいデザインが作れそうです。

@@ -1,15 +1,15 @@
 ---
-title: GatsbyJS でリサイズした画像のパスを取得する
+title: Gatsby でリサイズした画像のパスを取得する
 date: 2023-01-05
 pagetype: blog
 hero: thumbnail/2020/entry401-v4.jpg
 cateId: web-developer
-tags: ["GatsbyJS","React"]
-description: GatsbyJSでは画像フォーマットも変更でき、リサイズした画像が作成可能。記事ごとにリサイズしたサムネイル画像、OGP画像を出力できるように調整する方法をご紹介します。
+tags: ["Gatsby","React"]
+description: Gatsbyでは画像フォーマットも変更でき、リサイズした画像が作成可能。記事ごとにリサイズしたサムネイル画像、OGP画像を出力できるように調整する方法をご紹介します。
 ---
 ブログのSEO上、サムネイル画像、OGP画像を静的ジェネレータを使っていてもきちんとしたサイズで出力したい。かといっていちいち何枚も画像を作るのも面倒。
 
-GatsbyJSでは画像フォーマットも変更でき、リサイズした画像が作成できます。
+Gatsbyでは画像フォーマットも変更でき、リサイズした画像が作成できます。
 
 そこで記事ごとにリサイズしたサムネイル画像（正方形）、OGP画像（長方形）を出力する方法をご紹介します。
 
@@ -25,10 +25,10 @@ GatsbyJSでは画像フォーマットも変更でき、リサイズした画像
 
 <card id="/blogs/entry406/"></card>
 
-## graphql で img 内に格納されたサムネイル画像の画像のパスだけ抜き取る
+## GraphQL で img 内に格納されたサムネイル画像の画像のパスだけ抜き取る
 
 OGPとはFacebookやTwitterなどのSNSでリンクをシェアした時に表示される画像のことです。
-<br>一般的にはOGP画像がある方が目立ち、クリック率などに良い影響を与えるので、GatsbyJSを使った静的ジェネレーターサイトでも実装したほうがもちろんいいです。
+<br>一般的にはOGP画像がある方が目立ち、クリック率などに良い影響を与えるので、Gatsbyを使った静的ジェネレーターサイトでも実装したほうがもちろんいいです。
 
 ここでの留意点はリサイズはあくまで大きな画像を小さくするので元々小さなサイズは大きくすることはできないということと、アイキャッチが設定されていない記事からはリサイズ画像を取得できません。
 
@@ -49,7 +49,7 @@ root/
 ```js:title=blog-post.js
 import * as React from "react"
 import Seo from "../components/seo"
-import { graphql } from "gatsby"
+import { GraphQL } from "gatsby"
 
 const BlogPostTemplate = ({ data, location }) => {
   const ogpSrc = data.ogpSrc
@@ -69,7 +69,7 @@ const BlogPostTemplate = ({ data, location }) => {
   )
 }
 
-export const pageQuery = graphql`
+export const pageQuery = GraphQL`
   query BlogPostBySlug(
     $id: String!
     $hero: String
@@ -108,7 +108,7 @@ OGP画像は環境下にもよりますが、小さく表示されることが�
 
 ## Helmet 側で出力する
 
-リサイズされた画像パスは graphQL 経由で data に格納されます。そのパスを取り出して Seo コンポーネントに渡します。
+リサイズされた画像パスは GraphQL 経由で data に格納されます。そのパスを取り出して Seo コンポーネントに渡します。
 
 ```js:title=seo.js
 import * as React from "react"
@@ -166,7 +166,7 @@ const BlogPostTemplate = ({ data, location }) => {
   )
 }
 
-export const pageQuery = graphql`
+export const pageQuery = GraphQL`
   query BlogPostBySlug(
     $id: String!
     $hero: String
@@ -209,11 +209,14 @@ return (
 ```html:title=出力結果
 <meta name="thumbnail" content="***.png" data-react-helmet="true">
 ```
-## まとめ・GatsbyJS なら graphql からリサイズした適正画像を生成可能
+## まとめ・Gatsby なら GraphQL からリサイズした適正画像を生成可能
 今回、SEO強化のためにあれこれ画策していた際に今までのOGP画像のパス取得方法がイケてなかったので改めて記事にまとめました。
 
-まだまだ GatsbyJS の記事は少ないので、また新しいナリッジがたまりましたら記事化しようと思います。
+まだまだ Gatsby の記事は少ないので、また新しいナリッジがたまりましたら記事化しようと思います。
 
 皆さんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
+
+v5へのアップグレード方法はこちら。
+<card id="/blogs/entry519/"></card>
