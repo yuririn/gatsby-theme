@@ -298,7 +298,7 @@ box-shadowをinsetにして立体感をつけています。
 
 #### グラデーション反転
 
-![グラデーションを利用したボタン](./images/2020/11/entry396-10.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-10.webp" width="206" height="92" alt="グラデーションを利用したボタン" decoding="async" loading="lazy"></figure>
 
 あらかじめグラデーションを逆にした擬似要素をopacity:0で隠しておき、ホバー時に表示させグラデーションを反転させます。
 
@@ -356,7 +356,7 @@ box-shadowをinsetにして立体感をつけています。
 擬似要素を2倍（200%）のサイズに作り、`overflow: hidden`で隠しておきます。
 hoverした時に`left: -100%`でアニメーションさせます。
 
-![グラデーションが横にスライド](./images/2020/11/entry396-11.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-11.webp" width="198" height="78" alt="グラデーションが横にスライド" decoding="async" loading="lazy"></figure>
 
 ```html:title=HTML
 <a href="" class="btn--gradient2">BUTTON<i class="zmdi zmdi-chevron-right"></i></a>
@@ -410,7 +410,7 @@ hoverした時に`left: -100%`でアニメーションさせます。
 ```
 #### きっちりセパレートさせた色でアニメーション
 
-![きっちりセパレートさせた色でアニメーション](./images/2020/11/entry396-12.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-12.webp" width="194" height="102" alt="きっちりセパレートさせた色でアニメーション" decoding="async" loading="lazy"></figure>
 
 私のこのブログのデザインにも使っている左上のマークがスライドするボタンです。<br>
 ポイントはグラデの角度を315度の斜めにし左右の色をそれぞれ50%に設定します。<br>
@@ -471,7 +471,7 @@ hoverした時に`left: -100%`でアニメーションさせます。
 
 ### 文字がエンボス
 
-![文字がエンボス](./images/2020/11/entry396-14.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-14.webp" width="222" height="104" alt="文字がエンボス" decoding="async" loading="lazy"></figure>
 
 text-shadowとbox-shadowでエンボス風のボタンです。
 
@@ -507,7 +507,7 @@ text-shadowとbox-shadowでエンボス風のボタンです。
 ```
 ### パキッとした影が広がるボタン
 
-![パキッとした影が広がるボタン](./images/2020/11/entry396-15.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-15.webp" width="244" height="122" alt="パキッとした影が広がるボタン" decoding="async" loading="lazy"></figure>
 
 box-shadowを2個重ねるだけで、クールなボタンができます。
 ```html:title=HTML
@@ -539,7 +539,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 ```
 ### クリックすると波紋が広がるボタン
 
-![クリックすると波紋が広がるボタン](./images/2020/11/entry396-16.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-16.webp" width="252" height="124" alt="クリックすると波紋が広がるボタン" decoding="async" loading="lazy"></figure>
 
 クリックすると波紋が広がります。
 
@@ -613,7 +613,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 }
 ```
 ### ボーダーがアニメーションするボタン
-![ボーダーがアニメーションするボタン](./images/2020/11/entry396-17.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-17.webp" width="244" height="120" alt="ボーダーがアニメーションするボタン" decoding="async" loading="lazy"></figure>
 
 ボーダーが左上と右下からアニメーションするボタンです。**heightとwidthを0から100%**に広げることで実現しています。
 ```html:title=HTML
@@ -683,7 +683,8 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 
 ### グラデーション×シャドーを駆使した立地なボタン(2022/12/17追加)
 まるで画像で書き出したようですがCSSのみで実装できるボタンのご紹介です。
-![ボーダーがアニメーションするボタン](./images/2020/11/entry396-18.gif)
+<figure class="animation"><img src="/images/animation/2020/entry396-18.webp" width="502" height="204" alt="ボーダーがアニメーションするボタン" decoding="async" loading="lazy"></figure>
+
 ```html:title=HTML
 <a href="" class="btn--rich">Button</a>
 ```
