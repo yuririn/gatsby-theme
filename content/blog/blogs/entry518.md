@@ -168,6 +168,17 @@ GIFアニメを使っていましたが、 WebPアニメーションに変更し
 
 WebPアニメーションは FireFox、Chrome、Safari でも動くし、このブログに関してはユーザーはほぼPCなので問題なし。
 
+*追記*
+
+以前タイムラプスを作るために ffmpeg を Homebrew 経由でインストールしたことがあったのを思い出し、コマンドですべて処理することにしました。
+
+```bash
+ffmpeg -i ***.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" ***.mp4
+
+ffmpeg -i ***.mp4 -vf fps=5 -c:v libwebp -loop 0 -lossless 0 -quality 75 -preset 5 -an -vsync 0 e***.webp
+```
+これでかなり時短ができるようになりました。また機会があれば記事にまとめます。
+
 ### picture タグを使ってユーザーの環境に応じて画像を出し分ける
 
 このWebサイトは GatsbyImage で画像出力しているので基本は WebP で軽量化された状態で出力されます。
