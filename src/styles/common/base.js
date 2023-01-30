@@ -81,10 +81,6 @@ export const BaseStyle = createGlobalStyle`
   }
   /* change border colour to suit your needs */
 
-  html {
-    scroll-behavior: smooth;
-  }
-
 
   body {
     --color: #335;
@@ -108,6 +104,10 @@ export const BaseStyle = createGlobalStyle`
     --nav-bg: rgba(51,51,51,.8);
     --border-color: var(--border-color);
     --code-bg: #131a37;
+
+  }
+  html[data-react-helmet] {
+    scroll-behavior: smooth;
   }
 
   body.dark {

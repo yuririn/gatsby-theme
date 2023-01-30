@@ -87,8 +87,8 @@ const Seo = ({lang, meta, data}) => {
         "url": `{${domain}/blogs/overseas-freelancing/}`
       },
       {
-        "@type": "CollectionPage",
-        "name": "ABOUT ME",
+        "@type": "AboutPage",
+        "name": "かみーゆってどんな人？",
         "url": `{${domain}/about/}`
       },
       {

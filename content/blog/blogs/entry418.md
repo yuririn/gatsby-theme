@@ -607,7 +607,7 @@ Analyticsの管理画面から確認できます。
 ![analyticsのトラッキングコードからIDのみ登録](./images/2020/12/entry418-4.jpg)
 
 
-ここまでできたらあとはディプロイしたらanalyticsでトラッキングできるようになります。<br>
+ここまでできたらあとはデプロイしたらanalyticsでトラッキングできるようになります。<br>
 
 ## Search consoleと連携
 search consoleも連携しましょう。**メタタグにgoogle-site-verificationを追加する**のがカンタンです。

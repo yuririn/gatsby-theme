@@ -1,5 +1,5 @@
 ---
-title: Gatsby をアップグレード（v4→v5）して Netlify にディプロイ
+title: Gatsby をアップグレード（v4→v5）して Netlify にデプロイ
 date: 2023-01-29
 pagetype: blog
 hero: thumbnail/2023/entry519.png
@@ -7,7 +7,7 @@ cateId: web-developer
 tags: ["Gatsby","React"]
 description: Gatsbyのv4からv5へアップグレードしたのでそのやり方をメモしておきます。Netlify の Nodeバージョンの変更方法（超簡単）もご紹介しています。
 ---
-Gatsby のV52022年末くらいにリリースされていました。そこで最新版にアップグレード、Netlify にデプロイしました。
+Gatsby の V5 が2022年末くらいにリリースされていました。そこで最新版にアップグレード、Netlify にデプロイしました。
 
 公式サイトの [Migrating from v4 to v5](https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v4-to-v5/) に沿ってやったら簡単だったのでやり方をまとめました。
 
@@ -24,14 +24,12 @@ Node v18　React v18 に対応しました。さらに以下3つが大きく変�
 * **[Partial Hydration (Beta)](https://www.gatsbyjs.com/docs/reference/release-notes/v5.0/#graphiql-v2)**<br>必要なJavaScriptのみをブラウザに送信することを可能（Reactのサーバーコンポーネント利用）。
 * **[GraphiQL v2](https://www.gatsbyjs.com/docs/reference/release-notes/v5.0/#graphiql-v2)**<br>新機能追加（ダークモード、タブ、localStorageを使用したステート/タブの永続化、検索とマークダウンのサポートによる、より良いドキュメントエクスプローラー、プラグインエコシステム）
 
+<p><small>※ ハイドレーション（Hydration）とは、サーバから送られてきた静的 HTML を引き継いで、クライアントサイドのデータ変更に対応できる動的な DOM に変換するクライアントサイドのプロセスのこと。</small></p>
+
 Slice API には期待します。
 
 <prof></prof>
 
-## 先に Node と npm のバージョンを確認し必要に応じてアップグレード
-私は最近メンテしていなくて Node のバージョン が v16.13.1 と低かったです。
-
-<p><small>ハイドレーション（Hydration）とは、サーバから送られてきた静的 HTML を引き継いで、クライアントサイドのデータ変更に対応できる動的な DOM に変換するクライアントサイドのプロセスのこと。</small></p>
 ## 先に Node と npm のバージョンを確認し必要に応じてアップグレード
 私は最近メンテしていなくて Node のバージョン が v16.13.1 と低かったです。
 
@@ -100,7 +98,7 @@ npm outdated
 npm install
 ```
 ## GraphQLの記述方法が変更された
-GraphQLのアップデート(graphql 16)に伴い記述方法が変わったので、公式サイトが用意されている codemod コマンドでマイグレーションしました。
+GraphQLのアップデート(graphql 16)に伴い記述方法が変わったので、公式サイトで用意されている codemod コマンドでマイグレーションしました。
 ```bash
 npx gatsby-codemods@latest sort-and-aggr-graphql .
 ```
@@ -120,7 +118,7 @@ npm run build
 or
 gatsby build
 ```
-ビルドもして、問題なければ デプロイします。
+ビルドして、問題なければデプロイします。
 ### ビルドでコケる場合
 GraphQL 依存のパッケージが問題でコケているかもしれないので、異存のあるパッケージを調べます。
 ```bash
@@ -134,7 +132,7 @@ npm install --legacy-peer-deps
 ```bash
 npm i -D graphql
 ```
-[個人ブログで使っているGatsbyのバージョンを4系から5系にあげた](https://blog.okaryo.io/20221121-raise-version-of-gatsby-in-personal-blog-from-4-to-5)
+参考 : [個人ブログで使っているGatsbyのバージョンを4系から5系にあげた](https://blog.okaryo.io/20221121-raise-version-of-gatsby-in-personal-blog-from-4-to-5)
 
 ## Netlify 側で Node バージョンを指定する
 以前、[Gatsbyブログサイト移行物語インストールからNetlifyデプロイまで・Node のバージョンにご注意](/blogs/entry401/#node-のバージョンにご注意20211212追記)では Netlify 側からバージョンを指定すると紹介しましたが実はリポジトリ側からも指定できることがわかりました。
@@ -146,7 +144,7 @@ node -v > .nvmrc
 
 ルートディレクトリに .nvmrc が作成されます。
 
-あとは push ディプロイするだけ。
+あとは push デプロイするだけ。
 
 ### v５ アップグレード後、Gatsby develop が終わらない事象に遭遇した
 突然終わらなくなりました。解決方法はネットワークを変えると Stack Overflow に書いてあったので、自宅のネットワークをつなぎ直してみました。
