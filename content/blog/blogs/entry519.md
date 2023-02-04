@@ -17,7 +17,7 @@ Netlify の Nodeバージョンの変更方法（超簡単）もご紹介して�
 
 公式サイトによるとv4→v5に切り替えるには、Node v18　React v18に切り替えてビルドし直して、とのこと。
 
-### どこが変わったの？
+## どこが変わったの？
 Node v18　React v18 に対応しました。さらに以下3つが大きく変わった箇所です。
 
 * **[Slice API](https://www.gatsbyjs.com/docs/reference/release-notes/v5.0/#slice-api)**<br>高度に共有されたコンポーネントのコンテンツを変更する際のビルド時間を最大90%短縮。

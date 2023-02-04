@@ -1,11 +1,13 @@
 ---
 title: コミット、ステージング…取り消したい！困ったときの git コマンドまとめ
 date: 2022-06-12
+modifieddate: 2023-02-04
 pagetype: blog
 cateId: web-developer
 hero: thumbnail/2022/entry507.png
 tags: ["git"]
 description: git のコミットやステージングでの取り消し、打ち消し、上書き、push できないときの対処法など、よくあるお困りごとの対処法をケース別にまとめました。
+faq: [["容量を超えてないのに git push が10分以上終わらない","制限容量を超えてないのに git push が終わらない場合は、［リモート名］ [ブランチ名]を指定するとうまくいくことがあります。","https://ginneko-atelier.com/blogs/entry507/#git-pushが10分以上終わらない"],["git のステージングを取り消したい","まずは git status でファイルの状況を確認します。はじめて git に追加したファイルの場合は git rm --cached -r 【ファイル名】、すでに追加したファイルの場合は git reset HEAD 【ファイル名】で対処します。コミット後はまた違う方法で取り消す必要があります。","https://ginneko-atelier.com/blogs/entry507/#git-reset直前のコミットをなかった事にするコミット後"],["vscode でコミットが終わらない","vscode でコミットが終わらないときがあります。他のターミナルソフト（iTerm）で実行するとうまくいくことがあります。"]]
 ---
 やってしまった！このcommitまだだったのに、わぁ、、、コンフリクトしちゃった汗
 
@@ -124,7 +126,7 @@ git reset HEAD 【ファイル名】
 VS Code であれば、.gitignore に追加した無視ファイルやフォルダはグレーアウトされているはずなので目で見て確認できるはずです。もしグレーアウトされてない場合は VS Code を起動し直すか、コードを良く見直しましょう。
 </div>
 
-### 【git reset】直前のコミットをなかった事にする
+### 【git reset】直前のコミットをなかった事にする（コミット後）
 
 やっちまった！の代表が直前の `commit` をなかったことにしたいケースです。
 
@@ -169,11 +171,6 @@ git revert ［ハッシュ］
 コメントを求められますが、英語のメッセージで良ければそのまま `:q` とコマンドを叩いて入力を終わらせます。
 
 これで変更した `commit` のデータが残ったまま、指定の `commit` まで巻き戻すことができます。
-
-<!-- 以下のようなエラーが発生した場合
-```
-error: option `mainline' expects a number greater than zero
-``` -->
 
 ### 【git commit --amend】直前のコミットのメッセージを直したい
 うっかり誤字脱字のある `commit` メッセージを残してしまい恥ずかしいことがあります。
@@ -263,3 +260,5 @@ git ではあるブランチを起点にしてそれをコピーして新しい�
 最後までお読みいただきありがとうございました。
 
 <!-- https://www.wenyanet.com/opensource/ja/5feef4b7771ee619bb70553d.html -->
+### GCash に関するよくある質問
+<faq id="/blogs/entry507/"></faq>

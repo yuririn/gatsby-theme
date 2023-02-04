@@ -20,9 +20,9 @@ const types = [
       "大変恐縮ですがヒアリングなしでのお見積もりはいたしません。まずはテレビ電話（30分無料）などでご相談を受け付けます。メッセージに相談内容の概要とテレビ電話の希望日時候補を3つご入力の上、メールフォームを送信してください。",
   },
   {
-    name: "かみーゆ開発工房",
+    name: "ファンレター（お喜びの声）",
     description:
-      "かみーゆ開発工房では、「こんなの欲しい」「あったらいいな」って要望に応じてWordPressプラグインを作成します（すべてにお答えできかねます）。お問い合わせフォームから、1.欲しいもの 2.欲しい理由 3.ニックネームを記入の上メール送信してください。",
+      "あなたのブログの感想をお聞かせください。ニックネーム・年代・性別と感想150文字くらいをメッセージいただきますと、抽選で当ブログで紹介させていただきます。",
   },
   {
     name: "そのほか",
@@ -325,6 +325,7 @@ const FormArea = styled.div`
     dl {
       display: flex;
       flex-wrap: wrap;
+
     }
   }
   a {
@@ -390,15 +391,19 @@ const FormArea = styled.div`
     display: block;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 2px;
     background: #ccc;
     border-radius: 50%;
+  }
+  dd label {
+    display:block;
+    margin-bottom: 6px;
   }
   dd label span::after {
     width: 14px;
     height: 14px;
     left: 2px;
-    top: 2px;
+    top: 4px;
     background: #c03363;
     opacity: 0;
     transition: 0.3s;

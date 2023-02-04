@@ -154,7 +154,7 @@ const Seo = ({lang, meta, data}) => {
         url: ogSrc,
       },
       description: metaDescription,
-      datePublished: data.date.replace(/\./g, "-"),
+      datePublished: data.modified ? data.modified.replace(/\./g, "-") :  data.date.replace(/\./g, "-"),
       dateModified: data.modified ? data.modified.replace(/\./g, "-") : "",
       mainEntityOfPage: {
         "@type": "WebPage",

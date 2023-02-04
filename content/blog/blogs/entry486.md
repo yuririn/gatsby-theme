@@ -90,7 +90,7 @@ const BlogPostTemplate = ({ data, location }) => {
 }
 export default BlogPostTemplate
 ```
-### QraghQLで必要なデータを取得しておく
+### GraghQLで必要なデータを取得しておく
 ```js:title=tag-cloud.js
 const { allMarkdownRemark } = useStaticQuery(
   graphql`

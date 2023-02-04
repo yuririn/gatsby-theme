@@ -109,7 +109,7 @@ Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby f
 
 https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
 
-ffmpeg -i entry315-10.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" entry315-10.mp4
+ffmpeg -i entry315-10.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" 名称未設定.mp4
 
-ffmpeg -i entry315-3.mp4 -vf fps=5 -c:v libwebp -loop 0 -lossless 0 -quality 75 -preset 5 -an -vsync 0 entry315-3.webp
+ffmpeg -i 名称未設定.mov -vf fps=5 -c:v libwebp -loop 0 -lossless 0 -quality 75 -preset 5 -an -vsync 0 entry315-3.webp
 

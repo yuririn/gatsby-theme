@@ -17,12 +17,7 @@ export const Sidebar = styled.div`
     }
   }
   .side-topic {
-    border-bottom: var(--color-blue) 1px solid;
     margin-bottom: 34px;
-    max-height: 300px;
-    overflow:auto;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
     display: none;
 
     @media screen and (min-width: 768px) {
@@ -46,41 +41,58 @@ export const Sidebar = styled.div`
 
     }
     & > ul {
+      max-height: 300px;
+      overflow:auto;
+        border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
       border: var(--color-blue) 1px solid;
     }
     ul {
         counter-reset: num;
         ul > li>  a {
-            padding-left:24px;
             &::before {
-                width: 2.2em;
+                width: 3em;
             }
         }
         ul  ul >  li >  a  {
-            padding-left:60px;
             &::before {
-                width: 4em;
+                width: 4.4em;
             }
         }
     }
     li {
+      background: var(--pale-gray);
 
         counter-increment: num;
         a {
             &::before {
-                font-weight: bold;
-                width: 1.2em;
-                display: inline-block;
-                content: counters(num, ' . ')
+              font-size: 1rem;
+              padding: 0 2px;
+              color: var(--pale-gray);
+              background:  var(--color-link);
+              text-align: center;
+              line-leight: 1;
+              margin-right: 4px;
+              vertical-align: 2px;
+              font-weight: bold;
+              width: 1.2em;
+              display: inline-block;
+              content: counters(num, ' - ');
+              border-radius: 2px;
+              display: inline-block;
             }
-            font-size: 1.4rem;
             line-height:1.4;
             background: var(--pale-gray);
             padding: 8px 16px;
             display:block;
+            &:hover {
+              opacity: .7;
+              transform: translateX(-4px)
+            }
+            transition: .3s;
                 color: var(--color-link);
             text-decoration: none;
-            margin-bottom: 1px;
+            border-bottom: var(--background) 1px solid;
             @media screen and (min-width: 768px) {
                 &:hover {
                     color: var(--color-link);

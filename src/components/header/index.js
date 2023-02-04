@@ -11,12 +11,12 @@ const Header = ({ title, location }) => {
   return (
     <HeaderWrapper>
         {location === "/" ? (
-          <h1 id="header-logo">セブ島在住海外ノマド フロントエンジニアの日記
+          <h1 id="header-logo">セブ島海外ノマドエンジニアの日記
             <Logo />
           </h1>
         ) : (
           <Link to="/" id="header-logo">
-            セブ島在住海外ノマド フロントエンジニアの日記
+            セブ島海外ノマドエンジニアの日記
             <Logo />
           </Link>
         )}

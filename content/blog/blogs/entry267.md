@@ -1,12 +1,13 @@
 ---
 title: 【JavaScript】カスタムデータ（data）属性使い方（コードサンプル有り）
 date: 2018-06-13
-modifieddate: 2022-07-05
+modifieddate: 2023-02-05
 hero: thumbnail/2018/entry267.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["JavaScript","CSS"]
 description: 2022年5月リライト済。HTMLから指定できるカスタムデータ（data）属性の使い方のご紹介です。JavaScriptでも最近はquerySelectorなどを使っても簡単に取得できるようになりましたが、jQuery（dataメソッドのの罠的クセなど）を比較しつつ値の操作や注意点もご紹介いたします。カスタムデータ（data）属性を使いこなせれば、コーディングの幅も広がりますのでぜひどんどん活用しましょう。
+faq: [["Javascrict での data（カスタムデータ）属性 の使い方を知りたい","当記事では Javascrict での data属性 の使い方を詳しく紹介をしています。JS、jQuery での操作方法も紹介しているので参考にしてください。"],["data-toggle 属性 とは？","HTML で使える data-toggle はカスタムデータ属性の一種です。data-以降は好きに名前をつけることができます。"],["data（カスタムデータ）属性 のある要素をCSSやJSでセレクタ指定の仕方が分からない","カスタムデータ属性を利用してCSSやJSでも指定できます。指定方法は当記事で詳しく紹介しているので参考にしてください。"]]
 ---
 HTMLから指定できるカスタムデータ（data）属性の使い方のご紹介です。
 
@@ -363,6 +364,8 @@ removeAttr('data-id')
 この記事が皆さんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただいきありがとうございました。
+
+<faq id="/blogs/entry267/"></faq>
 
 ### おまけ。属性取得方法
 DOM操作で便利な値取得方法をまとめます。
