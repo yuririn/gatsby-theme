@@ -31,7 +31,7 @@ Webサイトでスライドショー（スライダー）は便利ですよね�
 ## Swiper とは？
 Swiper とは、最新の無料で使えるモバイルタッチに対応したスライドショー用の JavaScript の jQuery 不要の軽量ライブラリです。
 
-npm や CDN も用意されています。Angular、React や Vue などからも使うことができます。
+npm や CDN も用意されています。Angular、React や Vue.js などからも使うことができます。
 
 ![Swiperとは？](./images/2022/12/entry514-1.png)
 ## Swiper 基本の使い方

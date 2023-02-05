@@ -1,28 +1,27 @@
 ---
-title: VUE で絞込み＆日にちソート機能を部分的に組み込む
+title: Vue.js で絞込み＆ソート機能を部分的に組み込む
 date: 2023-02-05
 pagetype: blog
 hero: thumbnail/2023/entry520.png
 cateId: web-developer
-tags: ["JavaScript","VUE"]
-description: VUE はちょっとした動的ページを作るのに最適。ソースも Vanilla JS に比べると簡潔に書けるし、React に比べ気軽に導入可能。日付による昇順、降順に並べ替え、更にカテゴリー・タグで絞り込み。導入方法を詳しく解説し、Compostion APIのサンプルコードをご紹介。
+tags: ["Vue.js","JavaScript"]
+description: Vue.js はちょっとした動的機能をHTMLやPHPに組み込むのに最適。Vanilla JS に比べると簡潔に書けるし、React に比べ気軽に導入可能。日付による昇順、降順に並べ替え、更にカテゴリー・タグで絞り込み等導入方法を詳しく解説し、Compostion APIのサンプルコードをご紹介。
 ---
-React や VUE はちょっとしたリアルタイムレンダリングや絞り込み機能を実装するのには最適です。
+最近 WordPress で部分的に Vue.js を組み込みました。最初は React を組み込もうとしましたが、大規模になりそうだったので Vue.js に切り替えました。やってみると驚くほど手軽でした。
 
-最近部分的に React を組み込もうとしましたが難しくて、結局 VUE を採用しました。
+<msg txt="Vue.js は Vanilla JS に比べると簡潔に書け、React よりも気軽に導入できます。<br>Vue.js はちょっとした<strong>動的機能をHTMLやPHPに組み込むのに最適</strong>。"></msg>
 
-ソースも Vanilla JS に比べると簡潔に書けるし、React に比べ気軽に導入できます。
+Vue.js のバージョン3(V3)からは、Compostion API が使えます。Compostion とは **構成 という意味** で、リアクティブな値やその値に関連した処理をコンポーネントから分割して扱えるコンポーネントの形式です。
 
-VUE3からは、Compostion API が使えるようになりました。Compostion とは構成という意味で、リアクティブな値やリアクティブな値に関連した処理をコンポーネントから分割して扱えるようにしたコンポーネントの形式です。
-
-当記事ではその導入方法と、実践にも転用できるサンプルコードをご紹介します。
+当記事ではその導入方法の詳しい解説と、実践にも転用できるサンプルコードをご紹介します。
 
 *前提条件*
 
-* JSONデータを用意できる
+* JSON データを利用したい
 * JavaScript がある程度理解でき、実際に書いたこともある
 * 日にちなどのソート（昇順、降順）機能を実装したい
 * タグやカテゴリーなどで絞り込みたい
+* 数千件以上のデータを取り扱う可能性がある
 
 完成イメージはこんなかんじ。
 
@@ -31,19 +30,21 @@ VUE3からは、Compostion API が使えるようになりました。Compostion
 <prof></prof>
 
 
-## VUE Compostion API 基本の書き方
+## Vue.js Compostion API 基本の書き方（Options API と比較）
 
-元来の Options API と比べると、結構書き方が違う印象です。今回は Compostion API で紹介します。
+V3から使える Compostion API は Options API と比べると、記述を分ける必要がなく、変数・関数などをスッキリまとめることができる印象です。
+
+`new Vue()` (Options API) と `createApp()` (Compostion API) といった感じでインスタンスの作り方が違います。
 
 ```js:title=OptionsAPI
-export default {
+ const vueA = new Vue({
   data: () => ({
     // 変数など
   }),
   methods: {
-    // 処理
+    // 関数処理
   },
-};
+});
 ```
 ```js:title=CompostionAPI
 const app = createApp({
@@ -56,8 +57,12 @@ const app = createApp({
 })
 app.mount("#app");
 ```
-## JSONデータを用意する
-JSONデータを用意します。WordPress REST API やスプレッドシートなどからもJSONを取得できますがこともできますが、今回は以下のようなデータを使います。
+
+## JSON データを用意する
+JSON データを用意します。
+
+スプレッドシートで作った JSON や WordPress REST API などを利用してもOK。
+
 ```json:title=JSON
 [
   {
@@ -88,25 +93,26 @@ JSONデータを用意します。WordPress REST API やスプレッドシート
   }
 ]
 ```
-スプシなどからもJSONデータを生成して使いたい場合はGASを使えば簡単に作れます。以下記事を参考にしてください。
+スプシデータを使いたい場合は GAS で JSON を生成する事もできます。以下記事を参考にしてください。
+
 <card id="/blogs/entry481/"></card>
 
-## JSONデータから一覧を作る
-今回は以下のような単純な作りです。
+## JSON データから一覧を作る
+今回は以下のような単純なディレクトリ構造を用意しました。
 ```
-myblocktheme/
+vue-sourt-sample/
   ├ index.js
   ├ articles.json
   └ index.html
 ```
-まずはJSONデータから一覧を作ります。
+まずは `articles.json` (JSON) から一覧を作ります。今回は配布されている Vue.js の CDN を使いました。使う機能をディレクティブで `import` します。
 
 ```js:title=index.js
 import {
   createApp,
   ref,
   onMounted,
-} from "https://unpkg.com/vue@3.2.4/dist/vue.esm-browser.prod.js";
+} from "https://unpkg.com/Vue.js@3.2.4/dist/Vue.js.esm-browser.prod.js";
 
 const jsonUrl = 'articles.json';
 
@@ -130,7 +136,7 @@ const app = createApp({
 
 app.mount("#app");
 ```
-`index.js` ファイルを読み込む際に、ディレクティブ `export` と `import` を利用したいので `module` 属性を付与します。
+`index.js` ファイルを外部ファイルとして読み込む際、`import` を利用したいので属性 `type="module"` を付与します。
 
 ```html:title=index.html
 <!DOCTYPE html>
@@ -154,16 +160,48 @@ app.mount("#app");
 </body>
 </html>
 ```
+すべての記事が表示されます。
 
-VUEの読み込み時のちらつきを抑えるためにCSS追加しておきましょう。
+![記事一覧](./images/2023/02/entry520-2.png)
+
+### 属性に変数や処理を入れる方法
+
+Vue.js では `:属性名` とすると、値に変数や処理を入れることができます。
+```html
+<!-- :属性名="変数等" -->
+
+<a :href="article.slug">{{article.title}}</a>
+<time :datetime="article.date">{{article.date.replace(/-/g, "/")}}</time>
+```
+`replace` で日付フォーマットを変えることもできます。
+
+![値に変数や処理を入れることができます](./images/2023/02/entry520-7.png)
+
+### チラツキ防止
+Vue.js ではページ読み込み時処理が間に合わず、一瞬コードがむき出しになるチラツキがよく起こります。チラツキを抑えるために以下 CSS を追加しておきましょう。
 
 ```css
 [v-cloak] {
   display: none;
 }
 ```
-## ページ送りをつける
-ページネーションを表示させるためのコードを書きます。
+
+### ref とは？
+久々に Vue.js を使うと `ref` なるものが登場してきました汗
+
+`ref` を使うと、内部の値を受け取ることができ、リアクティブで変更可能な変数の型を返すことができます。値を取り出すときは `value` プロパティを使います。
+
+```js
+const array = ref([1,20,30])
+
+console.log(array.value)
+// 結果[1,20,30]
+```
+[ref 関連 | Vue.js](https://v3.ja.vuejs.org/api/refs-api.html#ref)
+
+## ページ送り（ページネーション）をつける
+このままだとページが長くなり、ひたすらスクロールしなければならないので、ページネーションをつけます。
+
 ```js:title=index.js
 const paged = 10 //何ページごとに表示するか
 const total = ref(null) //ページ総数
@@ -177,6 +215,9 @@ const sortArticle = async () => {
   articles.value  = result.slice( paged *  (currentPage.value - 1), paged * currentPage.value)
 }
 ```
+
+ページネーションボタンのための関数。
+
 ```js:title=index.js
 const pagination = async (dir) => {
   if(dir === 'prev') {
@@ -194,7 +235,7 @@ const pagination = async (dir) => {
   await sortArticle();
 };
 ```
-それぞれの値や関数をHTML側で受け取れるよう戻り値に追加します。
+それぞれの値や関数を HTML 側で受け取れるよう戻り値に追加します。
 ```js:title=index.js
 return {
   pagination,
@@ -203,19 +244,27 @@ return {
   maxPage,
 }
 ```
-ページネーションをHTML側でに組み込みます。
+ページネーションを HTML 側に組み込みます。`:disabled` で `currentPage` (現在ページ)が1以下になったり、`maxPage` (最大ページ数)以上にならないよう制御します。
+
 ```html:title=index.html
 <div class="patination">
-  <button @click="pagination(`prev`)" :disabled="currentPage === 1">PREV</button>{{currentPage}}/{{maxPage}}<button
-    @click="pagination(`next`)" :disabled="currentPage == maxPage">NEXT</button>
+  <button @click="pagination(`prev`)" :disabled="currentPage === 1">PREV</button>
+  {{currentPage}}/{{maxPage}}
+  <button @click="pagination(`next`)" :disabled="currentPage == maxPage">NEXT</button>
 </div>
 ```
-## 記事を新しい順・古い順でソートする
-記事を新しい順・古い順でソートするための機能を作成します。
+
+![ページネーション](./images/2023/02/entry520-3.png)
+
+## 記事を新しい・古い順でソート（並べ替え）する
+記事を新しい・古い順でソートするための機能を作成します。
+
 ```js:title=index.js
+// 省略
 const sortDate = ref(null)
 // 省略
 const sortArticle = async () => {
+  // 省略
   if(sortDate.value !== null) {
     // 省略
     result = await result.json();
@@ -233,7 +282,8 @@ const sortArticle = async () => {
 }
 // 省略
 ```
-日付を選んた時に絞り込ボタン用の機能を追加します。ソート解除もできるようにしました。
+
+日付を選んた時にソートできる関数を追加します。今回はソート解除もできるようにしました。
 ```js:title=index.js
 const sort = async () => {
   currentPage.value = 1;
@@ -245,7 +295,7 @@ const clear = async () => {
   await sortArticle();
 }
 ```
-HTML側で使えるように戻り値を追加します。
+HTML 側で使えるように戻り値を追加します。
 ```js:title=index.js
 return {
   // 省略
@@ -254,28 +304,43 @@ return {
   sort,
 }
 ```
-昇順降順のUIを追加します。
+昇順降順の UI を追加します。V3も `v-model` （データの双方向のやり取り）の記述方法は変わりません。
+
+選択した項目は `sortDate` に格納されます。
+
 ```html:title=index.html
 <div class="sort">
-  <h3>絞り込む</h3>
-  <label for="disc" class="sortBtn">
+  <h3>日時でソートする</h3>
+  <label for="desc" class="sortBtn">
     <input type="radio" value="desc" v-model="sortDate" name="date" id="desc">新しい順
   </label>
   <label for="asc" class="sortBtn">
     <input type="radio" value="asc" v-model="sortDate" name="date" id="asc">古い順
   </label>
   <div class="sortBtns">
-    <button @click="sort">絞り込む</button>
+    <button @click="sort">実行</button>
     <button @click="clear">クリア</button>
   </div>
 </div>
 ```
+Vue.js では `@アクション="処理"` でデータ等の処理をすることができます。
+```html
+<!-- @アクション="処理" -->
+
+<!-- クリックで処理 -->
+<button @click="sort">絞り込む</button>
+
+<!-- 値が変わったことを感知して処理 -->
+<label><input type="checkbox" @change="checked">プライバシーポリシーに同意する。</label>
+```
+
+![ソートできる機能](./images/2023/02/entry520-4.png)
 
 ## 複数のタグで絞り込む
-今回は複数のタグを選んで広域に絞り込めるようにします。
+今回は複数のタグを選んで広域に絞り込める（OR）ようにします。
 
 ### タグだけ抜き取る
-まずは記事から、タグだけ抜き取ります。重複は JSの `reduce` を使って取り除きます。
+まずは記事から、タグだけ抜き取ります。重複は JS の `reduce` を使って取り除きます。
 ```js:title=index.js
 const tags = ref(null)
 
@@ -306,7 +371,7 @@ return {
   tags
 }
 ```
-その他の配列操作についてさらに詳しく知りたい場合はこちらを御覧ください。
+その他の配列操作についてさらに詳しく知りたい場合はこちらをご覧ください。
 
 <card id="/blogs/entry482/"></card>
 
@@ -335,10 +400,10 @@ return {
   selectedTags
 }
 ```
+タグの絞り込み解除できるようにしておきます。
 
-絞り込んだ時に、何件になったか、どのタグで絞り込んだかを表示するための変数を用意します。
+また絞り込んだ時に、何件になったか、どのタグで絞り込んだかなどを、表示できるようにします。
 
-タグも絞り込み解除できるようにしておきます。
 
 ```js:title=index.js
 // 省略
@@ -347,6 +412,8 @@ const message = ref(null)
 const sort = async () => {
   currentPage.value = 1;
   await sortArticle();
+
+  // 選択したタグが0じゃない場合、メッセージを表示
   message.value = selectedTags.value.length !== 0 ? `${selectedTags.value.join(", ")} の記事が ${total.value} 件あります。` : null;
 }
 const clear = async () => {
@@ -358,37 +425,48 @@ const clear = async () => {
   await sortArticle();
 }
 ```
-絞り込み部分のHTML。
+絞り込み部分の HTML。選択した項目は `v-model` で `selectedTags` に格納されます。
 
 ```html:title=index.html
 <div class="sort">
-  <h3>絞り込む</h3>
+  <h3>タグで絞り込む</h3>
   <!-- 省略 -->
   <ul class="select-tags">
-    <li v-for="tag, n in tags"><label :for="`tag-${n}`"><input type="checkbox" :value="tag" v-model="selectedTags"
-          name="tag" :id="`tag-${n}`">{{tag}}</label> </li>
+    <li v-for="tag, n in tags">
+      <label :for="`tag-${n}`">
+        <input
+          type="checkbox"
+          :value="tag"
+          v-model="selectedTags"
+          name="tag" :id="`tag-${n}`"
+        >{{tag}}
+      </label>
+    </li>
   </ul>
   <!-- 省略 -->
 </div>
 ```
-`v-if` で、絞り込み件数とどのタグで絞り込んだか表示させます。
-`message` が　`null` の場合は非表示となります。
+![複数のタグで絞り込む](./images/2023/02/entry520-5.png)
+
+`v-if` で、絞り込み件数と、どのタグで絞り込んだか表示させます。<br>`message` が　`null` の場合は非表示にします。
 
 ```html:title=index.html
 <p v-if="message">{{message}}</p>
 ```
+
+![ソートできる機能](./images/2023/02/entry520-6.png)
 ## すべてのコード
-すべてのコードはGithubにあげています。
+すべてのコードは Github にあげています。
 
-* [HTML](https://github.com/yuririn/vue-sourt-sample/blob/main/index.html)
-* [JS](https://github.com/yuririn/vue-sourt-sample/blob/main/index.js)
+* [HTML](https://github.com/yuririn/Vue.js-sourt-sample/blob/main/index.html)
+* [JS](https://github.com/yuririn/Vue.js-sourt-sample/blob/main/index.js)
 
-## まとめ・VUEはちょっと機能を足すのに便利
+## まとめ・Vue.jsはちょっと機能を足すのに便利
 
-実は4年ぶりにVUEを書きました。3になって書き方も諸々バリエーションが増えていてビビりましたが、やってみるととても便利でした。
+実は4年ぶりにVue.jsを使いました。V3になって書き方も諸々バリエーションが増えていてビビりましたが、やってみると書き方も簡潔になっておりとても良かったです。
 
 この記事が、みなさんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただき、ありがとうございました。
 
-参考 : [HTMLにちょい足しでできる！Vue.jsでサクッと動きをつける方法](https://ics.media/entry/210908/)
+参考 : [HTMLにちょい足しでできる！Vue.js.jsでサクッと動きをつける方法](https://ics.media/entry/210908/)

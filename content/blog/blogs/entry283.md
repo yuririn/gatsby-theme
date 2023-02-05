@@ -122,7 +122,7 @@ function custom_enqueue($hook_suffix)
     // 新規投稿または編集画面のみに適応
     if ('post.php' == $hook_suffix || 'post-new.php' == $hook_suffix) {
         $jspath = plugins_url('assets/js/script.js', __FILE__);
-        $csspath = plugins_url('assets/css/css_style.css', __FILE__);        wp_enqueue_script('vue', '//cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js', array(), '1.0.0', true);
+        $csspath = plugins_url('assets/css/css_style.css', __FILE__);        wp_enqueue_script('Vue.js', '//cdnjs.cloudflare.com/ajax/libs/Vue.js/2.5.2/Vue.js.min.js', array(), '1.0.0', true);
         wp_enqueue_script('seo_script', $jspath, array(), '1.0.0', true);
         wp_enqueue_style('seo_css', $csspath, array(), '1.0.0');
     }
