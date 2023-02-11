@@ -165,6 +165,7 @@ export const Edit = styled.section`
         text-align: center;
         width: 100px;
         font-size: 1.3rem;
+        font-weight:bold;
         img {
           border-radius: 50%;
           oveflow: hidden;
