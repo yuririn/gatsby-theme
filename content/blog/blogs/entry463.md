@@ -19,7 +19,7 @@ jQueryなし！バニラJS（プレーンなJavaScript）のカウントダウ�
 * Webコーディング・プログラミング勉強中
 * jQuery使いたくない
 
-<toc id="/blogs/entry453/"></toc>
+<toc id="/blogs/entry463/"></toc>
 
 <msg txt="ライブラリーいらず！<br>バニラJS（プレーンなJavaScript）で実装するから、テキストエディターだけあれば実装できます！"></msg>
 

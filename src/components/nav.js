@@ -164,16 +164,17 @@ const NavWrapper = styled.div`
             height: 0;
             overflow: hidden;
             &.is-active {
-                 background: var(--filter);
+                background: var(--filter);
                 left: 0;
                 top: 60px;
                 position: fixed;
-                height: calc(100% - 60px);
+                height: calc(100vh - 60px);
                 justify-content: center;
                 flex-direction: column;
                 padding: 15px;
                 display: flex;
                 align-items: center;
+                backdrop-filter: blur(10px);
             }
         }
     }

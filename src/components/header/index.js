@@ -42,6 +42,7 @@ const HeaderWrapper=styled.header`
     justify-content: space-between;
     font-weight: bold;
     padding: 0 20px;
+      backdrop-filter: blur(5px);
 
     #header-logo {
     text-decoration: none;

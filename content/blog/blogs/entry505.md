@@ -17,6 +17,7 @@ description: 子供を理想通りに育てられない。子育てが辛い。�
 母がなぜ苦しいのか、解放された今だから客観的に考察します。
 
 <toc id="/blogs/entry505/"></toc>
+
 ## 母はなぜ子育てでしんどいのか？
 ![自分の母親みたいにならなければならない。思い込みから育児ノイローゼへ](./images/2022/06/entry505-1.jpg)
 
@@ -187,3 +188,6 @@ description: 子供を理想通りに育てられない。子育てが辛い。�
 <card id="/blogs/entry473/"></card>
 
 <card id="/blogs/entry420/"></card>
+
+くすっと笑える昭和のお父さん版はこちら。
+<card id="/blogs/entry521/"></card>

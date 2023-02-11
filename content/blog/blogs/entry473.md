@@ -177,3 +177,6 @@ description: 日本には辛そうに生きている長女が多い気がしま�
 
 母親版も書きました！よろしければ併せてお読みください。
 <card id="/blogs/entry505/"></card>
+
+くすっと笑える昭和のお父さん版はこちら。
+<card id="/blogs/entry521/"></card>
