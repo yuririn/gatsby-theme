@@ -71,7 +71,8 @@ const BlogPostTemplate = ({ data, location }) => {
     tag : post.frontmatter.tags[0],
     cateId : post.frontmatter.cateId,
     thumnail: thumnailSrc,
-    type : "blog"
+    type : "blog",
+    noindex: post.frontmatter.noindex?post.frontmatter.noindex : false,
   }
 
 
@@ -260,7 +261,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY.MM.DD")
         description
-        lead
+        noindex
         hero
         cateId
         tags

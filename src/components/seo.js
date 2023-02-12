@@ -15,6 +15,8 @@ const Seo = ({lang, meta, data}) => {
   const metaDescription = data.description || config.siteMetadata.description
   const defaultTitle = config.siteMetadata?.title
 
+  const noindex = data.noindex ? data.noindex : false;
+
   let blogUrl = data.location ? data.location.href : domain
   const isRoot = '/' === data.location.pathname ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
@@ -34,22 +36,6 @@ const Seo = ({lang, meta, data}) => {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "");
   }
   const cateInfo =  data.cateId ? { url:`/blogs/${data.cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === data.cateId })[0].name}:''
-  const noindex = [`/blogs/entry309/`,
-                  `/blogs/entry276/`,
-                  `/blogs/entry208/`,
-                  `/blogs/entry483/`,
-                  `/blogs/entry485/`,
-                  `/blogs/entry338/`,
-                  `/blogs/entry457/`,
-                  `/blogs/entry424/`,
-                  `/blogs/entry511/`,
-                  `/blogs/entry471/`,
-                  `/blogs/entry365/`,
-                  `/blogs/entry355/`,
-                  `/blogs/entry274/`,
-                  `/blogs/entry272/`,
-                  `/blogs/entry195/`,
-                  `/blogs/entry204/`]
 
   const publisher = {
     "@type": "Organization",
@@ -360,8 +346,8 @@ const Seo = ({lang, meta, data}) => {
         },
       ].concat(meta)}
     >
-      {noindex.includes(data.location.pathname)&&<meta content="noindex" name="robots"/>}
-      <link rel="canonical" href={canonicalUrl}></link>
+      {(noindex||data.location === '404')&&<meta content="noindex" name="robots"/>}
+     {(!noindex&&data.location !== '404')&&<link rel="canonical" href={canonicalUrl}></link>}
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>

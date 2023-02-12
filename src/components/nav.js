@@ -187,7 +187,7 @@ const NavWrapper = styled.div`
         }
         & > li {
             @media only screen and (max-width: 767px) {
-                margin-bottom: 24px;
+                margin-bottom: 16px;
             }
             & > a {
                 letter-spacing: .15em;

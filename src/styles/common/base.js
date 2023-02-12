@@ -97,7 +97,7 @@ export const BaseStyle = createGlobalStyle`
     --filter: rgba(255, 255, 255, .5);
     --pale-gray: #eeeeee;
     --yellow: #edef5c;
-    --header-background: rgba(255,255,255, .9);
+    --header-background: rgba(255,255,255, .5);
     --header-color:#264785;
     --footer-background: #264785;
     --move-to: rgba(255, 255, 255, 0.8);
@@ -124,7 +124,7 @@ export const BaseStyle = createGlobalStyle`
     --filter: rgba(21, 21, 21, .8);
     --pale-gray: #373738;
     --yellow: rgba(247, 255, 3, 0.4);
-    --header-background: rgba(255,255,255, .6);
+    --header-background: rgba(255,255,255, .5);
     --header-color:#264f85;
     --footer-background: #264f85;
     --move-to: rgba(255, 255, 255, 0.1);

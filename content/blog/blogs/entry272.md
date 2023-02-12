@@ -6,6 +6,7 @@ pagetype: blog
 cateId: 'cms'
 tags: ["concrete5"]
 description: 6/2広島フロントエンド勉強会でconcrete5の特徴や運用についてお話、みなさんに体感していただきました。
+noindex: true
 ---
 2018/6/2広島フロントエンド勉強会でconcrete5（現concreteCMS）の特徴や運用についてお話、みなさんに体感していただきました。
 

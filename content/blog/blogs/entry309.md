@@ -6,6 +6,7 @@ pagetype: blog
 cateId: 'career'
 tags: ["Web Touch Meeting","XD"]
 description: 待望の Web Touch Meeting が帰ってきました。しかも大好きな XD スペシャルということで、LT すべく乗り込みました。ちなみに今回はSEOについてLTさせていただきました。
+noindex: true
 ---
 待望の Web Touch Meeting が帰ってきました。しかも大好きな XD スペシャルということで、LT すべく乗り込みました。ちなみに今回はSEOについてLTさせていただきました。
 

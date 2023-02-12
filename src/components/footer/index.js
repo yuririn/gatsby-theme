@@ -33,6 +33,7 @@ const FooterWrapper = styled.footer`
     background: var(--move-to);
     border: 1px solid var(--color-blue);
     border-radius: 50%;
+    backdrop-filter: blur(3px);
     content: "";
     transition: 0.3s;
     justify-content: center;
