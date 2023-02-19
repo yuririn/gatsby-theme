@@ -458,8 +458,8 @@ const clear = async () => {
 ## すべてのコード
 すべてのコードは Github にあげています。
 
-* [HTML](https://github.com/yuririn/Vue.js-sourt-sample/blob/main/index.html)
-* [JS](https://github.com/yuririn/Vue.js-sourt-sample/blob/main/index.js)
+* [HTML](https://github.com/yuririn/vue-sourt-sample/blob/main/index.html)
+* [JS](https://github.com/yuririn/vue-sourt-sample/blob/main/index.js)
 
 ## まとめ・Vue.jsはちょっと機能を足すのに便利
 
@@ -468,5 +468,8 @@ const clear = async () => {
 この記事が、みなさんのコーディングライフの一助となれば幸いです。
 
 最後までお読みいただき、ありがとうございました。
+
+コンポーネントを使ったデータバインドについてはこちらをお読みくだだい。
+<card id="/blogs/entry523/"></card>
 
 参考 : [HTMLにちょい足しでできる！Vue.js.jsでサクッと動きをつける方法](https://ics.media/entry/210908/)

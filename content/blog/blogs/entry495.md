@@ -4,7 +4,7 @@ date: 2022-04-01
 pagetype: blog
 hero: thumbnail/2022/entry495.png
 cateId: 'web-developer'
-tags: [ "npm","JavaScript"]
+tags: ["Gulp", "npm","JavaScript"]
 description: 最近のウェブ制作はスマホ、タブレット、多様化したブラウザやディスプレイへの画像対応が大変です。画像やディスプレイの出し分けにpictureタグやsrcsetがだいぶ浸透してきましてきましたが、属性が多くて記述がしんどい！のでEJSで関数化して少ないコードで出力できるようにしました。そのコードのご紹介です。
 ---
 最近のウェブ制作はスマホ、タブレット、多様化したブラウザやディスプレイへの画像対応が大変です。

@@ -5,7 +5,7 @@ modifieddate: 2021-06-04
 hero: thumbnail/2021/entry428.jpg
 pagetype: blog
 cateId: web-developer
-tags: ["npm"]
+tags: ["Gulp","npm"]
 description: pug（Jade）の特徴やメリット、基本的な使い方、導入方法（pug-cliとgulp）。とくに記述方法はif（分岐）やfor・each（ループ処理）など解説。テンプレート化したい場合に使う記述方法の解説と具体的なテンプレートの作り方なども紹介。
 faq: [["pug での連想配列の書き方がわからない","当記事ではpug での連想配列の書き方もご紹介しています。"],["pug でも for if each文 は使えますか？","もちろんpug でも for if each文 は使えます。少しコツが要りますが、当ブログで使い方も紹介しています。"],["Gulp じゃなくても pug は使えますか？","pug cli を使えば gulp や webpack を使わなくても気軽に使うことができます。"]]
 ---
