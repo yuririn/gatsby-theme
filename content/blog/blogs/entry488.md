@@ -1,7 +1,7 @@
 ---
 title: WordPressの記事一覧ブロック（Gutenberg）を自作する
 date: 2022-01-12
-modifieddate: 2023-01-07
+modifieddate: 2023-02-22
 hero: thumbnail/2022/entry488.jpg
 pagetype: blog
 cateId: cms
@@ -128,20 +128,22 @@ npm i -D --save-exact mini-css-extract-plugin@2.4.5
 ```
 開発用コードです。デフォでは以下のように案内していることも多いですが
 ```json
- "start": "wp-scripts start"
+"start": "wp-scripts start"
 ```
+
 ```bash:title=実行するコマンド
 npm start
 ```
 スクリプトは書き換えることも可能です。
+
 ```json:title=package.json
-    "block:live": "wp-scripts start"
+"block:live": "wp-scripts start"
 ```
 
 ```bash:title=実行するコマンド
 npm run block:live
 ```
-ファイルが登録できたら、`src`ディレクトリを作り`index.js`を格納しましょう。
+ファイルが登録できたら、`src`ディレクトリを作り`index.js`を格納しましょう。<br>
 今回は、ファイルがバンドルされて出力されるところまで確認したいだけなので`index.js`には以下のようなコードを書いておきます。
 
 ```js:title=index.js
@@ -162,6 +164,18 @@ npm run block:live
              ├ index.js
              ├ index.js.map
              └ index.assets.php
+```
+
+#### ターゲットと出力するディレクトリを変えたい時
+ターゲットと出力したいフォルダを変えたいときは以下のように書けます。開発モードの場合。
+
+```json
+"start": "wp-scripts start block/index.js --output-path=block/build"
+```
+製品（リリース）モードの場合。
+
+```json
+"wp:build": "wp-scripts build block/index.js --output-path=block/build",
 ```
 
 ### ブロックをプロダクション用に出力する場合
