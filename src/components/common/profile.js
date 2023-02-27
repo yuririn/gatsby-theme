@@ -2,10 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import Img from "../img"
 import styled from "styled-components"
-import config from "../../../gatsby-config"
 
 const profile = () => {
-  const author = config.siteMetadata.author;
   return (
     <Profile className="l-container--md">
       <h2 className="c-heading--lg">管理人について</h2>

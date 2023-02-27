@@ -19,9 +19,6 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        data={{title:siteTitle, location:location}}
-      />
       <FirstView />
       <div className="p-section l-container">
         <h2 className="c-heading--lg">最新の記事</h2>
@@ -86,6 +83,12 @@ const BlogIndex = ({ data, location }) => {
 }
 
 export default BlogIndex
+
+export const Head = ({ data, location }) => (
+ <Seo
+ data={{title:data.site.siteMetadata?.title || `Title`, location:location}}
+ />
+)
 
 export const pageQuery = graphql`{
   site {

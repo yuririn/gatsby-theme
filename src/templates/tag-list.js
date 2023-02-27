@@ -15,17 +15,8 @@ const tags = ({ pageContext, data, location }) => {
   const { current, page, tag } = pageContext
 
   const posts = data.allMarkdownRemark.nodes
-  const yourData = {
-    title : tag,
-    description : `「${tag}」の記事一覧。${data.site.siteMetadata.description}`,
-    location : location,
-    type : "tag-list"
-  }
   return (
     <Layout location={location} title="銀ねこアトリエ">
-      <Seo
-        data={yourData}
-      />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">{tag}</h1>
@@ -101,6 +92,22 @@ const tags = ({ pageContext, data, location }) => {
 }
 
 export default tags
+
+export const Head = ({ pageContext, data, location }) => {
+  const { tag } = pageContext
+  const yourData = {
+    title : tag,
+    description : `「${tag}」の記事一覧。${data.site.siteMetadata.description}`,
+    location : location,
+    type : "tag-list"
+  }
+
+  return (
+     <Seo
+        data={yourData}
+      />
+  )
+}
 
 export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag: [String]) {
   site {

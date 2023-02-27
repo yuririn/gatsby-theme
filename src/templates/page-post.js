@@ -10,23 +10,8 @@ const PagePostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const { title } = data.site.siteMetadata
   const siteTitle = `${post.frontmatter.title} | ${title}`
-  const ogp = data.allFile.edges[0]
-    ? data.allFile.edges[0].node.publicURL
-    : "images/ogp.png"
-  const yourData ={
-    title : post.frontmatter.title,
-    description : post.frontmatter.description || post.excerpt,
-    ogp : ogp,
-    location : location,
-    date : post.frontmatter.date,
-    modifieddate : post.frontmatter.modifieddate,
-    type : "article"
-  }
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        data={yourData}
-      />
       <div className="l-main_contents is-page">
         <div className="l-container--md mt-Md">
           <BreadCrumbList current={post.frontmatter.title} />
@@ -49,6 +34,28 @@ const PagePostTemplate = ({ data, location }) => {
   )
 }
 export default PagePostTemplate
+
+export const Head = ({  data, location }) => {
+  const post = data.markdownRemark
+  const ogp = data.allFile.edges[0]
+    ? data.allFile.edges[0].node.publicURL
+    : "images/ogp.png"
+  const yourData ={
+    title : post.frontmatter.title,
+    description : post.frontmatter.description || post.excerpt,
+    ogp : ogp,
+    location : location,
+    date : post.frontmatter.date,
+    modifieddate : post.frontmatter.modifieddate,
+    type : "article"
+  }
+
+  return (
+     <Seo
+        data={yourData}
+      />
+  )
+}
 
 export const pageQuery = graphql`
   query PagePostBySlug($id: String!, $hero: String) {

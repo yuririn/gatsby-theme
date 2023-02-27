@@ -7,17 +7,16 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
 import config from "../../gatsby-config"
 
-const Seo = ({lang, meta, data}) => {
+const Seo = ({data, children}) => {
   const domain = config.siteMetadata.siteUrl
   const metaDescription = data.description || config.siteMetadata.description
   const defaultTitle = config.siteMetadata?.title
 
   const noindex = data.noindex ? data.noindex : false;
 
-  let blogUrl = data.location ? data.location.href : domain
+  let blogUrl = data.location ? domain + data.location.pathname : domain
   const isRoot = '/' === data.location.pathname ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
   const pagetype = isRoot ? "webSite" : "article"
@@ -32,6 +31,7 @@ const Seo = ({lang, meta, data}) => {
     pageName = `${data.title}`
   }
   const canonicalUrl = blogUrl;
+
   if (data.type === "blogs" || data.type === "tags" || data.type === "genre") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "");
   }
@@ -285,78 +285,32 @@ const Seo = ({lang, meta, data}) => {
   }
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={pageName}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          name: `thumbnail`,
-          content: thumbnailSrc,
-        },
-        {
-          property: `og:title`,
-          content: pageName,
-        },
-        {
-          property: `og:image`,
-          content: ogSrc,
-        },
-        {
-          name: `google-site-verification`,
-          content: `UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: pagetype,
-        },
-        {
-          property: `og:url`,
-          content: blogUrl,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-
-        {
-          name: `twitter:creator`,
-          content: config.siteMetadata?.social?.twitter || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: pageName,
-        },
-        {
-          property: `twitter:image`,
-          content: ogSrc,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    >
-      {(noindex||data.location === '404')&&<meta content="noindex" name="robots"/>}
+    <>
+    <title>{pageName}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="thumbnail" content={thumbnailSrc} />
+    <meta propaty="og:title" content={pageName} />
+    <meta propaty="og:image" content={ogSrc} />
+    <meta propaty="og:description" content={`UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`} />
+    <meta name="google-site-verification" content={metaDescription} />
+    <meta propaty="og:type" content={pagetype} />
+    <meta propaty="og:url" content={blogUrl} />
+    <meta name="twitter:card" content={`summary_large_image`} />
+    <meta name="twitter:creator" content={config.siteMetadata?.social?.twitter || ``} />
+    <meta name="twitter:title" content={pageName} />
+    <meta name="twitter:image" content={ogSrc} />
+    <meta name="twitter:description" content={metaDescription} />
+    {(noindex||data.location === '404')&&<meta content="noindex" name="robots"/>}
      {(!noindex&&data.location !== '404')&&<link rel="canonical" href={canonicalUrl}></link>}
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>
-    </Helmet>
+      {children}
+    </>
   )
 }
 
 Seo.defaultProps = {
-  lang: `ja`,
   meta: [],
   description: ``,
   title: ``,
@@ -364,7 +318,6 @@ Seo.defaultProps = {
 
 Seo.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
 }

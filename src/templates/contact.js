@@ -267,6 +267,26 @@ const contactTemplate = ({ data, location }) => {
 
 export default contactTemplate
 
+export const Head = ({ data, location }) => {
+  const siteDescription = data.site.siteMetadata?.description
+  const src = data.allFile.edges[0]
+    ? data.allFile.edges[0].node.childImageSharp.fluid.src
+    : ""
+  const yourData = {
+    title: "お問い合わせ",
+    description: `お問い合わせに関するページです。${siteDescription}`,
+    image : src,
+    date : "2021-06-03",
+    location : location
+  }
+
+  return (
+     <Seo
+        data={yourData}
+      />
+  )
+}
+
 export const pageQuery = graphql`
   query {
     site {

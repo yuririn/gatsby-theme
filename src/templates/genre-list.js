@@ -21,18 +21,9 @@ const category = ({ pageContext, data, location }) => {
 
   let cateName = cateMeta[0].name
   let cateDescription = cateMeta[0].description
-  const yourData = {
-    title : `${cateName}`,
-    description : `「${cateName}」の記事一覧。${cateDescription}。${data.site.siteMetadata.description}`,
-    location : location,
-    type : "genre-list"
-  }
 
   return (
     <Layout location={location} title={siteMetadata.title}>
-      <Seo
-        data={yourData}
-      />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">{cateName}</h1>
@@ -78,6 +69,15 @@ const category = ({ pageContext, data, location }) => {
               );
             })}
           </ol>
+          {page !== 1 ? (
+            <Pagination
+              num={page}
+              current={current}
+              type={cateSlug}
+            ></Pagination>
+          ) : (
+            ""
+          )}
         </section>
         <aside className="l-container">
         <section className="p-section u-text-center">
@@ -91,6 +91,26 @@ const category = ({ pageContext, data, location }) => {
 }
 
 export default category
+
+export const Head = ({ pageContext, data, location }) => {
+  const { cateSlug } = pageContext
+  const cateMeta = siteMetadata.category.filter(cate => cate.slug === cateSlug)
+
+  let cateName = cateMeta[0].name
+  let cateDescription = cateMeta[0].description
+  const yourData = {
+    title : `${cateName}`,
+    description : `「${cateName}」の記事一覧。${cateDescription}。${data.site.siteMetadata.description}`,
+    location : location,
+    type : "genre-list"
+  }
+
+  return (
+     <Seo
+        data={yourData}
+      />
+  )
+}
 
 export const pageQuery = graphql`query ($cateSlug: String, $limit: Int!, $skip: Int!) {
   site {

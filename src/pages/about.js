@@ -16,28 +16,12 @@ import CvArea from "../components/common/cv-area"
 import Card from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 
-const aboutPost = ({ data, location }) => {
+const aboutPost = () => {
   const pageTitle =
     "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
-  const description =
-    "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
-  const modifiedDate = "2021-05-05"
-  const ogp = `${data.allFile.edges[0].node.publicURL}`
-
-  const yourData = {
-    title : pageTitle,
-    description : description,
-    location : location,
-    date : "2021-05-05",
-    ogp : ogp,
-    modifieddate : modifiedDate,
-  }
 
   return (
     <Layout location="about" title="銀ねこアトリエ">
-      <Seo
-        data={yourData}
-      />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">About Me</h1>
@@ -475,6 +459,31 @@ const aboutPost = ({ data, location }) => {
 }
 
 export default aboutPost
+
+export const Head = ({ data, location }) => {
+  const pageTitle =
+    "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
+  const description =
+    "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
+  const modifiedDate = "2021-05-05"
+  const ogp = `${data.allFile.edges[0].node.publicURL}`
+
+  const yourData = {
+    title : pageTitle,
+    description : description,
+    location : location,
+    date : "2021-05-05",
+    ogp : ogp,
+    modifieddate : modifiedDate,
+  }
+
+  return (
+    <Seo
+      data={yourData}
+    />
+  )
+}
+
 export const portfolioQuery = graphql`
   query {
     site {

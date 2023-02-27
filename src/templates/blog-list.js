@@ -14,17 +14,8 @@ import Prof from "../components/common/profile"
 const blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
   const posts = data.allMarkdownRemark.nodes
-  const yourData = {
-    title : "ノマドブログ",
-    description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
-    location : location,
-    type : "blog-list"
-  }
   return (
     <Layout location={location} title="ノマドブログ">
-      <Seo
-        data={yourData}
-      />
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">ノマドブログ</h1>
@@ -91,6 +82,20 @@ const blogs = ({ pageContext, data, location }) => {
 }
 
 export default blogs
+
+export const Head = ({ data, location }) => {
+  const yourData = {
+    title : "ノマドブログ",
+    description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
+    location : location,
+    type : "blog-list"
+  }
+  return (
+    <Seo
+      data={yourData}
+    />
+  )
+}
 
 export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
   site {

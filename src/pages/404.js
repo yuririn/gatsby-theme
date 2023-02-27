@@ -224,7 +224,7 @@ const NotFoundPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo data={{location: `404`, title:"お探しのページは見つかりませんでした"}} />
+
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">404</h1>
@@ -259,6 +259,10 @@ const NotFoundPage = ({ data, location }) => {
 }
 
 export default NotFoundPage
+
+export const Head = () => (
+  <Seo data={{location: `404`, title:"お探しのページは見つかりませんでした"}} />
+)
 
 export const pageQuery = graphql`
   query {

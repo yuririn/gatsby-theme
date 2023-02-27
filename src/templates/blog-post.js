@@ -46,13 +46,6 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
-  const ogpSrc = data.siteOgImage
-    ? `${data.siteOgImage.childImageSharp.resize.src}`
-    : "/images/ogp.png"
-  const thumnailSrc = data.siteThumnailImage
-    ? `${data.siteThumnailImage.childImageSharp.resize.src}`
-    : "/images/thumnail.png"
-
 
   const category = { url:`/blogs/${post.frontmatter.cateId}/`, name:
                   siteMetadata.category.filter(item => {
@@ -61,26 +54,12 @@ const BlogPostTemplate = ({ data, location }) => {
                       : ""
                   })[0].name
                 }
-  const seoData = {
-    title : post.frontmatter.title,
-    description : post.frontmatter.description || post.excerpt,
-    date : post.frontmatter.date.replace(/\./g, "-"),
-    location : location,
-    ogp : ogpSrc,
-    faq : post.frontmatter.faq?post.frontmatter.faq : '',
-    tag : post.frontmatter.tags[0],
-    cateId : post.frontmatter.cateId,
-    thumnail: thumnailSrc,
-    type : "blog",
-    noindex: post.frontmatter.noindex?post.frontmatter.noindex : false,
-  }
+
 
 
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo data={seoData}
-      />
       <Header>
         <div
           className={
@@ -189,6 +168,34 @@ const BlogPostTemplate = ({ data, location }) => {
 }
 
 export default BlogPostTemplate
+
+export const Head = ({ data, location }) => {
+  const post = data.markdownRemark
+  const ogpSrc = data.siteOgImage
+    ? `${data.siteOgImage.childImageSharp.resize.src}`
+    : "/images/ogp.png"
+  const thumnailSrc = data.siteThumnailImage
+    ? `${data.siteThumnailImage.childImageSharp.resize.src}`
+    : "/images/thumnail.png"
+  const seoData = {
+    title : post.frontmatter.title,
+    description : post.frontmatter.description || post.excerpt,
+    date : post.frontmatter.date.replace(/\./g, "-"),
+    location : location,
+    ogp : ogpSrc,
+    faq : post.frontmatter.faq?post.frontmatter.faq : '',
+    tag : post.frontmatter.tags[0],
+    cateId : post.frontmatter.cateId,
+    thumnail: thumnailSrc,
+    type : "blog",
+    noindex: post.frontmatter.noindex?post.frontmatter.noindex : false,
+  }
+  return (
+    <Seo
+      data={seoData}
+    />
+  )
+}
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
