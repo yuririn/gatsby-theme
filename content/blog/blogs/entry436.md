@@ -13,7 +13,6 @@ CSSのプロパティの進化、めまぐるしいですね。Webサイトの�
 
 <prof></prof>
 
-<toc id="/blogs/entry436/"></toc>
 
 ## わりと難しいのでmarginとpaddingのおさらい
 まずは`margin`と`padding`のおさらいから。
@@ -308,4 +307,4 @@ Firefoxで縦書きコンテンツの入った要素をセンタリングする�
 さらに掘り下げて知りたい方はcolisさんのサイトをご覧ください。
 
 [CSS知っておくと便利な論理プロパティ、ボックスモデルにおける古い方法とこれからの方法](https://coliss.com/articles/build-websites/operation/css/new-css-logical-properties.HTML)
-<faq id="/blogs/entry436/"></faq>
+

@@ -16,7 +16,6 @@ description: 意外と知られてませんが CSS にカウンター(counter)�
 
 実装方法はもちろん、コピペで使えるサンプルコードを紹介しているのでぜひ活用してください。
 
-<toc id="/blogs/entry363/"></toc>
 
 ## CSSカウンター（counter）とは？
 

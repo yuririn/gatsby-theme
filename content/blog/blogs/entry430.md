@@ -35,7 +35,6 @@ description: 今回でGatsbyカスタマイズ10記事！せっかく書いた�
 v5へのアップグレード方法はこちら。
 <card id="/blogs/entry519/"></card>
 
-<toc id="/blogs/entry430/"></toc>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 

@@ -19,7 +19,6 @@ noindex: true
 
 <prof></prof>
 
-<toc id="/blogs/entry338/"></toc>
 
 ## 調査：最初はまったくブラックハットが使われているとは気づかなかった
 

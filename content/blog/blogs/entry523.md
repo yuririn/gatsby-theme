@@ -17,8 +17,6 @@ description: Vue.js でコンポーネント（部品）を作成する方法を
 開発環境は作るほどじゃないという方は、手軽にVue.jsを導入する方法も紹介しています。
 <card id="/blogs/entry520/"></card>
 
-<toc id="/blogs/entry523/"></toc>
-
 <prof></prof>
 
 *前提条件*

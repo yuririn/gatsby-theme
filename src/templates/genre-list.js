@@ -73,7 +73,7 @@ const category = ({ pageContext, data, location }) => {
             <Pagination
               num={page}
               current={current}
-              type={cateSlug}
+              type={`${cateSlug}/`}
             ></Pagination>
           ) : (
             ""
@@ -124,7 +124,6 @@ export const pageQuery = graphql`query ($cateSlug: String, $limit: Int!, $skip: 
     sort: {frontmatter: {date: DESC}}
     filter: {frontmatter: {cateId: {eq: $cateSlug}}}
   ) {
-    totalCount
     edges {
       node {
         fields {

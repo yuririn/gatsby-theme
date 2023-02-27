@@ -59,7 +59,6 @@ const BlogIndex = ({ data, location }) => {
                   <div className="p-entryCard__footer">
                     <AddTagLink tags={post.frontmatter.tags} />
                   </div>
-
               </li>
             );
           })}

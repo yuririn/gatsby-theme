@@ -30,7 +30,6 @@ description: インスタ一覧出力用のブロックを @wordpress/scripts（
 
 <card id="/blogs/entry480/"></card>
 
-<toc id="/blogs/entry490/"></toc>
 
 ## インスタ一覧をブロックエディターで追加編集できるプラグインを作る
 今回はプラグインで作ります！

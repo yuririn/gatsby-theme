@@ -25,7 +25,6 @@ VS Codeをダウンロードし、**ある程度設定できていることが�
 
 <card id="/blogs/entry266/"></card>
 
-<toc id="/blogs/entry280/"></toc>
 
 SCSSの設定などは3弾に記載してますので、必要に応じて読み進めてください！
 

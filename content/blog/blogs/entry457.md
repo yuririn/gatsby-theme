@@ -16,7 +16,6 @@ noindex: true
 
 <prof></prof>
 
-<toc id="/blogs/entry457/"></toc>
 ## 広島のこぢんまりとしたIT勉強会・でんかじゅくとは？
 
 ![でんかじゅくとは？](./images/2021/04/entry457-1.jpg)

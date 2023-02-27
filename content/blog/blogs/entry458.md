@@ -17,7 +17,6 @@ WordPress使ってみたいけどテーマや機能（プラグイン）どう�
 
 <prof></prof>
 
-<toc id="/blogs/entry458/"></toc>
 ## WordPressを少しカスタマイズしたい人に捧げる
 ![ビジュアルの安定感はTCD](./images/2021/05/entry458-1.jpg)
 

@@ -13,7 +13,6 @@ description: セブシティーがロックダウンされて毎日超寂しい�
 
 <prof></prof>
 
-<toc id="/blogs/entry360/"></toc>
 
 ## Adobe XDとはなんぞ？
 XDはUIデザインやプロトタイプの作成、リアルタイム共同編集などの強力な機能が多数あるツールです。

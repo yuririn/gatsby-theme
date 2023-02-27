@@ -35,7 +35,6 @@ ulタグからolタグに変え、目次が長くなるので閉じるボタン�
 v5へのアップグレード方法はこちら。
 <card id="/blogs/entry519/"></card>
 
-<toc id="/blogs/entry410/"></toc>
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。

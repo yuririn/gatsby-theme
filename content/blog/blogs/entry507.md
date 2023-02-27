@@ -22,7 +22,6 @@ Gitのコミットやステージングでの取り消し、打ち消し、上�
 * git初心者
 * gitが苦手
 * gitのコマンドラインを使いたい
-<toc id="/blogs/entry507/"></toc>
 
 前提条件として Mac と VS Code、 gitHub を使っています。
 
@@ -263,5 +262,3 @@ git ではあるブランチを起点にしてそれをコピーして新しい�
 最後までお読みいただきありがとうございました。
 
 <!-- https://www.wenyanet.com/opensource/ja/5feef4b7771ee619bb70553d.html -->
-### GCash に関するよくある質問
-<faq id="/blogs/entry507/"></faq>

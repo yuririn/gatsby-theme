@@ -38,7 +38,6 @@ v5へのアップグレード方法はこちら。
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
-<toc id="/blogs/entry400/"></toc>
 
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。

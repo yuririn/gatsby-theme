@@ -18,7 +18,6 @@ description: 将来海外移住を考えている方へ。フィリピンでは�
 
 <prof></prof>
 
-<toc id="/blogs/entry417/"></toc>
 
 ## セブ島は気軽にプチ海外移住ができる場所！
 ![自宅から見えるマンゴーの街並み](./images/2020/12/entry417-1.jpg)

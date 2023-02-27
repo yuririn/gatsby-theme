@@ -13,7 +13,6 @@ WordPressでサイトごとの独自の値を登録できるようにしたい�
 
 <prof></prof>
 
-<toc id="/blogs/entry455/"></toc>
 
 <msg txt="今回は管理画面でサイト共通の設定を追加し、さらに値をajax（jQuery）で保存します！"></msg>
 

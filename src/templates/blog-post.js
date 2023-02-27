@@ -25,7 +25,6 @@ import Genre from "../components/common/genre"
 // import ProfBig from "../components/common/profile"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
-import Faq from "../components/blogs/blog-parts/faq"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const renderAst = new rehypeReact({
@@ -33,30 +32,26 @@ const renderAst = new rehypeReact({
   components: {
     card: RelativeCard,
     msg: Msg,
-    faq: Faq,
     prof: Prof,
-    toc: Toc
   },
 }).Compiler
 
 const BlogPostTemplate = ({ data, location }) => {
 
   const post = data.markdownRemark
+  const faq = post.frontmatter.faq
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
 
   const category = { url:`/blogs/${post.frontmatter.cateId}/`, name:
-                  siteMetadata.category.filter(item => {
-                    return post.frontmatter.cateId === item.slug
-                      ? item.name
-                      : ""
-                  })[0].name
-                }
-
-
-
+    siteMetadata.category.filter(item => {
+      return post.frontmatter.cateId === item.slug
+        ? item.name
+        : ""
+    })[0].name
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -114,6 +109,15 @@ const BlogPostTemplate = ({ data, location }) => {
             <Edit>
               <section itemProp="articleBody">
                 {renderAst(post.htmlAst)}
+                {faq && (<h2>FAQ</h2>)}
+                {faq && faq.map((item, index) => {
+                  return (
+                    <dl className="p-faq__item" key={`faq${index}`}>
+                      <dt>{item[0]}</dt>
+                      <dd>{item[1]}</dd>
+                    </dl>
+                  )
+                })}
               </section>
             </Edit>
 
@@ -240,18 +244,6 @@ export const pageQuery = graphql`
       childImageSharp {
         resize(width: 200, height: 200, toFormat: PNG) {
           src
-        }
-      }
-    }
-    allFile(
-      filter: {
-        sourceInstanceName: { eq: "images" }
-        relativePath: { eq: $hero }
-      }
-    ) {
-      edges {
-        node {
-          publicURL
         }
       }
     }

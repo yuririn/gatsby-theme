@@ -9,7 +9,6 @@ description: 先日concreteCMSの外部フォームブロックを使ってフ�
 ---
 先日concreteCMSの外部フォームブロックを使ってフォームを実装しました。前も実装方法は紹介したのですが、今回はAjax を実装方法をまとめましたので参考にしてください。
 
-<toc id="/blogs/entry497/"></toc>
 
 ## concreteCMSとは？
 

@@ -194,6 +194,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     component: contact,
     context: {},
   })
+
   //サンクス
   createPage({
     path: "/contact/thanks/",

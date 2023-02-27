@@ -19,7 +19,6 @@ WordPressってPHPとhtmlが混在するし、コードが煩雑になりがち�
 * Macでしか検証していません
 * VS Codeを使うことが前提です
 * phpcsのエラーに困っている方は[WordPress phpcsでコーディング規約を守るコード](/blogs/entry452/)へ
-<toc id="/blogs/entry450/"></toc>
 
 <br>PHPでは一般的にインデントがタブ（4つ）なので設定（`Cmd+,`）> settings.jsonにコードを追記しておきます。
 

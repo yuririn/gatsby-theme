@@ -15,7 +15,6 @@ description: 2023年1月にimagemin(v8系)のESM対応したCLスクリプトに
 npm-scriptで使って画像を圧縮する方法をご紹介します。imagemin cliで画像を圧縮しようとして、フォルダ階層を保てないことがわかり、どうしたものかハマりました。メモとして残しておきます。
 <prof></prof>
 
-<toc id="/blogs/entry423/"></toc>
 
 ### npm-scriptとは？
 私の敬愛するICSメディアさんにとてもわかりやすい説明が掲載されていたのでそのまま引用しました！

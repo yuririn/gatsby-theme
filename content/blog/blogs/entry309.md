@@ -21,7 +21,6 @@ Webの触り部分を勉強するということで、
 
 一昨年、100回をめどに一旦区切りをつけました。
 
-<toc id="/blogs/entry309/"></toc>
 
 [Web Touch Meeting（ウェブタッチミーチング）](http://www.webtouchmeeting.com/)
 

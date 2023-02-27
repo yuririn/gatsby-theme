@@ -31,7 +31,6 @@ description: タグクラウドのコンポーネントを作ります。記事�
 12. [パンくずリストを追加する](/blogs/entry487/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
-<toc id="/blogs/entry486/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納しています。
 
 今回は[add-header-footer](https://github.com/yuririn/gatsby-blog/tree/add-header-footer)にあります。

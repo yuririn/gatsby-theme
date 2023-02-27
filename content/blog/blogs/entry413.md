@@ -35,7 +35,6 @@ description: 記事数が増えると一覧にペーネーションが欲しく�
 v5へのアップグレード方法はこちら。
 <card id="/blogs/entry519/"></card>
 
-<toc id="/blogs/entry413/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[pagination](https://github.com/yuririn/gatsby-blog/tree/pagination)ブランチにあります。

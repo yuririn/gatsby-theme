@@ -12,18 +12,21 @@ import config from "../../gatsby-config"
 const Seo = ({data, children}) => {
   const domain = config.siteMetadata.siteUrl
   const metaDescription = data.description || config.siteMetadata.description
-  const defaultTitle = config.siteMetadata?.title
+  const isAd = data.type === 'ad' || data.location.pathname === '/choco-blog/' ? true : false
+  const defaultTitle = isAd ? config.siteMetadata.ad.title : config.siteMetadata?.title
 
   const noindex = data.noindex ? data.noindex : false;
 
   let blogUrl = data.location ? domain + data.location.pathname : domain
-  const isRoot = '/' === data.location.pathname ? true : false
+  const isRoot = '/' === data.location.pathname || data.location.pathname === '/choco-blog/' ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
   const pagetype = isRoot ? "webSite" : "article"
-  const ogSrc = domain + (data.ogp ? data.ogp : "/images/ogp.png")
-  const thumbnailSrc = domain + (data.thumnail ? data.thumnail : "/images/thumnail.png")
+  const ogSrc = domain + (data.ogp ? data.ogp : isAd ? "/images/choco-ogp.png" :  "/images/ogp.png")
+  const thumbnailSrc = domain + (data.thumnail ? data.thumnail :isAd ? "/images/choco-thumnail.png" :  "/images/thumnail.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
   let pageName = isRoot ? defaultTitle : `${data.title} - ${defaultTitle}`
+
+
 
   if(data.type === "tags" || data.type === "genre") {
     pageName = `${data.title} - 記事一覧 - ${defaultTitle}`
@@ -39,8 +42,8 @@ const Seo = ({data, children}) => {
 
   const publisher = {
     "@type": "Organization",
-    name: config.siteMetadata.title,
-    description: config.siteMetadata.description,
+    name: isAd ? config.siteMetadata.ad.title :config.siteMetadata.title,
+    description: isAd ? config.siteMetadata.ad.description :config.siteMetadata.description,
     logo: {
       "@type": "ImageObject",
       url: `${domain}/images/icon.png`,
@@ -88,7 +91,7 @@ const Seo = ({data, children}) => {
     {
       "@type": "Person",
       name: config.siteMetadata.author.name,
-      description: config.siteMetadata.author.summary,
+      description: isAd ? config.siteMetadata.ad.author.summary : config.siteMetadata.author.summary,
       jobTitle: ['CEO', 'concreteCMS エバンジェリスト'],
       affiliation: [
         {
@@ -97,7 +100,7 @@ const Seo = ({data, children}) => {
         },
         {
           "@type":"Organization",
-          name: '銀ねこアトリエ',
+          name: isAd ? config.siteMetadata.ad.title : '銀ねこアトリエ',
           url: domain,
         }
       ],
@@ -125,10 +128,11 @@ const Seo = ({data, children}) => {
       image: ogSrc,
       description: metaDescription,
     },
-    siteNavigation
-  ]
 
-  if ( data.type === "blog") {
+  ]
+  if(!isAd) jsonLdConfigs = [...jsonLdConfigs,siteNavigation]
+
+  if ( data.type === "blog" || data.type === "ad") {
     jsonLdConfigs.push({
       "@context": "http://schema.org",
       "@type": "BlogPosting",
@@ -179,8 +183,8 @@ const Seo = ({data, children}) => {
       position: 1,
       "item": {
         "@type": "WebSite",
-        "@id": domain,
-         name: "ホーム",
+        "@id": isAd ? domain+ '/choco-blog/' : domain,
+         name: isAd ? defaultTitle :"ホーム",
       }
     }
     const blogList = {
@@ -242,6 +246,16 @@ const Seo = ({data, children}) => {
       ]
     } else if ( data.type === "blog-list") {
       breadCrumbList = [home, blogList]
+   } else if ( data.type === "ad") {
+      breadCrumbList = [home, {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "BlogPosting",
+            "@id":  blogUrl,
+            "name": data.title
+          }
+        }]
     } else {
       breadCrumbList = [
         home,
@@ -267,7 +281,7 @@ const Seo = ({data, children}) => {
     ]
   }
 
-  if( typeof window !== "undefined") {
+  if( typeof window !== "undefined" && data.type !== "ad") {
     let lazyloadads = false;
     window.addEventListener("scroll", function() {
      if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {
@@ -290,9 +304,9 @@ const Seo = ({data, children}) => {
     <meta name="description" content={metaDescription} />
     <meta name="thumbnail" content={thumbnailSrc} />
     <meta propaty="og:title" content={pageName} />
+    <meta propaty="og:description" content={data.description ? data.description : metaDescription} />
     <meta propaty="og:image" content={ogSrc} />
-    <meta propaty="og:description" content={`UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`} />
-    <meta name="google-site-verification" content={metaDescription} />
+    <meta name="google-site-verification" content={`UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`}/>
     <meta propaty="og:type" content={pagetype} />
     <meta propaty="og:url" content={blogUrl} />
     <meta name="twitter:card" content={`summary_large_image`} />
@@ -301,7 +315,7 @@ const Seo = ({data, children}) => {
     <meta name="twitter:image" content={ogSrc} />
     <meta name="twitter:description" content={metaDescription} />
     {(noindex||data.location === '404')&&<meta content="noindex" name="robots"/>}
-     {(!noindex&&data.location !== '404')&&<link rel="canonical" href={canonicalUrl}></link>}
+     {(!noindex && data.location !== '404')&&<link rel="canonical" href={canonicalUrl}></link>}
       <script type="application/ld+json">
         {JSON.stringify(jsonLdConfigs)}
       </script>

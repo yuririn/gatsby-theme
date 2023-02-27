@@ -11,7 +11,6 @@ CMSなどの管理画面に組み込めるJS製Aceエディターというもの
 
 <prof></prof>
 
-<toc id="/blogs/entry442/"></toc>
 
 ## Aceエディターとは？
 出会いは必然にして突然。。。

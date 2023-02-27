@@ -19,7 +19,6 @@ WordPressのフォーム用プラグイン、MW WP FormとContact Form 7に対�
 
 <prof></prof>
 
-<toc id="/blogs/entry370/"></toc>
 
 
 ## ラジオボタン・チェックボックスはそのままだとまったく可愛くない！

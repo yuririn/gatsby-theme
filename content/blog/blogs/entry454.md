@@ -13,7 +13,6 @@ WordPressでもSEO Packなどを使わずカスタムフィールドの実装だ
 
 <prof></prof>
 
-<toc id="/blogs/entry454/"></toc>
 ## この記事を参考にする上での注意点
 
 この記事のコードはWordPressのコーディング規約に沿って書いてあります。

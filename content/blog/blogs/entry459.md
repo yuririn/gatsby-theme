@@ -23,7 +23,6 @@ JavaScriptがそのまま書けるのでとても魅力的でした。類似す�
 
 10 ~ 30ページくらいの規模でページのレイアウト構成がある程違うことを想定しています。
 
-<toc id="/blogs/entry459/"></toc>
 
 ## EJSとは？
 ![EJS Embedded JavaScript templating.](./images/2021/05/entry459-1.jpg)

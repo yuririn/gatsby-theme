@@ -17,7 +17,6 @@ Clarity は Microsoft の *Webサイト上のユーザーの操作を見える�
 
 ぜひこの記事を参考にウェブサイト改善に役立ててください。
 
-<toc id="/blogs/entry510/"></toc>
 
 ## Clarityで分かること、できること
 ![Clarityで分かること、できること](./images/2022/06/entry510-2.jpg)
@@ -403,8 +402,6 @@ Clarity はページごとにヒートマップの状態を確認できます。
 
 <prof></prof>
 
-### FAQ
-<faq id="/blogs/entry510/"></faq>
 
 ### 参考
 [Clarity Docs(英語)](https://docs.microsoft.com/en-us/clarity/)

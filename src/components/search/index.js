@@ -20,6 +20,7 @@ const SearchResult =  (props) => {
           cateId
           description
           hero
+          pagetype
         }
       }
     }
@@ -29,7 +30,11 @@ const SearchResult =  (props) => {
   useEffect(() => {
     const temp = []
     tempData.allMarkdownRemark.edges.map(e => {
-      temp.push(e.node)
+      if(props.pagetype === 'ad') {
+        if(e.node.frontmatter.pagetype === 'ad') temp.push(e.node)
+      } else {
+        if(e.node.frontmatter.pagetype !== 'ad') temp.push(e.node)
+      }
     })
     setData(temp)
   }, [])
@@ -139,7 +144,7 @@ const Search = props => {
           onChange={onChange}
           className="box"
         />
-        <SearchResult focus={focus} value={value} />
+        <SearchResult focus={focus} value={value} pagetype={props.type}/>
       </div>
     </SearchBox>
   )
@@ -163,8 +168,6 @@ const SearchBox = styled.div`
     outline: none;
     font-size: 1.6rem;
     box-shadow: none;
-
-
   }
 `
 

@@ -14,7 +14,6 @@ noindex: true
 
 <prof></prof>
 
-<toc id="/blogs/entry485/"></toc>
 
 ## 水・食料が足りません！！
 ![](./images/2022/01/entry479-1.jpg)

@@ -17,7 +17,6 @@ description: 先日 スプレッドシートをJSONデータ化し、React 側�
 * npmコマンドが使える
 * JSが分かりある程度Reactを使ったことがある
 
-<toc id="/blogs/entry491/"></toc>
 ## スプシの準備
 先にスプシを準備します。
 

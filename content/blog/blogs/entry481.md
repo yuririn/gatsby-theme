@@ -14,7 +14,6 @@ description: 以前Googleスプレッドシートにクライアント側でデ�
 
 <prof></prof>
 
-<toc id="/blogs/entry481/"></toc>
 
 ## 2021年8月頃よりGoogleの仕様が変わったので別の方法を紹介します
 *2021年8月頃よりGoogleの仕様* が変わり、以下の方法は使えなくなりました。<br>

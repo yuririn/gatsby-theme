@@ -20,7 +20,6 @@ concrete5（concreteCMS）の外部フォームを使ってフォーム作りま
 
 <prof></prof>
 
-<toc id="/blogs/entry236/"></toc>
 
 ## 外部フォームとは？
 concrete5には外部フォームというブロックがあります。<br>

@@ -33,7 +33,6 @@ Gatsbyブログにパンくずリストを追加します。今までのコン�
 v5へのアップグレード方法はこちら。
 <card id="/blogs/entry519/"></card>
 
-<toc id="/blogs/entry487/"></toc>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納してあります。
 

@@ -16,7 +16,6 @@ description: みなさん、スパム対策してますか？。GoogleのreCAPTC
 
 <prof></prof>
 
-<toc id="/blogs/entry402/"></toc>
 
 みなさん、このスクショの右下のラベル見たことありますか？
 

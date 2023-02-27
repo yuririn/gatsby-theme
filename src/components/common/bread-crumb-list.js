@@ -1,13 +1,24 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import {siteMetadata} from "../../../gatsby-config"
+import Ad from '../../templates/ad-post';
 
 const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
+  const {ad} = siteMetadata
+  const thisClass = type === `blog` ? 'blog': (type === `ad` ? `ad`: '')
   return (
-    <BreadCrumb className={type === `blog` ? 'blog':''}>
-        <li>
+    <BreadCrumb className={thisClass}>
+      {type === `ad` ? (
+          <li>
+          <Link to="/choco-blog/">{ad.title}</Link>
+          </li>
+        ) : (
+          <li>
           <Link to="/">銀ねこアトリエ</Link>
-        </li>
+          </li>
+        )}
+
         {type === `blog` ? (
           <li>
             <Link to="/blogs/">ノマドブログ</Link>
@@ -29,7 +40,7 @@ const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
         ) : (
           ""
           )}
-        {type === `blog` ? (
+        {type === `blog` || `ad` ? (
           ""
         ):(
           <li>{current}</li>
@@ -41,12 +52,12 @@ const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
 export default BreadCrumbList;
 
 const BreadCrumb = styled.ol`
-
     max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
         padding-left: 15px;
     padding-right: 15px;
+
     @media screen and (min-width: 768px) {
     padding-left: 30px;
     padding-right: 30px;
@@ -84,7 +95,7 @@ const BreadCrumb = styled.ol`
         content: none;
       }
     }
-    &.blog {
+    &.blog,&.ad {
       margin-bottom: 10px;
       li:last-child::after {
         content: "";
@@ -92,6 +103,22 @@ const BreadCrumb = styled.ol`
       @media screen and (min-width: 768px) {
         margin-bottom: 8px;
         margin-top: 36px;
+      }
+    }
+    &.ad {
+      padding-left: 0;
+      padding-right: 0;
+      font-size: 12px;
+     margin-top:0;
+      margin-bottom: 0;
+      a {
+        color: var(--color-sec);
+      }
+      li {
+        &::after {
+          border-right: var(--color-sec) 2px solid ;
+          border-top: var(--color-sec) 2px solid ;
+        }
       }
     }
 

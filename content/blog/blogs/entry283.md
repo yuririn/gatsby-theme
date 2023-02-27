@@ -10,7 +10,6 @@ description: WordPress のfunctions.php に書いていく、自作した機能�
 ---
 WordPress のfunctions.php に書いていく、自作した機能をプラグインごとにまとめたらめちゃめちゃ便利だったのでその方法をメモっておきます。
 
-<toc id="/blogs/entry283/"></toc>
 
 ## WordPress の自作した機能は整理しておかないと、めちゃめちゃカオスになる
 WordPress で自作した機能はまとめておかないとめちゃめちゃカオスになります泣（経験者は語る）

@@ -25,7 +25,6 @@ VS Codeの基本操作方法とフロント系のコードを快適に書くた�
 <card id="/blogs/entry280/"></card>
 <card id="/blogs/entry440/"></card>
 
-<toc id="/blogs/entry266/"></toc>
 
 ## Visual Studio Code とは？
 

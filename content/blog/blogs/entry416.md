@@ -31,7 +31,6 @@ GatsbyでプライバシーポリシーやAboutページなど記事一覧のル
 v5へのアップグレード方法はこちら。
 <card id="/blogs/entry519/"></card>
 
-<toc id="/blogs/entry416/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回のソースは[other](https://github.com/yuririn/gatsby-blog/tree/other)ブランチにあります。

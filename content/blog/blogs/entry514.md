@@ -26,7 +26,6 @@ Webサイトでスライドショー（スライダー）は便利ですよね�
 * スライダーを実装したいけどスマホで次のスライドをほんの少し見せたい
 * jQuery は使いたくない
 
-<toc id="/blogs/entry514/"></toc>
 
 ## Swiper とは？
 Swiper とは、最新の無料で使えるモバイルタッチに対応したスライドショー用の JavaScript の jQuery 不要の軽量ライブラリです。
@@ -267,5 +266,3 @@ window.addEventListener('DOMContentLoaded', () => {
 同じことでハマっている人への一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
-### FAQ
-<faq id="/blogs/entry514/"></faq>

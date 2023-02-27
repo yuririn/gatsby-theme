@@ -18,7 +18,6 @@ description: ブロックテーマで直感的に編集可能なテーマを作�
 * 前編・ベースのテンプレート作成（←イマココ）
 * [後編・記事一覧出力やページの追加](/blogs/entry509)
 
-<toc id="/blogs/entry506/"></toc>
 
 ## ブロックテーマ（Block themes） とは?
 > A block theme is a type of WordPress theme built using blocks. You can edit all parts of a block theme in the Site Editor.<br>

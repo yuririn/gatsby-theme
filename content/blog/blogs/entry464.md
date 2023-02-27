@@ -23,7 +23,6 @@ description: 「子ども服をセブに送るプロジェクト」始動！第�
 
 <card id="/blogs/entry445/"></card>
 
-<toc id="/blogs/entry464/"></toc>
 
 ### YouTubeも作りました！！
 YouTubeでも配信しています！併せてご覧ください。

@@ -17,7 +17,6 @@ description: この記事はWordPressコーディング規約をphpcs導入し�
 * VS Codeを使うことが前提です。
 * phpcsでWordPressコーディング規約導入したい方は[WordPress phpcsでコーディング規約を守る環境を作る](/blogs/entry450/)へ
 
-<toc id="/blogs/entry452/"></toc>
 ### WordPressの各言語ごとのコーディング規約
 
 WordPressにもコーディング規約があって、各言語ごとにまとめられています。気分が萎える。。。

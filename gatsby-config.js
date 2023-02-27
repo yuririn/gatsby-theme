@@ -51,6 +51,21 @@ module.exports = {
         description: "信念・思いや感じたことを気ままに綴ってます",
       },
     ],
+    ad: {
+      title: `CHOCOっとBLOG`,
+      author: {
+        name: `かみーゆ`,
+        summary: `資金ゼロからフィリピンで起業した海外ノマドエンジニアです。Web制作・運用10年以上ですが、仕事とは関係ないことを綴っていきます。愛するチョコボ（黒ネコ）とは4年も離れ手暮らしています。`,
+      },
+      description: `斜め上のお役立ち情報を発信しています。`,
+      siteUrl: `https://ginneko-atelier.com/ad`,
+      image: `https://ginneko-atelier.com/images/newogp.png`,
+      social: {
+        twitter: `lirioL`,
+        instagram: `yurico.k`,
+        youtube: `https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw`,
+      },
+    }
   },
   plugins: [
     {

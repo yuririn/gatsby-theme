@@ -17,7 +17,6 @@ description: なぜSEO対策にリライトが効果的なのか？何を基準�
 <p><small>この記事は2022年6月に大幅にリライトしました。</small></p>
 <prof></prof>
 
-<toc id="/blogs/entry444/"></toc>
 
 ## なぜ、SEO対策にリライトが効果的か
 

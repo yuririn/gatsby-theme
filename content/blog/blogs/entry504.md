@@ -18,7 +18,6 @@ description: スプレッドシート（Googleスプレッドシート）の最�
 * 定期的にメール送信したい
 * クライアントなどにGoogle Apps Script（GAS）でメールを送信したい
 * 社内SlackのワークスペースなどでGoogle Apps Script（GAS）を通知を受け取りたい
-<toc id="/blogs/entry504/"></toc>
 
 <msg txt="毎回いちいちメッセージするのも面倒ですし、事務作業は減らしたい"></msg>
 

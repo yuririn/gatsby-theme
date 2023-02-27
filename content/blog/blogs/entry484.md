@@ -29,7 +29,6 @@ Gatsby Starter Blogを改造してヘッダーとフッターの追加の仕方�
 11. [タグクラウドコンポーネントを作成する](/blogs/entry486/)
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
-<toc id="/blogs/entry484/"></toc>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納しています。
 

@@ -18,7 +18,6 @@ description: 海外に来たら現地の料理・グルメを食べたい！住�
 
 <prof></prof>
 
-<toc id="/blogs/entry441/"></toc>
 
 ## 臭みを気にせず食べることができるTuslob Buwa（トゥスロブワ）はDonkatsuレストランで！
 

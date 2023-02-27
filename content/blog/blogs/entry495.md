@@ -13,7 +13,6 @@ description: 最近のウェブ制作はスマホ、タブレット、多様化�
 
 <prof></prof>
 
-<toc id="/blogs/entry495/"></toc>
 
 
 ## EJSてそもそも何ぞ？

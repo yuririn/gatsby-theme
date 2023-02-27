@@ -28,7 +28,6 @@ description: 最近Googleスプレッドシートにクライアント側でデ�
 
 <card id="/blogs/entry481/"></card>
 
-<toc id="/blogs/entry455/"></toc>
 
 ## 下準備・スプシ側の設定
 

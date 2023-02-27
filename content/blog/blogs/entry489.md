@@ -32,7 +32,6 @@ Gatsbyでは記事はMarkdownで書くのですが、関連記事のカードな
 v5へのアップグレード方法はこちら。
 <card id="/blogs/entry519/"></card>
 
-<toc id="/blogs/entry489/"></toc>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog/)に各内容ブランチごとで分けて格納してあります。
 
 今回は[original-component](https://github.com/yuririn/gatsby-blog/tree/original-component)にあります。
