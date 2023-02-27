@@ -281,7 +281,7 @@ const Seo = ({data, children}) => {
     ]
   }
 
-  if( typeof window !== "undefined" && data.type !== "ad") {
+  if( typeof window !== "undefined" && ! isAd ) {
     let lazyloadads = false;
     window.addEventListener("scroll", function() {
      if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {
@@ -303,12 +303,12 @@ const Seo = ({data, children}) => {
     <title>{pageName}</title>
     <meta name="description" content={metaDescription} />
     <meta name="thumbnail" content={thumbnailSrc} />
-    <meta propaty="og:title" content={pageName} />
-    <meta propaty="og:description" content={data.description ? data.description : metaDescription} />
-    <meta propaty="og:image" content={ogSrc} />
+    <meta  property="og:title" content={pageName} />
+    <meta  property="og:description" content={data.description ? data.description : metaDescription} />
+    <meta property="og:image" content={ogSrc} />
     <meta name="google-site-verification" content={`UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`}/>
-    <meta propaty="og:type" content={pagetype} />
-    <meta propaty="og:url" content={blogUrl} />
+    <meta  property="og:type" content={pagetype} />
+    <meta  property="og:url" content={blogUrl} />
     <meta name="twitter:card" content={`summary_large_image`} />
     <meta name="twitter:creator" content={config.siteMetadata?.social?.twitter || ``} />
     <meta name="twitter:title" content={pageName} />
