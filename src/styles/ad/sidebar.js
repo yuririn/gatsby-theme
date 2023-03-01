@@ -47,6 +47,11 @@ margin-top: 50px;
             gap: 16px;
         }
         svg {
+            color: var(--color-sec);
+
+            &:hover {
+                text-decoration: none;
+            }
             width: 24px;
         }
     }

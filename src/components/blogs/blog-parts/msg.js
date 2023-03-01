@@ -29,7 +29,7 @@ const Msg = data => {
   let src = data.img ? data.img : "common/camille-pic.jpg"
   let name = data.name ? data.name : "かみーゆ"
   let img = allFile.edges.find(img => img.node.relativePath === src)
-  let msgClass = data.cls ? data.cls : "msg-baloon"
+  let msgClass = data.cls ? `msg-baloon--${data.cls}` : "msg-baloon"
   if (img) {
     return (
       <div className={msgClass}>

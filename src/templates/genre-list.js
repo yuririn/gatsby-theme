@@ -15,7 +15,7 @@ import Prof from "../components/common/profile"
 
 const category = ({ pageContext, data, location }) => {
   const { cateSlug, current, page } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { edges } = data.allMarkdownRemark
 
   const cateMeta = siteMetadata.category.filter(cate => cate.slug === cateSlug)
 

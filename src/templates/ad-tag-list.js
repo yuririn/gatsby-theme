@@ -3,18 +3,22 @@ import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import AdLayout from "../components/ad-layout"
 import Img from "../components/img";
-import AdSidebar from "../components/blogs/ad-sidebar";
-import {siteMetadata} from "../../gatsby-config"
 import Seo from "../components/seo"
+import AdSidebar from "../components/blogs/ad-sidebar";
+import BreadCrumbList from "../components/common/bread-crumb-list"
 import {Body} from "../styles/ad/body"
 
-const AdIndex = ({ data, location }) => {
+
+const tags = ({ pageContext, data, location }) => {
+  const { current, page, tag } = pageContext
+
   const posts = data.allMarkdownRemark.nodes
   return (
-    <AdLayout location={location} title={siteMetadata.ad.title}>
+    <AdLayout location={location} title=''>
       <Body>
-          <h2>最新の記事</h2>
-         {posts.length !== 0 && (
+        <BreadCrumbList type="ad-tag" current={tag}/>
+        <h2>{tag}に関する記事</h2>
+        {posts.length !== 0 && (
           <ul>
             { posts.map((post, i) => {
           return (
@@ -37,48 +41,53 @@ const AdIndex = ({ data, location }) => {
       </Body>
       <AdSidebar></AdSidebar>
     </AdLayout>
+  );
+}
+
+export default tags
+
+export const Head = ({ pageContext, location  }) => {
+  const { current, page, tag } = pageContext
+  const yourData ={
+    title : tag,
+    location : location,
+    type : "ad-list",
+  }
+
+  return (
+     <Seo
+        data={yourData}
+      />
   )
 }
-export default AdIndex
 
-export const Head = ({ data, location }) => {
-  const yourData = {
-    title : siteMetadata.ad.title,
-    description : siteMetadata.ad.description,
-    location : location,
-  }
-  return (
-  <Seo
-    data={yourData}
-  />
-)}
-
-export const pageQuery = graphql`{
+export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag: [String]) {
   site {
     siteMetadata {
       title
+      description
     }
   }
   allMarkdownRemark(
+    limit: $limit
+    skip: $skip
     sort: {frontmatter: {date: DESC}}
-    limit: 10
-    filter: {frontmatter: {pagetype: {eq: "ad"}}}
+    filter: {frontmatter: {pagetype: {eq: "ad"}, tags: {in: $tag}}}
   ) {
+    totalCount
     nodes {
       excerpt
       fields {
         slug
       }
       frontmatter {
+        title
         date(formatString: "YYYY.MM.DD")
         description
-        title
-        tags
         cateId
         hero
-        pagetype
+        tags
       }
     }
   }
 }`
-

@@ -5,26 +5,9 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Edit } from "./../styles/blog-styles/edit"
 import BreadCrumbList from "../components/common/bread-crumb-list"
-import Ad from './ad-post'
 import {siteMetadata} from "../../gatsby-config"
 
 const PagePostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  return (
-    <>
-    {
-      post.frontmatter.pagetype === 'ad' ?(
-        <Ad location={location} data={data}/>
-        ):(
-        <Page location={location} data={data}/>
-      )
-    }
-    </>
-  )
-}
-export default PagePostTemplate
-
-const Page = ({ data, location }) => {
   const post = data.markdownRemark
   const { title } = siteMetadata
   const siteTitle = `${post.frontmatter.title} | ${title}`
@@ -49,8 +32,11 @@ const Page = ({ data, location }) => {
         </article>
       </div>
     </Layout>
+
   )
 }
+export default PagePostTemplate
+
 
 export const Head = ({ data, location }) => {
   const post = data.markdownRemark
@@ -68,7 +54,7 @@ export const Head = ({ data, location }) => {
     thumnail: thumnailSrc,
     date : post.frontmatter.date,
     modifieddate : post.frontmatter.modifieddate,
-    type : post.frontmatter.pagetype === 'ad' ? 'ad':"article"
+    type : "article"
   }
 
   return (
@@ -79,43 +65,10 @@ export const Head = ({ data, location }) => {
 }
 
 export const pageQuery = graphql`
-  query PagePostBySlug($id: String!, $hero: String) {
+  query PagePostBySlug($id: String!) {
     site {
       siteMetadata {
         title
-      }
-    }
-   siteOgImage: file(
-      relativePath: { eq: $hero }
-      sourceInstanceName: { eq: "images" }
-      ) {
-      childImageSharp {
-        resize(width: 1200, height:900, toFormat: PNG) {
-          src
-        }
-      }
-    }
-    dogImage: file(
-      relativePath: { eq: $hero }
-      sourceInstanceName: { eq: "images" }
-    ) {
-      childImageSharp {
-        gatsbyImageData (
-          blurredOptions: { width: 100 }
-          width: 640
-          quality: 40
-          placeholder: BLURRED
-        )
-      }
-    }
-    siteThumnailImage: file(
-      relativePath: { eq: $hero }
-      sourceInstanceName: { eq: "images" }
-      ) {
-      childImageSharp {
-        resize(width: 200, height: 200, toFormat: PNG) {
-          src
-        }
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -129,7 +82,7 @@ export const pageQuery = graphql`
         date(formatString: "YYYY.MM.DD")
         description
         hero
-        pagetype
+        tags
       }
     }
   }

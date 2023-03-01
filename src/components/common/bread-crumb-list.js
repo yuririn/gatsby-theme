@@ -4,12 +4,12 @@ import styled from "styled-components";
 import {siteMetadata} from "../../../gatsby-config"
 import Ad from '../../templates/ad-post';
 
-const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
+const BreadCrumbList = ({ type, current = '', cate = '', tag='' }) => {
   const {ad} = siteMetadata
-  const thisClass = type === `blog` ? 'blog': (type === `ad` ? `ad`: '')
+  const thisClass = type === `blog` ? 'blog': (type === `ad` ||type === `ad-tag` ? `ad`: '')
   return (
     <BreadCrumb className={thisClass}>
-      {type === `ad` ? (
+      {type === `ad` || type === `ad-tag` ? (
           <li>
           <Link to="/choco-blog/">{ad.title}</Link>
           </li>
@@ -19,30 +19,23 @@ const BreadCrumbList = ({ type, current, cate = '', tag='' }) => {
           </li>
         )}
 
-        {type === `blog` ? (
+        {type === `blog` && (
           <li>
             <Link to="/blogs/">ノマドブログ</Link>
           </li>
-        ) : (
-          ""
         )}
-        {cate !== '' ? (
+        {cate !== '' && (
           <li>
             <Link to={cate.url}>{cate.name}</Link>
           </li>
-        ) : (
-          ""
         )}
-        {tag !== '' ? (
+        {tag !== '' && (
           <li>
-            <Link to={`/blogs/tags/${tag}`}>{tag}</Link>
+              <Link to={`/blogs/tags/${tag}`}>{tag}</Link>
           </li>
-        ) : (
-          ""
-          )}
-        {type === `blog` || `ad` ? (
-          ""
-        ):(
+        )}
+
+        {current !== '' && (
           <li>{current}</li>
         )}
     </BreadCrumb>

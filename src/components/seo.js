@@ -11,8 +11,8 @@ import config from "../../gatsby-config"
 
 const Seo = ({data, children}) => {
   const domain = config.siteMetadata.siteUrl
-  const metaDescription = data.description || config.siteMetadata.description
-  const isAd = data.type === 'ad' || data.location.pathname === '/choco-blog/' ? true : false
+  const isAd = data.type === 'ad' || data.type === 'ad-list' || data.location.pathname === '/choco-blog/' ? true : false
+  const metaDescription = data.description || isAd ? config.siteMetadata.ad.description : config.siteMetadata.description
   const defaultTitle = isAd ? config.siteMetadata.ad.title : config.siteMetadata?.title
 
   const noindex = data.noindex ? data.noindex : false;
@@ -27,17 +27,17 @@ const Seo = ({data, children}) => {
   let pageName = isRoot ? defaultTitle : `${data.title} - ${defaultTitle}`
 
 
-
-  if(data.type === "tags" || data.type === "genre") {
+  if(data.type === "tags" || data.type === "genre" ||  data.type === "ad-list") {
     pageName = `${data.title} - 記事一覧 - ${defaultTitle}`
   } else if (data.type === "blog") {
     pageName = `${data.title}`
   }
   const canonicalUrl = blogUrl;
 
-  if (data.type === "blogs" || data.type === "tags" || data.type === "genre") {
+  if (data.type === "blogs" || data.type === "tags" || data.type === "genre" || data.type === "ad-list") {
     blogUrl = String(blogUrl).replace(/page\/([0-9])+\//, "");
   }
+
   const cateInfo =  data.cateId ? { url:`/blogs/${data.cateId}/`, name:config.siteMetadata.category.filter(item => {return item.slug === data.cateId })[0].name}:''
 
   const publisher = {
@@ -246,17 +246,35 @@ const Seo = ({data, children}) => {
       ]
     } else if ( data.type === "blog-list") {
       breadCrumbList = [home, blogList]
-   } else if ( data.type === "ad") {
-      breadCrumbList = [home, {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "BlogPosting",
-            "@id":  blogUrl,
-            "name": data.title
-          }
-        }]
-    } else {
+    } else if ( data.type === "ad") {
+        let tagList = []
+        let num = 1;
+        if(data.tags.length !== 0){
+          data.tags.forEach( (item) => {
+            num++;
+            const listItem = {
+              "@type": "ListItem",
+              position:  num,
+              "item": {
+                "@type": "WebPage",
+                "@id":  item,
+                "name": `choco-blog/tags/${item}`
+              }
+            }
+            tagList = [...tagList, listItem]
+
+          })
+        }
+        breadCrumbList = [home, ...tagList, {
+            "@type": "ListItem",
+            "position": num+1,
+            "item": {
+              "@type": "BlogPosting",
+              "@id":  blogUrl,
+              "name": data.title
+            }
+          }]
+      } else {
       breadCrumbList = [
         home,
         {

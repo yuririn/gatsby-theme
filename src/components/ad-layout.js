@@ -54,12 +54,6 @@ const Main = styled.main`
         padding-left: 32px;
         padding-right: 32px;
     }
-
-    a:not([class]) {
-    color: var(--color-sec);
-    &:hover {
-        text-decoration: none;
-    }
 `
 const Header = styled.header`
 

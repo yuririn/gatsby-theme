@@ -115,7 +115,6 @@ html {
 
   main {
     display: block;
-
     padding-bottom: 1px;
   }
 

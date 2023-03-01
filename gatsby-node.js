@@ -6,10 +6,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const adPost = path.resolve(`./src/templates/ad-post.js`)
 
   const blogList = path.resolve(`./src/templates/blog-list.js`)
 
   const tagList = path.resolve(`./src/templates/tag-list.js`)
+
+  const adTagList = path.resolve(`./src/templates/ad-tag-list.js`)
 
   const genreList = path.resolve(`./src/templates/genre-list.js`)
 
@@ -56,6 +59,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
 
+    const adPosts = posts.filter(post => post.frontmatter.pagetype === "ad")
+
     blogPosts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : blogPosts[index - 1].id
       const nextPostId =
@@ -71,6 +76,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           hero: post.frontmatter.hero
             ? post.frontmatter.hero
             : "common/dummy.png",
+        },
+      })
+    })
+
+    adPosts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null :adPosts[index - 1].id
+      const nextPostId =
+        index === adPosts.length - 1 ? null : adPosts[index + 1].id
+
+      createPage({
+        path: post.fields.slug,
+        component: adPost,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+          hero: post.frontmatter.hero
+            ? post.frontmatter.hero
+            : "ad/dummy.png",
         },
       })
     })
@@ -137,12 +161,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
 
     //タグの一覧作成
-    let tags = posts.reduce((tags, edge) => {
-      const edgeTags = edge.frontmatter.tags
-      return edgeTags ? tags.concat(edgeTags) : tags
+    let tags = blogPosts.reduce((tags, edge) => {
+        const edgeTags = edge.frontmatter.tags
+        return edgeTags ? tags.concat(edgeTags) : tags
     }, [])
     // 重複削除
     tags = [...new Set(tags)]
+
+
+    let adTags = adPosts.reduce((tags, edge) => {
+      const edgeTags = edge.frontmatter.tags
+      return edgeTags ? tags.concat(edgeTags) : tags
+    }, [])
+    adTags = [...new Set(adTags)]
+
 
     // タグ
     tags.forEach(item => {
@@ -171,8 +203,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     })
 
+    // タグ
+    adTags.forEach(item => {
+      const tag = item
+      const tagsCount = adPosts.filter(post =>
+        post.frontmatter.tags.includes(item)
+      ).length
+      const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
+      for (let index = 0; index < numPages; index++) {
+        const pageNumber = index + 1
+        const withPrefix = pageNumber =>
+          pageNumber === 1
+            ? `/choco-blog/tags/${tag}/`
+            : `/choco-blog/tags/${tag}/page/${pageNumber}/`
+        createPage({
+          path: withPrefix(pageNumber),
+          component: adTagList,
+          context: {
+            limit: postsPerPage, //追加
+            skip: index * postsPerPage, //追加
+            current: pageNumber, //追加
+            page: numPages, //追加
+            tag,
+          },
+        })
+      }
+    })
+
     // 個別ページの生成
-    const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog")
+    const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog" && post.frontmatter.pagetype !== "ad")
 
     pagePosts.forEach(post => {
       createPage({

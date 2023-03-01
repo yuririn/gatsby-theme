@@ -28,7 +28,7 @@ const tags = ({ pageContext, data, location }) => {
           alt={tag}
         ></Img>
       </div>
-      <BreadCrumbList type="blog" current={tag} />
+      <BreadCrumbList type="archive" current={tag} />
       <section className="p-section l-container">
           <h2 className="c-heading--lg">最新記事</h2>
           <ol className="c-grid">
