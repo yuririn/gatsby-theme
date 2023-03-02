@@ -7,7 +7,6 @@ pagetype: blog
 cateId: 'web-developer'
 tags: [ "JavaScript"]
 description: 通常配列はもちろん連想配列など、配列のループでどの方法を使うべきか用途ごとに詳しく解説。命令文for...of、for...in、メソッド map、forEach でのループの仕方。find、filter、includes、some、every, reduce, sort とスプレッド構文(...)などについて使い方を紹介します。
-faq: [['多次元配列と連想配列の違いがわかりません','連想配列キーと値がペア（プロパティ）になっているもので、多次元配列は連想配列と普通の配列も組み合わ去っていたりします。'],['map や forEach でループしようとするとエラーが出る。','配列が{test: 1, apple: 2, banana: 3}のような連想配列の可能性があります。その場合は、別の方法を使います。','https://ginneko-atelier.com/blogs/entry482/#%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97%E3%81%AE%E5%87%A6%E7%90%86forin'],['forEach と map の違いがわからない','map はループ内からの戻り値を渡すことができます。処理速度は forEach の方が早いです。']]
 ---
 通常配列はもちろん連想配列など、配列のループでどの方法を使うべきか、ES6以降多様化した配列のループでどの方法を使うべきかこんがらがるので、改めてまとめてみました。
 

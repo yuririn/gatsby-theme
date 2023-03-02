@@ -7,7 +7,6 @@ pagetype: blog
 cateId: 'web-developer'
 tags: ["JavaScript","PHP"]
 description: 2022年版にリライト済み。最近インスタ投稿一覧をWebサイトに埋め込みました。コード書くより、インスタとFacebookを連携させてアクセストークンを取得するまでがスーパーめんどくさかったです。しかも一年前と少しやり方が変わっていて戸惑いました。ということで、2022年版のGraphAPIで一覧を取得する手順をJS・PHP両方紹介します。難易度はJSやPHPを少し書けSNSなどのサービスを普段から使っている人向けです。
-faq: [['Instagram の Feed を phpで出力したい','PHPコードサンプルを用意していますのでそちらを参考にしてください。','https://ginneko-atelier.com/blogs/entry448/#phpコードサンプル'],['最新の Instagram の埋め込み方法を知りたい','この記事は2022年版にリライト済みです。定期的にメンテンナンスをしております。','https://ginneko-atelier.com/blogs/entry448/'],['Instagram のJavaScript での埋め込み方法を知りたい','本記事ではJavaScript（jQuery）での実装の仕方とサンプルコードを紹介しています。','https://ginneko-atelier.com/blogs/entry448/#js%E3%82%B3%E3%83%BC%E3%83%89%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABjquery'],['アクセストークン取得方法を知りたい','アクセストークンを取得するためにはMETA for DeveloperはFacebookアカウントを作成する必要があります。','/blogs/entry448/#ディベロッパー用のアカウント作成アクセストークン等取得#%E5%A4%A7%E6%96%87%E5%AD%97%E5%B0%8F%E6%96%87%E5%AD%97%E3%81%AE%E5%A4%89%E6%8F%9B']]
 ---
 *【この記事は2022年版にリライト済みです】* <br>最近インスタ投稿一覧をWebサイトに埋め込みました。
 

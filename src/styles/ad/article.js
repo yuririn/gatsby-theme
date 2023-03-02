@@ -432,7 +432,9 @@ export const Article = styled.article`
 
 
         &>p {
-            font-size: 15px;
+            @media screen and (min-width: 768px) {
+                font-size: 15px;
+            }
             width: calc(100% - 130px);
             margin-left: 30px;
             border: 2px solid var(--color-deep);
@@ -482,7 +484,9 @@ export const Article = styled.article`
             }
 
             &>p {
-                font-size: 15px;
+                @media screen and (min-width: 768px) {
+                    font-size: 15px;
+                }
                 border: 2px solid #ca1c6d;
                 width: calc(100% - 130px);
                 margin-right: 30px;

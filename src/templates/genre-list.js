@@ -34,7 +34,7 @@ const category = ({ pageContext, data, location }) => {
           className="p-pageHeader__img"
         ></Img>
       </div>
-      <BreadCrumbList type="blog" current={cateName} />
+      <BreadCrumbList type="blog" current={cateName}/>
         <section className="p-section l-container">
           <h2 className="c-heading--lg">最新記事</h2>
           <ol className="c-grid">

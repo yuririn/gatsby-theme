@@ -7,7 +7,7 @@ pagetype: blog
 cateId: web-developer
 tags: ["Gulp","npm"]
 description: pug（Jade）の特徴やメリット、基本的な使い方、導入方法（pug-cliとgulp）。とくに記述方法はif（分岐）やfor・each（ループ処理）など解説。テンプレート化したい場合に使う記述方法の解説と具体的なテンプレートの作り方なども紹介。
-faq: [["pug での連想配列の書き方がわからない","当記事ではpug での連想配列の書き方もご紹介しています。"],["pug でも for if each文 は使えますか？","もちろんpug でも for if each文 は使えます。少しコツが要りますが、当ブログで使い方も紹介しています。"],["Gulp じゃなくても pug は使えますか？","pug cli を使えば gulp や webpack を使わなくても気軽に使うことができます。"]]
+faq: [["pug での連想配列の書き方がわからない","当記事ではpug での連想配列の書き方もご紹介しています。"],["pug での function(関数) の使い方を使いたい。","pug でも function(関数) を使うことができます。大抵のことはMixinで解決できますが、JavaScriptっぽい記法がいい方は、function で書き換えることもできます。使用方法については、当ブログで紹介しているのでぜひ参考にしてください。","https://ginneko-atelier.com/blogs/entry428/?utm_source=faq#function"],["pug でも for if each文 は使えますか？","もちろんpug でも for if each文 は使えます。少しコツが要りますが、当ブログで使い方も紹介しています。"],["Gulp じゃなくても pug は使えますか？","pug cli を使えば gulp や webpack を使わなくても気軽に使うことができます。"]]
 ---
 ページを量産したりチームでサイトを作る時pugという言語を使ってWebサイトを作っています。pug（旧：Jade）の特徴やメリット、基本的な使い方、導入方法（pug-cliとgulp）についてまとめました。とくに記述方法はif（分岐）やfor・each（ループ処理）など解説。テンプレート化したい場合に使う記述方法の解説と具体的なテンプレートの作り方なども紹介しています。
 
@@ -652,6 +652,7 @@ ul
 </ul>
 ```
 <br> *while文* も使えます。出力結果は先ほどの *for文* と一緒です。
+
 ```pug:title=pug
 - var n = 0;
 ul
@@ -664,7 +665,7 @@ ul
 ```pug:title=pug
 ul
   each val in [1, 2, 3]
-    li= val
+    li = val
 ```
 ```html:title=HTML
 <ul>
@@ -706,6 +707,7 @@ ul
 </ul>
 ```
 <br>pugはそもそもJSのメソッドが使えるので、値を大文字（アッパーケース）化してそのままタイトルに使う方法もあります。
+
 ```pug:title=pug
 ul
   each val in ['cat', 'dog', 'rabbit']
@@ -719,7 +721,7 @@ ul
 </ul>
 ```
 
-### 関数・mixin
+### mixin
 再利用したいときは*mixin*に登録しておきましょう。
 ```pug:title=pug
 mixin list
@@ -768,7 +770,7 @@ mixin pageHeader(pageId='top', pageName='トップページ')
 出力結果です。
 ```html:title=HTML
 <header class="top">
-	<p>TOP</p>
+  <p>TOP</p>
   <h1>トップページ</h1>
 </header>
 ```
@@ -789,6 +791,34 @@ mixin list(id, ...items)
   <li>4</li>
 </ul>
 ```
+
+### function
+Mixin 以外にも function （関数）が使えます。たとえば、条件によってクラスをつけたい等は以下のような書き方も可能です。
+```pug:title=pug
+-
+  var target = 1;
+  var items = [1, 2, 3, 4];
+  function targetNum(i){
+    if( i === target )
+      return "current";
+    else
+      return "";
+  }
+ul
+  each item in items
+    li(class=targetNum(item)) #{item}
+```
+
+```html:title=HTML
+<ul>
+  <li class="current">1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+</ul>
+```
+ページによって、メニューにクラスをつけてスタイルを変えたいときに便利ですね。
+
 ## pugでテンプレート化してみよう
 ファイルを分けて、テンプレート化していきます。
 

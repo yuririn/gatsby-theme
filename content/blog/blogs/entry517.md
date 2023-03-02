@@ -4,7 +4,7 @@ date: 2023-01-15
 pagetype: blog
 hero: thumbnail/2023/entry517.png
 cateId: cms
-tags: ["WordPress","ブロックエディタ"]
+tags: ["WordPress","ブロックエディタ","構造化データ"]
 description: WordPressのブロックエディタでFAQが挿入できる上、さらに構造化データを出力するブロック作成方法について解説。FAQPage構造化データを実装するとGoogleでの検索一覧でアコーディオン出力でSEOにも有利。その他のブロックにも転用できると思うので参考にしてください。
 ---
 FAQPageという構造化データをご存知ですか？
