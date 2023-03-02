@@ -319,7 +319,7 @@ const Seo = ({data, children}) => {
   return (
     <>
     <title>{pageName}</title>
-    <meta name="description" content={metaDescription} />
+    <meta name="description" content={data.description ? data.description : metaDescription} />
     <meta name="thumbnail" content={thumbnailSrc} />
     <meta  property="og:title" content={pageName} />
     <meta  property="og:description" content={data.description ? data.description : metaDescription} />
