@@ -143,7 +143,7 @@ const Seo = ({data, children}) => {
         "@type": "ImageObject",
         url: ogSrc,
       },
-      description: metaDescription,
+      description: data.description ? data.description : metaDescription,
       datePublished: data.modified ? data.modified.replace(/\./g, "-") :  data.date.replace(/\./g, "-"),
       dateModified: data.modified ? data.modified.replace(/\./g, "-") : "",
       mainEntityOfPage: {
