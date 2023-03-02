@@ -331,7 +331,7 @@ const Seo = ({data, children}) => {
     <meta name="twitter:creator" content={config.siteMetadata?.social?.twitter || ``} />
     <meta name="twitter:title" content={pageName} />
     <meta name="twitter:image" content={ogSrc} />
-    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:description" content={data.description ? data.description : metaDescriptionn} />
     {(noindex||data.location === '404')&&<meta content="noindex" name="robots"/>}
      {(!noindex && data.location !== '404')&&<link rel="canonical" href={canonicalUrl}></link>}
       <script type="application/ld+json">
