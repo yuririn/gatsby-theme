@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { Edit } from "./../../styles/blog-styles/edit"
 import { useStaticQuery, graphql } from "gatsby"
+
+import Adsense from "../common/Ad"
 
 const Toc = data => {
   const { allMarkdownRemark } = useStaticQuery(
@@ -27,6 +28,7 @@ const Toc = data => {
   tableOfContent = tableOfContent.replace(/(<p>|<\/p>)/gi, "")
 
   return (
+    <>
     <Mokuji>
       <input type="checkbox" className="mokuji" id="mokuji" />
       <label className="c-content__heading" htmlFor="mokuji">
@@ -39,6 +41,8 @@ const Toc = data => {
         }}
         ></div>
     </Mokuji>
+    <Adsense type="display"></Adsense>
+    </>
   )
 }
 

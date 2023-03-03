@@ -16,6 +16,9 @@ export const Sidebar = styled.div`
       margin-bottom: 0;
     }
   }
+  .ads.display {
+        margin-bottom: 30px;
+    }
   .side-topic {
     margin-bottom: 34px;
     display: none;

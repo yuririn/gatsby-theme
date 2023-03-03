@@ -9,6 +9,7 @@ margin-top: 50px;
     @media screen and (min-width: 1020px) {
         width: 300px
     }
+
     .title {
         color: #fff;
         text-align: center;

@@ -2,6 +2,7 @@ import React, { useMemo } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "../smImg"
 import styled from "styled-components"
+import Adsense from '../common/Ad'
 
 const Lists = ({ category, slug, tags }) => {
   const { allMarkdownRemark } = useStaticQuery(
@@ -90,6 +91,9 @@ const Lists = ({ category, slug, tags }) => {
             </li>
           )
         })}
+        <li className="p-entryCard is-small">
+          <Adsense type="infeed"></Adsense>
+        </li>
       </ol>
     </RelativeList>
   )

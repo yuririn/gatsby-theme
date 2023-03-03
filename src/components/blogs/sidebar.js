@@ -5,6 +5,7 @@ import { Sidebar } from "./../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
+import Adsense from '../common/Ad';
 
 const bar = ({ cateId, topic, tags, slug }) => {
   const tableOfContent = topic.replace(/(<p>|<\/p>)/gi, "")
@@ -35,6 +36,7 @@ const bar = ({ cateId, topic, tags, slug }) => {
           __html: '<h2 class="side-topic--heading">この記事のサマリー</h2>' + tableOfContent,
         }}
         ></div>
+        <Adsense type="display"></Adsense>
         <ul className="side-banner">
           <li>
             <Link to="/about/">
