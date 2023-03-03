@@ -45,6 +45,8 @@ Web制作をしていると、グロナビのホバーアニメの持ちネタ�
   </nav>
 </header>
 ```
+<ad></ad>
+
 ```css{35}:title=CSS
 body {
   font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", メイリオ, sans-serif;
@@ -103,6 +105,9 @@ nav ul li a:hover {
 そんな時は下線をつけるのですが、それだけだと芸がないので横に広げます。シンプルで使いやすいです。
 
 <figure class="animation"><img src="/images/animation/2021/entry449-1.webp" width="426" height="70" alt="グロナビ アニメその1・下線を横に広がる" decoding="async" loading="lazy"></figure>
+
+<ad></ad>
+
 
 ```css:title=CSS
 nav ul li a::after {
@@ -163,6 +168,9 @@ nav ul li a:hover::after {
 
 <figure class="animation"><img src="/images/animation/2021/entry449-3.webp" width="418" height="66" alt="グロナビ アニメその3・背景色をガツンと変える" decoding="async" loading="lazy"></figure>
 
+<ad></ad>
+
+
 ```css:title=CSS
 nav ul li a:hover {
   background:  #ff1787;
@@ -181,6 +189,9 @@ nav ul li a:hover {
 サイトによっては事故が起こるデザインなので要注意。
 
 <figure class="animation"><img src="/images/animation/2021/entry449-5.webp" width="454" height="66" alt="グロナビ アニメその4・色を変える" decoding="async" loading="lazy"></figure>
+
+<ad></ad>
+
 
 ```css:title=CSS
 li:nth-child(1) a{
@@ -312,6 +323,9 @@ YouTubeでマッチ棒パズルなるものを知った結果こうなりまし�
 
 <figure class="animation"><img src="/images/animation/2021/entry449-10.webp" width="444" height="66" alt="グロナビ アニメその7・マッチ棒っぽいものを伸ばす" decoding="async" loading="lazy"></figure>
 
+<ad></ad>
+
+
 ```css:title=CSS
 nav ul li a::after {
   content: '';
@@ -408,6 +422,8 @@ nav ul li a:hover::after{
   right: -200%;
 }
 ```
+<ad></ad>
+
 
 [グロナビ・グラデ背景を重ねる|Code Pen](https://codepen.io/lscamille/pen/wvgMGqG)
 
@@ -456,6 +472,7 @@ p::before {
 }
 ```
 
+<ad></ad>
 
 
 [attr()|MSN Web Docs](https://developer.mozilla.org/ja/docs/Web/CSS/attr())
@@ -543,6 +560,8 @@ a:hover::after {
 ```
 [グロナビ・文字をグラデかつ下線のアニメ追加|Code Pen](https://codepen.io/lscamille/pen/vYgNQGX)
 
+<ad></ad>
+
 
 ### グロナビ アニメその12・文字の入れ替え
 英語だとかっこいいけどちょっと日本人には意味不明になりがちです。
@@ -615,7 +634,6 @@ nav ul li a:hover {
 サイトのカスタマイズが楽しくなるコードをご紹介！あわせてお読みください。
 
 <card id="/blogs/entry370/"></card>
+<ad></ad>
 
 <card id="/blogs/entry393/"></card>
-
-

@@ -53,6 +53,9 @@ const SHEET_NAME = 'data';
 ### 関数とシートのデータ取得
 関数`doGet`を作ります。
 
+<ad></ad>
+
+
 ```JS
 // ~ 省略
 
@@ -175,6 +178,9 @@ URLが発行されるので動くか確認。
 ![スプシのデータを加工します](./images/2021/12/entry481-6.jpg)
 
 ## PHPに組み込む
+
+<ad></ad>
+
 
 ### 通常のPHPでの取得方法
 以前と同じようにCurlで取得しようとしたらうまくいかなかったので`file_get_contents`で取得しました。
@@ -332,6 +338,9 @@ add_shortcode( 'show_event_schedule', 'show_event_schedule' );
 
 WordPressのコーディング規約に関しての記事もよろしければお読みください。
 <card id="/blogs/entry452/"></card>
+
+<ad></ad>
+
 
 ## まとめ・スプシをJSONすると便利
 ブログが更新できず気になってはいましたが、ようやく記事まとめることができました。。。

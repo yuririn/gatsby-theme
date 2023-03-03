@@ -299,7 +299,7 @@ const Seo = ({data, children}) => {
     ]
   }
 
-  if( typeof window !== "undefined" && ! isAd ) {
+  if( typeof window !== "undefined") {
     let lazyloadads = false;
     window.addEventListener("scroll", function() {
      if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {

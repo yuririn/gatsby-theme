@@ -28,6 +28,8 @@ faq: [['セレクトボックスの「選択してください」を選択肢か
 
 <card id="/blogs/entry370/"></card>
 
+<ad></ad>
+
 <card id="/blogs/entry374/"></card>
 
 ### セレクトボックスの基本のHTMLの書き方
@@ -64,6 +66,7 @@ appearanceプロパティはチェックボックスやボタンなどの各フ�
 ```css
 appearance: none;
 ```
+<ad></ad>
 
 そのほか初期化が最低でも必要なプロパティはこちら5つ。
 
@@ -178,6 +181,8 @@ select {
 
 ついでにbackgroundプロパティのショートハンドの書き方のご紹介です。<br>
 色 背景画像に指定したい画像のパス リピート 位置 / サイズとなってます。
+
+<ad></ad>
 
 うまく効かないときは**/（スラッシュ）が抜けていることが多い**です。
 
@@ -306,6 +311,8 @@ option[selected][disabled] {
 </select>
 ```
 
+<ad></ad>
+
 ```css:title=CSS
 select {
   /* 初期化 */
@@ -339,6 +346,8 @@ select[multiple] option:checked {
 [複数の項目を選択デモ|Code Pen](https://codepen.io/camile/pen/xxOyopm)
 
 参考 [デュアルリストボックスでクリックされたオプションの背景色を変更する](https://python5.com/q/gyscnsql)
+
+<ad></ad>
 
 ## まとめ
 いかがでしたでしょうか？

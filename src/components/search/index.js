@@ -153,6 +153,9 @@ export default Search
 
 const SearchBox = styled.div`
   margin-bottom: 20px;
+  & + .ads.display {
+    margin: 0 auto 80px;
+  }
 
   .box {
     display: block;

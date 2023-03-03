@@ -49,6 +49,8 @@ npm や CDN も用意されています。Angular、React や Vue.js などか�
 />
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 ```
+<ad></ad>
+
 <small>CDNソースへのリンクは2022年12月現在参照です。必ず [Get start](https://swiperjs.com/get-started) から最新のリンクをご確認ください。</small>
 
 <br>スライダーの HTML は以下。今回はクラス `swiper` を付与した要素にスライダーを適応します。もちろん、IDなどでも指定可能です。ページネーションなどの部品を追加したい場合はクラスを指定した要素を追加します。
@@ -99,6 +101,7 @@ const swiper = new Swiper('.swiper', {
   },
 }, false);
 ```
+<ad></ad>
 
 ## Swiper でスマホ、PCで切り替える方法（単体）
 では実際に一つのSwiperを切り替えてみましょう。
@@ -155,6 +158,7 @@ PC表示で適宜スタイルを打ち消します。
   }
 }
 ```
+
 ### PCのみにスライダーを適応したい時
 今回はスマホになったときにスライダー表示に切り替えていますが、コードを変えれば逆も可能です。
 
@@ -212,6 +216,8 @@ IDとともに `.swiper` も付与します。そのスライダー `document.qu
 
 配列に格納した配列をコントロールします。
 
+<ad></ad>
+
 このコードであれば、1〜複数のスライダーをコントロール可能です。
 
 ```JavaScript:title=JavaScript
@@ -253,6 +259,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 }, false);
 ```
+<ad></ad>
 
 デモサンプル [Swiper for SP2 | CodePen](https://codepen.io/camille-cebu/pen/RwBbqEV)
 

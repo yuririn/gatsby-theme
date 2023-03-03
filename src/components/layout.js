@@ -32,12 +32,16 @@ const Layout = ({ location, title, children }) => {
 export default Layout
 
 const GlobalStyle = createGlobalStyle`
+  .p-section + .ads.display {
+       margin-bottom: 50px;
+  }
   .p-entryCard {
     list-style: none;
     margin-bottom: 20px;
     &__footer {
       margin-top: 10px;
     }
+
     @media screen and (min-width: 768px) {
         margin-bottom: 40px;
       }

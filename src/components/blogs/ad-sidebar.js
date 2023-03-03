@@ -4,6 +4,7 @@ import { Sidebar} from "./../../styles/ad/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
+import Adsense from "../common/Ad";
 
 const AdSidebar = () => {
   return (
@@ -58,6 +59,8 @@ const AdSidebar = () => {
           <Img source="ad/ad-banner.jpg" className="prof__img__sm"></Img>
           </a>
         </aside>
+        <Adsense></Adsense>
+        <Adsense></Adsense>
     </Sidebar>
   )
 }

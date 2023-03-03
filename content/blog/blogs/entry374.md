@@ -53,6 +53,9 @@ MW WP Form は日本製のとても便利なフォームプラグイン。お問
 ### CSS
 デフォルトではこんな感じで設定されてます。
 
+<ad></ad>
+
+
 ```css
 .mw_wp_form .horizontal-item {
   margin-right: 10px;
@@ -135,6 +138,7 @@ MW WP Form は日本製のとても便利なフォームプラグイン。お問
   opacity: 1;
 }
 ```
+<ad></ad>
 
 ### MW WP Form チェックボックス のカスタマイズ法
 checkboxの場合、単純にクラス名がmwform-checkbox-fieldに変わるだけです。
@@ -201,6 +205,8 @@ checkboxの場合、単純にクラス名がmwform-checkbox-fieldに変わるだ
 Contact Form 7は私Web制作を始めてすぐにお世話になったプラグインです。<br>
 Ajaxによるフォーム送信するところとか、個人的に心が熱くなります。
 
+<ad></ad>
+
 [Contact Form 7プラグイン詳細](https://ja.wordpress.org/plugins/contact-form-7/)
 
 ### Contact Form 7ラジオボタンのカスタマイズ法
@@ -256,6 +262,8 @@ span.wpcf7-list-item-label::before, span.wpcf7-list-item-label::after {
   </span>
 </span>
 ```
+<ad></ad>
+
 #### CSS
 ```css
 .checkbox input[type=checkbox]{
@@ -314,6 +322,8 @@ span.wpcf7-list-item-label::before, span.wpcf7-list-item-label::after {
 }
 ```
 ![Contact Form 7チェックボックス仕上がり例](./images/2020/07/entry374-8.png)
+
+<ad></ad>
 
 ## まとめ
 WordPressのプラグインもどんなHTMLが出力され、どうCSSが効いているか分ればカスタマイズも問題なくできます。

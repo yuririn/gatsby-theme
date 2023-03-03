@@ -10,6 +10,9 @@ export const Edit = styled.section`
         padding-right: 15px;
      }
   }
+  .ads {
+    margin: 24px 0;
+  }
   .animation {
       img {
         margin: 0 auto 24px;

@@ -24,6 +24,9 @@ description: いつも同じハンバーガーメニューばかりじゃ飽き�
 <br>グローバルメニューアニメーションやパンくずリストのサンプルあるのであわせてお読みください。
 <card id="/blogs/entry449/"></card>
 
+<ad></ad>
+
+
 <card id="/blogs/entry498/"></card>
 
 ### 以下ご注意ください
@@ -62,6 +65,9 @@ description: いつも同じハンバーガーメニューばかりじゃ飽き�
 JSでクリックでクラスをつけたり外したりし、CSSでアニメーションさせます。
 
 <figure class="animation"><img src="/images/animation/2022/entry496-02.webp" width="468" height="246" alt="王道のハンバーガーメニュー" decoding="async" loading="lazy"></figure>
+
+<ad></ad>
+
 
 ボタンのHTMLのコードはこれだけです。
 
@@ -116,6 +122,9 @@ $('.c-nav-btn').on("click", function(){
 })
 ```
 
+<ad></ad>
+
+
 `transform: rotate()`で回転させて、`transiton`でアニメーションさせます。
 ```css:title=css
 .c-nav-btn::after,
@@ -159,6 +168,8 @@ $('.c-nav-btn').on("click", function(){
 王道のハンバーガーメニュー180°回転プラスにアニメーションのタイミングを更にずらしてアレンジします。
 
 <figure class="animation"><img src="/images/animation/2022/entry496-07.webp" width="468" height="225" alt="コロコロ転がるハンバーガー" decoding="async" loading="lazy"></figure>
+<ad></ad>
+
 ```css:title=css
 .c-nav-btn {
   overflow: hidden;
@@ -332,6 +343,8 @@ navBtn.addEventListener("click", function(){
 })
 ```
 
+<ad></ad>
+
 デモとサンプルコードはこちら（SCSS記法です）。
 
 [Bended border hamburger menu | Code Pen](https://codepen.io/camille-cebu/pen/OJzvZoY)
@@ -441,6 +454,9 @@ navBtn.addEventListener("click", function(){
 
 [Gradient doner menu | Code Pen](https://codepen.io/camille-cebu/pen/vYpjEXp)
 
+<ad></ad>
+
+
 ### 二本線のドネルメニュー
 タイミングをずらして、二本のボーダーをスライドさせ、バッテンを作ります。
 
@@ -510,6 +526,9 @@ navBtn.addEventListener("click", function(){
 
 ![トルコの串焼きから由来ケバブメニュー](./images/2022/04/entry496-12.jpg)
 
+<ad></ad>
+
+
 ### バッテンマークをマイナスマークに変えたケバブメニュー
 
 シンプルにバッテンをマイナスに替えただけのケバブメニュー。
@@ -557,6 +576,9 @@ navBtn.addEventListener("click", function(){
 > https://en.wikipedia.org/wiki/Bento
 
 ![日本の誇るベントーメニュー](./images/2022/04/entry496-18.jpg)
+
+<ad></ad>
+
 
 ### 色の反転を利用したベントーメニュー
 
@@ -725,6 +747,7 @@ MENU
 
 }
 ```
+<ad></ad>
 
 デモとサンプルコード詳細は以下から（SCSS記法です）ご確認ください。
 

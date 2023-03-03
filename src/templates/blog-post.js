@@ -162,6 +162,7 @@ const BlogPostTemplate = ({ data, location }) => {
           slug={post.fields.slug}
         />
         <aside className="l-container">
+          <Adsense type="display"></Adsense>
           <section className="p-section u-text-center">
             <h2 className="c-heading--lg">人気のジャンル</h2>
             <Genre />
@@ -295,6 +296,9 @@ const Body = styled.div`
     max-width: 1120px;
     margin: 0 auto;
     flex-wrap: wrap;
+  }
+  aside.l-container .display{
+    margin-bottom: 50px;
   }
 `
 

@@ -15,8 +15,12 @@ export const Article = styled.article`
         @media screen and (min-width: 1020px) {
          padding: 32px 52px 40px;
      }
+     .ads {
+      margin: 24px 0;
+     }
     .c-pager {
         margin-top: 40px;
+        margin-bottom: 40px;
         display: flex;
         list-style: none;
         flex-wrap: wrap;

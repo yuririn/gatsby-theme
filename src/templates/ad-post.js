@@ -10,12 +10,13 @@ import AdSidebar from "../components/blogs/ad-sidebar";
 import BreadCrumbList from "../components/common/bread-crumb-list"
 import Img from "../components/img"
 import Seo from "../components/seo"
+import Adsense from '../components/common/Ad'
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
-    card: RelativeCard,
     msg: Msg,
+    ad: Adsense,
   },
 }).Compiler
 
@@ -57,6 +58,7 @@ const Ad = ({ data, location }) => {
         <section itemProp="articleBody" className="article-body">
           {renderAst(post.htmlAst)}
         </section>
+
         <ol className="c-pager">
             {next && (
 
@@ -76,6 +78,7 @@ const Ad = ({ data, location }) => {
                 </li>
               )}
           </ol>
+          <Adsense></Adsense>
       </Article>
       <AdSidebar></AdSidebar>
     </AdLayout>

@@ -44,6 +44,10 @@ const profile = () => {
 export default profile
 
 const Profile = styled.div`
+  & + .ads.display {
+    max-width: 700px;
+    margin: 0 auto 80px;
+  }
   line-height: 2;
   max-width: 700px;
   margin: 0 auto;

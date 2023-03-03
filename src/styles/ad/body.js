@@ -11,6 +11,9 @@ padding: 16px;
          width: calc(100% - 250px);
          padding: 32px 32px 40px;
      }
+     .ads {
+      margin-top: 50px;
+     }
 
      @media screen and (min-width: 1020px) {
          width: calc(100% - 300px);
