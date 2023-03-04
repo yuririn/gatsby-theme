@@ -1,7 +1,7 @@
 import React, { useState ,useEffect } from "react"
 import Img from "../img"
 import RelatedList from "./related-list"
-import { Sidebar } from "./../../styles/blog-styles/sidebar"
+import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
@@ -28,68 +28,69 @@ const Side = ({ cateId, topic, tags, slug }) => {
     return reArray;
   }, []);
 
-  const [topics, setTopics] = useState(tableofContet);
 
-  useEffect(() => {
-    const callback = (entries) => {
-      entries.forEach((entry)=>{
-        if(entry.isIntersecting) {
-          setTopics(
-            topics.map(item => {
-              if(item.children) {
-                item.children = item.children.map(child => {
-                  if(entry.target.id === child.name) {
-                    child.target = 'current'
-                    posChange(child.id)
-                  } else {
-                    child.target = ''
-                  }
-                  return child;
-                })
-              }
+  // const [topics, setTopics] = useState(tableofContet);
 
-              if(entry.target.id === item.name) {
-                item.target = 'current'
-                posChange(item.id)
+  // useEffect(() => {
+  //   const callback = (entries) => {
+  //     entries.forEach((entry)=>{
+  //       if(entry.isIntersecting) {
+  //         setTopics(
+  //           topics.map(item => {
+  //             if(item.children) {
+  //               item.children = item.children.map(child => {
+  //                 if(entry.target.id === child.name) {
+  //                   child.target = 'current'
+  //                   posChange(child.id)
+  //                 } else {
+  //                   child.target = ''
+  //                 }
+  //                 return child;
+  //               })
+  //             }
 
-              } else {
-                item.target = ''
-              }
+  //             if(entry.target.id === item.name) {
+  //               item.target = 'current'
+  //               posChange(item.id)
 
-              return item
-            })
-          )
-        }
-      });
-    };
+  //             } else {
+  //               item.target = ''
+  //             }
+
+  //             return item
+  //           })
+  //         )
+  //       }
+  //     });
+  //   };
 
 
 
-    const observer = new IntersectionObserver(callback, options);
+  //   const observer = new IntersectionObserver(callback, options);
 
-    // // domから監視対象を取得
-    let targets = Array.from(document.querySelectorAll('[itemprop=articleBody] h2, [itemprop=articleBody] h3'));
+  //   // // domから監視対象を取得
+  //   let targets = Array.from(document.querySelectorAll('[itemprop=articleBody] h2, [itemprop=articleBody] h3'));
 
-    // 監視対象をオブジェクトにセットする
-    targets.forEach((terget) => observer.observe(terget, options));
+  //   // 監視対象をオブジェクトにセットする
+  //   targets.forEach((terget) => observer.observe(terget, options));
 
-  },[])
+  // },[])
 
-  const posChange =(id)=>{
-    let heights = 0
-    const num = id.replace('topic', "")
-    for (let i = 0;  i <  num; i++) {
-      heights += document.querySelector(`#topic${i}`).clientHeight + 1;
-    }
-    document.querySelector("#topic").scrollTop = heights;
-  }
+  // const posChange =(id)=>{
+  //   let heights = 0
+  //   const num = id.replace('topic', "")
+  //   for (let i = 0;  i <  num; i++) {
+  //     heights += document.querySelector(`#topic${i}`).clientHeight + 1;
+  //   }
+  //   document.querySelector("#topic").scrollTop = heights;
+  // }
 
   //オプションを定義
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5
-    };
+  // const options = {
+  //   root: null,
+  //   rootMargin: "0px",
+  //   threshold: 0.5
+  // };
 
   return (
     <Sidebar>
@@ -116,13 +117,22 @@ const Side = ({ cateId, topic, tags, slug }) => {
         >
         <h2 className="side-topic--heading">目次</h2>
         <ul id="topic">
-          {topics.map(item =>
+          {tableofContet.map(item =>
             {
+              // return (
+              // <li key={item.id}><a href={item.url} id={item.id} className={item.target? 'current': ''}>{item.name}</a>
+              //     {item.children && (
+              //       <ul>
+              //       {item.children.map(child=><li key={child.id}><a href={child.url} id={child.id} className={child.target? 'current': ''} >{child.name}</a></li>)}
+              //       </ul>
+              //     )}
+              // </li>
+              // )
               return (
-              <li className={item.target? 'current': ''} key={item.id}><a href={item.url} id={item.id}>{item.name}</a>
+              <li key={item.id}><a href={item.url} id={item.id}>{item.name}</a>
                   {item.children && (
                     <ul>
-                    {item.children.map(child=><li className={child.target? 'current': ''} key={child.id}><a href={child.url} id={child.id}>{child.name}</a></li>)}
+                    {item.children.map(child=><li key={child.id}><a href={child.url} id={child.id}>{child.name}</a></li>)}
                     </ul>
                   )}
               </li>

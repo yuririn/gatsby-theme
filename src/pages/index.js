@@ -35,8 +35,6 @@ const BlogIndex = ({ data, location }) => {
               cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
             }
 
-            console.log(i === 4)
-
             return (
               <>
               { i === 4 ? (
