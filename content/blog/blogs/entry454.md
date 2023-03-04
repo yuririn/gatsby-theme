@@ -1,15 +1,19 @@
 ---
-title: プラグインなしでWordPressのカスタムフィールドを追加&管理画面投稿一覧に出力
+title: 【 WordPress】カスタムフィールドをプラグインなしで追加&管理画面投稿一覧に出力
 date: 2021-04-11
+modifieddate: 2023-03-04
 hero: thumbnail/2021/entry454.jpg
 pagetype: blog
 cateId: 'cms'
 tags: ["WordPress"]
 description: WordPressでもSEO Packなどを使わずカスタムフィールドの実装だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！一覧を編集したらカスタムフィールドが消えるバグの対処方法もついでにまとめてます。
 ---
-WordPressでもSEO Packなどを使わずカスタムフィールドの実装だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！
+WordPressでもSEO Packなどを使わず *カスタムフィールド* だけでタイトルやメタディスクリプションを編集できるようにできます。カスタムフィールドの値が管理画面の各投稿一覧から確認できたら便利と思い実装したのでまとめました！
+
+<msg txt="<strong>プラグインなし</strong>です！！"></msg>
 
 一覧を編集したらカスタムフィールドが消えるバグの対処方法もついでにまとめてます。
+
 
 <prof></prof>
 
@@ -109,24 +113,31 @@ add_action( 'admin_menu', 'add_seo_fields' );
  */
 function save_seo_fields( $post_id ) {
 	global $pagenow;
-	if ( ! isset( $_POST['seo_field'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['seo_field'] ) ), 'seo' ) ) {
-		return false;
-	}
-
-	if ( ! empty( $_POST['metatitle'] ) ) {
-		$metatitle = sanitize_text_field( wp_unslash( $_POST['metatitle'] ) );
-		update_post_meta( $post_id, 'metatitle', $metatitle );
-	} else {
-		if ( is_admin() || ( 'post.php' === $pagenow ) ) {
-			delete_post_meta( $post_id, 'metatitle' );
+	if ( ! isset( $_POST['seo_field'] ) ) {
+		if (! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['seo_field'] ) ), 'seo' ) ) {
+			return false;
 		}
-	}
-	if ( ! empty( $_POST['description'] ) ) {
-		$description = sanitize_text_field( wp_unslash( $_POST['description'] ) );
-		update_post_meta( $post_id, 'description', $description );
-	} else {
-		if ( is_admin() || ( 'post.php' === $pagenow ) ) {
-			delete_post_meta( $post_id, 'description' );
+		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+			return;
+		}
+		if(!current_user_can('edit_post', $post_id)) {
+			return;
+		}
+		if ( ! empty( $_POST['metatitle'] ) ) {
+			$metatitle = sanitize_text_field( wp_unslash( $_POST['metatitle'] ) );
+			update_post_meta( $post_id, 'metatitle', $metatitle );
+		} else {
+			if ( is_admin() || ( 'post.php' === $pagenow ) ) {
+				delete_post_meta( $post_id, 'metatitle' );
+			}
+		}
+		if ( ! empty( $_POST['description'] ) ) {
+			$description = sanitize_text_field( wp_unslash( $_POST['description'] ) );
+			update_post_meta( $post_id, 'description', $description );
+		} else {
+			if ( is_admin() || ( 'post.php' === $pagenow ) ) {
+				delete_post_meta( $post_id, 'description' );
+			}
 		}
 	}
 }

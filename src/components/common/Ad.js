@@ -12,10 +12,10 @@ const Adsense= ({type='display'}) => {
   });
 
   const ads = {
-    infeed: {slot: '5330985639',format: 'fruid', style: {display:`block`}, key:"-7c+ex-1h-2k+ai"},
+    infeed: {slot: '8004199632',format: 'fruid', style: {display:`block`}, key:"-fb+5w+4e-db+86"},
     display: {slot: '3932490041',format: 'auto', style: {display:`block`}, responsive:"true"},
     multi: {slot: '4479284954',format: 'autorelaxed', style: {display:`block`}},
-    article: {slot: '4479284954',format: 'fruid',layout: 'in-article', style: {display:`block`, textAlign:`center`}},
+    article: {slot: '2374786676',format: 'fruid',layout: 'in-article', style: {display:`block`, textAlign:`center`}},
   }
   const ad = ads[type]
 

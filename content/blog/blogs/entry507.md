@@ -1,15 +1,15 @@
 ---
-title: コミット、ステージング…取り消したい！困ったときの git コマンドまとめ
+title: ステージング(add)取り消したい！コミット終わらない…救済 GIT コマンドまとめ
 date: 2022-06-12
 modifieddate: 2023-02-04
 pagetype: blog
 cateId: web-developer
 hero: thumbnail/2022/entry507.png
 tags: ["git"]
-description: git のコミットやステージングでの取り消し、打ち消し、上書き、push できないときの対処法など、よくあるお困りごとの対処法をケース別にまとめました。
+description: コミット(git commmit)やステージング(git add)での取り消し、打ち消し、上書き、push できないときの対処法など、よくあるお困りごとの対処法をケース別にまとめました。
 faq: [["容量を超えてないのに git push が10分以上終わらない","制限容量を超えてないのに git push が終わらない場合は、［リモート名］ [ブランチ名]を指定するとうまくいくことがあります。","https://ginneko-atelier.com/blogs/entry507/?utm_source=faq#git-pushが10分以上終わらない"],["git のステージングを取り消したい","まずは git status でファイルの状況を確認します。はじめて git に追加したファイルの場合は git rm --cached -r 【ファイル名】、すでに追加したファイルの場合は git reset HEAD 【ファイル名】で対処します。コミット後はまた違う方法で取り消す必要があります。","https://ginneko-atelier.com/blogs/entry507/?utm_source=faq#git-reset直前のコミットをなかった事にするコミット後"],["vscode でコミットが終わらない","vscode でコミットが終わらないときがあります。他のターミナルソフト（iTerm）で実行するとうまくいくことがあります。"]]
 ---
-やってしまった！このcommitまだだったのに、わぁ、、、コンフリクトしちゃった汗
+やってしまった！このコミットまだだったのに、わぁ、、、コンフリクトしちゃった汗
 
 git使いたての頃によくぶち当たる壁ですよね？<br>私は初心者の頃、git の入門書や公式の解説はことごとくわかりづらく何度も挫折しそうになりました。
 
