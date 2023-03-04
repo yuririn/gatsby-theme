@@ -66,6 +66,11 @@ export const Sidebar = styled.div`
     li {
       background: var(--pale-gray);
 
+      &.current > a{
+        transform: translateX(-4px);
+        background: var(--background);
+      }
+
         counter-increment: num;
         a {
             &::before {

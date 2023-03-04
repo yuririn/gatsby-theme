@@ -1,14 +1,96 @@
-import React from "react"
+import React, { useState ,useEffect } from "react"
 import Img from "../img"
 import RelatedList from "./related-list"
 import { Sidebar } from "./../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
-import Adsense from '../common/Ad';
+import Adsense from '../common/ad';
 
-const bar = ({ cateId, topic, tags, slug }) => {
-  const tableOfContent = topic.replace(/(<p>|<\/p>)/gi, "")
+const Side = ({ cateId, topic, tags, slug }) => {
+
+  let num = 0
+
+  const tableofContet = topic.reduce((reArray, item) => {
+    if(item.tagName === 'h2'){
+      reArray = [...reArray, {id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id,)}`}]
+    }
+    else {
+      if(reArray[reArray.length - 1] !== null && reArray[reArray.length - 1] !== undefined) {
+        if (Object.keys(reArray[reArray.length - 1]).includes('children')) {
+          reArray[reArray.length - 1]['children'] = [...reArray[reArray.length - 1]['children'], {id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id)}`}]
+        } else {
+          reArray[reArray.length - 1]['children'] = [{id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id,)}`}]
+        }
+      }
+    }
+    num++
+    return reArray;
+  }, []);
+
+  const [topics, setTopics] = useState(tableofContet);
+
+  useEffect(() => {
+    const callback = (entries) => {
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting) {
+          setTopics(
+            topics.map(item => {
+              if(item.children) {
+                item.children = item.children.map(child => {
+                  if(entry.target.id === child.name) {
+                    child.target = 'current'
+                    posChange(child.id)
+                  } else {
+                    child.target = ''
+                  }
+                  return child;
+                })
+              }
+
+              if(entry.target.id === item.name) {
+                item.target = 'current'
+                posChange(item.id)
+
+              } else {
+                item.target = ''
+              }
+
+              return item
+            })
+          )
+        }
+      });
+    };
+
+
+
+    const observer = new IntersectionObserver(callback, options);
+
+    // // domから監視対象を取得
+    let targets = Array.from(document.querySelectorAll('[itemprop=articleBody] h2, [itemprop=articleBody] h3'));
+
+    // 監視対象をオブジェクトにセットする
+    targets.forEach((terget) => observer.observe(terget, options));
+
+  },[])
+
+  const posChange =(id)=>{
+    let heights = 0
+    const num = id.replace('topic', "")
+    for (let i = 0;  i <  num; i++) {
+      heights += document.querySelector(`#topic${i}`).clientHeight + 1;
+    }
+    document.querySelector("#topic").scrollTop = heights;
+  }
+
+  //オプションを定義
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5
+    };
+
   return (
     <Sidebar>
       <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
@@ -29,15 +111,33 @@ const bar = ({ cateId, topic, tags, slug }) => {
         <Search></Search>
       </section>
       <div className="inner">
-
         <div
         className="side-topic"
-          dangerouslySetInnerHTML={{
-          __html: '<h2 class="side-topic--heading">この記事のサマリー</h2>' + tableOfContent,
-        }}
-        ></div>
-        <Adsense type="display"></Adsense>
+        >
+        <h2 className="side-topic--heading">目次</h2>
+        <ul id="topic">
+          {topics.map(item =>
+            {
+              return (
+              <li className={item.target? 'current': ''} key={item.id}><a href={item.url} id={item.id}>{item.name}</a>
+                  {item.children && (
+                    <ul>
+                    {item.children.map(child=><li className={child.target? 'current': ''} key={child.id}><a href={child.url} id={child.id}>{child.name}</a></li>)}
+                    </ul>
+                  )}
+              </li>
+              )
+            }
+          )}
+        </ul>
+
+        </div>
+        <div>
+            <Adsense type="display"></Adsense>
+        </div>
+
         <ul className="side-banner">
+
           <li>
             <Link to="/about/">
               <Img
@@ -78,4 +178,4 @@ const bar = ({ cateId, topic, tags, slug }) => {
   )
 }
 
-export default bar
+export default Side

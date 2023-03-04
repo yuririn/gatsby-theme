@@ -51,6 +51,8 @@ const BlogPostTemplate = ({ data, location }) => {
     })[0].name
   }
 
+  const tableOfContents =post.htmlAst.children.filter(i=>i.tagName === 'h2'||i.tagName === 'h3')
+
   return (
     <Layout location={location} title={siteTitle}>
       <Header>
@@ -158,7 +160,7 @@ const BlogPostTemplate = ({ data, location }) => {
           cateId={post.frontmatter.cateId}
           title={post.frontmatter.title}
           tags={post.frontmatter.tags}
-          topic={post.tableOfContents}
+          topic={tableOfContents}
           slug={post.fields.slug}
         />
         <aside className="l-container">
