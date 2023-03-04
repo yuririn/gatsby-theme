@@ -11,22 +11,9 @@ const Side = ({ cateId, topic, tags, slug }) => {
 
   let num = 0
 
-  const tableofContet = topic.reduce((reArray, item) => {
-    if(item.tagName === 'h2'){
-      reArray = [...reArray, {id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id,)}`}]
-    }
-    else {
-      if(reArray[reArray.length - 1] !== null && reArray[reArray.length - 1] !== undefined) {
-        if (Object.keys(reArray[reArray.length - 1]).includes('children')) {
-          reArray[reArray.length - 1]['children'] = [...reArray[reArray.length - 1]['children'], {id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id)}`}]
-        } else {
-          reArray[reArray.length - 1]['children'] = [{id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id,)}`}]
-        }
-      }
-    }
-    num++
-    return reArray;
-  }, []);
+  const tableofContet = topic.map((item, num) => {
+    return  {id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id,)}`}
+  });
 
 
   // const [topics, setTopics] = useState(tableofContet);
@@ -129,13 +116,7 @@ const Side = ({ cateId, topic, tags, slug }) => {
               // </li>
               // )
               return (
-              <li key={item.id}><a href={item.url} id={item.id}>{item.name}</a>
-                  {item.children && (
-                    <ul>
-                    {item.children.map(child=><li key={child.id}><a href={child.url} id={child.id}>{child.name}</a></li>)}
-                    </ul>
-                  )}
-              </li>
+              <li key={item.id}><a href={item.url} id={item.id}>{item.name}</a></li>
               )
             }
           )}
