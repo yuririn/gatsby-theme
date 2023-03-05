@@ -21,9 +21,8 @@ import Sidebar from "../components/blog/sidebar"
 // import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blog/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Ad from '../components/common/ad'
 
-const shortcodes = { Ad, Prof, Msg}
+const shortcodes = { Prof, Msg}
 
 const BlogPostTemplate = ({ data, location, children }) => {
 
