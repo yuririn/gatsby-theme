@@ -1,25 +1,25 @@
+
+
 import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import Img from "../components/img"
+// import Seo from "../components/seo"
+import Img from "../components/common/img"
 import AddTagLink from "../components/common/add-tag-link"
-import Pagination from "../components/blogList/pagination"
-import BreadCrumbList from "../components/common/bread-crumb-list"
-// import Tags from "../components/blogs/tag-list"
+// import Pagination from "../components/blogList/pagination"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 
 const blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
-  const posts = data.allMarkdownRemark.nodes
+  const posts = data.allMdx.nodes
   return (
     <Layout location={location} title="ノマドブログ">
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">ノマドブログ</h1>
-          <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
+          <p>現在 {data.allMdx.totalCount} 記事あります</p>
         </div>
         <Img
           source="common/ganre_common.jpg"
@@ -27,7 +27,6 @@ const blogs = ({ pageContext, data, location }) => {
           className="p-pageHeader__img"
         ></Img>
       </div>
-      <BreadCrumbList type="blogs" current="ノマドブログ" />
       <section className="p-section l-container">
         <h2 className="c-heading--lg">最新記事</h2>
         <ol className="c-grid">
@@ -68,7 +67,6 @@ const blogs = ({ pageContext, data, location }) => {
             );
           })}
         </ol>
-        <Pagination num={page} current={current} type=""></Pagination>
       </section>
       <aside className="l-container">
         <section className="p-section u-text-center">
@@ -83,19 +81,19 @@ const blogs = ({ pageContext, data, location }) => {
 
 export default blogs
 
-export const Head = ({ data, location }) => {
-  const yourData = {
-    title : "ノマドブログ",
-    description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
-    location : location,
-    type : "blog-list"
-  }
-  return (
-    <Seo
-      data={yourData}
-    />
-  )
-}
+// export const Head = ({ data, location }) => {
+//   const yourData = {
+//     title : "ノマドブログ",
+//     description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
+//     location : location,
+//     type : "blog-list"
+//   }
+//   return (
+//     <Seo
+//       data={yourData}
+//     />
+//   )
+// }
 
 export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
   site {
@@ -104,7 +102,7 @@ export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
       description
     }
   }
-  allMarkdownRemark(
+  allMdx(
     limit: $limit
     skip: $skip
     sort: {frontmatter: {date: DESC}}

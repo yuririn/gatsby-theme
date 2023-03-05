@@ -75,8 +75,6 @@ const Mainvisual = styled.div`
             width: 300%;
         }//media query
     }
-
-
   p {
     color: #fff;
     line-height: 1.8;
@@ -98,7 +96,6 @@ const Mainvisual = styled.div`
       width: 320px;
       margin-bottom: 10px;
   }
-
   @media screen and (min-width: 768px) {
     text-align: center;
     padding-top: 160px;
@@ -118,21 +115,17 @@ const Mainvisual = styled.div`
       0% {
           transform: translate(0);
       }
-
       50% {
           transform: translate(-100px);
       }
-
       100% {
           transform: translate(0px);
       }
   }
-
   @keyframes wave {
       from {
           transform: translate(0);
       }
-
       to {
           transform: translate(-66.66%);
       }

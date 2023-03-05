@@ -2,12 +2,10 @@ import * as React from "react"
 
 import Logo from "./logo"
 import { Link } from "gatsby"
-import GNav from "./../nav";
-
-// import Search from "../../search/"
+import GNav from "./nav";
 import styled from "styled-components"
 
-const Header = ({ title, location }) => {
+const Header = ({ location }) => {
   return (
     <HeaderWrapper>
         {location === "/" ? (
@@ -42,8 +40,7 @@ const HeaderWrapper=styled.header`
     justify-content: space-between;
     font-weight: bold;
     padding: 0 20px;
-      backdrop-filter: blur(3px);
-
+    backdrop-filter: blur(3px);
     #header-logo {
     text-decoration: none;
     color: #264785;

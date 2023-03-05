@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Img from "../img"
+import Img from "./img"
 import styled from "styled-components"
 
 const profile = () => {
@@ -76,7 +76,6 @@ const Profile = styled.div`
     padding-left: 1.5em;
     position: relative;
     margin-bottom: 0.5em;
-
     &::before {
       left: 8px;
       top: 6px;

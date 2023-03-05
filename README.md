@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" //>
   </a>
 </p>
 <h1 align="center">
@@ -44,7 +44,7 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-blog)
+[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud"/>](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-blog)
 
 ## 🧐 What's inside?
 
@@ -105,7 +105,7 @@ Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby f
 <!-- AUTO-GENERATED-CONTENT:END -->
 !\[(.*?)\]\((.*?)\/2021\/(.*?)\/entry(.*?).gif\)
 
-<figure class="animation"><img src="/images/animation/2021/entry$3.webp" width="" height="" alt="$1" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry$3.webp" width="" height="" alt="$1" decoding="async" loading="lazy"/></figure>
 
 https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
 

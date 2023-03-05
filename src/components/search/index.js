@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import TextHighlighter from "./texthighlighter"
 import styled from "styled-components"
 
 const SearchResult =  (props) => {
   // 全記事データ取得 //
-  const tempData = useStaticQuery(graphql`query SearchData {
-  allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 1000) {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "YYYY.MM.DD")
-          title
-          tags
-          cateId
-          description
-          hero
-          pagetype
+    const tempData = useStaticQuery(graphql`query SearchData {
+    allMdx(sort: {frontmatter: {date: DESC}}, limit: 1000) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "YYYY.MM.DD")
+            title
+            tags
+            cateId
+            description
+            hero
+            pagetype
+          }
         }
       }
     }
-  }
-}`)
+  }`)
   const [data, setData] = useState([])
   useEffect(() => {
     const temp = []
-    tempData.allMarkdownRemark.edges.map(e => {
+    tempData.allMdx.edges.map(e => {
       if(props.pagetype === 'ad') {
         if(e.node.frontmatter.pagetype === 'ad') temp.push(e.node)
       } else {
@@ -103,14 +102,20 @@ const SearchResult =  (props) => {
 
         <ul>
           {result.map(e => {
+            // const temp = props.value.toLowerCase()
+            const title = e.frontmatter.title
+            const start = title.indexOf(props.value.toLowerCase())
+            const end = start + props.value.length
+            const item = title.slice(start, end)
+            const res = title.replace(
+              item,
+              `<span style="color: var(--color-accent)">${item}</span>`
+            )
             return (
               <li key={e.fields.slug}>
                 <Link to={e.fields.slug}>
                   <time>{e.frontmatter.date}</time>
-                  <TextHighlighter
-                    str={e.frontmatter.title}
-                    includes={props.value}
-                  />
+                  <span dangerouslySetInnerHTML={{ __html: res }} />
                 </Link>
               </li>
             )
@@ -122,29 +127,20 @@ const SearchResult =  (props) => {
 }
 
 const Search = props => {
-  const [focus, setFocus] = useState(false)
   const [value, setValue] = useState("")
-  const onFocus = () => {
-    setFocus(true)
-  }
-  const onBlur = () => {
-    setFocus(false)
-  }
   const onChange = e => {
     setValue(e.target.value)
   }
   return (
     <SearchBox>
-      <div focus={focus}>
+      <div>
         <input
           type="text"
           placeholder="検索する"
-          onFocus={onFocus}
-          onBlur={onBlur}
           onChange={onChange}
           className="box"
         />
-        <SearchResult focus={focus} value={value} pagetype={props.type}/>
+        <SearchResult value={value} pagetype={props.type}/>
       </div>
     </SearchBox>
   )

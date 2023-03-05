@@ -329,23 +329,7 @@ export const Edit = styled.section`
     background: var(--color-d-blue);
     padding: 2px 6px;
   }
-  .gatsby-code-title {
-    font-weight: bold;
-    background: var(--color-blue);
-    display: inline-block;
-    padding: 6px 15px;
-    vertical-align: bottom;
-    line-height: 1;
-    color: var(--light-color);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    font-size: 1.4rem;
-    letter-spacing: 0.1em;
-  }
-  .gatsby-code-title + .gatsby-highlight pre[class*="language-"] {
-    margin-top: 0;
-    border-top-left-radius: 0;
-  }
+
   .gatsby-highlight-code-line {
     display: block;
     background: rgba(225, 225, 225, 0.2);
@@ -366,14 +350,74 @@ export const Edit = styled.section`
       background: var(--color-ac);
     }
   }
-  pre[class*="language-"] {
+  .code-highlighter__title {
+    margin-bottom: 0;
+    font-weight: bold;
+    background: var(--color-blue);
+    display: inline-block;
+    padding: 6px 15px;
+    vertical-align: bottom;
+    line-height: 1;
+    color: var(--light-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    & + .code-highlighter__body {
+        margin-top: 0;
+        border-top-left-radius: 0;
+    }
+  }
+  .code-highlighter__btn {
+    text-align: center;
+    margin: 0;
+    margin-top: -50px;
+    padding-top: 30px;
+    backdrop-filter: blur(3px);
+    &.isOpen {
+        margin-top: 0;
+    }
+    button {
+        border-radius: 8px;
+        border:none;
+        color: var(--background);
+        background: var(--color);
+        font-size: 16px;
+        font-weight: bold;
+        align-items: center;
+        width: 300px;
+        justify-content: center;
+        margin: 0 auto;
+        display: flex;
+        height: 50px;
+    }
+  }
+  .code-highlighter__body {
+    font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono, monospace;
     border-radius: 0.5em;
     border: none;
     background: var(--code-bg);
-    box-shadow: none;
     margin: 30px 0 40px;
     overflow: auto;
     padding: 1em;
+    font-size:15px;
+    line-height: 1.5;
+    tab-size: 4;
+
+    code.token-line {
+        display: block;
+        word-wrap: normal;
+        font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,
+        monospace;
+        -webkit-hyphens: none;
+        hyphens: none;
+        line-height: 1.5;
+        tab-size: 4;
+        text-align: left;
+        white-space: pre;
+        word-break: normal;
+        word-spacing: normal;
+    }
   }
   .token.tag,
   .token.boolean,

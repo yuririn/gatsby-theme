@@ -1,144 +1,94 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-
 import { siteMetadata } from "./../../gatsby-config"
 
 import { Article } from "./../styles/blog-styles/article"
 import { Header } from "./../styles/blog-styles/header"
 import { Edit } from "./../styles/blog-styles/edit"
 import styled from "styled-components"
-import rehypeReact from "rehype-react"
+import { MDXProvider } from "@mdx-js/react"
+
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import BreadCrumbList from "../components/common/bread-crumb-list"
-import TagsList from "../components/blogs/tags-blog"
-import Sns from "../components/blogs/sns"
-import Prof from "../components/blogs/small-prof"
-import Toc from "../components/blogs/topic"
-import Sidebar from "../components/blogs/sidebar"
-import Genre from "../components/common/genre"
-import RelativeCard from "../components/blogs/blog-parts/relative-card"
-import Msg from "../components/blogs/blog-parts/msg"
+// import Seo from "../components/seo"
+// import BreadCrumbList from "../components/common/bread-crumb-list"
+// import TagsList from "../components/blog/tags-blog"
+import Sns from "../components/blog/sns"
+import Prof from "../components/blog/small-prof"
+// import Toc from "../components/blogs/topic"
+import Sidebar from "../components/blog/sidebar"
+// import Genre from "../components/common/genre"
+// import RelativeCard from "../components/blogs/blog-parts/relative-card"
+import Msg from "../components/blog/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Adsense from '../components/common/Ad'
+import Ad from '../components/common/ad'
 
-const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: {
-    card: RelativeCard,
-    msg: Msg,
-    prof: Prof,
-    ad: Adsense,
-    toc: Toc
-  },
-}).Compiler
+const shortcodes = { Ad, Prof, Msg}
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data, location, children }) => {
 
-  const post = data.markdownRemark
-  const faq = post.frontmatter.faq
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const post = data.mdx.frontmatter
+  // const faq = post.faq
+  const siteTitle = siteMetadata?.title || `Title`
   const { previous, next } = data
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
-  const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
+  const perfectTitle = encodeURI(post.title + "|" + siteTitle)
 
-  const category = { url:`/blogs/${post.frontmatter.cateId}/`, name:
+  const category = { url:`/blogs/${post.cateId}/`, name:
     siteMetadata.category.filter(item => {
-      return post.frontmatter.cateId === item.slug
+      return post.cateId === item.slug
         ? item.name
         : ""
     })[0].name
   }
 
-  const tableOfContents =post.htmlAst.children.filter(i=>i.tagName === 'h2'||i.tagName === 'h3')
+  // const tableOfContents =post.htmlAst.children.filter(i=>i.tagName === 'h2'||i.tagName === 'h3')
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location}>
       <Header>
         <div
           className={
             `c-article__mainvisual c-article__mainvisual--` +
-            post.frontmatter.cateId
+            post.cateId
           }
         >
           <div className="c-article__img">
-            {/* <Category
-              name={post.frontmatter.categoryId}
-              id={post.frontmatter.cateId}
-            /> */}
-            <GatsbyImage image={getImage(data.dogImage)} alt={post.frontmatter.title} />
+            <GatsbyImage image={getImage(data.dogImage)} alt={post.title} />
           </div>
+
         </div>
       </Header>
-      <BreadCrumbList type="blog" cate={category} tag={post.frontmatter.tags[0]}/>
+
       <Body>
         <Article>
-          <article
-            className="blog-post l-container"
-            itemScope
-            itemType="http://schema.org/Article"
-            data-clarity-region="article"
-          >
-            <header>
-              <h1 itemProp="headline" className="c-article__heading">
-                {post.frontmatter.title}
-              </h1>
-              <dl className="c-article__date">
-                <dt>公開日</dt>
-                <dd>
-                  <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                    {post.frontmatter.date}
-                  </time>
-                </dd>
-                {post.frontmatter.modifieddate ? <dt>メンテナンス日</dt> : ""}
-                {post.frontmatter.modifieddate ? (
-                  <dd>
-                    <time
-                      date={post.frontmatter.modifieddate.replace(/\./g, "-")}
-                    >
-                      {post.frontmatter.modifieddate}
-                    </time>
-                  </dd>
-                ) : (
-                  ""
-                )}
-              </dl>
-              <TagsList tags={post.frontmatter.tags} />
-            </header>
-            <Edit>
-              <section itemProp="articleBody">
-                {renderAst(post.htmlAst)}
-                {faq && (<h2>FAQ</h2>)}
-                {faq && faq.map((item, index) => {
-                  return (
-                    <dl className="p-faq__item" key={`faq${index}`}>
-                      <dt>{item[0]}</dt>
-                      <dd>{item[1]}</dd>
-                    </dl>
-                  )
-                })}
-              </section>
-            </Edit>
-
-            <Adsense type="article"></Adsense>
-
-            <div className="c-btn--donation" id="end_of_article">
+          <h1 itemProp="headline" className="c-article__heading">{post.title}</h1>
+          <dl className="c-article__date">
+            <dt>公開日</dt>
+            <dd>
+              <time date={post.date.replace(/\./g, "-")}>
+                {post.date}
+              </time>
+            </dd>
+            {post.modifieddate ? <dt>メンテナンス日</dt> : ""}
+            {post.modifieddate ? (
+              <dd>
+                <time
+                  date={post.modifieddate.replace(/\./g, "-")}
+                >
+                  {post.modifieddate}
+                </time>
+              </dd>
+            ) : (
+              ""
+            )}
+          </dl>
+          <Edit itemProp="articleBody"><MDXProvider components={shortcodes}>{children}</MDXProvider></Edit>
+          <div className="c-btn--donation" id="end_of_article">
               <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
               <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noreferrer"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" className="svg-inline--fa fa-heart fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>銀ねこアトリエを応援する</a>
             </div>
             <Sns url={perfectUrl} title={perfectTitle} />
-            <dl className="c-article__tags">
-              <dt>Category</dt>
-              <dd className="cate">
-                <Link to={category.url}>
-                  {category.name}
-                </Link>
-              </dd>
-            </dl>
-
-
-          </article>
           <ol className="c-pager--article p-section l-container">
             <li className="c-pager--article__prev">
               {previous && (
@@ -157,19 +107,11 @@ const BlogPostTemplate = ({ data, location }) => {
           </ol>
         </Article>
         <Sidebar
-          cateId={post.frontmatter.cateId}
-          title={post.frontmatter.title}
-          tags={post.frontmatter.tags}
-          topic={tableOfContents}
-          slug={post.fields.slug}
+          cateId={post.cateId}
+          title={post.title}
+          tags={post.tags}
+          slug={data.mdx.fields.slug}
         />
-        <aside className="l-container">
-          <Adsense type="display"></Adsense>
-          <section className="p-section u-text-center">
-            <h2 className="c-heading--lg">人気のジャンル</h2>
-            <Genre />
-          </section>
-        </aside>
       </Body>
     </Layout>
   )
@@ -177,33 +119,33 @@ const BlogPostTemplate = ({ data, location }) => {
 
 export default BlogPostTemplate
 
-export const Head = ({ data, location }) => {
-  const post = data.markdownRemark
-  const ogpSrc = data.siteOgImage
-    ? `${data.siteOgImage.childImageSharp.resize.src}`
-    : "/images/ogp.png"
-  const thumnailSrc = data.siteThumnailImage
-    ? `${data.siteThumnailImage.childImageSharp.resize.src}`
-    : "/images/thumnail.png"
-  const seoData = {
-    title : post.frontmatter.title,
-    description : post.frontmatter.description || post.excerpt,
-    date : post.frontmatter.date.replace(/\./g, "-"),
-    location : location,
-    ogp : ogpSrc,
-    faq : post.frontmatter.faq?post.frontmatter.faq : '',
-    tag : post.frontmatter.tags[0],
-    cateId : post.frontmatter.cateId,
-    thumnail: thumnailSrc,
-    type : "blog",
-    noindex: post.frontmatter.noindex?post.frontmatter.noindex : false,
-  }
-  return (
-    <Seo
-      data={seoData}
-    />
-  )
-}
+// export const Head = ({ data, location }) => {
+//   const post = data.markdownRemark
+//   const ogpSrc = data.siteOgImage
+//     ? `${data.siteOgImage.childImageSharp.resize.src}`
+//     : "/images/ogp.png"
+//   const thumnailSrc = data.siteThumnailImage
+//     ? `${data.siteThumnailImage.childImageSharp.resize.src}`
+//     : "/images/thumnail.png"
+//   const seoData = {
+//     title : post.title,
+//     description : post.description || post.excerpt,
+//     date : post.date.replace(/\./g, "-"),
+//     location : location,
+//     ogp : ogpSrc,
+//     faq : post.faq?post.faq : '',
+//     tag : post.tags[0],
+//     cateId : post.cateId,
+//     thumnail: thumnailSrc,
+//     type : "blog",
+//     noindex: post.noindex?post.noindex : false,
+//   }
+//   return (
+//     <Seo
+//       data={seoData}
+//     />
+//   )
+// }
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -252,36 +194,31 @@ export const pageQuery = graphql`
       }
     }
 
-    markdownRemark(id: { eq: $id }) {
+    mdx(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
-      htmlAst
-      tableOfContents
       fields {
         slug
       }
       frontmatter {
         title
         date(formatString: "YYYY.MM.DD")
+        modifieddate(formatString: "YYYY.MM.DD")
         description
-        noindex
         hero
         cateId
         tags
-        pagetype
-        faq
-        modifieddate(formatString: "YYYY.MM.DD")
       }
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
+    previous: mdx(id: { eq: $previousPostId }) {
       fields {
         slug
       }
       frontmatter {
         title
+
       }
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
+    next: mdx(id: { eq: $nextPostId }) {
       fields {
         slug
       }
@@ -303,37 +240,3 @@ const Body = styled.div`
     margin-bottom: 50px;
   }
 `
-
-// const Feedly = styled.div`
-//   height: 150px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background: #eee;
-//   // border:1px solid #6cc655;
-//   flex-direction: column;
-//   margin: 0 15px;
-//   @media screen and (min-width: 768px) {
-//     margin-left: 0;
-//     margin-right: 0;
-//   }
-//   h2 {
-//     margin-bottom: 20px;
-//   }
-//   a {
-//     background: #6cc655;
-//     font-weight: bold;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 40px;
-//     padding: 0 20px;
-//     color: #fff;
-//     border-radius: 20px;
-//     text-decoration: none;
-//     svg {
-//       margin-right: 10px;
-//     }
-// https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
-//   }
-// `

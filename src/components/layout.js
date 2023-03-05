@@ -3,11 +3,13 @@ import { BaseStyle } from "./../styles/common/base"
 import { CommonStyle } from "./../styles/common/common"
 import { createGlobalStyle } from "styled-components"
 
+import { siteMetadata } from "./../../gatsby-config"
+
 import Header from "./header"
 import Footer from "./footer"
 
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
@@ -22,9 +24,9 @@ const Layout = ({ location, title, children }) => {
       <BaseStyle />
       <CommonStyle />
       <GlobalStyle />
-      <Header title={title} location={location.pathname} />
+      <Header title={siteMetadata.title} location={location.pathname} />
       <main>{children}</main>
-      <Footer title={title} />
+      <Footer title={siteMetadata.title} />
     </div>
   )
 }
