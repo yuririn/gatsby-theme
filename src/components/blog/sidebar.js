@@ -5,7 +5,6 @@ import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 // import Search from "../search"
-import Ad from '../common/ad'
 
 const Side = ({ cateId, topic, tags, slug }) => {
 
