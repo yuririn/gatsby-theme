@@ -5,14 +5,15 @@ import {
   LinesToHighlight,
   LinesNumberToHighlight,
 } from "react-mdx-prism-lighter"
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-php");
+
 
 const Code = ({ codeString, language, title, highlight }) => {
   const [open, setAccordion] = useState(false)
   const accordion = () => {
     setAccordion(!open)
   }
-
-
 
   return (
    <Highlight
@@ -32,8 +33,8 @@ const Code = ({ codeString, language, title, highlight }) => {
                 {title}
               </p>
             )}
-            <div className={`code-highlighter__body`} data-language={language}>
-              <pre>
+            <div className={`code-highlighter__body`}>
+              <pre data-language={language}>
                 {first.map((line, index) => {
                   const lineProps = getLineProps({ line, key: index })
                   if (LinesToHighlight(line)) {
@@ -75,7 +76,7 @@ const Code = ({ codeString, language, title, highlight }) => {
                   )
                 }))}
               </pre>
-            {hasButton && (<p className={`code-highlighter__btn${open ? ' isOpen' : ''}`}><button onClick={accordion}>{open ? '閉じる':'コードを見る'}</button></p>)}
+            {hasButton && (<p className={`code-highlighter__btn${open ? ' isOpen' : ''}`}><button onClick={accordion}>{open ? '閉じる':'コードをすべて見る'}</button></p>)}
             </div>
           </div>
         )

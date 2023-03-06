@@ -10,28 +10,29 @@ import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 import Pagination from "../components/common/pagination"
+import { siteMetadata } from "../../gatsby-config"
 import BreadCrumbList from "../components/common/bread-crumb-list"
-import Seo from "./../components/seo";
 
 const blogs = ({ pageContext, data, location }) => {
-  const { current, page } = pageContext
+  const { cateSlug, current, page } = pageContext
   const posts = data.allMdx.nodes
+  const cateMeta = siteMetadata.category.filter(cate => cate.slug === cateSlug)
+  const cateName = cateMeta[0].name
+  const cateDescription = cateMeta[0].description
   return (
-    <Layout location={location} title="ノマドブログ">
+    <Layout location={location} title={siteMetadata.title}>
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
-          <h1 className="p-pageHeader__heading">ノマドブログ</h1>
-          <p>現在 {data.allMdx.totalCount} 記事あります</p>
+          <h1 className="p-pageHeader__heading">{cateName}</h1>
+          <p>{cateDescription}</p>
         </div>
         <Img
-          source="common/ganre_common.jpg"
-          alt="ノマドブログ"
+          source={`common/genre-${cateSlug}.jpg`}
           className="p-pageHeader__img"
         ></Img>
       </div>
-      <BreadCrumbList type="archive"/>
+      <BreadCrumbList type="blog" current={cateName}/>
       <section className="p-section l-container">
-        <h2 className="c-heading--lg">最新記事</h2>
         <ol className="c-grid">
           {posts.map((post, index) => {
             return (
@@ -70,7 +71,7 @@ const blogs = ({ pageContext, data, location }) => {
             );
           })}
         </ol>
-        {page !== 1 && (<Pagination num={page} current={current} type=""></Pagination>)}
+        {page !== 1 && (<Pagination num={page} current={current} type={`${cateSlug}/`}></Pagination>)}
       </section>
       <aside className="l-container">
         <section className="p-section u-text-center">
@@ -85,20 +86,21 @@ const blogs = ({ pageContext, data, location }) => {
 
 export default blogs
 
-export const Head = ({ data, location }) => {
-  const yourData = {
-    title : "ノマドブログ",
-    description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMdx.totalCount}記事）。${data.site.siteMetadata.description}`,
-    location : location,
-  }
-  return (
-    <Seo
-      data={yourData}
-    />
-  )
-}
+// export const Head = ({ data, location }) => {
+//   const yourData = {
+//     title : "ノマドブログ",
+//     description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
+//     location : location,
+//     type : "blog-list"
+//   }
+//   return (
+//     <Seo
+//       data={yourData}
+//     />
+//   )
+// }
 
-export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
+export const pageQuery = graphql`query ($cateSlug: String, $limit: Int!, $skip: Int!) {
   site {
     siteMetadata {
       title
@@ -109,7 +111,7 @@ export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
     limit: $limit
     skip: $skip
     sort: {frontmatter: {date: DESC}}
-    filter: {frontmatter: {pagetype: {eq: "blog"}}}
+    filter: {frontmatter: {cateId: {eq: $cateSlug}}}
   ) {
     totalCount
     nodes {

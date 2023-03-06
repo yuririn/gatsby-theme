@@ -100,11 +100,15 @@ export const Edit = styled.section`
   .style .token.string {
     background: none;
   }
-  p > code[class*="language-"] {
+  table code,
+  p code {
     color: var(--light-color);
-  }
-  pre[class*="language-"] code[class*="language-"]{
-    color: #fff;
+    border-radius: 5px;
+    margin: 0 3px;
+    background: var(--color);
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px 4px
   }
   .text-center {
     text-align: center;
@@ -323,12 +327,6 @@ export const Edit = styled.section`
       color: var(--color-blue);
     }
   }
-  *:not(pre) > code[class*="language-"] {
-    box-shadow: none;
-    border: none;
-    background: var(--color-d-blue);
-    padding: 2px 6px;
-  }
 
   .gatsby-highlight-code-line {
     display: block;
@@ -371,7 +369,7 @@ export const Edit = styled.section`
   .code-highlighter__btn {
     text-align: center;
     margin: 0;
-    margin-top: -50px;
+    margin: -50px -16px 0;
     padding-top: 30px;
     backdrop-filter: blur(3px);
     &.isOpen {

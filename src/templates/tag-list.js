@@ -14,24 +14,23 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 import Seo from "./../components/seo";
 
 const blogs = ({ pageContext, data, location }) => {
-  const { current, page } = pageContext
+  const { current, page, tag } = pageContext
   const posts = data.allMdx.nodes
   return (
     <Layout location={location} title="ノマドブログ">
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
-          <h1 className="p-pageHeader__heading">ノマドブログ</h1>
+          <h1 className="p-pageHeader__heading">{tag}</h1>
           <p>現在 {data.allMdx.totalCount} 記事あります</p>
         </div>
         <Img
           source="common/ganre_common.jpg"
-          alt="ノマドブログ"
           className="p-pageHeader__img"
+          alt={tag}
         ></Img>
       </div>
-      <BreadCrumbList type="archive"/>
+      <BreadCrumbList type="archive" current={tag} />
       <section className="p-section l-container">
-        <h2 className="c-heading--lg">最新記事</h2>
         <ol className="c-grid">
           {posts.map((post, index) => {
             return (
@@ -85,11 +84,13 @@ const blogs = ({ pageContext, data, location }) => {
 
 export default blogs
 
-export const Head = ({ data, location }) => {
+export const Head = ({ data, pageContext, location }) => {
+   const { tag } = pageContext
   const yourData = {
-    title : "ノマドブログ",
-    description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMdx.totalCount}記事）。${data.site.siteMetadata.description}`,
+    title : `${tag} - ノマドブログ`,
+    description : `${tag}の最新ブログ一覧(現在${data.allMdx.totalCount}記事）。${data.site.siteMetadata.description}`,
     location : location,
+    type : "blog-list"
   }
   return (
     <Seo
@@ -98,7 +99,7 @@ export const Head = ({ data, location }) => {
   )
 }
 
-export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
+export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag: [String]) {
   site {
     siteMetadata {
       title
@@ -109,7 +110,7 @@ export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {
     limit: $limit
     skip: $skip
     sort: {frontmatter: {date: DESC}}
-    filter: {frontmatter: {pagetype: {eq: "blog"}}}
+    filter: {frontmatter: {pagetype: {eq: "blog"}, tags: {in: $tag}}}
   ) {
     totalCount
     nodes {

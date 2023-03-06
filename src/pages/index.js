@@ -11,6 +11,7 @@ import FirstView from "../components/top-first-view"
 import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
+import Seo from "./../components/seo";
 
 import { siteMetadata } from "./../../gatsby-config"
 
@@ -22,7 +23,6 @@ const BlogIndex = ({ data, location }) => {
   return (
 
     <Layout location={location} title={siteTitle}>
-      <FirstView />
       <div className="p-section l-container">
         <h2 className="c-heading--lg">最新の記事</h2>
         <ol className="c-grid">
@@ -134,11 +134,11 @@ const BlogIndex = ({ data, location }) => {
 
 export default BlogIndex
 
-// export const Head = ({ data, location }) => (
-//  <Seo
-//  data={{title:data.site.siteMetadata?.title || `Title`, location:location}}
-//  />
-// )
+export const Head = ({ location }) => (
+ <Seo
+  data={{location: location}}
+ />
+)
 
 export const pageQuery = graphql`{
   allMdx(

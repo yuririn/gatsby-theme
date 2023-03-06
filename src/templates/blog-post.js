@@ -10,8 +10,8 @@ import { MDXProvider } from "@mdx-js/react"
 
 
 import Layout from "../components/layout"
-// import Seo from "../components/seo"
-// import BreadCrumbList from "../components/common/bread-crumb-list"
+import Seo from "../components/seo"
+import BreadCrumbList from "../components/common/bread-crumb-list"
 // import TagsList from "../components/blog/tags-blog"
 import Sns from "../components/blog/sns"
 import Prof from "../components/blog/small-prof"
@@ -58,6 +58,7 @@ const BlogPostTemplate = ({ data, location, children }) => {
 
         </div>
       </Header>
+      <BreadCrumbList type="blog" cate={category} tag={post.tags[0]}/>
 
       <Body>
         <Article>
@@ -115,6 +116,16 @@ const BlogPostTemplate = ({ data, location, children }) => {
     </Layout>
   )
 }
+
+export const Head = ({ data, location }) => (
+ <Seo
+  data={{
+    title: data.mdx.frontmatter.title,
+    location: location,
+    description: data.mdx.frontmatter.description,
+  }}
+ />
+)
 
 export default BlogPostTemplate
 

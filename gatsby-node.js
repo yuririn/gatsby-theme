@@ -13,11 +13,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const blogList = path.resolve(`./src/templates/blog-list.js`)
 
-  // const tagList = path.resolve(`./src/templates/tag-list.js`)
+  const tagList = path.resolve(`./src/templates/tag-list.js`)
 
   // const adTagList = path.resolve(`./src/templates/ad-tag-list.js`)
 
-  // const genreList = path.resolve(`./src/templates/genre-list.js`)
+  const cateList = path.resolve(`./src/templates/catetory-list.js`)
 
   // const pagePost = path.resolve(`./src/templates/page-post.js`)
 
@@ -35,6 +35,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       frontmatter {
         hero
         pagetype
+        cateId
+        tags
       }
       internal {
         contentFilePath
@@ -104,6 +106,80 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       })
     }
+
+    //重複を排除し、カテゴリーの配列を作成
+    //カテゴリーのリスト取得
+    let cates = posts.reduce((cates, edge) => {
+      const edgeCates = edge.frontmatter.cateId
+      return edgeCates ? cates.concat(edgeCates) : cates
+    }, [])
+    // 重複削除
+    cates = [...new Set(cates)]
+
+
+    // カテゴリー分ページを作成
+    cates.forEach(cate => {
+      const cateSlug = cate
+      const cateCount = posts.filter(
+        post => post.frontmatter.cateId === cate
+      ).length
+      const numPages = Math.ceil(cateCount / postsPerPage) //分割されるページの数
+
+      for (let index = 0; index < numPages; index++) {
+        const pageNumber = index + 1
+        const withPrefix = pageNumber =>
+          pageNumber === 1
+            ? `/blogs/${cate}/`
+            : `/blogs/${cate}/page/${pageNumber}/`
+
+        createPage({
+          path: withPrefix(pageNumber),
+          component: cateList,
+          context: {
+            limit: postsPerPage, //追加
+            skip: index * postsPerPage, //追加
+            current: pageNumber, //追加
+            page: numPages, //追加
+            cateSlug,
+          },
+        })
+      }
+    })
+
+    //タグの一覧作成
+    let tags = blogPosts.reduce((tags, edge) => {
+        const edgeTags = edge.frontmatter.tags
+        return edgeTags ? tags.concat(edgeTags) : tags
+    }, [])
+    // 重複削除
+    tags = [...new Set(tags)]
+
+      // タグ
+    tags.forEach(item => {
+      const tag = item
+      const tagsCount = blogPosts.filter(post =>
+        post.frontmatter.tags.includes(item)
+      ).length
+      const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
+      for (let index = 0; index < numPages; index++) {
+        const pageNumber = index + 1
+        const withPrefix = pageNumber =>
+          pageNumber === 1
+            ? `/blogs/tags/${tag}/`
+            : `/blogs/tags/${tag}/page/${pageNumber}/`
+        createPage({
+          path: withPrefix(pageNumber),
+          component: tagList,
+          context: {
+            limit: postsPerPage, //追加
+            skip: index * postsPerPage, //追加
+            current: pageNumber, //追加
+            page: numPages, //追加
+            tag,
+          },
+        })
+      }
+    })
   }
 
   //   adPosts.forEach((post, index) => {
@@ -127,43 +203,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 
 
-  //   //重複を排除し、カテゴリーの配列を作成
-  //   //カテゴリーのリスト取得
-  //   let cates = posts.reduce((cates, edge) => {
-  //     const edgeCates = edge.frontmatter.cateId
-  //     return edgeCates ? cates.concat(edgeCates) : cates
-  //   }, [])
-  //   // 重複削除
-  //   cates = [...new Set(cates)]
 
-  //   // カテゴリー分ページを作成
-  //   cates.forEach(cate => {
-  //     const cateSlug = cate
-  //     const cateCount = posts.filter(
-  //       post => post.frontmatter.cateId === cate
-  //     ).length
-  //     const numPages = Math.ceil(cateCount / postsPerPage) //分割されるページの数
-
-  //     for (let index = 0; index < numPages; index++) {
-  //       const pageNumber = index + 1
-  //       const withPrefix = pageNumber =>
-  //         pageNumber === 1
-  //           ? `/blogs/${cate}/`
-  //           : `/blogs/${cate}/page/${pageNumber}/`
-
-  //       createPage({
-  //         path: withPrefix(pageNumber),
-  //         component: genreList,
-  //         context: {
-  //           limit: postsPerPage, //追加
-  //           skip: index * postsPerPage, //追加
-  //           current: pageNumber, //追加
-  //           page: numPages, //追加
-  //           cateSlug,
-  //         },
-  //       })
-  //     }
-  //   })
 
   //   //タグの一覧作成
   //   let tags = blogPosts.reduce((tags, edge) => {

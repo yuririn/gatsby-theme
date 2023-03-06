@@ -131,14 +131,14 @@ function box( $atts, $content ){
 add_shortcode( 'box', 'box' );
 ```
 
-```html
+```html:title=HTML
 [box label="ポイント"]ここに文章が入ります[/box]
 ```
 
 ### コンテンツだけ追加したいとき
 コンテンツだけ追加したいときは、第一引数を`null`か`''`あたりにしておきます。
 
-```php
+```php:title=PHP
 function box( $atts = null, $content ) {
   return '<div>' . $content . '</div>';
 }
