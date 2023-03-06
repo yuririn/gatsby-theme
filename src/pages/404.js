@@ -11,9 +11,9 @@ import FirstView from "../components/top-first-view"
 import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
-import Seo from "./../components/seo";
+import Seo from "../components/seo";
 
-import { siteMetadata } from "./../../gatsby-config"
+import { siteMetadata } from "../../gatsby-config"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = siteMetadata?.title || `Title`
@@ -64,7 +64,7 @@ const BlogIndex = ({ data, location }) => {
                         {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
                       </Link>
                       <div className="p-entryCard__footer">
-                        <AddTagLink tags={post.frontmatter.tags} key={`post${i}`}/>
+                        <AddTagLink tags={post.frontmatter.tags} />
                       </div>
                     </li>
                   </>
@@ -92,7 +92,7 @@ const BlogIndex = ({ data, location }) => {
                         {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
                       </Link>
                       <div className="p-entryCard__footer">
-                        <AddTagLink tags={post.frontmatter.tags} key={`post${i}`}/>
+                        <AddTagLink tags={post.frontmatter.tags} />
                       </div>
                     </li>
                   </>
