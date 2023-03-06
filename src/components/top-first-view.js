@@ -1,9 +1,8 @@
 import React from "react"
-import styled from "styled-components"
 
 const firstview = () => {
   return (
-    <Mainvisual>
+      <div className="c-first-view">
         <div className="l-container">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 526.52 97.87" id="hero">
                 <path d="M83.4,80.39c-.48,.51-1,.99-1.54,1.43-5.24,2.57-10.81,4.42-16.54,5.49h-1.05l-1.05-.19-1.24,.68c-.41,.26-.85,.48-1.32,.64l-9.25,1.32c-.48,.3-1,.51-1.54,.64l-.71-.23-.64-.26c-.41,.13-.8,.31-1.17,.53l-.98,.49c-.97,.16-1.95,.28-2.93,.34-2.34,.16-4.69,.02-6.99-.41l-6.84-1.05c-1.2,0-1.88-.64-1.96-1.5h0c-1.65-.51-3.22-1.24-4.66-2.18-3.6-2.65-6.68-5.95-9.06-9.74-.08-1.06-.22-2.11-.41-3.16-.17-.66-.4-1.3-.68-1.92v.26c0-2.67,.45-5.33,1.32-7.86,1.06-2.63,2.57-5.04,4.47-7.14,2.67-3.65,5.94-6.83,9.66-9.4,7.01-4.85,14.59-8.84,22.56-11.88,.77-.45,1.58-.84,2.41-1.17l10.42-2.71,1.65-.75,1.73-.71c1.24-.1,2.47,.29,3.42,1.09,1,.68,1.65,1.77,1.77,2.97,.03,.89-.15,1.78-.53,2.59-.52,.54-1.1,1.02-1.73,1.43-2.72,.38-5.42,.92-8.08,1.62-1.22,.62-2.48,1.17-3.76,1.65l-9.06,3.31c-6.88,3.2-13.3,7.29-19.1,12.18-1.35,.98-2.63,1.99-3.76,3.01-2.54,2.32-4.33,5.35-5.15,8.69-.2,1.41-.2,2.84,0,4.25,.4,2.77,2.07,5.19,4.51,6.54,2.33,1.64,5.03,2.69,7.86,3.05l2.71,.53,2.48,.45,1.92-.34c1.24,0,2.11-.34,2.67-.38,.75-.05,1.5-.05,2.26,0h1.96l2.97-.75c1.24-.35,2.49-.64,3.76-.86l27.26-4.4h0c.75-.09,1.45,.42,1.58,1.17,0,0,.23,1.05,.41,2.67Z"/>
@@ -31,103 +30,9 @@ const firstview = () => {
             「磨耗しない人生の選択」や「海外ノマド」のライフスタイルについて発信しています。
           </p>
         </div>
-    </Mainvisual>
+    </div>
   )
 }
 
 export default firstview
 
-const Mainvisual = styled.div`
-  margin-bottom: 50px;
-  background: linear-gradient(135deg,
-      rgb(47, 89, 188) 0%,
-      rgb(93, 154, 173) 100%);
-    padding-top: 80px;
-    padding-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-    &::before {
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        height: 100px;
-        content: '';
-        opacity: .2;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 252.62"><path d="M237.53,36.5C158.35,10.11,79.18-1.95,0,.26V252.62H900V.02c-74.71-.56-149.41,11.58-224.12,36.48-146.12,48.71-292.23,48.71-438.35,0Z" fill="%23fff"/></svg>') bottom / 299px repeat-x;
-        animation: waveSm linear 10s infinite;
-        width: 598px;
-        @media screen and (min-width: 768px) {
-            width: 300%;
-            animation: wave linear 30s infinite;
-        }
-    }
-    &::after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 1796px;
-        height: 100px;
-        content: '';
-        opacity: .1;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 252.62"><path d="M237.53,36.5C158.35,10.11,79.18-1.95,0,.26V252.62H900V.02c-74.71-.56-149.41,11.58-224.12,36.48-146.12,48.71-292.23,48.71-438.35,0Z" fill="%23fff"/></svg>') bottom / 299px repeat-x;
-        animation: wave linear 15s 15s infinite;
-        @media screen and (min-width: 768px) {
-            width: 300%;
-        }//media query
-    }
-  p {
-    color: #fff;
-    line-height: 1.8;
-    text-shadow: 0 0 2px #000;
-    text-shadow: 0 0 2px rgb(47, 89, 188);
-  }
-  .l-container {
-    position: relative;
-    z-index: 10;
-    max-width: 700px;
-  }
-  svg#hero{
-     path {
-         fill: #264785;
-         stroke: #fff;
-         stroke-width: 3;
-         paint-order: stroke;
-     }
-      width: 320px;
-      margin-bottom: 10px;
-  }
-  @media screen and (min-width: 768px) {
-    text-align: center;
-    padding-top: 160px;
-    padding-bottom: 30px;
-   svg#hero {
-    margin-bottom: 50px;
-       width: 100%;
-   }
-   &::before {
-    bottom: -40px;
-   }
-   &::after {
-    bottom: -30px;
-   }
-  }
-  @keyframes waveSm {
-      0% {
-          transform: translate(0);
-      }
-      50% {
-          transform: translate(-100px);
-      }
-      100% {
-          transform: translate(0px);
-      }
-  }
-  @keyframes wave {
-      from {
-          transform: translate(0);
-      }
-      to {
-          transform: translate(-66.66%);
-      }
-  }
-`

@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const profile = () => {
   return (
-    <Profile className="l-container--md">
+    <section className="l-container--md c-bio">
       <h2 className="c-heading--lg">管理人について</h2>
 
       <Img source="common/camille-pic.jpg" alt="管理人" className="prfImg" />
@@ -37,58 +37,9 @@ const profile = () => {
           </Link>
         </p>
       </div>
-    </Profile>
+    </section>
   )
 }
 
 export default profile
 
-const Profile = styled.div`
-  & + .ads.display {
-    max-width: 700px;
-    margin: 0 auto 80px;
-  }
-  line-height: 2;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-bottom: 50px;
-  .prfImg {
-    width: 200px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 30px;
-    img {
-      border-radius: 50%;
-      overflow: hidden;
-    }
-  }
-  ul + *,
-  p + * {
-    margin-top: 1em;
-  }
-  ul {
-    list-style: none;
-    & + p {
-      margin-bottom: 1em;
-    }
-  }
-  ul > li {
-    padding-left: 1.5em;
-    position: relative;
-    margin-bottom: 0.5em;
-    &::before {
-      left: 8px;
-      top: 6px;
-      display: block;
-      color: #001d7c;
-      content: "";
-      width: 0.3em;
-      height: 0.6em;
-      background: none;
-      position: absolute;
-      transform: rotate(45deg);
-      border: 4px solid var(--color-accent);
-      border-width: 0 3px 3px 0;
-    }
-  }
-`

@@ -34,6 +34,100 @@ const Layout = ({ location, children }) => {
 export default Layout
 
 const GlobalStyle = createGlobalStyle`
+.c-first-view {
+margin-bottom: 50px;
+  background: linear-gradient(135deg,
+      rgb(47, 89, 188) 0%,
+      rgb(93, 154, 173) 100%);
+    padding-top: 80px;
+    padding-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    &::before {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        height: 100px;
+        content: '';
+        opacity: .2;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 252.62"><path d="M237.53,36.5C158.35,10.11,79.18-1.95,0,.26V252.62H900V.02c-74.71-.56-149.41,11.58-224.12,36.48-146.12,48.71-292.23,48.71-438.35,0Z" fill="%23fff"/></svg>') bottom / 299px repeat-x;
+        animation: waveSm linear 10s infinite;
+        width: 598px;
+        @media screen and (min-width: 768px) {
+            width: 300%;
+            animation: wave linear 30s infinite;
+        }
+    }
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 1796px;
+        height: 100px;
+        content: '';
+        opacity: .1;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 252.62"><path d="M237.53,36.5C158.35,10.11,79.18-1.95,0,.26V252.62H900V.02c-74.71-.56-149.41,11.58-224.12,36.48-146.12,48.71-292.23,48.71-438.35,0Z" fill="%23fff"/></svg>') bottom / 299px repeat-x;
+        animation: wave linear 15s 15s infinite;
+        @media screen and (min-width: 768px) {
+            width: 300%;
+        }//media query
+    }
+  p {
+    color: #fff;
+    line-height: 1.8;
+    text-shadow: 0 0 2px #000;
+    text-shadow: 0 0 2px rgb(47, 89, 188);
+  }
+  .l-container {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+  }
+  svg#hero{
+     path {
+         fill: #264785;
+         stroke: #fff;
+         stroke-width: 3;
+         paint-order: stroke;
+     }
+      width: 320px;
+      margin-bottom: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    text-align: center;
+    padding-top: 160px;
+    padding-bottom: 30px;
+   svg#hero {
+    margin-bottom: 50px;
+       width: 100%;
+   }
+   &::before {
+    bottom: -40px;
+   }
+   &::after {
+    bottom: -30px;
+   }
+  }
+  @keyframes waveSm {
+      0% {
+          transform: translate(0);
+      }
+      50% {
+          transform: translate(-100px);
+      }
+      100% {
+          transform: translate(0px);
+      }
+  }
+  @keyframes wave {
+      from {
+          transform: translate(0);
+      }
+      to {
+          transform: translate(-66.66%);
+      }
+  }
+}
   .p-section + .ads.display {
        margin-bottom: 50px;
   }
@@ -265,4 +359,6 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+
+
 `

@@ -4,7 +4,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-// import Seo from "../components/seo"
+import Seo from "../components/seo"
 import Img from "../components/common/img"
 import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
@@ -86,19 +86,23 @@ const blogs = ({ pageContext, data, location }) => {
 
 export default blogs
 
-// export const Head = ({ data, location }) => {
-//   const yourData = {
-//     title : "ノマドブログ",
-//     description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
-//     location : location,
-//     type : "blog-list"
-//   }
-//   return (
-//     <Seo
-//       data={yourData}
-//     />
-//   )
-// }
+export const Head = ({pageContext, data, location }) => {
+  const { cateSlug } = pageContext
+  const cateMeta = siteMetadata.category.filter(cate => cate.slug === cateSlug)
+  const cateName = cateMeta[0].name
+  const cateDescription = cateMeta[0].description
+  const yourData = {
+    title : cateName,
+    description : `${cateName}の記事一覧。${cateDescription}`,
+    location : location,
+    type : "blog-list"
+  }
+  return (
+    <Seo
+      data={yourData}
+    />
+  )
+}
 
 export const pageQuery = graphql`query ($cateSlug: String, $limit: Int!, $skip: Int!) {
   site {

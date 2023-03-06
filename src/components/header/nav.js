@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
 import { siteMetadata } from "../../../gatsby-config"
 
 const GlobalNav = ({ title, location }) => {
@@ -14,7 +13,7 @@ const GlobalNav = ({ title, location }) => {
   }
 
   return (
-    <NavWrapper>
+    <div className="c-nav">
       <button
         type="button"
         onClick={move}
@@ -28,7 +27,6 @@ const GlobalNav = ({ title, location }) => {
       <nav role="navigation" className= {
           isOpen ? "is-active": ""
       }
-
       >
         <ul className="c-nav">
           <li>
@@ -107,208 +105,8 @@ const GlobalNav = ({ title, location }) => {
             </Link>
         </div>
       </nav>
-    </NavWrapper>
+    </div>
   )
 }
 
 export default GlobalNav
-
-const NavWrapper = styled.div`
-	.c-nav__btn {
-		transform: translateY(-50%);
-		position: fixed;
-		font-size: 1rem;
-		width: 60px;
-		height: 50px;
-		right: 10px;
-        padding-top: 10px;
-		top: 30px;
-		display: inline-block;
-		transition: .3s;
-		background: none;
-		border: none;
-		outline: none;
-		z-index: 200;
-    color: #264785;
-
-    path {
-      fill: #264785;
-    }
-
-    &::after {
-      font-weight: bold;
-      margin-top: 5px;
-      display: inline-block;
-      content: 'MENU';
-    }
-    &.is-active {
-      &::after {
-        content: 'CLOSE';
-      }
-      .fish {
-        transform-origin: center;
-        transform: scaleY(0);
-      }
-
-    }
-
-    .fish {
-      transition:.5s;
-    }
-		@media only screen and (min-width: 768px) {
-			display: none;
-		}
-	}
-    [role=navigation] {
-        @media only screen and (max-width: 767px) {
-            height: 0;
-            overflow: hidden;
-            &.is-active {
-                background: var(--filter);
-                left: 0;
-                top: 60px;
-                position: fixed;
-                height: calc(100vh - 60px);
-                justify-content: center;
-                flex-direction: column;
-                padding: 15px;
-                display: flex;
-                align-items: center;
-                backdrop-filter: blur(10px);
-            }
-        }
-    }
-	.c-nav {
-
-        @media only screen and (min-width: 768px) {
-            height: auto;
-            gap: 24px;
-            display: flex;
-        }
-        & > li {
-            @media only screen and (max-width: 767px) {
-                margin-bottom: 16px;
-            }
-            & > a {
-                letter-spacing: .15em;
-                color: #264785;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                @media only screen and (max-width: 767px) {
-                    color: var(--color-blue);
-                    padding: 12px 8px;
-                    margin: 0 auto;
-                    border-radius: 4px;
-                    text-shadow: 0 0 2px var(--filter);
-                    font-size: 2rem;
-                    height: 38px;
-                    &::before {
-                        content: "";
-                        width: 8px;
-                        margin-right: 10px;
-                        height: 8px;
-                        display: inline-block;
-                        border: 2px solid var(--color-accent);
-                        border-bottom: none;
-                        border-left: none;
-                        transform: rotate(45deg);
-                    }
-                }
-                @media only screen and (min-width: 768px) {
-                    height: 50px;
-                    position: relative;
-
-                    &::before {
-                        content: '';
-                        background: var(--color-accent);
-                        position: absolute;
-                        bottom: -6px;
-                        left: 0%;
-                        height: 1px;
-                        width: 0;
-                        transition: .3s;
-                    }
-                    &::after {
-                        content: '';
-                        background: var(--color-accent);
-                        position: absolute;
-                        bottom: -9px;
-                        left: 0;
-                        height: 7px;
-                        width: 7px;
-                        border-radius: 50%;
-                        transform: scale(0);
-                        transition: .3s;
-                    }
-                    &:hover {
-                        &::before {
-                            width: 100%;
-                        }
-                        &::after {
-                            transform: scale(100%);
-                            left: 100%;
-                        }
-                        color: #1231b8;
-                    }
-
-                 }
-            }
-        }
-	}
-    .c-nav__child {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 20px;
-        gap: 8px;
-        li {
-            flex-grow: 1;
-            a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 30px;
-                text-shadow: 0 0 2px var(--filter);
-                font-size: 1.4rem;
-                border-radius: 8px;
-                text-align: center;
-                text-decoration: none;
-                padding: 4px 8px;
-                border: none;
-                color: var(--color-blue);
-
-                border: 1px solid var(--color-blue);
-            }
-        }
-        @media only screen and (min-width: 768px) {
-            display: none;
-        }
-    }
-    .c-nav__sns {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 16px;
-         font-size: 2rem;
-         a {
-            border: 1px solid var(--color-blue);
-            color: var(--color-blue);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            svg {
-                width: 20px;
-                height: 20px;
-            }
-         }
-        @media only screen and (min-width: 768px) {
-            display: none;
-        }
-    }
-}
-
-
-`

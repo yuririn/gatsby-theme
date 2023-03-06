@@ -5,7 +5,6 @@ import { siteMetadata } from "./../../gatsby-config"
 import { Article } from "./../styles/blog-styles/article"
 import { Header } from "./../styles/blog-styles/header"
 import { Edit } from "./../styles/blog-styles/edit"
-import styled from "styled-components"
 import { MDXProvider } from "@mdx-js/react"
 
 
@@ -60,7 +59,7 @@ const BlogPostTemplate = ({ data, location, children }) => {
       </Header>
       <BreadCrumbList type="blog" cate={category} tag={post.tags[0]}/>
 
-      <Body>
+      <div className="l-body--article">
         <Article>
           <h1 itemProp="headline" className="c-article__heading">{post.title}</h1>
           <dl className="c-article__date">
@@ -112,7 +111,7 @@ const BlogPostTemplate = ({ data, location, children }) => {
           tags={post.tags}
           slug={data.mdx.fields.slug}
         />
-      </Body>
+      </div>
     </Layout>
   )
 }
@@ -236,17 +235,5 @@ export const pageQuery = graphql`
         title
       }
     }
-  }
-`
-const Body = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    position: relative;
-    max-width: 1120px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-  aside.l-container .display{
-    margin-bottom: 50px;
   }
 `
