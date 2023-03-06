@@ -25,6 +25,7 @@ const shortcodes = { Prof, Msg}
 
 const BlogPostTemplate = ({ data, location, children }) => {
 
+
   const post = data.mdx.frontmatter
   // const faq = post.faq
   const siteTitle = siteMetadata?.title || `Title`
@@ -110,6 +111,7 @@ const BlogPostTemplate = ({ data, location, children }) => {
           title={post.title}
           tags={post.tags}
           slug={data.mdx.fields.slug}
+          toc={data.mdx.tableOfContents.items}
         />
       </div>
     </Layout>
@@ -205,6 +207,7 @@ export const pageQuery = graphql`
 
     mdx(id: { eq: $id }) {
       id
+      tableOfContents(maxDepth: 3)
       fields {
         slug
       }

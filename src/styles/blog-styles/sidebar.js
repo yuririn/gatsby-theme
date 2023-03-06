@@ -30,6 +30,8 @@ export const Sidebar = styled.div`
     &--heading {
       border: var(--color-blue) 1px solid;
       border-bottom: none;
+      background: var(--color-blue);
+      color:  var(--background);
         text-align: left;
         font-size: 1.4rem;
         border-top-left-radius: 8px;

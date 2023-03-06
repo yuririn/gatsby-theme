@@ -4,79 +4,62 @@ import RelatedList from "./related-list"
 import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
-// import Search from "../search"
+import Search from "../search"
 
-const Side = ({ cateId, topic, tags, slug }) => {
+const Side = ({ cateId, toc, tags, slug }) => {
+  const [topics, setTopics] = useState(toc);
 
-  let num = 0
+  useEffect(() => {
+    const callback = (entries) => {
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting) {
+          setTopics(
+            topics.map(item => {
+              if(`items` in item) {
+                item.items.map(child=>{
+                  child.target = child.url.replace(/^#/,'') === entry.target.id ? `current` : ``
+                  return child
+                })
+              }
+              item.target = item.url.replace(/^#/,'') === entry.target.id ? `current` : ``
+              posChange(entry.target.textContent)
+              return item
+            })
+          )
+        }
+      });
+    };
+    const observer = new IntersectionObserver(callback, options);
 
-  // const tableofContet = topic.map((item, num) => {
-  //   return  {id: `topic${num}`,tag: item.tagName, name: item.properties.id, url: `#${encodeURIComponent(item.properties.id,)}`}
-  // });
+    // // domから監視対象を取得
+    let targets = Array.from(document.querySelectorAll('[itemprop=articleBody] h2, [itemprop=articleBody] h3'));
 
+    // 監視対象をオブジェクトにセットする
+    targets.forEach((terget) => observer.observe(terget, options));
 
-  // const [topics, setTopics] = useState(tableofContet);
+  },[])
 
-  // useEffect(() => {
-  //   const callback = (entries) => {
-  //     entries.forEach((entry)=>{
-  //       if(entry.isIntersecting) {
-  //         setTopics(
-  //           topics.map(item => {
-  //             if(item.children) {
-  //               item.children = item.children.map(child => {
-  //                 if(entry.target.id === child.name) {
-  //                   child.target = 'current'
-  //                   posChange(child.id)
-  //                 } else {
-  //                   child.target = ''
-  //                 }
-  //                 return child;
-  //               })
-  //             }
+  const posChange =(title)=>{
+    let heights = 0
+    const topics = document.querySelector("#topic")
+    let end = false;
+    topics.querySelectorAll('li a').forEach((i, num) =>{
+      if(num > 0) {
+        let element = topics.querySelectorAll('li a')[num -1]
+        if(end) return
+        heights += element.clientHeight + 1;
+        if(title === i.textContent) end = true
+      }
+    })
+    topics.scrollTop = heights;
+  }
 
-  //             if(entry.target.id === item.name) {
-  //               item.target = 'current'
-  //               posChange(item.id)
-
-  //             } else {
-  //               item.target = ''
-  //             }
-
-  //             return item
-  //           })
-  //         )
-  //       }
-  //     });
-  //   };
-
-
-
-  //   const observer = new IntersectionObserver(callback, options);
-
-  //   // // domから監視対象を取得
-  //   let targets = Array.from(document.querySelectorAll('[itemprop=articleBody] h2, [itemprop=articleBody] h3'));
-
-  //   // 監視対象をオブジェクトにセットする
-  //   targets.forEach((terget) => observer.observe(terget, options));
-
-  // },[])
-
-  // const posChange =(id)=>{
-  //   let heights = 0
-  //   const num = id.replace('topic', "")
-  //   for (let i = 0;  i <  num; i++) {
-  //     heights += document.querySelector(`#topic${i}`).clientHeight + 1;
-  //   }
-  //   document.querySelector("#topic").scrollTop = heights;
-  // }
-
-  //オプションを定義
-  // const options = {
-  //   root: null,
-  //   rootMargin: "0px",
-  //   threshold: 0.5
-  // };
+  // オプションを定義
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5
+  };
 
   return (
     <Sidebar>
@@ -93,12 +76,26 @@ const Side = ({ cateId, topic, tags, slug }) => {
           })}
         </ul>
       </section>
-      {/* <section className="p-section search">
+      <section className="p-section search">
          <h2 className="c-heading--lg">記事を探す</h2>
         <Search></Search>
-      </section> */}
+      </section>
       <div className="inner">
-        <div>
+        <div className="side-topic">
+          <h2 className="side-topic--heading">目次</h2>
+          <ul id="topic">
+            {topics.map(item =>{
+              return (
+                <li key={item.id} className={item.target}><a href={item.url} id={item.id}>{item.title}</a>
+                  {item.items && (
+                    <ul>
+                      {item.items.map(child=><li key={child.id} className={child.target}><a href={child.url} id={child.id} >{child.title}</a></li>)}
+                    </ul>
+                    )}
+                </li>
+              )
+            })}
+          </ul>
         </div>
 
         <ul className="side-banner">
