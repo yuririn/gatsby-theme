@@ -37,6 +37,7 @@ const BlogPostTemplate = ({ data, location, children }) => {
         : ""
     })[0].name
   }
+
   return (
     <Layout location={location}>
       <Header>
@@ -123,15 +124,24 @@ const BlogPostTemplate = ({ data, location, children }) => {
   )
 }
 
-export const Head = ({ data, location }) => (
- <Seo
+export const Head = ({ data, location }) => {
+  const date = data.mdx.frontmatter.modifiledate ? data.mdx.frontmatter.modifiledate : data.mdx.frontmatter.date
+ return (<Seo
   data={{
     title: data.mdx.frontmatter.title,
     location: location,
     description: data.mdx.frontmatter.description,
+    template: `blog-post`,
+    faq : data.mdx.frontmatter.faq ? data.mdx.frontmatter.faq : '',
+    noindex : data.mdx.frontmatter.noindex ? true : false,
+    ogp: data.siteOgImage.childImageSharp.resize.src,
+    thumbnail: data.siteThumnailImage.childImageSharp.resize.src,
+    date: date.replace(/\./g, "-"),
+    cateId : data.mdx.frontmatter.cateId,
+    tag : data.mdx.frontmatter.tags[0],
   }}
- />
-)
+ />)
+}
 
 export default BlogPostTemplate
 

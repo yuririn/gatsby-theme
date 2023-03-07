@@ -360,7 +360,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       pagetype: String
       cateId: String
       hero: String
-      faq: [String]
       noindex: Boolean
     }
 
