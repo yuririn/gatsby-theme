@@ -1,17 +1,17 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-// import Seo from "../components/seo"
 import Img from "../components/common/img"
-import Search from "../components/search"
 
 import Layout from "../components/layout"
 import FirstView from "../components/top-first-view"
-// import FovoriteList from "../components/common/favorites"
+import FovoriteList from "../components/common/favorites"
 import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 import Seo from "./../components/seo";
+
+import Ad from '../components/common/ad'
 
 import { siteMetadata } from "./../../gatsby-config"
 
@@ -42,6 +42,7 @@ const BlogIndex = ({ data, location }) => {
                 <>
                 { i === 4 ? (
                   <>
+                  <li className="p-entryCard c-grid__item--md6 c-grid__item--lg4"><Ad></Ad></li>
                     <li key={`post${i}`} className={cardClass} role="article">
                       <Link to={post.fields.slug} className="p-entryCard__img">
                         <Img
@@ -67,7 +68,7 @@ const BlogIndex = ({ data, location }) => {
                         <AddTagLink tags={post.frontmatter.tags} key={`post${i}`}/>
                       </div>
                     </li>
-                  </>
+                    </>
                   ):(
                   <>
                     <li key={`post${i}`} className={cardClass} role="article">
@@ -103,17 +104,22 @@ const BlogIndex = ({ data, location }) => {
         </ol>
       </div>
       <p className="u-text-center u-mblg l-container">
-        <Link to="/blogs/" className="p-btn--detail">
+        <Link to="/blogs/" className="p-btn--detail u-mblg">
           Read More Blog
         </Link>
+        <Ad></Ad>
       </p>
       <div className="l-container p-section">
-        <h2 className="c-heading--lg">記事を検索する</h2>
-          <Search></Search>
+        <FovoriteList type="web" />
+        <Ad></Ad>
+        <FovoriteList type="life" />
+        <Ad></Ad>
+        <FovoriteList type="career" />
         <h2 className="c-heading--lg ">人気のジャンル</h2>
         <Genre />
       </div>
       <Prof></Prof>
+      <div className="l-container p-section"><Ad></Ad></div>
     </Layout>
   );
 }

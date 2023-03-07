@@ -12,6 +12,7 @@ import Prof from "../components/common/profile"
 import Pagination from "../components/common/pagination"
 import { siteMetadata } from "../../gatsby-config"
 import BreadCrumbList from "../components/common/bread-crumb-list"
+import Ad from '../components/common/ad'
 
 const blogs = ({ pageContext, data, location }) => {
   const { cateSlug, current, page } = pageContext
@@ -74,10 +75,16 @@ const blogs = ({ pageContext, data, location }) => {
         {page !== 1 && (<Pagination num={page} current={current} type={`${cateSlug}/`}></Pagination>)}
       </section>
       <aside className="l-container">
+        <div className="u-mblg">
+      <Ad></Ad>
+      </div>
         <section className="p-section u-text-center">
           <h2 className="c-heading--lg">人気のジャンル</h2>
           <Genre />
         </section>
+        <div className="u-mblg">
+      <Ad></Ad>
+      </div>
         <Prof />
       </aside>
     </Layout>

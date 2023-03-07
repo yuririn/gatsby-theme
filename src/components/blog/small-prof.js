@@ -2,6 +2,7 @@ import React from "react"
 import Img from "../common/img"
 import { Link } from "gatsby"
 import config from "../../../gatsby-config"
+import Ad from "../common/ad"
 
 const smallProf = () => {
   const author = config.siteMetadata.author;
@@ -50,7 +51,9 @@ const smallProf = () => {
         <br></br>
         <Link to="/about/">Read More</Link>
       </p>
+
     </div>
+    <div className="u-mblg"><Ad></Ad></div>
           </>
   )
 }

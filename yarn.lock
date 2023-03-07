@@ -4108,6 +4108,13 @@
     "readable-stream" "^2.2.2"
     "typedarray" "^0.0.6"
 
+"concat-with-sourcemaps@^1.0.0":
+  "integrity" "sha512-4gEjHJFT9e+2W/77h/DS5SGUgwDaOwprX8L/gl5+3ixnzkVJJsZWDSelmN3Oilw3LNDZjZV0yqH1hLG3k6nghg=="
+  "resolved" "https://registry.npmjs.org/concat-with-sourcemaps/-/concat-with-sourcemaps-1.1.0.tgz"
+  "version" "1.1.0"
+  dependencies:
+    "source-map" "^0.6.1"
+
 "config-chain@^1.1.11":
   "integrity" "sha512-qj+f8APARXHrM0hraqXYb2/bOVSV4PvJQlNZ/DVj0QrmNM2q2euizkeuVckQ57J+W0mRH6Hvi+k50M4Jul2VRQ=="
   "resolved" "https://registry.npmjs.org/config-chain/-/config-chain-1.1.13.tgz"
@@ -7535,6 +7542,15 @@
     "semver-greatest-satisfied-range" "^1.1.0"
     "v8flags" "^3.2.0"
     "yargs" "^7.1.0"
+
+"gulp-concat@^2.6.1":
+  "integrity" "sha512-a2scActrQrDBpBbR3WUZGyGS1JEPLg5PZJdIa7/Bi3GuKAmPYDK6SFhy/NZq5R8KsKKFvtfR0fakbUCcKGCCjg=="
+  "resolved" "https://registry.npmjs.org/gulp-concat/-/gulp-concat-2.6.1.tgz"
+  "version" "2.6.1"
+  dependencies:
+    "concat-with-sourcemaps" "^1.0.0"
+    "through2" "^2.0.0"
+    "vinyl" "^2.0.0"
 
 "gulp-notify@^4.0.0":
   "integrity" "sha512-0cdDvZkHVqu4tqrcOI/jL5YdxYEIPQ7+p3YxnO48w5hhPSisvogZ887qL+fpYItg9m4MUhJ5Se8p8xGy3uJESA=="

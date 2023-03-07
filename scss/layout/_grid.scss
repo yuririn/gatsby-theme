@@ -1,10 +1,12 @@
 .c-grid {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
     @include mq(md){
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
+        gap: 32px;
     }//media query
     &__item {
+        width: 100%;
         &--md6 {
             margin-bottom: 0;
             @include mq(md){

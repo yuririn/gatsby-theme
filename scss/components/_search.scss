@@ -65,30 +65,29 @@
         }//media query
     }
     &__form {
+        font-size: 16px;
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35.997" height="36.004" viewBox="0 0 35.997 36.004"><path id="Icon_awesome-search" d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z" fill="%23264785"/></svg>') center right 12px/ 30px auto no-repeat rgba(#fff, .8);
         border: var(--color-blue) 1px solid;
         border-radius: 50px;
         width: 100%;
+         border: #264785 2px solid;
 
-
-        @include mqd(md) {
-            padding: 4px 50px 4px 16px;
-
-            height: 40px;
-            border: none;
-            box-sizing: border-box;
-
-        }
-        @include mq(md) {
-            box-sizing: border-box;
-            font-size: 24px;
+         @include mqd(md) {
+             padding: 4px 50px 4px 16px;
+             height: 40px;
+             box-sizing: border-box;
+            }
+            @include mq(md) {
+                border: #264785 5px solid;
+                box-sizing: border-box;
+                font-size: 24px;
              &::placeholder {
                  font-weight: bold;
                  color: #000;
                  font-size: 16px;
                  text-align: center;
              }
-            border: #264785 5px solid;
+
             padding: 16px 50px 16px 24px;
             max-width: 700px;
             position: absolute;
@@ -138,7 +137,7 @@
         }
         ul {
             overflow: auto;
-            max-height: 70vh;
+            max-height: 60vh;
             background: var(--pale-gray);
             border-radius: 18px;
             border: 1px solid var(--color-blue);

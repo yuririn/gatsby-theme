@@ -4,7 +4,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-// import Seo from "../components/seo"
 import Img from "../components/common/img"
 import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
@@ -12,6 +11,7 @@ import Prof from "../components/common/profile"
 import Pagination from "../components/common/pagination"
 import BreadCrumbList from "../components/common/bread-crumb-list"
 import Seo from "./../components/seo";
+import Ad from "../components/common/ad"
 
 const blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
@@ -72,11 +72,17 @@ const blogs = ({ pageContext, data, location }) => {
         </ol>
         {page !== 1 && (<Pagination num={page} current={current} type=""></Pagination>)}
       </section>
+      <div className="l-container u-mblg">
+      <Ad></Ad>
+      </div>
       <aside className="l-container">
         <section className="p-section u-text-center">
           <h2 className="c-heading--lg">人気のジャンル</h2>
           <Genre />
         </section>
+        <div className="u-mblg">
+      <Ad></Ad>
+      </div>
         <Prof />
       </aside>
     </Layout>

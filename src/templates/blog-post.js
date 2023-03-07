@@ -20,8 +20,9 @@ import Sidebar from "../components/blog/sidebar"
 import Card from "../components/blog/card"
 import Msg from "../components/blog/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Ad from '../components/common/ad'
 
-const shortcodes = { Prof, Msg, Card}
+const shortcodes = { Prof, Msg, Card, Ad}
 
 const BlogPostTemplate = ({ data, location, children }) => {
   const post = data.mdx.frontmatter
@@ -90,10 +91,11 @@ const BlogPostTemplate = ({ data, location, children }) => {
                 )
               })}
           </Edit>
-          <div className="c-btn--donation" id="end_of_article">
+          <div className="c-btn--donation u-mblg" id="end_of_article">
               <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
               <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noreferrer"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" className="svg-inline--fa fa-heart fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>銀ねこアトリエを応援する</a>
             </div>
+            <Ad></Ad>
             <Sns url={perfectUrl} title={perfectTitle} />
           <ol className="c-pager--article p-section l-container">
             <li className="c-pager--article__prev">
@@ -119,6 +121,9 @@ const BlogPostTemplate = ({ data, location, children }) => {
           slug={data.mdx.fields.slug}
           toc={data.mdx.tableOfContents.items}
         />
+      </div>
+      <div className="l-container u-mblg">
+      <Ad></Ad>
       </div>
     </Layout>
   )

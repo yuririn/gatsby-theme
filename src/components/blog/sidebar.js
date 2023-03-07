@@ -4,6 +4,7 @@ import RelatedList from "./related-list"
 import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
+import Ad from '../common/ad'
 
 
 const Side = ({ cateId, toc, tags, slug }) => {
@@ -96,6 +97,7 @@ const Side = ({ cateId, toc, tags, slug }) => {
             </ul>
           </div>
         )}
+        <Ad></Ad>
 
         <ul className="side-banner">
 
