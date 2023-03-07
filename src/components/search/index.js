@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import styled from "styled-components"
 
 const SearchResult =  (props) => {
   // 全記事データ取得 //
@@ -90,15 +89,11 @@ const SearchResult =  (props) => {
   }, [props.value])
 
   return (
-    <ResultList>
-      <div className="result-inner">
-        {result !== null && result.length !== 0 ? (
-          <p>
-            <b>{result.length}</b>件ヒットしました
-          </p>
-        ) : (
-          ""
-        )}
+    <>{
+      props.value !== '' && (<div className="c-search__result">
+        <p className={props.value !== '' && result.length === 0 ? `` : `no-result`}>
+          <strong>{result.length}</strong>件 ヒットしました
+        </p>
 
         <ul>
           {result.map(e => {
@@ -121,8 +116,9 @@ const SearchResult =  (props) => {
             )
           })}
         </ul>
-      </div>
-    </ResultList>
+      </div>)
+    }
+    </>
   )
 }
 
@@ -131,94 +127,32 @@ const Search = props => {
   const onChange = e => {
     setValue(e.target.value)
   }
+  const [isSearch, showSearch] = useState(false)
+  const click = e => {
+    isSearch === false
+      ? document.body.classList.add("no-scroll--search")
+      : document.body.classList.remove("no-scroll--search")
+    showSearch(!isSearch)
+    setValue('')
+  }
   return (
-    <SearchBox>
-      <div>
-        <input
-          type="text"
-          placeholder="検索する"
-          onChange={onChange}
-          className="box"
-        />
-        <SearchResult value={value} pagetype={props.type}/>
+      <div className={`c-search${value? ' active' : ''}`}>
+          <button className="c-search__btn" type="button" onClick={click}>Search</button>
+        <div className={`c-search__inner${isSearch? ' show' : ''}`} >
+
+          <input
+            type="text"
+            placeholder="検索する"
+            onChange={onChange}
+            onKeyUp={onChange}
+            className="c-search__form"
+            value={value}
+          />
+          <SearchResult value={value} pagetype={props.type}/>
+          <div className={`c-search__bg${isSearch? ' show' : ''}`} onClick={click}></div>
+        </div>
       </div>
-    </SearchBox>
   )
 }
 export default Search
 
-const SearchBox = styled.div`
-  margin-bottom: 20px;
-  & + .ads.display {
-    margin: 0 auto 80px;
-  }
-
-  .box {
-    display: block;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 500px;
-    background: var(--background);
-    color: var(--font-color);
-    border: solid 1px var(--color-blue);
-    box-sizing: border-box;
-    outline: none;
-    font-size: 1.6rem;
-    box-shadow: none;
-  }
-`
-
-const ResultList = styled.div`
-  .result-inner {
-    margin-top: 20px;
-    margin-bottom: 50px;
-
-    p {
-      text-align: center;
-    }
-  }
-  ul {
-    margin-top: 20px;
-    background: var(--pale-gray);
-    max-height: 300px;
-    overflow: auto;
-    margin-bottom: 50px;
-    border-radius: 10px;
-  }
-  li {
-    padding: 10px 20px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    line-height: 1.8;
-  }
-  li a {
-    color: var(--color-blue);
-  }
-
-  li time {
-    display: block;
-    font-weight: normal;
-    font-size: 1.2rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    li {
-      text-indent: -100px;
-      margin-left: 100px;
-    }
-    li a {
-      text-decoration: underline;
-    }
-
-    li time {
-      font-size: 1.4rem;
-      width: 100px;
-      text-indent: 0;
-      display: inline-block;
-      font-weight: bold;
-      color: var(--font-color);
-    }
-  }
-`

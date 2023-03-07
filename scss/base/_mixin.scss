@@ -1,0 +1,32 @@
+$container: 1170;
+
+$font-base-size: 1.6rem;
+$line-height: 1.8;
+$breakpoints: ('sm': 425,
+    'md': 768,
+    'lg': 970,
+    'xl': 1366);
+
+@mixin mq($breakpoint: 'md') {
+    @media screen and (min-width: #{map.get($breakpoints, $breakpoint)}px) {
+        @content;
+    }
+}
+
+@mixin mqd($breakpoint: md) {
+    @media screen and (max-width: #{map-get($breakpoints, $breakpoint) + 1}px) {
+        @content;
+    }
+}
+
+// medium 500,bold 700
+@mixin font($weight: 400) {
+    font-family: $basic-font-family;
+    font-weight: $weight;
+}
+
+// semi-bold 600,bold 700
+@mixin sub-font($weight: 700) {
+    font-family: $sub-font-family;
+    font-weight: $weight;
+}

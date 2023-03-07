@@ -1,0 +1,33 @@
+@use "sass:map";
+@import './base/mixin';
+@import './base/base';
+@import './layout/container';
+@import './layout/header'   ;
+@import './layout/nav'   ;
+@import './layout/footer'   ;
+@import './layout/body';
+@import './layout/aside';
+@import './layout/grid';
+@import './project/pageHeader';
+@import './components/heading';
+@import './components/search';
+
+.u-text-center {
+    text-align: center;
+}
+.u-mblg {
+    margin-bottom: 32px;
+    @include mq(md){
+      margin-bottom: 56px;
+    }//media query
+}
+.u-mblg {
+    margin-bottom: 32px;
+    @include mq(md){
+      margin-bottom: 56px;
+    }//media query
+}
+
+.p-section {
+    margin-bottom: 50px;
+}

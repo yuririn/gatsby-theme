@@ -1,0 +1,204 @@
+ .c-search {
+    display: flex;
+    @include mqd(md){
+        position: relative;
+        margin: 20px 0;
+        width: 100%;
+    }
+    &__btn {
+        z-index: 200;
+        @include mqd(md){
+            display: none;
+        }//media query
+        border:none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: block;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35.997" height="36.004" viewBox="0 0 35.997 36.004"><path id="Icon_awesome-search" d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z" fill="%23fff"/></svg>') center/ 20px auto no-repeat #264785;
+        border:none;
+        position: fixed;
+        border: 1px solid #264785;
+        right: 15px;
+        top: 10px;
+        font-size: 0;
+        padding-top: 30px;
+        transition: .3s;
+        &:hover {
+            cursor: pointer;
+             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35.997" height="36.004" viewBox="0 0 35.997 36.004"><path id="Icon_awesome-search" d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z" fill="%23264785"/></svg>') center/ 20px auto no-repeat #fff;
+        }
+    }
+    &__bg {
+        @include mqd(md) {
+            display:none
+        }
+        cursor: pointer;
+    }
+    &__inner {
+        @include mq(md){
+        display: none;
+          &.show {
+            z-index: 100;
+            flex-direction: column;
+            position: fixed;
+            left: 0;
+            top: 0;
+            align-items: center;justify-content: center;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            z-index: 100;
+
+            .c-search__bg {
+                z-index: -1;
+                background: rgba(#000, .4);
+                position: fixed;
+                left: 0;
+                top: 60px;
+                height: calc(100vh - 60px);
+                width: 100%;
+                display: block;
+            }
+
+          }
+        }//media query
+    }
+    &__form {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35.997" height="36.004" viewBox="0 0 35.997 36.004"><path id="Icon_awesome-search" d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z" fill="%23264785"/></svg>') center right 12px/ 30px auto no-repeat rgba(#fff, .8);
+        border: var(--color-blue) 1px solid;
+        border-radius: 50px;
+        width: 100%;
+
+
+        @include mqd(md) {
+            padding: 4px 50px 4px 16px;
+
+            height: 40px;
+            border: none;
+            box-sizing: border-box;
+
+        }
+        @include mq(md) {
+            box-sizing: border-box;
+            font-size: 24px;
+             &::placeholder {
+                 font-weight: bold;
+                 color: #000;
+                 font-size: 16px;
+                 text-align: center;
+             }
+            border: #264785 5px solid;
+            padding: 16px 50px 16px 24px;
+            max-width: 700px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 80px;
+        }
+    }
+    &__result {
+        @include mq(md){
+            max-width: 700px;
+            width: 100%;
+            position: absolute;
+            top: calc(30% + 100px);
+            left: 50%;
+            transform: translateX(-50%);
+        }//media query
+        p {
+            margin: 15px 0;
+            text-align: center;
+            strong {
+                color: var(--color-accent)
+            }
+            color: var(--color);
+            @include mqd(md){
+                &:not(.no-result) + ul {
+                    display: none;
+                }
+
+            }//media query
+            @include mq(md){
+                background: var(--pale-gray);
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              margin: 0;
+              padding: 24px;
+              border-radius: 16px;
+              &.no-result {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                border-bottom: 1px solid var(--color-blue);
+              }
+            }//media query
+        }
+        ul {
+            overflow: auto;
+            max-height: 70vh;
+            background: var(--pale-gray);
+            border-radius: 18px;
+            border: 1px solid var(--color-blue);
+            @include mq(md){
+                max-height: 250px;
+              border: none;
+              border-top-left-radius: 0;
+              border-top-right-radius: 0;
+            }//media query
+            a {
+                display: block;
+                font-weight: normal;
+                text-decoration: none;
+                line-height: 1.4;
+                color: var(--color-blue);
+                padding: 8px;
+                @include mq(md){
+                    padding: 8px 16px;
+
+                }//media query
+                border-bottom: 1px solid var(--color-blue);
+            }
+            li {
+                &:first-child {
+                    @include mqd(md){
+                    margin-top: 16px;
+
+                    }//media query
+                }
+                &:last-child {
+                    margin-bottom: 16px;
+                    a {
+                        border-bottom: 0;
+                    }
+                }
+                padding: 2px 0;
+                time {
+                    display: block;
+                    font-weight: bold;
+
+                }
+            }
+
+
+        }
+    }
+ }
+.is-active {
+    .c-search {
+        display: block;
+
+        &.active + .c-nav {
+            display: none;
+        }
+    }
+}
+
+
+body.no-scroll--search {
+    @include mq(md){
+      overflow: hidden;
+    }//media query
+}

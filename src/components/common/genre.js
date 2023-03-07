@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import Img from "./img"
-import styled from "styled-components"
 import { siteMetadata } from "../../../gatsby-config"
 
 const genre = () => {

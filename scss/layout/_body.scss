@@ -1,0 +1,31 @@
+.c-article__heading {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--color-d-blue);
+    line-height: 1.4;
+
+    @include mq(md) {
+        margin-bottom: 30px;
+        font-size: 2.8rem;
+    }
+}
+
+.l-body {
+    &--article {
+        padding: 0 16px;
+
+        @include mq(md) {
+            padding: 0;
+            display: flex;
+            position: relative;
+            max-width: 1120px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        aside.l-container .display {
+            margin-bottom: 50px;
+        }
+    }
+}

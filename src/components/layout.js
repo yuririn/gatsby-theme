@@ -1,6 +1,4 @@
 import * as React from "react"
-import { BaseStyle } from "./../styles/common/base"
-import { CommonStyle } from "./../styles/common/common"
 import { createGlobalStyle } from "styled-components"
 
 import { siteMetadata } from "./../../gatsby-config"
@@ -21,8 +19,6 @@ const Layout = ({ location, children }) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
-      <BaseStyle />
-      <CommonStyle />
       <GlobalStyle />
       <Header title={siteMetadata.title} location={location.pathname} />
       <main>{children}</main>

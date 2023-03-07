@@ -148,7 +148,7 @@ export const Article = styled.div`
           display: flex;
           max-width: 320px;
           width: 100%;
-          background: var(--color-ac);
+          background: var(--color-accent);
           border: 1px solid var(--color-ac)!important;
           color: #fff;
           justify-content: center;
@@ -169,7 +169,7 @@ export const Article = styled.div`
           @media screen and (min-width: 768px) {
               transition: .3s;
               &:hover {
-                  color: var(--color-ac);
+                  color: var(--color-accent);
                   background: #fff;
               }
           }

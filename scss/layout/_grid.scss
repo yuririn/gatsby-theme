@@ -1,0 +1,21 @@
+.c-grid {
+    @include mq(md){
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }//media query
+    &__item {
+        &--md6 {
+            margin-bottom: 0;
+            @include mq(md){
+                width: calc(50% - 16px);
+            }//media query
+        }
+        &--lg4 {
+            margin-bottom: 0;
+            @include mq(lg){
+                width: calc(33.33333% - 22px);
+            }//media query
+        }
+    }
+}

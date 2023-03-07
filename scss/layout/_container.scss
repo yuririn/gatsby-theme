@@ -1,0 +1,26 @@
+.l-container,
+.l-container--md {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @include mq(md){
+        padding-left: 32px;
+        padding-right: 32px;
+
+    }//media query
+}
+
+  .l-container--md {
+      max-width: 700px;
+  }
+.l-main_contents {
+    margin-top: 0;
+    margin-bottom: 50px;
+
+    &.is-page {
+        padding-top: 80px;
+    }
+}

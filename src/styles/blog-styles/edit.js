@@ -345,7 +345,7 @@ export const Edit = styled.section`
       height: 100%;
       width: 0.5em;
       display: block;
-      background: var(--color-ac);
+      background: var(--color-accent);
     }
   }
   .code-highlighter__title {

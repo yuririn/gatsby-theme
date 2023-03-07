@@ -20,7 +20,7 @@ export const Sidebar = styled.div`
         margin-bottom: 30px;
     }
   .side-topic {
-    margin-bottom: 34px;
+    margin-bottom: 34px!important;
     display: none;
 
     @media screen and (min-width: 768px) {
@@ -46,11 +46,12 @@ export const Sidebar = styled.div`
 
     }
     & > ul {
-      max-height: 300px;
+      max-height: 400px;
       overflow:auto;
         border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
       border: var(--color-blue) 1px solid;
+      font-size: 14px;
     }
     ul {
         counter-reset: num;
@@ -68,7 +69,7 @@ export const Sidebar = styled.div`
     li {
       background: var(--pale-gray);
 
-      &.current > a{
+      a.current {
         transform: translateX(-4px);
         background: var(--background);
       }
@@ -181,6 +182,13 @@ export const Sidebar = styled.div`
           padding-left: 0;
           padding-right: 0;
       }
+    }
+  }
+  .contact--sidebar {
+    margin-bottom: -40px;
+    small {
+        display: block;
+        margin-top: 8px;
     }
   }
   .inner {

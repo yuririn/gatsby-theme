@@ -4,27 +4,43 @@ import RelatedList from "./related-list"
 import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
-import Search from "../search"
+
 
 const Side = ({ cateId, toc, tags, slug }) => {
   const [topics, setTopics] = useState(toc);
 
   useEffect(() => {
     const callback = (entries) => {
-      entries.forEach((entry)=>{
+      entries.forEach((entry, i)=>{
+
         if(entry.isIntersecting) {
-          setTopics(
-            topics.map(item => {
+          setTopics( () => {
+            let num = 0
+            return topics.map((item, i) => {
+              item.dataId = num
+              num++
               if(`items` in item) {
-                item.items.map(child=>{
-                  child.target = child.url.replace(/^#/,'') === entry.target.id ? `current` : ``
+                item.items.map((child)=>{
+                  child.dataId = num
+                  num++
+                  if(child.url.replace(/^#/,'') === entry.target.id){
+                    child.target =  `current`
+                  } else {
+                    child.target =  ``
+                  }
                   return child
                 })
               }
-              item.target = item.url.replace(/^#/,'') === entry.target.id ? `current` : ``
-              posChange(entry.target.textContent)
+
+              if(item.url.replace(/^#/,'') === entry.target.id){
+                item.target =  `current`
+                posChange(i)
+              } else {
+                item.target =  ``
+              }
               return item
             })
+          }
           )
         }
       });
@@ -39,19 +55,13 @@ const Side = ({ cateId, toc, tags, slug }) => {
 
   },[])
 
-  const posChange =(title)=>{
+  const posChange = (id)=>{
     let heights = 0
-    const topics = document.querySelector("#topic")
-    let end = false;
-    topics.querySelectorAll('li a').forEach((i, num) =>{
-      if(num > 0) {
-        let element = topics.querySelectorAll('li a')[num -1]
-        if(end) return
-        heights += element.clientHeight + 1;
-        if(title === i.textContent) end = true
-      }
-    })
-    topics.scrollTop = heights;
+    const lists =  document.querySelectorAll("#topic > li")
+    for (let i = 0;  i < id; i++) {
+      heights += lists[i].clientHeight + 1;
+    }
+    document.querySelector("#topic").scrollTop = heights;
   }
 
   // オプションを定義
@@ -63,40 +73,29 @@ const Side = ({ cateId, toc, tags, slug }) => {
 
   return (
     <Sidebar>
-      <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
-      <section className="p-section">
-        <h2 className="c-heading--lg--side">ジャンル</h2>
-        <ul className="sideCateList">
-          {siteMetadata.category.map((item, index) => {
-            return (
-              <li key={`side-ganre${index}`}>
-                <Link to={`/blogs/${item.slug}/`}>{item.name}</Link>
-              </li>
-            )
-          })}
-        </ul>
-      </section>
-      <section className="p-section search">
-         <h2 className="c-heading--lg">記事を探す</h2>
-        <Search></Search>
-      </section>
+      <p className="u-text-center contact--sidebar">
+        <a className="p-btn--detail" href="/contact/">相談する</a>
+         <small>初見の方、30分無料相談承っております。</small>
+      </p>
       <div className="inner">
-        <div className="side-topic">
-          <h2 className="side-topic--heading">目次</h2>
-          <ul id="topic">
-            {topics.map(item =>{
-              return (
-                <li key={item.id} className={item.target}><a href={item.url} id={item.id}>{item.title}</a>
-                  {item.items && (
-                    <ul>
-                      {item.items.map(child=><li key={child.id} className={child.target}><a href={child.url} id={child.id} >{child.title}</a></li>)}
-                    </ul>
-                    )}
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        {topics.map && (
+          <div className="side-topic">
+            <h2 className="side-topic--heading">目次</h2>
+            <ul id="topic">
+              {topics.map((item, i) =>{
+                return (
+                  <li key={item.id} id={`toc${item.dataId}`}><a href={item.url} className={item.target} >{item.title}</a>
+                    {item.items && (
+                      <ul>
+                        {item.items.map(child=><li key={child.id}><a href={child.url} className={child.target}>{child.title}</a></li>)}
+                      </ul>
+                      )}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )}
 
         <ul className="side-banner">
 
@@ -126,15 +125,21 @@ const Side = ({ cateId, toc, tags, slug }) => {
             </Link>
           </li>
         </ul>
-        <h2>お仕事のご依頼</h2>
-        <p className="u-text-center">
-          <a className="p-btn--detail" href="/contact/">
-            相談する
-          </a>
-        </p>
-        <p className="u-text-center">
-          <small>初見の方、30分無料相談承っております。</small>
-        </p>
+
+
+        <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
+        <section className="p-section">
+        <h2 className="c-heading--lg--side">ジャンル</h2>
+        <ul className="sideCateList">
+          {siteMetadata.category.map((item, index) => {
+            return (
+              <li key={`side-ganre${index}`}>
+                <Link to={`/blogs/${item.slug}/`}>{item.name}</Link>
+              </li>
+            )
+          })}
+        </ul>
+      </section>
       </div>
     </Sidebar>
   )
