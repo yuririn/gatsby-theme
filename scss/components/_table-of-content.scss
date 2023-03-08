@@ -1,0 +1,104 @@
+.side-topic {
+    margin-bottom: 34px !important;
+    display: none;
+
+    &--heading {
+        border: var(--color-blue) 1px solid;
+        border-bottom: none;
+        background: var(--color-blue);
+        color: var(--background) !important;
+        text-align: left;
+        font-size: 1.4rem!important;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
+        &::after {
+            content: none!important;
+        }
+
+        margin-bottom: 0!important;
+        padding: 10px 16px;
+
+    }
+
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
+
+
+
+    &>ul {
+        max-height: 400px;
+        overflow: auto;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border: var(--color-blue) 1px solid;
+        font-size: 14px;
+    }
+
+    ul {
+        counter-reset: num;
+
+        ul>li>a {
+            &::before {
+                width: 3em;
+            }
+        }
+
+        ul ul>li>a {
+            &::before {
+                width: 4.4em;
+            }
+        }
+    }
+
+    li {
+        background: var(--pale-gray);
+
+        a.current {
+            transform: translateX(-4px);
+            background: var(--background);
+        }
+
+        counter-increment: num;
+
+        a {
+            display: block;
+            &::before {
+                font-size: 1rem;
+                padding: 0 2px;
+                color: var(--pale-gray);
+                background: var(--color-link);
+                text-align: center;
+                margin-right: 4px;
+                vertical-align: 2px;
+                font-weight: bold;
+                width: 1.2em;
+                display: inline-block;
+                content: counters(num, ' - ');
+                border-radius: 2px;
+                display: inline-block;
+            }
+
+            line-height:1.4;
+            background: var(--pale-gray);
+            padding: 8px 16px;
+
+            &:hover {
+                opacity: .7;
+                transform: translateX(-4px)
+            }
+
+            transition: .3s;
+            color: var(--color-link);
+            text-decoration: none;
+            border-bottom: var(--background) 1px solid;
+
+            @media screen and (min-width: 768px) {
+                &:hover {
+                    color: var(--color-link);
+                }
+            }
+        }
+    }
+}
