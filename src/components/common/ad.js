@@ -17,7 +17,6 @@ const Ad = ({type='display', location}) => {
         })();
         window.adsbygoogle = window.adsbygoogle || [];
         window.adsbygoogle.push({});
-        lazyloadads = true;
         }
       })
   }, [location]);

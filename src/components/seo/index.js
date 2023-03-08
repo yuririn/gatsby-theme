@@ -37,6 +37,8 @@ const Seo = ({data, children}) => {
     pageInfo.blogUrl = String(pageInfo.blogUrl).replace(/page\/([0-9])+\//, "");
   }
 
+  let file = data.location.pathname === '/portfolio/' ? 'portfolio' : isAd ? 'sub' : 'main'
+
   return (
     <>
       <meta content="noindex" name="robots"/>
@@ -55,6 +57,8 @@ const Seo = ({data, children}) => {
       <meta name="twitter:image" content={pageInfo.ogSrc}/>
       <meta name="twitter:description" content={pageInfo.metaDescription} />
       <script type="application/ld+json">{JSON.stringify(jsonLd(pageInfo))}</script>
+      <link rel="stylesheet" href={`/css/${file}.css`}></link>
+      <link rel="preload" href={`/css/${file}.css`} as="style"></link>
     </>
   )
 }

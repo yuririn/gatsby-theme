@@ -11,7 +11,6 @@ import Voice from "../inc/portfolioParts/voice"
 import Works from "../inc/portfolioParts/works"
 import Profile from "../inc/portfolioParts/profile"
 import Contact from "../inc/portfolioParts/contact"
-import { PortFolio } from '../styles/portfolio/PortFolio';
 
 const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]
@@ -21,8 +20,7 @@ const Portfolio = ({ data, location }) => {
     setIsOpen(!isOpen)
   }
   return (
-    <PortFolio>
-      <div className="body">
+    <div className="body">
       <header class="l-header">
         <p className="logo">Camille Site</p>
         <span
@@ -158,7 +156,6 @@ const Portfolio = ({ data, location }) => {
 
       </footer>
       </div>
-    </PortFolio>
   )
 }
 

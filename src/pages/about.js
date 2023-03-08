@@ -2,7 +2,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import { Article } from "../styles/blog-styles/article"
-import { Sidebar } from "../styles/blog-styles/sidebar"
 import { Edit } from "../styles/blog-styles/edit"
 // import styled from "styled-components"
 import Layout from "../components/layout"
@@ -410,7 +409,7 @@ const aboutPost = () => {
           </article>
         </Article>
 
-        <Sidebar>
+        <div className="sidebar">
           <section className="p-section">
             <h2 className="c-heading--lg--side">ジャンル</h2>
             <ul className="sideCateList">
@@ -464,7 +463,7 @@ const aboutPost = () => {
               <small>初見の方、30分無料相談承っております。</small>
             </p>
           </div>
-        </Sidebar>
+        </div>
         <div className="p-section l-container">
           <FovoriteList type="web" />
           <FovoriteList type="life" />

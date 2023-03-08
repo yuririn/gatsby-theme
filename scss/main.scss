@@ -1,12 +1,15 @@
-@import './../common';
-@import './../base/base';
+@import './common';
+@import './base/base';
 
-@import './../layout/body';
-@import './../layout/aside';
-@import './../project/pageHeader';
-@import './../components/heading';
-@import './../components/firstview';
-@import './../layout/footer';
+@import './layout/header';
+@import './layout/body';
+@import './layout/aside';
+@import './project/pageHeader';
+@import './components/heading';
+@import './components/firstview';
+@import './layout/footer';
+@import './project/entry-card';
+@import './layout/sidebar';
 
 .u-text-center {
     text-align: center;

@@ -1,7 +1,6 @@
 import React, { useState ,useEffect } from "react"
 import Img from "./../common/img"
 import RelatedList from "./related-list"
-import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Ad from '../common/ad'
@@ -73,7 +72,7 @@ const Side = ({ cateId, toc, tags, slug, location }) => {
   };
 
   return (
-    <Sidebar>
+    <div className="l-sidebar">
       <p className="u-text-center contact--sidebar">
         <a className="p-btn--detail" href="/contact/">相談する</a>
          <small>初見の方、30分無料相談承っております。</small>
@@ -143,7 +142,7 @@ const Side = ({ cateId, toc, tags, slug, location }) => {
         </ul>
       </section>
       </div>
-    </Sidebar>
+    </div>
   )
 }
 

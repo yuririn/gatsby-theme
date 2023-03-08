@@ -28,3 +28,12 @@ img {
     height: auto;
     vertical-align: bottom;
 }
+
+
+@import './../layout/choco-sidebar';
+@import './../layout/choco-body';
+@import './../layout/choco-main';
+@import './../layout/choco-header';
+@import './../layout/choco-footer';
+@import './../components/choco-article-body';
+@import './../components/choco-article-body';

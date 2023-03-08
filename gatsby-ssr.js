@@ -6,7 +6,7 @@ export const onRenderBody = ({ setHtmlAttributes }) => {
 
 export const wrapRootElement = Root
 
-// export const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
+// export const onPreRenderHTML = ({ getHeadComponents }) => {
 //   if (process.env.NODE_ENV !== "production") return;
 
 //   let hc = getHeadComponents();

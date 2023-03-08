@@ -1,4 +1,4 @@
-.l-container,
+@charaset "utf-8";.l-container,
 .l-container--md {
 	max-width: 1120px;
 	margin-left: auto;
@@ -63,7 +63,7 @@ img {
 html {
 	scroll-behavior: smooth;
 	font-size: 62.5%;
-	font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", メイリオ, sans-serif;
+	font-family: 游ゴシック体,YuGothic,游ゴシック,"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans",メイリオ,sans-serif;
 }
 
 input,
@@ -78,6 +78,44 @@ main {
 
 body {
 	font-size: 1.4rem;
+	opacity: 0;
+	transition: .2s;
+}
+
+.gatsby-image-wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+.gatsby-image-wrapper picture.object-fit-polyfill {
+	position: static !important;
+}
+
+.gatsby-image-wrapper img {
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	margin: 0;
+	max-width: none;
+	padding: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.gatsby-image-wrapper [data-main-image] {
+	opacity: 0;
+	transform: translateZ(0);
+	transition: opacity .25s linear;
+	will-change: opacity;
+}
+
+.gatsby-image-wrapper-constrained {
+	display: inline-block;
+	vertical-align: top;
 }
 
 @media screen and (min-width: 768px) {

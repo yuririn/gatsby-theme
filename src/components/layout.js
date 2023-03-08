@@ -4,8 +4,7 @@ import { siteMetadata } from "./../../gatsby-config"
 
 import Header from "./header"
 import Footer from "./footer"
-import { MainCommonStyle } from "../styles/main/MainCommonStyle"
-import { MainBody } from '../styles/main/MainBody';
+
 
 
 const Layout = ({ location, children }) => {
@@ -20,9 +19,8 @@ const Layout = ({ location, children }) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
-      <MainCommonStyle/>
       <Header title={siteMetadata.title} location={location.pathname} />
-      <MainBody>{children}</MainBody>
+      {children}
       <Footer title={siteMetadata.title} />
     </div>
   )
