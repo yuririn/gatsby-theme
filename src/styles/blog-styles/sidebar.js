@@ -5,9 +5,6 @@ export const Sidebar = styled.div`
  & > div:nth-child(2),
   & > div:first-child {
     margin-bottom: 20px;
-
-    padding-left: 15px;
-    padding-right: 15px;
     @media screen and (min-width: 768px) {
       padding-left: 0;
       padding-right: 0;
@@ -185,14 +182,20 @@ export const Sidebar = styled.div`
     }
   }
   .contact--sidebar {
-    margin-bottom: -40px;
+    margin-bottom: 20px;
+      @include mq(md){
+        margin-bottom: -40px;
+
+    }//media query
     small {
         display: block;
         margin-top: 8px;
     }
   }
   .inner {
-    padding: 0 15px 50px;
+      @include mq(md){
+        padding: 0 15px 50px;
+    }//media query
   }
   @media screen and (min-width: 768px) {
     margin-bottom:50px;

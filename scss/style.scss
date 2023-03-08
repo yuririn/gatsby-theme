@@ -1,17 +1,7 @@
 @use "sass:map";
 @import './base/mixin';
-@import './base/base';
-@import './global-styles';
 @import './layout/container';
-@import './layout/header'   ;
-@import './layout/nav'   ;
-@import './layout/footer'   ;
-@import './layout/body';
-@import './layout/aside';
 @import './layout/grid';
-@import './project/pageHeader';
-@import './components/heading';
-@import './components/search';
 
 .u-text-center {
     text-align: center;
@@ -32,3 +22,42 @@
 .p-section {
     margin-bottom: 50px;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    font-family: 游ゴシック体,
+        YuGothic,
+        游ゴシック,
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        メイリオ,
+        sans-serif;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+
+main {
+    display: block;
+    padding-bottom: 1px;
+}
+
+body {
+    font-size: 1.4rem;
+}
+
+@include mq(md){
+   body {
+       font-size: 1.6rem;
+   }
+}//media query

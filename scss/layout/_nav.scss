@@ -122,53 +122,7 @@
         display: none;
     }
 }
-.c-form__submit,
-.c-nav__navLink,
-.p-btn--detail {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    line-height: 1;
-    text-align: center;
-    width: 100%;
-    padding: 20px 0;
-    border: 1px solid var(--color-blue);
-    color: var(--color-blue);
-    border-radius: 5px;
-    letter-spacing: .15em;
-    font-size: 1.6rem;
-    overflow: hidden;
-    text-decoration: none;
-    background: var(--background);
-    max-width: 400px;
 
-    &:before {
-        transform: skew(-45deg);
-        z-index: -1;
-        transition: .3s;
-        position: absolute;
-        content: "";
-        display: block;
-        left: -120%;
-        top: 0;
-        width: 120%;
-        height: 100%;
-        background: var(--color-blue);
-    }
-
-}
-
-@include mq(md){
-    .c-form__submit:hover,
-    .c-nav__navLink:hover,
-    .p-btn--detail:hover {
-        color: var(--background);
-
-        &::before {
-            left: 0;
-        }
-    }
-}
   .c-nav__btn {
       transform: translateY(-50%);
       position: fixed;

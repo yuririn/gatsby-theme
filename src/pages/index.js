@@ -42,7 +42,7 @@ const BlogIndex = ({ data, location }) => {
                 <>
                 { i === 4 ? (
                   <>
-                  <li className="p-entryCard c-grid__item--md6 c-grid__item--lg4"><Ad></Ad></li>
+                  <li className="p-entryCard c-grid__item--md6 c-grid__item--lg4"><Ad location={location}></Ad></li>
                     <li key={`post${i}`} className={cardClass} role="article">
                       <Link to={post.fields.slug} className="p-entryCard__img">
                         <Img
@@ -107,19 +107,20 @@ const BlogIndex = ({ data, location }) => {
         <Link to="/blogs/" className="p-btn--detail u-mblg">
           Read More Blog
         </Link>
-        <Ad></Ad>
+        <Ad location={location}></Ad>
       </p>
       <div className="l-container p-section">
         <FovoriteList type="web" />
-        <Ad></Ad>
+        <Ad location={location}></Ad>
         <FovoriteList type="life" />
-        <Ad></Ad>
+        <Ad location={location}></Ad>
         <FovoriteList type="career" />
         <h2 className="c-heading--lg ">人気のジャンル</h2>
         <Genre />
       </div>
       <Prof></Prof>
-      <div className="l-container p-section"><Ad></Ad></div>
+      <div className="l-container p-section">
+      </div>
     </Layout>
   );
 }
@@ -134,6 +135,7 @@ export const Head = ({ location }) => (
 
 export const pageQuery = graphql`{
   allMdx(
+    filter: {frontmatter: {pagetype: {eq : "blog"}}}
     sort: {frontmatter: {date: DESC}}
     limit: 9
   ) {

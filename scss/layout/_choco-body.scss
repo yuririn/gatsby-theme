@@ -1,0 +1,12 @@
+@import './../common';
+.l-body {
+    max-width: #{$container}px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    @include mq(md) {
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-import { Favorite } from '../../styles/common/favorite'
+import { Favorite } from '../../styles/main/favorite'
 
 import Img from "../common/img"
 

@@ -115,21 +115,6 @@ const BlogIndex = ({ data, location }) => {
       </div>
       <Prof></Prof>
     </Layout>
-    //     <h2 className="c-heading--lg">記事を検索する</h2>
-    //     <Search></Search>
-    //     <Adsense type="display"></Adsense>
-    //     <FovoriteList type="web" />
-    //     <Adsense type="display"></Adsense>
-    //     <FovoriteList type="life" />
-    //     <Adsense type="display"></Adsense>
-    //     <FovoriteList type="career" />
-    //     <Adsense type="display"></Adsense>
-    //     <h2 className="c-heading--lg">人気のジャンル</h2>
-    //     <Genre />
-    //   </div>
-    //   <Prof></Prof>
-    //   <Adsense type="display"></Adsense>
-    // </Layout>
   );
 }
 

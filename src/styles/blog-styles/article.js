@@ -451,4 +451,19 @@ export const Article = styled.div`
       margin-bottom: 15px;
     }
   }
+  .c-cv-area {
+    margin-top: 30px;
+    padding: 40px 40px 10px;
+    background: var(--pale-gray);
+    border-radius: 16px;
+
+    h2 {
+        padding-top: 30px;
+        text-align: center;
+
+        &::after {
+            content: none;
+        }
+    }
+  }
 `

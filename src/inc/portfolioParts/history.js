@@ -90,6 +90,7 @@ const Dl = styled.dl`
   overflow: hidden;
   max-width: 900px;
   margin: 0 auto 30px;
+  line-height:1.8;
 
   dt {
     font-weight: bold;

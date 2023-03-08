@@ -9,19 +9,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 
 
-  // const adPost = path.resolve(`./src/templates/ad-post.js`)
+  const chocoPost = path.resolve(`./src/templates/choco-post.js`)
 
   const blogList = path.resolve(`./src/templates/blog-list.js`)
 
   const tagList = path.resolve(`./src/templates/tag-list.js`)
 
-  // const adTagList = path.resolve(`./src/templates/ad-tag-list.js`)
+  const chocoTagList = path.resolve(`./src/templates/choco-tag-list.js`)
+
 
   const cateList = path.resolve(`./src/templates/catetory-list.js`)
 
-  // const pagePost = path.resolve(`./src/templates/page-post.js`)
+  const pagePost = path.resolve(`./src/templates/page-post.js`)
 
-  // const contact = path.resolve(`./src/templates/contact.js`)
+  const contact = path.resolve(`./src/templates/contact.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -62,9 +63,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
-    // const blogPosts = posts
-
-    // const adPosts = posts.filter(post => post.frontmatter.pagetype === "ad")
 
     blogPosts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : blogPosts[index - 1].id
@@ -180,131 +178,93 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         })
       }
     })
+
+    // 個別ページの生成
+    const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog" && post.frontmatter.pagetype !== "ad")
+
+    pagePosts.forEach(post => {
+      createPage({
+        path: post.fields.slug,
+        component: `${pagePost}?__contentFilePath=${post.internal.contentFilePath}`,
+        context: {
+          id: post.id,
+          hero: post.frontmatter.hero
+            ? post.frontmatter.hero
+            : "common/dummy.png",
+        },
+      })
+    })
+
+    const chocoPosts = posts.filter(post => post.frontmatter.pagetype === "ad")
+    chocoPosts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : chocoPosts[index - 1].id
+      const nextPostId =
+        index === chocoPosts.length - 1 ? null : chocoPosts[index + 1].id
+
+      createPage({
+        path: post.fields.slug,
+        component: `${chocoPost}?__contentFilePath=${post.internal.contentFilePath}`,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+          hero: post.frontmatter.hero
+          ? post.frontmatter.hero
+          : "choco/dummy.png",
+        },
+      })
+    })
+
+    let chocoTags = chocoPosts.reduce((tags, edge) => {
+      const edgeTags = edge.frontmatter.tags
+      return edgeTags ? tags.concat(edgeTags) : tags
+    }, [])
+    chocoTags = [...new Set(chocoTags)]
+
+    console.log(chocoTags)
+
+      // タグ
+    chocoTags.forEach(item => {
+      const tag = item
+      const tagsCount = chocoPosts.filter(post =>
+        post.frontmatter.tags.includes(item)
+      ).length
+
+      const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
+      for (let index = 0; index < numPages; index++) {
+        const pageNumber = index + 1
+        const withPrefix = pageNumber =>
+          pageNumber === 1
+            ? `/choco-blog/tags/${tag}/`
+            : `/choco-blog/tags/${tag}/page/${pageNumber}/`
+        createPage({
+          path: withPrefix(pageNumber),
+          component: chocoTagList,
+          context: {
+            limit: postsPerPage, //追加
+            skip: index * postsPerPage, //追加
+            current: pageNumber, //追加
+            page: numPages, //追加
+            tag,
+          },
+        })
+      }
+    })
   }
 
-  //   adPosts.forEach((post, index) => {
-  //     const previousPostId = index === 0 ? null :adPosts[index - 1].id
-  //     const nextPostId =
-  //       index === adPosts.length - 1 ? null : adPosts[index + 1].id
+  //お問い合わせ
+  createPage({
+    path: "/contact/",
+    component: contact,
+    context: {},
+  })
 
-  //     createPage({
-  //       path: post.fields.slug,
-  //       component: adPost,
-  //       context: {
-  //         id: post.id,
-  //         previousPostId,
-  //         nextPostId,
-  //         hero: post.frontmatter.hero
-  //           ? post.frontmatter.hero
-  //           : "ad/dummy.png",
-  //       },
-  //     })
-  //   })
-
-
-
-
-
-  //   //タグの一覧作成
-  //   let tags = blogPosts.reduce((tags, edge) => {
-  //       const edgeTags = edge.frontmatter.tags
-  //       return edgeTags ? tags.concat(edgeTags) : tags
-  //   }, [])
-  //   // 重複削除
-  //   tags = [...new Set(tags)]
-
-
-  //   let adTags = adPosts.reduce((tags, edge) => {
-  //     const edgeTags = edge.frontmatter.tags
-  //     return edgeTags ? tags.concat(edgeTags) : tags
-  //   }, [])
-  //   adTags = [...new Set(adTags)]
-
-
-  //   // タグ
-  //   tags.forEach(item => {
-  //     const tag = item
-  //     const tagsCount = blogPosts.filter(post =>
-  //       post.frontmatter.tags.includes(item)
-  //     ).length
-  //     const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
-  //     for (let index = 0; index < numPages; index++) {
-  //       const pageNumber = index + 1
-  //       const withPrefix = pageNumber =>
-  //         pageNumber === 1
-  //           ? `/blogs/tags/${tag}/`
-  //           : `/blogs/tags/${tag}/page/${pageNumber}/`
-  //       createPage({
-  //         path: withPrefix(pageNumber),
-  //         component: tagList,
-  //         context: {
-  //           limit: postsPerPage, //追加
-  //           skip: index * postsPerPage, //追加
-  //           current: pageNumber, //追加
-  //           page: numPages, //追加
-  //           tag,
-  //         },
-  //       })
-  //     }
-  //   })
-
-  //   // タグ
-  //   adTags.forEach(item => {
-  //     const tag = item
-  //     const tagsCount = adPosts.filter(post =>
-  //       post.frontmatter.tags.includes(item)
-  //     ).length
-  //     const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
-  //     for (let index = 0; index < numPages; index++) {
-  //       const pageNumber = index + 1
-  //       const withPrefix = pageNumber =>
-  //         pageNumber === 1
-  //           ? `/choco-blog/tags/${tag}/`
-  //           : `/choco-blog/tags/${tag}/page/${pageNumber}/`
-  //       createPage({
-  //         path: withPrefix(pageNumber),
-  //         component: adTagList,
-  //         context: {
-  //           limit: postsPerPage, //追加
-  //           skip: index * postsPerPage, //追加
-  //           current: pageNumber, //追加
-  //           page: numPages, //追加
-  //           tag,
-  //         },
-  //       })
-  //     }
-  //   })
-
-  //   // 個別ページの生成
-  //   const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog" && post.frontmatter.pagetype !== "ad")
-
-  //   pagePosts.forEach(post => {
-  //     createPage({
-  //       path: post.fields.slug,
-  //       component: pagePost,
-  //       context: {
-  //         id: post.id,
-  //         hero: post.frontmatter.hero
-  //           ? post.frontmatter.hero
-  //           : "common/dummy.png",
-  //       },
-  //     })
-  //   })
-  // }
-
-  // //お問い合わせ
-  // createPage({
-  //   path: "/contact/",
-  //   component: contact,
-  //   context: {},
-  // })
-
-  // //サンクス
-  // createPage({
-  //   path: "/contact/thanks/",
-  //   component: contact,
-  //   context: {},
-  // })
+  //サンクス
+  createPage({
+    path: "/contact/thanks/",
+    component: contact,
+    context: {},
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 const SearchResult =  (props) => {
   // 全記事データ取得 //
     const tempData = useStaticQuery(graphql`query SearchData {
-    allMdx(sort: {frontmatter: {date: DESC}}, limit: 1000) {
+    allMdx(filter: {frontmatter: {pagetype: {ne: "ad"}}},sort: {frontmatter: {date: DESC}}, limit: 1000) {
       edges {
         node {
           fields {

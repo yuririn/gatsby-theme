@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 
 const Seo = ({data, children}) => {
   const domain = config.siteMetadata.siteUrl
-  const isAd = data.type === 'ad' || data.type === 'ad-list' || data.location.pathname === '/choco-blog/' ? true : false
+  const isAd = data.template === 'choco-post' || data.template === 'choco-tag-list' || data.location.pathname === '/choco-blog/' ? true : false
   const isRoot = '/' === data.location.pathname || data.location.pathname === '/choco-blog/' ? true : false
 
   // const domain = config.siteMetadata.siteUrl
@@ -33,25 +33,8 @@ const Seo = ({data, children}) => {
     cateInfo: data.cateId ? { url: `${domain}blogs/${data.cateId}/`, name: config.siteMetadata.category.filter(item => {return item.slug === data.cateId })[0].name} : null,
     tag: data.tag
   }
-  if (data.templage === "blog-list" || data.templage === "tag-list" || data.type === "category-list" || data.type === "ad-tag-list") {
+  if (data.templage === "blog-list" || data.templage === "tag-list" || data.type === "category-list" || data.type === "choco-tag-list") {
     pageInfo.blogUrl = String(pageInfo.blogUrl).replace(/page\/([0-9])+\//, "");
-  }
-
-  if( typeof window !== "undefined") {
-    let lazyloadads = false;
-    window.addEventListener("scroll", function() {
-    if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {
-        (function() {
-            const ad = document.createElement('script');
-            ad.setAttribute('data-ad-client', "ca-pub-2820767970621854")
-            ad.async = true;
-            ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-            const sc = document.getElementsByTagName('script')[0];
-            sc.parentNode.insertBefore(ad, sc);
-        })();
-        lazyloadads = true;
-      }
-    }, true)
   }
 
   return (
@@ -222,7 +205,7 @@ const jsonLd = (data) => {
       "mainEntity": []
     }
     faqArry.forEach((item)=>{
-      const link = item[2] ? '<br>くわしくは<a href="'+item[2]+'">こちら</a>。' : '';
+      const link = item[2] ? '<br/>くわしくは<a href="'+item[2]+'">こちら</a>。' : '';
       const entry = {
         "@type": "Question",
         "name": item[0],

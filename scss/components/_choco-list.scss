@@ -1,0 +1,48 @@
+.c-choco-list {
+    flex-wrap: wrap;
+    gap: 16px;
+    display: flex;
+
+    li {
+        width: calc(50% - 8px);
+
+        a {
+            display: block;
+            color: var(--color);
+            text-decoration: none;
+
+            @media screen and (min-width: 768px) {
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+    @include mq(md){
+        gap: 24px;
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        li {
+            width: calc(100%);
+        }
+    }//media query
+    @include mq(lg){
+        gap: 32px;
+
+        li {
+            width: calc(50% - 16px);
+        }
+    }//media query
+    &__heading {
+      margin-top: 8px;
+      font-size: 16px;
+
+      @include mq(md) {
+        font-size: 20px;
+        line-height: 1.4;
+      }
+    }
+}

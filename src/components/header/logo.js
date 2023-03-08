@@ -2,7 +2,7 @@ import * as React from "react";
 
 const logo = () => {
   return (
-    <svg viewBox="0 0 111.1 26">
+    <svg viewBox="0 0 111.1 26" width={145} height={34}>
       <title>銀ねこアトリエ</title>
       <path
         className="st0"

@@ -1,11 +1,11 @@
 import * as React from "react"
 
-import { GlobalStyle }from "../styles/common/global-style"
-
 import { siteMetadata } from "./../../gatsby-config"
 
 import Header from "./header"
 import Footer from "./footer"
+import { MainCommonStyle } from "../styles/main/MainCommonStyle"
+import { MainBody } from '../styles/main/MainBody';
 
 
 const Layout = ({ location, children }) => {
@@ -20,9 +20,9 @@ const Layout = ({ location, children }) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
-      <GlobalStyle />
+      <MainCommonStyle/>
       <Header title={siteMetadata.title} location={location.pathname} />
-      <main>{children}</main>
+      <MainBody>{children}</MainBody>
       <Footer title={siteMetadata.title} />
     </div>
   )

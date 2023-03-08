@@ -76,14 +76,14 @@ const blogs = ({ pageContext, data, location }) => {
       </section>
       <aside className="l-container">
         <div className="u-mblg">
-      <Ad></Ad>
+      <Ad location={location}></Ad>
       </div>
         <section className="p-section u-text-center">
           <h2 className="c-heading--lg">人気のジャンル</h2>
           <Genre />
         </section>
         <div className="u-mblg">
-      <Ad></Ad>
+      <Ad location={location}></Ad>
       </div>
         <Prof />
       </aside>

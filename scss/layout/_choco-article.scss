@@ -1,0 +1,87 @@
+.l-article {
+    margin-top: 16px;
+
+    h1 {
+        margin-top: 0;
+        font-size: 20px;
+        line-height: 1.2;
+        margin-bottom: 16px;
+
+        @media screen and (min-width: 768px) {
+            font-size: 32px;
+        }
+    }
+    .hero {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+}
+
+.c-tag {
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+
+    @media screen and (min-width: 768px) {
+        padding-left: 100px;
+    }
+
+    dt {
+        display: block;
+        color: #4b3933;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 18px;
+        display: flex;
+        width: 100%;
+        height: 24px;
+
+        @media screen and (min-width: 768px) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        align-items: center;
+    }
+
+    dd {
+        a {
+            height: 24px;
+            width:100%;
+            align-items: center;
+            display: flex;
+            color: #4b3933;
+            text-decoration: none;
+            padding: 0 16px;
+        }
+
+        align-items: center;
+        display: flex;
+        height: 24px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 8px;
+        border: 1px solid #4b3933;
+    }
+
+
+}
+.c-article__date {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 24px;
+
+    @include mq(md){
+
+        margin-bottom: 32px;
+    }//media quer
+
+    dt {
+        width: 80px;
+        font-weight: bold;
+    }
+}

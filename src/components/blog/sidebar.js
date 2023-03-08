@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 import Ad from '../common/ad'
 
 
-const Side = ({ cateId, toc, tags, slug }) => {
+const Side = ({ cateId, toc, tags, slug, location }) => {
   const [topics, setTopics] = useState(toc);
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const Side = ({ cateId, toc, tags, slug }) => {
             </ul>
           </div>
         )}
-        <Ad></Ad>
+        <Ad location={location}></Ad>
 
         <ul className="side-banner">
 

@@ -34,19 +34,20 @@ export default Faq;
 
 const FaqList = styled.dl`
   margin-top: 30px;
-    background: #fff;
-      padding: 30px 30px 1px;
-      border-radius: 20px;
+  background: #fff;
+  padding: 30px 30px 1px;
+  border-radius: 20px;
+  line-heght:1.8;
+  max-width: 900px;
+  margin: 0 auto 30px;
 
-      max-width: 900px;
-      margin: 0 auto 30px;
-  }
   dt {
       margin-bottom: 10px;
       font-size: 2rem;
       font-weight: bold;
       padding-left: 2em;
       position: relative;
+
   }
   dd {
       margin-bottom: 30px;

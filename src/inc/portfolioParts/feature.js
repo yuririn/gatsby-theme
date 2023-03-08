@@ -42,6 +42,7 @@ const Lists = styled.ul`
     max-width: 900px;
     margin: 0 auto 30px;
     li {
+      line-height:1.8;
         font-weight: bold;
         display: inline-block;
         margin-right: 10px;

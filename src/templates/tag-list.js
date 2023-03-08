@@ -4,7 +4,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-// import Seo from "../components/seo"
 import Img from "../components/common/img"
 import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
