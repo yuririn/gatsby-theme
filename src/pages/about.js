@@ -409,7 +409,7 @@ const aboutPost = () => {
           </article>
         </Article>
 
-        <div className="sidebar">
+        <div className="l-sidebar">
           <section className="p-section">
             <h2 className="c-heading--lg--side">ジャンル</h2>
             <ul className="sideCateList">
@@ -423,6 +423,10 @@ const aboutPost = () => {
             </ul>
           </section>
           <div className="inner">
+            <p className="u-text-center contact--sidebar--about">
+              <a className="p-btn--detail" href="/contact/">相談する</a>
+              <small>初見の方、30分無料相談承っております。</small>
+            </p>
             <ul className="side-banner">
               <li>
                 <Link to="/blogs/tags/子ども服をセブに送るプロジェクト/">
@@ -453,22 +457,13 @@ const aboutPost = () => {
                 ></iframe>
               </li>
             </ul>
-            <h2>お仕事のご依頼</h2>
-            <p className="u-text-center">
-              <a className="p-btn--detail" href="/contact/">
-                相談する
-              </a>
-            </p>
-            <p className="u-text-center">
-              <small>初見の方、30分無料相談承っております。</small>
-            </p>
           </div>
         </div>
-        <div className="p-section l-container">
-          <FovoriteList type="web" />
-          <FovoriteList type="life" />
-          <FovoriteList type="career" />
-        </div>
+      </div>
+      <div className="p-section l-container">
+        <FovoriteList type="web" />
+        <FovoriteList type="life" />
+        <FovoriteList type="career" />
       </div>
     </Layout>
   )

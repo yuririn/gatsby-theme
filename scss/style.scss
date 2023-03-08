@@ -30,7 +30,7 @@ img {
 }
 
 html {
-    scroll-behavior: smooth;
+    // scroll-behavior: smooth;
     font-size: 62.5%;
     font-family: 游ゴシック体,
         YuGothic,
@@ -41,7 +41,6 @@ html {
         メイリオ,
         sans-serif;
 }
-
 input,
 select {
     vertical-align: middle;
@@ -55,7 +54,15 @@ main {
 body {
     font-size: 1.4rem;
     opacity: 0;
-    transition: .2s;
+    animation: fadeIn .2s forwards;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @include mq(md){

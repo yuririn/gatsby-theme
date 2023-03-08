@@ -10,20 +10,13 @@ const Tag = ({ tag }) => (
 
 const Tags = ({ tags }) => {
   return (
-    <TagList>
       <ul>
         {(tags || []).map((tag) => (
           <Tag key={tag} tag={tag} />
         ))}
       </ul>
-    </TagList>
   );
 };
 
 export default Tags;
 
-const TagList = styled.div`
-  ul {
-    list-style: none;
-  }
-`;

@@ -9,6 +9,12 @@
         @include mq(md) {
             margin-bottom: -32px;
         }
+        &--about {
+            @extend .contact--sidebar;
+            @include mq(md) {
+            margin-bottom: 42px;
+            }
+        }
     }
     &>div:nth-child(2),
     &>div:first-child {
