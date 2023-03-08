@@ -16,6 +16,7 @@ const Img = ({ source, title, className, size }) => {
                   width: 640
                   quality: 40
                   placeholder: BLURRED
+                  formats: [AUTO, WEBP]
                 )
               }
             }
