@@ -1,266 +1,184 @@
 .p-entryCard {
     list-style: none;
-    margin-bottom: 20px;
+    position: relative;
+    border-bottom: 1px solid var(--color-gray);
+    @include mqd(md) {
+        display: flex;
+    }
+    &__img {
+        border-radius: 4px;
+        display: block;
+        position: relative;
+        .gatsby-image-wrapper {
+            border-radius: 4px;
+        }
+        @include mqd(md) {
+            width: 35%;
+        }//media query
+        @include mq(md){
+            margin-bottom: 16px;
+        }//media query
+    }
+    &__date {
+        font-style:italic;
+        background: var(--color-blue);
+        color: var(--background);
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        left: -8px;
+        padding: 4px 8px;
+        z-index: 2;
+        position: absolute;
+        top: 4px;
+        @include mq(md){
+            padding: 6px 8px;
 
+            top: 8px;
+            font-size: 1.4rem;
+        }//media query
+    }
+    &__body{
+        line-height: 1.4;
+        text-decoration: none;
+        color: var(--color-blue);
+        @include mqd(md){
+            padding-bottom: 1em;
+            width: 65%;
+            padding-left: 16px;
+        }//media query
+    }
+    &__heading {
+        letter-spacing: 0.1em;
+        font-size: 1.4rem;
+        @include mqd(md){
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }//media query
+        @include mq(md) {
+            font-size: 1.8rem;
+        }
+    }
     &__footer {
-        margin-top: 10px;
-    }
-
-    @media screen and (min-width: 768px) {
-        margin-bottom: 40px;
-    }
-
-    @media screen and (max-width: 769px) {
-        &:not(.is-small)+.is-small {
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-        }
-    }
-
-    &.is-small {
-        @media screen and (max-width: 769px) {
-            .p-entryCard__date {
-                top: 2px;
-                padding: 5px 10px 5px 15px;
-            }
-
-            .p-entryCard__heading {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-
-            .p-entryCard__footer {
-                ul {
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
-                    overflow-x: auto;
-                    overflow-y: hidden;
-                    white-space: nowrap;
-                }
-
-                ul::-webkit-scrollbar {
-                    display: none;
-                }
+        @include mqd(md) {
+            position: absolute;
+            bottom: 0;
+            left: 35%;
+            width: 65%;
+            padding-left: 8px;
+            ul {
+                overflow: auto hidden;
+                white-space: nowrap;
             }
         }
-
-        @media screen and (max-width: 769px) {
-            &+.is-small {
-                border-bottom: 1px solid var(--border-color);
-                border-top: none;
-                padding-top: 0;
-            }
-
+        ul {
+            gap: 8px;
             display: flex;
-            flex-wrap:wrap;
-            align-items: flex-start;
-            position: relative;
-            border-bottom: 1px solid var(--border-color);
-
-            .p-entryCard__heading {
-                font-size: 1.4rem;
-            }
-
-            .p-entryCard__img {
-                width: 35%;
-                border-radius: 5px;
-
-                img {
-                    border-radius: 8px;
-                }
-            }
-
-            .p-entryCard__body {
-                width: 65%;
-                padding-left: 15px;
-                box-sizing: border-box;
-
-                p {}
-            }
-
-            .p-entryCard__footer {
-                position: absolute;
-                bottom: 10px;
-                right: 0;
-                width: 65%;
-                padding-left: 15px;
-            }
-
-            .p-entryCard__date {
-                font-size: 1.1rem;
-            }
+        }
+        @include mq(md) {
+            margin-top: 16px;
         }
     }
-
     &.is-first {
-        .p-entryCard__body {
-            p {
-                line-height: 1.6;
-                font-size: 1.4rem;
-                display: -webkit-box;
-                overflow: hidden;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                font-size: 1.2rem;
-                margin-bottom: 0px;
+        width: 100%;
+        display: block;
+        @include mqd(md){
+            margin-bottom: 24px;
+            .p-entryCard__footer {
+                position: relative;
+                margin-top: 16px;
+                ul {
+                    gap: 8px;
+                    display: flex;
+                }
+            }
+        }//media query
+
+        @include mq(md) {
+            display: flex;
+            margin-bottom: 32px;
+        }
+        .p-entryCard__date {
+            @include mqd(md) {
+                font-size: 1.6rem;
+                padding: 6px 8px;
+                top: 8px;
+            }
+        }
+
+        .p-entryCard__img {
+            @include mqd(md){
+              width: 100%;
+            }//media query
+            @include mq(md) {
+            width: 40%;
+            margin-bottom: 0;
             }
         }
 
         .p-entryCard__heading {
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            margin-bottom: 24px;
+            @include mq(md) {
+            font-size: 2.4rem;
+            }
         }
 
-        @media screen and (min-width: 768px) {
+        .p-entryCard__body {
             width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            position: relative;
-
-            .p-entryCard__img {
-                width: 40%;
-
-                img {
-                    border-radius: 8px;
-                }
+            @include mq(md) {
+            width: 60%;
+            padding-left: 32px;
             }
+        }
 
-            .p-entryCard__body {
-                width: 60%;
-                padding-left: 30px;
-                box-sizing: border-box;
+        .p-entryCard__footer {
+            left: 0;
+            width: 100%;
+            padding-left: 0;
 
-                p {
-                    font-size: 1.4rem;
-                }
-            }
-
-            .p-entryCard__heading {
-                font-size: 2.2rem;
-                margin-bottom: 20px;
-            }
-
-            .p-entryCard__footer {
-                position: absolute;
-                bottom: 10px;
-                right: 0;
-                width: 60%;
-                padding-left: 30px;
-            }
+            @include mq(md){
+                bottom: 0;
+                left: calc(100% - 60%);
+                padding-left: 24px;
+            }//media query
         }
     }
+
+}
+
+.p-tagList__item {
 
     a {
-        color: var(--color-blue);
-        text-decoration: none;
-    }
-
-    &__img {
         display: block;
-        position: relative;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 0 4px rgb(0, 0, 0, .3);
-        margin-bottom: 20px;
-        transition: .5s;
-        aspect-ratio: 4/3;;
-
-        .gatsby-image-wrapper {
-            transition: .5s;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-            transition: .5s;
-            border-radius: 8px;
-        }
-    }
-
-    &__date {
-        transform: skewX(-15deg);
-        font-weight: 700;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-decoration: none;
         background: var(--color-blue);
-        padding: 6px 25px;
-        letter-spacing: .1em;
-        font-size: 1.4rem;
-        position: absolute;
-        z-index: 2;
-        left: -5px;
-        top: 10px;
+        border: 1px solid  var(--color-blue);
+        padding: 2px 16px 2px 4px;
+        border-radius: 4px;
         color: var(--background);
-    }
-
-    &__heading {
-        font-weight: 700;
-        font-size: 1.8rem;
-        line-height: 1.2;
-        margin-bottom: 5px;
-        letter-spacing: .1em;
-    }
-
-    @media screen and (min-width: 768px) {
-        &:hover {
-            .p-entryCard__heading {
-                color: var(--color-link);
-            }
-
-            &__img {
-                box-shadow: 0 0 4px rgb(0, 0, 0, .3), 0 0 9px rgb(0, 0, 0, .6);
-            }
-
-            .gatsby-image-wrapper {
-                transform: scale(1.2, 1.2) rotate(-2deg);
-                ;
-                opacity: 0.8;
-            }
-        }
-    }
-
-    .p-tagList {
-        margin-top: 10px;
-
-        &__item {
-            margin-right: 5px;
-            margin-bottom: 10px;
-            display: inline-block;
-
-            a {
-                font-size: 1rem;
-                line-height: 1;
-                color: var(--color-blue);
-                display: block;
-                border-radius: 4px;
-                border: 1px solid var(--color-blue);
+        position: relative;
+         @include mq(md) {
+            &:hover {
                 background: var(--background);
-                transition: .3s;
-                white-space: nowrap;
-                padding: 2px 3px 5px 2px;
-
-                @media screen and (min-width: 768px) {
-                    font-size: 1.1rem;
-                    padding: 3px 3px 5px 3px;
-
-                    &:hover {
-                        background-color: var(--color-blue);
-                        color: var(--background);
-                    }
-                }
-
-                &:before {
-                    content: "";
-                    width: 1em;
-                    height: 1em;
-                    vertical-align: -.2em;
-                    display: inline-block;
-                    border-radius: 50%;
-                    background: var(--background);
-                    border: 2px solid var(--color-blue);
-                    transform: scale(.5);
-                }
+                color: var(--color-blue);
             }
+         }
+        &::before {
+            content: "";
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.2em;
+            display: inline-block;
+            border-radius: 50%;
+            background: var(--background);
+            border: 2px solid var(--color-blue);
+            transform: scale(0.5);
         }
     }
 }
