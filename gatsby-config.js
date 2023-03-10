@@ -180,8 +180,8 @@ module.exports = {
             options: {
               maxWidth: 590,
               quarity: 70,
-              withWebp: true,
-              linkImagesToOriginal: false,
+              // withWebp: true,
+              // linkImagesToOriginal: false,
             },
 
           },
