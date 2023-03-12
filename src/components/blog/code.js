@@ -21,7 +21,7 @@ const Code = ({ codeString, language, title, highlight }) => {
       Prism={Prism}
       code={codeString}
       language={language}
-      >
+    >
         {({ tokens, getLineProps, getTokenProps }) => {
         const hasButton = tokens.length > 15 ? true : false
         const second = tokens.slice(16)
@@ -37,12 +37,6 @@ const Code = ({ codeString, language, title, highlight }) => {
               <pre data-language={language}>
                 {first.map((line, index) => {
                   const lineProps = getLineProps({ line, key: index })
-                  if (LinesToHighlight(line)) {
-                    lineProps.className += 'highlight'
-                  }
-                  if (LinesNumberToHighlight(highlight, index)) {
-                    lineProps.className += 'highlight'
-                  }
                   return (
                     <code {...lineProps}>
                       {line.map((token, key) => {

@@ -38,7 +38,7 @@ const ChocoTagList = ({ pageContext, data, location }) => {
          })}
           </ul>
          )}
-         <Ad location={location}></Ad>
+         <Ad location={location.pathname}></Ad>
         </section>
     </ChocoLayout>
   );

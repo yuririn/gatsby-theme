@@ -15,9 +15,9 @@ const ChocoSidebar = ({location})=>{
         <Img source="choco/choco-banner.jpg" className="prof__img__sm"></Img>
         </a>
       </aside>
-      <Ad location={location}></Ad>
+      <Ad location={location.pathname}></Ad>
 
-      <Ad location={location}></Ad>
+      <Ad location={location.pathname}></Ad>
     </div>
   )
 }
