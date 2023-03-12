@@ -409,6 +409,9 @@ export const Edit = styled.section`
     font-size:15px;
     line-height: 1.5;
     tab-size: 4;
+    .highlight {
+      background: rgba(#fff, .2);
+    }
 
     code.token-line {
         display: block;
