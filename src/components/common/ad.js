@@ -3,23 +3,9 @@ import React, { useEffect } from 'react';
 const Ad = ({type='display', location}) => {
 
     useEffect(() => {
-      let lazyloadads = false;
-      if (!window) { return }
-      window.addEventListener("scroll", function() {
-        if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {
-          (function() {
-            const ad = document.createElement('script');
-            ad.setAttribute('data-ad-client', "ca-pub-2820767970621854")
-            ad.async = true;
-            ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-            const sc = document.getElementsByTagName('script')[0];
-            sc.parentNode.insertBefore(ad, sc);
-        })();
-        window.adsbygoogle = window.adsbygoogle || [];
-        window.adsbygoogle.push({});
-        }
-      })
-  }, [location]);
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.push({});
+  }, [location.pathname]);
 
   const ads = {
     infeed: {slot: '8004199632',format: 'fruid', style: {display:`block`}, key:"-fb+5w+4e-db+86"},

@@ -1,12 +1,14 @@
-import { Link } from "gatsby"
-import React from "react"
+import { Link,navigate  } from "gatsby"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 const Item = ({ num, current, path }) => {
+
   return current ? (<span>{num}</span>) : (<Link to={path}>{num}</Link>)
 }
 
 const Pagination = ({ num, current, type }) => {
+  const [page, setPage] = useState(current);
   const arr = [...Array(num).keys()].map(i => i + 1)
   if (num > 0) {
     const newwerClass = current === 1 ? 'c-pager--archive__prev not-work' : 'c-pager--archive__prev'
@@ -23,20 +25,34 @@ const Pagination = ({ num, current, type }) => {
         {current === num ? (<span>Older</span>):(<Link to={olderLink}>Older</Link>)}
       </li>
     )
+    const onKeyPress = (e) => {
+        if (e.keyCode === 13) {
+             if(!arr.includes(parseInt(page))) {
+                setPage(current)
+                return
+            }
+            if(current === page ) return
+            const path = parseInt(page) === 1 ? `/blogs/${type}` : `/blogs/${type}page/${parseInt(page)}/`
+            navigate(path);
+        }
+    }
+    const onChange = (e) => {
+        setPage(e.target.value)
+    }
+    const onBlur = () => {
+      if(!arr.includes(parseInt(page))) {
+        setPage(current)
+        return
+      }
+      if(current === page ) return
+      const path = parseInt(page) === 1 ? `/blogs/${type}` : `/blogs/${type}page/${parseInt(page)}/`
+      navigate(path);
+    }
+    const skip = (<li className="skip" key="skip">...</li>)
     return (
-      <PagerWrapper>
+      <PagerWrapper onKeyDown={onKeyPress}>
         {newer}
-        {arr.map(i => {
-          const className = current === i ? "c-pager--archive__current c-pager--archive__num" : "c-pager--archive__num"
-          const path = i === 1 ? `/blogs/${type}` : `/blogs/${type}page/${i}/`
-          return <li className={className} key={`pager${i}`}><Item
-                  num={i}
-                  current={current === i}
-                  path={path}
-                  type={type}
-                  key={`item${i}`}
-                /></li>
-        })}
+        <li className="c-pager--archive__num"><input value={page} onChange={onChange} onBlur={onBlur} type="number" min="1" max={arr.length}/> / {arr.length}</li>
          {older}
       </PagerWrapper>
     )
@@ -48,6 +64,7 @@ const Pagination = ({ num, current, type }) => {
 export default Pagination
 
 const PagerWrapper = styled.ul`
+  margin-top:80px;
   min-height: 80px;
   position: relative;
   text-align: center;
@@ -160,43 +177,20 @@ const PagerWrapper = styled.ul`
     pointer-events: none;
   }
   .c-pager--archive__num {
-    display: none;
-    @media only screen and (min-width: 768px) {
-      display: inline-block;
-    }
-    span {
-      display: block;
-      border-radius: 50%;
-      height: 35px;
-      font-size: 1.2rem;
-      width: 35px;
-      border: 1px solid var(--color-blue);
-      text-align: center;
-      line-height: 33px;
-      margin-left: 5px;
-      margin-right: 5px;
-      color: var(--color-blue);
-    }
-    a {
-      display: block;
-      border-radius: 50%;
-      height: 35px;
-      font-size: 1.2rem;
-      width: 35px;
-      border: 1px solid var(--color-blue);
-      text-align: center;
-      line-height: 33px;
-      margin-left: 5px;
-      margin-right: 5px;
-      background: var(--color-blue);
-      color:var(--background);
-      @media screen and (min-width: 768px) {
-        transition: 0.3s;
-        &:hover {
-          color: var(--color-blue);
-          background: var(--background);
+    input {
+        text-align: center;
+        box-sizing: border-box;
+        height: 34px;
+        width: 60px;
+        margin-right: 8px;
+        @media only screen and (min-width: 768px) {
+            height: 44px;
+            width: 100px;
+            font-size: 1.6rem;
         }
-      }
     }
+    @media only screen and (min-width: 768px) {
+        font-size: 1.8rem;
+    }//media query
   }
 `

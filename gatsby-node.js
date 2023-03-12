@@ -221,8 +221,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }, [])
     chocoTags = [...new Set(chocoTags)]
 
-    console.log(chocoTags)
-
       // タグ
     chocoTags.forEach(item => {
       const tag = item
