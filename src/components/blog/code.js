@@ -21,7 +21,7 @@ const Code = ({ codeString, language, title, highlight }) => {
       Prism={Prism}
       code={codeString}
       language={language}
-      >
+    >
         {({ tokens, getLineProps, getTokenProps }) => {
         const hasButton = tokens.length > 15 ? true : false
         const second = tokens.slice(16)
