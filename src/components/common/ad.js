@@ -5,7 +5,7 @@ const Ad = ({type='display', location}) => {
     useEffect(() => {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
-  }, [location.pathname]);
+  }, [location]);
 
   const ads = {
     infeed: {slot: '8004199632',format: 'fruid', style: {display:`block`}, key:"-fb+5w+4e-db+86"},

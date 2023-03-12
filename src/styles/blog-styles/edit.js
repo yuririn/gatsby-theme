@@ -10,6 +10,13 @@ export const Edit = styled.section`
         padding-right: 15px;
      }
   }
+  iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    height: auto;
+    display: block;
+    margin-bottom: 16px;
+  }
   .ads {
     margin: 24px 0;
   }
@@ -376,6 +383,7 @@ export const Edit = styled.section`
         margin-top: 0;
     }
     button {
+        cursor: pointer;
         border-radius: 8px;
         border:none;
         color: var(--background);

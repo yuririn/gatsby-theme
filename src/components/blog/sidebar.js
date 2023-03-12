@@ -96,7 +96,7 @@ const Side = ({ cateId, toc, tags, slug, location }) => {
             </ul>
           </div>
         )}
-        <Ad location={location}></Ad>
+        <Ad location={location.pathname}></Ad>
 
         <ul className="side-banner">
 

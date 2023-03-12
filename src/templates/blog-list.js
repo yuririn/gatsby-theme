@@ -73,7 +73,7 @@ const blogs = ({ pageContext, data, location }) => {
         {page !== 1 && (<Pagination num={page} current={current} type=""></Pagination>)}
       </section>
       <div className="l-container u-mblg">
-      <Ad location={location}></Ad>
+      <Ad location={location.pathname}></Ad>
       </div>
       <aside className="l-container">
         <section className="p-section u-text-center">
@@ -81,7 +81,7 @@ const blogs = ({ pageContext, data, location }) => {
           <Genre />
         </section>
         <div className="u-mblg">
-      <Ad location={location}></Ad>
+      <Ad location={location.pathname}></Ad>
       </div>
         <Prof />
       </aside>
