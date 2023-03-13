@@ -11,7 +11,7 @@ import Ad from "../components/common/ad";
 import {siteMetadata} from "../../gatsby-config"
 
 const ChocoTagList = ({ pageContext, data, location }) => {
-  const { current, page, tag } = pageContext
+  const {  tag } = pageContext
   const posts = data.allMdx.nodes
  return (
     <ChocoLayout location={location}>
