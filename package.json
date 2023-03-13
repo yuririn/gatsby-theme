@@ -85,7 +85,7 @@
     },
     "scripts": {
         "gulp": "gulp",
-        "build": "npx process-top ./node_modules/.bin/gatsby build",
+        "build": "gatsby build",
         "develop": "gatsby develop",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
         "start": "gatsby develop",
