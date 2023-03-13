@@ -71,8 +71,7 @@
         "imagemin-svgo": "^10.0.1",
         "npm": "^9.6.0",
         "prettier": "^2.4.1",
-        "react-window": "^1.8.8",
-        "unified": "^10.1.2"
+        "react-window": "^1.8.8"
     },
     "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
     "keywords": [
@@ -86,7 +85,7 @@
     },
     "scripts": {
         "gulp": "gulp",
-        "build": "gatsby build",
+        "build": "npx process-top ./node_modules/.bin/gatsby build",
         "develop": "gatsby develop",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
         "start": "gatsby develop",
