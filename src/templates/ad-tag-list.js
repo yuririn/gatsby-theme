@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import styled from "styled-components"
 import AdLayout from "../components/ad-layout"
 import Img from "../components/img";
 import Seo from "../components/seo"
@@ -10,7 +9,7 @@ import {Body} from "../styles/ad/body"
 
 
 const tags = ({ pageContext, data, location }) => {
-  const { current, page, tag } = pageContext
+  const { tag } = pageContext
 
   const posts = data.allMarkdownRemark.nodes
   return (

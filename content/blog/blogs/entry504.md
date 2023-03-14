@@ -41,7 +41,7 @@ liveというシートを作り、各月ごとの値を取得できるよう関�
 
 ![liveというシートを作り、各月ごとの値を取得できるよう関数を組みます](./images/2022/06/entry504-2.png)
 
-<ad></ad>
+<ad location="/blogs/entry504/"></ad>
 
 ```
 月　"2022/"&text(row()-1,"00")
@@ -146,7 +146,7 @@ HP: https://ginneko-atelier.com
 }
 ```
 スプレッドシートは`getActiveSpreadsheet`ではなく`SpreadsheetApp.openById`でシートIDで指定します。
-<ad></ad>
+<ad location="/blogs/entry504/"></ad>
 
 ```js
 const spreadsheet = SpreadsheetApp.openById('xxxxxxxxxxxxxxxxxxx');
@@ -207,7 +207,7 @@ GASの左側の時計マークをクリックします。
 
 週1度、毎週金曜日の夜7〜8時の間にメールが送れるように設定しました。
 
-<ad></ad>
+<ad location="/blogs/entry504/"></ad>
 
 ## Slackで通知するGASを組む
 今どきメールも面倒なので、Slackで通知できるGASのコードのご紹介です。
@@ -288,7 +288,7 @@ Slackで通知するGASを実行します。デバッグでもいいです。
 
 ![デバッグがうまく行ったら、チャンネルに以下のように通知](./images/2022/06/entry504-22.png)
 
-<ad></ad>
+<ad location="/blogs/entry504/"></ad>
 
 ### Slackで通知するGASのトリガーの設定
 
@@ -316,6 +316,6 @@ GASの関連記事もあわせてお読みください。
 
 <card id="/blogs/entry481/"></card>
 <card id="/blogs/entry476/"></card>
-<ad></ad>
+<ad location="/blogs/entry504/"></ad>
 <card id="/blogs/entry475/"></card>
 <card id="/blogs/entry470/"></card>

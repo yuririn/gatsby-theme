@@ -170,6 +170,8 @@ export const Article = styled.article`
     }
 
 
+
+
     iframe {
         display: block;
         margin-bottom: 30px;
@@ -249,6 +251,24 @@ export const Article = styled.article`
           margin-bottom: 24px;
           margin-top: 40px;
         }//media query
+    }
+    blockquote {
+        background: #eee;
+        padding: 16px;
+        @media screen and (min-width: 768px) {
+            padding: 24px;
+        }
+        margin-bottom: 24px;
+        &> *:last-child {
+            margin-bottom: 0;
+        }
+
+        h3,
+        h4 {
+            margin-bottom: 8px;
+            margin-top: 0;
+            font-size: 17px;
+        }
     }
     .box {
         line-height: 1.8;
