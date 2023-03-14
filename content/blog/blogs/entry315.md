@@ -89,7 +89,7 @@ summary {::-webkit-details-marker {
   display: none;
 }
 ```
-<figure class="animation"><img src="/images/animation/2019/entry315-3.webp" width="600" height="240" alt="detailsでアコーディオン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2019/entry315-3.webp" width="600" height="240" alt="detailsでアコーディオン" decoding="async" loading="lazy"/></figure>
 
 ### パターン1：コンテンツの高さが決まっている場合
 
@@ -146,7 +146,7 @@ details div p {
 
 ### パターン2：コンテンツの高さが決まっていない場合
 
-<figure class="animation"><img src="/images/animation/2019/entry315-10.webp" width="668" height="274" alt="detailsでアコーディオン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2019/entry315-10.webp" width="668" height="274" alt="detailsでアコーディオン" decoding="async" loading="lazy"/></figure>
 
 `summary`以下の`div`に対してのアニメーションはSafariのバグでうまくいかず。<br>
 試行錯誤した結果、`summary`にCSSを追加してそれっぽいアコーディオンを作ってみました。
@@ -238,7 +238,7 @@ details div p{
 
 `input[type=checkbox]:checked + label + div { display: block; }`
 
-<figure class="animation"><img src="/images/animation/2019/entry315-3.webp" width="600" height="240" alt="パターン1、開閉させるトリガーをチェックボックスに持たせる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2019/entry315-3.webp" width="600" height="240" alt="パターン1、開閉させるトリガーをチェックボックスに持たせる" decoding="async" loading="lazy"/></figure>
 
 すべてのコードは以下のような感じです。
 ```html:title=HTML
@@ -293,7 +293,7 @@ input[type=checkbox]:checked + label + div {
 ### パターン2、開閉させるトリガーをラジオボタンに持たせる
 アコーディオンにname属性を利用すれば、1つのメニューが開いてる時は他のメニューを強制的に閉じさせる実装もできます。
 
-<figure class="animation"><img src="/images/animation/2019/entry315-4.webp" width="672" height="186" alt="パターン2、開閉させるトリガーをラジオボタンに持たせる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2019/entry315-4.webp" width="672" height="186" alt="パターン2、開閉させるトリガーをラジオボタンに持たせる" decoding="async" loading="lazy"/></figure>
 
 ```css:title=HTML
 <input type="radio" name="accordion" id="menu1">
@@ -360,7 +360,7 @@ input[type=radio]:checked + label + div {
 アイテムの高さが決まっているときはプロパティ`height`を使いましょう。
 この場合は自然で滑らかなアコーディオンが実装できます。
 
-<figure class="animation"><img src="/images/animation/2019/entry315-4.webp" width="672" height="186" alt="パターン1、アコーディオンするアイテムの高さが決まっている場合" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2019/entry315-4.webp" width="672" height="186" alt="パターン1、アコーディオンするアイテムの高さが決まっている場合" decoding="async" loading="lazy"/></figure>
 
 閉じた状態の時は高さを0にし、はみ出した部分は`overflow:hidden`で調整します。アニメーションはおよそ500ミリ秒。私はコードを少しでも短くするために単位をs（秒）にして0省略.（ピリオド）で記述することが多いです。
 
@@ -453,7 +453,7 @@ GIFアニメの通りスライドアップするとき変な間ができて不�
 
 なので`max-height`の最大値を`100vh`や`9999px`などの絶対にコンテンツが収まるサイズに設定しておく必要があるからです。
 
-<figure class="animation"><img src="/images/animation/2019/entry315-5.webp" width="640" height="244" alt="パターン2、開閉させるトリガーをラジオボタンに持たせる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2019/entry315-5.webp" width="640" height="244" alt="パターン2、開閉させるトリガーをラジオボタンに持たせる" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <input type="checkbox" id="menu1">
@@ -524,7 +524,7 @@ input[type=checkbox]:checked + label + div {
 
 2021-01-05にリサイズ対応。レスポンシブでも使えるようにしてあります。
 
-<figure class="animation"><img src="/images/animation/2019/entry315-6.webp" width="524" height="274" alt="JavaScriptも利用して不自然なタグを使わずカクツキなくリッチにアコーディオンメニューを実装" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2019/entry315-6.webp" width="524" height="274" alt="JavaScriptも利用して不自然なタグを使わずカクツキなくリッチにアコーディオンメニューを実装" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <dl class="accordion">

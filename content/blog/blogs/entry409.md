@@ -186,7 +186,7 @@ description: 職業訓練校も含めスクール通ったところですべて�
 
 <a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BBTY5U+3GOM+HY7W1" rel="nofollow">
 <img border="0" width="234" height="60" alt="" src="https://www20.a8.net/svt/bgt?aid=201115000685&wid=001&eno=01&mid=s00000016159003015000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3BQLBS+BBTY5U+3GOM+HY7W1" alt="">
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3BQLBS+BBTY5U+3GOM+HY7W1" alt=""/>
 
 ## ちょっと意志の弱いあなたにアドバイス。テックスクール選びのポイント
 プログラミング勉強したいけど、ほどんどの人は独学に不安を覚えると思います。なので、テックスクールに行きたい気持ちは分かります。
@@ -310,7 +310,7 @@ YouTubeなどの良質な学習コンテンツはありますし、公式リフ�
 
 <a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BBTY5U+3GOM+HWAG1" rel="nofollow">
 <img border="0" width="336" height="280" alt="" src="https://www24.a8.net/svt/bgt?aid=201115000685&wid=001&eno=01&mid=s00000016159003006000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=3BQLBS+BBTY5U+3GOM+HWAG1" alt="">
+<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=3BQLBS+BBTY5U+3GOM+HWAG1" alt=""/>
 
 最後までお読みいただきありがとうございました。<br><br>
 

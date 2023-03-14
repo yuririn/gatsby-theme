@@ -29,7 +29,7 @@ description: サイト移行やDNS（ネームサーバー）変更、ちゃん�
 
 <a href="https://px.a8.net/svt/ejp?a8mat=3BFREY+GE0L9U+50+2HCB1D" rel="nofollow">
 <img border="0" width="100" height="60" alt="" src="https://www28.a8.net/svt/bgt?aid=200609674991&wid=001&eno=01&mid=s00000000018015006000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2HCB1D" alt="">
+<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2HCB1D" alt=""/>
 
 <small>※普段クライアントに対しては公開日などをきちんと確認しています。</small><br><br>
 
@@ -55,7 +55,7 @@ PVはGoogleAnalyticsなどで確認できます。
 
 <a href="https://px.a8.net/svt/ejp?a8mat=3BFREY+GE0L9U+50+2I3QOX" rel="nofollow">
 <img border="0" width="468" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=200609674991&wid=001&eno=01&mid=s00000000018015134000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2I3QOX" alt="">
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2I3QOX" alt=""/>
 
 
 ただ、サーバー会社にお問い合わせができないのである程度覚悟しておいてください。<br><br>
@@ -178,4 +178,4 @@ DNS変更は慎重に！
 
 <a href="https://px.a8.net/svt/ejp?a8mat=3BFREY+GE0L9U+50+2HK0TD" rel="nofollow">
 <img border="0" width="350" height="80" alt="" src="https://www20.a8.net/svt/bgt?aid=200609674991&wid=001&eno=01&mid=s00000000018015042000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2HK0TD" alt="">
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3BFREY+GE0L9U+50+2HK0TD" alt=""/>

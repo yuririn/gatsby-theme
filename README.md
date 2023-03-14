@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" //>
   </a>
 </p>
 <h1 align="center">
@@ -44,7 +44,7 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-blog)
+[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud"/>](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-blog)
 
 ## 🧐 What's inside?
 
@@ -105,7 +105,7 @@ Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby f
 <!-- AUTO-GENERATED-CONTENT:END -->
 !\[(.*?)\]\((.*?)\/2021\/(.*?)\/entry(.*?).gif\)
 
-<figure class="animation"><img src="/images/animation/2021/entry$3.webp" width="" height="" alt="$1" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry$3.webp" width="" height="" alt="$1" decoding="async" loading="lazy"//></figure>
 
 https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
 
@@ -114,3 +114,22 @@ ffmpeg -i entry315-10.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(
 ffmpeg -i 名称未設定.mov -vf fps=5 -c:v libwebp -loop 0 -lossless 0 -quality 75 -preset 5 -an -vsync 0 entry315-3.webp
 
 https://tsukulog.net/2021/10/03/react-count-down-timer/
+
+export NODE_OPTIONS=--max-old-space-size=8192
+
+node -e 'console.log(v8.getHeapStatistics().heap_size_limit/(1024*1024))'
+
+
+[build.environment]
+  NODE_OPTIONS = "--max_old_space_size=4096"
+
+
+巻き戻す方法
+git reset --head xxx
+
+トラックしていないファイルを削除
+git clean -df
+git clean -f
+
+強制Push
+git push -f origin master

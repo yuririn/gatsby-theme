@@ -4,9 +4,9 @@ import { Sidebar} from "./../../styles/ad/sidebar"
 import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
-import Adsense from "../common/Ad";
+import Ad from "../common/ad";
 
-const AdSidebar = () => {
+const AdSidebar = ({location}) => {
   return (
     <Sidebar>
     <aside className="profile">
@@ -59,8 +59,8 @@ const AdSidebar = () => {
           <Img source="ad/ad-banner.jpg" className="prof__img__sm"></Img>
           </a>
         </aside>
-        <Adsense></Adsense>
-        <Adsense></Adsense>
+        <Ad location={location}></Ad>
+        <Ad location={location}></Ad>
     </Sidebar>
   )
 }

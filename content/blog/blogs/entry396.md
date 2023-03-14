@@ -64,7 +64,7 @@ CMSから吐き出すタグを**自分では書き換えられないけどCSS側
 
 ### ホバーで半透明
 
-<figure class="animation"><img src="/images/animation/2020/entry396-3.webp" width="194" height="80" alt="ホバーで半透明" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-3.webp" width="194" height="80" alt="ホバーで半透明" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <a href="" class="btn--basic">続きを読む<i class="zmdi zmdi-chevron-right"></i></a>
@@ -90,7 +90,7 @@ a[class^=btn] { //btnから始まるクラス
 
 ### 色が反転
 
-<figure class="animation"><img src="/images/animation/2020/entry396-4.webp" width="214" height="88" alt="色が反転" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-4.webp" width="214" height="88" alt="色が反転" decoding="async" loading="lazy"/></figure>
 
 ホバーすると、ボーダーが反転します。<br>
 他のボタンとサイズを合わせるためにbox-sizing: border-box;でborderを内側に含めています。
@@ -121,7 +121,7 @@ a[class^=btn] { //btnから始まるクラス
 ```
 
 ### 定番の立体感のあるボタンらしいボタン
-<figure class="animation"><img src="/images/animation/2020/entry396-5.webp" width="196" height="84" alt="定番の立体感のあるボタンらしいボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-5.webp" width="196" height="84" alt="定番の立体感のあるボタンらしいボタン" decoding="async" loading="lazy"/></figure>
 
 定番のボタンらしいボタンを作るとき、私はかならずY軸に向かった`box-shadow`を使います。<br>
 クリックしたとき、押した感が出るように`transformY`で位置をわずかに下げ、さらに`box-shadow`も同じ分量減らします。<br>
@@ -178,7 +178,7 @@ a[class^=btn] { //btnから始まるクラス
 
 #### ベースのスケルトン
 
-<figure class="animation"><img src="/images/animation/2020/entry396-6.webp" width="270" height="114" alt="ベースのスケルトン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-6.webp" width="270" height="114" alt="ベースのスケルトン" decoding="async" loading="lazy"/></figure>
 
 背景を半透明にしただけで、クリックとともに白っぽさが増します。
 
@@ -207,7 +207,7 @@ a[class^=btn] { //btnから始まるクラス
 ```
 
 #### クリアソープのようなスケルトンボタン
-<figure class="animation"><img src="/images/animation/2020/entry396-7.webp" width="256" height="108" alt="ベースのスケルトン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-7.webp" width="256" height="108" alt="ベースのスケルトン" decoding="async" loading="lazy"/></figure>
 
 クリアソープのように少し立体感をつけてみました。<br>
 box-shadowをinsetにして立体感をつけています。
@@ -243,7 +243,7 @@ box-shadowをinsetにして立体感をつけています。
 ```
 
 #### ネオンのようなスケルトンボタン
-<figure class="animation"><img src="/images/animation/2020/entry396-8.webp" width="256" height="110" alt="ネオンのようなスケルトンボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-8.webp" width="256" height="110" alt="ネオンのようなスケルトンボタン" decoding="async" loading="lazy"/></figure>
 
 ボーダーをbox-shadowだけで作って、ライトのようにしています。
 
@@ -297,7 +297,7 @@ box-shadowをinsetにして立体感をつけています。
 
 #### グラデーション反転
 
-<figure class="animation"><img src="/images/animation/2020/entry396-10.webp" width="206" height="92" alt="グラデーションを利用したボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-10.webp" width="206" height="92" alt="グラデーションを利用したボタン" decoding="async" loading="lazy"/></figure>
 
 あらかじめグラデーションを逆にした擬似要素をopacity:0で隠しておき、ホバー時に表示させグラデーションを反転させます。
 
@@ -355,7 +355,7 @@ box-shadowをinsetにして立体感をつけています。
 擬似要素を2倍（200%）のサイズに作り、`overflow: hidden`で隠しておきます。
 hoverした時に`left: -100%`でアニメーションさせます。
 
-<figure class="animation"><img src="/images/animation/2020/entry396-11.webp" width="198" height="78" alt="グラデーションが横にスライド" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-11.webp" width="198" height="78" alt="グラデーションが横にスライド" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <a href="" class="btn--gradient2">BUTTON<i class="zmdi zmdi-chevron-right"></i></a>
@@ -409,7 +409,7 @@ hoverした時に`left: -100%`でアニメーションさせます。
 ```
 #### きっちりセパレートさせた色でアニメーション
 
-<figure class="animation"><img src="/images/animation/2020/entry396-12.webp" width="194" height="102" alt="きっちりセパレートさせた色でアニメーション" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-12.webp" width="194" height="102" alt="きっちりセパレートさせた色でアニメーション" decoding="async" loading="lazy"/></figure>
 
 私のこのブログのデザインにも使っている左上のマークがスライドするボタンです。<br>
 ポイントはグラデの角度を315度の斜めにし左右の色をそれぞれ50%に設定します。<br>
@@ -470,7 +470,7 @@ hoverした時に`left: -100%`でアニメーションさせます。
 
 ### 文字がエンボス
 
-<figure class="animation"><img src="/images/animation/2020/entry396-14.webp" width="222" height="104" alt="文字がエンボス" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-14.webp" width="222" height="104" alt="文字がエンボス" decoding="async" loading="lazy"/></figure>
 
 text-shadowとbox-shadowでエンボス風のボタンです。
 
@@ -506,7 +506,7 @@ text-shadowとbox-shadowでエンボス風のボタンです。
 ```
 ### パキッとした影が広がるボタン
 
-<figure class="animation"><img src="/images/animation/2020/entry396-15.webp" width="244" height="122" alt="パキッとした影が広がるボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-15.webp" width="244" height="122" alt="パキッとした影が広がるボタン" decoding="async" loading="lazy"/></figure>
 
 box-shadowを2個重ねるだけで、クールなボタンができます。
 ```html:title=HTML
@@ -538,7 +538,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 ```
 ### クリックすると波紋が広がるボタン
 
-<figure class="animation"><img src="/images/animation/2020/entry396-16.webp" width="252" height="124" alt="クリックすると波紋が広がるボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-16.webp" width="252" height="124" alt="クリックすると波紋が広がるボタン" decoding="async" loading="lazy"/></figure>
 
 クリックすると波紋が広がります。
 
@@ -612,7 +612,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 }
 ```
 ### ボーダーがアニメーションするボタン
-<figure class="animation"><img src="/images/animation/2020/entry396-17.webp" width="244" height="120" alt="ボーダーがアニメーションするボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-17.webp" width="244" height="120" alt="ボーダーがアニメーションするボタン" decoding="async" loading="lazy"/></figure>
 
 ボーダーが左上と右下からアニメーションするボタンです。**heightとwidthを0から100%**に広げることで実現しています。
 ```html:title=HTML
@@ -682,7 +682,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 
 ### グラデーション×シャドーを駆使した立地なボタン(2022/12/17追加)
 まるで画像で書き出したようですがCSSのみで実装できるボタンのご紹介です。
-<figure class="animation"><img src="/images/animation/2020/entry396-18.webp" width="502" height="204" alt="ボーダーがアニメーションするボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry396-18.webp" width="502" height="204" alt="ボーダーがアニメーションするボタン" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <a href="" class="btn--rich">Button</a>

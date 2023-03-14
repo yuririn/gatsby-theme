@@ -2,13 +2,12 @@ import React from "react"
 import Img from "../img"
 import { Link } from "gatsby"
 import config from "../../../gatsby-config"
-import Adsense from "../common/Ad"
+import Ad from "../common/ad"
 
 const smallProf = () => {
   const author = config.siteMetadata.author;
   return (
     <>
-    <Adsense type="display"></Adsense>
     <div className="profile">
       <span className="title">この記事を書いた人</span>
       <Img source="common/camille-pic.jpg" className="prof__img__sm"></Img>

@@ -28,7 +28,7 @@ description: 理不尽、謎ルール。お父さんが一番偉い！昭和の�
 
 昭和では上記のような家庭内カーストが存在しました。
 
-<msg txt="わしゃーおとうさんじゃ！お父さんは何をしてもえーんじゃ！！" img="common/father.png" name="お父さん" cls="msg-baloon--right"></msg>
+<msg txt="わしゃーおとうさんじゃ！お父さんは何をしてもえーんじゃ！！" img="common/father.png" name="お父さん" cls="right"></msg>
 
 うちの父を例に、昭和の父の謎の特権についてご紹介します。
 
@@ -60,7 +60,7 @@ description: 理不尽、謎ルール。お父さんが一番偉い！昭和の�
 
 <msg txt="ぐぉぉ、死ぬ！死ぬる！！早く出て！" img="common/camille-kid.jpg" name="かみーゆ（子供）"></msg>
 
-<msg txt="ああ！！もう！！<br>トイレぐらいゆっくり入らせろ！！！" img="common/father.png" name="お父さん" cls="msg-baloon--right"></msg>
+<msg txt="ああ！！もう！！<br>トイレぐらいゆっくり入らせろ！！！" img="common/father.png" name="お父さん" cls="right"></msg>
 
 もう十分ゆっくりいたやろ。。。
 
@@ -79,7 +79,7 @@ description: 理不尽、謎ルール。お父さんが一番偉い！昭和の�
 
 すると父親は。。。
 
-<msg txt="お父さんはいーの！" img="common/father.png" name="お父さん" cls="msg-baloon--right"></msg>
+<msg txt="お父さんはいーの！" img="common/father.png" name="お父さん" cls="right"></msg>
 
 
 <msg txt="ファッ！！！？（心の声）" img="common/camille-kid.jpg" name="かみーゆ（子供）"></msg>
@@ -103,7 +103,7 @@ description: 理不尽、謎ルール。お父さんが一番偉い！昭和の�
 
 <msg txt="お父さん、たまにはドリフが見たい！" img="common/camille-kid.jpg" name="かみーゆ（子供）"></msg>
 
-<msg txt="あいつらは生卵を投げる。<br>わしゃ食べ物を粗末をするやつはきらいじゃけダメじゃ！" img="common/father.png" name="お父さん" cls="msg-baloon--right"></msg>
+<msg txt="あいつらは生卵を投げる。<br>わしゃ食べ物を粗末をするやつはきらいじゃけダメじゃ！" img="common/father.png" name="お父さん" cls="right"></msg>
 
 という感じで見せてもらえませんでした。
 
@@ -111,8 +111,8 @@ description: 理不尽、謎ルール。お父さんが一番偉い！昭和の�
 
 ![家事・子育てには参加しない](./images/2023/02/entry521-5.jpg)
 
-<msg txt="かーさん、お茶ー" img="common/father.png" name="お父さん" cls="msg-baloon--right"></msg>
-<msg txt="かーさん、おかわりー!!" img="common/father.png" name="お父さん" cls="msg-baloon--right"></msg>
+<msg txt="かーさん、お茶ー" img="common/father.png" name="お父さん" cls="right"></msg>
+<msg txt="かーさん、おかわりー!!" img="common/father.png" name="お父さん" cls="right"></msg>
 
 昭和のお父さんは座ったまま、こんなしょうもないことを嫁に指図します。なぜならば「 **一家を支える大黒柱** 」だから。
 

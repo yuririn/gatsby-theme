@@ -126,7 +126,7 @@ h2以外の見出しにはレベルを追加します。指定しないとブロ
 <!-- wp:post-featured-image {"isLink":true} /-->
 
 <!-- 出力結果 -->
-<figure class="wp-block-post-featured-image"><a href="http://localhost:3011/aaaaaaaa/"><img width="1200" height="900" src="http://localhost:3011/wp-content/uploads/2022/06/entry503-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy" srcset="http://localhost:3011/wp-content/uploads/2022/06/entry503-1.jpg 1200w, http://localhost:3011/wp-content/uploads/2022/06/entry503-1-300x225.jpg 300w, http://localhost:3011/wp-content/uploads/2022/06/entry503-1-1024x768.jpg 1024w, http://localhost:3011/wp-content/uploads/2022/06/entry503-1-768x576.jpg 768w" sizes="(max-width: 1200px) 100vw, 1200px"></a></figure>
+<figure class="wp-block-post-featured-image"><a href="http://localhost:3011/aaaaaaaa/"><img width="1200" height="900" src="http://localhost:3011/wp-content/uploads/2022/06/entry503-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy" srcset="http://localhost:3011/wp-content/uploads/2022/06/entry503-1.jpg 1200w, http://localhost:3011/wp-content/uploads/2022/06/entry503-1-300x225.jpg 300w, http://localhost:3011/wp-content/uploads/2022/06/entry503-1-1024x768.jpg 1024w, http://localhost:3011/wp-content/uploads/2022/06/entry503-1-768x576.jpg 768w" sizes="(max-width: 1200px) 100vw, 1200px"></a/></figure>
 ```
 ```html:title=タイトル
 <!-- wp:post-title {"isLink":true} /-->

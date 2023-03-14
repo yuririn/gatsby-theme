@@ -11,7 +11,7 @@ import FovoriteList from "../components/common/favorites"
 import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
-import Adsense from '../components/common/Ad'
+import Ad from '../components/common/ad'
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -35,14 +35,12 @@ const BlogIndex = ({ data, location }) => {
               cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
             }
 
-            console.log(i === 4)
-
             return (
               <>
-              { i === 4 ? (
+              { i === 5 ? (
                 <>
                 <li key={`_post${i}`} className={cardClass}>
-                  <Adsense type="display"></Adsense>
+                  <Ad location={location.pathname}></Ad>
                 </li>
                 <li key={`post${i}`} className={cardClass} role="article">
                   <Link to={post.fields.slug} className="p-entryCard__img">
@@ -109,18 +107,18 @@ const BlogIndex = ({ data, location }) => {
         </p>
         <h2 className="c-heading--lg">記事を検索する</h2>
         <Search></Search>
-        <Adsense type="display"></Adsense>
+        <Ad location={location.pathname}></Ad>
         <FovoriteList type="web" />
-        <Adsense type="display"></Adsense>
+        <Ad location={location.pathname}></Ad>
         <FovoriteList type="life" />
-        <Adsense type="display"></Adsense>
+        <Ad location={location.pathname}></Ad>
         <FovoriteList type="career" />
-        <Adsense type="display"></Adsense>
+        <Ad location={location.pathname}></Ad>
         <h2 className="c-heading--lg">人気のジャンル</h2>
         <Genre />
       </div>
       <Prof></Prof>
-      <Adsense type="display"></Adsense>
+      <Ad location={location.pathname}></Ad>
     </Layout>
   );
 }

@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Adsense from "../common/Ad"
+import Ad from "../common/ad"
 
 const Toc = data => {
   const { allMarkdownRemark } = useStaticQuery(
@@ -41,7 +41,6 @@ const Toc = data => {
         }}
         ></div>
     </Mokuji>
-    <Adsense type="display"></Adsense>
     </>
   )
 }

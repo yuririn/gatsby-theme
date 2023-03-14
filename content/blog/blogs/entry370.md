@@ -260,7 +260,7 @@ HTMLはこちらを共通で使います。
 </p>
 ```
 ### ズームしながら出現するチェックボックス
-<figure class="animation"><img src="/images/animation/2020/entry370-6.webp" width="760" height="153" alt="ズームしながら出現するチェックボックス" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry370-6.webp" width="760" height="153" alt="ズームしながら出現するチェックボックス" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 label ~ label {
@@ -311,7 +311,7 @@ label ~ label {
 [デモ : ズームしながら出現するチェックボックス CodePen](https://codepen.io/camile/pen/LYGrQJR)
 
 ### 波紋が広がるラジオボタン
-<figure class="animation"><img src="/images/animation/2020/entry370-7.webp" width="760" height="172" alt="波紋が広がるラジオボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry370-7.webp" width="760" height="172" alt="波紋が広がるラジオボタン" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 label ~ label {
@@ -384,7 +384,7 @@ label ~ label {
 [デモ : 波紋が広がるラジオボタン｜CodePen](https://codepen.io/camile/pen/bGEKvVz)
 
 ### スマフォやアプリに使えるラジオボタン
-<figure class="animation"><img src="/images/animation/2020/entry370-8.webp" width="760" height="145" alt="スマフォやアプリに使えるラジオボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry370-8.webp" width="760" height="145" alt="スマフォやアプリに使えるラジオボタン" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 label ~ label {
@@ -449,7 +449,7 @@ label ~ label {
 ```
 [デモ : スマフォやアプリに使えるラジオボタン｜CodePen](https://codepen.io/camile/pen/JjGZLyy)
 ### スピンしながらチェックが入るラジオボタン
-<figure class="animation"><img src="/images/animation/2020/entry370-9.webp" width="760" height="159" alt="スピンしながらチェックが入るラジオボタン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2020/entry370-9.webp" width="760" height="159" alt="スピンしながらチェックが入るラジオボタン" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 .radio label {

@@ -7,7 +7,7 @@ import AdSidebar from "../components/blogs/ad-sidebar";
 import {siteMetadata} from "../../gatsby-config"
 import Seo from "../components/seo"
 import {Body} from "../styles/ad/body"
-import Adsense from "../components/common/Ad";
+import Ad from "../components/common/ad";
 
 const AdIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes
@@ -35,9 +35,9 @@ const AdIndex = ({ data, location }) => {
          })}
           </ul>
          )}
-         <Adsense></Adsense>
+         <Ad location={location.pathname}></Ad>
       </Body>
-      <AdSidebar></AdSidebar>
+      <AdSidebar location={location.pathname}></AdSidebar>
     </AdLayout>
   )
 }

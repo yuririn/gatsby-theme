@@ -10,17 +10,18 @@ import AdSidebar from "../components/blogs/ad-sidebar";
 import BreadCrumbList from "../components/common/bread-crumb-list"
 import Img from "../components/img"
 import Seo from "../components/seo"
-import Adsense from '../components/common/Ad'
+import Ad from '../components/common/ad'
+import { Location } from '@gatsbyjs/reach-router';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     msg: Msg,
-    ad: Adsense,
+    ad: Ad,
   },
 }).Compiler
 
-const Ad = ({ data, location }) => {
+const AdPost = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
@@ -78,13 +79,13 @@ const Ad = ({ data, location }) => {
                 </li>
               )}
           </ol>
-          <Adsense></Adsense>
+          <Ad location={location.pathname}></Ad>
       </Article>
       <AdSidebar></AdSidebar>
     </AdLayout>
   )
 }
-export default Ad
+export default AdPost
 
 export const Head = ({ data, location }) => {
   const post = data.markdownRemark

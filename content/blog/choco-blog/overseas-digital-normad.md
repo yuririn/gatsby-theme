@@ -149,8 +149,8 @@ WebライターはWebサイト上の記事を書く仕事です。
 <div class="box">
 <p>Webライターの仕事を得るために<em>クラウドソーシングの登録は必須</em>です。ライターのお仕事が豊富なクラウドソーシングに登録しておきましょう。</p>
 <ul>
-  <li><a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3C9KZ6+2OM2+TZ6B6" rel="nofollow">CrowdWorks（クラウドワークス）</a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3H9TGE+3C9KZ6+2OM2+TZ6B6" alt=""></li>
-  <li><a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3BO5DE+3QHY+5YJRM" rel="nofollow">Bizseek</a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=3H9TGE+3BO5DE+3QHY+5YJRM" alt=""></li>
+  <li><a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3C9KZ6+2OM2+TZ6B6" rel="nofollow">CrowdWorks（クラウドワークス）</a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3H9TGE+3C9KZ6+2OM2+TZ6B6" alt=""/></li>
+  <li><a href="https://px.a8.net/svt/ejp?a8mat=3H9TGE+3BO5DE+3QHY+5YJRM" rel="nofollow">Bizseek</a><img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=3H9TGE+3BO5DE+3QHY+5YJRM" alt=""/></li>
 </ul>
 </div>
 
@@ -185,8 +185,8 @@ WebライターはWebサイト上の記事を書く仕事です。
 <div class="box">
 <p><strong>成果を出したい人</strong>は有料のWordPressのテンプレートを買い、レンタルサーバーを借りてブログを始めましょう。</p>
 <ul>
-  <li><a href="https://px.a8.net/svt/ejp?a8mat=3T465Q+84XAEQ+4CL8+60OXE" rel="nofollow">国内最高峰の SEO  最適化 WordPress  テーマ 【ザ・トール】</a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3T465Q+84XAEQ+4CL8+60OXE" alt=""></li>
-  <li><a href="https://px.a8.net/svt/ejp?a8mat=3T2LTE+5ZIXRM+CO4+61JSI" rel="nofollow">レンタルサーバー エックスサーバー</a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3T2LTE+5ZIXRM+CO4+61JSI" alt=""></li>
+  <li><a href="https://px.a8.net/svt/ejp?a8mat=3T465Q+84XAEQ+4CL8+60OXE" rel="nofollow">国内最高峰の SEO  最適化 WordPress  テーマ 【ザ・トール】</a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3T465Q+84XAEQ+4CL8+60OXE" alt=""/></li>
+  <li><a href="https://px.a8.net/svt/ejp?a8mat=3T2LTE+5ZIXRM+CO4+61JSI" rel="nofollow">レンタルサーバー エックスサーバー</a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3T2LTE+5ZIXRM+CO4+61JSI" alt=""/></li>
 </ul>
 </div>
 
@@ -217,8 +217,8 @@ WebライターはWebサイト上の記事を書く仕事です。
 <div class="box">
 <p>未経験者もチャンスはあります！！デザインのオンラインスクールで学びつつ、クラウドソーシングで<strong>見せかけだけでも経験を積んでおきましょう</strong>。</p>
 <ul>
-  <li><a href="https://px.a8.net/svt/ejp?a8mat=3T465R+4BZL9U+4UAG+5YJRM" rel="nofollow">Webで「食っていくため」に特化したデザイン・プログラミングのオンラインスクール</a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3T465R+4BZL9U+4UAG+5YJRM" alt=""></li>
- <li><a href="https://px.a8.net/svt/ejp?a8mat=3BHPWW+3KMEQ+2PEO+1HO86Q" rel="nofollow">アウトソーシングサービス・ココナラ</a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3BHPWW+3KMEQ+2PEO+1HO86Q" alt=""></li>
+  <li><a href="https://px.a8.net/svt/ejp?a8mat=3T465R+4BZL9U+4UAG+5YJRM" rel="nofollow">Webで「食っていくため」に特化したデザイン・プログラミングのオンラインスクール</a><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3T465R+4BZL9U+4UAG+5YJRM" alt=""/></li>
+ <li><a href="https://px.a8.net/svt/ejp?a8mat=3BHPWW+3KMEQ+2PEO+1HO86Q" rel="nofollow">アウトソーシングサービス・ココナラ</a><img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3BHPWW+3KMEQ+2PEO+1HO86Q" alt=""/></li>
 </ul>
 </div>
 
@@ -244,8 +244,8 @@ WebライターはWebサイト上の記事を書く仕事です。
 <div class="box">
 <p>未経験で始めたい方へ。プログラミング学習は、生半可ではないので<strong>由緒あるスクールで学ぶことをおすすめ</strong>します。今ならテックアカデミーで無料体験ができるみたいです！！</p>
 <ul>
-  <li><a href="https://px.a8.net/svt/ejp?a8mat=3H9TGC+AM8B5E+3GWO+6BU5U" rel="nofollow">テックアカデミー無料体験</a><img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3H9TGC+AM8B5E+3GWO+6BU5U" alt=""></li>
-  <li><a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BCFDRM+4LXM+626XU" rel="nofollow">フリーランスエンジニア向け案件紹介サービス【IT求人ナビ フリーランス】</a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3BQLBS+BCFDRM+4LXM+626XU" alt=""></li>
+  <li><a href="https://px.a8.net/svt/ejp?a8mat=3H9TGC+AM8B5E+3GWO+6BU5U" rel="nofollow">テックアカデミー無料体験</a><img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3H9TGC+AM8B5E+3GWO+6BU5U" alt=""/></li>
+  <li><a href="https://px.a8.net/svt/ejp?a8mat=3BQLBS+BCFDRM+4LXM+626XU" rel="nofollow">フリーランスエンジニア向け案件紹介サービス【IT求人ナビ フリーランス】</a><img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3BQLBS+BCFDRM+4LXM+626XU" alt=""/></li>
 </ul>
 </div>
 

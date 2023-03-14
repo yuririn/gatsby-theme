@@ -230,7 +230,7 @@ setCountDown();
 
 ここまでのコードではCSSを実装していないのですが、CSS付きでCodepenにサンプルをあげています。
 
-<figure class="animation"><img src="/images/animation/2021/entry463-2.webp" width="600" height="184" alt="見るからにいやらしいキャンペーン" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry463-2.webp" width="600" height="184" alt="見るからにいやらしいキャンペーン" decoding="async" loading="lazy"/></figure>
 
 興味がある方はこちらもどうぞ^ ^
 

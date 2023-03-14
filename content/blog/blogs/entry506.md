@@ -630,7 +630,7 @@ return array(
 	'title'    => 'Home main visual',
 	'inserter' => false,
 	'content'  => '<!-- wp:image {"align":"wide","sizeSlug":"full","linkDestination":"none"} -->
-		<figure class="wp-block-image alignwide size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/main.jpg" alt="' . esc_attr( 'きれいな海' ) . '"/></figure>
+		<figure class="wp-block-image alignwide size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/main.jpg" alt="' . esc_attr( 'きれいな海' ) . '"//></figure>
 		<!-- /wp:image -->',
 );
 ```

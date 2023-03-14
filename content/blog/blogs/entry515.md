@@ -173,7 +173,7 @@ noUiSliderのイベントを利用して、スライダーの変化を受け取�
 
 `noUiSlider.on()` メソッドを使って、フォームの値をリアルタイムでレンダリングさせます。
 
-<figure class="animation"><img src="/images/animation/2022/entry515-6.webp" width="468" height="136" alt="noUiSlider Tooltip" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2022/entry515-6.webp" width="468" height="136" alt="noUiSlider Tooltip" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <div class="range-wrapper">
@@ -253,7 +253,7 @@ noUiSlider では、オプションの変更もあとから可能です。
 
 たとえば、チェックボックスの値が変更されたタイミングでレンジの最大値を変えるなども可能です。
 
-<figure class="animation"><img src="/images/animation/2022/entry515-8.webp" width="468" height="136" alt="noUiSlider オプションの変更" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2022/entry515-8.webp" width="468" height="136" alt="noUiSlider オプションの変更" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <div class="range-wrapper">

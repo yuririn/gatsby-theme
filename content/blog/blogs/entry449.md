@@ -104,7 +104,7 @@ nav ul li a:hover {
 
 そんな時は下線をつけるのですが、それだけだと芸がないので横に広げます。シンプルで使いやすいです。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-1.webp" width="426" height="70" alt="グロナビ アニメその1・下線を横に広がる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-1.webp" width="426" height="70" alt="グロナビ アニメその1・下線を横に広がる" decoding="async" loading="lazy"/></figure>
 
 <ad></ad>
 
@@ -136,7 +136,7 @@ nav ul li a:hover::after {
 ### グロナビ アニメその2・下線が左からにゅっと伸びる
 先ほどのアレンジバージョンです。左から右へ伸びると*ページ遷移するんだ*感が出ます。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-2.webp" width="416" height="78" alt="グロナビ アニメその2・下線が左からにゅっと伸びる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-2.webp" width="416" height="78" alt="グロナビ アニメその2・下線が左からにゅっと伸びる" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 nav ul li a::after {
@@ -166,7 +166,7 @@ nav ul li a:hover::after {
 
 もしくは色を調整してください。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-3.webp" width="418" height="66" alt="グロナビ アニメその3・背景色をガツンと変える" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-3.webp" width="418" height="66" alt="グロナビ アニメその3・背景色をガツンと変える" decoding="async" loading="lazy"/></figure>
 
 <ad></ad>
 
@@ -188,7 +188,7 @@ nav ul li a:hover {
 
 サイトによっては事故が起こるデザインなので要注意。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-5.webp" width="454" height="66" alt="グロナビ アニメその4・色を変える" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-5.webp" width="454" height="66" alt="グロナビ アニメその4・色を変える" decoding="async" loading="lazy"/></figure>
 
 <ad></ad>
 
@@ -238,7 +238,7 @@ li:nth-child(4) a:hover {
 
 詳細はこちら的なリンクのあしらいとして使ってもかっこいいです。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-4.webp" width="440" height="60" alt="グロナビ アニメその5・矢印がにゅっと伸びる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-4.webp" width="440" height="60" alt="グロナビ アニメその5・矢印がにゅっと伸びる" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 nav ul li a::after {
@@ -289,7 +289,7 @@ nav ul li a:hover::before {
 
 本来はSVGがいいんでしょうけど。。。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-7.webp" width="440" height="62" alt="グロナビ アニメその6・アイコンをくるくる回す" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-7.webp" width="440" height="62" alt="グロナビ アニメその6・アイコンをくるくる回す" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 nav ul li a::after {
@@ -321,7 +321,7 @@ nav ul li a:hover:after {
 
 YouTubeでマッチ棒パズルなるものを知った結果こうなりました。。。。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-10.webp" width="444" height="66" alt="グロナビ アニメその7・マッチ棒っぽいものを伸ばす" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-10.webp" width="444" height="66" alt="グロナビ アニメその7・マッチ棒っぽいものを伸ばす" decoding="async" loading="lazy"/></figure>
 
 <ad></ad>
 
@@ -369,7 +369,7 @@ nav ul li a:hover::before {
 
 地味なテクニックですが重宝します。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-11.webp" width="566" height="72" alt="グロナビ アニメその8・グラデ背景を重ねる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-11.webp" width="566" height="72" alt="グロナビ アニメその8・グラデ背景を重ねる" decoding="async" loading="lazy"/></figure>
 
 グラデーションは色と色の境目を0にすることでぱきっと色を分けることができます。
 
@@ -432,7 +432,7 @@ nav ul li a:hover::after{
 
 今回はパキッとさせてますが、グラデはお好みで滑らかにしてもいいかもです^ ^
 
-<figure class="animation"><img src="/images/animation/2021/entry449-12.webp" width="448" height="70" alt="グロナビ アニメその8・グラデ背景を重ねる" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-12.webp" width="448" height="70" alt="グロナビ アニメその8・グラデ背景を重ねる" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 nav ul li a::after{
@@ -484,7 +484,7 @@ p::before {
 
 ベタ塗りからのグラデーションはアニメーションが効かないので、最初から上に透明（`opacity`）な擬似要素を重ねておき、`opacity: 1`にしてアニメーションさせます。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-9.webp" width="508" height="82" alt="グロナビ アニメその10・文字をグラデに" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-9.webp" width="508" height="82" alt="グロナビ アニメその10・文字をグラデに" decoding="async" loading="lazy"/></figure>
 
 ```html:title=HTML
 <li><a href="#" data-item="SERVICE">SERVICE</a></li>
@@ -520,7 +520,7 @@ a:hover::before {
 
 グラデは左から徐々に右に広がります。下線も追加してさらにリッチに。
 
-<figure class="animation"><img src="/images/animation/2021/entry449-8.webp" width="472" height="60" alt="グロナビ アニメその11・文字をグラデかつ下線のアニメ追加" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-8.webp" width="472" height="60" alt="グロナビ アニメその11・文字をグラデかつ下線のアニメ追加" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 a::before {
@@ -574,7 +574,7 @@ a:hover::after {
 <li><a href="#" data-item="お問い合わせ">CONTACT</a></li>
 ```
 
-<figure class="animation"><img src="/images/animation/2021/entry449-6.webp" width="654" height="78" alt="グロナビ アニメその12・文字の入れ替え" decoding="async" loading="lazy"></figure>
+<figure class="animation"><img src="/images/animation/2021/entry449-6.webp" width="654" height="78" alt="グロナビ アニメその12・文字の入れ替え" decoding="async" loading="lazy"/></figure>
 
 ```css:title=CSS
 nav ul li a {

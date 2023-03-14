@@ -257,7 +257,7 @@ React であれば `react-window`、`Effect` を使っている場合は `should
 第三者リソースとはGoogleタグマネージャー、Googleアナリティクス、Clarity や Googleフォントなどです。
 切ないくらいボトルネックとなります。
 
-### Adsense のみ遅延読み込み
+### Ad のみ遅延読み込み
 タグマネージャーなどの Google のJSはかなり足を引っ張ります。解析系のタグは誤ったデータが取れては困るので下手に対応策を打てませんが、 *AdSense なら遅延読み込みで改善* できます。
 
 AdSense を入れている方なら、これだけでも随分改善が見込めます。
@@ -270,7 +270,7 @@ window.addEventListener("scroll", function() {
   if ((document.documentElement.scrollTop !== 0 && lazyloadads === false) || (document.body.scrollTop !== 0 && lazyloadads === false)) {
     (function() {
         const ad = document.createElement('script');
-        ad.setAttribute('data-ad-client', "****")//AdsenseのID
+        ad.setAttribute('data-ad-client', "****")//AdのID
         ad.async = true;
         ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
         const sc = document.getElementsByTagName('script')[0];

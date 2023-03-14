@@ -577,7 +577,7 @@ module.exports = {
       options: {
         trackingIds: [
           process.env.GOOGLE_ANALYTICS_TRACKING_ID,//トラッキングID
-          process.env.GOOGLE_ADSENSE_ID,//Adsenseもまとめて入れられる！！
+          process.env.GOOGLE_ADSENSE_ID,//Adもまとめて入れられる！！
         ],
         pluginConfig: {
           head: true,//headerに追記
