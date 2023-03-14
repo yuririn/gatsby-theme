@@ -136,7 +136,7 @@ arr.map((item, index) => {
 // バナナ 2
 ```
 
-<ad></ad>
+<ad location="/blogs/entry482/"></ad>
 
 配列に格納された連想配列はもちろん取得可能です。
 ```js
@@ -240,7 +240,7 @@ console.log(result)
 <div class="box">
 特定条件の値を1つだけ取り出したい場合に使う。
 </div>
-<ad></ad>
+<ad location="/blogs/entry482/"></ad>
 
 ### 特定条件の値だけ絞り込んで配列にする「filer」
 特定の条件の配列・連想配列のみに絞り込みます。
@@ -330,7 +330,7 @@ console.log(result)
 
 `some`同様`return`で判定可能。
 
-<ad></ad>
+<ad location="/blogs/entry482/"></ad>
 
 ```js
 const arr = ['hello', 1, 2, undefined]
@@ -436,7 +436,7 @@ const sortArray = result.sort((a, b) => {
   return (a.date > b.date ? 1 : -1);
 });
 ```
-<ad></ad>
+<ad location="/blogs/entry482/"></ad>
 
 ```js
 // 降順
@@ -538,7 +538,7 @@ console.log(dist)
 //結果 [1, 2, 3, 4, 5]
 ```
 
-<ad></ad>
+<ad location="/blogs/entry482/"></ad>
 
 [JSのスプレッド演算子 | Qiita](https://qiita.com/riku-shiru/items/a3e2f19b4470f2a4bd09)
 

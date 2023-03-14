@@ -53,7 +53,7 @@ const SHEET_NAME = 'data';
 ### 関数とシートのデータ取得
 関数`doGet`を作ります。
 
-<ad></ad>
+<ad location="/blogs/entry481/"></ad>
 
 
 ```JS
@@ -179,7 +179,7 @@ URLが発行されるので動くか確認。
 
 ## PHPに組み込む
 
-<ad></ad>
+<ad location="/blogs/entry481/"></ad>
 
 
 ### 通常のPHPでの取得方法
@@ -339,7 +339,7 @@ add_shortcode( 'show_event_schedule', 'show_event_schedule' );
 WordPressのコーディング規約に関しての記事もよろしければお読みください。
 <card id="/blogs/entry452/"></card>
 
-<ad></ad>
+<ad location="/blogs/entry481/"></ad>
 
 
 ## まとめ・スプシをJSONすると便利

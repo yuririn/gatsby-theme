@@ -38,7 +38,7 @@ HTMLでは要素と要素の距離を`margin`と言います。イラストで�
 
 ![折りたたみマージン](./images/2019/entry335-1.jpg)
 
-<ad></ad>
+<ad location="/blogs/entry436/"></ad>
 
 
 これを*折りたたみマージン*と言います。ちなみに横方向では相殺されません。
@@ -140,7 +140,7 @@ margin-block-end: 50px;
 
 ![インラインの軸・文字の並ぶ方向](./images/2021/01/entry436-02.jpg)
 
-<ad></ad>
+<ad location="/blogs/entry436/"></ad>
 
 
 ```css
@@ -206,7 +206,7 @@ CSSはコードが長くなりますね。
 
 ![物理プロパティと理論プロパティの比較](./images/2021/01/entry436-7.jpg)
 
-<ad></ad>
+<ad location="/blogs/entry436/"></ad>
 
 
 #### 文字方向を変えてみる
@@ -279,7 +279,7 @@ body {
 
 ![ちなみにcaiuseでの実装状況](./images/2021/01/entry436-11.jpg)
 
-<ad></ad>
+<ad location="/blogs/entry436/"></ad>
 
 
 
@@ -309,7 +309,7 @@ Firefoxで縦書きコンテンツの入った要素をセンタリングする�
 
 最後までお読みいただきありがとうございました。
 
-<ad></ad>
+<ad location="/blogs/entry436/"></ad>
 
 
 ### 参考

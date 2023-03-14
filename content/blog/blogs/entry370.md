@@ -59,7 +59,7 @@ inputタグをlabelタグの中に入れてしまいます。属性を追加し�
 ```html
 <label><input type="radio" value="malticolor" name="cat">三毛ねこ</label>
 ```
-<ad></ad>
+<ad location="/blogs/entry370/"></ad>
 
 ## 基本のラジオボタン・チェックボックスをCSSでカスタマイズ
 ### ラジオボタンをカスタマイズ
@@ -141,7 +141,7 @@ input[type=radio] {
 }
 ```
 
-<ad></ad>
+<ad location="/blogs/entry370/"></ad>
 
 ポイントは「**擬似要素**」「**擬似クラス**」「**隣接セレクター**」です。
 
@@ -243,7 +243,7 @@ input[type=checkbox] {
 入れ子にする場合は、文字をspanタグなどのなかに入れます。
 擬似要素を作るために必要です。
 
-<ad></ad>
+<ad location="/blogs/entry370/"></ad>
 
 ## ラジオボタン・チェックボックスのスニペット（サンプルコード）
 CodePenにいくつかコードを掲載しています。興味ある方はコピペで使ってみてください。
@@ -505,7 +505,7 @@ MW WP FormとContact Form 7でのフォームのカスタマイズ法もご紹�
 
 <card id="/blogs/entry396/"></card>
 
-<ad></ad>
+<ad location="/blogs/entry370/"></ad>
 
 みなさんのコーディングライフの一助となれば幸いです。
 

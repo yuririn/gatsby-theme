@@ -51,7 +51,7 @@ JavaScriptがそのまま書けるのでとても魅力的でした。類似す�
 
 <card id="/blogs/entry428/"></card>
 
-<ad></ad>
+<ad location="/blogs/entry459/"></ad>
 
 
 ## まずは基本の「き」から。Gulpを使って導入する
@@ -109,7 +109,7 @@ exports.default = series(ejs);
 
 EJSで文字列などをHTMLに出力する方法は以下。
 
-<ad></ad>
+<ad location="/blogs/entry459/"></ad>
 
 ```ejs
 <!-- 出力 -->
@@ -213,7 +213,7 @@ function ejs(done) {
 </body>
 </html>
 ```
-<ad></ad>
+<ad location="/blogs/entry459/"></ad>
 
 ### ライブリロードとコードをキレイにするnodeモジュールを追加
 `BrawserSync`と`gulp-html-beaitufy`でもっと作業しやすくします。
@@ -311,7 +311,7 @@ function ejs(done) {
 //省略
 ```
 
-<ad></ad>
+<ad location="/blogs/entry459/"></ad>
 
 ```
 プロジェクトフォルダ/
@@ -445,7 +445,7 @@ JSと使い方は一緒なので、特殊な書き方などだけ抜粋してお
 |`<% include _inc/_header %>`|ファイルのインクルード|
 |`<%- include('_inc/_header', {data: 'test'}) %>`|ファイルのインクルード引数を渡すバージョン|
 
-<ad></ad>
+<ad location="/blogs/entry459/"></ad>
 
 ### VS Codeの設定
 VS Codeの設定を変えて、さらに快適にコードを書きましょう！

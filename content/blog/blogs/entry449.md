@@ -45,7 +45,7 @@ Web制作をしていると、グロナビのホバーアニメの持ちネタ�
   </nav>
 </header>
 ```
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 ```css{35}:title=CSS
 body {
@@ -106,7 +106,7 @@ nav ul li a:hover {
 
 <figure class="animation"><img src="/images/animation/2021/entry449-1.webp" width="426" height="70" alt="グロナビ アニメその1・下線を横に広がる" decoding="async" loading="lazy"/></figure>
 
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 
 ```css:title=CSS
@@ -168,8 +168,7 @@ nav ul li a:hover::after {
 
 <figure class="animation"><img src="/images/animation/2021/entry449-3.webp" width="418" height="66" alt="グロナビ アニメその3・背景色をガツンと変える" decoding="async" loading="lazy"/></figure>
 
-<ad></ad>
-
+<ad location="/blogs/entry449/"></ad>
 
 ```css:title=CSS
 nav ul li a:hover {
@@ -190,7 +189,7 @@ nav ul li a:hover {
 
 <figure class="animation"><img src="/images/animation/2021/entry449-5.webp" width="454" height="66" alt="グロナビ アニメその4・色を変える" decoding="async" loading="lazy"/></figure>
 
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 
 ```css:title=CSS
@@ -323,7 +322,7 @@ YouTubeでマッチ棒パズルなるものを知った結果こうなりまし�
 
 <figure class="animation"><img src="/images/animation/2021/entry449-10.webp" width="444" height="66" alt="グロナビ アニメその7・マッチ棒っぽいものを伸ばす" decoding="async" loading="lazy"/></figure>
 
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 
 ```css:title=CSS
@@ -422,7 +421,7 @@ nav ul li a:hover::after{
   right: -200%;
 }
 ```
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 
 [グロナビ・グラデ背景を重ねる|Code Pen](https://codepen.io/lscamille/pen/wvgMGqG)
@@ -472,7 +471,7 @@ p::before {
 }
 ```
 
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 
 [attr()|MSN Web Docs](https://developer.mozilla.org/ja/docs/Web/CSS/attr())
@@ -560,7 +559,7 @@ a:hover::after {
 ```
 [グロナビ・文字をグラデかつ下線のアニメ追加|Code Pen](https://codepen.io/lscamille/pen/vYgNQGX)
 
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 
 ### グロナビ アニメその12・文字の入れ替え
@@ -634,6 +633,6 @@ nav ul li a:hover {
 サイトのカスタマイズが楽しくなるコードをご紹介！あわせてお読みください。
 
 <card id="/blogs/entry370/"></card>
-<ad></ad>
+<ad location="/blogs/entry449/"></ad>
 
 <card id="/blogs/entry393/"></card>

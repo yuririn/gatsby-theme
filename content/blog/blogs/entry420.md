@@ -38,7 +38,7 @@ description: 皆さんの周りに中間子（真ん中っ子）っています�
 
 生い立ちから形成される中間子の性格を独断と経験からご紹介します。
 
-<ad></ad>
+<ad location="/blogs/entry420/"></ad>
 
 ### そもそも両親から構ってもらえない
 中間子は親から見て死角です。とにかく構ってもらえません。<br>
@@ -109,7 +109,7 @@ description: 皆さんの周りに中間子（真ん中っ子）っています�
 
 親に*レールを用意されていなかった*ので自分の道を自分で探します。
 
-<ad></ad>
+<ad location="/blogs/entry420/"></ad>
 
 自分の人生は自分で決めて、どこでも生きていけます。
 
@@ -172,7 +172,7 @@ description: 皆さんの周りに中間子（真ん中っ子）っています�
 
 <card id="/blogs/entry473/"></card>
 
-<ad></ad>
+<ad location="/blogs/entry420/"></ad>
 
 <card id="/blogs/entry505/"></card>
 

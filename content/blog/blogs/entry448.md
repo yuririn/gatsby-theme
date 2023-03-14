@@ -41,7 +41,7 @@ Facebookページを作成します。ログインして、ページを作成し
 
 ![インスタはクリエーターないしはプロアカウントへ変更2](./images/2021/03/entry448-3.jpg)
 
-<ad></ad>
+<ad location="/blogs/entry448/"></ad>
 
 ### Facebookと連携させる
 インスタ側からfacebookと連携させます。
@@ -80,7 +80,7 @@ META for DeveloperはFacebookアカウントを持っていることが前提条
 
 ![ちなみにアプリ名に「insta」を含むとエラー](./images/2021/03/entry448-9.jpg)
 
-<ad></ad>
+<ad location="/blogs/entry448/"></ad>
 
 #### あらかじめ「アプリID」、「app secret」をメモっておく！
 
@@ -205,7 +205,7 @@ https://graph.facebook.com/v12.0/{instagram_business_account}?fields=name%2Cmedi
 
 ![値返ってきたーーー](./images/2021/03/entry448-19.jpg)
 
-<ad></ad>
+<ad location="/blogs/entry448/"></ad>
 
 ここまでできたらカンペキ。JSにもPHPでも表示可能です！！
 
@@ -278,7 +278,7 @@ h1 {
   color:#333;
 }
 ```
-<ad></ad>
+<ad location="/blogs/entry448/"></ad>
 
 ### JSコードサンプル（jQuery）
 JavaScriptサンプルコードです。jQuery使ってサクッと取得しました。
@@ -368,7 +368,7 @@ curl_setopt ( CurlHandle $handle , int $option , mixed $value )
 ```
 [curl_setopt | php](https://www.php.net/manual/ja/function.curl-setopt.php)
 
-<ad></ad>
+<ad location="/blogs/entry448/"></ad>
 
 ```PHP:title=PHP
 $list      = "";
@@ -406,7 +406,7 @@ foreach ( $instagram->media->data as $value ) {
 }
 echo '<ul>' . $list . '</ul>';
 ```
-<ad></ad>
+<ad location="/blogs/entry448/"></ad>
 
 ### WordPressのブロックエディターにも対応してみました！（2022-01-15追記）
 ブロックエディターでもインスタグラムを埋め込めるように対応してみました。
@@ -430,7 +430,7 @@ echo '<ul>' . $list . '</ul>';
 
 しばらくしたらすぐもとどおりになりました。
 
-<ad></ad>
+<ad location="/blogs/entry448/"></ad>
 
 ## まとめ
 長くなりました。インスタ投稿の一覧取得方、PHPとJSのサンプルコード両方紹介しました。

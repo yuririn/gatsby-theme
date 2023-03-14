@@ -73,7 +73,7 @@ a {
   padding-bottom: 20px;
 }
 ```
-<ad></ad>
+<ad location="/blogs/entry181/"></ad>
 残念ながらこのコードではリンクの範囲はliタグと同じサイズになりません。
 
 ### 解決法：CSSでaタグにプロパティdisplay:blockをセットするだけ
@@ -187,7 +187,7 @@ a {
   align-items: center;
 }
 ```
-<ad></ad>
+<ad location="/blogs/entry181/"></ad>
 
 ### 原因と解説
 プロパティdisplayをflexにすると**子要素やコンテンツの縦方向や横方向並びと位置をコントロールできます**。
@@ -207,7 +207,7 @@ a {
 インライン、ブロックの解説は難しいですね。
 
 ### 要素は分類できる
-<ad></ad>
+<ad location="/blogs/entry181/"></ad>
 
 要素（HTLMタグ）、つまりコンテンツは7つに分類できます。
 

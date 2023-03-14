@@ -16,7 +16,7 @@ description: 子供を理想通りに育てられない。子育てが辛い。�
 
 母がなぜ苦しいのか、解放された今だから客観的に考察します。
 
-<ad></ad>
+<ad location="/blogs/entry505/"></ad>
 
 
 ## 母はなぜ子育てでしんどいのか？
@@ -79,7 +79,7 @@ description: 子供を理想通りに育てられない。子育てが辛い。�
 
 このままでは私のようになるという焦りからよく怒っていました。
 
-<ad></ad>
+<ad location="/blogs/entry505/"></ad>
 
 また、学校の担任からもガミガミ言われるので余計拍車がかかります。
 
@@ -130,7 +130,7 @@ description: 子供を理想通りに育てられない。子育てが辛い。�
 * 仕事が忙しくて息子に連絡できない
 * 日本とフィリピンはおいそれと行き来できない
 
-<ad></ad>
+<ad location="/blogs/entry505/"></ad>
 
 長い時間、強制的に距離を置くことができました。
 
@@ -192,7 +192,7 @@ description: 子供を理想通りに育てられない。子育てが辛い。�
 
 <card id="/blogs/entry473/"></card>
 
-<ad></ad>
+<ad location="/blogs/entry505/"></ad>
 
 <card id="/blogs/entry420/"></card>
 

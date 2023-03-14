@@ -49,7 +49,7 @@ npm や CDN も用意されています。Angular、React や Vue.js などか�
 />
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 ```
-<ad></ad>
+<ad location="/blogs/entry514/"></ad>
 
 <small>CDNソースへのリンクは2022年12月現在参照です。必ず [Get start](https://swiperjs.com/get-started) から最新のリンクをご確認ください。</small>
 
@@ -101,7 +101,7 @@ const swiper = new Swiper('.swiper', {
   },
 }, false);
 ```
-<ad></ad>
+<ad location="/blogs/entry514/"></ad>
 
 ## Swiper でスマホ、PCで切り替える方法（単体）
 では実際に一つのSwiperを切り替えてみましょう。
@@ -216,7 +216,7 @@ IDとともに `.swiper` も付与します。そのスライダー `document.qu
 
 配列に格納した配列をコントロールします。
 
-<ad></ad>
+<ad location="/blogs/entry514/"></ad>
 
 このコードであれば、1〜複数のスライダーをコントロール可能です。
 
@@ -259,7 +259,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 }, false);
 ```
-<ad></ad>
+<ad location="/blogs/entry514/"></ad>
 
 デモサンプル [Swiper for SP2 | CodePen](https://codepen.io/camille-cebu/pen/RwBbqEV)
 
