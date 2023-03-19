@@ -87,8 +87,8 @@ export const Article = styled.article`
 
     }
     .gatsby-resp-image-wrapper {
-        margin-bottom: 16px;
-        margin-top: 16px;
+        margin-bottom: 1.5em;
+        margin-top: 1.5em;
     }
 
     .c-pager__prev {
@@ -216,7 +216,7 @@ export const Article = styled.article`
                 }
                 }
         p {
-        margin: .8em 0;
+        margin: 1.5em 0;
         }
         line-height: 2.2;
         h4 {
@@ -388,7 +388,7 @@ export const Article = styled.article`
          //media query
      }
     ul {
-        margin-bottom: 16px;
+        margin-bottom: 1.5em;
         li {
             padding-left: 20px;
             position: relative;
@@ -420,7 +420,7 @@ export const Article = styled.article`
         }
     }
     ol {
-        margin-bottom: 16px;
+        margin-bottom: 1.5em;
         list-style: none;
         counter-reset: num;
 
@@ -568,7 +568,7 @@ export const Article = styled.article`
 
      table {
         margin-top: 18px;
-        margin-bottom: 18px;
+        margin-bottom: 1.5em;
         width: 100%;
         th {
             background: #666;
@@ -577,7 +577,7 @@ export const Article = styled.article`
             color: #fff;
         }
         th,td {
-            padding: 4px 8px;
+            padding: 1em 1em;
             border: 1px solid #aaa;
         }
      }
