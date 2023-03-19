@@ -419,6 +419,34 @@ export const Article = styled.article`
             }
         }
     }
+    ol {
+        margin-bottom: 16px;
+        list-style: none;
+        counter-reset: num;
+
+        li {
+            counter-increment: num;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+
+            &::before {
+                font-weight: bold;
+                content: counter(num) '.';
+                color: #ca1c6d;
+                width: 14px;
+                top: 0px;
+                height: 14px;
+                display: block;
+                border-radius: 50%;
+                left: 0;
+                position: absolute;
+            }
+        }
+    }
+    p > small {
+        font-size: 0.9em;
+    }
     em {
         font-weight: bold;
         font-style: normal;

@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import styled from "styled-components"
+// import styled from "styled-components"
 import AdLayout from "../components/ad-layout"
 import Img from "../components/img";
 import AdSidebar from "../components/blogs/ad-sidebar";
