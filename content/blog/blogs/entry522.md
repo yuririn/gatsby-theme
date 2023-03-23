@@ -136,7 +136,7 @@ vue-sample/（ルートディレクトリ）
 Vue.js を npm 経由でインストールします。
 
 ```shell:title=コマンド
-npm -D vue webpack webpack-stream path
+npm i vue webpack webpack-stream path -D
 ```
 |モジュール名|役割|
 |-|-|
@@ -182,6 +182,7 @@ exports.default = parallel(serverTask, vueCompile);
 ```js:title=webpack.config.js
 module.exports = {
   entry: "./js/index.js",
+  mode: "development",
   output: {
     filename: "index.min.js"
   },
@@ -238,7 +239,7 @@ Vue.js のコンポーネントは一般的に `**.vue` という拡張子のフ
 `**.vue` を分解して、jsコードとバンドルできるよう、`vue` と `babel` のローダー用 node module をインストールします。
 
 ```shell:title=コマンド
-npm run babel-loader vue-loader -D
+npm i babel-loader vue-loader -D
 ```
 
 ```js:title=webpack.config.js
