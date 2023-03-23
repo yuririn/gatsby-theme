@@ -2,17 +2,18 @@
 title: Intersection Observer API の使ってQiita風目次を作ってみる
 date: 2023-03-23
 pagetype: blog
-hero: thumbnail/2018/entry267.png
+hero: thumbnail/2023/entry525.png
 cateId: web-developer
 tags: ["JavaScript"]
-description: 要素の監視ができる、Intersection Observer APIの使い方をご紹介。もう、scroll量に応じて処理する必要はありません。Qiita風目次のサンプルコード。モダンブラウザでは使用可能。
+description: 要素の監視ができる、Intersection Observer APIの使い方をご紹介。もう、scroll量に応じて処理する必要はありません。Qiita風目次のサンプルコード。モダンブラウザでは使用可能。オプションやメソッドの解説、コードサンプルあり。
 ---
 
 JavaScript の 要素の監視ができる Intersection Observer API の使い方をまとめます。
 
 ## Intersection Observer API とは？
 
-> MDN Web Docs によると祖先要素または文書の最上位のビューポートと交差する変化を非同期的に監視。
+> MDN Web Docs によると祖先要素または文書の最上位のビューポートと交差する変化を非同期的に監視。<br>
+> 参照 : [Intersection Observer API MDN](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API)
 
 
 小難しいので平たく言うと、このAPIを使うと画面上に表示されている要素の変化を監視できます。
@@ -26,7 +27,16 @@ JavaScript の 要素の監視ができる Intersection Observer API の使い�
 * 見出しの表示されたら対になる目次の項目への装飾（Qiita風）
 * ユーザーのアクションに応じた（ボタンクリック等）、処理
 
-Can I Use では IE、Opera Mini を除く最新ブラウザに対応しています。
+[Can I Use](https://caniuse.com/?search=Intersection%20Observer%20API) によると IE、Opera Mini を除く最新ブラウザに対応しているとのこと。
+
+### その他の Observer API
+
+他にもObserver APIはあります。
+
+* [MutationObserver](/blogs/entry526)...要素の変化を監視
+* ResizeObserver...要素のリサイズを監視
+* PerformanceObserver...パフォーマンス測定イベントを監視し、ブラウザーのパフォーマンスタイムラインに記録されているので、新しいperformance entries の通知を受けるために使用。
+
 
 ## 基本の使い方
 まずは監視する領域(observer)を作成します。コンストラクター（newするやつ）を呼び出してしきい値が一方向また他の方向に交差する度に実行されるコールバック関数を渡します。
@@ -101,9 +111,9 @@ const callback = (entries, observer) => {
     if(entry.isIntersecting){
       tocList.forEach((item, num) => {
         if(`#${entry.target.id}` == item.getAttribute('href')) {
-        item.classList.add('current')
+          item.classList.add('current')
         } else {
-            item.removeAttribute('class')
+          item.removeAttribute('class')
         }
       })
     }
