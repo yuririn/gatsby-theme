@@ -8,7 +8,9 @@ tags: ["JavaScript"]
 description: 要素の監視ができる、Intersection Observer APIの使い方をご紹介。もう、scroll量に応じて処理する必要はありません。Qiita風目次のサンプルコード。モダンブラウザでは使用可能。オプションやメソッドの解説、コードサンプルあり。
 ---
 
-JavaScript の 要素の監視ができる Intersection Observer API の使い方をまとめます。
+JavaScript の 要素の監視ができる Intersection Observer API の使い方をご紹介します。
+
+<prof></prof>
 
 ## Intersection Observer API とは？
 

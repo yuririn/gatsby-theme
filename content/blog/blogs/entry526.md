@@ -8,7 +8,9 @@ tags: ["JavaScript"]
 description: 要素の監視ができる、Mutation Observer APIの使い方をご紹介。iframe内の変化を感知して、親要素の高さを変えるという処理をしました。オプションやメソッドの解説、コードサンプルあり。
 ---
 
-JavaScript の 要素の監視ができる Mutation Observer を使う機会があったのでそのやり方をまとめます。
+JavaScript の 要素の監視ができる Mutation Observer を使う機会があったので使い方をご紹介します。
+
+<prof></prof>
 
 ## Mutation Observer とは？
 
@@ -95,12 +97,17 @@ iframe内の要素の操作方法の要素の削除方法のご紹介です。
 ```js
 iframe.contentDocument.querySelector('header').remove()
 ```
-### iframeへｓｔｙle追加
+### iframe の head内に style 追加
+
+iframeを親要素になじませるためにスタイルを追加することも可能です。
+
 ```js
 const styleTag = document.createElement('style')
-styleTag.innerText = `body {
+styleTag.innerText = `
+body {
   background: none;
-}`;
+}
+`;
 iframe.contentDocument.querySelector('head').insertAdjacentElement('beforeend', styleTag);
 ```
 `insertAdjacentElement` の使い方です。呼び出された要素から相対的に指定された位置に、指定された要素ノードを追加できます。
@@ -114,6 +121,8 @@ iframe.contentDocument.querySelector('head').insertAdjacentElement('beforeend', 
 
 [insertAdjacentElement MDN](https://developer.mozilla.org/ja/docs/Web/API/Element/insertAdjacentElement)
 
+同じ要領で、他の要素も追加できます。
+
 ### iframe内の要素のクラスの削除や追加
 ```js
 //追加
@@ -121,6 +130,15 @@ iframe.contentDocument.querySelector('main').classList.add('is-show')
 //削除
 iframe.contentDocument.querySelector('main').classList.remove('is-show')
 ```
+
+## まとめ・Mutation Observerを使えばイベント発火に関係なく腰輿の変化に応じて操作できる
+今回iframe内の要素の変化を監視して、iframeを操作する方法をご紹介しました。
+
+Mutation Observer の他の使い方はまだやってませんが、可能性のあるAPIでした。
+
+この記事がみなさんのコーディングライフの一助となれば幸いです。
+
+最後までお読みいただきありがとうございました。
 
 参照 : [insertAdjacentElement MDN](https://developer.mozilla.org/ja/docs/Web/API/MutationObserver)
 
