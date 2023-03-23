@@ -153,3 +153,6 @@ Intersection Observer APIを使えばパララックスもカンタンに実装�
 |*takeRecords()*|ターゲット要素のうち、前回交差状態がチェックされたもしくは自動的にオブザーバーのコールバックが呼び出された以降に交差状態が変化した要素の配列を返す。コールバックを使用してこれらの変更を監視している場合は、このメソッドを呼び出す必要はない。かつ処理待ちの交差リストをクリアしてしまうのでコールバックが実行されない|
 
 参照 : [Intersection Observer API MDN](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API)
+
+## 関連記事もあわせてお読みください
+<card id="/blogs/entry526/"></card>

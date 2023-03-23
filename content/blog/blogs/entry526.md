@@ -125,4 +125,4 @@ iframe.contentDocument.querySelector('main').classList.remove('is-show')
 参照 : [insertAdjacentElement MDN](https://developer.mozilla.org/ja/docs/Web/API/MutationObserver)
 
 ## 関連記事もあわせてお読みください
-<card id="/blogs/entry526/"></card>
+<card id="/blogs/entry525/"></card>
