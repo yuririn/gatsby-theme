@@ -10,9 +10,14 @@ const ShowMessage = ({scenario, setScenario, getKyle}) => {
     const [msg, setMsg] = useState('');
     const [clear, setClear] = useState(false);
     const [sceen, setSceen] = useState(scenario);
-    const [life, setLife] = useState(!localStorage.getItem('kyle') ? 3 : parseInt(localStorage.getItem('kyle')));
+    const [life, setLife] = useState(3);
     let interval;
 
+    useEffect(() => {
+      if(localStorage.getItem('kyle') >= 0) {
+        setLife(parseInt(localStorage.getItem('kyle')))
+      }
+    })
 
     useEffect(() => {
       if(scenario !== sceen) {
@@ -77,7 +82,7 @@ const ShowMessage = ({scenario, setScenario, getKyle}) => {
     return (
       <>
         { Dialogue[scenario] && Dialogue[scenario].map((txt,i)=>{
-        if(i + 1 == cnt) return false
+        if(i + 1 === cnt) return false
         if(i < cnt ) return <p key={txt}>{txt}</p>})}
         {text !== '' && <p>{text}</p>}
         {
@@ -88,7 +93,7 @@ const ShowMessage = ({scenario, setScenario, getKyle}) => {
             {Ansers[scenario] &&
             <ul className="menu">
               {Ansers[scenario].map((item,i)=>{
-                if(life === 0 && scenario === 8 && i===0 || life === 0 && scenario === 1 && i===0) {
+                if((life === 0 && scenario === 8 && i===0) || (life === 0 && scenario === 1 && i===0)) {
                   return <li key={item.text}><button onClick={() => action(9)}>{item.text}</button></li>
                 } else {
                   return <li key={item.text}><button onClick={() => action(item.scenario)}>{item.text}</button></li>

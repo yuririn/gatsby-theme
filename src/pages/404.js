@@ -7,13 +7,21 @@ import { P404 } from "./../styles/P404"
 
 const NotFoundPage = ({ data, location }) => {
     const [scenario, setScenario] = useState(0);
-    const [kyle, getKyle] = useState(!localStorage.getItem('kyle') ? 3 : parseInt(localStorage.getItem('kyle')));
+    const [kyle, getKyle] = useState(3);
     const action = (e) => {
         setScenario(e)
     }
+
+    useEffect(() => {
+        if(parseInt(localStorage.getItem('kyle')) >= 0) {
+            getKyle(parseInt(localStorage.getItem('kyle')))
+        }
+    },[kyle])
+
     return <>
         <GlobalStyle/>
         <div className="global-wrapper" id="top">
+
             <div id="header">
                 <header>
                 <h1>銀ねこアトリエ</h1>
@@ -28,7 +36,7 @@ const NotFoundPage = ({ data, location }) => {
                 </nav>
                 </header>
             </div>
-            <main className={scenario==7 ? 'death':''}>
+            <main className={scenario === 7 ? 'death':''}>
                 <P404>
                     <h2 className="title">お探しのページは見つかりませんでした</h2>
                     <AccessCounter/>

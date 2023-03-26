@@ -1,10 +1,20 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 const Kyle = ({item})=> {
   const [text, setText] = useState(false);
-  const hadItems = localStorage.getItem('items') ? localStorage.getItem('items').split(",") : []
-  if(localStorage.getItem('kyle') == 0 && !hadItems.includes(item)) {
+  const [life, getLife] = useState(3);
+  const [hadItems, getHadItems] = useState([]);
+
+  // localStorage.removeItem('items')
+  // localStorage.setItem('kyle', 0)
+  useEffect(() => {
+    getHadItems(localStorage.getItem('items') ? localStorage.getItem('items').split(",") : [])
+    if(localStorage.getItem('kyle') >= 0) {
+      getLife(parseInt(localStorage.getItem('kyle')))
+    }
+  })
+  if(life === 0 && !hadItems.includes(item)) {
   const items = {
     hat: {
       img: ["/images/kyle-hat.png", 100,50],
@@ -26,22 +36,22 @@ const Kyle = ({item})=> {
     }
   }
   const setItem = items[item]
-  const life = setItem.life + parseInt(localStorage.getItem('kyle'));
+  const lifeNum = setItem.life + life;
   const setMessage = setItem.message + 'カイルのライフが' + life + 'になった。'
   const showMessage = () =>{
     setText(true)
     let id
     id = setTimeout(() => {
-      if(!localStorage.getItem('items')) {
+      if(hadItems.length === 0) {
         localStorage.setItem('items',item)
       } else {
-        localStorage.setItem('items', localStorage.getItem('items')+','+item)
+        localStorage.setItem('items', hadItems.join(',')+','+item)
       }
-      localStorage.setItem('kyle', life)
-    }, 100)
+      localStorage.setItem('kyle', lifeNum)
+    }, 2000)
     return ()=> clearTimeout(id)
   }
-    return <Box>
+    return <Box className={text ? 'fadeIn': ''}>
       <p>記事の中に「{setItem.name}」が落ちているようだ。<br/>拾いますか？</p>
       <img src={setItem.img[0]} alt={setItem.name} width={setItem.img[1]} height={setItem.img[2]}/><br/>
      {!text &&  <button onClick={showMessage }>{setItem.name}を拾う</button>}
@@ -59,6 +69,10 @@ const Box = styled.div`
   padding: 24px;
   border-radius: 15px;
   text-align:center;
+  transition: 1.5s;
+  &.fadeIn {
+    opacity: 0;
+  }
   img {
     margin-bottom: 24px;
   }
