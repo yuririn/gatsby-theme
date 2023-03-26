@@ -51,6 +51,12 @@ const NotFoundPage = ({ data, location }) => {
 }
 export default NotFoundPage
 
+export const Head = ({ data, location }) => (
+ <Seo
+    data={{title:`お探しのページは見つかりませんでした。`, location:location}}
+ />
+)
+
 const GlobalStyle = createGlobalStyle`
     main.death {
         animation: bg .3s infinite;
