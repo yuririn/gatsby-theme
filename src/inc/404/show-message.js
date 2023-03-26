@@ -162,7 +162,7 @@ const Ansers = {
     {text: 'ジャンルから探す', scenario: 4}
   ],
   2: [
-    {text: '記事を探すのを手伝ってほしいほしい', scenario: 5},
+    {text: '記事を探すのを手伝ってほしい', scenario: 5},
     {text: 'Web博物館に案内してほしい', scenario: 6},
   ],
   3: [
