@@ -4,6 +4,7 @@ import AccessCounter from '../inc/404/access-counter'
 import Charactors from '../inc/404/charactor'
 import ShowMessage from '../inc/404/show-message'
 import { P404 } from "./../styles/P404"
+import Seo from "../components/seo"
 
 const NotFoundPage = ({ data, location }) => {
     const [scenario, setScenario] = useState(0);
