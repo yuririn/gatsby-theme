@@ -8,6 +8,7 @@ import { Header } from "./../styles/blog-styles/header"
 import { Edit } from "./../styles/blog-styles/edit"
 import styled from "styled-components"
 import rehypeReact from "rehype-react"
+import RelatedList from "./../components/blogs/related-list"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -16,6 +17,7 @@ import TagsList from "../components/blogs/tags-blog"
 import Sns from "../components/blogs/sns"
 import Prof from "../components/blogs/small-prof"
 import Toc from "../components/blogs/topic"
+import Kyle from "../components/blogs/blog-parts/kyle"
 import Sidebar from "../components/blogs/sidebar"
 import Genre from "../components/common/genre"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
@@ -30,6 +32,7 @@ const renderAst = new rehypeReact({
     msg: Msg,
     prof: Prof,
     ad: Ad,
+    kyle: Kyle,
     toc: Toc
   },
 }).Compiler
@@ -153,14 +156,13 @@ const BlogPostTemplate = ({ data, location }) => {
           </ol>
         </Article>
         <Sidebar
-          cateId={post.frontmatter.cateId}
           title={post.frontmatter.title}
-          tags={post.frontmatter.tags}
           topic={post.tableOfContents}
           slug={post.fields.slug}
           location={location.pathname}
         />
         <aside className="l-container">
+          <RelatedList category={post.frontmatter.cateId} tags={post.frontmatter.tags} slug={post.fields.slug}></RelatedList>
           <Ad location={location.pathname}></Ad>
           <section className="p-section u-text-center">
             <h2 className="c-heading--lg">人気のジャンル</h2>

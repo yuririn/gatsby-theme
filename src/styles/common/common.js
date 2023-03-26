@@ -211,10 +211,8 @@ export const CommonStyle = createGlobalStyle`
     @media screen and (min-width: 768px) {
       display: flex;
       flex-wrap: wrap;
-      margin: 0 -30px 30px 0;
 
       &__item--md6 {
-          margin-right: 30px;
           width: calc(49.99998% - 30px);
       }
 
@@ -222,7 +220,6 @@ export const CommonStyle = createGlobalStyle`
 
     @media screen and (min-width: 1024px) {
         &__item--lg4 {
-          margin-right: 30px;
           width: calc(33.33332% - 30px);
         }
     }

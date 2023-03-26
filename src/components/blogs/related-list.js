@@ -65,7 +65,7 @@ const Lists = ({ category, slug, tags }) => {
   }
   return (
     <RelativeList>
-      <h2 className="c-heading--lg--side">関連記事</h2>
+      <h2 className="c-heading--lg">関連記事</h2>
       <ol>
         {result.map((item, index) => {
           return (
@@ -99,34 +99,42 @@ export default Lists
 
 
 const RelativeList = styled.div`
-  @media screen and (min-width: 768px) {
-    .p-entryCard:hover .gatsby- Img-wrapper {
+@media screen and (min-width: 768px) {
+        .p-entryCard {
+            width: calc(33.333% - 16px);
+        }
+      ol {
+        display: flex;
+        flex-wrap: wrap;
+        gap:24px;
+      }
+    .p-entryCard:hover .gatsby-Img-wrapper {
       transform: none;
       opacity: 0.8;
     }
-    .p-entryCard.is-small {
-      margin-left: 0;
-      margin-right: 0;
-      position: relative;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-        flex-wrap: wrap;
-        display: flex;
-        align-items: flex-start;
-      .p-entryCard__img {
-        width: 30%;
-        border-radius: 5px;
-        margin-bottom: 0;
-      }
-      .p-entryCard__body {
-        width: 70%;
-        box-sizing: border-box;
-        padding-left: 10px;
-        .p-entryCard__heading {
-          font-size: 1.4rem;
-        }
-      }
-    }
+
+    // .p-entryCard.is-small {
+    //   margin-left: 0;
+    //   margin-right: 0;
+    //   position: relative;
+    //   margin-bottom: 10px;
+    //   padding-bottom: 10px;
+    //     flex-wrap: wrap;
+    //     display: flex;
+    //     align-items: flex-start;
+    //   .p-entryCard__img {
+    //     width: 30%;
+    //     border-radius: 5px;
+    //     margin-bottom: 0;
+    //   }
+    //   .p-entryCard__body {
+    //     width: 70%;
+    //     box-sizing: border-box;
+    //     padding-left: 10px;
+    //     .p-entryCard__heading {
+    //       font-size: 1.4rem;
+    //     }
+    //   }
+    // }
   }
 `

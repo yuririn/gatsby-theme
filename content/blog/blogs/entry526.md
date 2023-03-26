@@ -131,7 +131,7 @@ iframe.contentDocument.querySelector('main').classList.add('is-show')
 iframe.contentDocument.querySelector('main').classList.remove('is-show')
 ```
 
-## まとめ・Mutation Observerを使えばイベント発火に関係なく腰輿の変化に応じて操作できる
+## まとめ・Mutation Observerを使えばイベント発火に関係なく監視したい要素の変化をキャッチできる
 今回iframe内の要素の変化を監視して、iframeを操作する方法をご紹介しました。
 
 Mutation Observer の他の使い方はまだやってませんが、可能性のあるAPIでした。

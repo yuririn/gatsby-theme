@@ -1,33 +1,39 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Img from "../img"
-import RelatedList from "./related-list"
 import { Sidebar } from "./../../styles/blog-styles/sidebar"
-import { siteMetadata } from "../../../gatsby-config"
 import { Link } from "gatsby"
 import Search from "../search"
 import Ad from '../common/ad';
 
-const bar = ({ cateId, topic, tags, slug,location }) => {
+const Bar = ({ topic,location }) => {
   const tableOfContent = topic.replace(/(<p>|<\/p>)/gi, "")
+  // const options = {
+  //   root: null,
+  //   rootMargin: "0px",
+  //   threshold: 0.5
+  // };
+  // let lists = tableOfContent.replace(/(\n|<a href="#|<ul>|<\/ul>|<li>|<\/li>)/gi, "").split('<\/a>')
+  // lists = lists.map(i => i.split('">'))
+  // const array = []
+  // let targets = Array.from(document.querySelectorAll('[itemprop=articleBody] h2, [itemprop=articleBody] h3'));
+  // useEffect(() => {
+  //   const callback = (entries) => {
+  //     entries.forEach((entry, i)=>{
+  //       console.log(entry.isIntersectin)
+  //       if(entry.isIntersecting) {
+  //         lists.forEach( id =>{
+  //           console.log(id[0])
+  //         })
+  //       }
+  //     })
+  //   }
+  //   const observer = new IntersectionObserver(callback, options);
+  //   targets.forEach((terget) => observer.observe(terget));
+
+  // },[])
   return (
     <Sidebar>
-      <RelatedList category={cateId} tags={tags} slug={slug}></RelatedList>
-      <section className="p-section">
-        <h2 className="c-heading--lg--side">ジャンル</h2>
-        <ul className="sideCateList">
-          {siteMetadata.category.map((item, index) => {
-            return (
-              <li key={`side-ganre${index}`}>
-                <Link to={`/blogs/${item.slug}/`}>{item.name}</Link>
-              </li>
-            )
-          })}
-        </ul>
-      </section>
-      <section className="p-section search">
-         <h2 className="c-heading--lg">記事を探す</h2>
-        <Search></Search>
-      </section>
+      <Ad location={location} style={{display:`block`, minWidth:`250px`}}></Ad>
       <div className="inner">
 
         <div
@@ -36,7 +42,11 @@ const bar = ({ cateId, topic, tags, slug,location }) => {
           __html: '<h2 class="side-topic--heading">この記事のサマリー</h2>' + tableOfContent,
         }}
         ></div>
-        <Ad location={location} style={{display:`block`, minWidth:`250px`}}></Ad>
+        <section className="p-section search">
+          <h2 className="c-heading--lg">記事を探す</h2>
+          <Search></Search>
+        </section>
+
         <ul className="side-banner">
           <li>
             <Link to="/about/">
@@ -78,4 +88,4 @@ const bar = ({ cateId, topic, tags, slug,location }) => {
   )
 }
 
-export default bar
+export default Bar

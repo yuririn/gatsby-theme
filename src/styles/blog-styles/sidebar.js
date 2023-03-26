@@ -44,7 +44,7 @@ export const Sidebar = styled.div`
 
     }
     & > ul {
-      max-height: 300px;
+      max-height: 500px;
       overflow:auto;
         border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
