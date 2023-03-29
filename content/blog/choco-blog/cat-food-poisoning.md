@@ -4,7 +4,7 @@ date: 2018-07-14
 modifieddate: 2023-03-01
 hero: thumbnail/2018/entry278.jpg
 pagetype: ad
-tags: ["ネコ","ペットの病気"]
+tags: ["ペット","ペットの病気"]
 description: 猫の嘔吐が異常な時は要注意。うちの猫が拾い食いで食あたりに。衰弱して死にかけました。猫の食中毒の具体的な症状、対処法や医療費等をメモしておきます。
 ---
 猫の嘔吐が異常な時は要注意。うちの猫が拾い食いで食あたりに。衰弱して死にかけました。猫の食中毒の具体的な症状、対処法や医療費等をメモしておきます。
@@ -71,7 +71,7 @@ description: 猫の嘔吐が異常な時は要注意。うちの猫が拾い食�
 
 この時ばかりはさすがに弱りきっていてエサ箱から食べてくれませんでした。仕方ないので手のひらに置いて口に運んでやりました。少しずつですが食べてくれるようになりました。私の体温で温まったのが良かったようです。
 
-[銀のスプーン 三ツ星グルメ ジュレ まぐろ・かつおにしらす・かにかま添え 35g×16袋【まとめ買い】](https://www.amazon.co.jp/gp/product/B07Y4CMNVX/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B07Y4CMNVX&linkCode=as2&tag=ginnekoatelie-22&linkId=4614eb20f29476b63e2cc32d08f1c754)
+<div class="cstmreba"><div class="kaerebalink-box"><div class="kaerebalink-image"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292041027447?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F4fe157d610feb15a096a05ebd98aa394%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F4fe157d610feb15a096a05ebd98aa394%2F" target="_blank" ><img src="https://thumbnail.image.rakuten.co.jp/ran/img/1001/0004/520/699/619/889/10010004520699619889_1.jpg" style="border: none;" /></a></div><div class="kaerebalink-info"><div class="kaerebalink-name"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292041027447?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F4fe157d610feb15a096a05ebd98aa394%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F4fe157d610feb15a096a05ebd98aa394%2F" target="_blank" >銀のスプーン 三ツ星グルメ ジュレ まぐろ・かつおにしらす・かにかま添え(35g)</a><div class="kaerebalink-powered-date">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail"></div><div class="kaerebalink-link1"><div class="shoplinkrakuten"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292041027447?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F4fe157d610feb15a096a05ebd98aa394%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F4fe157d610feb15a096a05ebd98aa394%2F" target="_blank" >楽天市場で調べる</a></div><div class="shoplinkamazon"><a href="https://www.amazon.co.jp/gp/search?keywords=%E9%8A%80%E3%81%AE%E3%82%B9%E3%83%97%E3%83%BC%E3%83%B3%20%E4%B8%89%E3%83%84%E6%98%9F%E3%82%B0%E3%83%AB%E3%83%A1%20%E3%82%B8%E3%83%A5%E3%83%AC%20%E3%81%BE%E3%81%90%E3%82%8D%E3%83%BB%E3%81%8B%E3%81%A4%E3%81%8A%E3%81%AB%E3%81%97%E3%82%89%E3%81%99%E3%83%BB%E3%81%8B%E3%81%AB%E3%81%8B%E3%81%BE%E6%B7%BB%E3%81%88%2035g%C3%9716%E8%A2%8B&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&tag=camille603-22" target="_blank" >Amazonで調べる</a></div></div></div><div class="booklink-footer"></div></div></div>
 
 ちなみにうちで、与えたのはこれ。水分の含有量は90%以上。チョコボにとってはお盆や正月、クリスマスにしか食べることが許されないご馳走。通常はドライフードの上にかけて食べさせています。
 
@@ -91,7 +91,7 @@ description: 猫の嘔吐が異常な時は要注意。うちの猫が拾い食�
 普通のご家庭にはないと思うのでスポイドとかでも大丈夫だと思います。
 
 水分補給には電解質がいいのですが、間違ってもポカリスエットなどを与えないでください。ネコは腎臓が弱い動物です。ポカリスエットには塩分が含まれていますので、腎臓に負担がかかります。
-[経口補水液 パウダー 粉末 10包入×2個（計20包） エブリサポート 無果汁 日本薬剤](https://www.amazon.co.jp/gp/product/B07RXR3SN3/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B07RXR3SN3&linkCode=as2&tag=ginnekoatelie-22&linkId=f96246d1a9631243cc25aa255aeffa29)
+<div class="cstmreba"><div class="kaerebalink-box"><div class="kaerebalink-image"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292042120342?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F3490e3dd0c455dd270959681ef4bcb7b%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F3490e3dd0c455dd270959681ef4bcb7b%2F" target="_blank" ><img src="https://thumbnail.image.rakuten.co.jp/ran/img/1001/0004/954/097/915/890/10010004954097915890_1.jpg" style="border: none;" /></a></div><div class="kaerebalink-info"><div class="kaerebalink-name"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292042120342?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F3490e3dd0c455dd270959681ef4bcb7b%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F3490e3dd0c455dd270959681ef4bcb7b%2F" target="_blank" >廣貫堂 エブリサポート 経口補水液 パウダータイプ(6g*10包入)</a><div class="kaerebalink-powered-date">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail"></div><div class="kaerebalink-link1"><div class="shoplinkrakuten"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292042120342?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F3490e3dd0c455dd270959681ef4bcb7b%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F3490e3dd0c455dd270959681ef4bcb7b%2F" target="_blank" >楽天市場で調べる</a></div><div class="shoplinkamazon"><a href="https://www.amazon.co.jp/gp/search?keywords=%E7%B5%8C%E5%8F%A3%E8%A3%9C%E6%B0%B4%E6%B6%B2%20&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&tag=camille603-22" target="_blank" >Amazonで調べる</a></div></div></div><div class="booklink-footer"></div></div></div>
 赤ちゃん用のポカリスエットならOKと他のブログで見ましたが、念のためどんなものを飲ませたらいいか獣医さんによく相談してください。
 
 ### 食中毒の症状が回復しなければ、再度動物病院へ

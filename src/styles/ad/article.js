@@ -18,6 +18,76 @@ export const Article = styled.article`
      .ads {
       margin: 24px 0;
      }
+       .cstmreba {
+           .kaerebalink-box {
+               border: 1px solid #ccc;
+               color: #333;
+               padding: 16px;
+               border-radius: 8px;
+               margin-bottom: 24px;
+               background: #fff;
+               @media screen and (min-width: 768px) {
+               display: flex;
+               justify-content: space-between;
+               }
+           }
+
+           .kaerebalink-image {
+            margin: 0 auto;
+               width: 100px;
+           }
+
+           .kaerebalink-info {
+            @media screen and (min-width: 768px) {
+               width: calc(100% - 132px);
+            }
+           }
+
+           .kaerebalink-powered-date {
+               font-size: 12px;
+               margin-bottom: 8px;
+           }
+
+           .kaerebalink-name {
+               font-weight: bold;
+
+               a {
+                   color: #444;
+               }
+           }
+
+           .kaerebalink-link1 {
+               display: flex;
+               gap: 16px;
+               justify-content: center;
+
+               div {
+                   a {
+                       font-weight: bold;
+                       line-height: 1;
+                       padding: 10px 24px;
+                       border-radius: 4px;
+                       color: #fff;
+                       text-decoration: none;
+                       display: flex;
+                   }
+               }
+
+               .shoplinkrakuten {
+                   a {
+                       background: #bf0000;
+                       box-shadow: 0 3px 0 #890000;
+                   }
+               }
+
+               .shoplinkamazon {
+                   a {
+                       background: #FFA41C;
+                       box-shadow: 0 3px 0 #d87b01;
+                   }
+               }
+           }
+       }
     .c-pager {
         margin-top: 40px;
         margin-bottom: 40px;
@@ -146,6 +216,7 @@ export const Article = styled.article`
                 position: absolute;
                 left: 0;
                 top: 0;
+                width: 100px;
             }
             align-items: center;
         }
