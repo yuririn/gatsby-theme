@@ -17,20 +17,26 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 <div class="box">
 <span class="title">この記事でわかること</span>
   <ul>
-    <li>気になるペットの排泄</li>
-    <li>老衰で寝たきりになった中型犬を看取った話</li>
-    <li>ペットロスにならないために。飼うときの心構え</li>
+    <li>ペットを自宅で看取るために必要な条件</li>
+    <li>準備するものは意外と簡単に手に入る</li>
+    <li>具体的な床ずれ対策</li>
+    <li>寝たきりの犬排泄介護について</li>
+    <li>寝たきりの犬の体臭対策</li>
   </ul>
 </div>
 
 ## ペットを自宅で看取るためには、手助けなしでは難しい
 この記事は、自宅で看取ることを前提として話を進めます。
 
+断言しますが、ペットの介護は一人では厳しいです。特に大型犬になると肉体的な負担が大きいです。
+
 私は運良く6人家族だったのでみんなで協力しあい、大型犬を介護し看取ることができました。
 
-とはいえ、基本的には専業主婦だった母に負担がかかりました。
+とはいえ、基本的には専業主婦だった母に大きな負担がかかりました。
 
 ペットの介護も手助けなしだと厳しいものです。特に大型犬になると、排泄の処理や床ずれ予防など定期的にやらないといけないことがたくさんあります。
+
+できるだけ自宅で看取りたいのは分かります。
 
 日中家にいることができない方はペットシッターさんにお願いしたり、無理せず老犬・老猫ホームに預けることをおすすめします。
 
@@ -51,7 +57,7 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 ### 寝たきりの犬の床ずれ対策
 大型犬の介護は大変です。とくに寝たきりになった場合は床ずれを起こします。
 
-絶対に床などに寝かしっぱなしにしないで、ベッドを用意してあげてください。
+絶対に床などに寝かしっぱなしにしないで、柔らかいベッドを用意してあげてください。
 
 ペット用の床ずれ防止クッションなどもありますが、我が家は座椅子を代用していました。
 
@@ -65,7 +71,7 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 
 ベッドやクッションを用意してあげるだけでは床ずれは防止できません。
 
-定期的にマッサージしたり向きも変えてあげます。  スキンシップも兼ねてやってあげると喜びます。
+定期的にマッサージしたり向きも変えてあげます。スキンシップも兼ねてやってあげると喜びます。
 
 ブランケットも床ずれ対策に役に立ちます。すぐ臭くなるので複数用意しておくといいです。
 
@@ -74,13 +80,15 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 ### 犬の排泄を介助する
 犬の排泄介助必需品といえば、犬用おむつです。
 
+大型犬でいちばん大変なのは排泄の介助です。
+
 <div class="cstmreba"><div class="kaerebalink-box"><div class="kaerebalink-image"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292002342985?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F074c85887dea424e4149ac6ad8d0b2bc%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F074c85887dea424e4149ac6ad8d0b2bc%2F" target="_blank" ><img src="https://thumbnail.image.rakuten.co.jp/ran/img/1001/0004/976/555/850/611/10010004976555850611_1.jpg?_ex=320x320" style="border: none;" /></a></div><div class="kaerebalink-info"><div class="kaerebalink-name"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292002342985?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F074c85887dea424e4149ac6ad8d0b2bc%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F074c85887dea424e4149ac6ad8d0b2bc%2F" target="_blank" >ドギーマン ペットの紙オムツ LLサイズ(10枚入)</a><div class="kaerebalink-powered-date">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail"></div><div class="kaerebalink-link1"><div class="shoplinkrakuten"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292002342985?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F074c85887dea424e4149ac6ad8d0b2bc%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F074c85887dea424e4149ac6ad8d0b2bc%2F" target="_blank" >楽天市場で探す</a></div><div class="shoplinkamazon"><a href="https://www.amazon.co.jp/gp/search?keywords=%E3%83%89%E3%82%AE%E3%83%BC%E3%83%9E%E3%83%B3%20%E3%83%9A%E3%83%83%E3%83%88%E3%81%AE%E7%B4%99%E3%82%AA%E3%83%A0%E3%83%84&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&tag=camille603-22" target="_blank" >Amazonで探す</a></div></div></div><div class="booklink-footer"></div></div></div>
 
-おもらし対策のおむつは必須ですが、それ以外にも役立ったグッツを紹介します。
+おもらし対策のおむつは必須ですが、それ以外にも役立ったグッズを紹介します。
 
 #### 寝たきりになった犬のトイレ介護
 
-寝たきりの犬のトイレ介護ではおしっこシートが大活躍します。
+寝たきりの犬のトイレ介護におしっこシートが大活躍します。
 
 <div class="cstmreba"><div class="kaerebalink-box"><div class="kaerebalink-image"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292006467606?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F1761aec79214edfc4c22d3ba161adb26%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F1761aec79214edfc4c22d3ba161adb26%2F" target="_blank" ><img src="https://thumbnail.image.rakuten.co.jp/ran/img/1001/0004/520/699/674/468/10010004520699674468_1.jpg" style="border: none;" /></a></div><div class="kaerebalink-info"><div class="kaerebalink-name"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292006467606?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F1761aec79214edfc4c22d3ba161adb26%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F1761aec79214edfc4c22d3ba161adb26%2F" target="_blank" >ケース販売 デオシート しっかり超吸収 無香消臭タイプ ワイド(54枚入*4袋セット)</a><div class="kaerebalink-powered-date">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail"></div><div class="kaerebalink-link1"><div class="shoplinkrakuten"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292006467606?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F1761aec79214edfc4c22d3ba161adb26%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F1761aec79214edfc4c22d3ba161adb26%2F" target="_blank" >楽天市場で探す</a></div><div class="shoplinkamazon"><a href="https://www.amazon.co.jp/gp/search?keywords=%E3%81%8A%E3%81%97%E3%81%A3%E3%81%93%E3%82%B7%E3%83%BC%E3%83%88&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&tag=camille603-22" target="_blank" >Amazonで探す</a></div></div></div><div class="booklink-footer"></div></div></div>
 
@@ -90,7 +98,7 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 
 中〜大型犬は床ずれ防止で向きを変えたりしていると位置がずれてしまうことがあります。
 
-おむつ外れたりやおしっこシートがずれていることに気づかず、ベッドの中がおしっこだらけになってしまうことも。しかもおしっこの量も多いです。
+おむつ外れたりやおしっこシートがずれていることに気づかず、ベッドの中がおしっこだらけになってしまうことも。しかも大型犬はおしっこの量も多く、おしっこシートで吸収しきれないこともあります。
 
 中〜大型犬のおもらし対策には *防水シーツ* が役立ちます。ペット用もありますが少し高いので、人間用のおねしょシーツで代用することもできます。
 
@@ -113,7 +121,7 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 ボブが動けるうちはできるだけ自由にしてやりたかったという、家族みんなの気持ちもあったのでしませんでした。
 
 ### 食事
-高齢の犬には、我が家ではドックフードをお湯でふやかしてあげていました。
+高齢の犬には、我が家ではドックフードをお湯でふやかして与えます。
 
 エサ箱から食べるのが難しい場合は、手で与えると食べてくれることがあります。
 
@@ -128,7 +136,7 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 ### 体臭対策
 犬が寝たきりになると、匂いが臭くなります。
 
-体臭対策は水のいらない犬用のシャンプーを使っていました。
+我が家では体臭対策には水のいらない犬用のシャンプーを使っていました。
 
 そのほかのおすすめとしては **ホットタオルで拭いてあげること** です。タオルを水で濡らして固く絞り、レンジで30秒くらいチンします。熱さを確かめて、全身を拭いてあげます。きれいになるだけではく、血行も良くなります。
 
