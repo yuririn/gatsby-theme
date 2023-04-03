@@ -25,7 +25,7 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
   </ul>
 </div>
 
-## ペットを自宅で看取るためには、手助けなしでは難しい
+## ペットを自宅で看取るのは、手助けなしでは難しい
 この記事は、自宅で看取ることを前提として話を進めます。
 
 断言しますが、ペットの介護は一人では厳しいです。特に大型犬になると肉体的な負担が大きいです。
@@ -108,7 +108,7 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 
 [脳の腫瘍で亡くなったボブ](/choco-blog/dog-funneral#たった5歳脳の癌で死んだゴールデンレトリバー)は発作のたびにおしっこを漏らしていました。
 
-ただ発作を起越している時以外は元気だったので、おむつを付けませんでした。つけてもすぐに脱いでしまうからです。
+ただ発作を起こしている時以外は元気だったので、おむつを付けませんでした。つけてもすぐに脱いでしまうからです。
 
 仕方ないのでおもらしのたびに床を水で拭いたあと、乾拭きしました。臭くなるので拭いた後ペットのおしっこ用消臭スプレーを使います。
 
@@ -121,11 +121,11 @@ description: 生き物はいずれ死ぬ。老衰、病気、様々な理由で�
 ボブが動けるうちはできるだけ自由にしてやりたかったという、家族みんなの気持ちもあったのでしませんでした。
 
 ### 老犬の食事
-高齢の犬には、我が家ではドックフードをお湯でふやかして与えます。
+高齢の犬には、我が家ではドックフードをお湯でふやかして与えました。
 
 エサ箱から食べるのが難しい場合は、手で与えると食べてくれることがあります。
 
-それでも食べない場合は、介護食に切り替えるか高カロリーなものを与えるのが一般的です。
+それでも食べない場合は、老犬専用の介護食に切り替えるか、高カロリーなものを与えるのが一般的です。
 <div class="cstmreba"><div class="kaerebalink-box"><div class="kaerebalink-image"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292015195277?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2Fe239298f9114330ce98e1ca34d9761be%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2Fe239298f9114330ce98e1ca34d9761be%2F" target="_blank" ><img src="https://thumbnail.image.rakuten.co.jp/ran/img/1001/0004/970/501/032/984/10010004970501032984_1.jpg" style="border: none;" /></a></div><div class="kaerebalink-info"><div class="kaerebalink-name"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292015195277?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2Fe239298f9114330ce98e1ca34d9761be%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2Fe239298f9114330ce98e1ca34d9761be%2F" target="_blank" >デビフ 愛犬の介護食 ささみ＆すりおろし野菜(85g)</a><div class="kaerebalink-powered-date">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail"></div><div class="kaerebalink-link1"><div class="shoplinkrakuten"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303292015195277?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2Fe239298f9114330ce98e1ca34d9761be%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2Fe239298f9114330ce98e1ca34d9761be%2F" target="_blank" >楽天市場で探す</a></div><div class="shoplinkamazon"><a href="https://www.amazon.co.jp/gp/search?keywords=%E7%8A%AC%E3%80%80%E4%BB%8B%E8%AD%B7%E9%A3%9F&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&tag=camille603-22" target="_blank" >Amazonで探す</a></div></div></div><div class="booklink-footer"></div></div></div>
 
 食事は命に関わることなので、素人判断せず獣医さんに相談しましょう。
