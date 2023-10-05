@@ -22,7 +22,7 @@ const profile = () => {
             <li>疲れたので辞めてプータロー</li>
             <li>人生の充電中でセブ島ライフを満喫</li>
             <li>2021年セブ島でビジネスを始めるために仲間と奮闘</li>
-            <li>2022年7月セブ島で法人Lenz Technologies Inc. 設立（←イマココ）</li>
+            <li>2022年7月セブ島で法人<a href="https://lenz-ph.com" target="_blank" rel="noopener nofollow">LenzTechnologies Inc.</a> 設立（←イマココ）</li>
           </ul>
           <p>
             好きな人といるだけでパワースポット！今は大好きな仲間と消耗しない働き方をするためにセブ島に法人設立中。
@@ -47,6 +47,9 @@ const Profile = styled.div`
   & + .ads.display {
     max-width: 700px;
     margin: 0 auto 80px;
+  }
+  a {
+        color: var(--color-blue);
   }
   line-height: 2;
   max-width: 700px;
