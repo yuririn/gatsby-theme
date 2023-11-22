@@ -3,58 +3,77 @@ import styled from "styled-components"
 export const Edit = styled.section`
   line-height: 2;
   .slide {
-     @media screen and (max-width: 1117px) {
-        max-width: 750px;
-        overflow-x: auto;
-        margin-right: -15px;
-        padding-right: 15px;
-     }
+    @media screen and (max-width: 1117px) {
+      max-width: 750px;
+      overflow-x: auto;
+      margin-right: -15px;
+      padding-right: 15px;
+    }
   }
   .ads {
     margin: 24px 0;
   }
   .animation {
-      img {
-        margin: 0 auto 24px;
-        display: block;
+    img {
+      margin: 0 auto 24px;
+      display: block;
     }
   }
   .p-faq__item {
     margin-bottom: 16px;
     background: var(--pale-gray);
     border-radius: 16px;
-      dt {
-        padding: 16px 16px 4px;
-        font-weight: bold;
-        position: relative;
-        padding-left: 60px;
-        &::before {
-            color: var(--color-blue);
-            position: absolute;
-            left: 16px;
-            content: 'Q.';
-            font-size: 28px;
-            top: 14px;
-            line-height: 1;
-        }
-        border-bottom: 1px solid var(--background);
+    dt {
+      padding: 16px 16px 4px;
+      font-weight: bold;
+      position: relative;
+      padding-left: 60px;
+      &::before {
+        color: var(--color-blue);
+        position: absolute;
+        left: 16px;
+        content: "Q.";
+        font-size: 28px;
+        top: 14px;
+        line-height: 1;
+      }
+      border-bottom: 1px solid var(--background);
     }
     dd {
-        font-size: 14px;
-        position: relative;
-        padding: 4px 16px 16px;
-        padding-left: 60px;
-        &::before {
-            color: var(--color-accent);
-            top: 6px;
-            line-height: 1;
-            position: absolute;
-            left: 16px;
-            content: 'A.';
-            font-weight: bold;
-            font-size: 28px;
-        }
+      font-size: 14px;
+      position: relative;
+      padding: 4px 16px 16px;
+      padding-left: 60px;
+      &::before {
+        color: var(--color-accent);
+        top: 6px;
+        line-height: 1;
+        position: absolute;
+        left: 16px;
+        content: "A.";
+        font-weight: bold;
+        font-size: 28px;
       }
+    }
+  }
+  .caption--left {
+    display: block;
+    margin-top: -24px;
+    margin-bottom: 24px;
+    @media screen and (min-width: 768px) {
+      margin-top: -24px;
+      margin-bottom: 24px;
+    }
+  }
+  .caption {
+    display: block;
+    margin-top: -18px;
+    margin-bottom: 18px;
+    @media screen and (min-width: 768px) {
+      margin-top: -38px;
+      margin-bottom: 24px;
+    }
+    text-align: center;
   }
   p {
     margin-bottom: 1.5em;
@@ -103,7 +122,7 @@ export const Edit = styled.section`
   p > code[class*="language-"] {
     color: var(--light-color);
   }
-  pre[class*="language-"] code[class*="language-"]{
+  pre[class*="language-"] code[class*="language-"] {
     color: #fff;
   }
   .text-center {
@@ -168,7 +187,7 @@ export const Edit = styled.section`
         text-align: center;
         width: 100px;
         font-size: 1.3rem;
-        font-weight:bold;
+        font-weight: bold;
         img {
           border-radius: 50%;
           oveflow: hidden;
@@ -215,7 +234,11 @@ export const Edit = styled.section`
       margin-top: 12px;
       content: "";
       display: block;
-      background: linear-gradient(to right, var(--color-accent) 15%, var(--pale-gray)15%);
+      background: linear-gradient(
+        to right,
+        var(--color-accent) 15%,
+        var(--pale-gray) 15%
+      );
       height: 2px;
     }
   }
@@ -225,7 +248,7 @@ export const Edit = styled.section`
     margin-bottom: 24px;
     font-size: 1.9rem;
     font-weight: 700;
-     &:after {
+    &:after {
       margin-top: 4px;
       content: "";
       display: block;
@@ -403,7 +426,7 @@ export const Edit = styled.section`
     color: #5bfff1;
   }
   strong {
-    text-shadow: 0 0 4px var(--background),0 0 1px var(--background);
+    text-shadow: 0 0 4px var(--background), 0 0 1px var(--background);
     font-weight: 700;
     background: linear-gradient(transparent 60%, var(--yellow) 0);
     font-weight: bolder;
@@ -536,7 +559,7 @@ export const Edit = styled.section`
       flex-wrap: wrap;
       align-items: flex-start;
       padding: 15px;
-      background:var(--background);
+      background: var(--background);
       overflow: hidden;
       border: 1px solid var(--color-blue);
       position: relative;

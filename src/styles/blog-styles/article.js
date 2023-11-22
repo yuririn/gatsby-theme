@@ -10,227 +10,225 @@ export const Article = styled.div`
   }
   .cstmreba {
     .kaerebalink-box {
-        border: 1px solid #ccc;
-        color: #333;
-        padding: 16px;
-        border-radius: 8px;
-        margin-bottom: 24px;
-        background: #fff;
-        display: flex;
-        justify-content: space-between;
+      border: 1px solid #ccc;
+      color: #333;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
     }
     .kaerebalink-image {
-        width: 100px;
+      width: 100px;
     }
     .kaerebalink-info {
-        width: calc(100% - 132px);
+      width: calc(100% - 132px);
     }
     .kaerebalink-powered-date {
-        font-size: 12px;
-        margin-bottom: 8px;
+      font-size: 12px;
+      margin-bottom: 8px;
     }
     .kaerebalink-name {
-        font-weight: bold;
-        a {
-            color: #444;
-        }
+      font-weight: bold;
+      a {
+        color: #444;
+      }
     }
     .kaerebalink-link1 {
-        display: flex;
-        gap: 16px;
-        div {
-            a {
-                font-weight: bold;
-                line-height: 1;
-                padding: 10px 24px;
-                border-radius: 4px;
-                color: #fff;
-                text-decoration: none;
-                display: flex;
-            }
+      display: flex;
+      gap: 16px;
+      div {
+        a {
+          font-weight: bold;
+          line-height: 1;
+          padding: 10px 24px;
+          border-radius: 4px;
+          color: #fff;
+          text-decoration: none;
+          display: flex;
         }
+      }
 
-        .shoplinkrakuten {
-            a {
-                background: #bf0000;
-                box-shadow: 0 3px 0 #890000;
-            }
+      .shoplinkrakuten {
+        a {
+          background: #bf0000;
+          box-shadow: 0 3px 0 #890000;
         }
-        .shoplinkamazon {
-            a {
-                background: #FFA41C;
-                box-shadow: 0 3px 0 #d87b01;
-            }
+      }
+      .shoplinkamazon {
+        a {
+          background: #ffa41c;
+          box-shadow: 0 3px 0 #d87b01;
         }
+      }
     }
   }
-    .profile {
-        border: 6px solid var(--pale-gray);
-        padding: 15px;
-        position: relative;
-        border-radius: 15px;
-        margin-bottom: 30px;
-        svg {
-          width:20px;
-          height: 20px;
-          display:inline-block;
-        }
-
-        @media screen and (min-width: 768px) {
-            margin: 24px 0 24px;
-            padding: 20px 0 0 160px;
-        }
-
-        .title {
-            position: absolute;
-            background: var(--background);
-            top: -25px;
-            padding: 10px 15px;
-            left: 50%;
-            white-space: nowrap;
-            font-weight: 700;
-            transform: translateX(-50%);
-            @media screen and (min-width: 768px) {
-                left: 20px;
-                transform: translateX(0);
-            }//media query
-        }
-
-        .prof__img__sm {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 25px auto 15px;
-            overflow: hidden;
-            display: block;
-
-            img {
-                overflow: hidden;
-                border-radius: 50%;
-            }
-            @media screen and (min-width: 768px) {
-                position: absolute;
-                left: 24px;
-            }
-        }
-
-        .name {
-            margin: 10px 0 5px;
-            text-align: center;
-            font-size: 1.5rem;
-
-            @media screen and (min-width: 768px) {
-                margin: 10px 15px 5px;
-                font-size: 1.6rem;
-                text-align: left;
-            }
-
-            font-weight: 700;
-        }
-
-        .footer {
-            text-align: center;
-            margin: 10px 0 5px;
-            @media screen and (min-width: 768px) {
-                 margin: 0 15px 5px;
-                 text-align: right;
-                 br {
-                    display: none;
-                 }
-             }
-
-        }
-
-        .footer a {
-            margin: 0 10px 0px 10px;
-            display: inline-block;
-            color: var(--color-blue);
-        }
-
-        .message {
-            margin: 10px 0 5px;
-            line-height: 1.6;
-            font-size: 1.4rem;
-
-            @media screen and (min-width: 768px) {
-                margin: 0 15px 5px;
-            }
-        }
-
-        .seemore {
-            margin: 15px 0 0;
-
-            @media screen and (min-width: 768px) {
-                margin: 5px 15px 10px;
-            }
-
-            text-align: right;
-
-            a {
-                text-decoration: none;
-                color: var(--color-link);
-
-                &:hover {
-                    transform: translateX(5px);
-                }
-
-                letter-spacing: 0.2em;
-                transition: 0.3s;
-                font-size: 0.9em;
-                display: inline-block;
-
-                &:after {
-                    font-size: 1.4rem;
-                    content: ">";
-                }
-            }
-        }
+  .profile {
+    border: 6px solid var(--pale-gray);
+    padding: 15px;
+    position: relative;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    svg {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
     }
 
-  .c-btn--donation {
-      background: var(--pale-gray);
-      text-align: center;
-      padding: 24px 16px;
-      border-radius: 16px;
+    @media screen and (min-width: 768px) {
+      margin: 24px 0 24px;
+      padding: 20px 0 0 160px;
+    }
+
+    .title {
+      position: absolute;
+      background: var(--background);
+      top: -25px;
+      padding: 10px 15px;
+      left: 50%;
+      white-space: nowrap;
+      font-weight: 700;
+      transform: translateX(-50%);
       @media screen and (min-width: 768px) {
-          padding: 24px;
+        left: 20px;
+        transform: translateX(0);
+      } //media query
+    }
+
+    .prof__img__sm {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 25px auto 15px;
+      overflow: hidden;
+      display: block;
+
+      img {
+        overflow: hidden;
+        border-radius: 50%;
       }
-      p {
-        line-height :1.8;
+      @media screen and (min-width: 768px) {
+        position: absolute;
+        left: 24px;
       }
+    }
+
+    .name {
+      margin: 10px 0 5px;
+      text-align: center;
+      font-size: 1.5rem;
+
+      @media screen and (min-width: 768px) {
+        margin: 10px 15px 5px;
+        font-size: 1.6rem;
+        text-align: left;
+      }
+
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      margin: 10px 0 5px;
+      @media screen and (min-width: 768px) {
+        margin: 0 15px 5px;
+        text-align: right;
+        br {
+          display: none;
+        }
+      }
+    }
+
+    .footer a {
+      margin: 0 10px 0px 10px;
+      display: inline-block;
+      color: var(--color-blue);
+    }
+
+    .message {
+      margin: 10px 0 5px;
+      line-height: 1.6;
+      font-size: 1.4rem;
+
+      @media screen and (min-width: 768px) {
+        margin: 0 15px 5px;
+      }
+    }
+
+    .seemore {
+      margin: 15px 0 0;
+
+      @media screen and (min-width: 768px) {
+        margin: 5px 15px 10px;
+      }
+
+      text-align: right;
 
       a {
-          margin: 20px auto 0;
-          display: flex;
-          max-width: 320px;
-          width: 100%;
-          background: var(--color-ac);
-          border: 1px solid var(--color-ac)!important;
-          color: #fff;
-          justify-content: center;
-          align-items: center;
-          border: none;
-          height: 56px;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          font-size: 18px;
+        text-decoration: none;
+        color: var(--color-link);
 
-          svg {
-              margin-right: 8px;
-              width: 30px;
-              height: 30px;
-          }
+        &:hover {
+          transform: translateX(5px);
+        }
 
-          @media screen and (min-width: 768px) {
-              transition: .3s;
-              &:hover {
-                  color: var(--color-ac);
-                  background: #fff;
-              }
-          }
+        letter-spacing: 0.2em;
+        transition: 0.3s;
+        font-size: 0.9em;
+        display: inline-block;
 
+        &:after {
+          font-size: 1.4rem;
+          content: ">";
+        }
       }
+    }
+  }
+
+  .c-btn--donation {
+    background: var(--pale-gray);
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: 16px;
+    @media screen and (min-width: 768px) {
+      padding: 24px;
+    }
+    p {
+      line-height: 1.8;
+    }
+
+    a {
+      margin: 20px auto 0;
+      display: flex;
+      max-width: 320px;
+      width: 100%;
+      background: #d45c84;
+      border: 1px solid #d45c84 !important;
+      color: #fff;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      height: 56px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+
+      svg {
+        margin-right: 8px;
+        width: 30px;
+        height: 30px;
+      }
+
+      @media screen and (min-width: 768px) {
+        transition: 0.3s;
+        &:hover {
+          color: #d45c84;
+          background: #fff;
+        }
+      }
+    }
   }
   .l-container {
     @media screen and (min-width: 768px) {
@@ -240,9 +238,7 @@ export const Article = styled.div`
   }
 
   .c-article {
-      margin: 50px auto 0;
-
-
+    margin: 50px auto 0;
 
     &__heading {
       font-size: 2.4rem;
@@ -250,7 +246,7 @@ export const Article = styled.div`
       margin-bottom: 24px;
       color: var(--color-d-blue);
       line-height: 1.4;
-      margin-top:0;
+      margin-top: 0;
 
       @media screen and (min-width: 768px) {
         font-size: 2.8rem;
@@ -413,7 +409,6 @@ export const Article = styled.div`
       }
     }
   }
-
 
   .c-pager--article {
     padding-top: 30px;

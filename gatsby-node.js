@@ -22,24 +22,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
-    `{
-  allMarkdownRemark(sort: {frontmatter: {date: ASC}}, limit: 1000) {
-    nodes {
-      id
-      fields {
-        slug
+    `
+      {
+        allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              tags
+              cateId
+              hero
+              pagetype
+              noindex
+              faq
+            }
+          }
+        }
       }
-      frontmatter {
-        tags
-        cateId
-        hero
-        pagetype
-        noindex
-        faq
-      }
-    }
-  }
-}`
+    `
   )
 
   if (result.errors) {
@@ -81,7 +83,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
 
     adPosts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null :adPosts[index - 1].id
+      const previousPostId = index === 0 ? null : adPosts[index - 1].id
       const nextPostId =
         index === adPosts.length - 1 ? null : adPosts[index + 1].id
 
@@ -92,9 +94,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId,
-          hero: post.frontmatter.hero
-            ? post.frontmatter.hero
-            : "ad/dummy.png",
+          hero: post.frontmatter.hero ? post.frontmatter.hero : "ad/dummy.png",
         },
       })
     })
@@ -162,19 +162,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     //タグの一覧作成
     let tags = blogPosts.reduce((tags, edge) => {
-        const edgeTags = edge.frontmatter.tags
-        return edgeTags ? tags.concat(edgeTags) : tags
+      const edgeTags = edge.frontmatter.tags
+      return edgeTags ? tags.concat(edgeTags) : tags
     }, [])
     // 重複削除
     tags = [...new Set(tags)]
-
 
     let adTags = adPosts.reduce((tags, edge) => {
       const edgeTags = edge.frontmatter.tags
       return edgeTags ? tags.concat(edgeTags) : tags
     }, [])
     adTags = [...new Set(adTags)]
-
 
     // タグ
     tags.forEach(item => {
@@ -231,7 +229,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
 
     // 個別ページの生成
-    const pagePosts = posts.filter(post => post.frontmatter.pagetype !== "blog" && post.frontmatter.pagetype !== "ad")
+    const pagePosts = posts.filter(
+      post =>
+        post.frontmatter.pagetype !== "blog" &&
+        post.frontmatter.pagetype !== "ad"
+    )
 
     pagePosts.forEach(post => {
       createPage({
