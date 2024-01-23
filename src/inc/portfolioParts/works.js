@@ -43,7 +43,7 @@ const Works = () => (
       <section>
         <h3>工作</h3>
         <p>
-          大人が段ボールで鎧をつくったら楽しか会社の同僚とやってみました。面白そうなことがあったら、体を張ります。
+          大人が段ボールで鎧をつくったら楽しいか検証したくて会社の同僚とやってみました。面白そうなことがあったら、体を張ります。
         </p>
       </section>
       <Img source="portfolio/danball.jpg" className="img"></Img>
@@ -137,6 +137,43 @@ const Works = () => (
           </p>
         </section>
         <Img source="thumbnail/2020/entry415.jpg" className="img"></Img>
+      </Link>
+    </Article>
+    <Article>
+      <Link
+        to="https://daredemohero.com/"
+        target="blank"
+        rel="noopener nofollow"
+      >
+        <section>
+          <h3>ボランティア団体でプロボノ</h3>
+          <p>
+            セブで一番ハイボールを作るのがうまいボランティア団体の代表に餌付けされてプロボノ活動するようになりました。
+          </p>
+        </section>
+        <Img source="portfolio/daredemo-hero.png" className="img"></Img>
+      </Link>
+    </Article>
+    <Article>
+      <Link to="https://lenz-ph.com/" target="blank" rel="noopener nofollow">
+        <section>
+          <h3>勢い余って海外で会社設立</h3>
+          <p>
+            フィリピン・セブ島で勢い余って会社つくっちゃいました。仕事ください。
+          </p>
+        </section>
+        <Img source="portfolio/lenz.png" className="img"></Img>
+      </Link>
+    </Article>
+    <Article>
+      <Link to="https://ja-cebu.com/" target="blank" rel="noopener nofollow">
+        <section>
+          <h3>セブ日本人会のサイト作製</h3>
+          <p>
+            セブ日本人会の新しい理事長（日系セブ最大英語学校の経営者）に頼まれ、サイトを数日で作りました。死ぬかと思いました。
+          </p>
+        </section>
+        <Img source="portfolio/jac.png" className="img"></Img>
       </Link>
     </Article>
   </Grid>

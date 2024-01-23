@@ -1,23 +1,35 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from "react"
+import { Link } from "gatsby"
 
 const Contact = () => (
   <div className="l-container">
     <p className="p-mw900 center">
-      ただいまフォーム実装中です。
+      フォームを実装する気はさらさらないので
       <br />
       ご用のある方はお手数ですが、
       <Link
         to="https://twitter.com/LirioY"
         target="_blank"
         rel="noopener nofollow"
+        style={{
+          color: "rgb(233, 80, 20)",
+        }}
       >
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" className="svg-inline--fa fa-twitter fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" ><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
-        LirioY
+        <svg
+          width="18"
+          height="18"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 300 300"
+          role="img"
+          fill="currentColor"
+        >
+          <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"></path>
+        </svg>
+        @LirioY
       </Link>
       までDMにてご連絡ください。
     </p>
   </div>
-);
+)
 
-export default Contact;
+export default Contact
