@@ -371,14 +371,14 @@ export const Article = styled.div`
         }
       }
       &--tw {
-        border: 1px solid #04a0f6;
-        background: #04a0f6;
+        border: 1px solid #aaa;
+        background: #000;
         transition: 0.3s;
 
         @media screen and (min-width: 768px) {
           &:hover {
             background: #fff;
-            color: #04a0f6;
+            color: #000;
           }
         }
       }

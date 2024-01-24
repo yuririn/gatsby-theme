@@ -37,7 +37,7 @@ const Ganre = styled.div`
   .p-localNav__item {
     position: relative;
     height: 130px;
-    text-shadow: 0 0 3px rgb(0, 0, 0, 0.8),0 0 16px rgb(0, 0, 0, 0.6);
+    text-shadow: 0 0 3px rgb(0, 0, 0, 0.8), 0 0 16px rgb(0, 0, 0, 0.6);
     margin-bottom: 30px;
     border-radius: 8px;
     overflow: hidden;
@@ -65,7 +65,9 @@ const Ganre = styled.div`
     }
   }
   .p-localNav__main {
-    z-index: 1;
+    top: 0;
+    left: 0;
+    z-index: 100;
     position: absolute;
     color: #fff;
     text-align: center;

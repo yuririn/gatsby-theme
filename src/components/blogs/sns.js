@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from "react"
+import { Link } from "gatsby"
 
 const Sns = ({ url, title }) => {
   return (
@@ -21,7 +21,7 @@ const Sns = ({ url, title }) => {
           target="_blank"
           rel="noopener nofollow"
         >
-          <span className="c-snsBtns__label">Twitter</span>
+          <span className="c-snsBtns__label">X(Twitter)</span>
         </Link>
       </li>
       <li className="c-snsBtns__item">
@@ -45,7 +45,7 @@ const Sns = ({ url, title }) => {
         </Link>
       </li>
     </ul>
-  );
-};
+  )
+}
 
-export default Sns;
+export default Sns

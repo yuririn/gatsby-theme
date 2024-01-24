@@ -8,11 +8,11 @@ import Img from "../img"
 const favoritesList = {
   web: {
     title: "Web制作に関する人気の記事",
-    items: ["393", "336", "448", "504", "514"],
+    items: ["393", "336", "507", "448", "181"],
   },
   life: {
     title: "海外ノマド・ライフスタイルに関する人気の記事",
-    items: ["473", "420", "505", "464", "512"],
+    items: ["521", "441", "420", "473", "512"],
   },
   career: {
     title: "お役立ちツールに関するおすすめ記事",
@@ -28,12 +28,12 @@ const List = ({ item, url, key }) => {
       className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
       rol="article"
     >
-        <Link className="p-entryCard__img" to={url}>
-          <Img source={hero} title={title} />
-        </Link>
-        <Link to={url} className="p-entryCard__body">
-          <h3 className="p-entryCard__heading">{title}</h3>
-        </Link>
+      <Link className="p-entryCard__img" to={url}>
+        <Img source={hero} title={title} />
+      </Link>
+      <Link to={url} className="p-entryCard__body">
+        <h3 className="p-entryCard__heading">{title}</h3>
+      </Link>
     </li>
   )
 }
@@ -98,48 +98,47 @@ const Faves = ({ type }) => {
 export default Faves
 
 const Favorite = styled.div`
-ol {
-  counter-reset: num;
-}
-@media screen and (min-width: 768px) {
-  .add-numbering {
-    justify-content: center;
+  ol {
+    counter-reset: num;
   }
-}
-li {
-
-  counter-increment: num;
-  position: relative;
-  &:before {
-    color: #fff;
-    position: absolute;
-    z-index: 1;
-    content: counter(num);
-    width: 35px;
-    height: 35px;
-    font-size: 2.2rem;
-    top: -8px;
-    left: -8px;
-    line-height: 1.2;
-    text-indent: 6px;
-    background: #001d7c;
-    border-radius: 50%;
-    font-weight: 700;
-    border: 3px double #fff;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  }
-  &::after {
-    color: #fff;
-    position: absolute;
-    z-index: 1;
-    content: "位";
-    font-size: 1.2rem;
-    top: 5px;
-    left: 15px;
-    font-weight: 700;
+  @media screen and (min-width: 768px) {
+    .add-numbering {
+      justify-content: center;
     }
-     &:first-child::before {
+  }
+  li {
+    counter-increment: num;
+    position: relative;
+    &:before {
+      color: #fff;
+      position: absolute;
+      z-index: 1;
+      content: counter(num);
+      width: 35px;
+      height: 35px;
+      font-size: 2.2rem;
+      top: -8px;
+      left: -8px;
+      line-height: 1.2;
+      text-indent: 6px;
+      background: #001d7c;
+      border-radius: 50%;
+      font-weight: 700;
+      border: 3px double #fff;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    }
+    &::after {
+      color: #fff;
+      position: absolute;
+      z-index: 1;
+      content: "位";
+      font-size: 1.2rem;
+      top: 5px;
+      left: 15px;
+      font-weight: 700;
+    }
+    &:first-child::before {
       background: #9a8904;
       transform: scale(1.3);
     }
