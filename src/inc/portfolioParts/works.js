@@ -218,13 +218,14 @@ const Article = styled.article`
       margin-top: 0;
     }
   }
-
-  &:hover {
-    .img {
-      transform: scale(1.2) rotate(-5deg);
-    }
-    section {
-      opacity: 1;
+  @media screen and (min-width: 768px) {
+    &:hover {
+      .img {
+        transform: scale(1.2) rotate(-5deg);
+      }
+      section {
+        opacity: 1;
+      }
     }
   }
 

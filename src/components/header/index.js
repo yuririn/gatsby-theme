@@ -2,7 +2,7 @@ import * as React from "react"
 
 import Logo from "./logo"
 import { Link } from "gatsby"
-import GNav from "./../nav";
+import GNav from "./../nav"
 
 // import Search from "../../search/"
 import styled from "styled-components"
@@ -10,26 +10,28 @@ import styled from "styled-components"
 const Header = ({ title, location }) => {
   return (
     <HeaderWrapper>
-        {location === "/" ? (
-          <h1 id="header-logo">セブ島海外ノマドエンジニアの日記
-            <Logo />
-          </h1>
-        ) : (
-          <Link to="/" id="header-logo">
-            セブ島海外ノマドエンジニアの日記
-            <Logo />
-          </Link>
-        )}
-        <GNav></GNav>
+      {location === "/" ? (
+        <h1 id="header-logo">
+          セブ島海外ノマドエンジニアの日記
+          <Logo />
+        </h1>
+      ) : (
+        <Link to="/" id="header-logo">
+          セブ島海外ノマドエンジニアの日記
+          <Logo />
+        </Link>
+      )}
+      <GNav></GNav>
     </HeaderWrapper>
   )
 }
 
 export default Header
 
-const HeaderWrapper=styled.header`
+const HeaderWrapper = styled.header`
     color: #232a41;
     position: fixed;
+    z-index: 999;
     left: 0;
     top: 0;
     height: 60px;
