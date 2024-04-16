@@ -11,7 +11,7 @@ description: 2024年4月13（土）に無事IT飲み会当日の様子の開催�
 2024 年 4 月 13 日、セブ島で 11 年ぶりに IT 飲み会を開催いたしました。<br>
 この度、セブ島だけでなく日本や、その他の国からも 24 名もの方にご参加いただきました。
 
-[セブ島 IT 飲み会飲み会](https://itnomikai.com/event/cebu)
+[セブ島 IT 飲み会](https://itnomikai.com/event/cebu)
 
 <prof></prof>
 
@@ -90,4 +90,4 @@ IT 飲み会は日本国内だけでなく世界各地で展開する「_売上�
 
 次回のセブ IT 飲み会でお会いしましょう！みなさんのご参加、お待ちしております！！
 
-[セブ島 IT 飲み会飲み会](https://itnomikai.com/event/cebu)
+[セブ島 IT 飲み会](https://itnomikai.com/event/cebu)
