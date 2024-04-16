@@ -23,7 +23,7 @@ import Genre from "../components/common/genre"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Ad from '../components/common/ad'
+import Ad from "../components/common/ad"
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -33,12 +33,11 @@ const renderAst = new rehypeReact({
     prof: Prof,
     ad: Ad,
     kyle: Kyle,
-    toc: Toc
+    toc: Toc,
   },
 }).Compiler
 
 const BlogPostTemplate = ({ data, location }) => {
-
   const post = data.markdownRemark
   const faq = post.frontmatter.faq
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -46,12 +45,11 @@ const BlogPostTemplate = ({ data, location }) => {
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
 
-  const category = { url:`/blogs/${post.frontmatter.cateId}/`, name:
-    siteMetadata.category.filter(item => {
-      return post.frontmatter.cateId === item.slug
-        ? item.name
-        : ""
-    })[0].name
+  const category = {
+    url: `/blogs/${post.frontmatter.cateId}/`,
+    name: siteMetadata.category.filter(item => {
+      return post.frontmatter.cateId === item.slug ? item.name : ""
+    })[0].name,
   }
 
   return (
@@ -68,11 +66,18 @@ const BlogPostTemplate = ({ data, location }) => {
               name={post.frontmatter.categoryId}
               id={post.frontmatter.cateId}
             /> */}
-            <GatsbyImage image={getImage(data.dogImage)} alt={post.frontmatter.title} />
+            <GatsbyImage
+              image={getImage(data.dogImage)}
+              alt={post.frontmatter.title}
+            />
           </div>
         </div>
       </Header>
-      <BreadCrumbList type="blog" cate={category} tag={post.frontmatter.tags[0]}/>
+      <BreadCrumbList
+        type="blog"
+        cate={category}
+        tag={post.frontmatter.tags[0]}
+      />
       <Body>
         <Article>
           <article
@@ -110,33 +115,27 @@ const BlogPostTemplate = ({ data, location }) => {
             <Edit>
               <section itemProp="articleBody">
                 {renderAst(post.htmlAst)}
-                {faq && (<h2>FAQ</h2>)}
-                {faq && faq.map((item, index) => {
-                  return (
-                    <dl className="p-faq__item" key={`faq${index}`}>
-                      <dt>{item[0]}</dt>
-                      <dd>{item[1]}</dd>
-                    </dl>
-                  )
-                })}
+                {faq && <h2>FAQ</h2>}
+                {faq &&
+                  faq.map((item, index) => {
+                    return (
+                      <dl className="p-faq__item" key={`faq${index}`}>
+                        <dt>{item[0]}</dt>
+                        <dd>{item[1]}</dd>
+                      </dl>
+                    )
+                  })}
               </section>
             </Edit>
 
-            <div className="c-btn--donation" id="end_of_article">
-              <p>お読みいただきありがとうございます。<br/>「銀ねこアトリエ」をより良いブログにするために是非応援してください！</p>
-              <a href="https://ofuse.me/o?uid=47415" target="_blank" id="donation" rel="noreferrer"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" className="svg-inline--fa fa-heart fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>銀ねこアトリエを応援する</a>
-            </div>
             <Sns url={perfectUrl} title={perfectTitle} />
             <Ad location={location.pathname}></Ad>
             <dl className="c-article__tags">
               <dt>Category</dt>
               <dd className="cate">
-                <Link to={category.url}>
-                  {category.name}
-                </Link>
+                <Link to={category.url}>{category.name}</Link>
               </dd>
             </dl>
-
           </article>
           <ol className="c-pager--article p-section l-container">
             <li className="c-pager--article__prev">
@@ -162,7 +161,11 @@ const BlogPostTemplate = ({ data, location }) => {
           location={location.pathname}
         />
         <aside className="l-container">
-          <RelatedList category={post.frontmatter.cateId} tags={post.frontmatter.tags} slug={post.fields.slug}></RelatedList>
+          <RelatedList
+            category={post.frontmatter.cateId}
+            tags={post.frontmatter.tags}
+            slug={post.fields.slug}
+          ></RelatedList>
           <Ad location={location.pathname}></Ad>
           <section className="p-section u-text-center">
             <h2 className="c-heading--lg">人気のジャンル</h2>
@@ -185,23 +188,19 @@ export const Head = ({ data, location }) => {
     ? `${data.siteThumnailImage.childImageSharp.resize.src}`
     : "/images/thumnail.png"
   const seoData = {
-    title : post.frontmatter.title,
-    description : post.frontmatter.description || post.excerpt,
-    date : post.frontmatter.date.replace(/\./g, "-"),
-    location : location,
-    ogp : ogpSrc,
-    faq : post.frontmatter.faq?post.frontmatter.faq : '',
-    tag : post.frontmatter.tags[0],
-    cateId : post.frontmatter.cateId,
+    title: post.frontmatter.title,
+    description: post.frontmatter.description || post.excerpt,
+    date: post.frontmatter.date.replace(/\./g, "-"),
+    location: location,
+    ogp: ogpSrc,
+    faq: post.frontmatter.faq ? post.frontmatter.faq : "",
+    tag: post.frontmatter.tags[0],
+    cateId: post.frontmatter.cateId,
     thumnail: thumnailSrc,
-    type : "blog",
-    noindex: post.frontmatter.noindex?post.frontmatter.noindex : false,
+    type: "blog",
+    noindex: post.frontmatter.noindex ? post.frontmatter.noindex : false,
   }
-  return (
-    <Seo
-      data={seoData}
-    />
-  )
+  return <Seo data={seoData} />
 }
 
 export const pageQuery = graphql`
@@ -220,9 +219,9 @@ export const pageQuery = graphql`
     siteOgImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }
-      ) {
+    ) {
       childImageSharp {
-        resize(width: 1200, height:900, toFormat: PNG) {
+        resize(width: 1200, height: 900, toFormat: PNG) {
           src
         }
       }
@@ -232,7 +231,7 @@ export const pageQuery = graphql`
       sourceInstanceName: { eq: "images" }
     ) {
       childImageSharp {
-        gatsbyImageData (
+        gatsbyImageData(
           blurredOptions: { width: 100 }
           width: 400
           quality: 40
@@ -243,7 +242,7 @@ export const pageQuery = graphql`
     siteThumnailImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }
-      ) {
+    ) {
       childImageSharp {
         resize(width: 200, height: 200, toFormat: PNG) {
           src
@@ -298,7 +297,7 @@ const Body = styled.div`
     margin: 0 auto;
     flex-wrap: wrap;
   }
-  aside.l-container .display{
+  aside.l-container .display {
     margin-bottom: 50px;
   }
 `

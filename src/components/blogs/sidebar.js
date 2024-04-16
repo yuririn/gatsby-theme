@@ -3,9 +3,9 @@ import Img from "../img"
 import { Sidebar } from "./../../styles/blog-styles/sidebar"
 import { Link } from "gatsby"
 import Search from "../search"
-import Ad from '../common/ad';
+import Ad from "../common/ad"
 
-const Bar = ({ topic,location }) => {
+const Bar = ({ topic, location }) => {
   const tableOfContent = topic.replace(/(<p>|<\/p>)/gi, "")
   // const options = {
   //   root: null,
@@ -33,14 +33,18 @@ const Bar = ({ topic,location }) => {
   // },[])
   return (
     <Sidebar>
-      <Ad location={location} style={{display:`block`, minWidth:`250px`}}></Ad>
+      <Ad
+        location={location}
+        style={{ display: `block`, minWidth: `250px` }}
+      ></Ad>
       <div className="inner">
-
         <div
-        className="side-topic"
+          className="side-topic"
           dangerouslySetInnerHTML={{
-          __html: '<h2 class="side-topic--heading">この記事のサマリー</h2>' + tableOfContent,
-        }}
+            __html:
+              '<h2 class="side-topic--heading">この記事のサマリー</h2>' +
+              tableOfContent,
+          }}
         ></div>
         <section className="p-section search">
           <h2 className="c-heading--lg">記事を探す</h2>
@@ -49,28 +53,20 @@ const Bar = ({ topic,location }) => {
 
         <ul className="side-banner">
           <li>
+            <Link
+              to="https://itnomikai.com/event/cebu"
+              target="_blank"
+              rel="noopener"
+            >
+              <Img source="common/it-nomikai-cebu.jpg" alt="セブIT飲み会" />
+            </Link>
+          </li>
+          <li>
             <Link to="/about/">
               <Img
                 source="common/about-banner.jpg"
                 alt="かみーゆを力一杯紹介"
               />
-            </Link>
-          </li>
-          <li>
-            <Link to="/blogs/tags/子ども服をセブに送るプロジェクト/">
-              <Img
-                source="common/cebu-cloths-banner.jpg"
-                alt="捨てるなんてもったいない！子ども服をセブに送るプロジェクト"
-              />
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
-              target="_blank"
-              rel="noopener"
-            >
-              <Img source="common/youtube-banner.jpg" alt="YouTubeやってるよ" />
             </Link>
           </li>
         </ul>
