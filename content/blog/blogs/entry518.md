@@ -1,5 +1,5 @@
 ---
-title: CLS 0.25超で「不良」?! 短期間でパフォーマンススコアを大幅改善
+title: 【SEO】CLS 0.25超で「不良」?! 短期間でパフォーマンススコアを大幅改善
 date: 2023-01-28
 pagetype: blog
 hero: thumbnail/2023/entry518.jpg
