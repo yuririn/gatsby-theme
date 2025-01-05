@@ -54,6 +54,15 @@ const Bar = ({ topic, location }) => {
         <ul className="side-banner">
           <li>
             <Link
+              to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
+              target="_blank"
+              rel="noopener"
+            >
+              <Img source="common/youtube-banner.jpg" />
+            </Link>
+          </li>
+          <li>
+            <Link
               to="https://itnomikai.com/event/cebu"
               target="_blank"
               rel="noopener"
