@@ -4,7 +4,7 @@ date: 2023-01-29
 pagetype: blog
 hero: thumbnail/2023/entry519.png
 cateId: web-developer
-tags: ["Gatsby","React"]
+tags: ["Gatsby","React","Netlify"]
 description: Gatsbyのv4からv5へアップグレードしたのでそのやり方をメモしておきます。Netlify の Nodeバージョンの変更方法（超簡単）もご紹介しています。
 ---
 Gatsby の V5 が2022年末くらいにリリースされていました。そこで最新版にアップグレード、Netlify にデプロイしました。
