@@ -84,6 +84,43 @@ GTMで受け取ったイベントをGA4と紐づけます。まずはGTM側で�
 
 ![タグ送信完了](./images/2025/01/entry532-1.jpg)
 
+## おまけ・TypeScript × Vue.js で作ったSPAのフォームにも追加してみた
+TypeScript × Vue.js で作成したSPAフォームにもDatalayerを追加してみたので、そのコードを紹介しておきます。
+
+```JS:title=コード
+<script setup lang="ts">
+import axios from 'axios';
+//データレイヤーの呼び出し
+const { dataLayer }: any = window;
+//データレイヤーを追加する関数
+const gtmDataLayer = ()=>{
+  dataLayer?.push({
+    'event': 'applied'
+  });
+}
+//送信閭里
+const onSubmit = ()=>{
+  axios({
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    data: params,
+    url: "/"
+  }).then(res => {
+    // 送信完了した時に追加の処理をする
+    gtmDataLayer()
+    ...
+  }).catch(err => {
+    ...
+  });
+}
+</script>
+<template>
+  <form>
+    ...フォームパーツ諸々
+   <button type="button" @click="onSubmit">Send</button>
+  </form>
+</template>
+```
 ## さいごに
 今回はGTMのデータレイヤーを使ってContact Form 7のコンバージョン測定をする方法をまとめてみました。最近は運用の仕事も増えてまして、データレイヤーなどを扱うときに「プログラミングできてよかった」って思うことがよくあります。
 
