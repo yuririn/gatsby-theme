@@ -54,7 +54,7 @@ macであればUsers/Users/[ユーザー名]直下にあると思います。
 ssh-keygen -t rsa
 ```
 
-github アカウントのメールアドレスを付与。
+github アカウントのメールアドレスを付与してもOK。
 ```shell:title=コマンド
 ssh-keygen -t rsa -C xxx@xxxxx.com
 ```
