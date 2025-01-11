@@ -5,7 +5,7 @@ pagetype: blog
 hero: thumbnail/2025/entry535.png
 cateId: web-developer
 tags: ["Next.js","React","WordPress"]
-description: 
+description: Next.jsで headless CMS を作る機会があったので概要をまとめました。シリーズに分けて紹介していきます。今回はとりあえず環境構築です。
 ---
 Next.jsで headless CMS を作る機会があったので概要をまとめました。シリーズに分けて紹介していきます。今回はとりあえず環境構築です。
 Lint（自動でコードをきれいにしてくれるやつ）とかの設定はやりすぎるとPCのスペックによっては辛いしめんどくさいし、省きました。必要に応じて適宜やってください。
