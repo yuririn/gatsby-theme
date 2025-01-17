@@ -13,6 +13,9 @@ CSSのプロパティの進化、めまぐるしいですね。Webサイトの�
 
 <prof></prof>
 
+`margin-inline`でセンタリングしたい人はこちらを参考に。
+
+<card id="/blogs/entry536/"></card>
 
 ## わりと難しいのでmarginとpaddingのおさらい
 まずは`margin`と`padding`のおさらいから。
