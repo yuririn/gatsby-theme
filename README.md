@@ -114,3 +114,7 @@ ffmpeg -i entry315-10.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(
 ffmpeg -i 名称未設定.mov -vf fps=5 -c:v libwebp -loop 0 -lossless 0 -quality 75 -preset 5 -an -vsync 0 entry315-3.webp
 
 https://tsukulog.net/2021/10/03/react-count-down-timer/
+
+npx kill-port 8000
+
+export NODE_OPTIONS="--max-old-space-size=8192"

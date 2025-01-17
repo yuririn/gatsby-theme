@@ -10,13 +10,13 @@ const BasicComponents = {
       const props = child.className ? child.className.replace('language-','') : ''
       const language = props.includes(':'||'{') ? props.replace(/(.*?)(\{.+\}|:).*/,`$1`) : props
       const title =  props.replace(/(.+)title=(.*)/,`$2`)
-      const  highlight = props.includes('{'|| '}') ? props.replace(/.*\{(.*)\}.*/,`$1`): ''
+      // const  highlight = props.includes('{'|| '}') ? props.replace(/.*\{(.*)\}.*/,`$1`): ''
       return (
         <Code
           codeString={child.children.trim()}
           language={language}
           title={title}
-          highlight={highlight}
+          // highlight={highlight}
         />
       )
     } else return null
