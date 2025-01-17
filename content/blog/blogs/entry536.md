@@ -214,7 +214,7 @@ a {
 
 サイトを軽くしたいのでどんどんwebpを使いたい！ところです。現在ではすべてのモダンブラウザに対応しているようで、当サイトも以前アニメーションはgifアニメからwebpに切り替えました。
 
-iOSであれば14以降、MacはmacOS 11 Big Sur以降であれば対応済み。6年前webp対応のサーバだったので画像が見れないとクレームを喰らったことがあります。もうそろ完全にWebpに切り替えてそろいい気もしますが、、、、
+iOSであれば14以降、MacはmacOS 11 Big Sur以降であれば対応済み。6年前webp対応のサーバだったので画像が見れないとクレームを喰らったことがあります。もうそろ完全にWebpに切り替えてもいい気もしますが、、、、
 
 HTML内の画像であれば、pictureタグで出し分けれますがCSSを背景で設定する場合は`image-set`を使います。
 
@@ -271,7 +271,7 @@ iOS 16以下に対応する場合は、`-webkit-`を付与してください。
 ```
 [image-setで背景もwebp対応する|CODEPEN](https://codepen.io/camille-cebu/pen/LEPrwYP)
 
-## interpolate-size でheight:autoのコンテンツをアコーディオンアニメーション
+## interpolate-size で height:auto のコンテンツをアコーディオンアニメーション
 
 要素に含まれるコンテンツの大きさを基準に要素のサイズのことを`intrinsic-size`といいます。
 
