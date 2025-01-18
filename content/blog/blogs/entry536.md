@@ -5,7 +5,7 @@ pagetype: blog
 hero: thumbnail/2025/entry536.jpg
 cateId: web-developer
 tags: ["CSS"]
-description: CSS機能が向上したおかげでJSなしで使えるものも増えてきていますね。現役でコーダーが抑えておきたいCSS10選ということでお届けします。
+description: CSS機能が向上したおかげでJSなしで使えるものも増えてきていますね。現役でコーダーが抑えておきたいCSS10選。scroll-behavior,margin-inline:auto,max-content,<wbr>,background-clip,backdrop-filter,image-set,interpolate-size
 ---
 
 CSS機能が向上したおかげでサイトの軽量化できるし、JSなしで使えるものも増えてきていますね。Web業界10年以上、身にしみて便利になったと思う今日このごろです。
@@ -249,7 +249,7 @@ type("image/webp")←画像タイプ
   }
 }
 ```
-`background-image`に設定した値を一個だけ書いておけば対応してくれます。
+`image-set`に設定した値を一個だけ書いておけば対応してくれます。
 
 iOS 16以下に対応する場合は、`-webkit-`を付与してください。
 ```CSS:title=CSS
