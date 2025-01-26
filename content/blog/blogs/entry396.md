@@ -1,12 +1,12 @@
 ---
 title: 【CSSコピペで使える】かわいいボタンデザインコード・コードスニペット集！
 date: 2020-11-14
-modifieddate: 2022-12-17
+modifieddate: 2025-01-26
 hero: thumbnail/2020/entry396.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["CSS"]
-description: 実用性重視。おしゃれなボタンのコードスニペット集をつくりました！UI/UXの観点からどんなボタンが最適であるべきか解説つき！もちろんコピペで今すぐ使えます。
+description: 実用性重視。おしゃれなボタンのコードスニペット集をつくりました！UI/UXの観点からどんなボタンが最適であるべきか解説つき！もちろんコピペで今すぐ使えます。transformなどのプロパティの書き換えのため2025年にメンテナンスしました。
 ---
 ボタンデザインやコーディングでどうCSSを書いていいか悩むことありませんか？
 
@@ -49,9 +49,13 @@ description: 実用性重視。おしゃれなボタンのコードスニペッ�
 この3つレパートリーを持っていればとりあえずどうにかなります。多分。
 
 よくある続きを読むボタンですね。<br>
-今回右に配置したアイコンは「Material Design Iconic Font」を使っています。
+今回右に配置したアイコンは「Material Design Iconic Font」※ を使っています。
 
 [Material Design Iconic Font](https://zavoloklom.github.io/material-design-iconic-font/index.html)
+
+
+※ 使うアイコンが少ないのであれば、マテリアルアイコンを使わずCSSだけで対応したほうがサイトが軽量になります。詳しくは[こちら](#簡単なアイコンはclip-pathで実装したほうが軽量2025年1月追記)。
+
 
 Flexを使って、文字とアイコンを縦横均等に配置してます。
 
@@ -71,7 +75,8 @@ CMSから吐き出すタグを**自分では書き換えられないけどCSS側
 ```
 
 ```css:title=CSS
-a[class^=btn] { //btnから始まるクラス
+/* btnから始まるクラス */
+a[class^=btn] { 
   background: #FF9258;
   display: flex;
   width: 150px;
@@ -81,12 +86,15 @@ a[class^=btn] { //btnから始まるクラス
   align-items: center;
   color: #fff;
   text-decoration: none;
+  transition: opacity .3s;
 }
 
 .btn--basic:hover {
   opacity: 0.7;
 }
 ```
+
+<div class="box"><h4>transition にはプロパティを指定する</h4><p>transition の対象のプロパティを指定しない場合、ブラウザに負担をかけ、パフォーマンスに大きな影響を与えてしまうことがあります。 opacity のようなプロパティの使用しましょう。</p></div>
 
 ### 色が反転
 
@@ -110,7 +118,7 @@ a[class^=btn] { //btnから始まるクラス
   align-items: center;
   color: #fff;
   text-decoration: none;
-  transition: .3s;
+  transition: background-color .3s, color .3s;
   border: 2px solid #FF9258;
 }
 
@@ -124,7 +132,7 @@ a[class^=btn] { //btnから始まるクラス
 <figure class="animation"><img src="/images/animation/2020/entry396-5.webp" width="196" height="84" alt="定番の立体感のあるボタンらしいボタン" decoding="async" loading="lazy"/></figure>
 
 定番のボタンらしいボタンを作るとき、私はかならずY軸に向かった`box-shadow`を使います。<br>
-クリックしたとき、押した感が出るように`transformY`で位置をわずかに下げ、さらに`box-shadow`も同じ分量減らします。<br>
+クリックしたとき、押した感が出るように`translate`で位置をわずかに下げ、さらに`box-shadow`も同じ分量減らします。<br>
 これで不自然な挙動をしないボタンらしいボタンの完成です。
 
 ```html:title=HTML
@@ -143,18 +151,27 @@ a[class^=btn] { //btnから始まるクラス
   align-items: center;
   color: #fff;
   text-decoration: none;
-  transition: .3s;
+  transition: translate .3s, box-shadow .3s;
   box-shadow: 0 4px 0 #B45624;
 }
 
 .btn--button:hover {
-  transform: translateY(2px);
+  translate: 0 2px;
   box-shadow: 0 2px 0 #B45624;
 }
 ```
 
 
 <div class="box"><h4>CSSセレクターこんな指定の仕方もあるよ！</h4><p>私、コードが減るという理由で時折トリッキー？な指定方法を使います。参考までに。</p><p>クラスの前方一致<br>セレクタ名[class^=btn]<br>ある文字列から始まるクラスのみを指定できます。この場合btnほにゃららといった感じですね。<br>クラスの後方一致<br>セレクタ名[class$=btn]<br>逆に後方一致だとこんな書き方ができます。<br>部分一致<br>セレクタ名[*=btn]<br>btnが含まれるか否か</p></div>
+
+## 簡単なアイコンはclip-pathで実装したほうが軽量（2025年1月追記）
+便利なプロパティがたくさん出てきて、最近一番重宝しているのが`clip-path`です。grid でコードを書いたほうが変な調整もいらないです。
+
+![background-clip でアイコン作成](./images/2025/01/entry536-2.jpg)
+
+コードに関しては以下の記事で紹介しています。
+
+<card id="/blogs/entry536/"></card>
 
 ## ボタンのCSSコード・スニペット
 いくらかわいい、かっこいいと思えてもそのデザイン普通使えないと意味がありませんよね？
@@ -168,11 +185,18 @@ a[class^=btn] { //btnから始まるクラス
 
 ベースのスケルトン、クリアソープのようなスケルトン、ネオンのようなスケルトン3つのコードスニペットを作ってみました。
 
-今回のポイントは**rgba関数で**す。<br>
+今回のポイントは **rgb関数** ※です。<br>
 半透明の白は濃いめの背景のデザインを生かせるのでオススメです。<br>
 文字サイズが小さいと見えないので注意です。
 
-<div class="box"><h4>rgba関数</h4><p>指定方法: rgba(255, 255, 255, .3)</p><ul>	<li>r 赤(0 - 255)</li>	<li>g 緑(0 - 255)</li>	<li>b 青(0 - 255)</li>	<li>a alpha(0 - 1)<br>	RGBカラーモデルのred・green・blueに、alphaが加わったものです。<br>	rgbは数値が高いほど純色となります。aが0だと透明で1に近づくにつれ不透明となります。</li></ul></div>
+<div class="box">
+<h4>rgb関数</h4>
+<p>指定方法: rgb(255 255 255 / .3)</p>
+<ul>	<li>r 赤(0 - 255)</li>	<li>g 緑(0 - 255)</li>	<li>b 青(0 - 255)</li>	<li>/以降 alpha(0 - 1)</li></ul>
+<p>RGBカラーモデルのred・green・blueに、/以降にalphaを加えることができます。<br>rgbは数値が高いほど純色となります。aが0だと透明で1に近づくにつれ不透明となります。</p>
+</div>
+
+
 
 [スケルトンボタン・ベースから応用まで|Code Pen](https://codepen.io/camile/pen/LYZqzjR)
 
@@ -188,7 +212,7 @@ a[class^=btn] { //btnから始まるクラス
 
 ```css:title=CSS
 .btn--skeleton {
-  background: rgba(255, 255, 255, .2);
+  background: rgb(255 255 255 / .2);
   display: flex;
   width: 180px;
   height: 60px;
@@ -197,12 +221,12 @@ a[class^=btn] { //btnから始まるクラス
   align-items: center;
   color: #fff;
   text-decoration: none;
-  transition: .3s;
+  transition: background-color .3s;
   border: 1px solid #fff;
 }
 
 .btn--skeleton:hover {
-  background: rgba(255, 255, 255, .5);
+  background: rgb(255 255 255 / .5);
 }
 ```
 
@@ -218,7 +242,7 @@ box-shadowをinsetにして立体感をつけています。
 
 ```css:title=CSS
 .btn--skeleton3 {
-  background: rgba(255, 255, 255, .1);
+  background: rgb(255 255 255 / .1);
   display: flex;
   width: 180px;
   height: 60px;
@@ -228,9 +252,9 @@ box-shadowをinsetにして立体感をつけています。
   align-items: center;
   letter-spacing: .1em;
   color: #E5FF1D;
-  text-shadow:  0 0 3px rgba(255, 255, 255, .8);
+  text-shadow:  0 0 3px rgb(255 255 255 / .8);
   text-decoration: none;
-  transition: .3s;
+  transition: color .3s, text-shadow .3s, box-shadow .3s, background-color .3s;
   box-shadow: inset 0 0 6px #E5FF1D, 0 0 6px #E5FF1D;
 }
 
@@ -253,7 +277,7 @@ box-shadowをinsetにして立体感をつけています。
 
 ```css:title=CSS
 .btn--skeleton3 {
-  background: rgba(255, 255, 255, .1);
+  background: rgb(255 255 255 / .1);
   display: flex;
   width: 180px;
   height: 60px;
@@ -263,9 +287,9 @@ box-shadowをinsetにして立体感をつけています。
   align-items: center;
   letter-spacing: .1em;
   color: #E5FF1D;
-  text-shadow:  0 0 3px rgba(255, 255, 255, .8);
+  text-shadow:  0 0 3px rgb(255 255 255 / .8);
   text-decoration: none;
-  transition: .3s;
+  transition: color .3s, text-shadow .3s, box-shadow .3s, background-color .3s;
   box-shadow: inset 0 0 6px #E5FF1D, 0 0 6px #E5FF1D;
 }
 
@@ -319,15 +343,15 @@ box-shadowをinsetにして立体感をつけています。
   text-decoration: none;
   position: relative;
   background: rgb(238,198,139);
-  background: linear-gradient(0deg, rgba(238,198,139,1) 0%, rgba(194,91,24,1) 100%);
+  background: linear-gradient(0deg, rgb(238 198 139 / 1) 0%, rgb(194 91 24 / 1) 100%);
   letter-spacing: .2em;
   text-shadow: 0 1px 2px #c25b18;
   box-shadow: 0 3px 0 #c25b18;
-  transition: .3s;
+  transition: translate .3s, text-shadow .3s, box-shadow .3s;
 }
 
 .btn--gradient:hover{
-  transform: translateY(1px);
+  translate: 0 1px;
   text-shadow: 0 -1px 2px #c25b18;
   box-shadow: 0 2px 0 #a44d15;
 }
@@ -342,9 +366,9 @@ box-shadowをinsetにして立体感をつけています。
   top: 0;
   z-index: -1;
   border-radius: 5px;
-  background: linear-gradient(0deg, rgba(194,91,24,1) 0%, rgba(238,198,139,1) 100%);
+  background: linear-gradient(0deg, rgb(194 91 24 / 1) 0%, rgba(238 198 139 / 1) 100%);
   opacity: 0;
-  transition: .3s;
+  transition: opacity .3s;
 }
 
 .btn--gradient:hover::before {
@@ -372,7 +396,7 @@ hoverした時に`left: -100%`でアニメーションさせます。
   color: #184dc2;
   text-decoration: none;
   position: relative;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 5px rgb(0 0 0 / .3);
   overflow: hidden;
 }
 
@@ -385,21 +409,18 @@ hoverした時に`left: -100%`でアニメーションさせます。
   left: 0;
   top: 0;
   z-index: -1;
-  background: rgb(139,238,145);
-  background: linear-gradient(45deg, rgba(139,238,145,1) 0%, rgba(109,199,255,1) 100%);
-  transition: .3s;
+  background: rgb(139, 238, 145);
+  background: linear-gradient(45deg, rgb(139, 238, 145) 0%, rgb(109, 199, 255) 100%);
+  transition: left .3s;
 }
 
 .btn--gradient2 i {
   text-shadow: 0 0 0 transparent;
-  transition: .3s;
+  transition: translate .3s, text-shadow .3s;
 }
 
 .btn--gradient2:hover i {
-  transform: translateX(3px)
-}
-
-.btn--gradient2:hover i {
+  translate: 3px 0;
   text-shadow: 4px 0 0 #184dc2, 8px 0 0 #184dc2;
 }
 
@@ -435,7 +456,7 @@ hoverした時に`left: -100%`でアニメーションさせます。
   border: 1px solid #211b71 ;
   letter-spacing: .2em;
   overflow: hidden;
-  transition: .3s;
+  transition: color .3s;
 }
 
 .btn--gradient3::before {
@@ -448,8 +469,8 @@ hoverした時に`left: -100%`でアニメーションさせます。
   top: 0;
   z-index: -1;
   background: rgb(33,27,113);
-  background: linear-gradient(315deg, rgba(33,27,113,1) 50%, rgba(254,255,251,1) 50%);
-  transition: .3s;
+  background: linear-gradient(315deg, rgb(33, 27, 113) 50%, rgb(254, 255, 251) 50%);
+  transition: left .3s;
 }
 
 .btn--gradient3:hover {
@@ -494,8 +515,8 @@ text-shadowとbox-shadowでエンボス風のボタンです。
   text-shadow: 2px 2px 2px #c8428f, -2px -2px 2px #f2c4df;
   background: #cb69a2;
   letter-spacing: .2em;
-  box-shadow: inset 2px 2px 3px #f2c4df, inset  -2px -2px 2px #c8428f, 0 0 10px rgba(0, 0, 0, .3);
-  transition: .3s;
+  box-shadow: inset 2px 2px 3px #f2c4df, inset  -2px -2px 2px #c8428f, 0 0 10px rgb(0 0 0 / .3);
+  transition: background-color .3s, color .3s, text-shadow .3s;
 }
 
 .btn--emboss:hover {
@@ -526,7 +547,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   background: #fff;
   text-decoration: none;
   border: 3px solid #333;
-  transition: .3s;
+  transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s;
 }
 
 .btn--shadow:hover {
@@ -561,7 +582,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   font-size: 20px;
   text-decoration: none;
   background: rgb(105,147,203);
-  background: linear-gradient(0deg, rgba(105,147,203,1) 0%, rgba(97,110,213,1) 100%);
+  background: linear-gradient(0deg, rgb(105,147,203) 0%, rgb(97,110,213) 100%);
   overflow: hidden;
   position: relative;
 }
@@ -575,7 +596,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   border-radius: 50%;
   display: block;
   background: rgb(255,255,255);
-  background: radial-gradient(circle, rgba(255,255,255, 0) 0%, rgba(255,255,255,.5) 100%);
+  background: radial-gradient(circle, rgba(255 255 255 / 0) 0%, rgba(255 255 255 / .5) 100%);
   opacity: 0;
   position: absolute;
 }
@@ -590,7 +611,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   display: block;
   opacity: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255, 0) 0%, rgba(255,255,255,.5) 100%);
+  background: radial-gradient(circle, rgba(255 255 255 / 0) 0%, rgba(255 255 255 / .5) 100%);
 }
 
 .btn--bubble:hover::before {
@@ -605,8 +626,8 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   0% {
     opacity: .5;
   }
-    100% {
-    transform: scale(10);
+  100% {
+    scale: 10;
     opacity: 0;
   }
 }
@@ -649,7 +670,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   border-left: 3px solid transparent;
   border-bottom: 3px solid transparent;
   opacity: 0;
-  transition: .5s;
+  transition: background-color .5s, color .3s;
 }
 
 .btn--border::after {
@@ -664,7 +685,7 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   border-right: 3px solid transparent;
   border-top: 3px solid transparent;
   opacity: 0;
-  transition:.5s;
+  transition: width .5s, height .5s, opacity .5s;
 }
 
 .btn--border:hover {
@@ -699,40 +720,37 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
   position: relative;
   background: #E77838;
   width: 400px;
-  transition: 0.3s;
+  transition: box-shadow .3s, background-color .3s;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Noto Sans JP", sans-serif;
   border-radius: 50px;
-  font-family: "Noto Sans JP", sans-serif;
   font-weight: 900;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 2px rgb(0 0 0 / 0.5);
   font-size: 24px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 .btn--rich::after, .btn--rich::before {
+  content: "";
   position: absolute;
   background: linear-gradient(to bottom, #FF9438 0%, #E77838 100%);
   height: calc(100% - 16px);
   width: calc(100% - 16px);
   z-index: -1;
-  content: "";
   display: block;
   left: 8px;
   top: 8px;
   border-radius: 50px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgb(0 0 0 / 0.5);
 }
 .btn--rich::after {
   opacity: 0;
   background: linear-gradient(to top, #FF9438 0%, #E77838 100%);
   box-shadow: none;
-  transition: 0.3s;
+  transition: opacity .3s;
 }
 .btn--rich:hover {
   background: #FF9438;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.３);
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.３);
 }
 .btn--rich:hover::after {
   opacity: 1;

@@ -83,7 +83,7 @@ margin-inlineを使えば1行ですみます。
 
 ![下線を引いたようなデザインを実装](./images/2025/01/entry536-1.jpg)
 
-従来は`display: inline`で、`position: absolute`や`display: grid;grid-direction:column`を利用して無理やり内側のコンテンツ要
+従来は`display: inline`で、`position: absolute`や`display: grid;grid-direction:column`を利用して無理やり内側のコンテンツ要素のサイズハマるようにしていました。
 
 `max-content`を使えば、1行でコンテンツにピタッとハマった要素が作れます。
 
@@ -145,7 +145,7 @@ h2 {
 
 ![background-clip でアイコン作成](./images/2025/01/entry536-2.jpg)
 
-素材がすぐ用意できない時は、borderで謎のハックを駆使して作っていましたが、コードは長くなるし疲れます。
+素材がすぐ用意できない時は、borderで変態みたいなハックを駆使して作っていましたが、コードは長くなるし疲れます。
 
 `background-clip`を使えばコードの記述量が減ります。
 
@@ -164,11 +164,10 @@ a {
   height: 50px;
   max-width: 300px;
   text-decoration: none;
-  &::before {
+  &::before,&::after {
     content: '';
   }
   &::after {  
-    content: '';
     display: block;
     height: 8px;
     width: 10px;

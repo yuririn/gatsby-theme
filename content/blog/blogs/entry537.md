@@ -1,5 +1,5 @@
 ---
-title: Pandoc × EJS で Word ファイルを HTMLページに変換する
+title: Pandoc × EJS で Word ファイルを HTML ページに変換する
 date: 2025-01-16
 pagetype: blog
 hero: thumbnail/2025/entry537.jpg
@@ -7,18 +7,6 @@ cateId: web-developer
 tags: ["Gulp","npm","コマンド"]
 description: Pandoc × EJS WordファイルからコマンドでHTMLに生成する方法をまとめました。Pandoc⇒Markdownで変換してもともとあるhtmlをコピーして手動で組み込んでましたがtitleやdescriptionなどの差し替えがすごく面倒だし、間違える。gulpを使ってタスクを作ります。
 ---
-昔努めていた会社で大量のWordで納品されたブログをWordPressに移す作業がありました。
-
-Wordからコピペで貼り付けても、見た目は美しく形成されるのですが、変なクラスなどが付与されコードは汚くなり担当者が困ってました。
-
-ちょうどWordPressにもクラシックエディタが導入され、WordPress内でもMarkdownが使えるようになっていたのでMarkdownにすればいいじゃん！となり、Markdownに変換するコマンドを用意しました。
-
-> Pandoc は、あるマークアップ形式から他の形式へ変換する Haskell ライブラリと、そのライブラリを用いたコマンドラインツールです。
-
-[Pandocユーザーズガイド 日本語版 [2.7.2]](https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html)
-
-<prof></prof>
-
 今回やりたいことは、ヘッダーなどの共通部分は一緒で本文はwordから流出し、HTMLをコマンド生成するというものです。
 
 実際最近お仕事でWord納品の記事をHTMLに組み込む作業をしていました。
@@ -27,6 +15,12 @@ Wordからコピペで貼り付けても、見た目は美しく形成される�
 
 それを解決するためにこの記事を書きました。
 
+> Pandoc は、あるマークアップ形式から他の形式へ変換する Haskell ライブラリと、そのライブラリを用いたコマンドラインツールです。
+
+[Pandocユーザーズガイド 日本語版 [2.7.2]](https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html)
+
+<prof></prof>
+
 ## pandoc インストール
 
 brewコマンドでインストール。
@@ -34,12 +28,12 @@ brewコマンドでインストール。
 brew install pandoc
 ```
 
-Homebrew がない方でもファイルをダウンロードしてインストールできます。
+Homebrew がない方でも以下リンクから直接ダウンロードしてインストールできます。
 
 [pandoc | Github](https://github.com/jgm/pandoc/releases/tag/3.6.2)
 
 ### Word記述のルール
-タイトルなどのメタ情報は変数に格納したかったので、記述を以下のようにし、mdファイルに変換した後にejs（本文）とjsonファイル（メタ情報）に分割します。
+タイトルなどのメタ情報は変数に格納したかったので、記述を以下のようにし、Markdown ファイルに変換した後にEJS（本文）と json ファイル（メタ情報）に分割します。
 
 ```text:title=word
 =slug_page1
@@ -50,10 +44,10 @@ description_ページの説明=
 
 画像名.jpg
 ```
-mdファイルにしたら、gulp経由で`_`や`=`は置換のトリガーにするので本文にはこの2つの記号は使わないようにします。
+MDファイルにしたら、gulp経由で`_`や`=`は置換のトリガーにするので本文にはこの2つの記号は使わないようにします。
 
 ### Pandoc で Markdown ファイルに変換
-まずは、ファイルをコマンドで markdown に変換しておきます。
+まずは、ファイルをコマンドで md ファイルに変換しておきます。
 
 ```shell:title=コマンド
 pandoc -s xxx.docx --wrap=none --extract-media=images -t gfm -o xxx.md
@@ -61,7 +55,7 @@ pandoc -s xxx.docx --wrap=none --extract-media=images -t gfm -o xxx.md
 
 ## gulp で md ファイルを html に変換
 
-今回は gulp を採用しました。記述方法の問題で `gulp-markdown`のみバージョンを落としてください。
+今回は gulp を採用しました。タスクを今回はmodule形式で書かないため `gulp-markdown`のみバージョンを落としてください。
 
 ```shell:title=コマンド
 npm init -y
@@ -87,9 +81,9 @@ root/
   └ dist/
 ```
 
-### Jsonファイルを作成
+### Json ファイルを作成
 
-正規表現で置換し、jsonファイルを作り、一旦は同じディレクトリに突っ込みます。
+正規表現で置換し、json ファイルを作り、一旦は同じディレクトリに突っ込みます。
 
 ```js:title=gulpfile.js
 const { src, dest, series, parallel } = require("gulp");
@@ -100,6 +94,7 @@ const dir = {
     dist: "./dist/",
     src: "./src/",
 };
+
 const createJsonFile =(done)=> {
     src(`${dir.src}main.md`, {allowEmpty: true})
       .pipe(rename('meta.json'))
@@ -120,7 +115,7 @@ exports.default = parallel(series(createJsonFile))
 ```
 *description\_ページの説明=* は
 ```text
-  "slug": "page1"
+  "description": "ページの説明"
 }
 ```
 *title\_タイトル* は
@@ -128,7 +123,7 @@ exports.default = parallel(series(createJsonFile))
   "title": "タイトル",
 
 ```
-という感じで置換しています。正規表現に関しては以下を参考に。
+という感じで置換されるようにしています。正規表現に関しては以下を参考に。
 
 <card id="/blogs/entry336/"></card>
 
@@ -139,7 +134,7 @@ npm i gulp-replace -g
 
 ### Jsonファイルを作成
 
-本文を形成し、ejs に変換します。
+本文を形成し、EJS に変換します。
 
 ```js:title=gulpfile.js
 ...
@@ -159,19 +154,21 @@ const createEjs =(done)=> {
 
 exports.default = parallel(series(createJsonFile, createEjs))
 ```
-pandocからも画像パスは作れるのですが、HTML化するときに都合が悪かったので、とりあえず画像名が配置されている場所に画像タグを挿入するようにします。
+Pandocからも画像のタグは作れるのですが、HTML化するときに都合が悪かったので、とりあえず画像名が配置されている場所に画像タグを挿入するようにします。
 
 *=画像名.jpg*を置換します。
 ```html
 <img src="画像格納ディレクトリ名/画像名.jpg" alt="" width="640" height="420" loading="lazy">
 ```
-Markdown => HMTLにコンバートするときに付与されるidも不要なので削除します。
+
+Markdown => HMTLにコンバートするときに見出しに付与されるidも不要なので削除します。
+
 ```js
 replace(/\sid\=\"(.*?)\"/gmi, ``)
 ```
 ### EJS から HTML へ
 
-HTML変換します。EJSの詳しい記事はこちら。
+HTML 変換します。EJS の詳しい記事はこちら。
 
 <card id="/blogs/entry459/"></card>"
 
@@ -230,7 +227,10 @@ root/
       [slug名]-02.jpg
 ```
 
+生成された meta.json や main.ejs は一時的な作業用ファイルなので、`tmp` ディレクトリなど作成し、処理後は削除してもいいかもしれません。
+
 本文を組み込むテンプレートファイルはこちら。
+
 ```html:title=index.ejs
 <!DOCTYPE html>
 <html lang="ja">
@@ -291,7 +291,15 @@ const destHTML =(done)=> {
 
 `createJsonFile` も `createEjs` も同様に `for` 文で処理するだけです。
 
-## まとめ・ブログ記事がWord納品でも簡単にテンプレートに組み込める
+## まとめ・ブログ記事が Word 納品でも簡単にテンプレートに組み込める
+
+昔努めていた会社で大量の Word で納品されたブログを WordPress に移す作業がありました。
+
+Word からコピペで貼り付けても、見た目は美しく形成されるのですが、変なクラスなどが付与されコードは汚くなり担当者が困ってました。
+
+ちょうど WordPress にも ブロックエディタが導入され、Markdown が使えるようになっていたので Markdown に すればいいじゃん！となり、変換するコマンドを用意しました。
+
+この経験がヒントになりました。
 
 この記事が皆さんのコーディングライフの一助となれば幸いです。
 
