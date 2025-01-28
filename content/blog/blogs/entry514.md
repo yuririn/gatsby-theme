@@ -1,15 +1,15 @@
 ---
 title: 軽量スライダーSwiperでスマホ（SP）のみスライダー表示にする方法（複数対応）
 date: 2022-12-17
-modifieddate: 2023-01-21
+modifieddate: 2025-01-28
 pagetype: blog
 cateId: web-developer
 hero: thumbnail/2022/entry514.png
 tags: ["JavaScript","html"]
-description: jQuery不要軽量Swiper。レスポンシブでスライダー画像をスマホだけで表示したい場合の対応方法を綴ります。複数のスライダーに対応した方法のご紹介。
+description: jQuery不要軽量Swiper。レスポンシブでスライダー画像をスマホだけで表示したい場合の対応方法を綴ります。複数のスライダーに対応した方法のご紹介。2025年1月にメンテナンスしました。
 faq: [['Swiper を複数設置したい。','プレーンなSwiperであればかんたんに複数設置可能です。場合によっては各Swiperにユニークな指定をする必要があります。','https://ginneko-atelier.com/blogs/entry514/?utm_source=faq#%E8%A4%87%E6%95%B0%E3%81%AEswiper%E3%82%92%E3%82%B9%E3%83%9E%E3%83%9Bpc%E3%81%A7%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95'],['Swiper をスマホのみ表示したい','Swiperはスマホ、PCなどのブレークポイントに応じて切り替えることができます。'],['Swiperが突然動かなくなった。','SwiperのCSSやJSをCDNで使っていませんか？最新のものに変えれば動くようになります。','https://ginneko-atelier.com/blogs/entry514/?utm_source=faq']]
 ---
-Webサイトでスライドショー（スライダー）は便利ですよね？私は jQuery 不要の軽量Swiper というライブラリを愛用しています。
+Webサイトでスライドショー（スライダー）は便利ですよね？私は jQuery 不要の軽量Swiper というライブラリを愛用しています。この記事は、2025年1月にメンテナンスしました。
 
 昨今レスポンシブが主流となり UI も多様化してスマホではスライダー、PCでは適用しないなどの実装をすることもありますよね？<br>Swiper ではスライダーをスマホだけで表示したい場合もカンタンです。ただこれはスライダーが一つのみのお話。
 
@@ -45,13 +45,21 @@ npm や CDN も用意されています。Angular、React や Vue.js などか�
 ```html:title=HTML
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+```
+Module 形式であれば import でも書けます。
+```html:title=js
+<script type="module">
+  import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+
+  const swiper = new Swiper(...)
+</script>
 ```
 <ad location="/blogs/entry514/"></ad>
 
-<small>CDNソースへのリンクは2022年12月現在参照です。必ず [Get start](https://swiperjs.com/get-started) から最新のリンクをご確認ください。</small>
+<small>CDNソースへのリンクは2025年1月現在参照です。必ず [Get start](https://swiperjs.com/get-started) から最新のリンクをご確認ください。</small>
 
 <br>スライダーの HTML は以下。今回はクラス `swiper` を付与した要素にスライダーを適応します。もちろん、IDなどでも指定可能です。ページネーションなどの部品を追加したい場合はクラスを指定した要素を追加します。
 
@@ -112,36 +120,106 @@ const swiper = new Swiper('.swiper', {
 `destroy()` で一度作ったスライダーを破棄できます。SPサイズに切り替えたときにスライダーを再構築します。
 
 ```JavaScript:title=JavaScript
-window.addEventListener('DOMContentLoaded', () => {
-  // option は使い回すので別に書く
-  const options = {
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    spaceBetween: 30,
-    slidesPerView: "auto",
+/**
+ * Swiper のオプション
+ * @type {array}
+ */
+const options = {
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  spaceBetween: 30,
+  slidesPerView: "auto",
+}
+/**
+ * ブレークポイント
+ * @type {number} ブレークポイントの値
+ */
+const breakPoint = 768;
+/**
+ * ディバイス幅の設定
+ * @returns ブレークポイントマッチ結果
+ */
+const isDevice = () => {
+  return window.matchMedia(`(max-width: ${breakPoint}px)`).matches;
+};
+
+/**
+ * Throttle resize処理の回数を間引く処理
+ * @param {void} func 中に入る関数
+ * @param {number} timeout タイムアウト時間
+ * @returns func 実行結果
+ */
+const throttle = (func, timeout) => {
+  let timer;
+  let lastTime;
+  return function (...args) {
+      const context = this;
+      if (!lastTime) {
+          func.apply(context, args);
+          lastTime = Date.now();
+      } else {
+      clearTimeout(timer);
+          timer = setTimeout( () => {
+              func.apply(context, args);
+              lastTime = Date.now();
+          }, timeout - (Date.now() - lastTime) );
+      }
   }
-  const breakPoint = 768;
-  let swiper;
-  if ( window.innerWidth <= breakPoint ) {
-    swiper = new Swiper('.swiper', option);
+}
+
+// 変数にSwiperの状態を格納
+let swiper = isDevice() ? new Swiper('.swiper', options) : undefined;
+
+/**
+ * 切り替え処理
+ */
+const switchSwiper = () => {
+  if ( isDevice() ) {
+      if( swiper ) return;
+      swiper = new Swiper('.swiper', options);
   } else {
+    if( !swiper ) return;
+    swiper.destroy();
     swiper = undefined;
   }
-  window.addEventListener('resize', () => {
-    if ( window.innerWidth <= breakPoint ) {
-      if( swiper ) return;
-      swiper = new Swiper('.swiper', option);
-    } else {
-      if( !swiper ) return;
-      swiper.destroy();
-      swiper = undefined;
-    }
-  }, false);
-}, false);
+}
+//Window resize
+window.addEventListener('resize', throttle(switchSwiper, 200), false);
+```
+### throttle 関数で実行回数を間引く
+今回自作の throttle 関数で resize の実行回数を間引きました。
+
+[lodash](https://lodash.com/docs/4.17.15#throttle) などのライブラリを使ってもいいかもしれませんね。
+
+```js:title=js
+const throttle = (func, timeout) => {
+  let timer;
+  let lastTime;
+  return function (...args) {
+      const context = this;
+      if (!lastTime) {
+          func.apply(context, args);
+          lastTime = Date.now();
+      } else {
+      clearTimeout(timer);
+          timer = setTimeout( () => {
+              func.apply(context, args);
+              lastTime = Date.now();
+          }, timeout - (Date.now() - lastTime) );
+      }
+  }
+}
+```
+`apply()` は、指定したthis値で関数を呼び出し、引数を配列として提供するメソッドです。
+`throttle` の引数 `fnc` にまとめて格納できます。
+
+```js
+func.apply(thisArg, [ argsArray])
 ```
 
+### CSSの変更
 PC表示で適宜スタイルを打ち消します。
 
 ```css:title=css
@@ -160,12 +238,15 @@ PC表示で適宜スタイルを打ち消します。
 ```
 
 ### PCのみにスライダーを適応したい時
-今回はスマホになったときにスライダー表示に切り替えていますが、コードを変えれば逆も可能です。
+今回はスマホになったときにスライダー表示に切り替えていますが、isDevice()の中身を変えれば逆も可能です。
 
+デバイスの判定には `matchMedia` を使いました。CSSのメディアクエリと同じ感覚で使えます。
 ```JavaScript:title=JavaScript
-if ( window.innerWidth <= breakPoint )
+const breakPoint = 768;
+window.matchMedia(`(max-width: ${breakPoint}px)`).matches
 ↓↓↓
-if ( window.innerWidth > breakPoint )
+const breakPoint = 767;
+window.matchMedia(`(min-width: ${breakPoint}px)`).matches
 ```
 ### 補足・次のスライダーを少しだけ見せたい
 スマホなどではよく次にスライダーがあることを示唆するために、次のスライダーをチラ見せする手法をよく使います。
@@ -221,42 +302,37 @@ IDとともに `.swiper` も付与します。そのスライダー `document.qu
 このコードであれば、1〜複数のスライダーをコントロール可能です。
 
 ```JavaScript:title=JavaScript
+//throttle, options, isDevice省略
+
+// swiperのタグをまとめて取得して配列化
+const swipers = Array.from(document.querySelectorAll('.swiper'));
+//swiperを格納する殻の変数
 let swipersItems = [];
-const breakPoint = 768;
-let swipers = document.querySelectorAll('.swiper');
 window.addEventListener('DOMContentLoaded', () => {
-  const options = {
-     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    spaceBetween: 30,
-    slidesPerView: "auto",
-  }
-  // IDを格納
-  swipers.forEach((element, index) => {
-    if ( window.innerWidth <= breakPoint ) {
-      swipersItems[index] = new Swiper('#' + element.id, options);
-    } else {
-      swipersItems[index] = undefined;
-    }
+  // swiper の状態を map で格納し新しい配列を作成
+  swipersItems = swipers.map( swiper => {
+    return isDevice() ? new Swiper('#' + swiper.id, options) : undefined;
   });
-  window.addEventListener('resize', () => {
-    swipers.forEach((element, index) => {
-      if ( window.innerWidth <= breakPoint ) {
-        if( swipersItems[index] === undefined ) {
-          swipersItems[index] = new Swiper('#' + element.id, options);
+  //リサイズで状態を変更
+  const swichSwiper = () =>{
+    //mapよりも早いのでforEachで処理
+    //swipersItemsで値をアップデート
+    //returnで返すと新しい配列になるので意味がない
+    swipers.forEach((swiper, i) => {
+      if ( isDevice() ) {
+        if( swipersItems[i] === undefined ) {
+          swipersItems[i] = new Swiper('#' + swiper.id, options);
         }
       } else {
-        if( swipersItems[index] !== undefined ) {
-          swipersItems[index].destroy();
-          swipersItems[index] = undefined;
+        if( swipersItems[i] !== undefined ) {
+          swipersItems[i].destroy();
+          swipersItems[i] = undefined;
         }
       }
       return;
     })
-  }, false);
-
+  }
+  window.addEventListener('resize', throttle(swichSwiper, 200), false);
 }, false);
 ```
 <ad location="/blogs/entry514/"></ad>

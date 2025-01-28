@@ -1,7 +1,7 @@
 ---
 title: DockerでシンプルなWordPress環境を作る
 date: 2021-12-22
-modifieddate: 2022-03-21
+modifieddate: 2025-01-28
 hero: thumbnail/2021/entry480.jpg
 pagetype: blog
 cateId: 'cms'
@@ -40,17 +40,17 @@ docker -v
 
 ```
 /wordpress
-├ docker-compose.yml
+├ compose.yml
 └ .env
 ```
 
 ここでは仮にWordPressをインストールしたいディレクトリ名を`wordpress`とします。
 
-### docker-compose.yml 作成
-`docker-compose.yml` を作成します。
+### compose.yml 作成
+`compose.yml` を作成します。
 
-```yaml:title=docker-compose.yml
-version: '3' #　Composefileのバージョンを2に設定
+```yaml:title=compose.yml
+version: '3.7'
 
 services:
   wordpress:
@@ -64,7 +64,7 @@ services:
         - ./public:/var/www/html/ # マウントするディレクトリ
 
   mysql:
-    image: mysql:5.7 # MySQL5.7公式イメージ
+    image: mysql:8.0
     env_file: .env
     ports:
       - "3306:3306" #ポート番号の設定
@@ -80,7 +80,7 @@ mysql8を試そうとしたところ、データベースが接続できなく�
 
 その場合は、`default-authentication-plugin`の設定を変える必要があります。
 
-```yaml:title=docker-compose.yml
+```yaml:title=compose.yml
   mysql:
     image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
@@ -92,7 +92,7 @@ mysql8を試そうとしたところ、データベースが接続できなく�
 ### .envファイルを作成
 .envファイルに定数を定義します。
 
-`docker-compose.yml` で設定した wordpress と mysql の env_file に読み込まれます。
+`compose.yml` で設定した wordpress と mysql の env_file に読み込まれます。
 
 ```env:title=.env
 WORDPRESS_DB_NAME=wordpress
@@ -133,7 +133,7 @@ docker-compose up -d
 フォルダ構成は以下のようになっています。
 ```
 /wordpress
-├ docker-compose.yml
+├ compose.yml
 ├ public
 └ .env
 ```
@@ -152,6 +152,32 @@ docker-compose down -v
 |*--remove-orphans*|Compose ファイルで定義していないサービス用のコンテナも削除|
 
 オプションを駆使して[dockerを完全に削除](#dockerを完全に削除)もあります！
+
+## データベースをエントリポイントにおいて更新
+あらかじめSQLのデータを挿入したい場合は、以下のようにSQLを格納しておくディレクトリを置きます。
+```
+/wordpress
+├ compose.yml
+├ public
+├ mysql/data/xx.sql
+└ .env
+```
+
+```yaml:title=compose.yml
+  mysql:
+    image: mysql:8.0
+    ...
+    volumes:
+      - ./mysql/data:/docker-entrypoint-initdb.d
+```
+
+SQLファイルのURLをDocker環境に合わせて `http://localhost:3000` に変えておきます。
+
+その他、データベースの接頭辞等環境に応じて適宜変更しておきましょう。
+
+```sql:title=xx.sql
+-- Host: localhost    Database: wordpress
+```
 
 ## データベースのリストア・ダンプ
 今回は実にシンプルな方法をご紹介します。
@@ -177,7 +203,7 @@ sqlファイルがあった場合のデータベースのリストア方法で�
 
 ```
 /wordpress
-├ docker-compose.yml
+├ compose.yml
 ├ public
 ├ dump.sql
 └ .env
@@ -193,8 +219,14 @@ docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u
 ```bash:title=コマンド
 docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' < wordpress.sql
 ```
-
-名付け方はまた追記します。
+コンテナー名をあらかじめつけておいたほうが理想的です。
+```yaml:title=compose.yml
+version: '3.7'
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: web-container
+```
 
 
 ### データベースのダンプ
@@ -212,7 +244,7 @@ docker exec -i wordpress_mysql_1 sh -c 'mysqldump wordpress -u wp_user -phogehog
 以下のようなDBができているはずです。
 ```
 /wordpress
-├ docker-compose.yml
+├ compose.yml
 ├ public
 ├ latest.sql(←これ)
 └ .env
@@ -277,7 +309,7 @@ docker-compose down --rmi all --volumes --remove-orphans
 これで気軽に破壊したりできます。
 
 ## まとめ・Dockerやってみたらカンタンだった
-imageも用意されていて `docker-compose.yml`にカンタンなコードを書くだけなのでDockerでWordPressを構築するのは楽勝でした。
+imageも用意されていて `compose.yml`にカンタンなコードを書くだけなのでDockerでWordPressを構築するのは楽勝でした。
 
 <msg txt="個人的には管理もメンテナンスもVagrantよりカンタンです"></msg>
 
