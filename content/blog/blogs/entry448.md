@@ -1,16 +1,18 @@
 ---
-title: 2022年版！GraphAPIでインスタグラム投稿一覧を出力（JS/PHPサンプルコードあり）
+title: 2025年版！GraphAPIでインスタグラム投稿一覧を出力（JS/PHPサンプルコードあり）
 date: 2021-03-25
-modifieddate: 2023-01-21
+modifieddate: 2024-01-27
 hero: thumbnail/2021/entry448.jpg
 pagetype: blog
 cateId: 'web-developer'
 tags: ["JavaScript","PHP"]
-description: 2022年版にリライト済み。最近インスタ投稿一覧をWebサイトに埋め込みました。コード書くより、インスタとFacebookを連携させてアクセストークンを取得するまでがスーパーめんどくさかったです。しかも一年前と少しやり方が変わっていて戸惑いました。ということで、2022年版のGraphAPIで一覧を取得する手順をJS・PHP両方紹介します。難易度はJSやPHPを少し書けSNSなどのサービスを普段から使っている人向けです。
+description: 2025年版にリライト済み。最近インスタ投稿一覧をWebサイトに埋め込みました。コード書くより、インスタとFacebookを連携させてアクセストークンを取得するまでがスーパーめんどくさかったです。しかも一年前と少しやり方が変わっていて戸惑いました。ということで、2022年版のGraphAPIで一覧を取得する手順をJS・PHP両方紹介します。難易度はJSやPHPを少し書けSNSなどのサービスを普段から使っている人向けです。
 ---
-*【この記事は2022年版にリライト済みです】* <br>最近インスタ投稿一覧をWebサイトに埋め込みました。
+*【この記事は2025年版にリライト済みです】* 
 
-コード書くより、インスタとFacebookを連携させてアクセストークンを取得するまでがスーパーめんどくさかったです。しかも一年前と少しやり方が変わっていて戸惑いました。<br>ということで、2022年版のGraphAPIで一覧を取得する手順をJS・PHP両方紹介します。難易度はJSやPHPを少し書けSNSなどのサービスを普段から使っている人向けです。出来るだけこんなことも？！ってくらいわかりやすく説明します。
+[FetchAPIとasync/awaitで記述するサンプルコード](#jsコードサンプルfetchapiawaitasync)
+
+コード書くより、インスタとFacebookを連携させてアクセストークンを取得するまでがスーパーめんどくさかったです。しかも一年前と少しやり方が変わっていて戸惑いました。<br>ということで、2025年版のGraphAPIで一覧を取得する手順をJS・PHP両方紹介します。難易度はJSやPHPを少し書けSNSなどのサービスを普段から使っている人向けです。出来るだけこんなことも？！ってくらいわかりやすく説明します。
 
 今まで表示されていたのに突然データが取得できなくなった時のチェックするポイントも追記しました。
 
@@ -117,9 +119,6 @@ META for DeveloperはFacebookアカウントを持っていることが前提条
 |`instagram_manage_insights`|FacebookページにリンクされたInstagramアカウントのインサイトにアプリがアクセス可能。また、他のビジネスプロフィールのプロフィール情報やメディアをアプリが発見し読み取ることも。|
 
 さらに詳しい許可の種類は[こちら](https://developers.facebook.com/docs/permissions/reference)から確認できます。
-
-
-
 
 ### 無期限アクセストークンに変更
 先ほど発行したトークンでは1時間で期限が切れてしまうので延命します。
@@ -280,7 +279,109 @@ h1 {
 ```
 <ad location="/blogs/entry448/"></ad>
 
-### JSコードサンプル（jQuery）
+### JSコードサンプル（FetchAPI/Await/Async）
+2025年なので流石に jQuery はないかと思い、 fetchAPI と aysnc/awaitでコード書き直しました。
+
+```JS:title=js
+const id = 'xxxxxxxxxxxx';
+const token = 'xxxxxxxxxxxxxxxxxxxx';
+// videoが何個あるかわからないのでとりあえず30くらい取得しておく
+const count = 30;
+const url = `https://graph.facebook.com/v22.0/${id}?fields=name,media.limit(${count}){caption,media_url,thumbnail_url,permalink,like_count,comments_count,media_type}&access_token=${token}`;
+const initInstagram = async (wrapper) => {
+  try {
+    /** Jsonデータを取得 */
+    const instagram = await fetch(url, { method: 'GET' })
+    const json = await instagram.json();
+    const allPosts = json.media.data;
+    //ビデオは排除
+    const posts = allPosts.filter(i => i.media_type !== 'VIDEO')
+    // 8回繰り返す
+    for (let i = 0; i < 8; i++) {
+        const list          = document.createElement('li');
+        const link          = document.createElement('a');
+        const img           = document.createElement('img');
+        const likeCount     = document.createElement('span');
+        link.target         = "_blank";
+        link.rel            ="noopener";
+        link.href           = posts[i].permalink;
+        img.src             = posts[i].media_url;
+        likeCount.className = 'like';
+        likeCount.textContent = posts[i].like_count;
+        link.appendChild(img)
+        link.appendChild(likeCount)
+        list.appendChild(link)
+        wrapper.appendChild(list)
+    }
+  } catch (error) {
+      wrapper.textContent = '読み込みに失敗しました';
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.getElementById('instagram') !== null ? document.getElementById('instagram') : '';
+  initInstagram(wrapper)
+})
+```
+ObserverAPIで要素が表示されるのを監視して、表示されたら読み込んでもいいかもしれません。
+
+```js:title=ObserverAPI
+// 省略
+const initInstagram = (wrapper)=>{
+  // 省略
+          //ふんわり表示させる
+          list.classList.add('fadeIn')
+  // 省略
+}
+const observer = (target, func)=>{
+    if(target === null || target ==='') return;
+    const options = {
+        root: null,
+        rootMargin: '0 0 100px 0',
+        threshold: 0
+    }
+    const callback = (entries) => {
+        entries.forEach((entry) => {
+            if(entry.isIntersecting){
+                const isHidden = target.getAttribute('data-hidden') === 'true' ? true :false
+                if(isHidden){
+                    target.setAttribute('data-hidden', !isHidden)
+                    return func(target)
+                } 
+            }
+        })
+    }
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(target);
+}
+
+const wrapper = document.getElementById('instagram') !== null ? document.getElementById('instagram') : '';
+observer(wrapper, initInstagram)
+```
+```html:title=HTML
+<ul id="instagram" data-hidden="true"></ul>
+```
+```SCSS:title=SASS
+li {
+  opacity: 0;
+
+  &.fadeIn {
+  animation: fadeIn .5s .5s forwards;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+```
+今回使用した ObserverIPI の記事はこちらです。
+<card id="/blogs/entry525/"></card>
+<card id="/blogs/entry526/"></card>
+
+### JSコードサンプル（jQuery・古い）
 JavaScriptサンプルコードです。jQuery使ってサクッと取得しました。
 
 ```html
