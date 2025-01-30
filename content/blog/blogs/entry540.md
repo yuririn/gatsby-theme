@@ -36,6 +36,7 @@ description: babel + browserify でローカルの普通の JS でも、npm modu
   "devDependencies": {
     "@babel/core": "^7.26.7",
     "@babel/preset-env": "^7.26.7",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "babelify": "^10.0.0",
     "browser-sync": "^3.0.3",
     "browserify": "^3.46.1",
@@ -92,6 +93,8 @@ const exportJs = (done) => {
     browserify(file.path, { debug: !isProduction })
       .transform(babelify.configure({
           presets: ['@babel/preset-env'],
+          //プロダクションではコメントを削除
+          plugins: isProduction ? ['babel-plugin-transform-remove-console'] : [],
           sourceMaps: !isProduction
       }))
       .bundle((error, buf) => {
@@ -128,7 +131,7 @@ $ npm start
 $ npm run prod
 ```
 ## Swiper や lodash を読み込む
-npm 経由でインストールしたモジュールも直接使えます。
+これで npm 経由でインストールしたモジュールも直接使えます。
 ```shell:title=コマンド
 npm i swiper -D
 ```
