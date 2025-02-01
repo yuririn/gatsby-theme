@@ -1,12 +1,12 @@
 ---
 title: コピペでOK！CSS セレクトボックス（select option）のカスタマイズ方法
 date: 2020-11-10
-modifieddate: 2023-01-21
+modifieddate: 2025-02-02
 hero: thumbnail/2020/entry393.png
 pagetype: blog
 cateId: 'web-developer'
 tags: ["CSS"]
-description: フォームパーツのカスタマイズって難しいですよね？中でもセレクトボックス（select option）をCSSでカスタマイズする時は手を焼きます。ということで今回はセレクトボックスの書き方、CSSでのカスタマイズ方法をケース別にまとめてみました。スニペットも用意しています（随時追記します）。WordPressの「MW WPフォーム」や「Contact Form 7」のカスタマイズにも応用可能なので参考にしてください。
+description: フォームパーツのカスタマイズって難しいですよね？中でもセレクトボックス（select option）をCSSでカスタマイズする時は手を焼きます。ということで今回はセレクトボックスの書き方、CSSでのカスタマイズ方法をケース別にまとめてみました。スニペットも用意しています（随時追記します）。WordPressの「MW WPフォーム」や「Contact Form 7」のカスタマイズにも応用可能なので参考にしてください。2025年にメンテナンス済み。
 
 faq: [['セレクトボックスの「選択してください」を選択肢から外したい','「選択してください」を選択させない方法はselected + disabled属性を付与してCSSで隠せば解決します。','https://ginneko-atelier.com/blogs/entry393/?utm_source=faq#%E3%82%B1%E3%83%BC%E3%82%B91%E3%82%BB%E3%83%AC%E3%82%AF%E3%83%88%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E4%B8%8A%E9%81%B8%E6%8A%9E%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E3%81%91%E3%81%A9%E3%81%9D%E3%81%AE%E9%A0%85%E7%9B%AE%E3%82%92%E9%81%B8%E6%8A%9E%E8%82%A2%E3%81%8B%E3%82%89%E5%A4%96%E3%81%97%E3%81%9F%E3%81%84'],['セレクトボックスのoptionタグをグルーピングしたい','optgroupを使ってまとめることができます。たくさん項目がある際は、ユーザーの可読性も上がるので親切です。','https://ginneko-atelier.com/blogs/entry393/?utm_source=faq#%E3%82%B1%E3%83%BC%E3%82%B92option%E3%82%BF%E3%82%B0%E3%82%92%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%94%E3%83%B3%E3%82%B0%E3%81%97%E3%81%9F%E3%81%84'],['セレクトボックスで複数の項目を選択したい','選択した項目にチェックが入るところだけ、CSSで付与しまます。','https://ginneko-atelier.com/blogs/entry393/?utm_source=faq#%E3%82%B1%E3%83%BC%E3%82%B93%E8%A4%87%E6%95%B0%E3%81%AE%E9%A0%85%E7%9B%AE%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%97%E3%81%9F%E3%81%84']]
 ---
@@ -78,7 +78,7 @@ appearance: none;
 
 デザインに応じて上書きしておきましょう！
 
-IE対応では`appearance`に`-ms-expand`という矢印（ドロップダウンメニューを開閉）ボタンが擬似要素にデフォルトでセットされているので`desplay:none`をセットする必要があります。
+IE対応では`appearance`に`-ms-expand`という矢印（ドロップダウンメニューを開閉）ボタンが擬似要素にデフォルトでセットされているので`desplay:none`をセットする必要がありましたが、最近の子はIE知らんよね笑。
 
 参考：[::-ms-expand|MDN](https://developer.mozilla.org/ja/docs/Web/CSS/::-ms-expand)
 ```css
@@ -93,8 +93,6 @@ select::-ms-expand {
 標準CSSでせっかくあった矢印マークはリセットすると打ち消されてしまいます。<br>
 スタイリングの際は必ずユーザビリティ・アクセシビリティを考えましょう。
 
-<kyle item="takarabako"></kyle>
-
 一目見てユーザーがこのタグはなにができるかわかるよう矢印マークを再度追加します。
 
 まずはラッパーを使う方法をご紹介します。
@@ -104,12 +102,14 @@ select::-ms-expand {
 selectの上にdiv（ラッパー）などでラッピングし、擬似要素を利用してマークを作ります。<br>
 正方形の要素を作り上部・右にボーダーをにつけて45度傾けたら完成です。<br>
 位置を`position: absolute`で右端に固定します。<br>
-縦位置ど真ん中にしたいので`top: 50%`に配置して`translateY(-50%)`で要素の高さ半分上に上げています。
+縦位置ど真ん中にしたいので`top: 50%`に配置して`translate: 0 -50%`で要素の高さ半分上に上げています。
 
 ```css
   right: 10px;
   top: 50%;
-  transform: translateY(-50%) rotate(45deg);
+  translate: 0 -50%;
+  rotate: 45deg;
+  /* transform: translateY(-50%) rotate(45deg); 古い記述方法*/
   border-bottom: 2px solid #fff;
 ```
 
@@ -219,6 +219,8 @@ select {
 ```
 [背景画像で矢印マークを仕込むパターンデモ|Code Pen](https://codepen.io/camile/pen/abZRgpa)
 
+2025年追記。矢印マークなどの[単純なアイコンは clip-path で仕込む方法](https://ginneko-atelier.com/blogs/entry536/#background-clip-%E3%81%A7%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E4%BD%9C%E6%88%90)もあります。ファイルを読み込むとリクエスト数が増えるので最近私はこの方法を取ることが多いです。
+
 ## セレクトボックスのケース別スニペット集
 セレクトボックスをコーディングしているときによく「これどうやるんだったっけ？」って思い出せないことがあります。
 ケース別でスニペットを作成しましたのでよろしければ参考にしてください。
@@ -226,7 +228,7 @@ select {
 ### ケース1・セレクトボックス上「選択してください」を表示したいけど、その項目を選択肢から外したい
 <figure class="animation"><img src="/images/animation/2020/entry393-3.webp" width="538" height="242" alt="ケース1・セレクトボックス上「選択してください」を表示したいけど、その項目を選択肢から外したい" decoding="async" loading="lazy"/></figure>
 
-セレクトボックスにはプレースホルダーがないので、「選択してください」などの文字をoptionタグを使って表示させなければなりません。
+セレクトボックスにはプレースホルダーがないので、「選択してください」などの文字をoptionタグを使って表示することが多いです。
 
 とはいえ、実際の項目として「選択してください」を選択されても困りますよね？
 そんなときは、selected + disabled属性を付与してCSSで隠して解決します！
@@ -257,7 +259,7 @@ select {
   height: 40px;
   width: 300px;
   position: relative;
-  background: #cfcedb url({https://ginneko-atelier.com}/assets/arrow.svg) no-repeat right 10px center / 16px auto;
+  background: #cfcedb url(./assets/arrow.svg) no-repeat right 10px center / 16px auto;
 }
 
 option[selected][disabled] {
@@ -299,7 +301,7 @@ option[selected][disabled] {
 
 選択した項目にチェックが入るところだけ、CSSで付与しました。<br>
 とりあえずチェックが入った時の背景色と文字色の変更が難しい。<br>
-力技で、box-shadowを内側に効かせればできましたが、その代わりマークが消えます。。。
+力技で、box-shadowを内側に効かせればできましたが、その代わりマークが消えます。。。Safariでは思い通りの見た目にはなりません。
 
 また時間があるときにもうちょい調べて追記します。
 
@@ -350,6 +352,61 @@ select[multiple] option:checked {
 参考 [デュアルリストボックスでクリックされたオプションの背景色を変更する](https://python5.com/q/gyscnsql)
 
 <ad location="/blogs/entry393/"></ad>
+
+### チェックボックス（\<input type="checkbox">） で代用する
+無理に select/option で複数選択するのは Safari などのブラウザで限界があります。
+
+そもそも使わず UIを似せてcheckbox で作成するのもありです。その方がデザインの幅が広がります。
+
+<figure class="animation"><img src="/images/animation/2020/entry393-5.webp" width="520" height="248" alt="複数の項目を選択したい" decoding="async" loading="lazy"/></figure>
+
+```html:title=HTML
+<div class="multiple">
+  <label><input type="checkbox" value="項目1" name="item">項目1</label>
+  <label><input type="checkbox" value="項目2" name="item">項目2</label>
+  <label><input type="checkbox" value="項目3" name="item">項目3</label>
+  <label><input type="checkbox" value="項目4" name="item">項目4</label>
+  <label><input type="checkbox" value="項目5" name="item">項目5</label>
+</div>
+```
+最近は疑似要素 `:has()` が使えるので如何様にもアイデア次第でカスタマイズできます。
+```Css:title=CSS
+.multiple {
+  border: 2px solid #999;
+  background: #fff;
+  max-height: 1６0px;
+  overflow: scroll;
+  width: max-content;
+}
+.multiple input[type="checkbox"]{
+  display: none;
+}
+.multiple label{
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  align-items: center;
+  padding: 0 12px;
+  width: max-content;
+  min-width: 200px;
+}
+.multiple label:has(>input[type="checkbox"]:checked) {
+  background: #ccc;
+}
+.multiple label:has(>input[type="checkbox"])::before {
+  opacity: 0;
+  background: #ff006d;
+  content: '';
+  height: 10px;
+  width: 12px;
+  display: block;
+  clip-path: polygon(16% 48%, 0 68%, 34% 100%, 100% 20%, 88% 6%, 34% 64%);
+}
+.multiple label:has(>input[type="checkbox"]:checked)::before {
+  opacity: 1;
+}
+```
+[multiple(checkbox)のデモ|Code Pen](https://codepen.io/camille-cebu/pen/GgKLZQV)
 
 ## まとめ
 いかがでしたでしょうか？
