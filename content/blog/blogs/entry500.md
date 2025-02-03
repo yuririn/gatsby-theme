@@ -1,382 +1,352 @@
 ---
-title: Looker Studio（旧データポータル）で Search Console と GA4 を統合する
+title: Looker Studio で GAS で出力したサイトマップ Search Console を統合する
 date: 2022-05-21
-modifieddate: 2023-02-25
+modifieddate: 2025-02-05
 pagetype: blog
 cateId: seo
 hero: thumbnail/2022/entry500.png
-tags: ["Web解析","SEOライティング"]
-description: Looker Studio (データポータル)で Search Console のインプレッション数や アナリティクス（GA4） のPVを統合したデータの作り方をご紹介します。
+tags: ["Web解析","Looker Studio","GAS"]
+description: Looker Studio (データポータル)で Search Console のインプレッション数や アナリティクス（GA4） のPVを統合したデータの作り方をご紹介します。GAS で sitemap.xml（サイトマップ） からサイトデータを出力し、週一回ぐらいのペースで分析することを想定しています。
 ---
-既存記事をリライトするために Looker Studio(データポータル)を使ってSearch ConsoleとGoogleのインプレッション数や アナリティクスのPVを合算したデータの表を作りました。
+この記事は 2025 年に大幅にリライトしました。
 
-Looker Studio はクセがあり複雑な設定があるので、具体的にどう作業してデータを統合したのかをまとめました。
+今まで手作業でスプシに書き出していたページの出力を GAS などを使って自動でできるようにしています。
 
-画像多めで詳しく解説しているので、敷居の高い Looker Studio も設定可能です。
+リライトは公開後、60 ~ 90 日経過したあたりが良いとされています。
 
-*この記事はこんな方におすすめです*
+* 記事をいつ公開、ないしはリライトしたかを調べたい
+* タイトルはリライトによって変わることもあるので常に最新のものを取得したい
+* URL も取得したい
+* 記事のジャンルも把握しておきたい（キーワードとのミスマッチがないか知りたいため）
 
-* ブログのリライトをしたいけどどの記事から手を付けていいかわからない
-* Looker Studioを使っててっとり早くWeb解析をしたい
-* Looker Studioを使っていろんなデータを統合してみたい
-* GA4に慣れないので、ユニバーサルアナリティクスのような表示にLooker Studioでスタマイズしたい
+<prof></prof>
 
-~注意点！今回はユニバーサルアナリティクスを使用しています！後日、GA4版も作成します。~
-
-追加済みです！！
-
-<msg txt="Looker Studioはビッグクエリなどと連携しない場合は無料で使えます！"></msg>
+## GAS で Web サイトの sitemap.xml を元に自動でサイト情報を出力する
+サイトの状態を調べるために、Google のクローラーにサイト構造を伝えるために使っている sitemap.xml を利用します。GAS を使って Web サイトの構造を一気に取得します。
 
 
-## 解析対象の記事のURLとタイトルのスプシを準備する
-解析対象の記事のスプシを準備します。現在公開中の記事のURLとタイトルを抽出したシートを作りました。
 
-![ローカル側のGraphQLで記事のみ抽出してシート](./images/2022/05/entry500-1.png)
+ウチのブログは整理しまくっているのであってもせいぜい200記事くらいしかありません。そんなもんじゃないよっていう場合は、一回の GAS で取得できますが、記事の多いサイトは途中で処理が止まる可能性があります。なので処理を分けたほうがいいかもしれません。
 
-一般の方はWordPressでブログ管理している人が多いと思うので、[WP CSV Exporter](https://wordpress.org/plugins/wp-csv-exporter/)というプラグインを使って出力するのがベストと思います。
+> Google Apps Script（GAS）とは、Googleが開発し、提供しているプログラミング言語のことです。 Webブラウザ上で動作する「JavaScript」をベースに開発された言語であり、JavaScriptを日々学んでいる方は比較的容易に習得できるようになっています。
 
-私のブログはGatsbyでできているのでローカル側のGraphQLで記事のみ抽出してシートを作りました。やり方は、[こちら](/blogs/entry336/#%E7%89%B9%E5%AE%9A%E3%81%AE%E6%96%87%E5%AD%97%E3%81%8C%E5%90%AB%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E8%A1%8C%E3%82%92%E5%89%8A%E9%99%A422-05-22)に書いておきましたので興味のある方はお読みください。
+今回は細かいことは省きます。GAS に関しての記事を参考にしてください。
+
+<card id="/blogs/entry470/"><card>
+
+コードの大まかな概要です。
+```js:title=GAS
+function fetchSitemap() {
+  // サイトマップのURLを指定
+  var sitemapUrl = 'https://xxx.com/sitemap.xml';
+  //シートを取得
+  urls.forEach(function(urlElm) {
+    // urlElmからURLからページを解析し各情報をシートに格納
+    var url = urlElement.getChildText('loc', namespace);
+    //ウチのブログは entry の文字列が含まれている。なのでそれだけ取得。
+    //サイトによってルールがあると思うので適宜条件を変更してください。
+    if(url.includes('entry')){
+      sheet.getRange(row, 1).setValue(url);
+      var getPageInfo = fetchPageDetails(url);
+      sheet.getRange(row, 2).setValue(getPageInfo.title);
+    }
+  })
+}
+function fetchPageDetails(url) {
+  // URLを取得して
+  var response = UrlFetchApp.fetch(url);
+  //各処理をし、各取得したいデータを格納
+  return {
+    title: title,
+    publishDate: publishDate,
+    maintenanceDate: maintenanceDate,
+    genre: genre
+  };
+}
+```
+分解して解説します。
+`UrlFetchApp` を利用して、ページを解析してサイト情報を取得します。
+> UrlFetchAppは、Google Apps Script（GAS）で提供される組み込みのサービスで、ウェブ上のデータを取得したり送信したりするためのHTTPリクエストを行うために使用されます。 APIとの通信やウェブスクレイピングにおいて、データの取得や更新、処理を簡単に行うことができます。
+
+このブログの構造はこんな感じ。サイトによって構造が違うので、適宜取得したい HTML を変えると良いと思います。
+正確な構造化データがあるのであれば、そこから取得したほうがいいかもしれませんね。
+
+```HTML:title=HTML
+<html>
+  <head>
+  ...
+  <title>タイトル（取得）</title>
+  ...
+</head>
+<body>
+  ...
+  <ol>
+    ...
+    <li><a href="">ジャンル名（取得）
+  </ol>
+  投稿日<time date-time="0000-00-00（取得）"></time>
+  更新日<time date-time="0000-00-00（取得）"></time>
+</body>
+</html>
+```
+`fetchPageDetails()` では引数から取得したURLごとに、上記のようなHTMLから取得できる、タイトル、投稿日、メンテナンス日、ジャンルを取得します。
+
+```js:title=GAS
+function fetchPageDetails(url) {
+  try {
+    var response = UrlFetchApp.fetch(url);
+    var html = response.getContentText();
+
+    // headタグ内の<title>を取得
+    var headContent = html.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
+    var title = 'タイトルを取得できませんでした';
+    if (headContent) {
+      var titleMatch = headContent[1].match(/<title[^>]*>(.*?)<\/title>/i);
+      if (titleMatch) {
+        title = titleMatch[1];
+      }
+    }
+
+    // 公開日を取得
+    // 適宜設定を変えてください
+    var publishDateMatch = html.match(/<dl class="date">.*?<dt>公開日<\/dt><dd><time date="(.*?)">.*?<\/time><\/dd>/s);
+    var publishDate = publishDateMatch ? publishDateMatch[1] : '';
+
+    // メンテナンス日を取得
+    // 適宜設定を変えてください
+    var maintenanceDate = '';
+    if (publishDateMatch) {
+      var maintenanceDateMatch = html.match(/<dl class="mentenance_date">.*?<dt>メンテナンス日<\/dt><dd><time date="(.*?)">.*?<\/time><\/dd>/s);
+      maintenanceDate = maintenanceDateMatch ? maintenanceDateMatch[1] : '';
+    }
+
+    // パンくずリストの3つ目に格納されているジャンルを取得
+    var genreMatch = html.match(/<ol class="bread-crumb-list[^>]*>.*?<li>.*?<\/li>.*?<li>.*?<\/li>.*?<li>.*?<a[^>]*>(.*?)<\/a>.*?<\/li>/s);
+    var genre = genreMatch ? genreMatch[1] : '';
+
+    return {
+      title: title,
+      publishDate: publishDate,
+      maintenanceDate: maintenanceDate,
+      genre: genre
+    };
+  } catch (e) {
+    return 'エラーが発生しました: ' + e.message;
+  }
+}
+```
+
+`match` で使っている正規表現に関しては、こちらの記事を参考にしてください。
+
+<card id="/blogs/entry336/"></card>
+
+```js:title=GAS
+function fetchSitemap() {
+  // サイトマップのURLを指定します
+  var sitemapUrl = 'https://xxx.com/sitemap.xml';
+  var response = UrlFetchApp.fetch(sitemapUrl);
+  var document = XmlService.parse(response.getContentText());
+  var root = document.getRootElement();
+  var namespace = root.getNamespace();
+  var urls = root.getChildren('url', namespace);
+  
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  sheet.clear();
+
+  // ヘッダーを設定
+  sheet.getRange(1, 1).setValue('URL');
+  sheet.getRange(1, 2).setValue('タイトル');
+  sheet.getRange(1, 3).setValue('公開日');
+  sheet.getRange(1, 4).setValue('メンテ日');
+  sheet.getRange(1, 5).setValue('ジャンル');
+
+  var row = 2;
+  urls.forEach(function(urlElement) {
+    var url = urlElement.getChildText('loc', namespace);
+    if(url.includes('entry')){
+      sheet.getRange(row, 1).setValue(url);
+      var getPageInfo = fetchPageDetails(url);
+      sheet.getRange(row, 2).setValue(getPageInfo.title);
+      sheet.getRange(row, 3).setValue(getPageInfo.publishDate);
+      sheet.getRange(row, 4).setValue(getPageInfo.maintenanceDate);
+      sheet.getRange(row, 5).setValue(getPageInfo.genre);
+    }
+    row++;
+  }) 
+}
+```
+![background-clip でアイコン作成](./images/2022/05/entry500-10.jpg)
+
+実行すると、データが書き出されます。
+
+タイマーの設定に関しては[GASのトリガーの設定](/blogs/entry504/#メールで通知するgasのトリガーの設定)をご確認ください。
 
 ## Looker Studioにアクセス、無料で利用するでスタート
-[Looker Studio](https://marketingplatform.google.com/intl/ja/about/data-studio/)にアクセスし、無料で利用するをクリックします。
-![ローカル側のGraphQLで記事のみ抽出してシート](./images/2022/05/entry500-2.jpg)
+[Looker Studio](https://marketingplatform.google.com/intl/ja/about/data-studio/) にアクセスし、無料で利用するをクリックします。
 
-もしくは、[直接](https://lookerstudio.google.com/)アクセスしましょう。
+![Looker Studioにアクセス、無料で利用するでスタート](./images/2022/05/entry500-2.jpg)
 
-### 空のレポートを作成しておく
+もしくは、[直接アクセス](https://lookerstudio.google.com/)しましょう。
+
+## 空のレポートを作成しておく
 まずは空のレポートを作成します。
 
-![空のレポートを作成しておく](./images/2022/05/entry500-3.png)
+![Looker Studio空のレポートを作成](./images/2022/05/entry500-3.png)
+
 無題のレポートができました。
-![空のレポートを作成しておく](./images/2022/05/entry500-4.png)
+![Looker Studio無題のレポートを作成](./images/2022/05/entry500-4.png)
 
 ## データの連携処理
+
 空のレポートからデータの連携処理を行っていきます。
+![Looker Studio空のレポートからデータの連携処理](./images/2022/05/entry500-5.png)
 
 無題のレポートが出来上がりますので編集をクリックします。
-
-### スプレッドシートと連携しておく
-まずはスプレッドシートのデータを取り込みます。
-
-![ローカル側のGraphQLで記事のみ抽出してシート](./images/2022/05/entry500-5.png)
-
-データを追加し、必要なスプシとシートを取り込みます。
-![ローカル側のGraphQLで記事のみ抽出してシート](./images/2022/05/entry500-7.png)
+![Looker Studio無題のレポートが出来上がりますので編集をクリック](./images/2022/05/entry500-7.png)
 
 使用したいスプシを選び、先頭行をヘッダーとして使用するにチェックをし、右下の追加ボタンをクリック。
-![ローカル側のGraphQLで記事のみ抽出してシート](./images/2022/05/entry500-6.png)
+![Looker Studio先頭行をヘッダーとして使用するにチェックをし、右下の追加ボタンをクリック](./images/2022/05/entry500-6.png)
 
-#### ディメンション設定をしてデータがきちんと取り込めているか確認する
+### グラフを追加し、ディメンション設定
+試しに、URLとタイトルを表示してみます。まずは、適当にグラフを追加してみます。
 
-URLとタイトルを表示してみます。
+![Looker Studio 適当にグラフを追加](./images/2022/05/entry500-11.jpg)
 
-ディメンションにURLとTITLE（先頭行の名称）を選びます。以下のように表示されていれば成功です。
+データを後ほど Search Console と統合したいので、ここではデータの統合をクリック。
+![Looker Studio データの統合をクリック](./images/2022/05/entry500-12.jpg)
 
-![ディメンション設定](./images/2022/05/entry500-8.png)
+ディメンション に URL、ジャンル を追加。
 
-### Search Console と連携する
-次に、Search Consoleのデータを取り込みます。データの追加を行います。
-![ローカル側のGraphQLで記事のみ抽出してシート](./images/2022/05/entry500-5.png)
+![Looker Studio 各項目をディメンションに追加](./images/2022/05/entry500-13.jpg)
 
-対象のドメイン、URLのインプレッション、Webを選びます。<br>スクショでは切れてますが、右下に追加ボタンがあるのでクリック。
+後で何を統合したのかわからなくならないように統合名を変更しておきましょう。
 
-![Search Consoleのデータを取り込む](./images/2022/05/entry500-9.png)
+![Looker Studio 何だったかわからなくならないように統合名](./images/2022/05/entry500-16.jpg)
 
-これでSearch Consoleのデータを使えるようになったので、データソースの*データを統合*をクリック。
-
-![Search Consoleのデータを取り込む](./images/2022/05/entry500-15.png)
-
-*別のテーブルを結合*をクリック。
-
-![Search Console データソースのデータを統合](./images/2022/05/entry500-10.png)
-
-サイズにLanding Pageを選択。
-![サイズにLanding Pageを選択](./images/2022/05/entry500-13.png)
-
-結合の設定（Confiture join）をクリック。URLとLanding Pageの一致を条件とし、左外部結合を選びます。
-![Confiture joinをクリック。URLとLanding Pageの一致を条件とし、左外部結合を選びます。](./images/2022/05/entry500-12.png)
-
-Search Consoleでは以下を指標として選びました。
-
-* Impressions（表示回数）
-* URL Clicks(クリック数)
-* URL CTR（クリック率）
-* Avarage Position（掲載平均順位）
-
-![指標はImpressions（表示回数）・URL Clicks(クリック数)・URL CTR（クリック率）・Avarage Position（掲載平均順位）](./images/2022/05/entry500-11.png)
+### 加工して使いたいデータがある場合は計算フィールドを使う
+公開からの経過日と、リンクつきのタイトルを表示したいので2つの計算フィールドを追加します。
+> 計算フィールドとは、データソース内の既存のフィールドを基に、計算式を設定して新しいフィールドを作成する機能です。計算フィールドでは、演算子や関数、正規表現などを使用して、数値や日付、日時などの計算結果を表示できます。
 
 
-各ページの指標にどれだけの数値があるのか一目瞭然です。
-
-![空のレポートを作成しておく](./images/2022/05/entry500-14.png)
-
-### GA4と連携する(2023年2月追記)
-Search Console同様、GA4 を追加します。
-
-![アナリティクスのデータを統合](./images/2022/05/entry500-31.jpg)
-
-データが追加できたら、データソースを編集（鉛筆マーク）をクリック。
-
-![データソースを編集（鉛筆マーク）をクリック](./images/2022/05/entry500-16.png)
-
-#### データの結合・スプシのURLと値が一致しないので専用のフィールドを作る
-データの結合するためのGA4のディメンションには `ページパス + クエリ文字列またはスクリーン` もしくは `ページの完全な URL` を使います。
-
-GA4では `ページパス + クエリ文字列またはスクリーン` もしくは `ページの完全な URL` は **他のURLに関するデータと一致しません**。
-
-```js
-// ページパス + クエリ文字列またはスクリーン クラス
-/blogs/entry500/
-
-// ページの完全な URL
-ginneko-atelier.com/blogs/entry500/
-
-// スプシ
-https://ginneko-atelier.com/blogs/entry500/
+ディメンションにリンク付きの文字を追加したい時は `HYPERLINK` を使います。
+```SQL:title=HYPERLINK関数
+HYPERLINK(リンク, テキスト)
 ```
-そこでスプシやExcelでおなじみの *CONCAT関数* を使ってフィールドを作成し、一致する *URL* を作成します。
+リンク付きタイトルをディメンションに追加します。
 
-![フィールド](./images/2022/05/entry500-19.png)
+![Looker Studio リンク付きタイトルをディメンション追加](./images/2022/05/entry500-14.jpg)
 
-```js
-CONTAT("https://", ページの完全な URL)
-// もしくは
-CONTAT("https://ginneko-atelier.com", ページパス + クエリ文字列またはスクリーン)
+計算フィールドを「リンク付きタイトル」と名付けました。このケースだと、コードは以下のようになります。
+```SQL:title=リンクつきタイトル
+HYPERLINK(URL, タイトル)
 ```
-フィールド名をURLなどとし、ディメンションに追加し、データを結合します。
+ちゃんとデータが取り込めている場合は、グリーンにハイライトされます。
+![Looker Studio リンク付きタイトルをディメンション追加](./images/2022/05/entry500-15.jpg)
 
-![フィールド名をURLなどとし、ディメンションに追加し、データを結合します](./images/2022/05/entry500-33.jpg)
-
-#### 指標の設定
-
-GA4の指標を追加します。
-![GA4の指標](./images/2022/05/entry500-35.jpg)
-
-サーチコンソールと連携して主に行いたいのはランディングページの改善なので、アナリティクスでは以下を指標として選びます。
-
-* ランディングページのPV
-* 直帰率
-
-残念ながら、直帰率もランディングページのPVも Looker Studio で指標として直接引っ張ってこれないのでフィールドやフィルターで割り出します。
-
-*ランディングページのPVのみカウント*
-
-GA4では、PV数などはイベントとしてカウントされます。
-
-ランディングページのPV数をカウントするためには、session_startというイベントを利用します。このイベントはセッションが始まったときのみにカウントされるイベントなのでランディングページのPV数を数えることができます。今回は結合元のデータまるごとフィルターを使って絞り込みます。
-
-![GA4では、PV数もイベントなのでフィルターを使って絞り込み](./images/2022/05/entry500-34.jpg)
-
-これでイベント数が *ランディングページのPV* になるので名前をPVなどに変更しておきます。
-
-<div class="box">
-一致条件 : <em>イベント名　=(一致)　session_start</em>
-</div>
-
-*直帰率のフィールド*
-
-直帰率はエンゲージメント率を利用して作成します。
-
-エンゲージメント率は直帰率の真逆の数字なので `1-エンゲージメント率` で直帰率が割り出せます。フィールドを使って出力します。
-
-![フィールド名をURLなどとし、ディメンションに追加し、データを結合します](./images/2022/05/entry500-32.jpg)
-
-```js
-1-エンゲージメント率
-```
-
-
-### ユニバーサルアナリティクス と連携方法（サポート終了後は削除予定）
-Google アナリティクス のデータ追加方法も明記しておきます。
-![アナリティクスのデータを統合](./images/2022/05/entry500-17.png)
-
-#### スプシのURLとアナリティクスのランディングページの値が一致しないので専用のフィールドを作る
-アナリティクスのディメンションには*ランディングページ*を使います。
-```js
-// アナリティクス
-/blogs/entry500/
-// 他のデータの値
-https://ginneko-atelier.com/blogs/entry500/
-```
-```js
-CONTAT("https://ginneko-atelier.com/", ランディング ページ)
-```
-
-#### Google アナリティクス と結合の設定と指標の設定
-結合の設定（Confiture join）で左外部結合、表1（スプシ）は*URL*、表3（アナリティクス）は*Perfect URL*のフィールドを選択。
-
-必要なアナリティクスの指標を追加します。
-
-## 取得日時をコントロールする
-日時を設定します。すべてのデータが一度に設定できたほうが便利なので、コントロールを使った方法をご紹介します。
-
-上部メニューから*コントロールの追加*をクリックし*期間設定*を選択します。
-
-![コントロールの追加](./images/2022/05/entry500-24.png)
-
-表の位置を調整して、表の上にコントロールを設置します。期間を選んでおきます。
-
-![表の上にコントロールを設置](./images/2022/05/entry500-25.png)
-
-表のデフォルトの日付範囲を自動にしておきます。
-
-![表のデフォルトの日付範囲を自動](./images/2022/05/entry500-26.png)
-
-これでコントロールから日時を集計できるようになりました！
-
-## 統合したデータに出力したいディメンション、指標を設定し表にする
-
-以下の取得するデータをセットしただけなので、実際に出力する表に必要なデータを設定していきます。
-
-![データの統合の全体](./images/2022/05/entry500-22.png)
-
-データの統合を保存して閉じ、実際の右側のパネルから指標とディメンションを設定します。
-
-![統合したデータに出力したいディメンション、指標を設定し表にする](./images/2022/05/entry500-23.png)
-
-指標を追加するとおそらく右側のアイコンがデフォルトでSUM（合計値）と表示されているので必要に応じてAVR（平均値）に切り替えます。
-
-|ディメンション|
-|-|
-|URL（表1）|
-|TITLE（表1）|
-|指標|周囲系方式|
-|-|-|
-|Impressions（表示回数）|SUM|
-|URL Clicks(クリック数)|SUM|
-|URL CTR（クリック率）|AVR|
-|Avarage Position（掲載平均順位）|AVR|
-|PV数（イベント数）|SUM|
-|直帰率|AVR|
-
-<small>※ SUMは合計、AVRは平均です。</small>
-
-ヒートマップ付きデータ表にすると、データの統合の全体はこんな感じになります。
-
-![データの統合の全体](./images/2022/05/entry500-23-1.png)
-
-### リライト記事をフィールドを使って分類する（2023/02追記）
-
-![データスタジオ](./images/2021/03/entry444-3.png)
-
-リライトする記事を条件ごと分類できるようにします。[【ブログのSEO対策】リライト記事の選び方](/blogs/entry444/)でリライト記事の選び方を紹介しました。せっかくなので、この記事の条件に沿って分類しできるようにします。
-
-予めスプシに *公開日(date)* と *更新日(mod_date)* も追加しておきます。
-
-データは公開して1ヶ月間以上立ったもののみで対象、期間も1ヶ月単位などという感じで固定しておくことをおすすめします。
-
-|アクション|指標|
-|-|-|
-|リライト（フェーズ1）|公開3ヶ月以上インプレッション数月間100以下|
-|リライト（フェーズ2）|順位平均20位以下|
-|リライト（フェーズ3）|順位平均11 ~ 20位でクリック率平均3%以下|
-|リライト（フェーズ4）|直帰率が80%以上|
-|noindexもしくは削除|公開半年以上経ったのにimpression10以下/ページビュー10以下|
-|-|ページビュー300以上|
-
-<card id="/blogs/entry444/"></card>
-<div class="box">
-<em>統合したデータのスプシのディメンションにも、 date と mod_date を追加しておきます。</em>
-</div>
-
-まずは記事のフェーズの登録です。ディメンションにフィールドを追加します。
-
-![ディメンションにフィールドを追加](./images/2022/05/entry500-29.png)
-
-フィールドにフェーズという計算式を追加します。
-
-![フィールドに計算式を追加](./images/2022/05/entry500-30.png)
-
-<small>※ スクショは多少値が違います。操作方法のみ参考にしてください。</small>
-
-Looker Studioでの条件式の書き方です。CASE文を使って分岐します。
-
-```sql
+経過日数は以下のようにCASEを使って条件分岐して計算する必要があります。
+```SQL:title=CASE‐WHEN
 CASE
-WHEN 条件 THEN 値
-ELSE デフォ値
+WHEN 条件 THEN 出力結果
+ELSE 出力結果
 END
 ```
-まとめて書くとこんな感じになります。
+メンテ日がNULLで公開日が90日以上だった場合は公開日からの経過日を出力し、そうじゃなかった場合はメンテ日から90日経ったものを出力します。
 
-```sql:title=計算式
+上記2つにも該当しない場合は 0 出力します。
+
+出力する値の型（数字→文字列）が変わるとエラーを吐くので、今回は 90 日を経過していないものを 0 としました。*指標* に追加します。
+
+```SQL:title=経過（90日以上経過）
 CASE
-WHEN Impressions IS NULL AND PV IS NULL AND DATE_DIFF(TODAY("Asia/Tokyo"),date) > 180 THEN "noindex"
-WHEN Impressions < 10 AND PV < 5 AND DATE_DIFF(TODAY("Asia/Tokyo"),date) > 180 THEN "noindex"
-WHEN Impressions < 10 AND PV IS NULL AND DATE_DIFF(TODAY("Asia/Tokyo"),date) > 180 THEN "noindex"
-WHEN Impressions IS NULL AND PV < 5 AND DATE_DIFF(TODAY("Asia/Tokyo"),date) > 180 THEN "noindex"
-WHEN PV > 300 THEN "5"
-WHEN Impressions < 300 AND Impressions > 50 AND DATE_DIFF(TODAY("Asia/Tokyo"),date) > 90 THEN "1"
-WHEN Impressions > 300 AND Average Position < 20 AND Average Position > 50 THEN "2"
-WHEN Average Position > 10  AND Average Position < 20 THEN "3"
-WHEN 直帰率 > 0.9 THEN "4"
-ELSE "5"
+WHEN メンテ日 IS NULL AND DATE_DIFF(TODAY("Asia/Tokyo"), 公開日) > 90 THEN DATE_DIFF(TODAY("Asia/Tokyo"), 公開日)
+WHEN DATE_DIFF(TODAY("Asia/Tokyo"), メンテ日) > 90 THEN DATE_DIFF(TODAY("Asia/Tokyo"), メンテ日)
+ELSE 0
 END
 ```
-いくつか関数をご紹介します。
-```sql:title=今日を取得
-TODAY("Asia/Tokyo")
-```
-```sql:title=値がnull
-〇〇 IS NULL
-```
-```sql:title=日の差分取得
-DATE_DIFF(終了日,開始日)
-```
-### 記事の更新があった記事をわかりやすくしたい
-記事の更新があった場合のみ値を表示したい時です。そのまま以下のように出力すればOKです。
 
-```sql:title=日の差分取得
+ここまでできたら、一度データソースの編集を閉じグラフのディメンションと指標を編集していきます。
+
+| ディメンション | 指標 |
+| ---- | ---- |
+| リンク付きタイトル, ジャンル | 経過日数(90日以上) |
+
+![Looker Studio リンク付きタイトルをディメンション追加](./images/2022/05/entry500-17.jpg)
+表ヒートマップにするとこんな感じで出力されます。
+![Looker Studio リンク付きタイトルをディメンション追加](./images/2022/05/entry500-18.jpg)
+
+## さらにスプシデータに Search Console を統合する
+このスプシデータに、Search Console のデータを統合します。データを追加します。
+
+![Looker Studio Search Console のデータを統合](./images/2022/05/entry500-5.png)
+対象のドメイン、URLのインプレッション、Webを選びます。<br>
+スクショでは切れてますが、右下に *追加ボタン* があるのでクリック。
+![Looker Studio Search Console のデータを統合](./images/2022/05/entry500-9.png)
+
+パラメーター（URLの末尾の `?xxx=aaaa` みたいなやつ）やハッシュ（アンカーリンクなどにつくURLの末尾の`#xxx`）を排除したいので、「ランディングページの正規化URL」という計算フィールドを作成します。
+
+```SQL:title=ランディングページの正規化URL
 CASE
-WHEN MOD_DATE IS NULL THEN ''
-ELSE MOD_DATE
+WHEN ENDS_WITH(REGEXP_REPLACE(Landing Page, "[?#].*$", ""), "/") THEN REGEXP_REPLACE(Landing Page, "[?#].*$", "")
+ELSE CONCAT(REGEXP_REPLACE(Landing Page, "[?#].*$", ""), "/")
 END
 ```
-IS NULL が効かない場合は = 'null' に置き換えてください。
+分析したい Search Console のデータはスプシに書き出したブログ記事だけなので左外部結合をします。結合条件は スプシの URL Search Console の ランディングページの正規化URL を選択します。
 
-### 公開もしくは更新から30日以上立った記事のみに経過日数を表示したい
+![Looker Studio 結合条件は スプシの URL Search Console の ランディングページの正規化URL を選択](./images/2022/05/entry500-20.jpg)
 
-経過日数を表示するためのフィールドです。30日は様子を見たいので、公開ないしは更新から30日以上たった記事のみに経過日数を表示させます。
+後ほど日付で絞り込めるようにしたいので、ディメンションに Date を追加します。インプレッションなど出力したいデータを追加します。
 
-```sql:title=日の差分取得
-CASE
-WHEN MOD_DATE = 'null' AND DATE_DIFF(TODAY("Asia/Tokyo"), date) > 30 THEN  CONCAT(DATE_DIFF(TODAY("Asia/Tokyo"), date), '日経過')
-WHEN DATE_DIFF(TODAY("Asia/Tokyo"), cast(mod_date AS DATE)) > 30 THEN  CONCAT(DATE_DIFF(TODAY("Asia/Tokyo"), cast(mod_date AS DATE)), '日経過')
-ELSE '-'
-END
+| ディメンション | 指標 |
+| ---- | ---- |
+| ランディングページの正規化URL, Date | URL Clicks, Impressions, Average Position, URL Clicks |
+
+![Looker Studio Search Console のインプレッションなど出力したいデータを追加](./images/2022/05/entry500-19.jpg)
+
+保存。
+
+### 出力する表でデータを加工
+結合した Search Console のデータをデータを持っていない場合は Null が返ってくるので、グラフ側の計算フィールドを使って 0 出力するようにします。
+
+指標から計算フィールドを追加します。
+
+Impressions を出力するために、「インプ数」という計算フィールドを作成します。
+
+```SQL:title=インプ数
+IFNULL(Impressions,0)
 ```
-mod_date は更新されたことがない記事がある場合、ブランクデータ（null）として取り扱われてしまいます。その場合は、mod_dateのタイプは文字列と認識されています。
+ＣLICK数を作。
+```SQL:title=CLICK数
+IFNULL(Url Clicks,0)
+```
+クリック率は累計されると困るので平均値で出力します。
 
-CAST関数で日付にタイプを変換して使います。
-
-```sql
-cast(mod_date AS DATE)
+```SQL:title=クリック率
+IFNULL(URL CTR,0)
 ```
 
-これでリライトすべき記事や優先度がわかりやすくなります。
+![Looker Studio Search Console クリック率は累計されると困るので平均値で出力](./images/2022/05/entry500-21.jpg)
 
-![データスタジオ](./images/2021/03/entry444-3.png)
+順位も同様に累計されると困るので平均値で出力。
+```SQL:title=順位
+IFNULL(Average Position,0)
+```
 
-## 作成したデータを期間で区切ってスプなどに落とし、作業ログを作る
-どのようにリライトしたかなどログを残しておきたいですよね？ログを記録するように作成したデータをさらにスプシに変換します。
+### コントロールを追加して日付で絞り込めるようにする
+日付ごとに絞り込めるように、コントロールの期間設定を追加します。
 
-表の右上にケバブメニュー（縦3つのドット）があるのでそちらをクリックしエクスポートを選びます。
+![Looker Studio Search Console 日付ごとに絞り込めるように、コントロールの期間設定を追加](./images/2022/05/entry500-22.jpg)
 
-![表の右上にケバブメニュー（縦3つのドット）があるのでそちらをクリックしエクスポート](./images/2022/05/entry500-27.png)
+今回はデフォルトの数値を、過去30日としておきます。
+![Looker Studio Search Console 今回はデフォルトの数値を、過去30日としておきます](./images/2022/05/entry500-23.jpg)
 
-スプレッドシートにチェックを入れエクスポートをクリックします。もちろん、ExcelやCSVでエクスポートもできます。
-
-![スプレッドシートにチェックを入れエクスポート](./images/2022/05/entry500-28.png)
-
-これで、いつどんなリライトをしたかログを残しておきつつ、効果測定が行なえます。
+これで期間ごとに値が絞り込めるようになりますね！！！
+![Looker Studio Search Console 日付ごとに絞り込めるように、コントロールの期間設定を追加](./images/2022/05/entry500-24.jpg)
 
 ## まとめ・Looker Studio を使って各種データを統合すると全貌が把握できる
 Looker Studio でデータを統合すると、総合的に見てどの記事を分析すればいいかなど把握しやすくなります。
 
-今回この表を作るのも結構手探りで作りましたが、まだまだ紹介できていない機能があるのでまた記事にまとめられたらなーと思っています。
+まだまだ紹介できていない機能があるのでまた記事にまとめられたらなーと思っています。
 
 この記事が皆さんのWeb解析ライフの一助となれば幸いです。
 
 最後までお読みいただきありがとうございました。
-
-<prof></prof>
