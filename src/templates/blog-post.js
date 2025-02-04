@@ -191,7 +191,7 @@ export const Head = ({ data, location }) => {
     title: post.frontmatter.title,
     description: post.frontmatter.description || post.excerpt,
     date: post.frontmatter.date.replace(/\./g, "-"),
-    modified: post.frontmatter.modifieddate.replace(/\./g, "-"),
+    modified: post.frontmatter.modifieddate ? post.frontmatter.modifieddate.replace(/\./g, "-") : '',
     location: location,
     ogp: ogpSrc,
     faq: post.frontmatter.faq ? post.frontmatter.faq : "",
