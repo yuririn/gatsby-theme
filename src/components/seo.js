@@ -133,7 +133,7 @@ const Seo = ({data, children}) => {
   if(!isAd) jsonLdConfigs = [...jsonLdConfigs,siteNavigation]
 
   if ( data.type === "blog" || data.type === "ad") {
-      console.log(data.modified);
+    //   console.log(data.modified);
     jsonLdConfigs.push({
       "@context": "http://schema.org",
       "@type": "BlogPosting",
