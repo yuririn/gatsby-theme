@@ -1,5 +1,5 @@
 ---
-title: パンくずリストの構造化データ（json+ld）の書き方【2023年盤】
+title: パンくずリストの構造化データ（jsonLD）の書き方【2023年盤】
 date: 2022-04-21
 modifieddate: 2023-01-23
 pagetype: blog

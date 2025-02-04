@@ -1,5 +1,5 @@
 ---
-title: Looker Studio で GAS で出力したサイトマップ Search Console を統合する
+title: Looker Studio で GAS で出力したサイトマップを Search Console を統合する
 date: 2022-05-21
 modifieddate: 2025-02-05
 pagetype: blog
@@ -24,16 +24,15 @@ description: Looker Studio (データポータル)で Search Console のイン�
 ## GAS で Web サイトの sitemap.xml を元に自動でサイト情報を出力する
 サイトの状態を調べるために、Google のクローラーにサイト構造を伝えるために使っている sitemap.xml を利用します。GAS を使って Web サイトの構造を一気に取得します。
 
-
-
-ウチのブログは整理しまくっているのであってもせいぜい200記事くらいしかありません。そんなもんじゃないよっていう場合は、一回の GAS で取得できますが、記事の多いサイトは途中で処理が止まる可能性があります。なので処理を分けたほうがいいかもしれません。
-
 > Google Apps Script（GAS）とは、Googleが開発し、提供しているプログラミング言語のことです。 Webブラウザ上で動作する「JavaScript」をベースに開発された言語であり、JavaScriptを日々学んでいる方は比較的容易に習得できるようになっています。
 
-今回は細かいことは省きます。GAS に関しての記事を参考にしてください。
+ウチのブログは整理しまくっているのであってもせいぜい200記事くらいしかありません。なので一回の GAS で取得できますが、記事の多いサイトは途中で処理が止まる可能性があります。そういう場合は、処理を分けたほうがいいかもしれません。
+
+今回は GAS の始め方など、細かいことは省きます。GAS に関しての記事を参考にしてください。
 
 <card id="/blogs/entry470/"><card>
 
+プロジェクト名などを、GetSitemap 等としておきます。
 コードの大まかな概要です。
 ```js:title=GAS
 function fetchSitemap() {
@@ -69,7 +68,7 @@ function fetchPageDetails(url) {
 > UrlFetchAppは、Google Apps Script（GAS）で提供される組み込みのサービスで、ウェブ上のデータを取得したり送信したりするためのHTTPリクエストを行うために使用されます。 APIとの通信やウェブスクレイピングにおいて、データの取得や更新、処理を簡単に行うことができます。
 
 このブログの構造はこんな感じ。サイトによって構造が違うので、適宜取得したい HTML を変えると良いと思います。
-正確な構造化データがあるのであれば、そこから取得したほうがいいかもしれませんね。
+正確な構造化データがあるのであれば、そこから取得できます（[取得方法](#構造化データが設置されている場合)）。
 
 ```HTML:title=HTML
 <html>
@@ -181,6 +180,64 @@ function fetchSitemap() {
 
 タイマーの設定に関しては[GASのトリガーの設定](/blogs/entry504/#メールで通知するgasのトリガーの設定)をご確認ください。
 
+### 構造化データが設置されている場合
+構造化データが設置されている場合は、いちいちタグから解析するよりも構造化データを解析したほうが正確ですし、設置されている構造化データごとの解析も可能です。
+
+```js:title=GAS
+function fetchPageDetails(url) {
+  try {
+    var response = UrlFetchApp.fetch(url);
+    var html = response.getContentText();
+
+    // headタグ内の<title>を取得
+    var headContent = html.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
+    var title = 'タイトルを取得できませんでした';
+    if (headContent) {
+      var titleMatch = headContent[1].match(/<title[^>]*>(.*?)<\/title>/i);
+      if (titleMatch) {
+        title = titleMatch[1];
+      }
+    }
+
+    var publishDate = '';
+    var maintenanceDate = '';
+    var genre = '';
+    var hasFAQPage = false;
+    var structuredDataMatch = html.match(/<script type="application\/ld\+json" data-gatsby-head="true">(.*?)<\/script>/s);
+    var structuredStringData = structuredDataMatch ? structuredDataMatch[1] : [];
+    structuredjsonData = JSON.parse(structuredStringData)
+    structuredjsonData.forEach((data)=>{
+      if(data['@type'] === 'BlogPosting') {
+        title = data.headline;
+        publishDate = data.datePublished;
+        maintenanceDate = data.maintenanceDate;
+      }
+      // 3番目のパンくずが記事のジャンル
+      if(data['@type'] === 'BreadcrumbList') {
+        genre = data['itemListElement'][2]['item']['name'];
+      }
+      // FAQの構造化データを持っていた場合
+      if(data['@type'] === 'FAQPage') {
+        hasFAQPage = true;
+      }
+    })
+    return {
+      title: title,
+      publishDate: publishDate,
+      maintenanceDate: maintenanceDate,
+      genre: genre,
+      hasFAQPage: hasFAQPage
+    };
+  } catch (e) {
+    return 'エラーが発生しました: ' + e.message;
+  }
+}
+```
+
+例えば、FAQの構造化データを持っているページとそうでないページなどを比べることができます。
+
+<card id="/blogs/entry524/"></card>
+
 ## Looker Studioにアクセス、無料で利用するでスタート
 [Looker Studio](https://marketingplatform.google.com/intl/ja/about/data-studio/) にアクセスし、無料で利用するをクリックします。
 
@@ -208,7 +265,7 @@ function fetchSitemap() {
 ![Looker Studio先頭行をヘッダーとして使用するにチェックをし、右下の追加ボタンをクリック](./images/2022/05/entry500-6.png)
 
 ### グラフを追加し、ディメンション設定
-試しに、URLとタイトルを表示してみます。まずは、適当にグラフを追加してみます。
+試しに、URLとタイトルを表示してみます。まずは、適当にグラフを追加してみます。ここでは表の一番右「ヒートマップ付きデータ表」を選択しました。
 
 ![Looker Studio 適当にグラフを追加](./images/2022/05/entry500-11.jpg)
 
@@ -228,7 +285,8 @@ function fetchSitemap() {
 > 計算フィールドとは、データソース内の既存のフィールドを基に、計算式を設定して新しいフィールドを作成する機能です。計算フィールドでは、演算子や関数、正規表現などを使用して、数値や日付、日時などの計算結果を表示できます。
 
 
-ディメンションにリンク付きの文字を追加したい時は `HYPERLINK` を使います。
+ディメンションにリンク付きの文字を追加したい時は `HYPERLINK` を使います。Looker Studio からページを直接飛べるようにします。
+
 ```SQL:title=HYPERLINK関数
 HYPERLINK(リンク, テキスト)
 ```
@@ -243,16 +301,19 @@ HYPERLINK(URL, タイトル)
 ちゃんとデータが取り込めている場合は、グリーンにハイライトされます。
 ![Looker Studio リンク付きタイトルをディメンション追加](./images/2022/05/entry500-15.jpg)
 
-経過日数は以下のようにCASEを使って条件分岐して計算する必要があります。
+経過日数は以下のように `CASE - WHEN` を使って条件分岐して計算する必要があります。
 ```SQL:title=CASE‐WHEN
 CASE
 WHEN 条件 THEN 出力結果
 ELSE 出力結果
 END
 ```
-メンテ日がNULLで公開日が90日以上だった場合は公開日からの経過日を出力し、そうじゃなかった場合はメンテ日から90日経ったものを出力します。
+| 条件 | 処理 |
+| - | - |
+| メンテ日がNULLで公開日が90日以上 | 公開日からの経過日を出力 |
+| メンテ日が90日以上 | メンテ日から90日経ったものを出力 |
+|その他 | 0 出力　|
 
-上記2つにも該当しない場合は 0 出力します。
 
 出力する値の型（数字→文字列）が変わるとエラーを吐くので、今回は 90 日を経過していないものを 0 としました。*指標* に追加します。
 
@@ -298,14 +359,14 @@ END
 
 | ディメンション | 指標 |
 | ---- | ---- |
-| ランディングページの正規化URL, Date | URL Clicks, Impressions, Average Position, URL Clicks |
+| ランディングページの正規化URL, Date | URL Clicks, Impressions, Average Position, URL CTR |
 
 ![Looker Studio Search Console のインプレッションなど出力したいデータを追加](./images/2022/05/entry500-19.jpg)
 
 保存。
 
 ### 出力する表でデータを加工
-結合した Search Console のデータをデータを持っていない場合は Null が返ってくるので、グラフ側の計算フィールドを使って 0 出力するようにします。
+結合した Search Console のデータを持っていない場合は Null が返ってくるので、グラフ側の計算フィールドを使って 0 出力するようにします。
 
 指標から計算フィールドを追加します。
 
@@ -341,6 +402,41 @@ IFNULL(Average Position,0)
 
 これで期間ごとに値が絞り込めるようになりますね！！！
 ![Looker Studio Search Console 日付ごとに絞り込めるように、コントロールの期間設定を追加](./images/2022/05/entry500-24.jpg)
+
+## テーマ変更
+味気ないのでテーマを変更します。
+![Looker Studio テーマを変更します](./images/2022/05/entry500-25.jpg)
+
+## スコアカードを追加して全体のデータを追加
+![Looker Studio スコアカードを追加](./images/2022/05/entry500-26.jpg)
+
+スコアカードで更に全体像がわかりやすくします。
+
+| 指標 | 名前 | 集計方法 |
+| ---- | ---- | ---- |
+| Impressions | 総インプレッション | 合計 |
+| URL Clicks | 総クリック数 | 合計 |
+| URL CTR | CTR | 平均値 |
+| Average Position | 平均順位 | 平均値 |
+
+スパークラインをDATEに設定します。
+![Looker Studio スパークラインをDATEに設定](./images/2022/05/entry500-29.jpg)
+
+小さいですが特に総クリック数に波があることが分かります。私のブログは土日あまり読まれることがないので4つほど谷ができています。
+![Looker Studio スパークラインをDATEに設定](./images/2022/05/entry500-28.jpg)
+
+## ページタイトルでの検索できるようにする
+タイトルで記事の指標を絞り込めるようにします。コントロールからプルダウンリストを追加します。「ブログとsearch console統合」のディメンションにタイトルがない場合は先に追加しておきます。
+
+![Looker Studio コントロールからプルダウンリストを追加](./images/2022/05/entry500-30.jpg)
+
+「記事」という名前で指標はImpressionsあたりにセットしておきます。
+
+![Looker Studio スパークラインをDATEに設定](./images/2022/05/entry500-31.jpg)
+
+こうすることで、記事をタイトルで検索し絞り込めるようになります。
+![Looker Studio スパークラインをDATEに設定](./images/2022/05/entry500-32.jpg)
+
 
 ## まとめ・Looker Studio を使って各種データを統合すると全貌が把握できる
 Looker Studio でデータを統合すると、総合的に見てどの記事を分析すればいいかなど把握しやすくなります。
