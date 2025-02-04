@@ -188,17 +188,7 @@ function fetchPageDetails(url) {
   try {
     var response = UrlFetchApp.fetch(url);
     var html = response.getContentText();
-
-    // headタグ内の<title>を取得
-    var headContent = html.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
     var title = 'タイトルを取得できませんでした';
-    if (headContent) {
-      var titleMatch = headContent[1].match(/<title[^>]*>(.*?)<\/title>/i);
-      if (titleMatch) {
-        title = titleMatch[1];
-      }
-    }
-
     var publishDate = '';
     var maintenanceDate = '';
     var genre = '';
@@ -210,11 +200,12 @@ function fetchPageDetails(url) {
       if(data['@type'] === 'BlogPosting') {
         title = data.headline;
         publishDate = data.datePublished;
-        maintenanceDate = data.maintenanceDate;
+        maintenanceDate = data.dateModified;
+        
       }
-      // 3番目のパンくずが記事のジャンル
+      // 2番目のパンくずが記事のジャンル
       if(data['@type'] === 'BreadcrumbList') {
-        genre = data['itemListElement'][2]['item']['name'];
+        genre = data['itemListElement'][1]['item']['name'];
       }
       // FAQの構造化データを持っていた場合
       if(data['@type'] === 'FAQPage') {
@@ -231,6 +222,19 @@ function fetchPageDetails(url) {
   } catch (e) {
     return 'エラーが発生しました: ' + e.message;
   }
+}
+```
+ヘッダーとフッターも足します。
+```js:title=GAS
+function fetchSitemap() {
+  ...
+  sheet.getRange(1, 6).setValue('FAQ');
+  ...
+  urls.forEach(function(urlElement) {
+    ...
+    sheet.getRange(row, 6).setValue(getPageInfo.hasFAQPage);
+    ...
+  })
 }
 ```
 
@@ -351,7 +355,10 @@ WHEN ENDS_WITH(REGEXP_REPLACE(Landing Page, "[?#].*$", ""), "/") THEN REGEXP_REP
 ELSE CONCAT(REGEXP_REPLACE(Landing Page, "[?#].*$", ""), "/")
 END
 ```
-分析したい Search Console のデータはスプシに書き出したブログ記事だけなので左外部結合をします。結合条件は スプシの URL Search Console の ランディングページの正規化URL を選択します。
+分析したい Search Console のデータはスプシに書き出したブログ記事と一致した、検索に引っかかっている記事だけなので *内部結合* で結合を選択します。<br>
+スプシと Search Console から一致しないものはすべて排除します。
+
+結合条件は スプシの URL Search Console の ランディングページの正規化URL を選択します。
 
 ![Looker Studio 結合条件は スプシの URL Search Console の ランディングページの正規化URL を選択](./images/2022/05/entry500-20.jpg)
 
@@ -365,32 +372,11 @@ END
 
 保存。
 
-### 出力する表でデータを加工
-結合した Search Console のデータを持っていない場合は Null が返ってくるので、グラフ側の計算フィールドを使って 0 出力するようにします。
+### 出力する表でデータをセット
+結合した Search Console のデータを持っていない場合は Null が返ってくるのでその場合は空をセットします。
 
-指標から計算フィールドを追加します。
+![Looker Studio Search Console クリック率は累計されると困るので平均値で出力](./images/2022/05/entry500-35.jpg)
 
-Impressions を出力するために、「インプ数」という計算フィールドを作成します。
-
-```SQL:title=インプ数
-IFNULL(Impressions,0)
-```
-ＣLICK数を作。
-```SQL:title=CLICK数
-IFNULL(Url Clicks,0)
-```
-クリック率は累計されると困るので平均値で出力します。
-
-```SQL:title=クリック率
-IFNULL(URL CTR,0)
-```
-
-![Looker Studio Search Console クリック率は累計されると困るので平均値で出力](./images/2022/05/entry500-21.jpg)
-
-順位も同様に累計されると困るので平均値で出力。
-```SQL:title=順位
-IFNULL(Average Position,0)
-```
 
 ### コントロールを追加して日付で絞り込めるようにする
 日付ごとに絞り込めるように、コントロールの期間設定を追加します。
@@ -419,11 +405,9 @@ IFNULL(Average Position,0)
 | URL CTR | CTR | 平均値 |
 | Average Position | 平均順位 | 平均値 |
 
-スパークラインをDATEに設定します。
-![Looker Studio スパークラインをDATEに設定](./images/2022/05/entry500-29.jpg)
-
-小さいですが特に総クリック数に波があることが分かります。私のブログは土日あまり読まれることがないので4つほど谷ができています。
 ![Looker Studio スパークラインをDATEに設定](./images/2022/05/entry500-28.jpg)
+
+スクショのようにスパークラインをDATEに設定すると、lookerstudioを再読込するとエラーで表示されなることがあるので、折れ線グラフなどを設置することをおすすめします。
 
 ## ページタイトルでの検索できるようにする
 タイトルで記事の指標を絞り込めるようにします。コントロールからプルダウンリストを追加します。「ブログとsearch console統合」のディメンションにタイトルがない場合は先に追加しておきます。
