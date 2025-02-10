@@ -14,4 +14,28 @@
         @extend .l-container;
         max-width: 800px;
     }
+    &--blog {
+        &__aside {
+            position: relative;
+            &__inner {
+
+                @include utils.mq(md){
+                    position: sticky;
+                    right: 0;
+                    top: 68px;
+                }
+            }
+        }
+        @include utils.mq(md){
+            position: relative;
+            display: grid;
+            gap: 32px;
+            grid-template-columns: 1fr 300px;
+        }
+        @include utils.mq(lg){
+            gap: 56px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+        }
+    }
 }

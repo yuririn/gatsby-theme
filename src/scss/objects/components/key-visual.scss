@@ -14,8 +14,14 @@
     padding: 16px;
     overflow: hidden;
     min-height: 500px;
+
     @include utils.mq(md){
         height: 70dvh;
+        padding: 32px;
+    }
+    @include utils.mq(lg){
+        padding: 56px;
+
     }
     p {
         margin: 0;

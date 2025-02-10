@@ -25,6 +25,7 @@
     --font-xs: 1.4rem;
     --font-lg: 2.4rem;
     --font-xl: 3.2rem;
+    --font-xxl: 5.6rem;
     scroll-padding-top: 60px;
     --font-alphabet:  "Montserrat", serif;
 }
@@ -35,6 +36,8 @@ html {
 }
 body {
     font-size: var(--font-md);
+    color: var(--font-color);
+    background: var(--background);
 }
 * {
     box-sizing: border-box;

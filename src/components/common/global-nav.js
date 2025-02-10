@@ -18,7 +18,7 @@ const Nav = ()=>{
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><span>Blog</span>
-                    <ul class="c-nav__child">
+                    <ul className="c-nav__child">
                         <li><a href="/blogs/">すべて</a></li>
                         <li><a href="/blogs/web-developer/">ウェブ制作</a></li>
                         <li><a href="/blogs/cms/">CMS</a></li>

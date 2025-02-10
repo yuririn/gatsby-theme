@@ -6,14 +6,22 @@
         text-decoration: none;
         letter-spacing: .1em;
         font-weight: bold;
-        &:not(:has(+ .c-nav__child)) {
-            font-family: var( --font-alphabet);
-        }
+
+        
     }
+    & > ul >li > a,
+    & > ul >li > span {
+            font-family: var( --font-alphabet);
+    }
+    &__child a {
+        font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", メイリオ, sans-serif;
+    }
+
     & > ul {
         margin: 0;
         list-style: none;
         display: flex;
+        
     }
     // SP
     @include utils.mqd(md){

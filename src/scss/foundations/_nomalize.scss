@@ -341,3 +341,12 @@ summary {
 [hidden] {
   display: none;
 }
+ul, ol {
+    list-style: none;
+    padding-left: 0;
+}
+h2,h1,
+h4,h3,
+p {
+    margin: 0;
+}

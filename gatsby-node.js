@@ -16,6 +16,8 @@ const blogPost = path.resolve(`./src/templates/blog-post.js`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
+  const blogList = path.resolve(`./src/templates/blog-post.js`)
+
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
     {
@@ -24,6 +26,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id
           fields {
             slug
+          }
+          frontmatter {
+            tags
+            cateId
+            hero
+            pageType
+            noindex
+            faq
           }
         }
       }
@@ -45,17 +55,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+    const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog")
 
+    blogPosts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : blogPosts[index - 1].id
+      const nextPostId =
+        index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
       createPage({
-        path: post.fields.slug,
-        component: blogPost,
+        path: `/blogs/${post.fields.slug}`,
+        component: blogList,
         context: {
           id: post.id,
           previousPostId,
           nextPostId,
+          hero: post.frontmatter.hero
+            ? post.frontmatter.hero
+            : "common/dummy.png",
         },
       })
     })
@@ -69,15 +84,41 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode, basePath: 'content/posts' })
+
+    console.log('Generated slug:', value);
 
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1/'),
     })
   }
 }
+
+// const { exec } = require('child_process');
+
+// /**
+//  * @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']}
+//  */
+// exports.onCreateWebpackConfig = async ({ actions }) => {
+//   await new Promise((resolve, reject) => {
+//     exec('npm run gulp', (err, stdout, stderr) => {
+//       if (err) {
+//         console.error('Gulp task failed:', stderr);
+//         reject(err);
+//       } else {
+//         console.log('Gulp task completed successfully:', stdout);
+//         resolve();
+//       }
+//     });
+//   });
+
+//   actions.setWebpackConfig({
+//     plugins: [],
+//   });
+// };
+
 
 /**
  * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
@@ -116,6 +157,13 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
+      modifieddate: Date @dateformat
+      tags: [String]
+      pageType: String
+      cateId: String
+      hero: String
+      noindex: String
+      faq: [String]
     }
 
     type Fields {

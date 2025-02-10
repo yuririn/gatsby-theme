@@ -1,0 +1,17 @@
+
+@use './../utils';
+.l-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    @include utils.mq(md){
+        gap: 24px;
+        
+    }
+    &--pickup {
+        gap: 24px;
+        display: grid;
+        @include utils.mq(md){
+        }
+    }
+}
