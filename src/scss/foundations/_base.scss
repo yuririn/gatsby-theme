@@ -1,0 +1,63 @@
+:root {
+    --color: #335;
+    --light-color: #fff;
+    --font-color: #232a41;
+    --color-sec: #464675;
+    --color-blue: #264785;
+    --color-link: #1231b8;
+    --color-d-blue: #18347a;
+    --color-accent: #c03363;
+    --shadow: 0 0 4px rgb(0 0 0 / .3);
+    --milk: rgba(109, 15, 15, 0.9);
+    --background: #fff;
+    --filter: rgb(255 255 255 / .5);
+    --pale-gray: #eeeeee;
+    --yellow: #edef5c;
+    --header-background: rgb(255 255 255/ .5);
+    --header-color: #264785;
+    --footer-background: #264785;
+    --move-to: rgb(255 255 255/ 0.8);
+    --nav-bg: rgb(51 51 51/ .8);
+    --border-color: var(--border-color);
+    --code-bg: #131a37;
+    --font-md: 1.6rem;
+    --font-sm: 1.2rem;
+    --font-xs: 1.4rem;
+    --font-lg: 2.4rem;
+    --font-xl: 3.2rem;
+    scroll-padding-top: 60px;
+    --font-alphabet:  "Montserrat", serif;
+}
+html {
+  scroll-behavior: smooth;
+    font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", メイリオ, sans-serif;
+    font-size: 62.5%;
+}
+body {
+    font-size: var(--font-md);
+}
+* {
+    box-sizing: border-box;
+}
+body.dark {
+    --color: #fff;
+    --light-color: #18347a;
+    --font-color: #f4fffe;
+    --color-blue: #c9e9fc;
+    --color-link: #65ceff;
+    --color-d-blue: #f9fdff;
+    --code-bg: #1b2845;
+    --color-sec: #c5fff4;
+    --color-accent: #d45c84;
+    --background: rgb(21 21 21);
+    --filter: rgb(21 21 21 / .8);
+    --pale-gray: #373738;
+    --yellow: rgb(247 255 3 0.4);
+    --header-background: rgb(255 255 255 /.5);
+    --header-color: #264f85;
+    --footer-background: #264f85;
+    --move-to: rgb(255 255 255/ 0.1);
+    --nav-bg: rgb(58 58 58/ 0.95);
+    --border-color: #787878;
+}
+

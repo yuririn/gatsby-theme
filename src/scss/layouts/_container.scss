@@ -1,0 +1,17 @@
+@use "../utils";
+
+.l-container {
+    max-width: #{utils.$u-container}px;
+    padding-left: utils.$u-margin-y;
+    padding-right: utils.$u-margin-y;
+    margin-inline: auto;
+    @include utils.mq(md){
+        padding-left: utils.$u-margin-y-pc;
+        padding-right: utils.$u-margin-y-pc;
+      
+    }//media query
+    &--sm {
+        @extend .l-container;
+        max-width: 800px;
+    }
+}
