@@ -9,6 +9,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
+const blogList = path.resolve(`./src/templates/blog-list-template.js`)
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -16,12 +17,12 @@ const blogPost = path.resolve(`./src/templates/blog-post.js`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const blogList = path.resolve(`./src/templates/blog-post.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
     {
       allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+        totalCount
         nodes {
           id
           fields {
@@ -57,6 +58,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog")
+    const count = blogPosts.length;
 
     blogPosts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : blogPosts[index - 1].id
@@ -64,17 +66,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
       createPage({
         path: `/blogs/${post.fields.slug}`,
-        component: blogList,
+        component: blogPost,
         context: {
           id: post.id,
           previousPostId,
           nextPostId,
+            totalCount: count,
           hero: post.frontmatter.hero
             ? post.frontmatter.hero
             : "common/dummy.png",
         },
       })
     })
+    const postsPerPage = 12;
+    const numPages = Math.ceil(posts.length / postsPerPage);
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+            path: i === 0 ? `/blogs/` : `/blogs/${i + 1}`,
+            component: blogList,
+            context: {
+                limit: postsPerPage,
+                skip: i * postsPerPage,
+                numPages,
+                currentPage: i + 1,
+                prefix: "blogs",
+            },
+        });
+    });
   }
 }
 
@@ -86,8 +105,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode, basePath: 'content/posts' })
-
-    
 
     createNodeField({
       name: `slug`,

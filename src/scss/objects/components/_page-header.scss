@@ -1,0 +1,45 @@
+@use './../../utils';
+%blog-header {
+    background: url(/images/ganre-common.webp) center / cover no-repeat;
+    padding: 78px 16px 16px 16px;
+    text-align: center;
+    color: #fff;
+    text-shadow:0px 0px 2px rgba(0, 0, 0, 0.6) ,0px 0px 4px rgba(0, 0, 0, 0.6);
+    @include utils.mq(md){
+        
+        padding: 100px 32px 32px 32px;
+    }
+    h1 {
+        font-size: 3.2rem;
+    }
+    p {
+        font-size: 2rem;
+    }
+}
+.c-page-header {
+    @extend %blog-header;
+    &--web-developer {
+        background-image: url(/images/genre-web-developer.webp);
+        @extend %blog-header;
+    }
+    &--cms {
+        background-image: url(/images/genre-cms.webp);
+        @extend %blog-header;
+    }
+    &--seo {
+        background-image: url(/images/genre-seo.webp);
+        @extend %blog-header;
+    }
+    &--overseas-freelancing {
+        background-image: url(/images/genre-overseas-freelancing.webp);
+        @extend %blog-header;
+    }
+    &--career {
+        background-image: url(/images/genre-career.webp);
+        @extend %blog-header;
+    }
+    &--ginneko-tsuredure {
+        background-image: url(/images/genre-ginneko-tsuredure.webp);
+        @extend %blog-header;
+    }
+}

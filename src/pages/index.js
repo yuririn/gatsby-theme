@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import FirstView from "../components/firstView"
 // import Img from "../components/common/Img"
-import PostList from '../components/posts/PostList';
+import Post from '../components/posts/Post';
 import SideBar from "../components/SideBar"
 import PickUpList from "../components/posts/PickUpList"
 
@@ -22,8 +22,13 @@ const BlogIndex = ({ data, location }) => {
           <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
             <PickUpList></PickUpList>
           <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
-          <PostList posts={posts}></PostList>
-        </div>
+                  <ul className="l-card-container">{
+                    posts.map((post, key) => {
+                        return  <Post post={post} key={key}></Post>
+                        }
+                    )}
+                </ul>
+            </div>
         <SideBar></SideBar>
       </div>
     </Layout>
@@ -48,7 +53,7 @@ export const pageQuery = graphql`{
 
   allMarkdownRemark(
     sort: {frontmatter: {date: DESC}}
-    limit: 9
+    limit: 12
     filter: {frontmatter: {pageType: {eq: "blog"}}}
   ) {
     nodes {

@@ -1,12 +1,10 @@
 import * as React from "react";
 import Img from "../common/img";
 import { Link } from "gatsby"
-const PostList = ({posts}) =>{
-    return (
-        <ul className="l-card-container">
-        {posts.map((post, i) =>{
+const Post = ({post, key}) =>{
+
             return (
-                <li key={`article${i}`}>
+                <li key={`article${key}`}>
                 <article className="c-card">
                     <Link to={`/blogs/${post.fields.slug}`} className="c-card__img">
                             <Img
@@ -32,11 +30,8 @@ const PostList = ({posts}) =>{
                     </div>
                 </article>
             </li>
-        )
-
-        })}
-        </ul>
+     
     )
     
 }
-export default PostList;
+export default Post;

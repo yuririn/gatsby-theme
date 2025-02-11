@@ -40,13 +40,26 @@
         }
     }
     &--article {
+        @include utils.mqd(md){
+            display: flex;
+            flex-direction: column;
+        .c-article {
+            order: 1;
+        }
+        .c-sns-btns {
+            order: 2;
+        }
+        .l-container--blog__aside {
+            order: 3;
+        }
+    }
          @include utils.mq(md){
             justify-content: center;
             position: relative;
             display: grid;
             gap: 32px;
             margin-inline: auto;
-            grid-template-columns: minmax(0, 800px) 250px;
+            grid-template-columns: auto minmax(0, 800px) 250px;
         }
          @include utils.mq(lg){
             justify-content: center;
@@ -54,7 +67,7 @@
             display: grid;
             gap: 32px;
             margin-inline: auto;
-            grid-template-columns: minmax(0, 800px) 300px;
+            grid-template-columns:auto  minmax(0, 800px) 300px;
         
         }
          @include utils.mq(xl){
@@ -63,7 +76,7 @@
             display: grid;
             gap: 32px;
             margin-inline: auto;
-            grid-template-columns: minmax(0, 800px) 400px;
+            grid-template-columns:auto  minmax(0, 800px) 400px;
         }
 
     }

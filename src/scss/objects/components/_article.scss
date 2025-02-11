@@ -53,4 +53,24 @@
             }
         }
     }
+    &__cate {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        dt {
+            font-family: var(--font-alphabet);
+        }
+        dd {
+            margin-left: 0;
+            a {
+                text-decoration: none;
+                padding: 4px 16px;
+                color: var(--background);
+                display: block;
+                border-radius: 4px;
+                border: 1px solid var(--color-blue);
+                background: var(--color-blue);
+            }
+        }
+    }
 }

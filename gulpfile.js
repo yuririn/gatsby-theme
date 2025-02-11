@@ -12,7 +12,7 @@ const sassTask = (done) => {
     src('src/scss/style.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(replace(/SLASH/g, '//'))
-        .pipe(dest('public'))
+        .pipe(dest('static'))
         .pipe(browserSync.stream());
         done()
 };

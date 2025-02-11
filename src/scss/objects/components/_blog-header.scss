@@ -1,5 +1,5 @@
 @use './../../utils';
-.c-blog-header {
+%blog-header {
     background: url(/images/genre-web-developer.webp) center / cover no-repeat;
     padding: 78px 16px 16px 16px;
     & > * {
@@ -8,5 +8,31 @@
         margin-inline: auto;
         border-radius: 8px;
         overflow: hidden;
+    }
+}
+.c-blog-header {
+    &--web-developer {
+        background-image: url(/images/genre-web-developer.webp);
+        @extend %blog-header;
+    }
+    &--cms {
+        background-image: url(/images/genre-cms.webp);
+        @extend %blog-header;
+    }
+    &--seo {
+        background-image: url(/images/genre-seo.webp);
+        @extend %blog-header;
+    }
+    &--overseas-freelancing {
+        background-image: url(/images/genre-overseas-freelancing.webp);
+        @extend %blog-header;
+    }
+    &--career {
+        background-image: url(/images/genre-career.webp);
+        @extend %blog-header;
+    }
+    &--ginneko-tsuredure {
+        background-image: url(/images/genre-ginneko-tsuredure.webp);
+        @extend %blog-header;
     }
 }
