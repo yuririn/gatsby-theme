@@ -33,6 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             hero
             pageType
             noindex
+            modifieddate
             faq
           }
         }
@@ -86,12 +87,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode, basePath: 'content/posts' })
 
-    console.log('Generated slug:', value);
+    
 
     createNodeField({
       name: `slug`,
       node,
-      value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1/'),
+      value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1'),
     })
   }
 }

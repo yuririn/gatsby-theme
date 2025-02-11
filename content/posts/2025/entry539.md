@@ -1,7 +1,7 @@
 ---
 title: 【WordPress】スプシから取得したデータを Ajax で更新する
 date: 2025-01-27
-pageType: blog
+pageType:  blog
 hero: thumbnail/2025/entry539.jpg
 cateId: web-developer
 tags: ["WordPress", 'GAS']
@@ -37,7 +37,7 @@ function create_admin_bar_menu( $wp_admin_bar ) {
 add_action(' admin_bar_menu', 'create_admin_bar_menu', 200 );
 ```
 
-![更新用のボタンを Admin Bar に実装](./images/2025/01/entry539-1.jpg)
+![更新用のボタンを Admin Bar に実装](./images/01/entry539-1.jpg)
 ## Ajax 通信に使う JS を登録
 
 まずはファイルの登録です。ログイン時だけしか使えないように、`is_user_logged_in()` で制限をします。

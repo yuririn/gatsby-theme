@@ -1,7 +1,7 @@
 ---
 title: Sharp module のせいで npm start(Gatsby development) 動かなくなった
 date: 2025-01-18
-pageType: blog
+pageType:  blog
 hero: thumbnail/2023/entry519.png
 cateId: web-developer
 tags: ["Gatsby"]

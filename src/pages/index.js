@@ -1,25 +1,26 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import FirstView from "../components/firstView"
-import Img from "../components/common/img"
-import PostList from '../components/posts/posts-list';
+// import Img from "../components/common/Img"
+import PostList from '../components/posts/PostList';
 import SideBar from "../components/SideBar"
+import PickUpList from "../components/posts/PickUpList"
 
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const firstPost = posts[0];
+
   return (
     <Layout location={location} title={siteTitle}>
           <FirstView></FirstView>
       <div className="l-section l-container--blog">
         <div className="l-container--blog__main">
           <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
+            <PickUpList></PickUpList>
           <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
           <PostList posts={posts}></PostList>
         </div>

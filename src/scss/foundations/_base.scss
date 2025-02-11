@@ -63,4 +63,14 @@ body.dark {
     --nav-bg: rgb(58 58 58/ 0.95);
     --border-color: #787878;
 }
+h1,h2,h3,h4,h5 {
+    line-height: 1.2;
+}
+blockquote, p, ul, ol, table {
+    line-height: 1.6;
+}
 
+body.is-fixed {
+    overflow: hidden;
+    height: 100dvh;
+}

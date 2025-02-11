@@ -4,12 +4,16 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 import SearchInput from "./SearchInput";
 import DescriptionHighlighter from "./DescriptionHighlighter";
-import Img from "../common/img";
+import Img from "../common/Img";
 
 const SearchResult = (props) => {
     const tempData = useStaticQuery(graphql`
         query SearchData {
-            allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
+            allMarkdownRemark(
+                sort: { frontmatter: { date: DESC } },
+                 limit: 1000,
+                 filter: { frontmatter: { pageType: { eq: "blog" } } }
+            ) {
                 edges {
                     node {
                         fields {
@@ -34,18 +38,8 @@ const SearchResult = (props) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const temp = tempData.allMarkdownRemark.edges.filter((e) => {
-                if (props.pageType === "ad") {
-                    return e.node.frontmatter.pageType === "ad";
-                } else {
-                    return e.node.frontmatter.pageType !== "ad";
-                }
-            }).map((e) => e.node);
-            setData(temp);
-        };
-        fetchData();
-    }, [props.pageType, tempData.allMarkdownRemark.edges]);
+        setData(tempData.allMarkdownRemark.edges.map((e) => e.node));
+    }, [tempData.allMarkdownRemark.edges]);
 
     // 検索処理 //
     const [result, setResult] = useState([]);
@@ -131,7 +125,7 @@ const SearchResult = (props) => {
                         {result.map((e) => {
                             const tags = e.frontmatter.tags.join(", ")
                             return (<li key={e.fields.slug} className="c-search__item">
-                                <Link to={e.fields.slug} className="c-search__item__img">
+                                <Link to={`/blogs/${e.fields.slug}`} className="c-search__item__img">
                                     <Img
                                         source={e.frontmatter.hero}
                                         alt={e.frontmatter.title}

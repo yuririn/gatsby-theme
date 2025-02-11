@@ -1,7 +1,7 @@
 ---
 title: 2025年マスターしておきたいCSS10選
 date: 2025-01-12
-pageType: blog
+pageType:  blog
 hero: thumbnail/2025/entry536.jpg
 cateId: web-developer
 tags: ["CSS"]
@@ -33,7 +33,7 @@ html {
 ## iOSなどの可変するビューポート対応、height と dvh
 iOSで `height: 100vh` こんな変な隙間ができる問題覚えてますか？
 
-![iOSなどの可変するビューポート対応、height と dvh](./images/2025/01/entry536-3.jpg)
+![iOSなどの可変するビューポート対応、height と dvh](./images/01/entry536-3.jpg)
 
 単位vhが出たときは画期的で、スマホのドロワーメニューやフルスクリーンのサイトで大活躍しました。iOSのビューポートがスクロールに応じてメニューが出てくるのでJSを書いて対応などしなければなりませんでした。
 
@@ -81,7 +81,7 @@ margin-inlineを使えば1行ですみます。
 ## 内側のコンテンツ要素のサイズを合わせたい max-content
 私はよく文字に下線を引いたようなデザインを実装することがあります。
 
-![下線を引いたようなデザインを実装](./images/2025/01/entry536-1.jpg)
+![下線を引いたようなデザインを実装](./images/01/entry536-1.jpg)
 
 従来は`display: inline`で、`position: absolute`や`display: grid;grid-direction:column`を利用して無理やり内側のコンテンツ要素のサイズハマるようにしていました。
 
@@ -136,14 +136,14 @@ h2 {
   word-break: keep-all;
 }
 ```
-<figure className="animation"><img src="/images/animation/2025/entry536-1.webp" width="600" height="184" alt="detailsでアコーディオン" decoding="async" loading="lazy"/></figure>
+<figure class="animation"><img src="/images/animation/2025/entry536-1.webp" width="600" height="184" alt="detailsでアコーディオン" decoding="async" loading="lazy"/></figure>
 
 [word-break:keep-all と<wbr>でディバイス幅に応じて改行}|CODEPEN](https://codepen.io/camille-cebu/pen/bNbKyXN)
 
 ## background-clip でアイコン作成
 最近アイコンを`background-clip`で作成する機会がい増えました。
 
-![background-clip でアイコン作成](./images/2025/01/entry536-2.jpg)
+![background-clip でアイコン作成](./images/01/entry536-2.jpg)
 
 素材がすぐ用意できない時は、borderで変態みたいなハックを駆使して作っていましたが、コードは長くなるし疲れます。
 
@@ -192,7 +192,7 @@ a {
   backdrop-filter: blur(2px);
 ```
 
-![background-clip でアイコン作成](./images/2025/01/entry536-4.jpg)
+![background-clip でアイコン作成](./images/01/entry536-4.jpg)
 
 関数は以下のとおりです。`drop-shadow`と`saturate`は使わないので省きます。
 
@@ -282,12 +282,12 @@ iOS 16以下に対応する場合は、`-webkit-`を付与してください。
 * FireFox一方向だけアニメーションする
 * Safari全くだめ
 
-<figure className="animation"><img src="/images/animation/2025/entry536-5.webp" width="600" height="184" alt="detailsでアコーディオン" decoding="async" loading="lazy"/></figure>
+<figure class="animation"><img src="/images/animation/2025/entry536-5.webp" width="600" height="184" alt="detailsでアコーディオン" decoding="async" loading="lazy"/></figure>
 
 ```HTML:title=HTML
 <div>
   <button type="button">トグルボタン</button>
-  <ul className="content">
+  <ul class="content">
     <li>メニュー1</li>
     <li>メニュー2</li>
     <li>メニュー3</li>

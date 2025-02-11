@@ -2,7 +2,7 @@
 title: Pandoc × EJS で Word ファイルを HTML ページに変換する
 date: 2025-01-16
 modified: 2025-01-27
-pageType: blog
+pageType:  blog
 hero: thumbnail/2025/entry537.jpg
 cateId: web-developer
 tags: ["Gulp","npm","コマンド"]
@@ -392,7 +392,7 @@ const convertMarkdownToHtml = (markdownContent) => {
 const processHtmlContent = (htmlContent) => {
   return htmlContent
     .replace(/\<h(2|3|4)\sid\=\"(.*?)\"/gmi, '<h$1')
-    .replace(/<h3>(.*?)<\/h3>/gmi, '<h3><span className="heading--q">$1</span></h3>');
+    .replace(/<h3>(.*?)<\/h3>/gmi, '<h3><span class="heading--q">$1</span></h3>');
 };
 
 // 一時的なHTMLファイルにコンテンツを書き込む関数

@@ -32,7 +32,7 @@
         }
         background: var(--header-background);
         transition: height .3s;
-        backdrop-filter: blur(10px);
+         backdrop-filter: blur(3px);
         position: absolute;
         
         width: 100%;
@@ -95,7 +95,7 @@
             a {
                 padding: 0 16px;
                 
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 
             }
             
@@ -117,7 +117,6 @@
                         font-size: 1.2rem;
                         color: #fff;
                         height: 40px;
-                        font-size: 16px;
                         align-items: center;
                         display: flex;
                         padding: 0 16px;
@@ -145,6 +144,8 @@
         background: none;
         border: none;
         fill: rgb(38, 71, 133);
+        color: rgb(38, 71, 133);
+        font-family: var(--font-alphabet);
 
         @include utils.mq(md){
             display: none;

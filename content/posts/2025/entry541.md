@@ -1,7 +1,7 @@
 ---
 title: Copilot を利用して JS(Gulp＆Mocha) テストコードを書く
 date: 2025-02-02
-pageType: blog
+pageType:  blog
 hero: thumbnail/2025/entry451.jpg
 cateId: web-developer
 tags: ["npm", "Gulp",'JavaScript']
@@ -172,7 +172,7 @@ export default throttle;
 ```
 すると、こんな回答が帰ってきます。
 
-![すると、こんな回答が返ってきます。](./images/2025/02/entry451-1.jpg)
+![すると、こんな回答が返ってきます。](./images/02/entry451-1.jpg)
 
 言われるがままに chai もインストール。
 
@@ -229,7 +229,7 @@ describe('throttle', function () {
 * should execute the function immediately(関数が即時に実行)
 * should throttle subsequent calls within the timeout(タイムアウト以内に後続の呼び出しを抑制)
 * should execute the function again after the timeout（タイムアウト後に関数を再度実行）
-![以下が Should (必須)で行われるか確認](./images/2025/02/entry451-2.jpg)
+![以下が Should (必須)で行われるか確認](./images/02/entry451-2.jpg)
 
 実行（execute）通りにテストが通りましたね！！
 ### 複雑な処理は確認したい項目を処理順に分けて順番にテストコードを書かせる

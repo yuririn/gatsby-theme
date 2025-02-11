@@ -9,7 +9,8 @@
  */
 module.exports = {
   siteMetadata: {
-        title: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
+        pickup: ["entry541","entry533"],
+    title: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
 
     author: {
       name: `かみーゆ`,

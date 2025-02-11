@@ -10,10 +10,6 @@
         padding-right: utils.$u-margin-y-pc;
       
     }//media query
-    &--sm {
-        @extend .l-container;
-        max-width: 800px;
-    }
     &--blog {
         &__aside {
             position: relative;
@@ -30,9 +26,14 @@
             position: relative;
             display: grid;
             gap: 32px;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr 250px;
         }
         @include utils.mq(lg){
+            gap: 56px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+        }
+        @include utils.mq(xl){
             gap: 56px;
             display: grid;
             grid-template-columns: 1fr 400px;

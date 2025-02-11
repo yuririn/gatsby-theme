@@ -1,7 +1,7 @@
 
 
 import React, { useState } from "react"
-import NavBtn from "./nav-btn";
+import NavBtn from "./NavBtn";
 const Nav = ()=>{
     const [isOpen, setIsOpen] = useState(false)
 

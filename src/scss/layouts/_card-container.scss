@@ -1,17 +1,26 @@
 
 @use './../utils';
 .l-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 16px;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     @include utils.mq(md){
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 24px;
+        margin-bottom: 48px;
         
     }
     &--pickup {
-        gap: 24px;
-        display: grid;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
         @include utils.mq(md){
+            gap: 24px;
+            margin-bottom: 48px;
+            
         }
     }
 }

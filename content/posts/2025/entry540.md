@@ -1,7 +1,7 @@
 ---
 title: babel + browserify で async/await に対応しながら外部スクリプトファイルを読み込む
 date: 2025-01-28
-pageType: blog
+pageType:  blog
 hero: thumbnail/2025/entry540.jpg
 cateId: web-developer
 tags: ["npm", "Gulp",'JavaScript']

@@ -1,9 +1,32 @@
-import * as React from "react"
-import Logo from './logo';
-import Nav from './global-nav';
+import React, { useEffect } from "react"
+import Logo from './Logo';
+import Nav from './GlobalNav';
 import "../../scss/header.scss";
 
 const Header = ({isRootPath}) => {
+    useEffect(() => {
+        if (document.getElementById("keyvisual") === null) return
+        const handleScroll = () => {
+            const keyvisualElement = document.getElementById("keyvisual");
+            const headerElement = document.querySelector(".l-header");
+
+            if (!keyvisualElement || !headerElement) return;
+
+            const keyvisualBottom = keyvisualElement.getBoundingClientRect().bottom;
+
+            if (keyvisualBottom <= 0) {
+                headerElement.classList.remove("is-white");
+            } else {
+                headerElement.classList.add("is-white");
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
     return (
         <header className="l-header">
             {isRootPath?

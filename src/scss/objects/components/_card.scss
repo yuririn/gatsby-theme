@@ -1,5 +1,9 @@
 @use './../../utils';
 .c-card {
+    @include utils.mqd(md){
+        display: flex;
+        justify-content: space-between;
+    }
     a {
         text-decoration: none;
         color: var(--color-blue);
@@ -11,10 +15,21 @@
         }
     }
     &__img {
-        box-shadow: 0 0 6px rgb(0 0 0 /.3);
-        border-radius: 8px;
-        overflow: hidden;
-        margin-bottom: 8px;
+        margin-bottom: 16px;
+        display: block;
+        .gatsby-image-wrapper {
+            @include utils.cardimg()
+        }
+        &:hover {
+             .gatsby-image-wrapper {
+            
+            @include utils.cardimg-hover()
+        }
+        }
+        @include utils.mqd(md){
+            width: 40%;
+            margin-bottom: 0;
+        }
     }
     &__date {
         left: -6px;
@@ -26,25 +41,38 @@
         position: absolute;
         color: var(--background);
         transform: skew(-10deg);
-    }
-    &__first {
-        @extend .c-card;
-
-        &__right {
+        font-size: 1.2rem;
+        @include utils.mqd(md){
+            padding: 3px 18px;
+            top: -4px;
+            font-size: 1.4rem;
 
         }
+    }
+    &__title {
+        font-size: 1.6rem;
         @include utils.mq(md){
+            
+            font-size: 2rem;
+        }
+    }
+    &__main {
+        @include utils.mqd(md){
+            width: calc(60% - 16px);
             display: grid;
-            grid-template-areas:
-            "img content"
-            "img footer";
+            grid-template-rows: 1fr auto;
         }
     }
     &__tags {
         margin-top: 16px;
         display: flex;
-        flex-wrap: wrap;
+        @include utils.mq(md){
+            flex-wrap: wrap;
+        }
         gap: 8px;
+        scrollbar-width: none;
+        overflow: auto hidden;
+        white-space: nowrap;
         a {
             font-size: var(--font-sm);
             line-height: 1;
@@ -69,4 +97,5 @@
             }
         }
     }
+    
 }
