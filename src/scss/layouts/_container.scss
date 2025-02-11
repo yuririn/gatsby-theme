@@ -18,7 +18,7 @@
                 @include utils.mq(md){
                     position: sticky;
                     right: 0;
-                    top: 68px;
+                    top: 76px;
                 }
             }
         }
@@ -38,5 +38,33 @@
             display: grid;
             grid-template-columns: 1fr 400px;
         }
+    }
+    &--article {
+         @include utils.mq(md){
+            justify-content: center;
+            position: relative;
+            display: grid;
+            gap: 32px;
+            margin-inline: auto;
+            grid-template-columns: minmax(0, 800px) 250px;
+        }
+         @include utils.mq(lg){
+            justify-content: center;
+            position: relative;
+            display: grid;
+            gap: 32px;
+            margin-inline: auto;
+            grid-template-columns: minmax(0, 800px) 300px;
+        
+        }
+         @include utils.mq(xl){
+            justify-content: center;
+            position: relative;
+            display: grid;
+            gap: 32px;
+            margin-inline: auto;
+            grid-template-columns: minmax(0, 800px) 400px;
+        }
+
     }
 }

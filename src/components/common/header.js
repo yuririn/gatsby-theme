@@ -6,9 +6,10 @@ import "../../scss/header.scss";
 const Header = ({isRootPath}) => {
     useEffect(() => {
         if (document.getElementById("keyvisual") === null) return
+        const headerElement = document.querySelector(".l-header");
+        const keyvisualElement = document.getElementById("keyvisual");
+        headerElement.classList.add("is-white");
         const handleScroll = () => {
-            const keyvisualElement = document.getElementById("keyvisual");
-            const headerElement = document.querySelector(".l-header");
 
             if (!keyvisualElement || !headerElement) return;
 
@@ -28,7 +29,7 @@ const Header = ({isRootPath}) => {
         };
     }, []);
     return (
-        <header className="l-header">
+        <header className="l-header is-white">
             {isRootPath?
             (<h1 className="c-header-logo">セブ島海外ノマドエンジニアの日記<Logo></Logo></h1>)
             :

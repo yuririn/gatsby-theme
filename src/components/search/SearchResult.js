@@ -133,7 +133,7 @@ const SearchResult = (props) => {
 
                                     />
                                 </Link>
-                                <Link to={e.fields.slug} className="c-search__item__main">
+                                <Link to={`blogs/${e.fields.slug}`} className="c-search__item__main">
                                     <h3><TextHighlighter
                                         str={e.frontmatter.title}
                                         includes={props.value}

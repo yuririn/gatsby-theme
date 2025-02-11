@@ -1,5 +1,6 @@
 @use './../../utils';
 .c-card {
+    position: relative;
     @include utils.mqd(md){
         display: flex;
         justify-content: space-between;
@@ -8,7 +9,6 @@
         text-decoration: none;
         color: var(--color-blue);
     }
-    position: relative;
     @include utils.mq(md){
         &:hover {
             color: var(--color-link);
@@ -66,14 +66,16 @@
     &__tags {
         margin-top: 16px;
         display: flex;
-        @include utils.mq(md){
-            flex-wrap: wrap;
-        }
         gap: 8px;
         scrollbar-width: none;
         overflow: auto hidden;
         white-space: nowrap;
+        @include utils.mq(md){
+            flex-wrap: wrap;
+        }
+        
         a {
+            text-decoration: none;
             font-size: var(--font-sm);
             line-height: 1;
             color: var(--color-blue);
@@ -82,7 +84,6 @@
             border: 1px solid var(--color-blue);
             background: var(--background);
             transition: 0.3s;
-            white-space: nowrap;
             padding: 4px 8px 4px 4px;
             &::before {
                 content: "";

@@ -1,0 +1,56 @@
+@use '../../utils';
+.c-article{
+    margin-right: 0;
+    &__heading {
+        color: var(--color-d-blue);
+        font-size: 2rem;
+        margin-bottom: 16px;
+        @include utils.mq(md){
+            margin-bottom: 16px;
+            font-size: 2.8rem;
+          
+        }//media query
+    }
+    &__date {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        dt {
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
+        dd {
+            font-family: var(--font-alphabet);
+        }
+    }
+    &__tags {
+         margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        
+        a {
+            text-decoration: none;
+            font-size: var(--font-sm);
+            line-height: 1;
+            color: var(--color-blue);
+            display: block;
+            border-radius: 4px;
+            border: 1px solid var(--color-blue);
+            background: var(--background);
+            transition: 0.3s;
+            padding: 4px 8px 4px 4px;
+            &::before {
+                content: "";
+                width: 1em;
+                height: 1em;
+                vertical-align: -0.2em;
+                display: inline-block;
+                border-radius: 50%;
+                background: var(--background);
+                border: 2px solid var(--color-blue);
+                transform: scale(0.5);
+            }
+        }
+    }
+}

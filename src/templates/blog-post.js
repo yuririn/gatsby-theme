@@ -5,17 +5,19 @@ import Layout from '../components/layout';
 import SideBar from '../components/SideBar';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import rehypeReact from "rehype-react"
-
-
+import Tags from "../components/posts/Tags"
 
 import Msg from "../components/posts/modueles/msg";
 import RelativeCard from "../components/posts/modueles/relative-card";
+import Date from '../components/posts/Date';
+import Bio from "../components/posts/Bio";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: {
         card: RelativeCard,
         msg: Msg,
+        prof: Bio
     },
 }).Compiler
     
@@ -28,39 +30,20 @@ const BlogPostTemplate = ({ data, location }) => {
     const render = data.markdownRemark.htmlAst;
     return (
         <Layout location={location} title={post.title}>
-            <div className="l-section l-container--blog">
-                <article className="c-blog-header">
-                    <GatsbyImage
-                        image={getImage(docImage)}
-                        alt={post.title}
-                    />
-                    <h1>{post.title}</h1>
-                    <dl className="c-article__date">
-                        <dt>公開日</dt>
-                        <dd>
-                            <time date={post.date.replace(/\./g, "-")}>
-                                {post.date}
-                            </time>
-                        </dd>
-                        {post.modifieddate ? <dt>メンテナンス日</dt> : ""}
-                        {post.modifieddate ? (
-                            <dd>
-                                <time
-                                    date={post.frontmatter.modifieddate.replace(/\./g, "-")}
-                                >
-                                    {post.frontmatter.modifieddate}
-                                </time>
-                            </dd>
-                        ) : (
-                            ""
-                        )}
-                    </dl>
-                    <ul className="c-card__tags">
-                        {post.tags.length > 0 && post.tags.map((item)=>{
-                            return <li><Link to={`/blogs/tags/${item}`}>{item}</Link></li>
-                        })}
-                    </ul>
-                    <section itemProp="articleBody">
+            <div className="c-blog-header" id="keyvisual">
+                <GatsbyImage
+                    image={getImage(docImage)}
+                    alt={post.title}
+                />
+
+            </div>
+            <div className="l-section l-container--article">
+                <article className="c-article">
+                    <h1 className="c-article__heading">{post.title}</h1>
+                    <Date date={post.date} modifiedDate={post.modifieddate}></Date>
+                    <Tags tags={post.tags}></Tags>
+                    
+                    <section itemProp="articleBody" className="c-post-body">
                         {renderAst(render)}
                     </section>
                 </article>

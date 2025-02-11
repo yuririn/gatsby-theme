@@ -14,7 +14,7 @@ const Img = ({ source, title, className, size }) => {
                 gatsbyImageData(
                   blurredOptions: { width: 100 }
                   width: 640
-                  quality: 40
+                  quality: 60
                   placeholder: BLURRED
                 )
               }

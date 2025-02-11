@@ -31,7 +31,8 @@
     }
     &.is-white {
         &::before {
-            display: none;
+            background: linear-gradient(to top, rgb(0 0 0 /0) 20%, rgb(0 0 0 /.4)80%);
+            box-shadow: none;
         }
         @include utils.mq(md){
             .c-nav span,
@@ -43,15 +44,19 @@
         .c-header-logo {
             fill: #fff;
             color: #fff;
+            a {
+                color: #fff;
+            }
         }
     }
 }
 body.is-fixed  .l-header.is-white {
     @include utils.mqd(md){
         &::before {
-            display: block;
+            background: var(--header-background);
+            box-shadow: var(--shadow);
         }
-        .c-nav__btn,
+        .c-nav__btn.is-active,
         .c-header-logo {
             fill: rgb(38, 71, 133);
             color: rgb(38, 71, 133);

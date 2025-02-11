@@ -1,0 +1,168 @@
+@use './../../utils';
+.c-post-body {
+    ul:not([class]), ol:not([class]), p:not([class]), .gatsby-resp-image-wrapper {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        @include utils.mq(md){
+            font-size: 1.8rem;
+        }
+    }
+    .gatsby-resp-image-wrapper {
+        display: block;
+    }
+    em {
+        font-weight: bolder;
+        color: var(--color-accent);
+    }
+    ul:not([class]) > li {
+        padding-left: 1.5em;
+        position: relative;
+        margin-bottom: 0.2em;
+        &::before {
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            display: block;
+            color: rgb(0, 29, 124);
+            content: "";
+            height: 1em;
+            width: 1em;
+            scale: .5;
+            border-radius: 50%;
+            background: var(--color-accent);
+            }
+        }
+    h2,h3 {
+        @include utils.mq(md){
+            margin-bottom: 24px;
+        margin-top: 56px;
+        }
+    }
+    h2 {
+    color: var(--color-d-blue);
+    margin-bottom: 24px;
+    font-size: 2rem;
+    @include utils.mq(md){
+    font-size: 2.8rem;
+    }
+    &::after {
+        margin-top: 12px;
+        content: "";
+        display: block;
+        background: linear-gradient(to right, var(--color-accent) 15%, var(--pale-gray) 15%);
+        height: 2px;
+        border-width: 0px 3px 3px 0px;
+    }
+    }
+    h3 {
+    color: var(--color-d-blue);
+    font-size: 1.9rem;
+    font-weight: 700;
+    @include utils.mq(md){
+    font-size: 2.4rem;
+    }
+    &:after {
+            margin-top: 4px;
+            content: "";
+            display: block;
+            background: var(--color-accent);
+            width: 30px;
+            height: 2px;
+        }
+    }
+    h4 {
+        color: var(--color-d-blue);
+        font-size: 1.8rem;
+        @include utils.mq(md){
+        font-size: 2.2rem;
+        }
+    }
+    h4,h5 {
+        @include utils.mq(md){
+            margin-bottom: 24px;
+        margin-top: 56px;
+        }
+    }
+     blockquote {
+        background: var(--pale-gray);
+        padding: 20px 40px;
+        margin-bottom: 30px;
+        position: relative;
+        margin-top: 40px;
+        border-radius: 15px;
+        &::after,
+        &::before {
+            left: 8px;
+            height: 30px;
+            width: 8px;
+            top: -8px;
+            display: block;
+            content: "";
+            transform: skewX(-35deg);
+            position: absolute;
+            border-left: 8px double rgb(204, 204, 204);
+
+        }
+        &::after {
+        height: 50px;
+        width: 8px;
+        right: 0px;
+        }
+    &::before {
+        height: 50px;
+        width: 8px;
+        left: 10px;
+    }
+     }
+     a {
+        color: var(--color-link);
+        &:hover {
+            text-decoration: none;
+        }
+    }
+     .gatsby-code-title {
+    font-weight: bold;
+    background: var(--color-blue);
+    display: inline-block;
+    padding: 6px 15px;
+    vertical-align: bottom;
+    line-height: 1;
+    color: var(--light-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+}
+.gatsby-code-title + .gatsby-highlight pre[class*="language-"] {
+    margin-top: 0px;
+    border-top-left-radius: 0px;
+}
+pre[class*="language-"] {
+    border-radius: 0.5em;
+    border: none;
+    background: var(--code-bg);
+    box-shadow: none;
+    margin: 30px 0px 40px;
+    overflow: auto;
+    padding: 1em;
+}
+:not(pre) > code[class*="language-"] {
+    box-shadow: none;
+    border: none;
+    background: var(--color-d-blue);
+    padding: 2px 6px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+table td, table th {
+    border: 1px solid rgb(187, 187, 187);
+    padding: 0.3em 0.7em;
+}
+table th {
+    font-size: 0.9em;
+    background: var(--color);
+    color: var(--light-color);
+}
+}

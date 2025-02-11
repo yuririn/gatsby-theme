@@ -11,13 +11,15 @@ const path = require('path');
 const sassTask = (done) => {
     src('src/scss/style.scss')
         .pipe(sass().on('error', sass.logError))
+        .pipe(replace(/SLASH/g, '//'))
         .pipe(dest('public'))
         .pipe(browserSync.stream());
         done()
 };
 
 const postcssTask = (done) => {
-    src('public/style.css')
+    src('static/style.css', { allowEmpty: true })
+        
         .pipe(postcss([
             autoprefixer(),
             cssnano(),
@@ -28,32 +30,16 @@ const postcssTask = (done) => {
                 },
             }),
         ]))
-        .pipe(dest('public'))
+        
+        .pipe(dest('static'))
         .pipe(browserSync.stream());
         done()
 };
-
-const replaceTask = (done) => {
-    src('public/style.css')
-        .pipe(replace(/SLASH/g, '//'))
-        .pipe(dest('public'))
-        .pipe(browserSync.stream());
-        done()
-};
-
-// const serveTask = (done) => {
-//     browserSync.init({
-//         server: {
-//             baseDir: './public',
-//         }
-//     });
-//     done();
-// };
 
 const watchTask = () => {
-    watch('src/scss/**/*.scss', series(sassTask, postcssTask, replaceTask));
+    watch('src/scss/**/*.scss', series(sassTask));
     watch('public/**/*.html').on('change', browserSync.reload);
 };
 
 // デフォルトタスクの定義
-exports.default = series(sassTask, postcssTask, replaceTask, watchTask);
+exports.default = series(sassTask, postcssTask, watchTask);

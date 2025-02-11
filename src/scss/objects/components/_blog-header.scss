@@ -1,4 +1,12 @@
 @use './../../utils';
 .c-blog-header {
-    height: 100px;
+    background: url(/images/genre-web-developer.webp) center / cover no-repeat;
+    padding: 78px 16px 16px 16px;
+    & > * {
+        max-width: 460px;
+        display: block;
+        margin-inline: auto;
+        border-radius: 8px;
+        overflow: hidden;
+    }
 }

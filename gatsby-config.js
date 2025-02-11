@@ -97,11 +97,23 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+              {
+                  resolve: `gatsby-remark-table-of-contents`,
+                  options: {
+                      exclude: "目次",
+                      tight: false,
+                      fromHeading: 2,
+                      toHeading: 3
+                  },
+              },
           {
             resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 630,
-            },
+                options: {
+                    maxWidth: 800,
+                    quarity: 90,
+                    withWebp: true,
+                    linkImagesToOriginal: false,
+                },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
@@ -109,7 +121,26 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
+            `gatsby-remark-prismjs-title`,
+            `gatsby-remark-prismjs`,
+            `gatsby-remark-copy-linked-files`,
+            `gatsby-remark-smartypants`,
+            "gatsby-remark-component",
+            {
+                resolve: `gatsby-remark-autolink-headers`,
+                options: {
+                    offsetY: `30`,
+                    icon: false,
+                    className: `custom-class`,
+                    maintainCase: false,
+                },
+            },
+            {
+                resolve: "gatsby-remark-external-links",
+                options: {
+                    rel: "noopener noreferrer",
+                },
+            },
         ],
       },
     },
