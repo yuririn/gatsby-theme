@@ -1,8 +1,8 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "../../common/Img"
+import Img from "../../common/img"
 
-const RelativeCard = data => {
+const RelativeCard = ({slug}) => {
     const { allMarkdownRemark } = useStaticQuery(
         graphql`
       query {
@@ -27,7 +27,7 @@ const RelativeCard = data => {
     `
     )
     let article = allMarkdownRemark.edges.filter(
-        item => item.node.fields.slug === data.id
+        item => item.node.fields.slug === slug
     )
 
     if (article.length !== 0) {
@@ -38,19 +38,19 @@ const RelativeCard = data => {
                 : article.frontmatter.description
         const date = article.frontmatter.modifieddate ? article.frontmatter.modifieddate : article.frontmatter.date
         return (
-            <a href={article.fields.slug} className="article-link">
+            <a href={`/blogs/${slug}/`} className="c-article-card">
                 <section>
-                    <div className="article-link__img">
+                    <div className="c-article-card__img">
                         <Img
                             source={article.frontmatter.hero}
                             alt={article.frontmatter.title}
                         />
                     </div>
-                    <div className="article-link__main">
-                        <div className="article-link__main__title">
+                    <div className="c-article-card__main">
+                        <p className="c-article-card__main__title">
                             {article.frontmatter.title}
-                        </div>
-                        <p className="description">{description}</p>
+                        </p>
+                        <p className="c-article-card__description">{description}</p>
                         <time dateTime={date.replace(/\./g, "-")}>
                             {date}
                         </time>

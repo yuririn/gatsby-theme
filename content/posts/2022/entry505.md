@@ -194,11 +194,11 @@ _哲人_:「勉強や宿題は子供の課題です。」
 
 <br>関連記事もぜひお読みください。
 
-<card id="/blogs/entry473/"></card>
+<card slug="entry473"></card>
 
 <ad location="/blogs/entry505/"></ad>
 
-<card id="/blogs/entry420/"></card>
+<card slug="entry420"></card>
 
 くすっと笑える昭和のお父さん版はこちら。
-<card id="/blogs/entry521/"></card>
+<card slug="entry521"></card>

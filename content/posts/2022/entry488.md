@@ -30,7 +30,7 @@ WordPressのテーマに組み込むブロックを作ってみました。
 
 WordPressはLocalなどのお手軽ツールでもいいのですが、Dockerでも作れます。
 
-<card id="/blogs/entry480/"></card>
+<card slug="entry480"></card>
 
 プレーンなコードを書いても実装できましたが、Reactを書くときイマイチだったので、今回は`@wordpress/scripts`を使って環境構築しました。
 ちなみに`@wordpress/scripts`はWebpackベースです。
@@ -652,7 +652,7 @@ cssは入っていないので、こんな感じに仕上がりました。
 
 プラグイン無し、ブロックエディタでの文字装飾ボタンの追加方法を紹介しています！
 
-<card id="/blogs/entry499/"></card>
+<card slug="entry499"></card>
 
 この記事がみなさんのコーディングライフの一助となれば幸いです。
 

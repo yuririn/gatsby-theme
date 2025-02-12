@@ -59,7 +59,7 @@ function doGet() {
 
 GASツールの開き方、デプロイやURLの取得方法に関してはこちらに詳しく記載してあるので参考にしてください。
 
-<card id="/blogs/entry481/"></card>
+<card slug="entry481"></card>
 
 ## React の開発環境を構築
 Reactのドキュメントを参考に開発環境を作成します。

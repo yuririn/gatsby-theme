@@ -157,4 +157,4 @@ Intersection Observer APIを使えばパララックスもカンタンに実装�
 参照 : [Intersection Observer API MDN](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API)
 
 ## 関連記事もあわせてお読みください
-<card id="/blogs/entry526/"></card>
+<card slug="entry526"></card>

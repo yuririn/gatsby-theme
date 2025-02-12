@@ -133,7 +133,7 @@ exports.default = parallel(series(createJsonFile))
 ```
 という感じで置換されるようにしています。正規表現に関しては以下を参考に。
 
-<card id="/blogs/entry336/"></card>
+<card slug="entry336"></card>
 
 ちなみに、うまく置換できなかったのでglobalにgulp-replaceをインストールしています。
 ```shell:title=コマンド
@@ -182,7 +182,7 @@ replace(/\sid\=\"(.*?)\"/gmi, ``)
 
 HTML 変換します。EJS の詳しい記事はこちら。
 
-<card id="/blogs/entry459/"></card>"
+<card slug="entry459"></card>"
 
 ```js:title=gulpfile.js
 ...

@@ -24,11 +24,11 @@ description: インスタ一覧出力用のブロックを @wordpress/scripts（
 3. WordPress開発仮装環境などを自分のマシーンに用意しておく
 
 以下記事にGraph APIのアクセストークン取得とインスタビジネスアカウントIDの方法を紹介してますので参考にしてください。
-<card id="/blogs/entry448/"></card>
+<card slug="entry448"></card>
 
 自分のマシーンでのWordPress環境はLocalなどのお手軽ツールでもいいのですが、Dockerでも作れます。
 
-<card id="/blogs/entry480/"></card>
+<card slug="entry480"></card>
 
 
 ## インスタ一覧をブロックエディターで追加編集できるプラグインを作る
@@ -46,7 +46,7 @@ pluginsの中に、insta-galleryというディレクトリを作ります。
 
 インストールとコマンドなどの使い方はこちらを参考に。
 
-<card id="/blogs/entry488/"></card>
+<card slug="entry488"></card>
 
 ```
 ルートディレクトリ/

@@ -2,10 +2,10 @@
 @use './../../utils';
 .c-toc {
     @include utils.mq(md){
-        max-height: 10dvh;
-        min-height: 300px;
+        max-height: 40dvh;
         overflow: auto;
         margin-left: -5px;
+        margin-bottom: 32px;
         padding-left: 5px;
     }
     ul {

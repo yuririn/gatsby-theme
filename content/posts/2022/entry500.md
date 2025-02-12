@@ -34,7 +34,7 @@ description: Looker Studio (旧データポータル)で Search Console のイ�
 
 今回は GAS の始め方など、細かいことは省きます。GAS に関しての記事を参考にしてください。
 
-<card id="/blogs/entry470/"><card>
+<card slug="entry470""><card>
 
 プロジェクト名などを、GetSitemap 等としておきます。
 コードの大まかな概要です。
@@ -141,7 +141,7 @@ function fetchPageDetails(url) {
 
 `match` で使っている正規表現に関しては、こちらの記事を参考にしてください。
 
-<card id="/blogs/entry336/"></card>
+<card slug="entry336"></card>
 
 ```js:title=GAS
 function fetchSitemap() {
@@ -244,7 +244,7 @@ function fetchSitemap() {
 
 例えば、FAQの構造化データを持っているページとそうでないページなどを比べることができます。
 
-<card id="/blogs/entry524/"></card>
+<card slug="entry524"></card>
 
 ### 記事が大量にある場合、処理を分ける（バッチ処理）
 GASの1つのスクリプト実行あたり6分（360秒）とされています。それを超えると強制終了されます。

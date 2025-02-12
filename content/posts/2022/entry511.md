@@ -154,8 +154,8 @@ TY スマイルデンタルクリニックは世界最長ロックダウンが�
 
 最後までお読みいただきありがとうございました。
 
-<card id="/blogs/entry417/"></card>
-<card id="/blogs/entry503/"></card>
+<card slug="entry417"></card>
+<card slug="entry503"></card>
 
 ### おまけ・セブ島で入手できるフロス
 セブ島には糸ようじのようなタイプから、本格的なフロスまで入手可能です。

@@ -139,6 +139,6 @@ FAQPage構造化データの設置は、個人ブロガーなどはしんどい�
 
 ### 関連記事
 
-<card id="/blogs/entry517/"></card>
+<card slug="entry517"></card>
 
-<card id="/blogs/entry498/"></card>
+<card slug="entry498"></card>

@@ -146,7 +146,7 @@ console.log(tags)//デバッグして出力結果を確認
 ```
 配列操作については以下記事にまとめてます。
 
-<card id="/blogs/entry482/"></card>
+<card slug="entry482"></card>
 
 HTMLを出力します。
 ```js:title=tag-cloud.js

@@ -104,7 +104,7 @@ npm run test
 
 もう時代的にはこの設定は必要ないかもしれないんでまたこの記事も見直します。
 
-<card id="/blogs/entry540/"></card>
+<card slug="entry540"></card>
 
 * @babel/core
 * @babel/register

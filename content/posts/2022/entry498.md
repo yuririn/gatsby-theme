@@ -480,9 +480,9 @@ overflow-y: hidden;
 
 他にもサイトでユーザビリティを上げるグロナビやハンバーガーメニューなど共通パーツの作り方をご紹介しています。
 
-<card id="/blogs/entry449/"></card>
+<card slug="entry449"></card>
 
-<card id="/blogs/entry496/"></card>
+<card slug="entry496"></card>
 
 この記事が皆さんのSEOライフの一助となれば幸いです。
 

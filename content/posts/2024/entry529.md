@@ -194,6 +194,6 @@ description: 夢を諦めて、死ぬまで心と折り合いが合わず、後�
 
 最後までお読みいただきありがとうございました。
 
-<card id="/blogs/entry505/"></card>
+<card slug="entry505"></card>
 
-<card id="/blogs/entry473/"></card>
+<card slug="entry473"></card>

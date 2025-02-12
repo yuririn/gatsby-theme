@@ -22,7 +22,7 @@ description: スプレッドシート（Googleスプレッドシート）の最�
 <msg txt="毎回いちいちメッセージするのも面倒ですし、事務作業は減らしたい"></msg>
 
 Slack活用術について気になる方は以下をご覧ください。
-<card id="/blogs/entry460/"></card>
+<card slug="entry460"></card>
 
 ## スプレットシートを準備し、値を関数で計算する
 
@@ -314,8 +314,8 @@ Slackで通知するGASを実行します。デバッグでもいいです。
 ### GASの関連記事
 GASの関連記事もあわせてお読みください。
 
-<card id="/blogs/entry481/"></card>
-<card id="/blogs/entry476/"></card>
+<card slug="entry481"></card>
+<card slug="entry476"></card>
 <ad location="/blogs/entry504/"></ad>
-<card id="/blogs/entry475/"></card>
-<card id="/blogs/entry470/"></card>
+<card slug="entry475"></card>
+<card slug="entry470"></card>

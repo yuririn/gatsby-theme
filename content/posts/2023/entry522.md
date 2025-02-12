@@ -15,7 +15,7 @@ Vue.js を必要に迫られて久々に触りましたが、拡張性の高さ�
 
 手軽にVue.jsを導入する方法はこちらです。
 
-<card id="/blogs/entry520/"></card>
+<card slug="entry520"></card>
 
 <prof></prof>
 
@@ -298,7 +298,7 @@ const app = createApp({
 
 詳しいテンプレートの実装方法に関しては以下記事で紹介しています。
 
-<card id="/blogs/entry523/"></card>
+<card slug="entry523"></card>
 
 <div class="box">
 <h4>vueファイルのコンパイルでコケる</h4>
@@ -411,4 +411,4 @@ Vue.js はちょっとした機能を追加するにはめちゃ適していま�
 
 コンポーネントを使ったデータバインドについてはこちらをお読みください。
 
-<card id="/blogs/entry523/"></card>
+<card slug="entry523"></card>

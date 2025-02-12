@@ -95,7 +95,7 @@ JSON データを用意します。
 ```
 スプシデータを使いたい場合は GAS で JSON を生成する事もできます。以下記事を参考にしてください。
 
-<card id="/blogs/entry481/"></card>
+<card slug="entry481"></card>
 
 ## JSON データから一覧を作る
 今回は以下のような単純なディレクトリ構造を用意しました。
@@ -375,7 +375,7 @@ return {
 ```
 その他の配列操作についてさらに詳しく知りたい場合はこちらをご覧ください。
 
-<card id="/blogs/entry482/"></card>
+<card slug="entry482"></card>
 
 `v-for` を使ってループでHTML側に出力します。
 
@@ -473,6 +473,6 @@ const clear = async () => {
 最後までお読みいただき、ありがとうございました。
 
 コンポーネントを使ったデータバインドについてはこちらをお読みくだだい。
-<card id="/blogs/entry523/"></card>
+<card slug="entry523"></card>
 
 参考 : [HTMLにちょい足しでできる！Vue.js.jsでサクッと動きをつける方法](https://ics.media/entry/210908/)

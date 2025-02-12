@@ -210,7 +210,7 @@ description: 理不尽、謎ルール。お父さんが一番偉い！昭和の�
 
 その後も日本経済はリーマンショックなど悪いことが続きます。<br>リーマンショックの頃の様子が知りたい方はこちらも併せてお読みください。
 
-<card id="/blogs/entry382/"></card>
+<card slug="entry382"></card>
 
 経済特需のような奇跡は、もう日本には起こりませんでした。
 
@@ -256,8 +256,8 @@ description: 理不尽、謎ルール。お父さんが一番偉い！昭和の�
 
 <br>ぜひ関連記事もお読みください。
 
-<card id="/blogs/entry420/"></card>
+<card slug="entry420"></card>
 
-<card id="/blogs/entry473/"></card>
+<card slug="entry473"></card>
 
-<card id="/blogs/entry505/"></card>
+<card slug="entry505"></card>

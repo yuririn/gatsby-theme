@@ -39,7 +39,7 @@ description: ブロックテーマで直感的に編集可能なテーマを作�
 
 まずはローカル環境で試してみたい方はDockerでも[Local](https://localwp.com/)でも何でもいいと思います。
 
-<card id="/blogs/entry480/"></card>
+<card slug="entry480"></card>
 
 `wp-content/themes/` 内にブロックテーマを格納するための *myblocktheme* を作成します。
 

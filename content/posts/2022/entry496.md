@@ -22,12 +22,12 @@ description: いつも同じハンバーガーメニューばかりじゃ飽き�
 そこで、自分のレパートリーも増やすためにいくつかサンプルを作ってみました。
 
 <br>グローバルメニューアニメーションやパンくずリストのサンプルあるのであわせてお読みください。
-<card id="/blogs/entry449/"></card>
+<card slug="entry449"></card>
 
 <ad location="/blogs/entry496/"></ad>
 
 
-<card id="/blogs/entry498/"></card>
+<card slug="entry498"></card>
 
 ### 以下ご注意ください
 * タグの入れ子はできるだけせず、可能な限り疑似要素を駆使しています

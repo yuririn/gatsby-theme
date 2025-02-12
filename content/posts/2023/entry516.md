@@ -19,11 +19,11 @@ Gatsbyでは画像フォーマットも変更でき、リサイズした画像�
 この記事はSEOのプラグイン *Helmet* を使うことが前提で、以下記事の拡張版です。
 
 
-<card id="/blogs/entry418/"></card>
+<card slug="entry418"></card>
 
 もちろん *gatsby-plugin-image* がすでに導入されていることも前提です。記事詳細やimgタグの出力がわからない方はこちらをご覧ください。
 
-<card id="/blogs/entry406/"></card>
+<card slug="entry406"></card>
 
 ## GraphQL で img 内に格納されたサムネイル画像の画像のパスだけ抜き取る
 
@@ -219,4 +219,4 @@ return (
 最後までお読みいただきありがとうございました。
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>

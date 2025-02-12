@@ -103,7 +103,7 @@ Googleアカウント経由でタグマネアカウントとGTMコンテナ名�
 
 タグマネでの確認方法を以下記事にまとめてます。参考にしてください。
 
-<card id="/blogs/entry501/"></card>
+<card slug="entry501"></card>
 
 ### IP blocking（IPブロック） のセットアップ
 チームメンバーなどのIPアドレスをブロックできます。
@@ -242,7 +242,7 @@ https://ginneko-atelier.com/blogs/entry473/*
 
 正規表現に関してはこちらを参考に。
 
-<card id="/blogs/entry336/"></card>
+<card slug="entry336"></card>
 
 3.何もつけなければ完全一致。
 ```bash

@@ -143,4 +143,4 @@ Mutation Observer の他の使い方はまだやってませんが、可能性�
 参照 : [insertAdjacentElement MDN](https://developer.mozilla.org/ja/docs/Web/API/MutationObserver)
 
 ## 関連記事もあわせてお読みください
-<card id="/blogs/entry525/"></card>
+<card slug="entry525"></card>

@@ -76,7 +76,7 @@ margin-inlineを使えば1行ですみます。
 
 上下のマージンが設定されます。
 
-<card id="/blogs/entry436/"></card>
+<card slug="entry436"></card>
 
 ## 内側のコンテンツ要素のサイズを合わせたい max-content
 私はよく文字に下線を引いたようなデザインを実装することがあります。

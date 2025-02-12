@@ -21,7 +21,7 @@ WordPress には Ajax でやり取りする方法があるので、それを利�
 
 json の作り方はこちらを参照してください。今回は説明は省きます。
 
-<card id="/blogs/entry481/"></card>
+<card slug="entry481"></card>
 
 ## 更新用のボタンを Admin Bar に実装
 まずは更新用のボタンを実装します。

@@ -78,7 +78,7 @@ define( 'DB_HOST', 'localhost' );
 
 SQLファイルの必要に応じて文字を置換しておきます。置換の仕方がわからない方は以下を参考にしてください。
 
-<card id="/blogs/entry336/"></card>
+<card slug="entry336"></card>
 
 ```bash:title=置換する文字
 http://dev.xxxxx.com

@@ -23,7 +23,7 @@ FAQPage構造化データは実装しても必ず表示されるわけではあ�
 
 @wordpress/scripts を使ったブロック開発環境構築方法は以下にまとめてるので、今回は端折って紹介していきます。
 
-<card id="/blogs/entry488/"></card>
+<card slug="entry488"></card>
 
 *前提条件*
 
@@ -140,7 +140,7 @@ FAQの質問（見出し）はテキストですが、答え（コンテンツ�
 
 WordPressにはその他、HTMLタグのエンティティ化（無害化）する方法がいくつかあります。必要に応じて使い分ける必要があるので、詳しく知りたい方は以下記事をご参照ください。
 
-<card id="/blogs/entry452/"></card>
+<card slug="entry452"></card>
 
 ```php{33}:title=functions.php
 register_block_type(

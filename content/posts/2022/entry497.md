@@ -41,7 +41,7 @@ concreteCMSのブロックはMVCモデルになっており、コアのブロッ
 
 詳しい作り方は以下記事にまとめています（リライト済み）。
 
-<card id="/blogs/entry236/"></card>
+<card slug="entry236"></card>
 
 今回はcontrollerとviewを「外部フォームブロックでお問い合わせフォーム作成」を再利用して作ります。
 

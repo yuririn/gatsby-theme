@@ -23,7 +23,7 @@ EJSは埋め込み型JavaScriptテンプレートで、Gulpなどを使ってHTM
 
 Gulpからの実装の方法はこちらにまとめています。
 
-<card id="/blogs/entry459/"></card>
+<card slug="entry459"></card>
 
 ## 関数の書き方
 まずは関数の書き方です。
