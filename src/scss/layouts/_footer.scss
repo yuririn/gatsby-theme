@@ -4,6 +4,7 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
+    color: #fff;
     @include utils.mq(md){
         flex-direction: row;
         display: flex;

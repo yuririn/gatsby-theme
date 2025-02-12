@@ -1,7 +1,7 @@
 ---
 title: jQuery 不要・noUiSliderレンジスライダーの使い方
 date: 2022-12-23
-pagetype: blog
+pageType: blog
 cateId: web-developer
 hero: thumbnail/2022/entry515.png
 tags: ["JavaScript","html"]
@@ -34,14 +34,14 @@ HTMLでもレンジスライダーのフォームパーツはあります。
 ```
 が、ご覧の通り、見た目がマチマチです。
 
-![HTMLだと、ブラウザで見た目がマチマチ](./images/2022/12/entry515-1.png)
+![HTMLだと、ブラウザで見た目がマチマチ](./images/12/entry515-1.png)
 
 <msg txt="今回はサクッとJavaScriptのライブラリで解決します。"></msg>
 
 ## noUiSlider 導入方法
 早速、noUiSliderの導入方法をご紹介します。
 
-![noUiSlider](./images/2022/12/entry515-2.png)
+![noUiSlider](./images/12/entry515-2.png)
 
 [noUiSlider公式サイト](https://refreshless.com/nouislider/)
 
@@ -52,7 +52,7 @@ noUiSlider はよくjQueryと紹介されてますが、実際にはjQueryなし
 
 ※ [オプション](#おまけオプション) について解説はこの記事の一番最後にまとめています。
 
-![noUiSlider](./images/2022/12/entry515-3.png)
+![noUiSlider](./images/12/entry515-3.png)
 
 ```html:title=HTML
 <!-- css -->
@@ -105,7 +105,7 @@ noUiSlider.create(range, {
 
 コードサンプル　[noUiSlider Basic | CodePen](https://codepen.io/camille-cebu/pen/XWBbgPB)
 
-![noUiSlider Tooltip](./images/2022/12/entry515-4.png)
+![noUiSlider Tooltip](./images/12/entry515-4.png)
 
 上のスクショのように、ツールチップ（つまみの上の数字）を表示したい時は、オプション `tooltips` を `true` にします。
 ```JavaScript:title=JavaScript
@@ -127,7 +127,7 @@ noUiSlider.create(range, {
     }
 });
 ```
-![noUiSlider Tooltip](./images/2022/12/entry515-5.png)
+![noUiSlider Tooltip](./images/12/entry515-5.png)
 メモリやツールチップ（つまみの上の数字）を任意の数字にしたい場合はメモリを配列で値を自作します。
 
 ※ [オプション](#おまけオプション) について解説はこの記事の一番最後にまとめています。
@@ -232,7 +232,7 @@ range.noUiSlider.on('update', function( values, handle ) {
 セットできるイベントは<br>
 'start'、'slide'、'drag'、'update'、'change'、'set'、'end' の７つです。
 
-![最大値、最小値の場合値自体を表示しない処理も可能](./images/2022/12/entry515-7.png)
+![最大値、最小値の場合値自体を表示しない処理も可能](./images/12/entry515-7.png)
 
 最大値、最小値の場合値自体を表示しない処理も可能です。分かりづらいので値がない場合の `placeholder` 属性を追加します。
 

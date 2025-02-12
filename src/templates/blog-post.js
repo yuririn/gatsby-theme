@@ -13,6 +13,7 @@ import Date from '../components/posts/Date';
 import Bio from "../components/posts/Bio";
 import Sns from "../components/posts/Sns"
 import PrevAndNextNav from "../components/posts/PrevAndNextNav";
+import Faq from "../components/posts/Faq";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
@@ -53,6 +54,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     
                     <section itemProp="articleBody" className="c-post-body">
                         {renderAst(render)}
+                        {post.faq &&<Faq data={post.faq}></Faq>}
                     </section>
                     <dl class="c-article__cate">
                         <dt>Category</dt>

@@ -2,11 +2,12 @@
 title: 軽量スライダーSwiperでスマホ（SP）のみスライダー表示にする方法（複数対応）
 date: 2022-12-17
 modifieddate: 2025-01-28
-pagetype: blog
+pageType: blog
 cateId: web-developer
 hero: thumbnail/2022/entry514.png
 tags: ["JavaScript","html"]
 description: jQuery不要軽量Swiper。レスポンシブでスライダー画像をスマホだけで表示したい場合の対応方法を綴ります。複数のスライダーに対応した方法のご紹介。2025年1月にメンテナンスしました。
+faq: [['Swiper を複数設置したい。','プレーンなSwiperであればかんたんに複数設置可能です。場合によっては各Swiperにユニークな指定をする必要があります。','https://ginneko-atelier.com/blogs/entry514/?utm_source=faq#%E8%A4%87%E6%95%B0%E3%81%AEswiper%E3%82%92%E3%82%B9%E3%83%9E%E3%83%9Bpc%E3%81%A7%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95'],['Swiper をスマホのみ表示したい','Swiperはスマホ、PCなどのブレークポイントに応じて切り替えることができます。'],['Swiperが突然動かなくなった。','SwiperのCSSやJSをCDNで使っていませんか？最新のものに変えれば動くようになります。','https://ginneko-atelier.com/blogs/entry514/?utm_source=faq']]
 ---
 Webサイトでスライドショー（スライダー）は便利ですよね？私は jQuery 不要の軽量Swiper というライブラリを愛用しています。この記事は、2025年1月にメンテナンスしました。
 
@@ -31,7 +32,7 @@ Swiper とは、最新の無料で使えるモバイルタッチに対応した�
 
 npm や CDN も用意されています。Angular、React や Vue.js などからも使うことができます。
 
-![Swiperとは？](./images/2022/12/entry514-1.png)
+![Swiperとは？](./images/12/entry514-1.png)
 ## Swiper 基本の使い方
 実装方法です。
 
@@ -114,7 +115,7 @@ const swiper = new Swiper('.swiper', {
 では実際に一つのSwiperを切り替えてみましょう。
 
 仕上がりイメージは以下のような感じです。
-![Swiper でスマホ、PCで切り替える](./images/2022/12/entry514-2.png)
+![Swiper でスマホ、PCで切り替える](./images/12/entry514-2.png)
 
 `destroy()` で一度作ったスライダーを破棄できます。SPサイズに切り替えたときにスライダーを再構築します。
 
@@ -250,7 +251,7 @@ window.matchMedia(`(min-width: ${breakPoint}px)`).matches
 ### 補足・次のスライダーを少しだけ見せたい
 スマホなどではよく次にスライダーがあることを示唆するために、次のスライダーをチラ見せする手法をよく使います。
 
-![おまけ・次のスライダーを少しだけ見せたい](./images/2022/12/entry514-3.png)
+![おまけ・次のスライダーを少しだけ見せたい](./images/12/entry514-3.png)
 
 その場合は、`option` の `slidesPerView` を `"auto"`に指定し
 

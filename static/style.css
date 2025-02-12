@@ -75,6 +75,7 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
+  color: #fff;
 }
 @media screen and (min-width: 768px) {
   .l-footer {
@@ -372,6 +373,44 @@
   .c-toc a:hover {
     opacity: 0.7;
   }
+}
+
+.c-faq {
+  margin-bottom: 16px;
+  background: var(--pale-gray);
+  border-radius: 16px;
+}
+.c-faq dt {
+  padding: 16px 16px 16px 60px;
+  font-weight: bold;
+  position: relative;
+  border-bottom: 1px solid var(--background);
+}
+.c-faq dt::before {
+  font-family: var(--font-alphabet);
+  color: var(--color-blue);
+  position: absolute;
+  left: 16px;
+  content: "Q.";
+  font-size: 28px;
+  top: 14px;
+  line-height: 1;
+}
+.c-faq dd {
+  font-size: 14px;
+  position: relative;
+  padding: 16px 16px 16px 60px;
+  margin: 0;
+}
+.c-faq dd::before {
+  color: var(--color-accent);
+  top: 6px;
+  line-height: 1;
+  position: absolute;
+  left: 16px;
+  content: "A.";
+  font-weight: bold;
+  font-size: 28px;
 }
 
 .c-bio {
