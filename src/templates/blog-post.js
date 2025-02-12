@@ -25,6 +25,7 @@ const renderAst = new rehypeReact({
     
 // console.log(renderAst)
 const BlogPostTemplate = ({ data, location }) => {
+
     const { title, siteUrl, category } = data.site.siteMetadata
     const post = data.markdownRemark.frontmatter
     const slug = data.markdownRemark.fields.slug
@@ -59,7 +60,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     </dl>
                     <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
                 </article>
-                <SideBar></SideBar>
+                <SideBar id={slug}></SideBar>
             </div>
         </Layout>
     )
@@ -127,7 +128,6 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       htmlAst
-      tableOfContents
       fields {
         slug
       }

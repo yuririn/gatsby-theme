@@ -2,10 +2,12 @@ import * as React from "react"
 import Search from "./search"
 import Img from "./common/img"
 import { Link } from "gatsby"
-const SideBar =()=>{
+import Toc from "./posts/Toc"
+const SideBar =({id})=>{
     return (
         <aside className="l-container--blog__aside">
             <div className="l-container--blog__aside__inner">
+                {id ? <Toc id={id}></Toc>:''}
                 <h2 className="c-heading__aside">記事を探す</h2>
                 <Search></Search>
                 <ul className="c-side-banner">

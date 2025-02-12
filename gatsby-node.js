@@ -23,6 +23,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     {
       allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
         totalCount
+        tableOfContents
         nodes {
           id
           fields {

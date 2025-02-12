@@ -7,11 +7,11 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 
-    if (typeof window !== "undefined") {
-        const setTheme = newTheme => (document.body.className = newTheme)
-        const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
-        setTheme(mode)
-    }
+    // if (typeof window !== "undefined") {
+    //     const setTheme = newTheme => (document.body.className = newTheme)
+    //     const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
+    //     setTheme(mode)
+    // }
 
 
   return (

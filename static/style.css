@@ -303,6 +303,77 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .c-toc {
+    max-height: 10dvh;
+    min-height: 300px;
+    overflow: auto;
+    margin-left: -5px;
+    padding-left: 5px;
+  }
+}
+.c-toc ul {
+  margin: 0;
+  counter-reset: num;
+  margin-bottom: 0;
+}
+.c-toc li {
+  counter-increment: num;
+  margin-bottom: 1px;
+}
+.c-toc li ul a {
+  padding: 4px 4px 4px 3.6em;
+}
+.c-toc li ul a::before {
+  width: 3.9em;
+}
+.c-toc li ul ul a {
+  padding: 4px 4px 4px 5.2em;
+}
+.c-toc li ul ul a::before {
+  width: 5.4em;
+}
+.c-toc p {
+  margin-bottom: 1px;
+}
+.c-toc a {
+  display: block;
+  position: relative;
+  padding: 4px 4px 4px 2.3em;
+  font-size: var(--font-sm);
+  color: var(--background);
+  text-decoration: none;
+  border: 1px solid var(--color-blue);
+  background: var(--color-blue);
+}
+.c-toc a::before {
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-alphabet);
+  width: 2em;
+  font-weight: bold;
+  content: counters(num, " - ");
+  color: var(--color-blue);
+  background: var(--background);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-toc a.active {
+  opacity: 0.7;
+}
+@media screen and (min-width: 768px) {
+  .c-toc a {
+    transition: opacity 0.3s;
+  }
+  .c-toc a:hover {
+    opacity: 0.7;
+  }
+}
+
 .c-bio {
   border-bottom: 6px solid var(--pale-gray);
   border-right: 6px solid var(--pale-gray);
