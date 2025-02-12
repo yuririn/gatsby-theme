@@ -51,7 +51,13 @@
         font-family: var(--font-alphabet);
         text-decoration: none;
         a {
-                color: var(--color-blue);
+            color: var(--color-blue);
+            svg {
+                width: 20px;
+            }
+            svg,path {
+                fill: var(--color-blue);
+            }
         }
     }
     &__img {

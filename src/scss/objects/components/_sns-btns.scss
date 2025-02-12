@@ -18,15 +18,16 @@
     }
     @include utils.mq(md){
         dl {
-                top: 76px;
-                position: sticky;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                gap: 24px;
-                
-            }//media query
-            dt {
+            top: 76px;
+            position: sticky;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 24px;
+            
+        }//media query
+        dt {
+                letter-spacing: 0.15em;
                 font-size:2rem;
         font-family: var(--font-alphabet);
                 white-space: pre;

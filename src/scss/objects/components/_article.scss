@@ -20,6 +20,7 @@
             margin-bottom: 0px;
         }
         dd {
+            margin-left: 0;
             font-family: var(--font-alphabet);
         }
     }
@@ -38,8 +39,15 @@
             border-radius: 4px;
             border: 1px solid var(--color-blue);
             background: var(--background);
-            transition: 0.3s;
             padding: 4px 8px 4px 4px;
+            @include utils.mq(md){
+                &:hover {
+
+                    color: var(--background);
+                    background: var(--color-blue);
+                }
+            }
+
             &::before {
                 content: "";
                 width: 1em;
@@ -70,6 +78,13 @@
                 border-radius: 4px;
                 border: 1px solid var(--color-blue);
                 background: var(--color-blue);
+                @include utils.mq(md){
+                    &:hover {
+                        color: var(--color-blue);
+                        background: var(--background);
+                        
+                    }
+                }
             }
         }
     }

@@ -83,7 +83,6 @@
             border-radius: 4px;
             border: 1px solid var(--color-blue);
             background: var(--background);
-            transition: 0.3s;
             padding: 4px 8px 4px 4px;
             &::before {
                 content: "";
@@ -95,6 +94,13 @@
                 background: var(--background);
                 border: 2px solid var(--color-blue);
                 transform: scale(0.5);
+            }
+            @include utils.mq(md){
+                transition: color 0.3s, background-color 0.3s;
+                &:hover {
+                color: var(--background);
+                background: var(--color-blue);
+            }
             }
         }
     }

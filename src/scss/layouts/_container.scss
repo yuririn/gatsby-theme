@@ -1,5 +1,9 @@
 @use "../utils";
 
+$md: 250px;
+$lg: 300px;
+$xl: 350px;
+
 .l-container {
     max-width: #{utils.$u-container}px;
     padding-left: utils.$u-margin-y;
@@ -26,17 +30,27 @@
             position: relative;
             display: grid;
             gap: 32px;
-            grid-template-columns: 1fr 250px;
+            grid-template-columns: 1fr $md;
         }
         @include utils.mq(lg){
             gap: 56px;
             display: grid;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr $lg;
         }
         @include utils.mq(xl){
             gap: 56px;
             display: grid;
-            grid-template-columns: 1fr 400px;
+            grid-template-columns: 1fr $xl;
+        }
+    }
+    &-archive {
+        position: relative;
+        &__sticky-area {
+            position: sticky;
+            bottom: 0;
+            background: var(--background);
+            left: 0;
+            padding: 16px;
         }
     }
     &--article {
@@ -67,7 +81,7 @@
             display: grid;
             gap: 32px;
             margin-inline: auto;
-            grid-template-columns:auto  minmax(0, 800px) 300px;
+            grid-template-columns:auto  minmax(0, 800px) $lg;
         
         }
          @include utils.mq(xl){
@@ -76,7 +90,7 @@
             display: grid;
             gap: 32px;
             margin-inline: auto;
-            grid-template-columns:auto  minmax(0, 800px) 400px;
+            grid-template-columns:auto  minmax(0, 800px) $xl;
         }
 
     }

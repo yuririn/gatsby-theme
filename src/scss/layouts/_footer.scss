@@ -1,0 +1,18 @@
+@use './../utils';
+.l-footer {
+    background: var(--footer-background);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    @include utils.mq(md){
+        flex-direction: row;
+        display: flex;
+        padding: 32px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }//media query
+    &__copyright {
+        text-align: center;
+        width: 100%;
+    }
+}
