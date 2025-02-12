@@ -12,6 +12,7 @@ import RelativeCard from "../components/posts/modueles/relative-card";
 import Date from '../components/posts/Date';
 import Bio from "../components/posts/Bio";
 import Sns from "../components/posts/Sns"
+import PrevAndNextNav from "../components/posts/PrevAndNextNav";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
@@ -32,6 +33,7 @@ const BlogPostTemplate = ({ data, location }) => {
     const cate = category.filter(i=>i.slug === post.cateId)[0]
     const perfectUrl = `${siteUrl}${location.pathname}`
     const perfectTitle = encodeURI(post.title + "|" + title)
+    const {previous, next } = data;
     return (
         <Layout location={location} title={post.title}>
             <header className={`c-blog-header--${cate.slug}`} id="keyvisual">
@@ -55,6 +57,7 @@ const BlogPostTemplate = ({ data, location }) => {
                         <dt>Category</dt>
                         <dd><Link to={`/blogs/${cate.slug}`}>{cate.name}</Link></dd>
                     </dl>
+                    <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
                 </article>
                 <SideBar></SideBar>
             </div>
