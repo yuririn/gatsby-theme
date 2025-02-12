@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { graphql, useStaticQuery } from "gatsby";
 import Post from './Post';
@@ -75,12 +75,11 @@ const InfiniteScrollComponent = () => {
             dataLength={posts.length}
             next={fetchMorePosts}
             hasMore={hasMore}
-            loader={<h4>Loading...</h4>}
-            endMessage={<p>これ以上記事はありません</p>}
+            loader={<p className="u-center u-font--en">Loading...</p>}
+            endMessage={<p className="u-center">これ以上記事はありません</p>}
         >
             <ul className="l-card-container">
                 {posts.map(( node, key ) => {
-                    console.log(node.node)
                     return <Post post={node.node} key={key}></Post>
                 })}
             </ul>
