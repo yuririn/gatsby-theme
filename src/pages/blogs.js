@@ -4,6 +4,8 @@ import Search from "../components/search"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import InfiniteScrollComponent from "../components/posts/InfiniteScrollComponent";
+import BreadCrumbList from "../components/common/BreadcrumbList"
+
 
 
 const BlogList = ({ data, location, pageContext }) => {
@@ -12,16 +14,19 @@ const BlogList = ({ data, location, pageContext }) => {
     
     const headerClass = 'c-page-header';
     const posts = data.allMarkdownRemark.nodes;
-
+    const breadCrumbList = {
+        parents: [],
+        current: title
+    }
   return (
       <Layout location={location} title={title}>
           <header className={headerClass} id="keyvisual">
               <h1>{title}</h1>
               <p>現在  {totalCount} 記事あります</p>
+              <BreadCrumbList list={breadCrumbList} ></BreadCrumbList>
         </header>
         
         <div className="l-section l-container-archive">
-
             <InfiniteScrollComponent posts={posts}/>
             <div className="l-container-archive__sticky-area">
                 <Search></Search>

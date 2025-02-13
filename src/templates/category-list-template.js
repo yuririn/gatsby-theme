@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import InfiniteScrollComponent from "../components/posts/InfiniteScrollComponent";
 import { siteMetadata } from "../../gatsby-config"
+import BreadCrumbList from "../components/common/BreadcrumbList"
 
 
 const CategoryList = ({ data, location, pageContext }) => {
@@ -12,12 +13,18 @@ const CategoryList = ({ data, location, pageContext }) => {
     const blogName = siteMetadata.blogName
     const headerClass = `c-page-header--${slug}`
     const posts = data.allMarkdownRemark.nodes;
-
+    const breadCrumbList = {
+        parents: [
+            { path: '/blogs/', name: blogName },
+        ],
+        current: title
+    }
     return (
         <Layout location={location} title={title}>
             <header className={headerClass} id="keyvisual">
                 <h1><span>{blogName}</span>{title}</h1>
                 <p>現在  {totalCount} 記事あります</p>
+                <BreadCrumbList list={breadCrumbList} ></BreadCrumbList>
             </header>
             <div className="l-section l-container-archive">
 

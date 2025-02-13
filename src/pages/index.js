@@ -19,16 +19,17 @@ const BlogIndex = ({ data, location }) => {
           <FirstView></FirstView>
       <div className="l-section l-container--blog">
         <div className="l-container--blog__main">
-          <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
+            <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
             <PickUpList></PickUpList>
-          <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
-                  <ul className="l-card-container">{
-                    posts.map((post, key) => {
-                        return  <Post post={post} key={key}></Post>
-                        }
-                    )}
-                </ul>
-            </div>
+            <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
+            <ul className="l-card-container">{
+                posts.map((post, key) => {
+                    return  <Post post={post} key={key}></Post>
+                    }
+                )}
+            </ul>
+            <p className="u-center"><a href="/blogs/" className="c-btn--detail">もっとブログを読む</a></p>
+        </div>
         <SideBar></SideBar>
       </div>
     </Layout>

@@ -14,6 +14,8 @@ import Bio from "../components/posts/Bio";
 import Sns from "../components/posts/Sns"
 import PrevAndNextNav from "../components/posts/PrevAndNextNav";
 import Faq from "../components/posts/Faq";
+import BreadCrumbList from "../components/common/BreadcrumbList";
+import { siteMetadata } from "../../gatsby-config";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
@@ -27,7 +29,7 @@ const renderAst = new rehypeReact({
 // console.log(renderAst)
 const BlogPostTemplate = ({ data, location }) => {
 
-    const { title, siteUrl, category } = data.site.siteMetadata
+    const { title, siteUrl, category, blogName } = siteMetadata
     const post = data.markdownRemark.frontmatter
     const slug = data.markdownRemark.fields.slug
     const docImage = data.docImage
@@ -36,6 +38,14 @@ const BlogPostTemplate = ({ data, location }) => {
     const perfectUrl = `${siteUrl}${location.pathname}`
     const perfectTitle = encodeURI(post.title + "|" + title)
     const {previous, next } = data;
+    const breadCrumbList = {
+        parents: [
+            { path: '/blogs/', name: blogName },
+            { path: `/blogs/${cate.slug}/`, name: cate.name },
+            { path: `/blogs/tags/${post.tags[0]}/`, name: post.tags[0] }
+        ],
+        current: post.title
+    }
     return (
         <Layout location={location} title={post.title}>
             <header className={`c-blog-header--${cate.slug}`} id="keyvisual">
@@ -44,7 +54,9 @@ const BlogPostTemplate = ({ data, location }) => {
                     alt={post.title}
                 />
 
+                <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
             </header>
+            
             <div className="l-section l-container--article">
                 <Sns url={perfectUrl} title={perfectTitle}></Sns>
                 <article className="c-article">
@@ -82,16 +94,6 @@ export const pageQuery = graphql`
     $nextPostId: String
     $hero: String
   ) {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-        category {
-            name
-            slug
-        }
-      }
-    }
     siteOgImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }

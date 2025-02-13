@@ -68,7 +68,10 @@ h1,h2,h3,h4,h5 {
 blockquote, p, ul, ol, table {
     line-height: 1.6;
 }
-
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 body.is-fixed {
     overflow: hidden;
     height: 100dvh;

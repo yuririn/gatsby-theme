@@ -9,9 +9,10 @@
  */
 module.exports = {
   siteMetadata: {
-    pickup: ["entry541","entry533"],
+        pickup: [ "entry514", "entry521"],
     title: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
-        blogName: 'セブ島エンジニアのノマドブログ',
+    shortName: `銀ねこアトリエ`,
+        blogName: '海外ノマドエンジニアブログ',
     author: {
       name: `かみーゆ`,
       summary: `資金ゼロからフィリピンで起業した海外ノマドエンジニア。IT業界10年以上でテクニカルディレクター（技術責任者）・エンジニア講師・ブリッジSEを経てLenzTechnologies Inc.を設立し、代表を務める。CMS concreteCMSエバンジェリスト。テックブログ以外も「磨耗しない人生」や「海外ノマド」のライフスタイルについて発信。好きなものは肉とハイボール。`,
