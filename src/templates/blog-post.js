@@ -1,4 +1,4 @@
-import React, { createElement } from "react"
+import React from "react"
 import { Link, graphql } from "gatsby"
 import Seo from "../components/seo"
 import Layout from '../components/layout';

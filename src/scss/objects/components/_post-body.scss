@@ -176,6 +176,8 @@
     table code[class*="language-"],
     li code[class*="language-"],
     p code[class*="language-"] {
+        font-size: 1.4rem;
+        text-shadow: none;
     color: var(--light-color);
 }
 }

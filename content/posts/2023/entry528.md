@@ -49,7 +49,7 @@ _前提条件_
 
 JS で`img` タグを追加して`createObjectURL()`でパスを生成、追加します。挙動としてはアップロードするとどんな画像がアップロードされたかビジュアル的に確認できます。
 
-![画像のアップロード](images/2023/12/entry528-3.jpg)
+![画像のアップロード](./images/12/entry528-3.jpg)
 
 [createObjectURL() 静的メソッド | MDN](https://developer.mozilla.org/ja/docs/Web/API/URL/createObjectURL_static)
 
@@ -59,7 +59,7 @@ CANIUSE や ChatGPT によると`createObjectURL()` は _現在非推奨_ とさ
 
 Cropper.js で画像のトリムを行います。操作と、実際にトリムした画像データを出力するまでを解説します。
 
-![Cropper.js 公式サイト](images/2023/12/entry528-1.jpg)
+![Cropper.js 公式サイト](./images/12/entry528-1.jpg)
 
 [Cropper.js 公式サイト](https://fengyuanchen.github.io/cropperjs/)
 
@@ -119,7 +119,7 @@ fileUpload.addEventListener('change', (e) => {
 
 画像アップロードと同時にトリム操作可能になります。
 
-![Cropper.js でトリム操作できるようにする](images/2023/12/entry528-4.jpg)
+![Cropper.js でトリム操作できるようにする](./images/12/entry528-4.jpg)
 
 #### オプションとメソッド
 
@@ -190,7 +190,7 @@ fileUpload.addEventListener('change', (e) => {
 ```
 
 `console.log` で base64 化できたかを確認します。
-![ console.log出力](images/2023/12/entry528-5.jpg)
+![ console.log出力](./images/12/entry528-5.jpg)
 
 ## base64 データをバイナリ化して自動ダウンロード
 
@@ -244,7 +244,7 @@ trimBtn.addEventListener('click', () => {
 
 300✕300px で resize-1703724887608.jpg とリネームされた JPG ファイルがダウンロードされました。
 
-![バイナリ化したファイルをダウンロード](images/2023/12/entry528-6.jpg)
+![バイナリ化したファイルをダウンロード](./images/12/entry528-6.jpg)
 
 ## createObjectURL() を使う理由
 
@@ -254,7 +254,7 @@ trimBtn.addEventListener('click', () => {
 
 <msg txt="え、、2023年更新の記事にも検証結果が載ってたんですが。。。"></msg>
 
-![caniuse](images/2023/12/entry528-2.png)
+![caniuse](./images/12/entry528-2.png)
 
 CANIUSE で調べると思いっきり _createObjectURL() is no longer available within the context of a ServiceWorker.(ServiceWorker のコンテキスト内では使用できなくなりました。)_ って書いてありました。
 
@@ -280,7 +280,7 @@ CANIUSE で調べると思いっきり _createObjectURL() is no longer available
 
 Cropper.JS のボックスにもつけれないかなーと思ったらあっさり出来たのでその方法のご紹介しておきます。
 
-![caniuse](images/2023/12/entry528-8.jpg)
+![caniuse](./images/12/entry528-8.jpg)
 
 CSS だけで OK。サイズ等は適宜変更してください。
 

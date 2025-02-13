@@ -3,12 +3,15 @@
  *
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
+// const { EventEmitter } = require('events');
+// EventEmitter.defaultMaxListeners = 20;
 
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
+const pagePost = path.resolve(`./src/templates/page-post.js`)
 const blogList = path.resolve(`./src/pages/blogs.js`)
 const categoryList = path.resolve(`./src/templates/category-list-template.js`)
 const tagList = path.resolve(`./src/templates/tags-list-template.js`)
@@ -69,7 +72,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const nextPostId =
         index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
       createPage({
-        path: `/blogs/${post.fields.slug}`,
+        path: `/blogs/${post.fields.slug}/`,
         component: blogPost,
         context: {
           id: post.id,
@@ -88,7 +91,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: '/blogs/',
         component: blogList,
         context: {
-            title: siteMetadata.blogName,
+            title: siteMetadata.blogName || "Default Blog Name",
             totalCount: blogPosts.length,
             prefix: "blogs",
             slug: "blogs",
@@ -99,7 +102,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     siteMetadata.category.forEach((category) => {
         const count = blogPosts.filter(post => category.slug === post.frontmatter.cateId).length
         createPage({
-            path: `/blogs/${category.slug}`,
+            path: `/blogs/${category.slug}/`,
             component: categoryList,
             context: {
                 title: `${category.name}`,
@@ -141,6 +144,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             },
         });
     })
+      const pagePosts = posts.filter(post => post.frontmatter.pageType !== "blog")
+      // ブログ一覧出力
+      pagePosts.forEach(post => {
+        createPage({
+            path: post.fields.slug,
+            component: pagePost,
+            context: {
+                id: post.id,
+                hero: post.frontmatter.hero
+                    ? post.frontmatter.hero
+                    : "common/dummy.png",
+            },
+        })
+    })
   }
 }
 
@@ -150,14 +167,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `MarkdownRemark` ) {
+      const pageType = node.frontmatter.pageType;
     const value = createFilePath({ node, getNode, basePath: 'content/posts' })
-
-    createNodeField({
-      name: `slug`,
-      node,
-      value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1'),
-    })
+      if (pageType === 'blog') {
+            createNodeField({
+            name: `slug`,
+            node,
+            value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1'),
+            })
+        }else {
+          createNodeField({
+              name: `slug`,
+              node,
+              value,
+          })
+        }
   }
 }
 

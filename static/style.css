@@ -375,7 +375,7 @@
   display: block;
   position: relative;
   padding: 4px 4px 4px 2.3em;
-  font-size: var(--font-sm);
+  font-size: 1.4rem;
   color: var(--background);
   text-decoration: none;
   border: 1px solid var(--color-blue);
@@ -709,6 +709,8 @@
 .c-post-body table code[class*=language-],
 .c-post-body li code[class*=language-],
 .c-post-body p code[class*=language-] {
+  font-size: 1.4rem;
+  text-shadow: none;
   color: var(--light-color);
 }
 
