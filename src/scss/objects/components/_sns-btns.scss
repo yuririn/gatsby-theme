@@ -6,6 +6,9 @@
         bottom: 0;
         position: sticky;
         z-index: 100;
+        dl {
+            margin-bottom: 8px;
+        }
         dt {
             display: none;
         }
@@ -13,8 +16,13 @@
     dd {
         margin-left: 0;
         display: flex;
-        justify-content: center;
+        
         gap: 16px;
+        @include utils.mq(md){
+            padding: 0 16px;
+            justify-content: center;
+
+        }
     }
     @include utils.mq(md){
         dl {

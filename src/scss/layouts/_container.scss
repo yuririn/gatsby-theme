@@ -46,7 +46,6 @@ $xl: 350px;
     &-archive {
         position: relative;
         &__sticky-area {
-            
             position: sticky;
             bottom: 0;
             background: var(--background);
@@ -54,6 +53,9 @@ $xl: 350px;
             padding: 16px;
             margin-left: -16px;
             margin-right: -16px;
+            @include utils.mqd(md){
+                padding-right: 160px;
+            }
             @include utils.mq(md){
                 margin-left: -40px;
                 margin-right: -40px;
