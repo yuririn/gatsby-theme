@@ -9,9 +9,9 @@
  */
 module.exports = {
   siteMetadata: {
-        pickup: ["entry541","entry533"],
+    pickup: ["entry541","entry533"],
     title: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
-
+        blogName: 'セブ島エンジニアのノマドブログ',
     author: {
       name: `かみーゆ`,
       summary: `資金ゼロからフィリピンで起業した海外ノマドエンジニア。IT業界10年以上でテクニカルディレクター（技術責任者）・エンジニア講師・ブリッジSEを経てLenzTechnologies Inc.を設立し、代表を務める。CMS concreteCMSエバンジェリスト。テックブログ以外も「磨耗しない人生」や「海外ノマド」のライフスタイルについて発信。好きなものは肉とハイボール。`,
@@ -110,7 +110,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
                 options: {
                     maxWidth: 800,
-                    quarity: 90,
+                    quality: 90,
                     withWebp: true,
                     linkImagesToOriginal: false,
                 },
@@ -145,7 +145,12 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+        resolve: 'gatsby-plugin-sharp',
+        options: {
+            failOn: "none",
+        },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {

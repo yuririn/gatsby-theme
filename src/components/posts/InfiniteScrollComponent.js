@@ -1,90 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { graphql, useStaticQuery } from "gatsby";
 import Post from './Post';
 
-const InfiniteScrollComponent = () => {
-    const initialData = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(
-        sort: { frontmatter: { date: DESC } }
-        limit: 12
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              date(formatString: "MMMM DD, YYYY")
-              tags
-              hero
-            }
-            fields {
-              slug
-            }
-            excerpt
-          }
-        }
-      }
-    }
-  `);
+const InfiniteScrollComponent = ({ posts }) => {
+    const num = 12;
+    const [showPostIndex, setShowPostIndex] = useState(num);
+    const [showPosts, setShowPosts] = useState(posts.slice(0, num));
+    const [hasMore, setHasMore] = useState(posts.length > num);
 
-    const [posts, setPosts] = useState(initialData.allMarkdownRemark.edges);
-    const [hasMore, setHasMore] = useState(true);
-    const [page, setPage] = useState(1);
-
-    const fetchMorePosts = async () => {
-        const res = await fetch(`/___graphql`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                query: `
-          query {
-            allMarkdownRemark(
-              sort: { frontmatter: { date: DESC } }
-              skip: ${page * 12}
-              limit: 12
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    title
-                    tags
-                    hero
-                    date(formatString: "MMMM DD, YYYY")
-                  }
-                  fields {
-                    slug
-                  }
-                  excerpt
-                }
-              }
-            }
-          }
-        `,
-            }),
-        });
-        const newPosts = await res.json();
-        setPosts([...posts, ...newPosts.data.allMarkdownRemark.edges]);
-        setHasMore(newPosts.data.allMarkdownRemark.edges.length > 0);
-        setPage(page + 1);
+    const fetchMoreData = () => {
+        const nextIndex = showPostIndex + num;
+        setShowPostIndex(nextIndex);
+        setShowPosts(posts.slice(0, nextIndex));
     };
+
+    useEffect(() => {
+        setHasMore(showPostIndex < posts.length);
+    }, [showPostIndex, posts.length]);
+
+    if (posts.length < num) {
+        return (
+            <ul className="l-card-container">
+                {posts.map((node, key) => (
+                    <Post post={node} key={key} />
+                ))}
+            </ul>
+        );
+    }
+
     return (
         <InfiniteScroll
-            dataLength={posts.length}
-            next={fetchMorePosts}
+            dataLength={showPosts.length}
+            next={fetchMoreData}
             hasMore={hasMore}
             loader={<p className="u-center u-font--en">Loading...</p>}
-            endMessage={<p className="u-center">これ以上記事はありません</p>}
+            endMessage={<p className="u-center">全件表示しました</p>}
         >
             <ul className="l-card-container">
-                {posts.map(( node, key ) => {
-                    return <Post post={node.node} key={key}></Post>
+                {showPosts.map((node, key) => {
+                    console.log(key);
+                    return <Post post={node}/>;
                 })}
             </ul>
         </InfiniteScroll>
     );
-}
+};
 
 export default InfiniteScrollComponent;

@@ -5,7 +5,7 @@ const Sns = ({ url, title }) => {
     return (
         <div className="c-sns-btns">
         <dl>
-            <dt>SHARA</dt>
+            <dt>SHARE</dt>
             <dd className="c-sns-btns__items">
                 <Link
                     className="c-sns-btns__fb"

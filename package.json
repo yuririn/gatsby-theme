@@ -72,9 +72,10 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "log": "gatsby develop > gatsby_log.txt 2>&1",
     "develop": "gatsby develop",
+    "start": "npm run develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
     "gulp": "gulp",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

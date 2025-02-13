@@ -5,6 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+gatsby_log.txt
+
 # Runtime data
 pids
 *.pid

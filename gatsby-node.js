@@ -9,7 +9,11 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
-const blogList = path.resolve(`./src/templates/blog-list-template.js`)
+const blogList = path.resolve(`./src/pages/blogs.js`)
+const categoryList = path.resolve(`./src/templates/category-list-template.js`)
+const tagList = path.resolve(`./src/templates/tags-list-template.js`)
+
+const { siteMetadata } = require('./gatsby-config')
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -58,8 +62,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog")
-    const count = blogPosts.length;
-
+    
+    // 個々のブログ
     blogPosts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : blogPosts[index - 1].id
       const nextPostId =
@@ -71,29 +75,72 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId,
-            totalCount: count,
+            
           hero: post.frontmatter.hero
             ? post.frontmatter.hero
             : "common/dummy.png",
         },
       })
     })
-    const postsPerPage = 12;
-      const numPages = Math.ceil(blogPosts.length / postsPerPage);
 
-    Array.from({ length: numPages }).forEach((_, i) => {
+    // ブログ一覧出力
+    createPage({
+        path: '/blogs/',
+        component: blogList,
+        context: {
+            title: siteMetadata.blogName,
+            totalCount: blogPosts.length,
+            prefix: "blogs",
+            slug: "blogs",
+        },
+    });
+
+    //  カテゴリー一覧出力
+    siteMetadata.category.forEach((category) => {
+        const count = blogPosts.filter(post => category.slug === post.frontmatter.cateId).length
         createPage({
-            path: i === 0 ? `/blogs/` : `/blogs/${i + 1}`,
-            component: blogList,
+            path: `/blogs/${category.slug}`,
+            component: categoryList,
             context: {
-                limit: postsPerPage,
-                skip: i * postsPerPage,
-                numPages,
-                currentPage: i + 1,
-                prefix: "blogs",
+                title: `${category.name}`,
+                totalCount: count,
+                prefix: "catetory",
+                slug: category.slug,
             },
         });
     });
+
+      // タグの一覧作成とカウント
+      let tags = blogPosts.reduce((tags, edge) => {
+          const edgeTags = edge.frontmatter.tags;
+          if (edgeTags) {
+              edgeTags.forEach(tag => {
+                  const existingTag = tags.find(t => t.name === tag);
+                  if (existingTag) {
+                      existingTag.count += 1;
+                  } else {
+                      tags.push({ name: tag, count: 1 });
+                  }
+              });
+          }
+          return tags;
+      }, []);
+
+      //  List 出力
+      tags = [...tags];
+      tags.forEach((list)=>{
+            const count = list.count
+        createPage({
+            path: `/blogs/tags/${list.name}/`,
+            component: tagList,
+            context: {
+                title: list.name,
+                totalCount: count,
+                prefix: list.name,
+                slug: list.name
+            },
+        });
+    })
   }
 }
 

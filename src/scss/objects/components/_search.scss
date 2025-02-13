@@ -12,6 +12,10 @@
         border-radius: 0;
         background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="81.734" height="81.734" viewBox="0 0 81.734 81.734"><path id="Icon_map-search" data-name="Icon map-search" d="M61.248,50.372A32.323,32.323,0,1,0,50.367,61.244L72.3,83.174,83.174,72.293ZM33.689,53.643a19.94,19.94,0,1,1,19.95-19.929,19.973,19.973,0,0,1-19.95,19.929Z" transform="translate(-1.439 -1.44)" fill="%23999"/></svg>') 0 center / 30px no-repeat;
         outline: none;
+        max-width: 800px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         @include utils.mq(md){
             height: 60px;
         }
@@ -27,8 +31,6 @@
             font-weight: bold;
         }
         
-        @include utils.mq(md){
-        }
         &__img {
             display: block;
             width: 100px;
