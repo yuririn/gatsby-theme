@@ -2,7 +2,7 @@
 title: XAMPP/PHP5.5.27~mySQLの初期パスワード設定
 date: 2015-11-18
 hero: thumbnail/2014/entry192.jpg
-pagetype: blog
+pageType: blog
 cateId: 'web-developer'
 tags: [XAMPP]
 description: Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。
@@ -37,7 +37,7 @@ Apacheのダッシュボードの上部メニューにHOW-To Guides発見。中�
 
 とりあえずコントロールパネルを管理者権限で起動し「shell」をクリック。
 
-![コントロールパネルを管理者権限で起動し「shell」をクリック](./images/2015/entry233-1.jpg)
+![コントロールパネルを管理者権限で起動し「shell」をクリック](./images/entry233-1.jpg)
 
 コマンドプロンプトが立ち上がるので初期パスワードを設定するため以下入力。
 
@@ -67,16 +67,16 @@ phpMyAdminにアクセスできるようになります。
 
 1.phpMyAdminにログイン
 ### 2.上メニューUser Accountをクリック
-![上メニューUser Accountをクリック](./images/2015/entry233-2.jpg)
+![上メニューUser Accountをクリック](./images/entry233-2.jpg)
 ### 3. root localhostのEdit privilegesをクリック
 ※画像はすでにパスワード変更しているのでパスワードの項目が「いいえ」になっているけど初期設定では「はい」になっています。
 
-![root localhostのEdit privilegesをクリック](./images/2015/entry233-3.jpg)
+![root localhostのEdit privilegesをクリック](./images/entry233-3.jpg)
 
 ### 4.「パスワードを変更する」をクリック
 パスワード変更画面へ行きパスワードを2回入力して実行。
 
-![root localhostのEdit privilegesをクリック](./images/2015/entry233-4.jpg)
+![root localhostのEdit privilegesをクリック](./images/entry233-4.jpg)
 
 ~~※config.inc.phpは変更不要です。~~
 

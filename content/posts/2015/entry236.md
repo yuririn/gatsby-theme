@@ -3,7 +3,7 @@ title: 外部フォームブロックでお問い合わせフォーム作成
 date: 2015-12-01
 modifieddate: 2022-04-18
 hero: thumbnail/2014/entry175.jpg
-pagetype: blog
+pageType: blog
 cateId: 'cms'
 tags: ["concrete5"]
 description: concrete5（concreteCMS）の外部フォームを使ってフォーム作りました。2022年にAjax対応する記事執筆に伴い、大幅にリライトと加筆しました。フォームヘルパーやメールヘルパーの詳しい使い方も紹介しています。
@@ -55,7 +55,7 @@ concrete5には外部フォームというブロックがあります。<br>
 
 見た目を整形していく用のビューのファイルはform直下に配置します。挙動の制御をするコントローラーファイルはさらにその直下にcontrollerフォルダを作って同じ名前のファイルを置きます。
 
-![ファイル構造](./images/2015/entry236-1.jpg)
+![ファイル構造](./images/entry236-1.jpg)
 
 ## コントローラー、ビュー、メールのテンプレを作る
 concrete5のブロックはMVC（モデル・ビュー・コントローラー）モデルとなっており、コアをオーバーライドして作成します。
@@ -102,7 +102,7 @@ defined('C5_EXECUTE') or die("Access Denied.");
   </div>
 </form>
 ```
-![ファイル構造](./images/2015/entry236-2.png)
+![ファイル構造](./images/entry236-2.png)
 
 見た目は完成しました。
 
@@ -187,7 +187,7 @@ class ContactForm extends AbstractController
 ```
 `\Core::make("token")`でトークンを発行し、
 
-![ファイル構造](./images/2015/entry236-3.png)
+![ファイル構造](./images/entry236-3.png)
 
 controller側でトークンが一致しなければフォームの送信自体をできなくします。
 ```php
@@ -274,7 +274,7 @@ view側で値を受け取り、表示します。
 
 エラーを表示できるようになりました。
 
-![ファイル構造](./images/2015/entry236-4.png)
+![ファイル構造](./images/entry236-4.png)
 
 ## メールヘルパーを使ってメール送信する
 `application/mail`直下に送信するメール内容のテンプレートになる *mail_complete.php* という名前でファイルを配置します。
@@ -342,7 +342,7 @@ view側で `$this->set('thanks', true)` の値を受けとり、送信完了メ�
     <?php }?>
 </div>
 ```
-![Thanksメッセージを表示する](./images/2015/entry236-5.png)
+![Thanksメッセージを表示する](./images/entry236-5.png)
 
 ## view、controllerのすべてのコード
 ```php:title=contact_form.php
