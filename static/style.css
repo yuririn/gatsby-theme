@@ -26,6 +26,20 @@
     margin-bottom: 48px;
   }
 }
+.l-card-container--related-posts {
+  margin-top: 32px;
+  gap: 16px;
+}
+@media screen and (min-width: 768px) {
+  .l-card-container--related-posts {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .l-card-container--related-posts .c-card__title {
+    font-size: 1.8rem;
+  }
+}
 
 .c-heading--lg h2 {
   font-family: var(--font-alphabet);

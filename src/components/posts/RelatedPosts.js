@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Post from "./Post"
 
-const RelatedList = ({ category, slug, tags }) => {
+const RelatedPosts = ({ category, slug, tags }) => {
     const { allMarkdownRemark } = useStaticQuery(
         graphql`
       query {
@@ -54,7 +54,7 @@ const RelatedList = ({ category, slug, tags }) => {
         </ol>
     )
 }
-export default RelatedList
+export default RelatedPosts
 
 const shuffle = (list) => {
     var i = list.length

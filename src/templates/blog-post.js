@@ -16,6 +16,7 @@ import PrevAndNextNav from "../components/posts/PrevAndNextNav";
 import Faq from "../components/posts/Faq";
 import BreadCrumbList from "../components/common/BreadcrumbList";
 import { siteMetadata } from "../../gatsby-config";
+import RelatedPosts from "../components/posts/RelatedPosts";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
@@ -59,21 +60,28 @@ const BlogPostTemplate = ({ data, location }) => {
             
             <div className="l-section l-container--article">
                 <Sns url={perfectUrl} title={perfectTitle}></Sns>
-                <article className="c-article">
-                    <h1 className="c-article__heading">{post.title}</h1>
-                    <Date date={post.date} modifiedDate={post.modifieddate}></Date>
-                    <Tags tags={post.tags}></Tags>
-                    
-                    <section itemProp="articleBody" className="c-post-body">
-                        {renderAst(render)}
-                        {post.faq &&<Faq data={post.faq}></Faq>}
-                    </section>
-                    <dl class="c-article__cate">
-                        <dt>Category</dt>
-                        <dd><Link to={`/blogs/${cate.slug}`}>{cate.name}</Link></dd>
-                    </dl>
-                    <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
-                </article>
+                <div>
+
+                    <article className="c-article">
+                        <h1 className="c-article__heading">{post.title}</h1>
+                        <Date date={post.date} modifiedDate={post.modifieddate}></Date>
+                        <Tags tags={post.tags}></Tags>
+                        
+                        <section itemProp="articleBody" className="c-post-body">
+                            {renderAst(render)}
+                            {post.faq &&<Faq data={post.faq}></Faq>}
+                        </section>
+                        <dl class="c-article__cate">
+                            <dt>Category</dt>
+                            <dd><Link to={`/blogs/${cate.slug}`}>{cate.name}</Link></dd>
+                        </dl>
+                        <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
+                    </article>
+                    <aside>
+                        <h2 className="c-heading__aside">関連記事</h2>
+                        <RelatedPosts id={slug} category={post.cateId} tags={post.tags}></RelatedPosts>
+                    </aside>
+                </div>
                 <SideBar id={slug}></SideBar>
             </div>
         </Layout>

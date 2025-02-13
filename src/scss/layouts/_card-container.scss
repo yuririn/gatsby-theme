@@ -24,4 +24,16 @@
             
         }
     }
+    &--related-posts {
+        margin-top: 32px;
+        gap: 16px;
+        @include utils.mq(md){
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr 1fr 1fr;
+            .c-card__title {
+                font-size: 1.8rem;
+            }
+        }
+    }
 }
