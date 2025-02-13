@@ -39,7 +39,7 @@ const InfiniteScrollComponent = ({ posts }) => {
             <ul className="l-card-container">
                 {showPosts.map((node, key) => {
                     console.log(key);
-                    return <Post post={node}/>;
+                    return <Post post={node} className="fade-in"/>;
                 })}
             </ul>
         </InfiniteScroll>
