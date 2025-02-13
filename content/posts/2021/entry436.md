@@ -39,7 +39,7 @@ HTMLでは要素と要素の距離を`margin`と言います。イラストで�
 
 `margin`のおもしろい（もしくはさらに混乱する）ところは縦方向の余白は少ない方の値が相殺されます。
 
-![折りたたみマージン](./images/2019/entry335-1.jpg)
+![折りたたみマージン](./images/entry335-1.jpg)
 
 <ad location="/blogs/entry436/"></ad>
 

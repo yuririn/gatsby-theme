@@ -173,7 +173,9 @@
     table tr:nth-child(2n) {
         background: var(--pale-gray);
     }
-    p > code[class*="language-"] {
+    table code[class*="language-"],
+    li code[class*="language-"],
+    p code[class*="language-"] {
     color: var(--light-color);
 }
 }

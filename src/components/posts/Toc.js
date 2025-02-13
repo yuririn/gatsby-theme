@@ -1,28 +1,29 @@
-
 import { useStaticQuery, graphql } from "gatsby";
 import React, { useEffect } from "react";
-const Toc = ({id})=>{
+
+const Toc = ({ id }) => {
     const tocArray = useStaticQuery(graphql`
-            query {
-                allMarkdownRemark(
-                    filter: { frontmatter: { pageType: { eq: "blog" } } }
-                ) {
-                    edges {
-                        node {
-                            tableOfContents
-                            fields {
+        query {
+            allMarkdownRemark(
+                filter: { frontmatter: { pageType: { eq: "blog" } } }
+            ) {
+                edges {
+                    node {
+                        tableOfContents
+                        fields {
                             slug
-                            }
                         }
                     }
                 }
             }
-        `);
+        }
+    `);
+
     useEffect(() => {
         const options = {
-            root: null, // ビューポートを基準とする
-            rootMargin: "0px",
-            threshold: 0.5 // 50%以上表示された場合にコールバックを実行
+            root: null,
+            rootMargin: "0px 0px -50% 0px", // ウィンドウの下部から50%のマージン
+            threshold: 0 // 要素が1ピクセルでも表示されたらコールバックを実行
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -48,7 +49,8 @@ const Toc = ({id})=>{
                     const parent = document.querySelector(".c-toc");
                     parent.scrollTop = targetLink.offsetTop - parent.offsetTop;
                 } else {
-                    targetLink.classList.remove("active");
+                    // この部分を削除し、アクティブクラスが消えないようにする
+                    // targetLink.classList.remove("active");
                 }
             });
         }, options);
@@ -57,21 +59,30 @@ const Toc = ({id})=>{
         headings.forEach(heading => {
             observer.observe(heading);
         });
+
         // Cleanup function to unobserve all entries
         return () => {
             headings.forEach(heading => {
                 observer.unobserve(heading);
             });
         };
-    },[])
-    const tocElement = tocArray.allMarkdownRemark.edges.filter(post => { if (post.node.fields.slug === id) return post.node.tableOfContents })[0]
-    return <>
-        <h2 className="c-heading__aside">目次</h2>
-        <div
-            className="c-toc"
-            dangerouslySetInnerHTML={{
-                __html: tocElement.node.tableOfContents}}
-        ></div>
-    </>
-}
-export default Toc
+    }, []);
+
+    const tocElement = tocArray.allMarkdownRemark.edges.filter(post => {
+        if (post.node.fields.slug === id) return post.node.tableOfContents;
+    })[0];
+
+    return (
+        <>
+            <h2 className="c-heading__aside">目次</h2>
+            <div
+                className="c-toc"
+                dangerouslySetInnerHTML={{
+                    __html: tocElement.node.tableOfContents
+                }}
+            ></div>
+        </>
+    );
+};
+
+export default Toc;
