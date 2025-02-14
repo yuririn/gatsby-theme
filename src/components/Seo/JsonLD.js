@@ -133,7 +133,6 @@ const breadcrumbListData = (domain, list) => {
             name: "ホーム"
         }
     }]
-    console.log(list)
 
     list.map((item, i) => {
         const listItem = {
@@ -157,7 +156,6 @@ const breadcrumbListData = (domain, list) => {
 
 const BlogPosting = (data, domain, location) => {
     const { title, description, ogp,date, modifieddate } = data
-    console.log(data)
     const blogPosting = {
         "@context": "http://schema.org",
         "@type": "BlogPosting",

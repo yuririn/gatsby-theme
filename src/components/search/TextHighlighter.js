@@ -8,7 +8,7 @@ const TextHighlighter = props => {
     const item = str.slice(start, end)
     const res = str.replace(
         item,
-        `<mark style="color: var(--color-accent)">${item}</mark>`
+        `<mark style="color: var(--accent-color)">${item}</mark>`
     )
     return <span dangerouslySetInnerHTML={{ __html: res }} />
 }

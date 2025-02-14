@@ -12,7 +12,7 @@ const PagePostTemplate = ({ data, location }) => {
     const { title } = siteMetadata
     const siteTitle = `${post.frontmatter.title} | ${title}`
     const breadCrumbList = {
-        current: post.frontmatter.title ? post.frontmatter.title: 'test'
+        current: post.frontmatter.title
     }
     return (
         <Layout location={location} title={siteTitle}>

@@ -452,7 +452,7 @@
   margin: 0;
 }
 .c-faq dd::before {
-  color: var(--color-accent);
+  color: var(--accent-color);
   top: 6px;
   line-height: 1;
   position: absolute;
@@ -556,7 +556,7 @@
 }
 .c-post-body em {
   font-weight: bolder;
-  color: var(--color-accent);
+  color: var(--accent-color);
 }
 .c-post-body strong {
   text-shadow: 0 0 4px var(--background), 0 0 1px var(--background);
@@ -579,7 +579,7 @@
   width: 1em;
   scale: 0.5;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: var(--accent-color);
 }
 .c-post-body ol:not([class]) {
   counter-reset: num;
@@ -608,7 +608,7 @@
   border-radius: 8px;
 }
 .c-post-body .box h4, .c-post-body .box h3, .c-post-body .box h2 {
-  color: var(--color-accent);
+  color: var(--accent-color);
 }
 .c-post-body .box > *:first-child {
   margin-top: 0;
@@ -643,7 +643,7 @@
   margin-top: 12px;
   content: "";
   display: block;
-  background: linear-gradient(to right, var(--color-accent) 15%, var(--pale-gray) 15%);
+  background: linear-gradient(to right, var(--accent-color) 15%, var(--pale-gray) 15%);
   height: 2px;
   border-width: 0px 3px 3px 0px;
 }
@@ -661,7 +661,7 @@
   margin-top: 4px;
   content: "";
   display: block;
-  background: var(--color-accent);
+  background: var(--accent-color);
   width: 30px;
   height: 2px;
 }

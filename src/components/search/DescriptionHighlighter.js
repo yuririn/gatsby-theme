@@ -40,7 +40,7 @@ const DescriptionHighlighter = props => {
     const finalTextSegments = segments.slice(0, 2).map((segment, index) => {
         const prefix = segment.contextStart > 0 && index === 0 ? '...' : '';
         const suffix = segment.contextEnd < description.length ? '...' : '';
-        return `${prefix}${segment.preText}<mark style="color: var(--color-accent)">${segment.highlightedText}</mark>${segment.postText}${suffix}`;
+        return `${prefix}${segment.preText}<mark style="color: var(--accent-color)">${segment.highlightedText}</mark>${segment.postText}${suffix}`;
     });
 
     const finalText = finalTextSegments.join('...');

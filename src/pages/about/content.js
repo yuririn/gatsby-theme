@@ -298,8 +298,9 @@ const AboutContent = () => {
             みなさんに寄り添い、ホームページ作りだけではなくIT技術でお悩みを解決しつつ、少しでもお役に立てるように頑張ります。
         </p>
         <h2>海外ノマドエンジニア・かみーゆはこんな人</h2>
-            <Img source="common/camille-pic.jpg" className="prfImg" sizes={[200, 200, 40]} />
-        <p className="text-center">
+        <p className="u-center">
+                <Img source="common/camille-pic.jpg" sizes={[250, 250, 40]} className="u-round" />
+            <br />
             <span className="bold">かみーゆ/ 神守　由理子</span>
             <br />
             （かみもり・ゆりこ） <br />
@@ -318,8 +319,10 @@ const AboutContent = () => {
                     <li>好き：動物（特にネコ）・酒・眠る・歴史的建造物・肉・人・暖かいところ・麺類・RPGゲーム・北斗の拳・AKIRA・辛</li>い物・タオラー
                     <li>ニガテ：甘い物・搾取する人・マウント・通勤時間・長い会議・ビジネスメール・噂好き・虫</li>
                     <li>人生最後に迎えたいこと：「かみーゆさんと一緒にいて楽しかったなー」と周りに言われて死ぬ</li>
-                    <Img source="about/about3.jpg" sizes={[200, 300, 30]}/>
             </ul>
+                <p className="u-center">
+                    <Img source="about/about3.jpg" sizes={[300, 400, 30]} alt={`好きなものは肉とビール`} />
+            </p>
         </div>
     </>
     )

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import Logo from './Logo';
+import Logo from '../icon-and-logo/logo';
 import Nav from './GlobalNav';
 import "../../scss/header.scss";
 
