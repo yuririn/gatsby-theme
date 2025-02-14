@@ -1,6 +1,4 @@
-// Validations.js
-
-export const validateName = (name) => {
+const validateName = (name) => {
     if (name === "") {
         return "お名前を入力してください";
     }
@@ -10,18 +8,18 @@ export const validateName = (name) => {
     return "";
 };
 
-export const validateEmail = (email) => {
+const validateEmail = (email) => {
     if (email === "") {
         return "メールアドレスを入力してください";
     }
     const regexp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     if (!regexp.test(email)) {
-        return "メールアドレスの形式が正しくありません";
+        return "※ メールアドレスの形式が正しくありません";
     }
     return "";
 };
 
-export const validateMessage = (message) => {
+const validateMessage = (message) => {
     if (message === "") {
         return "メッセージを入力してください";
     }
@@ -34,9 +32,17 @@ export const validateMessage = (message) => {
     return "";
 };
 
-export const validateAgreement = (agreement) => {
+const validateAgreement = (agreement) => {
     if (!agreement) {
         return "プライバシーポリシーに同意してください";
     }
     return "";
+};
+
+// デフォルトエクスポートを追加
+export default {
+    validateName,
+    validateEmail,
+    validateMessage,
+    validateAgreement
 };

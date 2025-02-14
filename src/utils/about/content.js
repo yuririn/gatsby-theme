@@ -1,11 +1,11 @@
 import * as React from "react"
-import Img from "../../components/common/Img"
-import Msg from "../../components/posts/modueles/msg"
+import Img from "../../components/common/Img";
+import Msg from "../../components/posts/modueles/msg.js"
 import RelativeCard from '../../components/posts/modueles/relative-card';
 
 const AboutContent = () => {
     return (
-    <>
+        <section itemProp="articleBody" className="c-post-body">
         <p>
             私はセブ島在住の海外ノマドでフロントエンドエンジニアのかみーゆです。
             <br />
@@ -324,7 +324,8 @@ const AboutContent = () => {
                     <Img source="about/about3.jpg" sizes={[300, 400, 30]} alt={`好きなものは肉とビール`} />
             </p>
         </div>
-    </>
+    </section>
+   
     )
 }
 
