@@ -7,9 +7,6 @@ import { siteMetadata } from "../../gatsby-config"
 import Sns from "../components/posts/Sns"
 import SideBar from "../components/SideBar"
 import AboutContent from "../utils/about/content";
-import Msg from "../components/posts/modueles/msg";
-import RelativeCard from "../components/posts/modueles/relative-card";
-import Img from "../components/common/Img";
 
 const aboutMeta = {
     template: 'blog',

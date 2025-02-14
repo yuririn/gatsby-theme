@@ -1,4 +1,4 @@
-const validateName = (name) => {
+export const validateName = (name) => {
     if (name === "") {
         return "お名前を入力してください";
     }
@@ -8,7 +8,7 @@ const validateName = (name) => {
     return "";
 };
 
-const validateEmail = (email) => {
+export const validateEmail = (email) => {
     if (email === "") {
         return "メールアドレスを入力してください";
     }
@@ -19,7 +19,7 @@ const validateEmail = (email) => {
     return "";
 };
 
-const validateMessage = (message) => {
+export const validateMessage = (message) => {
     if (message === "") {
         return "メッセージを入力してください";
     }
@@ -32,17 +32,9 @@ const validateMessage = (message) => {
     return "";
 };
 
-const validateAgreement = (agreement) => {
+export const validateAgreement = (agreement) => {
     if (!agreement) {
         return "プライバシーポリシーに同意してください";
     }
     return "";
-};
-
-// デフォルトエクスポートを追加
-export default {
-    validateName,
-    validateEmail,
-    validateMessage,
-    validateAgreement
 };

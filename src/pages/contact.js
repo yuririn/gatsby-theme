@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout";
+import Layout from "../components/layout";
 import { Link} from "gatsby"
-import BreadCrumbList from "../../components/common/BreadcrumbList";
-import Form from "./form";
-import Thanks from "./thanks";
-import SideBar from "../../components/SideBar";
-import Seo from "../../components/Seo/Seo";
+import BreadCrumbList from "../components/common/BreadcrumbList";
+import Form from "../utils/contact/form";
+import Thanks from "../utils/contact/thanks";
+import SideBar from "../components/SideBar";
+import Seo from "../components/Seo/Seo";
 
 const contactMeta = {
     title: 'お問い合わせ',

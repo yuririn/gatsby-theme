@@ -4,6 +4,12 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/Seo/Seo"
 
+const aboutMeta = {
+    template: 'page',
+    title: '【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します',
+    description: `海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。`
+}
+
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
@@ -16,7 +22,25 @@ const NotFoundPage = ({ data, location }) => {
   )
 }
 
-export const Head = () => <Seo title="404: Not Found" />
+export const Head = ({ location }) => {
+    const { title, description } = aboutMeta
+    const list = [
+        {
+            name: '',
+            path: '/404/',
+            type: `WebPage`
+        }
+    ]
+    return <Seo
+        location={location}
+        data={{
+            template: 'blog',
+            title: title,
+            description: description,
+            list: list
+        }}
+    />
+}
 
 export default NotFoundPage
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { validateName, validateEmail, validateMessage, validateAgreement } from "./Validations";
-import LoadingSpinner from "../../components/icon-and-logo/Loading-sppner";
+import { validateName, validateEmail, validateMessage, validateAgreement } from "./validations";
+import LoadingSpinner from './../../components/icon-and-logo/Loading-sppner';
 import { types } from "./constants";
 const Form = ({ onFormSubmit }) => {
     const [type, setType] = useState("");
@@ -181,7 +181,7 @@ const Form = ({ onFormSubmit }) => {
                         />
                         <p className="error">{emailError}</p>
                     </dd>
-                    <dt>メッセージ</dt>
+                    <dt>メッセージ<span>必須</span></dt>
                     <dd>
                         <textarea
                             type="text"
