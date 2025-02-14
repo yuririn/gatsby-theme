@@ -15,7 +15,7 @@ CSSのプロパティの進化、めまぐるしいですね。Webサイトの�
 
 `margin-inline`でセンタリングしたい人はこちらを参考に。
 
-<card id="/blogs/entry536/"></card>
+<card slug="entry536"></card>
 
 ## わりと難しいのでmarginとpaddingのおさらい
 まずは`margin`と`padding`のおさらいから。
@@ -48,7 +48,7 @@ HTMLでは要素と要素の距離を`margin`と言います。イラストで�
 
 さらに詳しく知りたい方はこちらをお読みください。
 
-<card id="/blogs/entry335/"></card>
+<card slug="entry335"></card>
 
 ちなみにコロナ禍のフィリピンでは人と人との`margin`は*2メートル*とやや広めですが、誰一人守ってないです。
 折りたたまれてますね。

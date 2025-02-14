@@ -171,7 +171,7 @@ a[class^=btn] {
 
 コードに関しては以下の記事で紹介しています。
 
-<card id="/blogs/entry536/"></card>
+<card slug="entry536"></card>
 
 ## ボタンのCSSコード・スニペット
 いくらかわいい、かっこいいと思えてもそのデザイン普通使えないと意味がありませんよね？
@@ -765,9 +765,9 @@ box-shadowを2個重ねるだけで、クールなボタンができます。
 その他チェックボックス やセレクトボックスのフォームパーツ類もコードスニペットあります。
 参考にしてください。
 
-<card id="/blogs/entry370/"></card>
+<card slug="entry370"></card>
 
-<card id="/blogs/entry393/"></card>
+<card slug="entry393"></card>
 
 みなさんのコーディングライフの一助となれば幸いです。
 

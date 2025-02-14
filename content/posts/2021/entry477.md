@@ -16,7 +16,7 @@ starter kit のインストールのエラーでハマってできませんで�
 <prof></prof>
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>
 
 
 ## Gatsby v4がリリース！
@@ -145,7 +145,7 @@ npx gatsby new gatsby-starter-blog https://github.com/gatsbyjs/gatsby-starter-bl
 
 githubとNetlifyの連携の仕方がわからない方はこちらをご覧ください。
 
-<card id="/blogs/entry401/"></card>
+<card slug="entry401"></card>
 
 
 ## まとめ・Gatsby v4 に対応する際、インストール中エラーでコケる前に必須バージョンを確認しよう
@@ -158,7 +158,7 @@ v2から2世代のアップグレードで参考にならないかもしれま�
 
 今回markdown系の快適機能も追加しました！<br>以下に方法をまとめてます。
 
-<card id="/blogs/entry489/"></card>
+<card slug="entry489"></card>
 
 今回も、最後までお読みいただきありがとうございました。<br>
 この記事があなたのコーディングライフの一助となれば幸いです。

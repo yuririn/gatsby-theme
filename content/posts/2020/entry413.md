@@ -33,7 +33,7 @@ description: 記事数が増えると一覧にペーネーションが欲しく�
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
@@ -53,7 +53,7 @@ WordPressなど、その他のCMSに慣れていると*一覧を分割しペー�
 
 一覧ページの実装についてはこちらを参考にしてください。
 
-<card id="/blogs/entry408/"></card>
+<card slug="entry408"></card>
 
 
 ```

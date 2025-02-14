@@ -24,7 +24,7 @@ description: 自作のプラグイの更新を管理したい！そんな方に�
 
 めっちゃカンタンなプラグインの作り方はこちらになります。
 
-<card id="/blogs/entry283/"></card>
+<card slug="entry283"></card>
 
 ## Plugin Update CheckerをGitHubからダウンロード
 

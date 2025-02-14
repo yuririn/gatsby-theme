@@ -45,7 +45,7 @@ description: フィリピン最大級水族館セブ島の本格的な水族館�
 
 マイアさんの記事はこちら。
 
-<card id="/blogs/entry387/"></card>
+<card slug="entry387"></card>
 
 クリスマス前だし恋の相談なんかある人はぜひどうぞ。
 

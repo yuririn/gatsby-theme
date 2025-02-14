@@ -31,7 +31,7 @@ Gatsby記事もこれで8記事目となりました！！表示が早いだけ�
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>
 
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
@@ -119,7 +119,7 @@ export const pageQuery = graphql`
 ```
 OGP画像や検索などで表示されるサムネイル画像をアイキャッチと違う画像サイズを取得することもできます。リサイズされたパスを取得する方法についてはこちらをご覧ください。
 
-<card id="/blogs/entry516/"></card>
+<card slug="entry516"></card>
 
 <br/>
 
@@ -467,7 +467,7 @@ export default Seo
 
 ブログ・カテゴリ・タグのテンプレに`type`を追加します。こちらはカテゴリのテンプレのSeoコンポーネントです。
 
-<card id="/blogs/entry487/"></card>
+<card slug="entry487"></card>
 
 属性がちゃんとセットされているか確認しておきましょう。
 ```js

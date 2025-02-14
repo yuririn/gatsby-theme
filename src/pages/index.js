@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Seo from "../components/Seo/Seo"
 import FirstView from "../components/firstView"
 // import Img from "../components/common/Img"
 import Post from '../components/posts/Post';
@@ -43,7 +43,14 @@ export default BlogIndex
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="All posts" />
+export const Head = ({ data, location }) => (
+    <Seo
+        location={location}
+        data={
+            { template: 'index' }
+        }
+    />
+)
 
 export const pageQuery = graphql`{
   site {

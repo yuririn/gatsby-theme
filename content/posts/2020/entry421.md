@@ -32,7 +32,7 @@ Gatsbyでオリジナルの個別のページを作ります。CSSモジュー�
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>
 このシリーズは[Github・gatsby-blog](https://github.com/yuririn/gatsby-blog)に各内容ブランチごとで分けて格納しています。
 
 今回に関しては、ブランチは用意してません。ご了承ください。

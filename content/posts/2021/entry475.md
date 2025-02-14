@@ -30,7 +30,7 @@ description: プログラミングで自動化してヒューマンエラーを�
 
 ちなみにフォルダー管理を自動化したい方はこちらの記事を参考に。
 
-<card id="/blogs/entry470/"></card>
+<card slug="entry470"></card>
 
 
 ### スプシからファイルをアップロードしてドライブに保存するまでの大まかな作業の流れ
@@ -440,11 +440,11 @@ function sendForm(form) {
 続きもありますのでぜひ合わせてお読みいただき、効率化ライフを満喫してください！
 
 トリガーで定期的にメール送信したい方はこちらを参考にしてください。
-<card id="/blogs/entry504/"></card>
+<card slug="entry504"></card>
 <prof></prof>
 
 ### 続きの記事も合わせてお読みください
 次は実際ドライブに保存し、ファイルの詳細を自動でスプシに追記します。
 
-<card id="/blogs/entry476/"></card>
+<card slug="entry476"></card>
 

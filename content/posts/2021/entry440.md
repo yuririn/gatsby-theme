@@ -17,11 +17,11 @@ description: コーディング初心者に贈るVS Code完全マニュアル第
 
 第1弾のVS Codeがインストールされていることは必須、セッティングや拡張機能なども理解しておくとスムーズです。
 
-<card id="/blogs/entry266/"></card>
+<card slug="entry266"></card>
 
 スニペットに関しては第2弾に詳しく書いてあります。
 
-<card id="/blogs/entry280/"></card>
+<card slug="entry280"></card>
 
 
 ## エディターの機能をフル活用しながらHTMLコードを書く

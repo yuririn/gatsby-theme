@@ -457,7 +457,7 @@ nav ul li a:hover::after{
 `attr()`は*カスタムデータ（data）属性*などをCSS側で取得できる便利な関数です。
 
 <small>※ カスタムデータ（data）属性に関する記事はコチラ。</small>
-<card id="/blogs/entry267/"></card>
+<card slug="entry267"></card>
 
 <br>たとえばhtmlで*data属性*を設定すると...
 
@@ -632,7 +632,7 @@ nav ul li a:hover {
 
 サイトのカスタマイズが楽しくなるコードをご紹介！あわせてお読みください。
 
-<card id="/blogs/entry370/"></card>
+<card slug="entry370"></card>
 <ad location="/blogs/entry449/"></ad>
 
-<card id="/blogs/entry393/"></card>
+<card slug="entry393"></card>

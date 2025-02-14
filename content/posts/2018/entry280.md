@@ -23,12 +23,12 @@ VS Codeをダウンロードし、**ある程度設定できていることが�
 
 第1弾では快適にコーディングできるところまでセッティングしました。
 
-<card id="/blogs/entry266/"></card>
+<card slug="entry266"></card>
 
 
 SCSSの設定などは3弾に記載してますので、必要に応じて読み進めてください！
 
-<card id="/blogs/entry440/"></card>
+<card slug="entry440"></card>
 
 
 ### VS Codeの見取り図

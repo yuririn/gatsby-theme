@@ -1,10 +1,10 @@
 @use './../../utils';
 %blog-header {
     position: relative;
-    background: url(/images/ganre-common.webp) center / cover no-repeat;
+    background: url(/images/genre-common.webp) center / cover no-repeat;
     padding: 100px 16px 0px  32px;
     display: grid;
-    grid-template-rows: 1fr 1fr max-content;
+    grid-template-rows: 1fr max-content;
     grid-column: 100%;
     height: 250px;
     gap: 16px;
@@ -19,15 +19,31 @@
     h1 {
         display: grid;
         align-self: flex-end;
-        font-size: 2rem;
+        
+        font-size: 2.2rem;
         @include utils.mq(md){
             font-size: 3.2rem;
         }
         span {
+            margin-bottom: 8px;
             display: block;
-            font-size: 2rem;
+            font-size: 1.8rem;
             @include utils.mq(md){
-                font-size: 2.4rem;
+                font-size: 2rem;
+            }
+        }
+        &.en {
+            font-size: 1.8rem;
+            span {
+            margin-bottom: 8px;
+            display: block;
+
+                letter-spacing: .1em;
+                font-family: var(--font-alphabet);
+
+            @include utils.mq(md){
+                font-size: 3.2rem;
+            }
             }
         }
     }

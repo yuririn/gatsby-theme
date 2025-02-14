@@ -170,15 +170,15 @@ description: 皆さんの周りに中間子（真ん中っ子）っています�
 
 くすっと笑える昭和のお父さん版はこちら。
 
-<card id="/blogs/entry521/"></card>
+<card slug="entry521"></card>
 
 長女版と母親版も書きました！よろしければ併せてお読みください。
 
-<card id="/blogs/entry473/"></card>
+<card slug="entry473"></card>
 
 <ad location="/blogs/entry420/"></ad>
 
-<card id="/blogs/entry505/"></card>
+<card slug="entry505"></card>
 
 
 最後までお読みいただきありがとうございました。

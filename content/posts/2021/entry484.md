@@ -390,7 +390,7 @@ const HeaderWrapper = styled.header`
 ```
 上記コードはかなり簡易的なので、ちゃんと装飾したい人はこちらの記事も参考にしてみてください。
 
-<card id="/blogs/entry449/"></card>
+<card slug="entry449"></card>
 ### mainタグのみ装飾
 このシリーズでは、少しずつGatsby Starter Blogを改造していくので、メイン部分は暫定でクラスを付与しておくだけにとどめます。
 

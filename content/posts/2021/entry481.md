@@ -19,7 +19,7 @@ description: 以前Googleスプレッドシートにクライアント側でデ�
 *2021年8月頃よりGoogleの仕様* が変わり、以下の方法は使えなくなりました。<br>
 他のやり方を紹介しますので、そちらを参考にしてください。
 
-<card id="/blogs/entry455/"></card>
+<card slug="entry455"></card>
 
 <msg txt="スプシのデータを加工したJSONにして、WordPress側で受け取ります！"></msg>
 
@@ -112,7 +112,7 @@ values.forEach((value, index)=>{
 console.log(data)
 ```
 今回`forEach`や *スプレッド構文(...)* も使っています。使い方が分からない方は以下記事も参考にしてください。
-<card id="/blogs/entry482/"></card>
+<card slug="entry482"></card>
 
 デバッグして出力されたデータを確認。
 
@@ -337,7 +337,7 @@ add_shortcode( 'show_event_schedule', 'show_event_schedule' );
 ```
 
 WordPressのコーディング規約に関しての記事もよろしければお読みください。
-<card id="/blogs/entry452/"></card>
+<card slug="entry452"></card>
 
 <ad location="/blogs/entry481/"></ad>
 
@@ -348,7 +348,7 @@ WordPressのコーディング規約に関しての記事もよろしければ�
 この記事を参考になさっていた方、長らくお待たせしてすみません。
 
 トリガーで定期的にメール送信したい方はこちらを参考にしてください。
-<card id="/blogs/entry504/"></card>
+<card slug="entry504"></card>
 
 この記事が皆さんのコーディングライフの一助となれば幸いです。
 

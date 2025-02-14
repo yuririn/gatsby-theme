@@ -492,18 +492,18 @@ MW WP FormとContact Form 7でのフォームのカスタマイズ法もご紹�
 
 よろしければ合わせてご一読ください。
 
-<card id="/blogs/entry374/"></card>
+<card slug="entry374"></card>
 
 ## まとめ
 ラジオボタン、チェックボックスのカスタマイズって結構勉強になるんです。HTMLの親子関係、CSSの擬似クラス、セレクターの種類なんかも覚えられますしね。なんどもやっているうちに、頭に入ってくるのでオススメです。
 
 セレクトボックスのカスタマイズ方法も追加しました！！こちらも合わせてお読みください。
 
-<card id="/blogs/entry393/"></card>
+<card slug="entry393"></card>
 
 さらにボタンのCSSスニペットの記事も追加しました！！
 
-<card id="/blogs/entry396/"></card>
+<card slug="entry396"></card>
 
 <ad location="/blogs/entry370/"></ad>
 

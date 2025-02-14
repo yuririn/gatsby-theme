@@ -26,7 +26,7 @@ description: 最近Googleスプレッドシートにクライアント側でデ�
 **2021年8月頃よりGoogleの仕様** が変わり、以下の方法は使えなくなりました。<br>
 [下準備・スプシ側の設定](#下準備・スプシ側の設定)だけ参考にして別記事に紹介しています。
 
-<card id="/blogs/entry481/"></card>
+<card slug="entry481"></card>
 
 
 ## 下準備・スプシ側の設定
@@ -301,7 +301,7 @@ add_shortcode( 'show_event_schedule', 'show_event_schedule' );
 ```
 ちなみにエラーで苦しんだらこちらを参考にしてください。
 
-<card id="/blogs/entry452/"></card>
+<card slug="entry452"></card>
 
 ## まとめ・スプシをJSONで取得したら気軽にデータをウェブサイトに使える
 今回スプシをJSONデータで取得し、Webサイトに埋め込む方法を紹介しました。

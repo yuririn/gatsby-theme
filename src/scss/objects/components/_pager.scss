@@ -4,6 +4,7 @@
     grid-template-rows: auto auto;
     gap: 16px;
     grid-template-columns: 100%;
+    margin-bottom: 32px;
 
     @include utils.mq(md){
         margin-top: 100px;

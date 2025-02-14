@@ -24,7 +24,7 @@ description: 2019年セブ島日系企業に就職したけど、昨年辞めて
 
 あ、ちなみに現在のフィリピンからの日本への帰国は地獄です。
 
-<card id="/blogs/entry422/"></card>
+<card slug="entry422"></card>
 
 
 

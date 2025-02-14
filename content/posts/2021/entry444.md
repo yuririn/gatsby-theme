@@ -51,7 +51,7 @@ description: なぜSEO対策にリライトが効果的なのか？何を基準�
 
 データポータルの使い方はこちらで紹介しています。
 
-<card id="/blogs/entry500/"></card>
+<card slug="entry500"></card>
 
 もちろん、無理にデータポータルを使わなくてもGoogle アナリティクスやサーチコンソールにアクセスさえできればリライトは可能です。
 
@@ -175,7 +175,7 @@ description: なぜSEO対策にリライトが効果的なのか？何を基準�
 
 ![Clarity](./images/03/entry444-6.png)
 
-<card id="/blogs/entry510/"></card>
+<card slug="entry510"></card>
 
 
 ### 見られてない記事はもったいぶらずに削除もしくは「noindex」処理
@@ -201,7 +201,7 @@ description: なぜSEO対策にリライトが効果的なのか？何を基準�
 * サムネの変更
 * 導入文をとくに力を入れてリライト
 
-<card id="/blogs/entry315/"></card>
+<card slug="entry315"></card>
 
 改善前と改善後の3か月ごとの表示回数と流入を比較です。クリック率は2倍以上とわかりやすく改善しています。
 
@@ -220,7 +220,7 @@ description: なぜSEO対策にリライトが効果的なのか？何を基準�
 
 インプレッション数はそこそこ取れているのに、順位が低いのでクリックされていなかった記事です。
 
-<card id="/blogs/entry267/"></card>
+<card slug="entry267"></card>
 
 ![結果](./images/03/entry444-4.png)
 

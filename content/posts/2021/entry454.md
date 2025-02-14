@@ -23,7 +23,7 @@ WordPressでもSEO Packなどを使わず *カスタムフィールド* だけ�
 
 ヨーダ記法など初学者にはなんでこの書き方？ってコードもあるかもなので、以下記事を参考にしてください。
 
-<card id="/blogs/entry452/"></card>
+<card slug="entry452"></card>
 
 phpcsでWordPressコーディング規約を設定しておくといいです。
 

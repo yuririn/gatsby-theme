@@ -21,7 +21,7 @@ description: 「子ども服をセブに送るプロジェクト」始動！第�
 
 <br>洋服を送るきっかけはこちら。
 
-<card id="/blogs/entry445/"></card>
+<card slug="entry445"></card>
 
 
 ### YouTubeも作りました！！

@@ -1,8 +1,9 @@
 @use './../../utils';
 %blog-header {
     position: relative;
-    background: url(/images/genre-web-developer.webp) center / cover no-repeat;
+    background: url(/images/genre-common.webp) center / cover no-repeat;
     padding: 78px 16px 0 16px;
+
     & > .gatsby-image-wrapper {
         max-width: 460px;
         display: block;
@@ -12,6 +13,7 @@
     }
 }
 .c-blog-header {
+    @extend %blog-header;
     &--web-developer {
         background-image: url(/images/genre-web-developer.webp);
         @extend %blog-header;

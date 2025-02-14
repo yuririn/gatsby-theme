@@ -18,7 +18,7 @@ description: 日本には辛そうに生きている長女が多い気がしま�
 
 以前「中間子ってどんな性格？」というブログを書きました。私は 4 人兄弟の絶賛代表的な中間子です。
 
-<card id="/blogs/entry420/"></card>
+<card slug="entry420"></card>
 
 個人的には血液型、星座はあてにならないけど、やっぱり兄弟順がめちゃ性格がわかりやすいと思っています。
 
@@ -194,10 +194,10 @@ description: 日本には辛そうに生きている長女が多い気がしま�
 <div class="cstmreba"><div class="kaerebalink-box"><div class="kaerebalink-image"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303200343478922?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F77c4dcfe14fcf31d4b021af1eba42338%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F77c4dcfe14fcf31d4b021af1eba42338%2F" target="_blank" ><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/885/740/572/20010009784885740572_1.jpg?_ex=320x320" style="border: none;" /></a></div><div class="kaerebalink-info"><div class="kaerebalink-name"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303200343478922?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F77c4dcfe14fcf31d4b021af1eba42338%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F77c4dcfe14fcf31d4b021af1eba42338%2F" target="_blank" >性格心理学がとってもよくわかる本 /東京書店/滝本孝雄</a><div class="kaerebalink-powered-date">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail"></div><div class="kaerebalink-link1"><div class="shoplinkrakuten"><a href="https://hb.afl.rakuten.co.jp/hgc/g000001d.j0byi5ae.g000001d.j0byj7d4/kaereba_main_202303200343478922?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F77c4dcfe14fcf31d4b021af1eba42338%2F&m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F77c4dcfe14fcf31d4b021af1eba42338%2F" target="_blank" >楽天市場</a></div><div class="shoplinkamazon"><a href="https://www.amazon.co.jp/gp/search?keywords=%E6%80%A7%E6%A0%BC%E5%BF%83%E7%90%86%E5%AD%A6%E3%81%8C%E3%81%A8%E3%81%A3%E3%81%A6%E3%82%82%E3%82%88%E3%81%8F%E3%82%8F%E3%81%8B%E3%82%8B%E6%9C%AC&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&tag=camille603-22" target="_blank" >Amazon</a></div></div></div><div class="booklink-footer"></div></div></div>
 
 母親版も書きました！よろしければ併せてお読みください。
-<card id="/blogs/entry505/"></card>
+<card slug="entry505"></card>
 
 くすっと笑える昭和のお父さん版はこちら。
-<card id="/blogs/entry521/"></card>
+<card slug="entry521"></card>
 
 私の祖父のお話。
-<card id="/blogs/entry529/"></card>
+<card slug="entry529"></card>

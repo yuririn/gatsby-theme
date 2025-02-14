@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import Search from "../components/search"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Seo from "../components/Seo/Seo"
 import InfiniteScrollComponent from "../components/posts/InfiniteScrollComponent";
 import BreadCrumbList from "../components/common/BreadcrumbList";
 import { siteMetadata } from "../../gatsby-config"
@@ -20,8 +20,10 @@ const BlogList = ({ data, location }) => {
   return (
       <Layout location={location} title={title}>
           <header className={headerClass} id="keyvisual">
-              <h1>{title}</h1>
-              <p>現在  {posts.length} 記事あります</p>
+              <div>
+                  <h1>{title}</h1>
+                  <p>現在  {posts.length} 記事あります</p>
+              </div>
               <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
         </header>
         
@@ -43,7 +45,24 @@ export default BlogList
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="セブ島エンジニアのノマドブログ" />
+export const Head = ({ location }) => {
+    const list = [
+        {
+            name: siteMetadata.blogName,
+            path: '/blogs/',
+            type: `WebPage`
+        }
+    ]
+    return <Seo
+        location={location}
+        data={{
+            template: 'archive',
+            title: siteMetadata.blogName,
+            description: `${siteMetadata.blogDescription}`,
+            list: list
+        }}
+    />
+}
 
 export const pageQuery = graphql`{
   allMarkdownRemark(

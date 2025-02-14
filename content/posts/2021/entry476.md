@@ -39,7 +39,7 @@ description: プログラミングで事務作業を自動化してラクしよ�
 
 1 ~ 4を確認したい方は前回の記事をお読みください。
 
-<card id="/blogs/entry475/"></card>
+<card slug="entry475"></card>
 
 請求書の整理を例にとって進めていきます。
 
@@ -261,10 +261,10 @@ function setMenu(){
 
 フォルダー自動生成に関しては、こちらの記事を参考に！
 
-<card id="/blogs/entry470/"></card>
+<card slug="entry470"></card>
 
 トリガーで定期的にメール送信したい方はこちらを参考にしてください。
-<card id="/blogs/entry504/"></card>
+<card slug="entry504"></card>
 
 皆さんの事務作業軽減の一助となれば幸いです。
 

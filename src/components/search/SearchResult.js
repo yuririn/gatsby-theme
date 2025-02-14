@@ -125,7 +125,7 @@ const SearchResult = (props) => {
                         {result.map((e) => {
                             const tags = e.frontmatter.tags.join(", ")
                             return (<li key={e.fields.slug} className="c-search__item">
-                                <Link to={`/blogs/${e.fields.slug}`} className="c-search__item__img">
+                                <Link to={`/blogs/${e.fields.slug}/`} className="c-search__item__img">
                                     <Img
                                         source={e.frontmatter.hero}
                                         alt={e.frontmatter.title}
@@ -133,7 +133,7 @@ const SearchResult = (props) => {
 
                                     />
                                 </Link>
-                                <Link to={`blogs/${e.fields.slug}`} className="c-search__item__main">
+                                <Link to={`/blogs/${e.fields.slug}/`} className="c-search__item__main">
                                     <h3><TextHighlighter
                                         str={e.frontmatter.title}
                                         includes={props.value}

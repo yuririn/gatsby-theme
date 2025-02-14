@@ -9,7 +9,7 @@ const browserSync = require('browser-sync').create();
 const path = require('path');
 
 const sassTask = (done) => {
-    src('src/scss/style.scss')
+    src(['src/scss/*-style.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(replace(/SLASH/g, '//'))
         .pipe(dest('static'))
@@ -18,7 +18,7 @@ const sassTask = (done) => {
 };
 
 const postcssTask = (done) => {
-    src('static/style.css', { allowEmpty: true })
+    src(['static/*-style.css'], { allowEmpty: true })
         
         .pipe(postcss([
             autoprefixer(),

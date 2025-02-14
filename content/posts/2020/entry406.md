@@ -37,7 +37,7 @@ description: 記事のmarkdownファイルの設定でカテゴリ、タグ、�
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>
 
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>

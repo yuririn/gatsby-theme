@@ -480,7 +480,7 @@ Header set Cross-Origin-Resource-Policy "same-origin"
 ## まとめ・外部フォームブロックを使えばCSRFへの対応をしたフォームを作成可能
 今回Ajaxのフォームを作ったことをきっかけに7年前に書いたこの記事もリライトしました。
 
-<card id="/blogs/entry497/"></card>
+<card slug="entry497"></card>
 
 <msg txt="ついでに今更書きかけで、放置していたことも思い出しました！"></msg>
 

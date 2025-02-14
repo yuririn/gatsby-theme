@@ -26,11 +26,11 @@ faq: [['セレクトボックスの「選択してください」を選択肢か
 少量であれば、ラジオボタンやチェックボックスで十分だと思います。<br>
 ラジオボタンとチェックボックスのカスタマイズについてはこちらをご参照ください。
 
-<card id="/blogs/entry370/"></card>
+<card slug="entry370"></card>
 
 <ad location="/blogs/entry393/"></ad>
 
-<card id="/blogs/entry374/"></card>
+<card slug="entry374"></card>
 
 ### セレクトボックスの基本のHTMLの書き方
 コードとしては以下の通りで選択させたいアイテムはoptionタグに入れ、それをselectタグでラッピングします。
@@ -417,15 +417,15 @@ CSSだけでのカスタマイズは大変ですが避けて通れないので�
 
 ボタンのCSSスニペット集も追加しました！
 
-<card id="/blogs/entry396/"></card>
+<card slug="entry396"></card>
 
 さらにグローバルメニューのホバーアニメスニペット集追加しました！ぜひ活用して表情豊かなウェブサイトを作ってください！
 
-<card id="/blogs/entry449/"></card>
+<card slug="entry449"></card>
 
 SEO似効果的なパンくずリストの設置方法についても詳しく解説しています。
 
-<card id="/blogs/entry498/"></card>
+<card slug="entry498"></card>
 
 そしてコーディングライフの一助となれば幸いです。
 

@@ -49,7 +49,7 @@ JavaScriptがそのまま書けるのでとても魅力的でした。類似す�
 私はコーダー、デザイナーにはPugがオススメ。コードが短くて済むからです。
 <br>コーディングが早く終わる。
 
-<card id="/blogs/entry428/"></card>
+<card slug="entry428"></card>
 
 <ad location="/blogs/entry459/"></ad>
 
@@ -482,4 +482,4 @@ EJSでもエメットを使えるようにしておきましょう。<br>
 
 ### EJSの関数に関しても記事を書きました
 関数についてはこちらを参考にしてください。
-<card id="/blogs/entry495/"></card>
+<card slug="entry495"></card>

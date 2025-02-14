@@ -38,19 +38,19 @@ const RelativeCard = ({slug}) => {
                 : article.frontmatter.description
         const date = article.frontmatter.modifieddate ? article.frontmatter.modifieddate : article.frontmatter.date
         return (
-            <a href={`/blogs/${slug}/`} className="c-article-card">
+            <a href={`/blogs/${slug}/`} className="c-related-post-card">
                 <section>
-                    <div className="c-article-card__img">
+                    <div className="c-related-post-card__img">
                         <Img
                             source={article.frontmatter.hero}
                             alt={article.frontmatter.title}
                         />
                     </div>
-                    <div className="c-article-card__main">
-                        <p className="c-article-card__main__title">
+                    <div className="c-related-post-card__main">
+                        <p className="c-related-post-card__main__title">
                             {article.frontmatter.title}
                         </p>
-                        <p className="c-article-card__description">{description}</p>
+                        <p className="c-related-post-card__description">{description}</p>
                         <time dateTime={date.replace(/\./g, "-")}>
                             {date}
                         </time>

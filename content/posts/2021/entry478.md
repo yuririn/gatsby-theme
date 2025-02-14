@@ -50,7 +50,7 @@ description: 「子ども服をセブに送るプロジェクト」！第2弾の
 
 セブ島のスラム街がどんなところか知りたい方はこちらもご覧ください。
 
-<card id="/blogs/entry464/"></card>
+<card slug="entry464"></card>
 
 洋服の一部は前回もお世話になったセブ島ボランティア団体・[DAREDEMO HERO Inc.](https://daredemohero.com/)さんの支援地区カレッタ墓地で洋服を配らせていただきました。翌日、QQイングリッシュさんスポンサーでクリスマス会を開くそう。
 

@@ -1,12 +1,11 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Seo from "../components/seo"
+import Seo from "../components/Seo/Seo"
 import Layout from '../components/layout';
 import SideBar from '../components/SideBar';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import rehypeReact from "rehype-react"
 import Tags from "../components/posts/Tags"
-
 import Msg from "../components/posts/modueles/msg";
 import RelativeCard from "../components/posts/modueles/relative-card";
 import Date from '../components/posts/Date';
@@ -37,7 +36,7 @@ const BlogPostTemplate = ({ data, location }) => {
     const render = data.markdownRemark.htmlAst;
     const cate = category.filter(i=>i.slug === post.cateId)[0]
     const perfectUrl = `${siteUrl}${location.pathname}`
-    const perfectTitle = encodeURI(post.title + "|" + title)
+    const perfectTitle = encodeURI(post.title + " - " + title)
     const {previous, next } = data;
     const breadCrumbList = {
         parents: [
@@ -91,8 +90,56 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const Head = ({ data, location }) => {
-    const seoData = {}
-    return <Seo data={seoData} />
+    const post = data.markdownRemark
+    const { category, blogName } = siteMetadata
+    const cate = category.filter(i => i.slug === post.frontmatter.cateId)[0]
+    const list = [
+        {
+            name: blogName,
+            path: '/blogs/',
+            type: `WebPage`
+        },
+        {
+            name: cate.name,
+            path: `/blogs/${cate.slug}`,
+            type: `WebPage`
+        },
+        {
+            name: post.frontmatter.tags[0],
+            path: `/blogs/tags/${post.frontmatter.tags[0]}`,
+            type: `WebPage`
+        },
+        {
+            name: post.frontmatter.title,
+            path: `/blogs/${post.fields.slug}/`,
+            type: `BlogPosting`
+        }
+    ]
+    
+    const ogpSrc = data.siteOgImage
+        ? `${data.siteOgImage.childImageSharp.resize.src}`
+        : "/images/ogp.png"
+    const thumnailSrc = data.siteThumnailImage
+        ? `${data.siteThumnailImage.childImageSharp.resize.src}`
+        : "/images/thumnail.png"
+    const blogData = {
+        title: post.frontmatter.title,
+        description: post.frontmatter.description || post.excerpt,
+        ogp: ogpSrc,
+        thumnail: thumnailSrc,
+        date: post.frontmatter.date,
+        modifieddate: post.frontmatter.modifieddate,
+        template: 'blog',
+        list: list,
+    }
+    
+
+    return (
+        <Seo
+            location={location}
+            data={blogData}
+        />
+    )
 }
 
 export const pageQuery = graphql`

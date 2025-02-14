@@ -378,8 +378,8 @@ li {
 
 ```
 今回使用した ObserverIPI の記事はこちらです。
-<card id="/blogs/entry525/"></card>
-<card id="/blogs/entry526/"></card>
+<card slug="entry525"></card>
+<card slug="entry526"></card>
 
 ### JSコードサンプル（jQuery・古い）
 JavaScriptサンプルコードです。jQuery使ってサクッと取得しました。
@@ -514,7 +514,7 @@ echo '<ul>' . $list . '</ul>';
 
 実装方法などはこちらに紹介しています。
 
-<card id="/blogs/entry490/"></card>
+<card slug="entry490"></card>
 
 ## 突然のエラー。データが取得できない（2021-12-24追記）
 プライバシーポリシーが無効だと、開発モードに戻されてしまいます。

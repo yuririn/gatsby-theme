@@ -19,7 +19,7 @@ description: 2020/2/29 セブ島でWACA（Web解析士協会）&オフショア�
 
 ちなみに前回の様子はこちら
 
-<card id="/blogs/entry341/"></card>
+<card slug="entry341"></card>
 
 私も昨年11月参加、Web解析士協会理事の江尻さんとお友達にならせていただきました。
 

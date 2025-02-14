@@ -33,7 +33,7 @@ ulタグからolタグに変え、目次が長くなるので閉じるボタン�
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
@@ -292,9 +292,9 @@ export default Topic;
 
 今回はコードしか紹介しませんので詳しく原理を知りたい方はこちらをご覧ください。
 
-<card id="/blogs/entry363/"></card>
+<card slug="entry363"></card>
 
-<card id="/blogs/entry315/"></card>
+<card slug="entry315"></card>
 
 ```js{2,8,18}:title=table-of-content.js
 import React from "react";

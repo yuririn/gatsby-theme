@@ -22,8 +22,8 @@ VS Codeの基本操作方法とフロント系のコードを快適に書くた�
 
 テクニカルな部分は「初心者コーダーに贈る！超軽量高機能エディターVS Code入門2」へ記載しました。Gitやスニペット、ターミナルなどに知りたい方はこちらをご覧ください。
 
-<card id="/blogs/entry280/"></card>
-<card id="/blogs/entry440/"></card>
+<card slug="entry280"></card>
+<card slug="entry440"></card>
 
 
 ## Visual Studio Code とは？
@@ -99,7 +99,7 @@ VS Code左手にある以下のメニューをアクテビティバーと呼び�
 検索・置換に関しては、こちらにより詳しく書いてあります。
 
 
-<card id="/blogs/entry336/"></card>
+<card slug="entry336"></card>
 
 #### 3.ソース管理_（Ctrl+Shift+G）
 

@@ -293,9 +293,9 @@ p {
 
 以下CSSもわりとマニアックですので参考にしてください。
 
-<card id="/blogs/entry361/"></card>
+<card slug="entry361"></card>
 
-<card id="/blogs/entry363/"></card>
+<card slug="entry363"></card>
 
 みなさんのコーディングライフの一助となれば幸いです。
 

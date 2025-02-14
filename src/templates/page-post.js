@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Seo from "../components/Seo/Seo"
 import { siteMetadata } from "../../gatsby-config"
 import SideBar from "../components/SideBar"
 import BreadCrumbList from "../components/common/BreadcrumbList"
@@ -38,27 +38,29 @@ export default PagePostTemplate
 
 
 export const Head = ({ data, location }) => {
-    const post = data.markdownRemark
-    const ogpSrc = data.siteOgImage
-        ? `${data.siteOgImage.childImageSharp.resize.src}`
-        : "/images/ogp.png"
-    const thumnailSrc = data.siteThumnailImage
-        ? `${data.siteThumnailImage.childImageSharp.resize.src}`
-        : "/images/thumnail.png"
-    const yourData = {
-        title: post.frontmatter.title,
-        description: post.frontmatter.description || post.excerpt,
-        ogp: ogpSrc,
-        location: location,
-        thumnail: thumnailSrc,
-        date: post.frontmatter.date,
-        modifieddate: post.frontmatter.modifieddate,
-        type: "article"
+    const { title, date, description, modifieddate} = data.markdownRemark.frontmatter
+    const list = [
+            {
+            name: title,
+            path: location.pathname,
+            type: `WebPage`
+        }
+    ]
+
+    const pageData = {
+        title: title,
+        description: description,
+        date: date,
+        modifiedate: modifieddate,
+        type: "WebPage",
+        template: 'page',
+        list:list
     }
 
     return (
         <Seo
-            data={yourData}
+        location={location}
+        data={pageData}
         />
     )
 }

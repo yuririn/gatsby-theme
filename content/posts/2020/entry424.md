@@ -69,7 +69,7 @@ noindex: true
 
 興味ある方はこちらの記事を参考にしてください。
 
-<card id="/blogs/entry389/"></card>
+<card slug="entry389"></card>
 
 店名：*Aizilym Enterprises*
 

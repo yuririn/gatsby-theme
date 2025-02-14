@@ -34,7 +34,7 @@ description: 現在、前から気になる静的サイトジェネレーター�
 13. [記事内で独自タグ（コンポーネント）を使えるようにする](/blogs/entry489/)
 
 v5へのアップグレード方法はこちら。
-<card id="/blogs/entry519/"></card>
+<card slug="entry519"></card>
 
 <small>※ Gatsbyは2021月12月、v4にバージョンアップしています。随時リライトしています。</small>
 
@@ -71,7 +71,7 @@ ES6以上の記述方法がある程度知っている。<br>
 
 現時点でのv4で必要とするNodeの最低バージョンは*14.15.0*です。バージョンの上げ方が分からない方はこちらをご覧ください。
 
-<card id="/blogs/entry477/"></card>
+<card slug="entry477"></card>
 
 ```bash:title=コマンド
 npm install -g gatsby-cli
@@ -324,7 +324,7 @@ Environment variables に Key => `NODE_VERSION` value => `x.x.x`（設定した�
 ![デプロイ時から、新しいバージョンが使える](./images/11/entry401-15.png)
 
 Gatsby ではバージョンごとに*Nodeの求められるversionが違う*ので注意してください。
-<card id="/blogs/entry477/"></card>
+<card slug="entry477"></card>
 
 ## まとめ
 いかがでしたでしょうか？<br>
