@@ -6,7 +6,7 @@ import BreadCrumbList from "../components/common/BreadcrumbList";
 import { siteMetadata } from "../../gatsby-config"
 import Sns from "../components/posts/Sns"
 import SideBar from "../components/SideBar"
-import AboutContent from "../utils/about/content";
+import AboutContent from "../inc/about/content";
 
 const aboutMeta = {
     template: 'blog',
