@@ -29,9 +29,9 @@ const BlogList = ({ data, location }) => {
         
         <div className="l-section l-container-archive">
 
-            <InfiniteScrollComponent posts={posts}/>
+              <InfiniteScrollComponent posts={posts} location={location} />
             <div className="l-container-archive__sticky-area">
-                <Search></Search>
+                  <Search location={location}></Search>
             </div>
         </div>
     </Layout>

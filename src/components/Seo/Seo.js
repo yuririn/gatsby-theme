@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
 
-import * as React from "react"
+import React, { useEffect } from 'react'
 // import PropTypes from "prop-types"
 import { siteMetadata } from "../../../gatsby-config"
 import JsonLD from "./JsonLD"
@@ -20,6 +20,34 @@ const Seo = ({ data, location }) => {
     const ogpImageSrc = ogp !== undefined ? `${siteUrl}${ogp}` :`${siteUrl}/images/ogp.png`
     
     const thumbnailImageSrc = thumbnail !== undefined ? `${siteUrl}${thumbnail}` :`${siteUrl}/images/thumbnail.png`
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            let lazyloadads = false;
+
+            const handleScroll = () => {
+                if (
+                    (document.documentElement.scrollTop !== 0 && lazyloadads === false) ||
+                    (document.body.scrollTop !== 0 && lazyloadads === false)
+                ) {
+                    const ad = document.createElement('script');
+                    ad.setAttribute('data-ad-client', 'ca-pub-2820767970621854');
+                    ad.async = true;
+                    ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+                    const sc = document.getElementsByTagName('script')[0];
+                    sc.parentNode.insertBefore(ad, sc);
+
+                    lazyloadads = true;
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll, true);
+
+            return () => {
+                window.removeEventListener('scroll', handleScroll, true);
+            };
+        }
+    }, []);
 
     //404の場合はNoindex
     if(data.is404) {

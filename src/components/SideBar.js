@@ -3,10 +3,15 @@ import Search from "./search"
 import Img from "./common/Img"
 import { Link } from "gatsby"
 import Toc from "./posts/Toc"
-const SideBar =({id})=>{
+import Ads from './common/Ads';
+const SideBar =({id, location})=>{
     return (
         <aside className="l-container--blog__aside">
             <div className="l-container--blog__aside__inner">
+                <Ads
+                    location={location}
+                    style={{ display: `block`, minWidth: `250px` }}
+                ></Ads>
                 {id ? <Toc id={id}></Toc>:''}
                 <h2 className="c-heading__aside">記事を探す</h2>
                 <Search></Search>

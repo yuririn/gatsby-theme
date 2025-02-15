@@ -16,13 +16,15 @@ import Faq from "../components/posts/Faq";
 import BreadCrumbList from "../components/common/BreadcrumbList";
 import { siteMetadata } from "../../gatsby-config";
 import RelatedPosts from "../components/posts/RelatedPosts";
+import Ads from "../components/common/Ads";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: {
         card: RelativeCard,
         msg: Msg,
-        prof: Bio
+        prof: Bio,
+        ad: Ads,
     },
 }).Compiler
     
@@ -77,11 +79,12 @@ const BlogPostTemplate = ({ data, location }) => {
                         <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
                     </article>
                     <aside>
+                        <Ads location={location.pathname}></Ads>
                         <h2 className="c-heading__aside">関連記事</h2>
                         <RelatedPosts id={slug} category={post.cateId} tags={post.tags}></RelatedPosts>
                     </aside>
                 </div>
-                <SideBar id={slug}></SideBar>
+                <SideBar id={slug} location={location}></SideBar>
             </div>
         </Layout>
     )

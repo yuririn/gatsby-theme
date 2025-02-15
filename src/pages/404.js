@@ -40,7 +40,7 @@ const NotFoundPage = ({ data, location }) => {
                       </ul>
                       <Msg txt="次回、エイリアンがページを持ち去る前に訪れることをわすれないでねーーーーん。"></Msg>
                 </section>
-                  <SideBar></SideBar>
+                  <SideBar location={location}></SideBar>
               </div>
           </div>
       </Layout>

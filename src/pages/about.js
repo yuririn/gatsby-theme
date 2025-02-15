@@ -40,7 +40,7 @@ const BlogList = ({ data, location }) => {
 
                 </div>
                 
-                <SideBar></SideBar>
+                <SideBar location={location}></SideBar>
             </div>
         </Layout>
     )

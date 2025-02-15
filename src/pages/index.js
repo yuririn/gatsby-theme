@@ -8,6 +8,7 @@ import FirstView from "../components/firstView"
 import Post from '../components/posts/Post';
 import SideBar from "../components/SideBar"
 import PickUpList from "../components/posts/PickUpList"
+import Ads from "../components/common/Ads"
 
 
 const BlogIndex = ({ data, location }) => {
@@ -21,6 +22,7 @@ const BlogIndex = ({ data, location }) => {
         <div className="l-container--blog__main">
             <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
             <PickUpList></PickUpList>
+                  <Ads location={location.pathname}></Ads>
             <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
             <ul className="l-card-container">{
                 posts.map((post, key) => {
@@ -29,8 +31,9 @@ const BlogIndex = ({ data, location }) => {
                 )}
             </ul>
             <p className="u-center"><a href="/blogs/" className="c-btn--detail">もっとブログを読む</a></p>
+                  <Ads location={location.pathname}></Ads>
         </div>
-        <SideBar></SideBar>
+              <SideBar location={location}></SideBar>
       </div>
     </Layout>
   )

@@ -78,6 +78,12 @@ module.exports = {
     },
     plugins: [
         {
+            resolve: `gatsby-plugin-google-tagmanager`,
+            options: {
+                id: `GTM-KPH3R92`,
+            },
+        },
+        {
             resolve: `gatsby-plugin-react-svg`,
             options: {
                 rule: {
@@ -85,6 +91,7 @@ module.exports = {
                 }
             },
         },
+        
         {
             resolve: `gatsby-plugin-sass`,
             options: {

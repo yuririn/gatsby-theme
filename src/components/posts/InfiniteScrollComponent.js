@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Post from './Post';
+import Ads from "../common/Ads";
 
-const InfiniteScrollComponent = ({ posts }) => {
+const InfiniteScrollComponent = ({ posts, location }) => {
     const num = 12;
     const [showPostIndex, setShowPostIndex] = useState(num);
     const [showPosts, setShowPosts] = useState(posts.slice(0, num));
@@ -22,7 +23,10 @@ const InfiniteScrollComponent = ({ posts }) => {
         return (
             <ul className="l-card-container">
                 {posts.map((node, key) => (
-                    <Post post={node} key={key} />
+                    <>
+                        {key === 6 &&(<Ads location="location.pathname"></Ads>)}
+                        <Post post={node} key={`post${num + key}`} archive={true}/>
+                    </>
                 ))}
             </ul>
         );

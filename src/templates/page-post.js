@@ -27,7 +27,7 @@ const PagePostTemplate = ({ data, location }) => {
                     itemProp="articleBody" className="c-post-body"
                         dangerouslySetInnerHTML={{ __html: post.html }}
                     />
-                    <SideBar></SideBar>
+                    <SideBar location={location}></SideBar>
                 </div>
             </div>
         </Layout>

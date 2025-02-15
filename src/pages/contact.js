@@ -49,7 +49,7 @@ const Contact = ({location}) => {
                             <Thanks />
                         )}
                     </section>
-                    <SideBar></SideBar>
+                    <SideBar location={location}></SideBar>
                 </div>
             </div>
         </Layout>
