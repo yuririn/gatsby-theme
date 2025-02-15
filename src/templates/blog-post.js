@@ -135,6 +135,7 @@ export const Head = ({ data, location }) => {
         modifieddate: post.frontmatter.modifieddate,
         template: 'blog',
         list: list,
+        faq: post.frontmatter.faq,
         noindex: post.frontmatter.noindex
     }
     

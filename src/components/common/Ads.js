@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
 const Ads = ({ type = 'display', location = "", style = null }) => {
-    console.log(location)
     useEffect(() => {
         window.adsbygoogle = window.adsbygoogle || [];
         window.adsbygoogle.push({});
