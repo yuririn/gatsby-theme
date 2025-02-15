@@ -16,7 +16,7 @@ const JsonLD = ({ data, location }) => {
     //記事ページには記事情報付与
     if (location.pathname.includes('entry')) allData.push(BlogPosting(data,domain,location))
     //FAQデータを持っていた場合はFAQデータを付与
-    if (data.faq) allData.push(FaqPage(data))
+    if (data.faq) allData.push(FaqPage(data, location))
     return <script type="application/ld+json">{JSON.stringify(allData)}</script>
 }
 export default JsonLD
@@ -186,7 +186,7 @@ const BlogPosting = (data, domain, location) => {
     return blogPosting
 }
 
-const FaqPage = (data ) => {
+const FaqPage = ( data, location ) => {
     if(!data.faq) return
     const faqArry = data.faq
     const faqList = {
@@ -195,13 +195,19 @@ const FaqPage = (data ) => {
         "mainEntity": []
     }
     faqArry.forEach((item) => {
-        const link = item[2] ? '<br>くわしくは<a href="' + item[2] + '">こちら</a>。' : '';
+        const question = item[0]
+        const answer = item[1]
+        const anchor = item[2]
+
+        const url = `${siteMetadata.siteUrl}${location.pathname}?utm_source=faq` + (anchor !== '' && `#${encodeURI(anchor)}`)
+        
+        const link = anchor !== undefined ? `<br><a href="${url}"> ${anchor ? anchor : data.title}</a>。` : '';
         const entry = {
             "@type": "Question",
-            "name": item[0],
+            "name": question,
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": item[1] + link
+                "text": `${answer}${link}`
             }
         }
         faqList['mainEntity'].push(entry);

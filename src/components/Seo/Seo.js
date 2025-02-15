@@ -71,6 +71,7 @@ const Seo = ({ data, location }) => {
             <meta property="og:title" content={pageTitle} />
             <meta property="og:description" content={pageDescription} />
             <meta property="og:type" content={isRoot ? `website` : `webpage`} />
+            <meta name="google-site-verification" content="UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc" />
             {/* 画像系 */}
             <meta property="og:image" content={ogpImageSrc} />
             <meta name="thumbnail" content={thumbnailImageSrc} />
