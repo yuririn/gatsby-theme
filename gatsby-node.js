@@ -252,7 +252,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       pageType: String
       cateId: String
       hero: String
-      noindex: String
+      noindex: Boolean
       faq: [[String]]
     }
 
