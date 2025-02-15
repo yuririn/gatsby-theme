@@ -1,6 +1,6 @@
 import * as React from "react"
 import { siteMetadata } from "../../../gatsby-config"
-import dateReplace from "../../utils/dateReplace"
+import dateReplace from "../../utils/datereplace"
 
 const JsonLD = ({ data, location, isRoot }) => {
     //タイトルとディスクリプション
