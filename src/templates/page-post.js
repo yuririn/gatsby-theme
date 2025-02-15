@@ -38,7 +38,7 @@ export default PagePostTemplate
 
 
 export const Head = ({ data, location }) => {
-    const { title, date, description, modifieddate} = data.markdownRemark.frontmatter
+    const { title, date, description, modifieddate, noindex} = data.markdownRemark.frontmatter
     const list = [
             {
             name: title,
@@ -54,7 +54,8 @@ export const Head = ({ data, location }) => {
         modifiedate: modifieddate,
         type: "WebPage",
         template: 'page',
-        list:list
+        list:list,
+        noindex: noindex
     }
 
     return (
@@ -84,6 +85,7 @@ export const pageQuery = graphql`
         description
         hero
         tags
+        noindex
       }
     }
   }

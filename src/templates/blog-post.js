@@ -93,6 +93,7 @@ export const Head = ({ data, location }) => {
     const post = data.markdownRemark
     const { category, blogName } = siteMetadata
     const cate = category.filter(i => i.slug === post.frontmatter.cateId)[0]
+    // パンくず
     const list = [
         {
             name: blogName,
@@ -119,18 +120,19 @@ export const Head = ({ data, location }) => {
     const ogpSrc = data.siteOgImage
         ? `${data.siteOgImage.childImageSharp.resize.src}`
         : "/images/ogp.png"
-    const thumnailSrc = data.siteThumnailImage
-        ? `${data.siteThumnailImage.childImageSharp.resize.src}`
+    const thumbnailSrc = data.siteThumbnailImage
+        ? `${data.siteThumbnailImage.childImageSharp.resize.src}`
         : "/images/thumnail.png"
     const blogData = {
         title: post.frontmatter.title,
         description: post.frontmatter.description || post.excerpt,
         ogp: ogpSrc,
-        thumnail: thumnailSrc,
+        thumbnail: thumbnailSrc,
         date: post.frontmatter.date,
         modifieddate: post.frontmatter.modifieddate,
         template: 'blog',
         list: list,
+        noindex: post.frontmatter.noindex
     }
     
 
@@ -172,7 +174,7 @@ export const pageQuery = graphql`
         )
       }
     }
-    siteThumnailImage: file(
+    siteThumbnailImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }
     ) {
