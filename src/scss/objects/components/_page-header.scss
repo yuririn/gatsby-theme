@@ -16,13 +16,14 @@
         
         padding: 100px 32px 0px 32px;
     }
-    h1 {
+    & > div,
+    & > h1 {
         display: grid;
-        align-self: flex-end;
+        align-self: center;
         
         font-size: 2.2rem;
         @include utils.mq(md){
-            font-size: 3.2rem;
+            font-size: 2.8rem;
         }
         span {
             margin-bottom: 8px;
