@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
+import { siteMetadata } from "./../../gatsby-config"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Img from "../components/img"
@@ -93,21 +93,33 @@ const tags = ({ pageContext, data, location }) => {
 
 export default tags
 
-export const Head = ({ pageContext, data, location }) => {
-  const { tag } = pageContext
-  const yourData = {
-    title : tag,
-    description : `「${tag}」の記事一覧。${data.site.siteMetadata.description}`,
-    location : location,
-    type : "tag-list"
-  }
-
-  return (
-     <Seo
-        data={yourData}
-      />
-  )
+export const Head = ({ location, pageContext }) => {
+    const { tag } = pageContext
+    const blogName = siteMetadata.blogName
+    const blogDescription = siteMetadata.blogDescription
+    const list = [
+        {
+            name: siteMetadata.blogName,
+            path: '/blogs/',
+            type: `WebPage`
+        },
+        {
+            name: tag,
+            path: `/blogs/tags/${tag}`,
+            type: `WebPage`
+        }
+    ]
+    return <Seo
+        location={location?.pathname.replace(/page\/([0-9])+\//, "")}
+        data={{
+            title: `${tag} ${blogName}`,
+            template: 'archive',
+            description: `${tag} に関する記事。${blogDescription}`,
+            list: list,
+        }}
+    />
 }
+
 
 export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag: [String]) {
   site {

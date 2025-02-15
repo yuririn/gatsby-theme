@@ -6,6 +6,12 @@ import ShowMessage from '../inc/404/show-message'
 import { P404 } from "./../styles/P404"
 import Seo from "../components/seo"
 
+const aboutMeta = {
+    template: 'page',
+    title: 'このページは宇宙の彼方へ消えました',
+    description: `お探しのページは見つかりませんでした。`
+}
+
 const NotFoundPage = ({ data, location }) => {
     const [scenario, setScenario] = useState(0);
     const [kyle, getKyle] = useState(3);
@@ -52,11 +58,26 @@ const NotFoundPage = ({ data, location }) => {
 }
 export default NotFoundPage
 
-export const Head = ({ data, location }) => (
- <Seo
-    data={{title:`お探しのページは見つかりませんでした。`, location:location}}
- />
-)
+export const Head = ({ data, location }) => {
+const { title, description } = aboutMeta
+const list = [
+    {
+        name: '',
+        path: '/404/',
+        type: `WebPage`
+    }
+]
+return <Seo
+    location={location.pathname}
+    data={{
+        template: 'page',
+        title: title,
+        description: description,
+        list: list,
+        is404: true
+    }}
+/>
+}
 
 const GlobalStyle = createGlobalStyle`
     main.death {

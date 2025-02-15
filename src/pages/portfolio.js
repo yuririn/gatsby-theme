@@ -14,6 +14,12 @@ import Works from "../inc/portfolioParts/works"
 import Profile from "../inc/portfolioParts/profile"
 import Contact from "../inc/portfolioParts/contact"
 
+const aboutMeta = {
+    title: '広島生まれ、広島育ちのIT戦士を紹介するサイト',
+    description: `広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。`
+}
+
+
 const Portfolio = ({ data, location }) => {
   const nav = ["Profile", "Works", "Contact"]
   const [isOpen, setIsOpen] = useState(false)
@@ -237,37 +243,49 @@ const Portfolio = ({ data, location }) => {
 
 export default Portfolio
 
+/**
+ * Head export to define metadata for the page
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
 export const Head = ({ data, location }) => {
-  const ogp = `${data.allFile.edges[0].node.publicURL}`
-
-  const yourData = {
-    title: "広島生まれ、広島育ちのIT戦士を紹介するサイト",
-    description:
-      "広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。",
-    ogp: ogp,
-    date: "2021-06-03",
-    location: location,
-    faq: [
-      [
-        "コーダーになるためにはどうすれば良いですか？",
-        "コーダーはスピード命です。なので早くコーディングするためには、ショートカットは必須です。ひたすらコードを書きましょう。",
-      ],
-      [
-        "業界の進歩が早くてついていくのが大変ではないですか？",
-        "置いて行かれないよう、SNSなどで情報収集は欠かさずにやってます。この業界、学ぶことをやめたらやっていけないと思います。",
-      ],
-      [
-        "職種が大きく変わってますが、転職の際不安はありましたか？",
-        "転職するって決めた時、今考えるとWebクリエイターになった自分になりたかったのかもしれません。",
-      ],
-      [
-        "どうやってお問い合わせすればいいですか？",
-        "ご用のある方はお手数ですが、Twitter@LirioYまでDMにてご連絡ください。",
-      ],
-    ],
-  }
-
-  return <Seo data={yourData} />
+    const { title, description } = aboutMeta
+    const ogp = `${data.allFile.edges[0].node.publicURL}`
+    const list = [
+        {
+            name: '',
+            path: location.pathname,
+            type: `WebPage`
+        }
+    ]
+    return <Seo
+        location={location.pathname}
+        data={{
+            template: 'portfolio',
+            title: title,
+            description: description,
+            list: list,
+            ogp: ogp,
+            faq: [
+                [
+                    "コーダーになるためにはどうすれば良いですか？",
+                    "コーダーはスピード命です。なので早くコーディングするためには、ショートカットは必須です。ひたすらコードを書きましょう。",
+                ],
+                [
+                    "業界の進歩が早くてついていくのが大変ではないですか？",
+                    "置いて行かれないよう、SNSなどで情報収集は欠かさずにやってます。この業界、学ぶことをやめたらやっていけないと思います。",
+                ],
+                [
+                    "職種が大きく変わってますが、転職の際不安はありましたか？",
+                    "転職するって決めた時、今考えるとWebクリエイターになった自分になりたかったのかもしれません。",
+                ],
+                [
+                    "どうやってお問い合わせすればいいですか？",
+                    "ご用のある方はお手数ですが、Twitter@LirioYまでDMにてご連絡ください。",
+                ],
+            ],
+        }}
+    />
 }
 export const portfolioQuery = graphql`
   query {

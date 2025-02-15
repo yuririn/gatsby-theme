@@ -39,30 +39,33 @@ export default PagePostTemplate
 
 
 export const Head = ({ data, location }) => {
-  const post = data.markdownRemark
-  const ogpSrc = data.siteOgImage
-    ? `${data.siteOgImage.childImageSharp.resize.src}`
-    : "/images/ogp.png"
-  const thumnailSrc = data.siteThumnailImage
-    ? `${data.siteThumnailImage.childImageSharp.resize.src}`
-    : "/images/thumnail.png"
-  const yourData ={
-    title : post.frontmatter.title,
-    description : post.frontmatter.description || post.excerpt,
-    ogp : ogpSrc,
-    location : location,
-    thumnail: thumnailSrc,
-    date : post.frontmatter.date,
-    modifieddate : post.frontmatter.modifieddate,
-    type : "article"
-  }
+    const { title, date, description, modifieddate, noindex } = data.markdownRemark.frontmatter
+    const list = [
+        {
+            name: title,
+            path: location.pathname,
+            type: `WebPage`
+        }
+    ]
+    const pageData = {
+        title: title,
+        description: description,
+        date: date,
+        modifiedate: modifieddate,
+        type: "WebPage",
+        template: 'page',
+        list: list,
+        noindex: noindex
+    }
 
-  return (
-     <Seo
-        data={yourData}
-      />
-  )
+    return (
+        <Seo
+            location={location.pathname}
+            data={pageData}
+        />
+    )
 }
+
 
 export const pageQuery = graphql`
   query PagePostBySlug($id: String!) {

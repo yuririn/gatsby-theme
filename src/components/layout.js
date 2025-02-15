@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useEffect, useState } from 'react';
 import { BaseStyle } from "./../styles/common/base"
 import { CommonStyle } from "./../styles/common/common"
 import { createGlobalStyle } from "styled-components"
@@ -16,6 +16,30 @@ const Layout = ({ location, title, children }) => {
     const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
     setTheme(mode)
   }
+    useEffect(() => {
+    const handleLinkClick = (event) => {
+        const link = event.target.closest('a[href^="#"]:not([href="#"])');
+        if (!link) return;
+
+        event.preventDefault();
+        const targetId = decodeURIComponent(link.getAttribute('href').substring(1)); // URLデコード
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            window.scrollTo({
+                // top: targetElement.getBoundingClientRect().top + window.scrollY - 70, // オフセットを調整
+                top: targetElement.getBoundingClientRect().top + window.scrollY, // オフセットを調整
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    document.addEventListener('click', handleLinkClick);
+
+    return () => {
+        document.removeEventListener('click', handleLinkClick);
+    };
+},[])
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">

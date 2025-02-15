@@ -17,7 +17,7 @@ const genre = () => {
               <Link to={`/blogs/${item.slug}/`}>
                 <div className="p-localNav__main">
                   <h3 className="p-localNav__heading">{item.enName}</h3>
-                  <p className="p-localNav__content">{item.description}</p>
+                  <p className="p-localNav__content">{item.summary}</p>
                 </div>
                 <Img
                   source={`common/genre-${item.slug}.jpg`}

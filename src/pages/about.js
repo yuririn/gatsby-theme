@@ -16,6 +16,14 @@ import CvArea from "../components/common/cv-area"
 import Card from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 
+const aboutMeta = {
+    title: '【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します',
+    description:
+        "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。",
+    date: "2021-05-05",
+    modifieddate: "2021-05-05"
+}
+
 const aboutPost = () => {
   const pageTitle =
     "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
@@ -490,25 +498,31 @@ const aboutPost = () => {
 
 export default aboutPost
 
-export const Head = ({ data, location }) => {
-  const pageTitle =
-    "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
-  const description =
-    "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。"
-  const modifiedDate = "2021-05-05"
-  const ogp = `${data.allFile.edges[0].node.publicURL}`
-
-  const yourData = {
-    title: pageTitle,
-    description: description,
-    location: location,
-    date: "2021-05-05",
-    ogp: ogp,
-    modifieddate: modifiedDate,
-  }
-
-  return <Seo data={yourData} />
+/**
+ * Head export to define metadata for the page
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
+export const Head = ({ location }) => {
+    const { title, description } = aboutMeta
+    const list = [
+        {
+            name: title,
+            path: '/about/',
+            type: `WebPage`
+        }
+    ]
+    return <Seo
+        location={location.pathname}
+        data={{
+            template: 'blog',
+            title: title,
+            description: description,
+            list: list
+        }}
+    />
 }
+
 
 export const portfolioQuery = graphql`
   query {

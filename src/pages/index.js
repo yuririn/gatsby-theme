@@ -126,9 +126,12 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex
 
 export const Head = ({ data, location }) => (
- <Seo
- data={{title:data.site.siteMetadata?.title || `Title`, location:location}}
- />
+    <Seo
+        location={location.pathname}
+        data={
+            { template: 'index' }
+        }
+    />
 )
 
 export const pageQuery = graphql`{

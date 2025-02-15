@@ -122,15 +122,23 @@ $form->radio([name属性], [value属性], [その他の値を配列で]);
 各フォームパーツは以下のように呼び出せます。
 |名前|コード|
 |-|-|
-|*テキスト*|`$form->text([name], [value],[属性])` |
-|*メール*|`$form->email([name], [value],[属性])` |
+|*テキスト*|`$form->text([name], [value]
+  - [属性])` |
+|*メール*|`$form->email([name], [value]
+  - [属性])` |
 |*labelタグ*|`$form->label([name], [value])` |
 |*hidden*|`$form->hidden([name], [value])` |
 |*password*|`$form->password([name], [value], [属性])` |
-|*チェックボックス*|`$form->checkbox([name],[value], [checked], [checked],[属性])` |
-|*ラジオボタン*|`$form->radio([name],[value], [checked],[属性])` |
-|*テキストエリア*|`$form->textarea([name], [value],[属性])` |
-|*セレクトボックス*|`$form->select([name], [option], [checked],[属性])` |
+|*チェックボックス*|`$form->checkbox([name]
+  - [value], [checked], [checked]
+  - [属性])` |
+|*ラジオボタン*|`$form->radio([name]
+  - [value], [checked]
+  - [属性])` |
+|*テキストエリア*|`$form->textarea([name], [value]
+  - [属性])` |
+|*セレクトボックス*|`$form->select([name], [option], [checked]
+  - [属性])` |
 |*送信*|`$form->submit([name], [value], [属性], [class])` |
 
 今回は送信ボタンを `button` タグ直書きで使ってますが、`input` タグに変えたい場合は以下のようにして、 `disabled` などの属性を付与することもできます。
@@ -246,7 +254,8 @@ var_dump($validation->email($this->post('email')));
 |-|-|
 |*空かどうか*|`$validation->notempty([値])`|
 |*メール*|`$validation->emal([値])` |
-|*最大文字数*|`$validation->max([値],[数])`|
+|*最大文字数*|`$validation->max([値]
+  - [数])`|
 |*数字を含む*|`$validation->containsNumber([値])`|
 
 パスワードの判定ではないのでとりあえずこのくらい。

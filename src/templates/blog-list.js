@@ -10,6 +10,7 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 // import Tags from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
+import { siteMetadata } from "../../gatsby-config"
 
 const blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
@@ -84,17 +85,22 @@ const blogs = ({ pageContext, data, location }) => {
 export default blogs
 
 export const Head = ({ data, location }) => {
-  const yourData = {
-    title : "ノマドブログ",
-    description : `「銀ねこアトリエ」の最新ブログ一覧(現在${data.allMarkdownRemark.totalCount}記事）。${data.site.siteMetadata.description}`,
-    location : location,
-    type : "blog-list"
-  }
-  return (
-    <Seo
-      data={yourData}
+    const list = [
+        {
+            name: siteMetadata.blogName,
+            path: '/blogs/',
+            type: `WebPage`
+        }
+    ]
+    return <Seo
+        location={location.pathname?.replace(/page\/([0-9])+\//, "")}
+        data={{
+            template: 'archive',
+            title: siteMetadata.blogName,
+            description: `${siteMetadata.blogDescription}`,
+            list: list
+        }}
     />
-  )
 }
 
 export const pageQuery = graphql`query blosQyery($limit: Int!, $skip: Int!) {

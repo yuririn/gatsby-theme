@@ -99,16 +99,23 @@ export const Head = ({ data, location }) => {
     title : post.frontmatter.title,
     description : post.frontmatter.description || post.excerpt,
     ogp : ogpSrc,
-    location : location,
     thumnail: thumnailSrc,
     date : post.frontmatter.date,
     modifieddate : post.frontmatter.modifieddate,
     type : "ad",
-    tags: post.frontmatter.tags
+    tags: post.frontmatter.tags,
+    list: [
+        {
+            name: post.frontmatter.title,
+            path: location.pathname,
+            type: `BlogPosting`
+        }
+      ]
   }
 
   return (
      <Seo
+          location={location.pathname}
         data={yourData}
       />
   )

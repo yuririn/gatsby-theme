@@ -47,11 +47,11 @@ export const Head = ({ data, location }) => {
   const yourData = {
     title : siteMetadata.ad.title,
     description : siteMetadata.ad.description,
-    location : location,
-  }
-  return (
-  <Seo
-    data={yourData}
+}
+return (
+    <Seo
+        location={location.pathname}
+        data={yourData}
   />
 )}
 

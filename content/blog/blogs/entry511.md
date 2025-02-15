@@ -39,7 +39,8 @@ noindex: true
 
 ![TY スマイルデンタルクリニック](./images/2022/06/entry511-3.jpg)
 
-インターネットだと「[TYA dental clinic](https://www.google.com/search?q=TYA%20dental%20clinic&rlz=1C5CHFA_enPH997PH997&oq=TYA+dental+clinic&aqs=chrome..69i57.379j0j7&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=ALiCzsbTxyEkd92973E8d2BzOhTSB5uB8w:1656383606194&rflfq=1&num=10&rldimm=5758053924140230283&lqi=ChFZVEEgZGVudGFsIGNsaW5pY1oTIhF5dGEgZGVudGFsIGNsaW5pY5IBDWRlbnRhbF9jbGluaWOqARkQASoVIhF5dGEgZGVudGFsIGNsaW5pYygA&ved=2ahUKEwi909Xjjc_4AhW-Z2wGHctmAqEQvS56BAgPEAE&sa=X&rlst=f#rlfi=hd:;si:5758053924140230283,l,ChFZVEEgZGVudGFsIGNsaW5pY1oTIhF5dGEgZGVudGFsIGNsaW5pY5IBDWRlbnRhbF9jbGluaWOqARkQASoVIhF5dGEgZGVudGFsIGNsaW5pYygA;mv:[[10.3463111,123.9342233],[10.3041091,123.88638840000002]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3,lf:1)」で調べないと引っかかりません。
+インターネットだと「[TYA dental clinic](https://www.google.com/search?q=TYA%20dental%20clinic&rlz=1C5CHFA_enPH997PH997&oq=TYA+dental+clinic&aqs=chrome..69i57.379j0j7&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=ALiCzsbTxyEkd92973E8d2BzOhTSB5uB8w:1656383606194&rflfq=1&num=10&rldimm=5758053924140230283&lqi=ChFZVEEgZGVudGFsIGNsaW5pY1oTIhF5dGEgZGVudGFsIGNsaW5pY5IBDWRlbnRhbF9jbGluaWOqARkQASoVIhF5dGEgZGVudGFsIGNsaW5pYygA&ved=2ahUKEwi909Xjjc_4AhW-Z2wGHctmAqEQvS56BAgPEAE&sa=X&rlst=f#rlfi=hd:;si:5758053924140230283,l,ChFZVEEgZGVudGFsIGNsaW5pY1oTIhF5dGEgZGVudGFsIGNsaW5pY5IBDWRlbnRhbF9jbGluaWOqARkQASoVIhF5dGEgZGVudGFsIGNsaW5pYygA;mv:[[10.3463111,123.9342233]
+  - [10.3041091,123.88638840000002]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3,lf:1)」で調べないと引っかかりません。
 
 
 <div class="gray-box"><em>住所</em><br>TF Bldg. M. L. Quezon Ave, Mandaue City, 6014 Cebu<br><a href="https://maps.app.goo.gl/z88P2PFRX7ymsWPb6">MAP</a></div>

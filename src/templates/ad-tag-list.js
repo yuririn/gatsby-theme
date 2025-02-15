@@ -51,10 +51,17 @@ export const Head = ({ pageContext, location  }) => {
     title : tag,
     location : location,
     type : "ad-list",
+    list: [{
+        name: tag,
+        path: location.pathname,
+        type: `WebPage`
+    }]
   }
 
   return (
      <Seo
+          location={location.pathname?.replace(/page\/([0-9])+\//, "")}
+        
         data={yourData}
       />
   )

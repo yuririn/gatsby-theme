@@ -12,8 +12,9 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 // import TagsList from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
+const { category } = siteMetadata
 
-const category = ({ pageContext, data, location }) => {
+const genre = ({ pageContext, data, location }) => {
   const { cateSlug, current, page } = pageContext
   const { edges } = data.allMarkdownRemark
 
@@ -90,26 +91,43 @@ const category = ({ pageContext, data, location }) => {
   );
 }
 
-export default category
+export default genre
 
-export const Head = ({ pageContext, data, location }) => {
-  const { cateSlug } = pageContext
-  const cateMeta = siteMetadata.category.filter(cate => cate.slug === cateSlug)
+/**
+ * 
+ * @param {String} slug カテゴリーのスラッグ
+ * @param {Object} category すべてのカテゴリー
+ * @returns slugと一致するカテゴリー
+ */
+const getCatetory = (slug, category) => {
+    if (!slug || !category) return
+    return category.filter(item => item.slug === slug)[0]
+}
 
-  let cateName = cateMeta[0].name
-  let cateDescription = cateMeta[0].description
-  const yourData = {
-    title : `${cateName}`,
-    description : `「${cateName}」の記事一覧。${cateDescription}。${data.site.siteMetadata.description}`,
-    location : location,
-    type : "genre-list"
-  }
-
-  return (
-     <Seo
-        data={yourData}
-      />
-  )
+export const Head = ({ location, pageContext }) => {
+    const { cateSlug } = pageContext
+    const cateItem = getCatetory(cateSlug, category)
+    const list = [
+        {
+            name: siteMetadata.blogName,
+            path: '/blogs/',
+            type: `WebPage`
+        },
+        {
+            name: cateItem.name,
+            path: `/blogs/${cateItem.slug}`,
+            type: `WebPage`
+        }
+    ]
+    return <Seo
+        location={location.pathname?.replace(/page\/([0-9])+\//, "")}
+        data={{
+            title: cateItem.name,
+            template: 'archive',
+            description: cateItem.description,
+            list: list
+        }}
+    />
 }
 
 export const pageQuery = graphql`query ($cateSlug: String, $limit: Int!, $skip: Int!) {

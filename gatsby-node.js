@@ -314,9 +314,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       date: Date @dateformat
       modifieddate: Date @dateformat
       tags: [String]
+      noindex: Boolean
       pagetype: String
       cateId: String
       hero: String
+      faq:[[String]]
     }
 
     type Fields {

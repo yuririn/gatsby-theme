@@ -7,6 +7,10 @@ import Seo from "../components/seo"
 import Img from "../components/img"
 import BreadCrumbList from "../components/common/bread-crumb-list"
 
+const contactMeta = {
+    title: 'お問い合わせ',
+    description: 'お問い合わせに関するページです。'
+}
 
 const types = [
   {
@@ -237,9 +241,6 @@ const contactTemplate = ({ data, location }) => {
   }
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        data={yourData}
-      />
 
       <div className="l-main_contents">
         <div className="p-pageHeader">
@@ -267,24 +268,31 @@ const contactTemplate = ({ data, location }) => {
 
 export default contactTemplate
 
-export const Head = ({ data, location }) => {
-  const siteDescription = data.site.siteMetadata?.description
-  const src = data.allFile.edges[0]
-    ? data.allFile.edges[0].node.childImageSharp.fluid.src
-    : ""
-  const yourData = {
-    title: "お問い合わせ",
-    description: `お問い合わせに関するページです。${siteDescription}`,
-    image : src,
-    date : "2021-06-03",
-    location : location
-  }
+export const Head = ({ location }) => {
+    const { title, description } = contactMeta
+    const list = [
+        {
+            name: title,
+            path: location.pathname,
+            type: `WebPage`
+        }
+    ]
 
-  return (
-     <Seo
-        data={yourData}
-      />
-  )
+    const pageData = {
+        title: title,
+        description: description,
+        type: "WebPage",
+        template: 'page',
+        list: list,
+        noindex: location.pathname === `/contact/thanks/` && true
+    }
+
+    return (
+        <Seo
+            location={location.pathname}
+            data={pageData}
+        />
+    )
 }
 
 export const pageQuery = graphql`

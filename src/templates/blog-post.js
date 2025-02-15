@@ -1,8 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import { siteMetadata } from "./../../gatsby-config"
-
 import { Article } from "./../styles/blog-styles/article"
 import { Header } from "./../styles/blog-styles/header"
 import { Edit } from "./../styles/blog-styles/edit"
@@ -24,6 +22,7 @@ import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Ad from "../components/common/ad"
+import { siteMetadata } from "./../../gatsby-config";
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -180,29 +179,61 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const Head = ({ data, location }) => {
-  const post = data.markdownRemark
-  const ogpSrc = data.siteOgImage
-    ? `${data.siteOgImage.childImageSharp.resize.src}`
-    : "/images/ogp.png"
-  const thumnailSrc = data.siteThumnailImage
-    ? `${data.siteThumnailImage.childImageSharp.resize.src}`
-    : "/images/thumnail.png"
-  const seoData = {
-    title: post.frontmatter.title,
-    description: post.frontmatter.description || post.excerpt,
-    date: post.frontmatter.date.replace(/\./g, "-"),
-    modified: post.frontmatter.modifieddate ? post.frontmatter.modifieddate.replace(/\./g, "-") : '',
-    location: location,
-    ogp: ogpSrc,
-    faq: post.frontmatter.faq ? post.frontmatter.faq : "",
-    tag: post.frontmatter.tags[0],
-    cateId: post.frontmatter.cateId,
-    thumnail: thumnailSrc,
-    type: "blog",
-    noindex: post.frontmatter.noindex ? post.frontmatter.noindex : false,
-  }
-  return <Seo data={seoData} />
+    const post = data.markdownRemark
+    const { category, blogName } = siteMetadata
+    const cate = category.filter(i => i.slug === post.frontmatter.cateId)[0]
+    // パンくず
+    const list = [
+        {
+            name: blogName,
+            path: '/blogs/',
+            type: `WebPage`
+        },
+        {
+            name: cate.name,
+            path: `/blogs/${cate.slug}`,
+            type: `WebPage`
+        },
+        {
+            name: post.frontmatter.tags[0],
+            path: `/blogs/tags/${post.frontmatter.tags[0]}`,
+            type: `WebPage`
+        },
+        {
+            name: post.frontmatter.title,
+            path: `/blogs/${post.fields.slug}/`,
+            type: `BlogPosting`
+        }
+    ]
+
+    const ogpSrc = data.siteOgImage
+        ? `${data.siteOgImage.childImageSharp.resize.src}`
+        : "/images/ogp.png"
+    const thumbnailSrc = data.siteThumbnailImage
+        ? `${data.siteThumbnailImage.childImageSharp.resize.src}`
+        : "/images/thumnail.png"
+    const blogData = {
+        title: post.frontmatter.title,
+        description: post.frontmatter.description || post.excerpt,
+        ogp: ogpSrc,
+        thumbnail: thumbnailSrc,
+        date: post.frontmatter.date,
+        modifieddate: post.frontmatter.modifieddate,
+        template: 'blog',
+        list: list,
+        faq: post.frontmatter.faq,
+        noindex: post.frontmatter.noindex
+    }
+
+
+    return (
+        <Seo
+            location={location.pathname}
+            data={blogData}
+        />
+    )
 }
+
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
