@@ -1,0 +1,47 @@
+@use './../../utils';
+%en {
+    font-family: var(--font-alphabet);
+}
+.c-heading{
+    
+    &--lg{
+        text-align: center;
+        padding: 16px 16px;
+        margin-bottom: 24px;
+        h2 {
+            line-height: 1;
+            font-size: var(--font-xl);
+            @extend %en;
+            margin-bottom: 8px;
+        }
+        border-image: linear-gradient(0deg,var(--font-color) 100%, #0000 0) fill 0 SLASH 0 100vw 0 100vw;
+        
+        color: var(--background);
+        @include utils.mq(md){
+            margin-bottom: 32px;
+            h2 {
+                font-size: 5.6rem;
+                margin-bottom: 0;
+            }
+            border-image: linear-gradient(0deg, var(--font-color) 100%, #0000 0) fill 0 SLASH 0 0 0 100vw;
+            width: max-content;
+            display: flex;
+            align-items: center;
+            padding: 16px 32px 16px 0;
+            gap: 16px;
+            /* または */
+            
+        }
+        
+    }
+    &__aside {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+        @include utils.mq(md){
+            margin-bottom: 16px;
+            font-size: 2rem;
+        }
+    }
+}
+

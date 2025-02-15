@@ -1,207 +1,151 @@
-import * as React from "react"
+import React from "react"
 import { Link, graphql } from "gatsby"
-
-import { siteMetadata } from "./../../gatsby-config"
-
-import { Article } from "./../styles/blog-styles/article"
-import { Header } from "./../styles/blog-styles/header"
-import { Edit } from "./../styles/blog-styles/edit"
-import styled from "styled-components"
-import rehypeReact from "rehype-react"
-import RelatedList from "./../components/blogs/related-list"
-
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import BreadCrumbList from "../components/common/bread-crumb-list"
-import TagsList from "../components/blogs/tags-blog"
-import Sns from "../components/blogs/sns"
-import Prof from "../components/blogs/small-prof"
-import Toc from "../components/blogs/topic"
-import Kyle from "../components/blogs/blog-parts/kyle"
-import Sidebar from "../components/blogs/sidebar"
-import Genre from "../components/common/genre"
-import RelativeCard from "../components/blogs/blog-parts/relative-card"
-import Msg from "../components/blogs/blog-parts/msg"
+import Seo from "../components/Seo/Seo"
+import Layout from '../components/layout';
+import SideBar from '../components/SideBar';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Ad from "../components/common/ad"
+import rehypeReact from "rehype-react"
+import Tags from "../components/posts/Tags"
+import Msg from "../components/posts/modueles/msg";
+import RelativeCard from "../components/posts/modueles/relative-card";
+import Date from '../components/posts/Date';
+import Bio from "../components/posts/Bio";
+import Sns from "../components/posts/Sns"
+import PrevAndNextNav from "../components/posts/PrevAndNextNav";
+import Faq from "../components/posts/Faq";
+import BreadCrumbList from "../components/common/BreadcrumbList";
+import { siteMetadata } from "../../gatsby-config";
+import RelatedPosts from "../components/posts/RelatedPosts";
+import Ads from "../components/common/Ads";
 
 const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: {
-    card: RelativeCard,
-    msg: Msg,
-    prof: Prof,
-    ad: Ad,
-    kyle: Kyle,
-    toc: Toc,
-  },
+    createElement: React.createElement,
+    components: {
+        card: RelativeCard,
+        msg: Msg,
+        prof: Bio,
+        ad: Ads,
+    },
 }).Compiler
-
+    
+// console.log(renderAst)
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const faq = post.frontmatter.faq
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
-  const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
-  const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
 
-  const category = {
-    url: `/blogs/${post.frontmatter.cateId}/`,
-    name: siteMetadata.category.filter(item => {
-      return post.frontmatter.cateId === item.slug ? item.name : ""
-    })[0].name,
-  }
+    const { title, siteUrl, category, blogName } = siteMetadata
+    const post = data.markdownRemark.frontmatter
+    const slug = data.markdownRemark.fields.slug
+    const docImage = data.docImage
+    const render = data.markdownRemark.htmlAst;
+    const cate = category.filter(i=>i.slug === post.cateId)[0]
+    const perfectUrl = `${siteUrl}${location.pathname}`
+    const perfectTitle = encodeURI(post.title + " - " + title)
+    const {previous, next } = data;
+    const breadCrumbList = {
+        parents: [
+            { path: '/blogs/', name: blogName },
+            { path: `/blogs/${cate.slug}/`, name: cate.name },
+            { path: `/blogs/tags/${post.tags[0]}/`, name: post.tags[0] }
+        ],
+        current: post.title
+    }
+    return (
+        <Layout location={location} title={post.title}>
+            <header className={`c-blog-header--${cate.slug}`} id="keyvisual">
+                <GatsbyImage
+                    image={getImage(docImage)}
+                    alt={post.title}
+                />
 
-  return (
-    <Layout location={location} title={siteTitle}>
-      <Header>
-        <div
-          className={
-            `c-article__mainvisual c-article__mainvisual--` +
-            post.frontmatter.cateId
-          }
-        >
-          <div className="c-article__img">
-            {/* <Category
-              name={post.frontmatter.categoryId}
-              id={post.frontmatter.cateId}
-            /> */}
-            <GatsbyImage
-              image={getImage(data.dogImage)}
-              alt={post.frontmatter.title}
-            />
-          </div>
-        </div>
-      </Header>
-      <BreadCrumbList
-        type="blog"
-        cate={category}
-        tag={post.frontmatter.tags[0]}
-      />
-      <Body>
-        <Article>
-          <article
-            className="blog-post l-container"
-            itemScope
-            itemType="http://schema.org/Article"
-            data-clarity-region="article"
-          >
-            <header>
-              <h1 itemProp="headline" className="c-article__heading">
-                {post.frontmatter.title}
-              </h1>
-              <dl className="c-article__date">
-                <dt>公開日</dt>
-                <dd>
-                  <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                    {post.frontmatter.date}
-                  </time>
-                </dd>
-                {post.frontmatter.modifieddate ? <dt>メンテナンス日</dt> : ""}
-                {post.frontmatter.modifieddate ? (
-                  <dd>
-                    <time
-                      date={post.frontmatter.modifieddate.replace(/\./g, "-")}
-                    >
-                      {post.frontmatter.modifieddate}
-                    </time>
-                  </dd>
-                ) : (
-                  ""
-                )}
-              </dl>
-              <TagsList tags={post.frontmatter.tags} />
+                <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
             </header>
-            <Edit>
-              <section itemProp="articleBody">
-                {renderAst(post.htmlAst)}
-                {faq && <h2>FAQ</h2>}
-                {faq &&
-                  faq.map((item, index) => {
-                    return (
-                      <dl className="p-faq__item" key={`faq${index}`}>
-                        <dt>{item[0]}</dt>
-                        <dd>{item[1]}</dd>
-                      </dl>
-                    )
-                  })}
-              </section>
-            </Edit>
+            
+            <div className="l-section l-container--article">
+                <Sns url={perfectUrl} title={perfectTitle}></Sns>
+                <div>
 
-            <Sns url={perfectUrl} title={perfectTitle} />
-            <Ad location={location.pathname}></Ad>
-            <dl className="c-article__tags">
-              <dt>Category</dt>
-              <dd className="cate">
-                <Link to={category.url}>{category.name}</Link>
-              </dd>
-            </dl>
-          </article>
-          <ol className="c-pager--article p-section l-container">
-            <li className="c-pager--article__prev">
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li className="c-pager--article__next">
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title}
-                </Link>
-              )}
-            </li>
-          </ol>
-        </Article>
-        <Sidebar
-          title={post.frontmatter.title}
-          topic={post.tableOfContents}
-          slug={post.fields.slug}
-          location={location.pathname}
-        />
-        <aside className="l-container">
-          <RelatedList
-            category={post.frontmatter.cateId}
-            tags={post.frontmatter.tags}
-            slug={post.fields.slug}
-          ></RelatedList>
-          <Ad location={location.pathname}></Ad>
-          <section className="p-section u-text-center">
-            <h2 className="c-heading--lg">人気のジャンル</h2>
-            <Genre />
-          </section>
-        </aside>
-      </Body>
-    </Layout>
-  )
+                    <article className="c-article">
+                        <h1 className="c-article__heading">{post.title}</h1>
+                        <Date date={post.date} modifiedDate={post.modifieddate}></Date>
+                        <Tags tags={post.tags}></Tags>
+                        
+                        <section itemProp="articleBody" className="c-post-body">
+                            {renderAst(render)}
+                            {post.faq &&<Faq data={post.faq}></Faq>}
+                        </section>
+                        <dl class="c-article__cate">
+                            <dt>Category</dt>
+                            <dd><Link to={`/blogs/${cate.slug}`}>{cate.name}</Link></dd>
+                        </dl>
+                        <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
+                    </article>
+                    <aside>
+                        <Ads location={location.pathname}></Ads>
+                        <h2 className="c-heading__aside">関連記事</h2>
+                        <RelatedPosts id={slug} category={post.cateId} tags={post.tags}></RelatedPosts>
+                    </aside>
+                </div>
+                <SideBar id={slug} location={location}></SideBar>
+            </div>
+        </Layout>
+    )
 }
 
 export default BlogPostTemplate
 
 export const Head = ({ data, location }) => {
-  const post = data.markdownRemark
-  const ogpSrc = data.siteOgImage
-    ? `${data.siteOgImage.childImageSharp.resize.src}`
-    : "/images/ogp.png"
-  const thumnailSrc = data.siteThumnailImage
-    ? `${data.siteThumnailImage.childImageSharp.resize.src}`
-    : "/images/thumnail.png"
-  const seoData = {
-    title: post.frontmatter.title,
-    description: post.frontmatter.description || post.excerpt,
-    date: post.frontmatter.date.replace(/\./g, "-"),
-    modified: post.frontmatter.modifieddate ? post.frontmatter.modifieddate.replace(/\./g, "-") : '',
-    location: location,
-    ogp: ogpSrc,
-    faq: post.frontmatter.faq ? post.frontmatter.faq : "",
-    tag: post.frontmatter.tags[0],
-    cateId: post.frontmatter.cateId,
-    thumnail: thumnailSrc,
-    type: "blog",
-    noindex: post.frontmatter.noindex ? post.frontmatter.noindex : false,
-  }
-  return <Seo data={seoData} />
+    const post = data.markdownRemark
+    const { category, blogName } = siteMetadata
+    const cate = category.filter(i => i.slug === post.frontmatter.cateId)[0]
+    // パンくず
+    const list = [
+        {
+            name: blogName,
+            path: '/blogs/',
+            type: `WebPage`
+        },
+        {
+            name: cate.name,
+            path: `/blogs/${cate.slug}`,
+            type: `WebPage`
+        },
+        {
+            name: post.frontmatter.tags[0],
+            path: `/blogs/tags/${post.frontmatter.tags[0]}`,
+            type: `WebPage`
+        },
+        {
+            name: post.frontmatter.title,
+            path: `/blogs/${post.fields.slug}/`,
+            type: `BlogPosting`
+        }
+    ]
+    
+    const ogpSrc = data.siteOgImage
+        ? `${data.siteOgImage.childImageSharp.resize.src}`
+        : "/images/ogp.png"
+    const thumbnailSrc = data.siteThumbnailImage
+        ? `${data.siteThumbnailImage.childImageSharp.resize.src}`
+        : "/images/thumnail.png"
+    const blogData = {
+        title: post.frontmatter.title,
+        description: post.frontmatter.description || post.excerpt,
+        ogp: ogpSrc,
+        thumbnail: thumbnailSrc,
+        date: post.frontmatter.date,
+        modifieddate: post.frontmatter.modifieddate,
+        template: 'blog',
+        list: list,
+        faq: post.frontmatter.faq,
+        noindex: post.frontmatter.noindex
+    }
+    
+
+    return (
+        <Seo
+            location={location}
+            data={blogData}
+        />
+    )
 }
 
 export const pageQuery = graphql`
@@ -211,12 +155,6 @@ export const pageQuery = graphql`
     $nextPostId: String
     $hero: String
   ) {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-      }
-    }
     siteOgImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }
@@ -227,7 +165,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    dogImage: file(
+    docImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }
     ) {
@@ -240,7 +178,7 @@ export const pageQuery = graphql`
         )
       }
     }
-    siteThumnailImage: file(
+    siteThumbnailImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }
     ) {
@@ -255,7 +193,6 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       htmlAst
-      tableOfContents
       fields {
         slug
       }
@@ -267,7 +204,7 @@ export const pageQuery = graphql`
         hero
         cateId
         tags
-        pagetype
+        pageType
         faq
         modifieddate(formatString: "YYYY.MM.DD")
       }
@@ -290,49 +227,3 @@ export const pageQuery = graphql`
     }
   }
 `
-const Body = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    position: relative;
-    max-width: 1120px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-  aside.l-container .display {
-    margin-bottom: 50px;
-  }
-`
-
-// const Feedly = styled.div`
-//   height: 150px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background: #eee;
-//   // border:1px solid #6cc655;
-//   flex-direction: column;
-//   margin: 0 15px;
-//   @media screen and (min-width: 768px) {
-//     margin-left: 0;
-//     margin-right: 0;
-//   }
-//   h2 {
-//     margin-bottom: 20px;
-//   }
-//   a {
-//     background: #6cc655;
-//     font-weight: bold;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 40px;
-//     padding: 0 20px;
-//     color: #fff;
-//     border-radius: 20px;
-//     text-decoration: none;
-//     svg {
-//       margin-right: 10px;
-//     }
-// https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
-//   }
-// `

@@ -1,266 +1,70 @@
-import * as React from "react"
-import { BaseStyle } from "./../styles/common/base"
-import { CommonStyle } from "./../styles/common/common"
-import { createGlobalStyle } from "styled-components"
-
-import Header from "./header"
-import Footer from "./footer"
-
+import React, { useEffect, useState } from 'react';
+import Header from "./common/Header";
+import Footer from "./common/Footer";
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
+    const rootPath = `${__PATH_PREFIX__}/`
+    const isRootPath = location.pathname === rootPath;
 
-  if( typeof window !== "undefined") {
-    const setTheme = newTheme => (document.body.className = newTheme)
-    const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
-    setTheme(mode)
-  }
+    const [theme, setTheme] = useState('light');
 
-  return (
-    <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
-      <BaseStyle />
-      <CommonStyle />
-      <GlobalStyle />
-      <Header title={title} location={location.pathname} />
-      <main>{children}</main>
-      <Footer title={title} />
-    </div>
-  )
-}
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(prefersDark ? 'dark' : 'light');
+        }
 
-export default Layout
+        const handleLinkClick = (event) => {
+            const link = event.target.closest('a[href^="#"]:not([href="#"])');
+            if (!link) return;
 
-const GlobalStyle = createGlobalStyle`
-  .p-section + .ads.display {
-       margin-bottom: 50px;
-  }
-  .p-entryCard {
-    list-style: none;
-    margin-bottom: 20px;
-    &__footer {
-      margin-top: 10px;
-    }
+            event.preventDefault();
+            const targetId = decodeURIComponent(link.getAttribute('href').substring(1)); // URLデコード
+            const targetElement = document.getElementById(targetId);
 
-    @media screen and (min-width: 768px) {
-        margin-bottom: 40px;
-      }
-      @media screen and (max-width: 769px) {
-       &:not(.is-small) + .is-small {
-          padding-top: 20px;
-          border-top: 1px solid var(--border-color);
-        }
-      }
-      &.is-small {
-        @media screen and (max-width: 769px) {
-        .p-entryCard__date {
-            top: 2px;
-            padding:5px 10px 5px 15px;
-          }
-          .p-entryCard__heading {
-             display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-          .p-entryCard__footer {
-            ul {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-                overflow-x: auto;
-                overflow-y: hidden;
-                white-space: nowrap;
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.getBoundingClientRect().top + window.scrollY - 70, // オフセットを調整
+                    behavior: 'smooth'
+                });
             }
-            ul::-webkit-scrollbar {
-                display: none;
-            }
-          }
-        }
-        @media screen and (max-width: 769px) {
-          &+ .is-small {
-            border-bottom: 1px solid var(--border-color);
-            border-top: none;
-            padding-top: 0;
-          }
-           display: flex;
-            flex-wrap:wrap;
-            align-items: flex-start;
-            position: relative;
-           border-bottom: 1px solid var(--border-color);
-           .p-entryCard__heading {
-              font-size: 1.4rem;
-            }
-            .p-entryCard__img {
-              width: 35%;
-              border-radius: 5px;
-              img {
-                border-radius: 8px;
-              }
-            }
-            .p-entryCard__body {
-              width: 65%;
-              padding-left: 15px;
-              box-sizing: border-box;
-              p {
-              }
-            }
-             .p-entryCard__footer {
-              position: absolute;
-              bottom: 10px;
-              right: 0;
-              width: 65%;
-              padding-left: 15px;
-            }
-             .p-entryCard__date {
-               font-size: 1.1rem;
-             }
-        }
-      }
-      &.is-first {
-        .p-entryCard__body {
-          p {
-            line-height: 1.6;
-            font-size: 1.4rem;
-            display: -webkit-box;
-            overflow: hidden;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            font-size: 1.2rem;
-            margin-bottom: 0px;
-          }
-        }
-        .p-entryCard__heading {
-            margin-bottom: 10px;
-          }
-         @media screen and (min-width: 768px) {
-           width: 100%;
-           display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            position: relative;
-            .p-entryCard__img {
-              width: 40%;
-              img {
-                  border-radius: 8px;
-              }
-            }
-            .p-entryCard__body {
-              width: 60%;
-              padding-left: 30px;
-              box-sizing: border-box;
-              p {
-                font-size: 1.4rem;
-              }
-            }
-            .p-entryCard__heading {
-              font-size: 2.2rem;
-              margin-bottom: 20px;
-            }
-            .p-entryCard__footer {
-              position: absolute;
-              bottom: 10px;
-              right: 0;
-              width: 60%;
-              padding-left: 30px;
-            }
-         }
-      }
-      a {
-        color: var(--color-blue);
-        text-decoration: none;
-      }
-      &__img {
-        display: block;
-        position: relative;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 0 4px rgb(0,0,0, .3);
-        margin-bottom: 20px;
-        transition: .5s;
+        };
 
-        .gatsby-image-wrapper {
-          transition: .5s;
-        }
-        img {
-          display: block;
-          width: 100%;
-          transition: .5s;
-        border-radius: 8px;
-      }
-    }
-    &__date {
-      transform: skewX(-15deg);
-      font-weight: 700;
-      background: var(--color-blue);
-      padding: 6px 25px;
-      letter-spacing: .1em;
-      font-size: 1.4rem;
-      position: absolute;
-      z-index: 2;
-      left: -5px;
-      top: 10px;
-      color: var(--background);
-    }
-    &__heading {
-        font-weight: 700;
-        font-size: 1.8rem;
-        line-height: 1.2;
-        margin-bottom: 5px;
-        letter-spacing: .1em;
-    }
-     @media screen and (min-width: 768px) {
-       &:hover {
-         .p-entryCard__heading {
-          color: var(--color-link);
-        }
-        &__img {
-           box-shadow: 0 0 4px rgb(0,0,0, .3),0 0 9px rgb(0,0,0, .6);
-        }
-         .gatsby-image-wrapper {
-           transform: scale(1.2,1.2) rotate(-2deg);;
-           opacity: 0.8;
-         }
-       }
-  }
-  .p-tagList{
-    margin-top: 10px;
-    &__item {
-      margin-right: 5px;
-      margin-bottom: 10px;
-      display: inline-block;
+        document.addEventListener('click', handleLinkClick);
 
-      a {
-        font-size: 1rem;
-        line-height: 1;
-        color: var(--color-blue);
-        display: block;
-        border-radius: 4px;
-        border: 1px solid var(--color-blue);
-        background: var(--background);
-        transition: .3s;
-        white-space: nowrap;
-        padding: 2px 3px 5px 2px;
+        return () => {
+            document.removeEventListener('click', handleLinkClick);
+        };
+    }, []);
 
-        @media screen and (min-width: 768px) {
-          font-size: 1.1rem;
-          padding: 3px 3px 5px 3px;
-          &:hover {
-            background-color: var(--color-blue);
-            color: var(--background);
-          }
-        }
-          &:before {
-            content: "";
-            width: 1em;
-            height: 1em;
-            vertical-align: -.2em;
-            display: inline-block;
-            border-radius: 50%;
-            background: var(--background);
-            border: 2px solid var(--color-blue);
-            transform: scale(.5);
-        }
-      }
-    }
-  }
-`
+    useEffect(() => {
+        document.body.className = theme;
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    };
+
+    return (
+        <>
+            <Header isRootPath={isRootPath} />
+            
+            <main>{children}</main>
+            <button onClick={toggleTheme} className='c-btn--switch-mode' aria-label={theme === 'light' ? 'ライトモード' : 'ダークモード'}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 345.427 345.428">
+                    <path id="Icon_metro-sun4" data-name="Icon metro-sun4" d="M178.177,84.534a93,93,0,1,0,93,93,93.113,93.113,0,0,0-93-93Zm0-26.571a13.278,13.278,0,0,0,13.286-13.286V18.106a13.286,13.286,0,1,0-26.571,0V44.677A13.267,13.267,0,0,0,178.177,57.963Zm0,239.142a13.278,13.278,0,0,0-13.286,13.286v26.571a13.286,13.286,0,0,0,26.571,0V310.391A13.289,13.289,0,0,0,178.177,297.105ZM281.487,92.976,300.274,74.19A13.284,13.284,0,1,0,281.487,55.4L262.7,74.19a13.284,13.284,0,0,0,18.787,18.787ZM74.831,262.109,56.046,280.9a13.284,13.284,0,0,0,18.785,18.787L93.618,280.9a13.284,13.284,0,1,0-18.787-18.787ZM58.605,177.534A13.289,13.289,0,0,0,45.32,164.248H18.748a13.286,13.286,0,1,0,0,26.571H45.32A13.278,13.278,0,0,0,58.605,177.534Zm279-13.286H311.033a13.286,13.286,0,0,0,0,26.571H337.6a13.286,13.286,0,0,0,0-26.571ZM74.815,92.976A13.284,13.284,0,1,0,93.6,74.19L74.815,55.4A13.284,13.284,0,0,0,56.028,74.19Zm206.707,169.1a13.284,13.284,0,0,0-18.787,18.787l18.787,18.787a13.284,13.284,0,0,0,18.787-18.787Z" transform="translate(-5.463 -4.82)" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 194.162 217.254">
+                    <path id="Icon_awesome-moon" data-name="Icon awesome-moon" d="M110.54,217.254a108.418,108.418,0,0,0,84.38-40.223,5.1,5.1,0,0,0-4.906-8.211A85.1,85.1,0,0,1,131.982,11.249a5.1,5.1,0,0,0-1.594-9.433A108.633,108.633,0,1,0,110.54,217.254Z" transform="translate(-1.913)" />
+                </svg>
+            </button>
+            <Footer />
+        </>
+    );
+};
+
+export default Layout;

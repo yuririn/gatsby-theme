@@ -1,134 +1,58 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Seo from "../components/seo"
-import Img from "../components/img"
-import Search from "../components/search"
-
 import Layout from "../components/layout"
-import FirstView from "../components/top-first-view"
-import FovoriteList from "../components/common/favorites"
-import AddTagLink from "../components/common/add-tag-link"
-import Genre from "../components/common/genre"
-import Prof from "../components/common/profile"
-import Ad from '../components/common/ad'
+import Seo from "../components/Seo/Seo"
+import FirstView from "../components/firstView"
+// import Img from "../components/common/Img"
+import Post from '../components/posts/Post';
+import SideBar from "../components/SideBar"
+import PickUpList from "../components/posts/PickUpList"
+import Ads from "../components/common/Ads"
+
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  let cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
 
   return (
     <Layout location={location} title={siteTitle}>
-      <FirstView />
-      <div className="p-section l-container">
-        <h2 className="c-heading--lg">最新の記事</h2>
-        <ol className="c-grid">
-          {posts.map((post, i) => {
-            if (i === 0) {
-              cardClass =
-                "p-entryCard c-grid__item--md6 c-grid__item--lg4 is-first"
-            } else if (i > 2) {
-              cardClass =
-                "p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
-            } else {
-              cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
-            }
-
-            return (
-              <>
-              { i === 5 ? (
-                <>
-                <li key={`_post${i}`} className={cardClass}>
-                  <Ad location={location.pathname}></Ad>
-                </li>
-                <li key={`post${i}`} className={cardClass} role="article">
-                  <Link to={post.fields.slug} className="p-entryCard__img">
-                    <Img
-                      source={post.frontmatter.hero}
-                      alt={post.frontmatter.title}
-                      key={post.frontmatter.title}
-                    />
-                    <div className="p-entryCard__date">
-                      <time
-                        date={post.frontmatter.date.replace(/\./g, "-")}
-                      >
-                        {post.frontmatter.date}
-                      </time>
-                    </div>
-                  </Link>
-                  <Link to={post.fields.slug} className="p-entryCard__body">
-                    <h3 className="p-entryCard__heading">
-                      {post.frontmatter.title}
-                    </h3>
-                    {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
-                  </Link>
-                  <div className="p-entryCard__footer">
-                    <AddTagLink tags={post.frontmatter.tags} />
-                  </div>
-              </li>
-                </>
-
-                )
-                :( <li key={`post${i}`} className={cardClass} role="article">
-                  <Link to={post.fields.slug} className="p-entryCard__img">
-                    <Img
-                      source={post.frontmatter.hero}
-                      alt={post.frontmatter.title}
-                      key={post.frontmatter.title}
-                    />
-                    <div className="p-entryCard__date">
-                      <time
-                        date={post.frontmatter.date.replace(/\./g, "-")}
-                      >
-                        {post.frontmatter.date}
-                      </time>
-                    </div>
-                  </Link>
-                  <Link to={post.fields.slug} className="p-entryCard__body">
-                    <h3 className="p-entryCard__heading">
-                      {post.frontmatter.title}
-                    </h3>
-                    {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
-                  </Link>
-                  <div className="p-entryCard__footer">
-                    <AddTagLink tags={post.frontmatter.tags} />
-                  </div>
-              </li>
-              )}
-              </>
-            );
-          })}
-        </ol>
-        <p className="u-text-center u-mblg l-container">
-          <Link to="/blogs/" className="p-btn--detail">
-            Read More Blog
-          </Link>
-        </p>
-        <h2 className="c-heading--lg">記事を検索する</h2>
-        <Search></Search>
-        <Ad location={location.pathname}></Ad>
-        <FovoriteList type="web" />
-        <Ad location={location.pathname}></Ad>
-        <FovoriteList type="life" />
-        <Ad location={location.pathname}></Ad>
-        <FovoriteList type="career" />
-        <Ad location={location.pathname}></Ad>
-        <h2 className="c-heading--lg">人気のジャンル</h2>
-        <Genre />
+          <FirstView></FirstView>
+      <div className="l-section l-container--blog">
+        <div className="l-container--blog__main">
+            <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
+            <PickUpList></PickUpList>
+                  <Ads location={location.pathname}></Ads>
+            <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
+            <ul className="l-card-container">{
+                posts.map((post, key) => {
+                    return  <Post post={post} key={key}></Post>
+                    }
+                )}
+            </ul>
+            <p className="u-center"><a href="/blogs/" className="c-btn--detail">もっとブログを読む</a></p>
+                  <Ads location={location.pathname}></Ads>
+        </div>
+              <SideBar location={location}></SideBar>
       </div>
-      <Prof></Prof>
-      <Ad location={location.pathname}></Ad>
     </Layout>
-  );
+  )
 }
 
 export default BlogIndex
 
+/**
+ * Head export to define metadata for the page
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
 export const Head = ({ data, location }) => (
- <Seo
- data={{title:data.site.siteMetadata?.title || `Title`, location:location}}
- />
+    <Seo
+        location={location}
+        data={
+            { template: 'index' }
+        }
+    />
 )
 
 export const pageQuery = graphql`{
@@ -140,8 +64,8 @@ export const pageQuery = graphql`{
 
   allMarkdownRemark(
     sort: {frontmatter: {date: DESC}}
-    limit: 9
-    filter: {frontmatter: {pagetype: {eq: "blog"}}}
+    limit: 12
+    filter: {frontmatter: {pageType: {eq: "blog"}}}
   ) {
     nodes {
       excerpt
@@ -155,9 +79,8 @@ export const pageQuery = graphql`{
         tags
         cateId
         hero
-        pagetype
+        pageType
       }
     }
   }
 }`
-
