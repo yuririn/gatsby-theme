@@ -1,8 +1,4 @@
 import React from "react"
-// import VoiceStyles from "./css/voice.module.css"
-// import Feature from "./feature"
-// import History from "./history"
-// import Faq from "./faq"
 import Img from "../../components/common/Img"
 import Goo from "../../components/icon-and-logo/goo"
 import Fearure from "./feature"

@@ -87,7 +87,7 @@ export default PortfolioPost
  */
 export const Head = ({ data, location }) => {
     const { title, description } = aboutMeta
-    // const ogp = `${data.allFile.edges[0].node.publicURL}`
+    const ogp = `${data.allFile.edges[0].node.publicURL}`
     const list = [
         {
             name: '',
