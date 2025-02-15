@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "../../common/img"
+import Img from "../../common/Img"
 
 const RelativeCard = ({slug}) => {
     const { allMarkdownRemark } = useStaticQuery(

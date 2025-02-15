@@ -1,6 +1,6 @@
 import * as React from "react"
 import Search from "./search"
-import Img from "./common/img"
+import Img from "./common/Img"
 import { Link } from "gatsby"
 import Toc from "./posts/Toc"
 const SideBar =({id})=>{

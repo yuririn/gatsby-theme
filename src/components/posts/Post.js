@@ -1,5 +1,5 @@
 import * as React from "react";
-import Img from "../common/img";
+import Img from "../common/Img";
 import { Link } from "gatsby"
 const Post = ({post, key}) =>{
 
