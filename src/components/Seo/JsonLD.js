@@ -11,8 +11,12 @@ const JsonLD = ({ data, location }) => {
     const list = data.list
 
     const allData = [pageData(type, domain), Nav(domain)]
+    //トップページ以外はパンくず付与
     if (!isRoot) allData.push(breadcrumbListData(domain, list, location))
+    //記事ページには記事情報付与
     if (location.pathname.includes('entry')) allData.push(BlogPosting(data,domain,location))
+    //FAQデータを持っていた場合はFAQデータを付与
+    if (data.faq) allData.push(FaqPage(data))
     return <script type="application/ld+json">{JSON.stringify(allData)}</script>
 }
 export default JsonLD
@@ -133,7 +137,6 @@ const breadcrumbListData = (domain, list) => {
             name: "ホーム"
         }
     }]
-    console.log(list)
 
     list.map((item, i) => {
         const listItem = {
@@ -157,7 +160,6 @@ const breadcrumbListData = (domain, list) => {
 
 const BlogPosting = (data, domain, location) => {
     const { title, description, ogp,date, modifieddate } = data
-    console.log(data)
     const blogPosting = {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -182,4 +184,27 @@ const BlogPosting = (data, domain, location) => {
         blogPosting.dateModified = dateReplace(modifieddate)
     }
     return blogPosting
+}
+
+const FaqPage = (data ) => {
+    if(!data.faq) return
+    const faqArry = data.faq
+    const faqList = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": []
+    }
+    faqArry.forEach((item) => {
+        const link = item[2] ? '<br>くわしくは<a href="' + item[2] + '">こちら</a>。' : '';
+        const entry = {
+            "@type": "Question",
+            "name": item[0],
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item[1] + link
+            }
+        }
+        faqList['mainEntity'].push(entry);
+    })
+    return faqList;
 }
