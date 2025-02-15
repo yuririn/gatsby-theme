@@ -16,13 +16,15 @@ import Faq from "../components/posts/Faq";
 import BreadCrumbList from "../components/common/BreadcrumbList";
 import { siteMetadata } from "../../gatsby-config";
 import RelatedPosts from "../components/posts/RelatedPosts";
+import Ads from "../components/common/Ads";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
     components: {
         card: RelativeCard,
         msg: Msg,
-        prof: Bio
+        prof: Bio,
+        ad: Ads,
     },
 }).Compiler
     
@@ -77,11 +79,12 @@ const BlogPostTemplate = ({ data, location }) => {
                         <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
                     </article>
                     <aside>
+                        <Ads location={location.pathname}></Ads>
                         <h2 className="c-heading__aside">関連記事</h2>
                         <RelatedPosts id={slug} category={post.cateId} tags={post.tags}></RelatedPosts>
                     </aside>
                 </div>
-                <SideBar id={slug}></SideBar>
+                <SideBar id={slug} location={location}></SideBar>
             </div>
         </Layout>
     )
@@ -93,6 +96,7 @@ export const Head = ({ data, location }) => {
     const post = data.markdownRemark
     const { category, blogName } = siteMetadata
     const cate = category.filter(i => i.slug === post.frontmatter.cateId)[0]
+    // パンくず
     const list = [
         {
             name: blogName,
@@ -119,18 +123,20 @@ export const Head = ({ data, location }) => {
     const ogpSrc = data.siteOgImage
         ? `${data.siteOgImage.childImageSharp.resize.src}`
         : "/images/ogp.png"
-    const thumnailSrc = data.siteThumnailImage
-        ? `${data.siteThumnailImage.childImageSharp.resize.src}`
+    const thumbnailSrc = data.siteThumbnailImage
+        ? `${data.siteThumbnailImage.childImageSharp.resize.src}`
         : "/images/thumnail.png"
     const blogData = {
         title: post.frontmatter.title,
         description: post.frontmatter.description || post.excerpt,
         ogp: ogpSrc,
-        thumnail: thumnailSrc,
+        thumbnail: thumbnailSrc,
         date: post.frontmatter.date,
         modifieddate: post.frontmatter.modifieddate,
         template: 'blog',
         list: list,
+        faq: post.frontmatter.faq,
+        noindex: post.frontmatter.noindex
     }
     
 
@@ -172,7 +178,7 @@ export const pageQuery = graphql`
         )
       }
     }
-    siteThumnailImage: file(
+    siteThumbnailImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }
     ) {
