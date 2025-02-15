@@ -1,9 +1,9 @@
 import React, { useState , useEffect} from "react"
 import { Link } from "gatsby"
-import Humberger from "./icon-and-logo/Humberger";
-import X from "./icon-and-logo/X";
-import HomeLogo from "./icon-and-logo/Home";
-import Insta from "./icon-and-logo/Insta";
+import Humberger from "./icon-and-logo/humberger";
+import X from "./icon-and-logo/x";
+import HomeLogo from "./icon-and-logo/home";
+import Insta from "./icon-and-logo/insta";
 
 const PortfolioLayout = ({ location, title, children }) => {
     const rootPath = `${__PATH_PREFIX__}/`

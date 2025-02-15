@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
-import Logo from '../icon-and-logo/logo';
-import Nav from './GlobalNav';
-import "../../scss/header.scss";
+import Logo from './../icon-and-logo/logo';
+import Nav from './globalnav';
+import "./../../scss/header.scss";
 
 const Header = ({isRootPath}) => {
     useEffect(() => {

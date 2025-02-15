@@ -1,11 +1,11 @@
 import * as React from "react"
 import { graphql,Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/Seo/Seo"
-import SideBar from "../components/SideBar"
-import BreadCrumbList from "../components/common/BreadcrumbList"
-import Msg from "../components/posts/modueles/msg"
+import Layout from "./../components/layout"
+import Seo from "./../components/seo/seo"
+import SideBar from "./../components/sidebar"
+import BreadCrumbList from "./../components/common/breadcrumblist"
+import Msg from "./../components/posts/modueles/msg"
 
 const aboutMeta = {
     template: 'page',

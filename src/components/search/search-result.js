@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import TextHighlighter from "./texthighlighter";
+import TextHighlighter from "./text-highlighter";
 import { useStaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
-import SearchInput from "./SearchInput";
-import DescriptionHighlighter from "./DescriptionHighlighter";
-import Img from "../common/Img";
+import SearchInput from "./search-Input";
+import DescriptionHighlighter from "./description-highlighter";
+import Img from "./../common/img";
 
 const SearchResult = (props) => {
     const tempData = useStaticQuery(graphql`

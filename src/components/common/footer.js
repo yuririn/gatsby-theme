@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
-import { siteMetadata } from "../../../gatsby-config";
-import X from "../icon-and-logo/X"
-import Insta from "../icon-and-logo/Insta";
-import YouTube from "../icon-and-logo/YouTube"
-import SlideShare from "../icon-and-logo/SlideShare";
+import { siteMetadata } from "./../../../gatsby-config";
+import X from "./../icon-and-logo/x"
+import Insta from "../icon-and-logo/insta";
+import YouTube from "./../icon-and-logo/youtube"
+import SlideShare from "../icon-and-logo/slideshare";
 
 const Footer = ()=>{
  return (

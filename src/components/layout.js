@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Header from "./common/Header";
-import Footer from "./common/Footer";
+import Header from "./common/header";
+import Footer from "./common/footer";
 
 const Layout = ({ location, title, children }) => {
     const rootPath = `${__PATH_PREFIX__}/`

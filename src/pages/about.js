@@ -1,13 +1,13 @@
 import * as React from "react"
-import Img from "../components/common/Img"
+import Img from "./../components/common/img"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import Seo from "../components/Seo/Seo"
-import SideBar from "../components/SideBar"
-import BreadCrumbList from "../components/common/BreadcrumbList";
-import { siteMetadata } from "../../gatsby-config"
-import Sns from '../components/posts/Sns'
-import AboutContent from "../inc/about/content"
+import Layout from "./../components/layout"
+import Seo from "./../components/seo/seo"
+import SideBar from "./../components/sidebar"
+import BreadCrumbList from "./../components/common/breadcrumblist";
+import { siteMetadata } from "./../../gatsby-config"
+import Sns from './../components/posts/sns'
+import AboutContent from "./../inc/about/content"
 
 const aboutMeta = {
     title: '【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します',

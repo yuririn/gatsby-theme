@@ -1,11 +1,11 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import Search from "../components/search"
-import Layout from "../components/layout"
-import Seo from "../components/Seo/Seo"
-import InfiniteScrollComponent from "../components/posts/InfiniteScrollComponent";
-import BreadCrumbList from "../components/common/BreadcrumbList"
-import { siteMetadata } from "../../gatsby-config"
+import Search from "./../components/search"
+import Layout from "./../components/layout"
+import Seo from "./../components/seo/seo"
+import InfiniteScrollComponent from "./../components/posts/infinite-scroll-component";
+import BreadCrumbList from "./../components/common/breadcrumblist"
+import { siteMetadata } from "./../../gatsby-config"
 
 const TagList = ({ data, location, pageContext }) => {
     const { title, totalCount } = pageContext

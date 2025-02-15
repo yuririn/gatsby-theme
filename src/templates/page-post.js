@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/Seo/Seo"
-import { siteMetadata } from "../../gatsby-config"
-import SideBar from "../components/SideBar"
-import BreadCrumbList from "../components/common/BreadcrumbList"
+import Layout from "./../components/layout"
+import Seo from "./../components/seo/seo"
+import { siteMetadata } from "./../../gatsby-config"
+import SideBar from "./../components/sidebar"
+import BreadCrumbList from "./../components/common/breadcrumblist"
 
 const PagePostTemplate = ({ data, location }) => {
     const post = data.markdownRemark

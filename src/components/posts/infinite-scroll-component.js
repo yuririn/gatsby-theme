@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Post from './Post';
-import Ads from "../common/Ads";
+import Post from './post';
+import Ads from "../common/ads";
 
 const InfiniteScrollComponent = ({ posts, location }) => {
     const num = 12;

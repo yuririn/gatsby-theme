@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import SearchResult from "./SearchResult";
-import SearchInput from './SearchInput';
+import SearchResult from "./search-result";
+import SearchInput from './search-input';
 
 const Search = (props) => {
     const [focus, setFocus] = useState(false);

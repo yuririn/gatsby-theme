@@ -1,11 +1,11 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import PortfolioLayout from "../components/portfolioLayout";
-import Seo from "../components/Seo/Seo"
-import Phone from "../components/icon-and-logo/Phone";
-import Voice from "../inc/portfolio/voice";
-import Works from "../inc/portfolio/works";
-import Profile from "../inc/portfolio/profile";
+import PortfolioLayout from "../components/portfolio-layout";
+import Seo from "./../components/seo/seo"
+import Phone from "./../components/icon-and-logo/phone";
+import Voice from "./../inc/portfolio/voice";
+import Works from "./../inc/portfolio/works";
+import Profile from "./../inc/portfolio/profile";
 
 
 const aboutMeta = {

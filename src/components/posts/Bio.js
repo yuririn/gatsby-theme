@@ -1,7 +1,7 @@
 import React from "react"
-import Img from "../common/img"
+import Img from "./../common/img"
 import { Link } from "gatsby"
-import config from "../../../gatsby-config"
+import config from "./../../../gatsby-config"
 
 const Bio = () => {
     const author = config.siteMetadata.author;

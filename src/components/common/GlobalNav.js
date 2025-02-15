@@ -1,7 +1,7 @@
 
 
 import React, { useState } from "react"
-import NavBtn from "./NavBtn";
+import NavBtn from "./navbtn";
 const Nav = ()=>{
     const [isOpen, setIsOpen] = useState(false)
 
@@ -13,7 +13,7 @@ const Nav = ()=>{
     }
     return (
     <>
-        <NavBtn onButtonClick={toggleControll} isOpen={isOpen}></NavBtn>
+            <NavBtn onButtonClick={toggleControll} isOpen={isOpen}></NavBtn>
             <nav className={isOpen ? 'c-nav is-opened' : 'c-nav'}>
             <ul>
                 <li><a href="/">Home</a></li>

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Img from "../../components/common/Img"
+import Img from "./../../components/common/img"
 
 const Works = () => (
     <div className="grid">

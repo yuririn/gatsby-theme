@@ -1,22 +1,22 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Seo from "../components/Seo/Seo"
-import Layout from '../components/layout';
-import SideBar from '../components/SideBar';
+import Seo from "./../components/seo/seo"
+import Layout from './../components/layout';
+import SideBar from './../components/sidebar';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import rehypeReact from "rehype-react"
-import Tags from "../components/posts/Tags"
-import Msg from "../components/posts/modueles/msg";
-import RelativeCard from "../components/posts/modueles/relative-card";
-import Date from '../components/posts/Date';
-import Bio from "../components/posts/Bio";
-import Sns from "../components/posts/Sns"
-import PrevAndNextNav from "../components/posts/PrevAndNextNav";
-import Faq from "../components/posts/Faq";
-import BreadCrumbList from "../components/common/BreadcrumbList";
-import { siteMetadata } from "../../gatsby-config";
-import RelatedPosts from "../components/posts/RelatedPosts";
-import Ads from "../components/common/Ads";
+import Tags from "./../components/posts/Tags"
+import Msg from "./../components/posts/modueles/msg";
+import RelativeCard from "./../components/posts/modueles/relative-card";
+import Date from './../components/posts/date';
+import Bio from "./../components/posts/bio";
+import Sns from "./../components/posts/sns"
+import PrevAndNextNav from "./../components/posts/PrevAndNextNav";
+import Faq from "./../components/posts/Faq";
+import BreadCrumbList from "./../components/common/breadcrumblist";
+import { siteMetadata } from "./../../gatsby-config";
+import RelatedPosts from "./../components/posts/related-posts";
+import Ads from "./../components/common/ads";
 
 const renderAst = new rehypeReact({
     createElement: React.createElement,
