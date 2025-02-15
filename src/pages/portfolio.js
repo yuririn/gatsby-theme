@@ -9,7 +9,6 @@ import Profile from "../inc/portfolio/profile";
 
 
 const aboutMeta = {
-    template: 'portfolio',
     title: '広島生まれ、広島育ちのIT戦士を紹介するサイト',
     description: `広島のIT戦士・かみーゆを紹介するサイトです。フロントエンドエンジニアかみーゆの魅力を出し惜しみせず力一杯紹介しています。ちょっとクセ強め。`
 }
@@ -29,27 +28,26 @@ const PortfolioPost = ({ data, location }) => {
             </div>
             <main>
                 <header className="portfolio__heading  l-container">
-                        <h2>かみーゆをおススメする7つの理由</h2>
-                    </header>
+                    <h2>かみーゆをおススメする7つの理由</h2>
+                </header>
                 <section className="recomend l-container">
 
-                        <p className="u-center">かみーゆをおススメする理由を7つにまとめました。</p>
-                        <ol>
-                            <li>コーディングが早い。当社比。</li>
-                            <li>新しい技術への好奇心旺盛！ちょっと息切れしてるけど。</li>
-                            <li>納期を命がけで守ります。死なんけど。</li>
-                            <li>
-                                クライアントも大切だけど、ユーザーのことを心の底から大事と思っている。
-                            </li>
-                            <li>
-                                フロントエンド技術への情熱がハンパない。少し暑苦しいけど。
-                            </li>
-                            <li>バケモノ並みに体力がある。</li>
-                            <li>ちょっぴりセクシー。知らんけど｡</li>
-                        </ol>
-                    </section>
+                    <p className="u-center">かみーゆをおススメする理由を7つにまとめました。</p>
+                    <ol>
+                        <li>コーディングが早い。当社比。</li>
+                        <li>新しい技術への好奇心旺盛！ちょっと息切れしてるけど。</li>
+                        <li>納期を命がけで守ります。死なんけど。</li>
+                        <li>
+                            クライアントも大切だけど、ユーザーのことを心の底から大事と思っている。
+                        </li>
+                        <li>
+                            フロントエンド技術への情熱がハンパない。少し暑苦しいけど。
+                        </li>
+                        <li>バケモノ並みに体力がある。</li>
+                        <li>ちょっぴりセクシー。知らんけど｡</li>
+                    </ol>
+                </section>
                 <section>
-
                     <div className="bg-gray">
                         <section>
                             <header className="page-header">
@@ -89,7 +87,7 @@ export default PortfolioPost
  */
 export const Head = ({ data, location }) => {
     const { title, description } = aboutMeta
-    const ogp = `${data.allFile.edges[0].node.publicURL}`
+    // const ogp = `${data.allFile.edges[0].node.publicURL}`
     const list = [
         {
             name: '',

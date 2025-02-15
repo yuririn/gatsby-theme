@@ -1,52 +1,55 @@
 import * as React from "react"
+import Img from "../components/common/Img"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/Seo/Seo"
+import SideBar from "../components/SideBar"
 import BreadCrumbList from "../components/common/BreadcrumbList";
 import { siteMetadata } from "../../gatsby-config"
-import Sns from "../components/posts/Sns"
-import SideBar from "../components/SideBar"
-import AboutContent from "../inc/about/content";
+import Sns from '../components/posts/Sns'
+import AboutContent from "../inc/about/content"
 
 const aboutMeta = {
-    template: 'blog',
     title: '【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します',
-    description: `海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。`
+    description:
+        "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。",
+    date: "2021-05-05",
+    modifieddate: "2021-05-05"
 }
 
-const BlogList = ({ data, location }) => {
-    const {title} =aboutMeta
-    const perfectUrl = `${siteMetadata.siteUrl}${location.pathname}`
-    const perfectTitle = encodeURI(title + " - " + siteMetadata.title)
+const About = ({ location }) => {
+    const { title, siteUrl } = siteMetadata
+    const perfectUrl = `${siteUrl}${location.pathname}`
+    const perfectTitle = encodeURI(title + "|" + title)
 
     const breadCrumbList = {
         current: title
     }
 
     return (
-        <Layout location={location} title={title}>
+        <Layout location={location}>
             <header className={`c-blog-header`} id="keyvisual">
-
+                <Img source="common/about.jpg" className="p-pageHeader__img" />
                 <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
             </header>
+
             <div className="l-section l-container--article">
                 <Sns url={perfectUrl} title={perfectTitle}></Sns>
                 <div>
-
                     <article className="c-article">
                         <h1 className="c-article__heading">{title}</h1>
-                        <AboutContent></AboutContent>
+                        <section itemProp="articleBody" className="c-post-body">
+                            <AboutContent></AboutContent>
+                        </section>
                     </article>
-
                 </div>
-                
-                <SideBar location={location}></SideBar>
+                <SideBar></SideBar>
             </div>
         </Layout>
     )
 }
 
-export default BlogList
+export default About
 
 /**
  * Head export to define metadata for the page
@@ -54,11 +57,11 @@ export default BlogList
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
 export const Head = ({ location }) => {
-    const { title, description } = aboutMeta
+    const {title , description } = aboutMeta
     const list = [
         {
-            name: '',
-            path: location.pathname,
+            name: title,
+            path: '/about/',
             type: `WebPage`
         }
     ]
@@ -73,26 +76,24 @@ export const Head = ({ location }) => {
     />
 }
 
-export const pageQuery = graphql`{
-  allMarkdownRemark(
-    sort: {frontmatter: {date: DESC}}
-    filter: {frontmatter: {pageType: {eq: "blog"}}}
-  ) {
-    nodes {
-      excerpt
-      fields {
-        slug
-      }
-      frontmatter {
-        date(formatString: "YYYY.MM.DD")
-        description
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
         title
-        tags
-        cateId
-        hero
-        pageType
+      }
+    }
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "images" }
+        relativePath: { eq: "about/about-ogp.jpg" }
+      }
+    ) {
+      edges {
+        node {
+          publicURL
+        }
       }
     }
   }
-}`
-
+`
