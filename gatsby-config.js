@@ -1,3 +1,14 @@
+const branch = process.env.BRANCH || 'unknown';
+let nodeEnv = 'production';
+
+if (branch === 'develop') {
+    nodeEnv = 'development';
+}
+
+// `NODE_ENV`を設定
+process.env.NODE_ENV = nodeEnv;
+console.log(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+
 const headersConfig = {
     '/*.html': [
         'cache-control: public, max-age=0, must-revalidate'
