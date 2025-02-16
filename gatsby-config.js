@@ -1,3 +1,39 @@
+const headersConfig = {
+    "/*": [
+        `Basic-Auth: ${process.env.BASIC_AUTH_ID}:${process.env.BASIC_AUTH_PASS}`
+    ],
+    '/*.html': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/page-data/app-data.json': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/page-data/*': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/static/*': [
+        'cache-control: public, max-age=31536000, immutable'
+    ],
+    '/fonts/*': [
+        'cache-control: public, max-age=31536000, immutable'
+    ],
+    '/sw.js': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/**/*.js': [
+        'cache-control: public, max-age=31536000, immutable'
+    ],
+    '/**/*.css': [
+        'cache-control: public, max-age=31536000, immutable'
+    ]
+};
+
+const developmentHeaders = {
+    "/*": [
+        `Basic-Auth: ${process.env.BASIC_AUTH_ID}:${process.env.BASIC_AUTH_PASS}`
+    ],
+    ...headersConfig
+}
 module.exports = {
     siteMetadata: {
         ad: {
@@ -98,33 +134,14 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-netlify',
             options: {
-                headers: {
-                    '/*.html': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/page-data/app-data.json': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/page-data/*': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/static/*': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                    '/fonts/*': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                    '/sw.js': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/**/*.js': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                    '/**/*.css': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                }
-            }
+                headers: process.env.NODE_ENV === 'development' ? developmentHeaders : headersConfig,
+                // allPageHeaders: [],
+                // mergeSecurityHeaders: true,
+                // mergeLinkHeaders: true,
+                // mergeCachingHeaders: true,
+                // transformHeaders: (headers, path) => headers,
+                // generateMatchPathRewrites: true,
+            },
         },
         {
             resolve: `gatsby-plugin-sitemap`,
