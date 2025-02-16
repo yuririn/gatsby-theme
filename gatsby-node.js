@@ -330,6 +330,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 const fs = require('fs');
 
 exports.onPostBuild = () => {
+    console.log('NODE_ENV:', process.env.NODE_ENV);
     if (process.env.NODE_ENV === 'development') {
         const headersPath = path.join(__dirname, 'public', '_headers');
         const basicAuthHeader = `/*
