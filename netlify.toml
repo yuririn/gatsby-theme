@@ -5,5 +5,5 @@
 [context.master]
   environment = { NODE_ENV = "production" }
 
-[context.develop]
+[context.branch-deploy]
   environment = { NODE_ENV = "development" }
