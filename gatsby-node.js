@@ -1,5 +1,3 @@
-console.log(` NODE_ENV: ${process.env.BRANCH}`)
-
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -332,8 +330,8 @@ exports.createSchemaCustomization = ({ actions }) => {
 const fs = require('fs');
 
 exports.onPostBuild = () => {
-    console.log('NODE_ENV:', process.env.NODE_ENV);
-    if (process.env.NODE_ENV === 'development') {
+    console.log('NODE_ENV:', process.env.BRANCH);
+    if (process.env.BRANCH === 'develop') {
         const headersPath = path.join(__dirname, 'public', '_headers');
         const basicAuthHeader = `/*
         Basic-Auth: ${process.env.BASIC_AUTH_ID}:${process.env.BASIC_AUTH_PASS}\n`;
