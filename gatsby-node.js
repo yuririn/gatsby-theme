@@ -339,9 +339,14 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
   `)
 }
+// 処理回数をカウントする変数を定義
+let processCount = 0;
 const fs = require('fs');
 
 exports.onPostBuild = () => {
+    processCount++;
+    console.log('onPostBuild called:', processCount, 'times');
+
     const nodeEnv = process.env.NODE_ENV || 'production';
 
     // 環境を確認
@@ -358,19 +363,13 @@ exports.onPostBuild = () => {
         const headersPath = path.join(__dirname, 'public', '_headers');
         console.log('Headers Path:', headersPath); // デバッグ用
 
-        const basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\nX-Robots-Tag: noindex\n*/\n';
+        const basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\n*/\n';
+
+        // `_headers` ファイルの内容を全て削除し、Basic認証のみを追加
+        const headersContent = basicAuthHeader;
 
         try {
-            // `_headers` ファイルの内容を読み込み
-            let headersContent = fs.readFileSync(headersPath, 'utf8');
-
-            // 重複を避けるために古いBasic-Authヘッダーを削除
-            headersContent = headersContent.replace(/\/\*[^]*?Basic-Auth: [^]*?\*\//, '').trim();
-
-            // `## Created with gatsby-plugin-netlify` コメントを置き換え
-            headersContent = headersContent.replace(/## Created with gatsby-plugin-netlify[\r\n]*/, basicAuthHeader);
-
-            // 修正された内容を書き戻す
+            // 新しい内容を書き戻す
             fs.writeFileSync(headersPath, headersContent, 'utf8');
             console.log('Headers file updated');
             console.log('Headers content:', headersContent); // デバッグ用
@@ -380,20 +379,26 @@ exports.onPostBuild = () => {
             const robotsContent = 'User-agent: *\nDisallow: /\n';
             fs.writeFileSync(robotsPath, robotsContent, 'utf8');
             console.log('robots.txt file updated');
-            console.log('Robots content:', robotsContent); // デバッグ用
+
+            // デバッグ用にrobots.txtの内容を出力
+            const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
+            console.log('Robots content:', robotsFileContent); // デバッグ用
         } catch (error) {
             if (error.code === 'ENOENT') {
                 // ファイルが存在しない場合は新規作成
-                fs.writeFileSync(headersPath, basicAuthHeader, 'utf8');
+                fs.writeFileSync(headersPath, headersContent, 'utf8');
                 console.log('Created new headers file');
-                console.log('Headers content:', basicAuthHeader); // デバッグ用
+                console.log('Headers content:', headersContent); // デバッグ用
 
                 // 開発環境でのrobots.txt設定
                 const robotsPath = path.join(__dirname, 'public', 'robots.txt');
                 const robotsContent = 'User-agent: *\nDisallow: /\n';
                 fs.writeFileSync(robotsPath, robotsContent, 'utf8');
                 console.log('robots.txt file updated');
-                console.log('Robots content:', robotsContent); // デバッグ用
+
+                // デバッグ用にrobots.txtの内容を出力
+                const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
+                console.log('Robots content:', robotsFileContent); // デバッグ用
             } else {
                 console.error('Error updating headers file:', error);
             }
