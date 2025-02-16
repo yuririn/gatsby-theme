@@ -7,9 +7,3 @@
 
 [context.develop]
   environment = { NODE_ENV = "development" }
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/add-headers"
-  status = 200
-  force = true
