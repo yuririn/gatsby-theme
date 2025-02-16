@@ -37,9 +37,10 @@ const renderAst = new rehypeReact({
 }).Compiler
 
 const BlogPostTemplate = ({ data, location }) => {
+    console.log(location)
   const post = data.markdownRemark
-  const faq = post.frontmatter.faq
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const faq = post?.frontmatter.faq
+    const siteTitle = siteMetadata.title || `Title`
   const { previous, next } = data
   const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
@@ -225,7 +226,6 @@ export const Head = ({ data, location }) => {
         noindex: post.frontmatter.noindex
     }
 
-
     return (
         <Seo
             location={location.pathname}
@@ -242,12 +242,6 @@ export const pageQuery = graphql`
     $nextPostId: String
     $hero: String
   ) {
-    site {
-      siteMetadata {
-        title
-        siteUrl
-      }
-    }
     siteOgImage: file(
       relativePath: { eq: $hero }
       sourceInstanceName: { eq: "images" }

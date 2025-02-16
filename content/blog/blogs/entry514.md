@@ -7,10 +7,7 @@ cateId: web-developer
 hero: thumbnail/2022/entry514.png
 tags: ["JavaScript","html"]
 description: jQuery不要軽量Swiper。レスポンシブでスライダー画像をスマホだけで表示したい場合の対応方法を綴ります。複数のスライダーに対応した方法のご紹介。2025年1月にメンテナンスしました。
-faq:
-  - ['Swiper を複数設置したい。','プレーンなSwiperであればかんたんに複数設置可能です。場合によっては各Swiperにユニークな指定をする必要があります。','%E8%A4%87%E6%95%B0%E3%81%AEswiper%E3%82%92%E3%82%B9%E3%83%9E%E3%83%9Bpc%E3%81%A7%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95']
-  - ['Swiper をスマホのみ表示したい','Swiperはスマホ、PCなどのブレークポイントに応じて切り替えることができます。']
-  - ['Swiperが突然動かなくなった。','SwiperのCSSやJSをCDNで使っていませんか？最新のものに変えれば動くようになります。','https://ginneko-atelier.com/blogs/entry514/?utm_source=faq']
+faq: [['Swiper を複数設置したい。','プレーンなSwiperであればかんたんに複数設置可能です。場合によっては各Swiperにユニークな指定をする必要があります。','https://ginneko-atelier.com/blogs/entry514/?utm_source=faq#%E8%A4%87%E6%95%B0%E3%81%AEswiper%E3%82%92%E3%82%B9%E3%83%9E%E3%83%9Bpc%E3%81%A7%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E3%82%8B%E6%96%B9%E6%B3%95'],['Swiper をスマホのみ表示したい','Swiperはスマホ、PCなどのブレークポイントに応じて切り替えることができます。'],['Swiperが突然動かなくなった。','SwiperのCSSやJSをCDNで使っていませんか？最新のものに変えれば動くようになります。','https://ginneko-atelier.com/blogs/entry514/?utm_source=faq']]
 ---
 Webサイトでスライドショー（スライダー）は便利ですよね？私は jQuery 不要の軽量Swiper というライブラリを愛用しています。この記事は、2025年1月にメンテナンスしました。
 

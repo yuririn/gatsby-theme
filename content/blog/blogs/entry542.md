@@ -9,23 +9,74 @@ description: noindex の Markwown で書いた記事のサイトマップを動�
 ---
 最近、サイトマップ（Googleにページの所在を知らせるfile）と noindex(非クロール対象ページ) されているが一致しないサイトに遭遇しました。
 
-このブログは GatsbyJS という、まあまあマニアックなSSG（静的サイトジェネレーター）で作らてますが、gatsby-plugin-sitemapという npmモジュール（いわゆる WP のプラグインみたいなもの）を使ってサイトマップ出力していました。
+```html
+<meta name="robots" content="noindex" />
+```
+
+検索エンジンに送信される SEO 情報に誤りがあるとペナルティを食らう要因にもなりかねないので、このサイトも早速見直すことに。
+
+このブログは Gatsby という、まあまあマニアックなSSG（静的サイトジェネレーター）製です。サイトマップはgatsby-plugin-sitemap という atsbyのオフィシャルプラグイン（いわゆる WordPress のプラグインみたいなもの）を使って出力していました。
+
+[Gatsby 公式サイト](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/)
 
 導入当時はデフォルトで簡易的な機能しか使っていなかったので、手動でサイトマップから外したいページを必要に応じて追加していました。
 
+```json:title=gatsby-config.js
+module.exports = {
+  ...,
+  resolve: `gatsby-plugin-sitemap`,
+  options: {
+    //自分の好きなファイル名にしたい場合はoutputを追加。デフォルトは「sitemap.xml」
+    //除外したいページを指定する。「*」でワイルドカードも使える。
+    output: `/`,
+    excludes: [
+      `/blogs/page/*`,
+      `/contact/thanks/`,
+      ...
+    ]
+  }
+}
+```
 今回やりたいことはざっとこんな感じです。
 1. クロール非対象記事かは 記事ごとの MarkDown ファイル で判定する。
 2. noindex の meta タグ自体は Gatsby の  Head (旧 Helmet )を利用して、head に埋め込こむ
-3. MarkDown の情報を gatsby-config.js に設定した gatsby-plugin-sitemap の中で取得して sitemap.xml fileに出力する。
+3. MarkDown の情報を gatsby-config.js に設定した gatsby-plugin-sitemap の中で取得して sitemapxxx.xml fileに出力する。
 
-<msg txt="gatsby-plugin-sitemapの公式サイト通りにやってうまくいかなかったです。最近忙しくて当たりどころがなく、夜な夜なコード書いて発散しています。多少力技ですが、参考に指定ただければ幸いです。"></msg>
+<msg txt="gatsby-plugin-sitemap の公式サイト通りにやってうまくいかなかったです。最近忙しくて当たりどころがなく、夜な夜なコード書いて発散しています。多少力技ですが、参考に指定ただければ幸いです。"></msg>
 
-前提条件として、*Gatsby Blog starter* を使っています。あとは、JS、React が分かる(多分)程度かけることが前提です。
+前提条件として、*Gatsby Blog Starter* を使っています。あとは、JS、React が多少分かれば(多分)どうにかなるかと。
 
 ## frontmatter に noindex が登録できるようにする
 まずは frontomatter に noindex というフィールドを付与して、true / false で判定できるようにします。
 
-```js:title=gatsby-node.js
+```js:title=./gatsby-node.js
+...
+const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  // Define a template for blog post
+  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  // Get all markdown blog posts sorted by date 
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              ...
+            }
+          }
+        }
+      }
+    `
+  )
+}
+...
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   createTypes(`
@@ -55,7 +106,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
 こうすると、引数で取得した `data` 内に `noindex` の情報が格納されます。
 
-```js:title=blog-post.js
+```js:title=./src/templates/blog-post.js
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Seo from "../components/seo" // SEO情報を出力するGatsby標準搭載のコンポーネント
@@ -64,10 +115,13 @@ const BlogPostTemplate = ({ data, location }) => {
     // 各種記事の出力情報
 }
 export default BlogPostTemplate;
+
+// ページのheadタグ内にSeoコンポーネントを埋め込む
 export const Head = ({ data, location }) => {
   const blogData = {
-    ...
-    noindex: data.noindex // データは
+    title: data.frontmatter.title,
+    title: data.frontmatter.description,
+    noindex: data.noindex // データ追加
   }
   <Seo
       location={location.pathname}
@@ -95,21 +149,106 @@ query BlogPostBySlug(
 }
 `
 ```
+Seoコンポーネント側の設定はこんな感じ
+```js:title=./src/components/seo.js
+import React from 'react'
+import { siteMetadata } from "../../../gatsby-config"
+
+const Seo = ({ data, location, children }) => {
+  // data に格納された情報を展開
+  const { title, description, noindex } = data
+  return (
+    <>
+      <title>{title}</title>
+      <meta content={description} type="description" />
+      {noindex && (<meta name="robots" content="noindex" />)}
+      {children}
+    </>
+  )
+}
+```
 
 ## 記事（MDファイル）ごとの情報を gatsby-config.js 経由でサイトマップ(sitemap.xml)として出力する
 `gatsby-plugin-sitemap` でXMLを書き出します。
-プラグインの公式サイトでは `resolveSiteUrl` でURLを取得する必要があったのですが、取得でないどころかちゃんとドメインやプロトコルがが付与される。
+プラグインのオフィシャルサイトのサイトの以下コードを参考にしたのですが `resolveSiteUrl` でURLを取得する必要があったのですが、特にちゃんとドメインやプロトコルが付与される。
 
-何じゃそりゃと思ったので、resolveSiteUrlの処理を削除すると怒られる。
+```js:title=./gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allWpContentNode(filter: {nodeType: {in: ["Post", "Page"]}}) {
+            nodes {
+              ... on WpPost {
+                uri
+                modifiedGmt
+              }
+              ... on WpPage {
+                uri
+                modifiedGmt
+              }
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => siteUrl, //siteUrlがないって怒られた
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allWpContentNode: { nodes: allWpNodes },
+        }) => {
+          const wpNodeMap = allWpNodes.reduce((acc, node) => {
+            const { uri } = node
+            acc[uri] = node
 
-多分意味ないし機能しないのだろうと思いつつも、エラー吐くので無意味な `resolveSiteUrl` のコードを追加し、中にテキトーな値を返すようにしました。
+            return acc
+          }, {})
 
-記事は、allSitePage と allMarkdownRemark で出力可能。ただし、allSitePage は　Markdown　で書かれていないものも含まれる。allSitePagでべて取得すりゃえーやんって思うけど、この環境下では取得できるデータはそれぞれ違う。
+          return allPages.map(page => {
+            return { ...page, ...wpNodeMap[page.path] }
+          })
+        },
+        serialize: ({ path, modifiedGmt }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          }
+        },
+      },
+    },
+  ],
+}
+```
 
-当ブログでは、パスに entry を含むものが記事としているので（SEO的には微妙かも。。）その設定で絞りつつ、Markdown の frontmatter に noindex が設定されていないものを抽出し、重複するものを削除すればいい。
+何じゃそりゃと思ったので、resolveSiteUrlの処理を削除すると怒られる。バージョン二依存するのかもしれませんがそこまで調べてないのですみません。。。
 
+多分意味ないし機能しないのだろうと重々承知で、エラー吐くので無意味な `resolveSiteUrl` のコードを追加し、中にテキトーだけどエラー吐かなさそうな値を返すようにしました。
 
-<msg txt="今回ご紹介したコードは、単なるコピペで解決しないと思うんで、皆さんの環境に応じてください。"></msg>
+```js
+resolveSiteUrl: () => `https://xxxxx.com`
+```
+
+すべてのページは query で allSitePage で取得可能。ただし、allSitePage は MarkDown 内の frontmatter の情報は含まれない。
+
+そこでさらに、query で allMarkdownRemark の noindex: true のみの投稿を取得し。allSitePage の重複するものを削除することにしました。
+
+<msg txt="今回ご紹介するプログラムは、単なるコピペで解決しないかもしれないので、皆さんの環境に応じてください。"></msg>
+
+sitemap.xml は投稿によってクロール頻度や優先度を以下のとおり設定します。
+
+| 種類 | クロール頻度 | 優先度 |
+|-|-|
+| トップページ | daily | .7 |
+| 一覧や個別ページ | weekly | .3 |
+| ブログ | weekly | .7 |
+
 ```js:title=tatsby-configt.js
 {
     resolve: `gatsby-plugin-sitemap`,
@@ -138,6 +277,7 @@ query BlogPostBySlug(
             return 'https://xxxx.com';//自分のサイトのURL
         },
         resolvePages: ({
+            // 404 を除くすべてのページと Markdown で生成したnoindexの記事を取得
             allSitePage: { nodes: allSitePage },
             allMarkdownRemark: { nodes: allMarkdownRemark },
         }) => {
@@ -145,7 +285,7 @@ query BlogPostBySlug(
             const allPages = allSitePage.map(node => ({
                 path: node.path,
                 changefreq: node.path === '/' ? 'daily' : 'weekly',
-                priority: node.path === '/' || node.path.includes('entry') ? 0.7 : 0.3,
+                priority: node.path === '/' || node.path.includes('entry') ? 0.7 : 0.5,
             }));
 
             // noindex ページを削除
@@ -165,7 +305,10 @@ query BlogPostBySlug(
 },
 ```
 
-## まとめ・今回コード生成にAI使ったけどイレギュラーに弱い
+## まとめ・SEO 情報はガイドラインに沿う
+
+今回コード生成にAI使ったけどイレギュラーに弱いなあと。。。。
+
 今回、なれないロジックを組むことが多かったのでロジックの生成にAI（Copilot）使いました。バグやイレギュラーに弱くてめちゃめちゃ時間かかりました。
 
 <msg txt="もう、夜中3時やで笑<br/>ゆうても死ぬほど便利！！！超ストレス発散になってます。"></msg>
@@ -180,7 +323,7 @@ AI 使うにあたってエンジニアにとって大切なことはこんな�
 
 たまに腰抜かしそうな嘘もつくのを、あらかじめそれを肝に銘じて使うべきかなあと。
 
-基本的には便利すぎです。
+基本的には AI 便利すぎです。
 
 この記事が皆さんのコーディングの一助となれば幸いです。
 

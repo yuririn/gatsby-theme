@@ -1,0 +1,88 @@
+@use './../../utils';
+.c-pager {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    grid-template-columns: 100%;
+    margin-bottom: 32px;
+
+    @include utils.mq(md){
+        margin-top: 100px;
+        grid-template-rows:auto;
+      gap: 16px;
+      grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+    }//media query
+
+    li {
+        position: relative;
+        span {
+            letter-spacing: 0.15em;
+            display: block;
+            font-family: var(--font-alphabet);
+        }
+    }
+
+    a {
+        color: var(--light-color);
+        text-decoration: none;
+        overflow: hidden; /* オーバーフローを隠す */
+        text-overflow: ellipsis; /* テキストを省略記号で切る */
+        white-space: nowrap;
+        position: relative;
+        z-index: 1;
+        border-radius: 5px;
+        background: var(--background);
+        border: 1px solid var(--color-blue);
+        padding: 15px 20px;
+        display: block;
+        &::before {
+            z-index: -1;
+            position: absolute;
+            content: "";
+            top: 0px;
+            width: 120%;
+            height: 100%;
+            display: block;
+            background: var(--color-blue);
+            
+        }
+    }
+    @include utils.mq(md){
+        a{
+            transition: color 0.5s;
+            &::before {
+                transition: left 0.5s,right 0.5s;
+            }
+        }
+        a:hover {
+            color: var(--color-blue);
+        }
+    }
+    &__prev {
+        a::before {
+            left: 0px;
+            transform: skew(-45deg);
+            
+        }
+        @include utils.mq(md){
+            a:hover::before {
+                left: -120%;
+            }
+        }
+    }
+    &__next {
+        span {
+            text-align: right;
+        }
+        a::before {
+            right: 0px;
+            transform: skew(45deg);
+            
+        }
+        @include utils.mq(md){
+            a:hover::before {
+                right: -120%;
+            }
+        }
+    }
+}

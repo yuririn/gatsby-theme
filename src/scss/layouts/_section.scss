@@ -1,0 +1,12 @@
+@use "../utils";
+.l-section {
+    padding: 32px 16px;
+    @include utils.mq(md){
+        padding: 64px 32px;
+
+    }
+    @include utils.mq(lg){
+        padding: 64px 56px;
+
+    }
+}

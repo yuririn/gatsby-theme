@@ -1,0 +1,167 @@
+@use './../../utils';
+.c-nav {
+    span,
+    a {
+        color: rgb(38, 71, 133);
+        text-decoration: none;
+        letter-spacing: .1em;
+        font-weight: bold;
+
+        
+    }
+    & > ul >li > a,
+    & > ul >li > span {
+            font-family: var( --font-alphabet);
+    }
+    &__child a {
+        font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", メイリオ, sans-serif;
+    }
+
+    & > ul {
+        margin: 0;
+        list-style: none;
+        display: flex;
+        
+    }
+    // SP
+    @include utils.mqd(md){
+        overflow: hidden;
+        height: 0;
+        &.is-opened {
+            height: calc(100dvh - 64px);
+        }
+        background: var(--header-background);
+        transition: height .3s;
+         backdrop-filter: blur(3px);
+        position: absolute;
+        
+        width: 100%;
+        left: 0;
+        top: 64px;
+        & > ul {
+            padding: 16px;
+            height: calc(100dvh - 64px);
+           flex-direction: column;
+            align-items: center;
+            justify-content:space-evenly;
+            ul {
+                margin: 0;
+                padding: 0;
+                margin-top: 16px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                list-style: none;
+                li {
+                    width: auto;
+                    flex-grow: 1;
+                }
+                
+                a {
+                    height: 40px;
+                    padding: 0 8px;
+                    display: flex;
+                    font-size: 1.4rem;
+                    border: 1px solid rgb(38, 71, 133);
+                    border-radius: 8px;
+                }
+            }
+            li {
+                width: 100%;
+             }
+            span,
+             a {
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.2rem;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+    }
+    
+    
+    @include utils.mq(md){
+        height: 64px;
+        & > ul {
+            height: 64px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+
+            span,
+            a {
+                padding: 0 16px;
+                
+                font-size: 1.6rem;
+                
+            }
+            
+            & >li{
+                display: flex;
+                align-items: center;
+                ul {
+                    padding-left: 0;
+                    opacity: 0;
+                    transition: height .3s,opacity .3s;
+                    height: 0;
+                    overflow: hidden;
+                    list-style: none;
+                    top: 100%;
+                    position: absolute;
+                
+                    a {
+                        background: rgb(38, 71, 133);
+                        font-size: 1.2rem;
+                        color: #fff;
+                        height: 40px;
+                        align-items: center;
+                        display: flex;
+                        padding: 0 16px;
+                        margin-bottom: 1px;
+                        transition: opacity .3s;
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    
+                    }
+                }
+                height: 64px;
+                &:has(>span):hover ul, &:has(>span):focus-within ul{
+                    height: 286px;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &__btn {
+        position: absolute;
+        right: 16px;
+        font-size: 1rem;
+        font-weight: bold;
+        background: none;
+        border: none;
+        fill: rgb(38, 71, 133);
+        color: rgb(38, 71, 133);
+        font-family: var(--font-alphabet);
+
+        @include utils.mq(md){
+            display: none;
+        }
+        svg {
+            display: block;
+        }
+        .fish {
+            transform-origin: center center;
+            transition: scale .2s;
+        }
+        &.is-active {
+            .fish {
+                scale: 1 0;
+            }
+        }
+    }
+    
+}
