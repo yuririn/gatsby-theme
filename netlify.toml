@@ -2,6 +2,9 @@
   publish = "public"
   command = "npm run build"
 
+[context.master]
+  NODE_ENV = "development"
+
 [context.production]
   NODE_ENV = "development"
 
