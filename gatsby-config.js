@@ -1,13 +1,4 @@
-const branch = process.env.BRANCH || 'unknown';
-let nodeEnv = 'production';
 
-if (branch === 'develop') {
-    nodeEnv = 'development';
-}
-
-// `NODE_ENV`を設定
-process.env.NODE_ENV = nodeEnv;
-console.log(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
 
 const headersConfig = {
     '/*.html': [
@@ -132,8 +123,8 @@ module.exports = {
                 disabledFeatures: [`shorthands`, `cloning`],
             },
         },
-        nodeEnv === 'development' ? null
-           : {
+        process.env.BRANCH === 'develop' ?
+            null : {
                 resolve: 'gatsby-plugin-netlify',
                 options: {
                     headers: headersConfig,
@@ -340,5 +331,5 @@ module.exports = {
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
-    ].filter(Boolean),
+    ].filter(Boolean)
 }
