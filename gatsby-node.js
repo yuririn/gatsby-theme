@@ -1,4 +1,4 @@
-console.log(` NODE_ENV: ${process.env.NODE_ENV}`)
+console.log(` NODE_ENV: ${process.env.BRANCH}`)
 
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
