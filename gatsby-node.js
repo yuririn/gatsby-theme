@@ -1,3 +1,5 @@
+console.log(` NODE_ENV: ${NODE_ENV}`)
+
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
