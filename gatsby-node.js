@@ -330,12 +330,17 @@ exports.createSchemaCustomization = ({ actions }) => {
 
 const fs = require('fs');
 
+function logToFile(message) {
+    const logFilePath = path.join(__dirname, 'public', 'build.log');
+    fs.appendFileSync(logFilePath, message + '\n', 'utf8');
+}
+
 exports.onPostBuild = () => {
-    console.log('onPostBuild start'); // スタート時のログ
+    logToFile('onPostBuild start'); // スタート時のログ
 
     // 環境変数の値をログに出力
     const branch = process.env.BRANCH || 'unknown';
-    console.log(`BRANCH: ${branch}`);
+    logToFile(`BRANCH: ${branch}`);
 
     let nodeEnv = 'production';
 
@@ -345,20 +350,26 @@ exports.onPostBuild = () => {
 
     // `NODE_ENV`を設定
     process.env.NODE_ENV = nodeEnv;
-    console.log(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+    logToFile(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
 
     if (process.env.NODE_ENV === 'development') {
-        console.log('Environment is development');
+        logToFile('Environment is development');
         const headersPath = path.join(__dirname, 'public', '_headers');
         const basicAuthId = process.env.BASIC_AUTH_ID || '';
         const basicAuthPass = process.env.BASIC_AUTH_PASS || '';
+
+        // `public/_headers`ファイルが存在するか確認し、存在しない場合は作成
+        if (!fs.existsSync(headersPath)) {
+            fs.writeFileSync(headersPath, '', 'utf8');
+            logToFile(`Created ${headersPath}`);
+        }
 
         if (basicAuthId && basicAuthPass) {
             const basicAuthHeader = `/*
       Basic-Auth: ${basicAuthId}:${basicAuthPass}\n`;
 
             // 環境変数の値を出力して確認
-            console.log('BASIC_AUTH_HEADER:', basicAuthHeader);
+            logToFile('BASIC_AUTH_HEADER: ' + basicAuthHeader);
 
             // 現在の_headersファイルの内容を読み込み
             let headersContent = fs.readFileSync(headersPath, 'utf8');
@@ -367,16 +378,16 @@ exports.onPostBuild = () => {
             headersContent = basicAuthHeader + headersContent;
 
             // 修正された内容を出力して確認
-            console.log('UPDATED_HEADERS_CONTENT:', headersContent);
+            logToFile('UPDATED_HEADERS_CONTENT: ' + headersContent);
 
             // 修正された内容を書き戻す
             fs.writeFileSync(headersPath, headersContent, 'utf8');
-            console.log('Headers file updated');
+            logToFile('Headers file updated');
         } else {
-            console.log('BASIC_AUTH_ID or BASIC_AUTH_PASS is not defined.');
+            logToFile('BASIC_AUTH_ID or BASIC_AUTH_PASS is not defined.');
         }
     } else {
-        console.log('This code is not running in development mode.');
+        logToFile('This code is not running in development mode.');
     }
-    console.log('onPostBuild end'); // 終了時のログ
+    logToFile('onPostBuild end'); // 終了時のログ
 };
