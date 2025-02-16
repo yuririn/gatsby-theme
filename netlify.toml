@@ -1,22 +1,12 @@
 [build]
   publish = "public"
-  command = "npm run build"
+  command = "gatsby build"
 
 [context.master]
-  # 公開ブランチの設定
-  [context.master.environment]
-    NODE_ENV = "production"
-  [context.master.headers]
-    # Basic認証なし
-    [[headers]]
-    for = "/*"
-    values = {}
+  # masterブランチ（公開ブランチ）の設定
+  environment = { NODE_ENV = "production" }
 
 [context.develop]
-  # 開発ブランチの設定
-  [context.develop.environment]
-    NODE_ENV = "development"
-  [context.develop.headers]
-    [[headers]]
-    for = "/*"
-    values = { Basic-Auth = "$BASIC_AUTH_USER:$BASIC_AUTH_PASS" }
+  # developブランチ（開発ブランチ）の設定
+  environment = { NODE_ENV = "development" }
+  command = "npm run build && echo -e '/*\\n  Basic-Auth: $BASIC_AUTH_ID:$BASIC_AUTH_PASS' > public/_headers"
