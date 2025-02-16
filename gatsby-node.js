@@ -1,4 +1,4 @@
-console.log(`Branch is ${process.env.BRANCH}`)
+console.log(`ENV is ${process.env.NODE_ENV}`)
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -327,67 +327,3 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
   `)
 }
-
-const fs = require('fs');
-
-function logToFile(message) {
-    const logFilePath = path.join(__dirname, 'public', 'build.log');
-    fs.appendFileSync(logFilePath, message + '\n', 'utf8');
-}
-
-exports.onPostBuild = () => {
-    logToFile('onPostBuild start'); // スタート時のログ
-
-    // 環境変数の値をログに出力
-    const branch = process.env.BRANCH || 'unknown';
-    logToFile(`BRANCH: ${branch}`);
-
-    let nodeEnv = 'production';
-
-    if (branch === 'develop') {
-        nodeEnv = 'development';
-    }
-
-    // `NODE_ENV`を設定
-    process.env.NODE_ENV = nodeEnv;
-    logToFile(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
-
-    if (process.env.NODE_ENV === 'development') {
-        logToFile('Environment is development');
-        const headersPath = path.join(__dirname, 'public', '_headers');
-        const basicAuthId = process.env.BASIC_AUTH_ID || '';
-        const basicAuthPass = process.env.BASIC_AUTH_PASS || '';
-
-        // `public/_headers`ファイルが存在するか確認し、存在しない場合は作成
-        if (!fs.existsSync(headersPath)) {
-            fs.writeFileSync(headersPath, '', 'utf8');
-            logToFile(`Created ${headersPath}`);
-        }
-
-        if (basicAuthId && basicAuthPass) {
-            const basicAuthHeader = `/*
-      Basic-Auth: ${basicAuthId}:${basicAuthPass}\n`;
-
-            // 環境変数の値を出力して確認
-            logToFile('BASIC_AUTH_HEADER: ' + basicAuthHeader);
-
-            // 現在の_headersファイルの内容を読み込み
-            let headersContent = fs.readFileSync(headersPath, 'utf8');
-
-            // Basic-Authヘッダーを先頭に追加
-            headersContent = basicAuthHeader + headersContent;
-
-            // 修正された内容を出力して確認
-            logToFile('UPDATED_HEADERS_CONTENT: ' + headersContent);
-
-            // 修正された内容を書き戻す
-            fs.writeFileSync(headersPath, headersContent, 'utf8');
-            logToFile('Headers file updated');
-        } else {
-            logToFile('BASIC_AUTH_ID or BASIC_AUTH_PASS is not defined.');
-        }
-    } else {
-        logToFile('This code is not running in development mode.');
-    }
-    logToFile('onPostBuild end'); // 終了時のログ
-};
