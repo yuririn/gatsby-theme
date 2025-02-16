@@ -326,3 +326,26 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
   `)
 }
+
+const fs = require('fs');
+
+exports.onPostBuild = () => {
+    if (process.env.NODE_ENV === 'development') {
+        const headersPath = path.join(__dirname, 'public', '_headers');
+        const basicAuthHeader = `/*
+        Basic-Auth: ${process.env.BASIC_AUTH_ID}:${process.env.BASIC_AUTH_PASS}\n`;
+
+        console.log(basicAuthHeader)
+
+        // 現在の_headersファイルの内容を読み込み
+        let headersContent = fs.readFileSync(headersPath, 'utf8');
+
+        // Basic-Authヘッダーを先頭に追加
+        headersContent = basicAuthHeader + headersContent;
+
+        console.log(headersContent)
+
+        // 修正された内容を書き戻す
+        fs.writeFileSync(headersPath, headersContent, 'utf8');
+    }
+};
