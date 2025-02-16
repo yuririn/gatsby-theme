@@ -19,4 +19,4 @@
   [context.develop.headers]
     [[headers]]
     for = "/*"
-    values = { Basic-Auth = "user:password" }
+    values = { Basic-Auth = "$BASIC_AUTH_USER:$BASIC_AUTH_PASS" }
