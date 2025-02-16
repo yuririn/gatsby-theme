@@ -339,32 +339,44 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
   `)
 }
-
 const fs = require('fs');
+const path = require('path');
 
 exports.onPostBuild = () => {
-    if (process.env.NODE_ENV === 'development') {
-        const headersPath = path.join(__dirname, 'public', '_headers');
-        const basicAuthHeader = `/*
-    Basic-Auth: ${process.env.BASIC_AUTH_ID}:${process.env.BASIC_AUTH_PASS}\n`;
+    const basicAuthId = process.env.BASIC_AUTH_ID || '';
+    const basicAuthPass = process.env.BASIC_AUTH_PASS || '';
+    const nodeEnv = process.env.NODE_ENV || 'production';
 
-        console.log(basicAuthHeader);
+    // デバッグ用ログ
+    console.log('Basic Auth ID:', basicAuthId);
+    console.log('Basic Auth Pass:', basicAuthPass);
+    console.log('Node Environment:', nodeEnv);
 
-        // `_headers`ファイルが存在するか確認し、存在しない場合は作成
-        if (!fs.existsSync(headersPath)) {
-            fs.writeFileSync(headersPath, '', 'utf8');
-            console.log(`Created ${headersPath}`);
-        }
+    const headersPath = path.join(__dirname, 'public', '_headers');
+    let basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\n*/\n';
 
-        // 現在の_headersファイルの内容を読み込み
+    // 環境に応じた動作を追加
+    if (nodeEnv === 'development') {
+        basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\nX-Robots-Tag: noindex\n*/\n';
+    }
+
+    try {
+        // `_headers` ファイルの内容を読み込み
         let headersContent = fs.readFileSync(headersPath, 'utf8');
 
-        // Basic-Authヘッダーを先頭に追加
-        headersContent = basicAuthHeader + headersContent;
-
-        console.log(headersContent);
+        // `## Created with gatsby-plugin-netlify` コメントを置き換え
+        headersContent = headersContent.replace(/## Created with gatsby-plugin-netlify[\r\n]*/, basicAuthHeader);
 
         // 修正された内容を書き戻す
         fs.writeFileSync(headersPath, headersContent, 'utf8');
+        console.log('Headers file updated');
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            // ファイルが存在しない場合は新規作成
+            fs.writeFileSync(headersPath, basicAuthHeader, 'utf8');
+            console.log('Created new headers file');
+        } else {
+            console.error('Error updating headers file:', error);
+        }
     }
 };

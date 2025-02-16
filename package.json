@@ -71,7 +71,7 @@
         "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
     },
     "scripts": {
-        "build": "gatsby build && node scripts/postBuild.js",
+        "build": "gatsby build",
         "develop": "gatsby develop",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
         "start": "gatsby develop",
@@ -79,7 +79,6 @@
         "clean": "gatsby clean",
         "m-serve": "gatsby develop -H 192.168.254.100 -p 8000",
         "imagemin": "node imagemin.mjs",
-        "postbuild": "node scripts/postBuild.js",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
     },
     "engines": {
