@@ -1,3 +1,4 @@
+console.log(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -330,23 +331,52 @@ exports.createSchemaCustomization = ({ actions }) => {
 const fs = require('fs');
 
 exports.onPostBuild = () => {
-    console.log('NODE_ENV:', process.env.BRANCH);
-    if (process.env.BRANCH === 'develop') {
-        const headersPath = path.join(__dirname, 'public', '_headers');
-        const basicAuthHeader = `/*
-        Basic-Auth: ${process.env.BASIC_AUTH_ID}:${process.env.BASIC_AUTH_PASS}\n`;
+    console.log('onPostBuild start'); // スタート時のログ
 
-        console.log(basicAuthHeader)
+    // 環境変数の値をログに出力
+    const branch = process.env.BRANCH || 'unknown';
+    console.log(`BRANCH: ${branch}`);
 
-        // 現在の_headersファイルの内容を読み込み
-        let headersContent = fs.readFileSync(headersPath, 'utf8');
+    let nodeEnv = 'production';
 
-        // Basic-Authヘッダーを先頭に追加
-        headersContent = basicAuthHeader + headersContent;
-
-        console.log(headersContent)
-
-        // 修正された内容を書き戻す
-        fs.writeFileSync(headersPath, headersContent, 'utf8');
+    if (branch === 'develop') {
+        nodeEnv = 'development';
     }
+
+    // `NODE_ENV`を設定
+    process.env.NODE_ENV = nodeEnv;
+    console.log(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+
+    if (process.env.NODE_ENV === 'development') {
+        console.log('Environment is development');
+        const headersPath = path.join(__dirname, 'public', '_headers');
+        const basicAuthId = process.env.BASIC_AUTH_ID || '';
+        const basicAuthPass = process.env.BASIC_AUTH_PASS || '';
+
+        if (basicAuthId && basicAuthPass) {
+            const basicAuthHeader = `/*
+      Basic-Auth: ${basicAuthId}:${basicAuthPass}\n`;
+
+            // 環境変数の値を出力して確認
+            console.log('BASIC_AUTH_HEADER:', basicAuthHeader);
+
+            // 現在の_headersファイルの内容を読み込み
+            let headersContent = fs.readFileSync(headersPath, 'utf8');
+
+            // Basic-Authヘッダーを先頭に追加
+            headersContent = basicAuthHeader + headersContent;
+
+            // 修正された内容を出力して確認
+            console.log('UPDATED_HEADERS_CONTENT:', headersContent);
+
+            // 修正された内容を書き戻す
+            fs.writeFileSync(headersPath, headersContent, 'utf8');
+            console.log('Headers file updated');
+        } else {
+            console.log('BASIC_AUTH_ID or BASIC_AUTH_PASS is not defined.');
+        }
+    } else {
+        console.log('This code is not running in development mode.');
+    }
+    console.log('onPostBuild end'); // 終了時のログ
 };
