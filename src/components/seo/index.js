@@ -60,9 +60,10 @@ const Seo = ({ data, location }) => {
             </>
         )
     }
-
+    const isDev = process.env.NODE_ENV === 'development';
     return (
         <>
+            {isDev && <meta name="robots" content="noindex, nofollow" />}
             {/* Basic SEO Setting */}
             <title>{pageTitle}</title>
             <meta name="description" content={pageDescription} />

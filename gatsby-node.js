@@ -340,7 +340,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 const fs = require('fs');
-const path = require('path');
 
 exports.onPostBuild = () => {
     const basicAuthId = process.env.BASIC_AUTH_ID || '';
