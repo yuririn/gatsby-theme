@@ -8,5 +8,5 @@
 
 [context.develop]
   # developブランチ（開発ブランチ）の設定
-  command = "npm run build && mv _headers public/_headers"
+  command = "mv _headers static/_headers && npm run build"
   environment = { NODE_ENV = "development" }
