@@ -23,9 +23,6 @@ const footernav = () => {
           <Link to="/privacy-policy/">Privacy Policy</Link>{" "}
         </li>
         <li>
-          <Link to="/socialmedia-policy/">Social Media Policy</Link>{" "}
-        </li>
-        <li>
           <Link to="/contact/">Contact</Link>{" "}
         </li>
       </ul>
