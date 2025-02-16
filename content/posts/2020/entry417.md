@@ -1,7 +1,7 @@
 ---
 title: 【海外プチ移住】フィリピン・セブ島で安全に生活（生活費も紹介）
 date: 2020-12-15
-modifieddate: 2022-07-05
+modifiedDate: 2022-07-05
 hero: thumbnail/2020/entry417.jpg
 pageType: blog
 cateId: 'overseas-freelancing'

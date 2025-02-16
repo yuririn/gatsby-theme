@@ -1,7 +1,7 @@
 ---
 title: WordPressの記事一覧ブロック（Gutenberg）を自作する
 date: 2022-01-12
-modifieddate: 2023-02-22
+modifiedDate: 2023-02-22
 hero: thumbnail/2022/entry488.jpg
 pageType: blog
 cateId: cms

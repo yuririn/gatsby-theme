@@ -1,7 +1,7 @@
 ---
 title: 待ってました！Chrome88 で aspect-ratioプロパティがついにサポート
 date: 2021-02-03
-modifieddate: 2021-12-26
+modifiedDate: 2021-12-26
 hero: thumbnail/2021/entry437.jpg
 pageType: blog
 cateId: web-developer

@@ -1,7 +1,7 @@
 ---
 title: CSS カウンター（counter）って知ってる？要素に自動ナンバリング（数字）しよう
 date: 2020-03-29
-modifieddate: 2022-07-05
+modifiedDate: 2022-07-05
 hero: thumbnail/2020/entry363.jpg
 pageType: blog
 cateId: 'web-developer'

@@ -1,7 +1,7 @@
 ---
 title: DockerでシンプルなWordPress環境を作る
 date: 2021-12-22
-modifieddate: 2025-01-28
+modifiedDate: 2025-01-28
 hero: thumbnail/2021/entry480.jpg
 pageType: blog
 cateId: 'cms'

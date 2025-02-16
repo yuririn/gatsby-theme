@@ -1,7 +1,7 @@
 ---
 title: 次世代CSSは論理プロパティ！margin-block、margin-inlineを徹底解剖！
 date: 2021-01-28
-modifieddate: 2023-01-21
+modifiedDate: 2023-01-21
 hero: thumbnail/2021/entry436.jpg
 pageType: blog
 cateId: web-developer

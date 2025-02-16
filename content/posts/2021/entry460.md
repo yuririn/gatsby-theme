@@ -1,7 +1,7 @@
 ---
 title: 仕事が10倍楽しくなる！脱・初心者Slack活用入門
 date: 2021-05-14
-modifieddate: 2022-05-20
+modifiedDate: 2022-05-20
 hero: thumbnail/2021/entry460.jpg
 pageType: blog
 cateId: 'career'

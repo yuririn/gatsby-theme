@@ -20,7 +20,7 @@ const SearchResult =  (props) => {
           cateId
           description
           hero
-          pagetype
+          pageType
         }
       }
     }
@@ -30,10 +30,10 @@ const SearchResult =  (props) => {
   useEffect(() => {
     const temp = []
     tempData.allMarkdownRemark.edges.map(e => {
-      if(props.pagetype === 'ad') {
-        if(e.node.frontmatter.pagetype === 'ad') temp.push(e.node)
+      if(props.pageType === 'ad') {
+        if(e.node.frontmatter.pageType === 'ad') temp.push(e.node)
       } else {
-        if(e.node.frontmatter.pagetype !== 'ad') temp.push(e.node)
+        if(e.node.frontmatter.pageType !== 'ad') temp.push(e.node)
       }
     })
     setData(temp)
@@ -144,7 +144,7 @@ const Search = props => {
           onChange={onChange}
           className="box"
         />
-        <SearchResult focus={focus} value={value} pagetype={props.type}/>
+        <SearchResult focus={focus} value={value} pageType={props.type}/>
       </div>
     </SearchBox>
   )

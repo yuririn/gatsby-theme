@@ -1,7 +1,7 @@
 ---
 title: 初心者でも海外ノマドワーカーはできるの？おすすめの職種や仕事を紹介
 date: 2021-03-15
-modifieddate: 2023-03-01
+modifiedDate: 2023-03-01
 hero: thumbnail/2021/entry446.jpg
 cateId: overseas-freelancing
 pageType: blog

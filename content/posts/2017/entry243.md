@@ -1,7 +1,7 @@
 ---
 title: 星になったワンコたち − 老い、病気。何度も犬を介護し、看取って感じたこと − 
 date: 2017-10-09
-modifieddate: 2023-03-28
+modifiedDate: 2023-03-28
 hero: thumbnail/2017/entry243.jpg
 pageType: blog
 noindex: true

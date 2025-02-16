@@ -1,7 +1,7 @@
 ---
 title: 星になったワンコたち − 排泄介助、床ずれ防止。中〜大型犬を介護し、看取るためにやったこと − 
 date: 2017-10-10
-modifieddate: 2023-03-29
+modifiedDate: 2023-03-29
 hero: thumbnail/2017/entry244.jpg
 pageType: blog
 noindex: true

@@ -20,7 +20,7 @@ const Seo = ({data, children}) => {
   let blogUrl = data.location ? domain + data.location.pathname : domain
   const isRoot = '/' === data.location.pathname || data.location.pathname === '/choco-blog/' ? true : false
   let page = isRoot ? "WebSite" : "WebPage"
-  const pagetype = isRoot ? "webSite" : "article"
+  const pageType = isRoot ? "webSite" : "article"
   const ogSrc = domain + (data.ogp ? data.ogp : isAd ? "/images/choco-ogp.png" :  "/images/ogp.png")
   const thumbnailSrc = domain + (data.thumnail ? data.thumnail :isAd ? "/images/choco-thumnail.png" :  "/images/thumnail.png")
   // const cate = config.siteMetadata.category.filter(cat => cat.name === title)
@@ -326,7 +326,7 @@ const Seo = ({data, children}) => {
     <meta  property="og:description" content={data.description ? data.description : metaDescription} />
     <meta property="og:image" content={ogSrc} />
     <meta name="google-site-verification" content={`UmyZdMHGMBc6-P4rF4Ajx3AhBNeOKT694ba7WGsI3Wc`}/>
-    <meta  property="og:type" content={pagetype} />
+    <meta  property="og:type" content={pageType} />
     <meta  property="og:url" content={blogUrl} />
     <meta name="twitter:card" content={`summary_large_image`} />
     <meta name="twitter:creator" content={config.siteMetadata?.social?.twitter || ``} />

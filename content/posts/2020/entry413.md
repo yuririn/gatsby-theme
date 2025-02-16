@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語~プラグインナシで一覧にページネーション実装~
 date: 2020-12-09
-modifieddate: 2022-01-02
+modifiedDate: 2022-01-02
 hero: thumbnail/2020/entry401-v4.jpg
 pageType: blog
 cateId: web-developer

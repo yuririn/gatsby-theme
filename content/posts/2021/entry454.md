@@ -1,7 +1,7 @@
 ---
 title: 【 WordPress】カスタムフィールドをプラグインなしで追加&管理画面投稿一覧に出力
 date: 2021-04-11
-modifieddate: 2023-03-04
+modifiedDate: 2023-03-04
 hero: thumbnail/2021/entry454.jpg
 pageType: blog
 cateId: 'cms'

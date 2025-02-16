@@ -1,7 +1,7 @@
 ---
 title: 破天荒な性格？サバイバー？中間子の取扱方、教えます
 date: 2020-12-18
-modifieddate: 2023-01-22
+modifiedDate: 2023-01-22
 hero: thumbnail/2020/entry420.jpg
 pageType: blog
 cateId: ginneko-tsuredure

@@ -1,15 +1,14 @@
 import React, { useMemo } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import Img from "../smImg"
+import Img from "../img"
 import styled from "styled-components"
-import Ad from '../common/ad'
 
 const Lists = ({ category, slug, tags }) => {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       query {
         allMarkdownRemark(
-          filter: { frontmatter: { pagetype: { eq: "blog" } } }
+          filter: { frontmatter: { pageType: { eq: "blog" } } }
         ) {
           edges {
             node {
@@ -23,7 +22,7 @@ const Lists = ({ category, slug, tags }) => {
                 date(formatString: "YYYY.MM.DD")
                 title
                 tags
-                pagetype
+                pageType
               }
             }
           }
@@ -68,9 +67,11 @@ const Lists = ({ category, slug, tags }) => {
       <h2 className="c-heading--lg">関連記事</h2>
       <ol>
         {result.map((item, index) => {
+            const slug = `/blogs/${item.node.fields.slug}`
+            console.log(item.node.frontmatter.hero)
           return (
             <li className="p-entryCard is-small" key={`relative${index}`} role="article">
-              <Link to={item.node.fields.slug} className="p-entryCard__img">
+              <Link to={slug} className="p-entryCard__img">
               {item.node.frontmatter.hero ? (
                 <Img
                     source={item.node.frontmatter.hero}
@@ -83,7 +84,7 @@ const Lists = ({ category, slug, tags }) => {
                   />
                 )}
               </Link>
-                  <Link to={item.node.fields.slug} className="p-entryCard__body">
+                  <Link to={slug} className="p-entryCard__body">
                 <h3 className="p-entryCard__heading">
                   {item.node.frontmatter.title}
                 </h3>

@@ -1,7 +1,7 @@
 ---
 title: 飼い猫が食中毒！？対処法等の備忘録
 date: 2018-07-14
-modifieddate: 2023-03-01
+modifiedDate: 2023-03-01
 hero: thumbnail/2018/entry278.jpg
 pageType: blog
 cateId: 'ginneko-tsuredure'

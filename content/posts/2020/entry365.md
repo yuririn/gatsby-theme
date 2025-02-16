@@ -1,7 +1,7 @@
 ---
 title: セブシティロックダウン 1か月を振り返る
 date: 2020-04-25
-modifieddate: 2023-01-22
+modifiedDate: 2023-01-22
 hero: thumbnail/2020/entry365.jpg
 pageType: blog
 cateId: 'overseas-freelancing'

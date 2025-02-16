@@ -1,7 +1,7 @@
 ---
 title: 【実録】古いSEO手法でブラックハットをでペナルティを食らったサイトを改善させた話
 date: 2019-08-03
-modifieddate: 2023-01-22
+modifiedDate: 2023-01-22
 hero: thumbnail/2019/entry325.png
 pageType: blog
 cateId: seo

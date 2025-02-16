@@ -1,7 +1,7 @@
 ---
 title: 軽量スライダーSwiperでスマホ（SP）のみスライダー表示にする方法（複数対応）
 date: 2022-12-17
-modifieddate: 2025-01-28
+modifiedDate: 2025-01-28
 pageType: blog
 cateId: web-developer
 hero: thumbnail/2022/entry514.png

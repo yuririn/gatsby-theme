@@ -158,7 +158,7 @@ const breadcrumbListData = (domain, list) => {
 }
 
 const BlogPosting = (data, domain, location) => {
-    const { title, description, ogp, date, modifieddate } = data
+    const { title, description, ogp, date, modifiedDate } = data
     const blogPosting = {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -178,9 +178,9 @@ const BlogPosting = (data, domain, location) => {
         author: auther(domain),
         publisher: publisher(domain),
     }
-    if (modifieddate) {
-        blogPosting.datePublished = dateReplace(modifieddate)
-        blogPosting.dateModified = dateReplace(modifieddate)
+    if (modifiedDate) {
+        blogPosting.datePublished = dateReplace(modifiedDate)
+        blogPosting.dateModified = dateReplace(modifiedDate)
     }
     return blogPosting
 }

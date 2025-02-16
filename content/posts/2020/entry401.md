@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語~インストールからNetlifyデプロイまで~
 date: 2020-11-26
-modifieddate: 2021-12-28
+modifiedDate: 2021-12-28
 hero: thumbnail/2020/entry401-v4.jpg
 pageType: blog
 cateId: web-developer

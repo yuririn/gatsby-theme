@@ -1,7 +1,7 @@
 ---
 title: WordPressに独自ショートコードのサンプルコード集【入れ子もOK！】
 date: 2014-12-21
-modifieddate: 2023-03-04
+modifiedDate: 2023-03-04
 hero: thumbnail/2014/entry211.png
 pageType: blog
 cateId: 'cms'

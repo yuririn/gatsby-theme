@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語~プラグインHelmetでSEO調整~
 date: 2020-12-16
-modifieddate: 2022-01-03
+modifiedDate: 2022-01-03
 hero: thumbnail/2020/entry401-v4.jpg
 pageType: blog
 cateId: web-developer
@@ -322,7 +322,7 @@ URLに`/page/数字/`を含む場合は除去し、URLをcanonical属性とし�
 またブログが記事のもののみ、BlogPosting（*この投稿はブログだよ！！って検索エンジンに教えます*）の構造化データを追加します。
 
 ### ページのデータ
-seo.jsに構造化データのJSONを出力できるようにします。markdownファイルも公開日はもちろん、更新日（modifieddate）が取得できるようにしておきます。
+seo.jsに構造化データのJSONを出力できるようにします。markdownファイルも公開日はもちろん、更新日（modifiedDate）が取得できるようにしておきます。
 
 何が大事って、**更新されて、手が入っているページ**かです。古い記事でも更新していることをアピールできることが大事です。
 
@@ -330,7 +330,7 @@ seo.jsに構造化データのJSONを出力できるようにします。markdow
 ---
 title: 記事サンプル
 date: 2020-11-26
-modifieddate: 2020-11-26
+modifiedDate: 2020-11-26
 pageType: blog
 hero: thumbnail/entry01.jpg
 description: この記事はテスト投稿です

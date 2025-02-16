@@ -39,7 +39,7 @@ export default PagePostTemplate
 
 
 export const Head = ({ data, location }) => {
-    const { title, date, description, modifieddate, noindex } = data.markdownRemark.frontmatter
+    const { title, date, description, modifiedDate, noindex } = data.markdownRemark.frontmatter
     const list = [
         {
             name: title,
@@ -51,7 +51,7 @@ export const Head = ({ data, location }) => {
         title: title,
         description: description,
         date: date,
-        modifiedate: modifieddate,
+        modifiedate: modifiedDate,
         type: "WebPage",
         template: 'page',
         list: list,

@@ -1,7 +1,7 @@
 ---
 title: 【npm-script】imagemin-cliを使って画像圧縮する方法【v8対応】
 date: 2020-12-25
-modifieddate: 2023-01-25
+modifiedDate: 2023-01-25
 hero: thumbnail/2018/entry267.png
 pageType: blog
 cateId: web-developer

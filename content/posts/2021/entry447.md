@@ -1,7 +1,7 @@
 ---
 title: 職業訓練校のプログラミング学習で就職できる？事例&評判をご紹介
 date: 2021-03-17
-modifieddate: 2023-03-14
+modifiedDate: 2023-03-14
 hero: thumbnail/2021/entry447.jpg
 cateId: career
 pageType: blog

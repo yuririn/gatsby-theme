@@ -12,6 +12,7 @@ import AddTagLink from "../components/common/add-tag-link"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 import Ad from '../components/common/ad'
+import dateReplace from "../utils/datereplace"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -34,6 +35,8 @@ const BlogIndex = ({ data, location }) => {
             } else {
               cardClass = "p-entryCard c-grid__item--md6 c-grid__item--lg4"
             }
+            const {fields, frontmatter} = post
+            const path = `/blogs/${fields.slug}`
 
             return (
               <>
@@ -43,56 +46,56 @@ const BlogIndex = ({ data, location }) => {
                   <Ad location={location.pathname}></Ad>
                 </li>
                 <li key={`post${i}`} className={cardClass} role="article">
-                  <Link to={post.fields.slug} className="p-entryCard__img">
+                    <Link to={path} className="p-entryCard__img">
                     <Img
-                      source={post.frontmatter.hero}
-                      alt={post.frontmatter.title}
-                      key={post.frontmatter.title}
+                      source={frontmatter.hero}
+                      alt={frontmatter.title}
+                      key={frontmatter.title}
                     />
                     <div className="p-entryCard__date">
                       <time
-                        date={post.frontmatter.date.replace(/\./g, "-")}
+                        date={dateReplace(frontmatter.date)}
                       >
-                        {post.frontmatter.date}
+                        {frontmatter.date}
                       </time>
                     </div>
                   </Link>
-                  <Link to={post.fields.slug} className="p-entryCard__body">
+                    <Link to={path} className="p-entryCard__body">
                     <h3 className="p-entryCard__heading">
-                      {post.frontmatter.title}
+                      {frontmatter.title}
                     </h3>
                     {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
                   </Link>
                   <div className="p-entryCard__footer">
-                    <AddTagLink tags={post.frontmatter.tags} />
+                    <AddTagLink tags={frontmatter.tags} />
                   </div>
               </li>
                 </>
 
                 )
                 :( <li key={`post${i}`} className={cardClass} role="article">
-                  <Link to={post.fields.slug} className="p-entryCard__img">
+                    <Link to={path} className="p-entryCard__img">
                     <Img
-                      source={post.frontmatter.hero}
-                      alt={post.frontmatter.title}
-                      key={post.frontmatter.title}
+                      source={frontmatter.hero}
+                      alt={frontmatter.title}
+                      key={frontmatter.title}
                     />
                     <div className="p-entryCard__date">
                       <time
-                        date={post.frontmatter.date.replace(/\./g, "-")}
+                        date={dateReplace(frontmatter.date)}
                       >
-                        {post.frontmatter.date}
+                        {frontmatter.date}
                       </time>
                     </div>
                   </Link>
-                  <Link to={post.fields.slug} className="p-entryCard__body">
+                  <Link to={`/blogs/${post.frontmatter.slug}`} className="p-entryCard__body">
                     <h3 className="p-entryCard__heading">
-                      {post.frontmatter.title}
+                      {frontmatter.title}
                     </h3>
-                    {i === 0 ? <p>{post.frontmatter.description}</p> : ""}
+                    {i === 0 ? <p>{frontmatter.description}</p> : ""}
                   </Link>
                   <div className="p-entryCard__footer">
-                    <AddTagLink tags={post.frontmatter.tags} />
+                    <AddTagLink tags={frontmatter.tags} />
                   </div>
               </li>
               )}
@@ -144,7 +147,7 @@ export const pageQuery = graphql`{
   allMarkdownRemark(
     sort: {frontmatter: {date: DESC}}
     limit: 9
-    filter: {frontmatter: {pagetype: {eq: "blog"}}}
+    filter: {frontmatter: {pageType: {eq: "blog"}}}
   ) {
     nodes {
       excerpt
@@ -158,7 +161,7 @@ export const pageQuery = graphql`{
         tags
         cateId
         hero
-        pagetype
+        pageType
       }
     }
   }

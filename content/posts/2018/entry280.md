@@ -1,7 +1,7 @@
 ---
 title: 初心者コーダーに贈る！超軽量高機能エディターVS Code入門2
 date: 2018-07-23
-modifieddate: 2021-03-05
+modifiedDate: 2021-03-05
 hero: thumbnail/2018/entry266.jpg
 pageType: blog
 cateId: 'web-developer'

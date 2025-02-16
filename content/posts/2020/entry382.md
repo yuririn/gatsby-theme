@@ -1,7 +1,7 @@
 ---
 title: 職場の人間関係は人の割合で変わる！組織を腸内フローラに例えてみた
 date: 2020-10-19
-modifieddate: 2022-06-07
+modifiedDate: 2022-06-07
 hero: thumbnail/2020/entry382.jpg
 pageType: blog
 cateId: 'ginneko-tsuredure'

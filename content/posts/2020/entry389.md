@@ -1,7 +1,7 @@
 ---
 title: セブ島・カーボンマーケットで買物しよう【海外在住者体験談】
 date: 2020-11-01
-modifieddate: 2022-06-20
+modifiedDate: 2022-06-20
 hero: thumbnail/2020/entry389.jpg
 pageType: blog
 cateId: 'overseas-freelancing'

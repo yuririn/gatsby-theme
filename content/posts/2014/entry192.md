@@ -1,7 +1,7 @@
 ---
 title: これだけ覚えておくと便利！フロントエンジニアのためのコマンド（ライン）
 date: 2014-09-10
-modifieddate: 2021-12-24
+modifiedDate: 2021-12-24
 hero: thumbnail/2014/entry192.jpg
 pageType: blog
 cateId: 'web-developer'

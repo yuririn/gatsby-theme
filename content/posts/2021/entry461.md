@@ -1,7 +1,7 @@
 ---
 title: 30代シングルマザーが転職して人並みに稼ぐまでの道のり
 date: 2021-05-14
-modifieddate: 2023-04-03
+modifiedDate: 2023-04-03
 hero: thumbnail/2021/entry461.jpg
 pageType: blog
 cateId: career

@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語~CSSコンポーネントでオリジナルページを作ろう！！~
 date: 2020-12-19
-modifieddate: 2021-01-12
+modifiedDate: 2021-01-12
 hero: thumbnail/2020/entry401-v4.jpg
 pageType: blog
 cateId: web-developer

@@ -1,7 +1,7 @@
 ---
 title: 拝啓デザイナー様。ピクセルパーフェクト必要？その他お願いしたいこと8つ
 date: 2020-11-12
-modifieddate: 2023-03-04
+modifiedDate: 2023-03-04
 hero: thumbnail/2020/entry394.png
 pageType: blog
 cateId: 'web-developer'

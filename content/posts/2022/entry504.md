@@ -1,7 +1,7 @@
 ---
 title: 【GAS】スプシの更新内容をトリガーで定期的に自動で通知（メールとSlack）
 date: 2022-06-04
-modifieddate: 2022-07-05
+modifiedDate: 2022-07-05
 pageType: blog
 cateId:  web-developer
 hero: thumbnail/2022/entry504.png

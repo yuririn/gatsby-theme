@@ -1,7 +1,7 @@
 ---
 title: 海外生活でも日本食！パン粉ぬか漬けのレシピ
 date: 2020-10-30
-modifieddate: 2023-03-01
+modifiedDate: 2023-03-01
 hero: thumbnail/2020/entry388.jpg
 pageType: blog
 cateId: ginneko-tsuredure

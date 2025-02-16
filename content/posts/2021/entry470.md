@@ -1,7 +1,7 @@
 ---
 title: 【コピペOK】 Google Apps Script（GAS） でスプシからドライブにフォルダ自動作成
 date: 2021-06-08
-modifieddate: 2022-06-16
+modifiedDate: 2022-06-16
 hero: thumbnail/2021/entry470.jpg
 pageType: blog
 cateId: 'web-developer'

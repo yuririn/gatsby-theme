@@ -1,7 +1,7 @@
 ---
 title: 【セブ島の歴史】元刑務所のMuseo Sugbo（セブ博物館）のご紹介
 date: 2021-06-15
-modifieddate: 2023-03-01
+modifiedDate: 2023-03-01
 hero: thumbnail/2021/entry472.jpg
 cateId: overseas-freelancing
 pageType: blog

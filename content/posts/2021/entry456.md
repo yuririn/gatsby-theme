@@ -1,7 +1,7 @@
 ---
 title: 【Twitter】高度な検索/検索コマンドが超便利！
 date: 2021-04-15
-modifieddate: 2022-04-15
+modifiedDate: 2022-04-15
 hero: thumbnail/2021/entry456.jpg
 pageType: blog
 cateId: 'seo'

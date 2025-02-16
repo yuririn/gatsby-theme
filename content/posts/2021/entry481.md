@@ -1,7 +1,7 @@
 ---
 title: スプシのデータをJSON化してPHPに取り込む（GAS使います）
 date: 2021-12-24
-modifieddate: 2021-12-26
+modifiedDate: 2021-12-26
 hero: thumbnail/2021/entry455.jpg
 pageType: blog
 cateId: 'web-developer'

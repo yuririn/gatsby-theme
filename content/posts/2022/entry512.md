@@ -1,7 +1,7 @@
 ---
 title: キャッシュレスアプリ GCash にチャージされたお金をATMから引き出す方法
 date: 2022-11-23
-modifieddate: 2023-01-21
+modifiedDate: 2023-01-21
 pageType: blog
 cateId: overseas-freelancing
 hero: thumbnail/2022/entry512.jpg

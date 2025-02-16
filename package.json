@@ -76,6 +76,8 @@
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
         "start": "gatsby develop",
         "serve": "gatsby serve",
+        "log2": "gatsby build > gatsby_log.txt 2>&1",
+        "log": "gatsby develop > gatsby_log.txt 2>&1",
         "clean": "gatsby clean",
         "m-serve": "gatsby develop -H 192.168.254.100 -p 8000",
         "imagemin": "node imagemin.mjs",

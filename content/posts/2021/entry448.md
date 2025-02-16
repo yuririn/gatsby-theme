@@ -1,7 +1,7 @@
 ---
 title: 2025年版！GraphAPIでインスタグラム投稿一覧を出力（JS/PHPサンプルコードあり）
 date: 2021-03-25
-modifieddate: 2025-01-27
+modifiedDate: 2025-01-27
 hero: thumbnail/2021/entry448.jpg
 pageType: blog
 cateId: 'web-developer'

@@ -21,7 +21,7 @@ const genre = ({ pageContext, data, location }) => {
   const cateMeta = siteMetadata.category.filter(cate => cate.slug === cateSlug)
 
   let cateName = cateMeta[0].name
-  let cateDescription = cateMeta[0].description
+  let cateDescription = cateMeta[0].summary
 
   return (
     <Layout location={location} title={siteMetadata.title}>
@@ -40,16 +40,16 @@ const genre = ({ pageContext, data, location }) => {
           <h2 className="c-heading--lg">最新記事</h2>
           <ol className="c-grid">
             {edges.map(({ node }) => {
-              const { slug } = node.fields
+                const path = `/blogs/${node.fields.slug}`
               const { title, hero, date, tags } = node.frontmatter
               return (
                 <li
                   className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
-                  key={slug}
+                      key={path}
                   role="article"
                 >
 
-                    <Link to={slug} className="p-entryCard__img">
+                      <Link to={path} className="p-entryCard__img">
                       {hero ? (
                         <Img source={hero} alt={title} />
                       ) : (
@@ -59,7 +59,7 @@ const genre = ({ pageContext, data, location }) => {
                         <time date={date.replace(/\./g, "-")}>{date}</time>
                       </div>
                     </Link>
-                    <Link to={slug} className="p-entryCard__body">
+                      <Link to={path} className="p-entryCard__body">
                       <h3 className="p-entryCard__heading">{title}</h3>
                     </Link>
                     <div className="p-entryCard__footer">

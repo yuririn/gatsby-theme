@@ -1,7 +1,7 @@
 ---
 title: 混乱しがちなJSの配列ループ・操作まとめ
 date: 2021-12-26
-modifieddate: 2023-02-05
+modifiedDate: 2023-02-05
 hero: thumbnail/2018/entry267.png
 pageType: blog
 cateId: 'web-developer'

@@ -1,7 +1,7 @@
 ---
 title: python でスクレイピングして検索上位100件をCVS出力
 date: 2022-03-10
-modifieddate: 2022-03-30
+modifiedDate: 2022-03-30
 hero: thumbnail/2022/entry492.jpg
 pageType: blog
 cateId: web-developer

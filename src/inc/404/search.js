@@ -19,7 +19,7 @@ const SearchResult =  (props) => {
           cateId
           description
           hero
-          pagetype
+          pageType
         }
       }
     }
@@ -151,7 +151,7 @@ const Search = props => {
           onChange={onChange}
           className="box"
         />
-        <SearchResult focus={focus} value={value} pagetype={props.type} killKyle={props.killKyle}/>
+        <SearchResult focus={focus} value={value} pageType={props.type} killKyle={props.killKyle}/>
       </div>
     </SearchBox>
   )

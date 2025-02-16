@@ -1,7 +1,7 @@
 ---
 title: 母であることが辛いなら今すぐ呪縛を手放すこと
 date: 2022-06-05
-modifieddate: 2022-06-10
+modifiedDate: 2022-06-10
 pageType: blog
 cateId: ginneko-tsuredure
 hero: thumbnail/2022/entry505.jpg

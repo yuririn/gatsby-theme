@@ -1,7 +1,7 @@
 ---
 title: WordPress プラグインなしでカスタム投稿のカスタムフィールドにメディアを追加する方法
 date: 2020-11-21
-modifieddate: 2023-12-28
+modifiedDate: 2023-12-28
 hero: thumbnail/2020/entry400.jpg
 pageType: blog
 cateId: cms

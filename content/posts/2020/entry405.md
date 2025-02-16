@@ -1,7 +1,7 @@
 ---
 title: フィリピン最大級水族館 セブオーシャンパーク【人魚に会える】
 date: 2020-11-28
-modifieddate: 2023-03-04
+modifiedDate: 2023-03-04
 hero: thumbnail/2020/entry405.jpg
 pageType: blog
 cateId: 'overseas-freelancing'

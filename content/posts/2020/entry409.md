@@ -1,7 +1,7 @@
 ---
 title: テックスクールに通っただけではプログラマーにはなれないワケ【元エンジニア講師談】
 date: 2020-12-06
-modifieddate: 2022-06-22
+modifiedDate: 2022-06-22
 hero: thumbnail/2020/entry409.jpg
 pageType: blog
 cateId: 'career'

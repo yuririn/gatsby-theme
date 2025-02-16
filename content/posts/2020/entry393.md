@@ -1,7 +1,7 @@
 ---
 title: コピペでOK！CSS セレクトボックス（select option）のカスタマイズ方法
 date: 2020-11-10
-modifieddate: 2025-02-02
+modifiedDate: 2025-02-02
 hero: thumbnail/2020/entry393.png
 pageType: blog
 cateId: 'web-developer'

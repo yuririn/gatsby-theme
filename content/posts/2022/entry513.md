@@ -1,7 +1,7 @@
 ---
 title: プロボノとは？メリットとデメリット【歴2年体験談】
 date: 2022-11-30
-modifieddate: 2023-03-04
+modifiedDate: 2023-03-04
 pageType: blog
 cateId: 'overseas-freelancing'
 hero: thumbnail/2022/entry513.png

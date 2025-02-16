@@ -1,7 +1,7 @@
 ---
 title: ステージング(add)取り消したい！コミット終わらない…救済 GIT コマンドまとめ
 date: 2022-06-12
-modifieddate: 2023-02-04
+modifiedDate: 2023-02-04
 pageType: blog
 cateId: web-developer
 hero: thumbnail/2022/entry507.png

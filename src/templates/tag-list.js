@@ -33,6 +33,8 @@ const tags = ({ pageContext, data, location }) => {
           <h2 className="c-heading--lg">最新記事</h2>
           <ol className="c-grid">
             {posts.map((post, index) => {
+                const { fields, frontmatter } = post
+                const path = `/blogs/${fields.slug}`
               return (
                 <li
                   className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
@@ -40,31 +42,31 @@ const tags = ({ pageContext, data, location }) => {
                   role="article"
                 >
 
-                    <Link to={post.fields.slug} className="p-entryCard__img">
-                      {post.frontmatter.hero ? (
+                    <Link to={path} className="p-entryCard__img">
+                      {frontmatter.hero ? (
                         <Img
-                          source={post.frontmatter.hero}
-                          alt={post.frontmatter.title}
+                          source={frontmatter.hero}
+                          alt={frontmatter.title}
                         />
                       ) : (
                         <Img
                           source="common/dummy.png"
-                          alt={post.frontmatter.title}
+                          alt={frontmatter.title}
                         />
                       )}
                       <div className="p-entryCard__date">
-                        <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                          {post.frontmatter.date}
+                        <time date={frontmatter.date.replace(/\./g, "-")}>
+                          {frontmatter.date}
                         </time>
                       </div>
                     </Link>
-                    <Link to={post.fields.slug} className="p-entryCard__body">
+                    <Link to={path} className="p-entryCard__body">
                       <h3 className="p-entryCard__heading">
-                        {post.frontmatter.title}
+                        {frontmatter.title}
                       </h3>
                     </Link>
                     <div className="p-entryCard__footer">
-                      <AddTagLink tags={post.frontmatter.tags} />
+                      <AddTagLink tags={frontmatter.tags} />
                     </div>
                 </li>
               );
@@ -132,7 +134,7 @@ export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag
     limit: $limit
     skip: $skip
     sort: {frontmatter: {date: DESC}}
-    filter: {frontmatter: {pagetype: {eq: "blog"}, tags: {in: $tag}}}
+    filter: {frontmatter: {pageType: {eq: "blog"}, tags: {in: $tag}}}
   ) {
     totalCount
     nodes {

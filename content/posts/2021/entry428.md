@@ -1,7 +1,7 @@
 ---
 title: pug（旧：Jade）を使い倒して時短マークアップしよう！
 date: 2021-01-10
-modifieddate: 2023-03-02
+modifiedDate: 2023-03-02
 hero: thumbnail/2021/entry428.jpg
 pageType: blog
 cateId: web-developer

@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               tags
               cateId
               hero
-              pagetype
+              pageType
               noindex
               faq
             }
@@ -72,10 +72,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
-    const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
+    const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog")
 
      // 個々のブログ記事生成
     blogPosts.forEach((post, index) => {
+        
         
         const previousPostId = index === 0 ? null : blogPosts[index - 1].id
         const nextPostId =
@@ -194,7 +195,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // 個別ページの生成
     const pagePosts = posts.filter(
       post =>
-        post.frontmatter.pagetype !== "blog"
+        post.frontmatter.pageType !== "blog"
     )
 
     pagePosts.forEach(post => {
@@ -228,6 +229,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 /**
  * @type {import('gatsby').GatsbyNode['onCreateNode']}
+ * 年代別に投稿を整理する
  */
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions
@@ -235,6 +237,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (node.internal.type === `MarkdownRemark`) {
         const pageType = node.frontmatter.pageType;
         const value = createFilePath({ node, getNode, basePath: 'content/posts' })
+        console.log(`Pagetyep :${pageType}`)
         if (pageType === 'blog') {
             createNodeField({
                 name: `slug`,
@@ -285,10 +288,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-      modifieddate: Date @dateformat
+      modifiedDate: Date @dateformat
       tags: [String]
       noindex: Boolean
-      pagetype: String
+      pageType: String
       cateId: String
       hero: String
       faq:[[String]]
@@ -299,13 +302,15 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
   `)
 }
-// 処理回数をカウントする変数を定義
-let processCount = 0;
+
 const fs = require('fs');
 
+/**
+ * onPostBuild > 記事ビルド後の処理
+ * 開発環境では記事にNoindexをつける
+ * 不具合:Basic認証がかけれない。暫定でNoindexで対応
+ */
 exports.onPostBuild = () => {
-    processCount++;
-    console.log('onPostBuild called:', processCount, 'times');
 
     const nodeEnv = process.env.NODE_ENV || 'production';
 

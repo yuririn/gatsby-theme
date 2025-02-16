@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語~投稿テンプレにカテゴリやらキービジュアル（アイキャッチ）追加~
 date: 2020-11-30
-modifieddate: 2021-12-30
+modifiedDate: 2021-12-30
 hero: thumbnail/2020/entry401-v4.jpg
 pageType: blog
 cateId: web-developer

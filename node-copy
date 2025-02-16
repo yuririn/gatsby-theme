@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             hero
             pageType
             noindex
-            modifieddate
+            modifiedDate
             faq
           }
         }
@@ -260,7 +260,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-      modifieddate: Date @dateformat
+      modifiedDate: Date @dateformat
       tags: [String]
       pageType: String
       cateId: String

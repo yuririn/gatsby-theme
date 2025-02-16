@@ -1,7 +1,7 @@
 ---
 title: 【CSSコピペで使える】かわいいボタンデザインコード・コードスニペット集！
 date: 2020-11-14
-modifieddate: 2025-01-26
+modifiedDate: 2025-01-26
 hero: thumbnail/2020/entry396.jpg
 pageType: blog
 cateId: 'web-developer'

@@ -1,7 +1,7 @@
 ---
 title: セブ島で仕事したかったんでXDで退職届を作った話
 date: 2020-06-27
-modifieddate: 2021-01-12
+modifiedDate: 2021-01-12
 hero: thumbnail/2020/entry368.png
 pageType: blog
 cateId: 'career'

@@ -1,7 +1,7 @@
 ---
 title: 【Gulp】EJSを使ってHTMLを量産する
 date: 2021-05-05
-modifieddate: 2022-04-01
+modifiedDate: 2022-04-01
 hero: thumbnail/2021/entry459.jpg
 pageType: blog
 cateId: 'web-developer'

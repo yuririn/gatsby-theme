@@ -1,7 +1,7 @@
 ---
 title: Shopify CLI で GitHub と連携し本番環境にデプロイ・前半
 date: 2022-03-18
-modifieddate: 2022-03-30
+modifiedDate: 2022-03-30
 hero: thumbnail/2022/entry493.png
 pageType: blog
 cateId: cms

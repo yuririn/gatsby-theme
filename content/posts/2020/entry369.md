@@ -1,7 +1,7 @@
 ---
 title: 未経験、不安。30才過ぎてもエンジニア/プログラマー転職はできる
 date: 2020-07-01
-modifieddate: 2023-01-22
+modifiedDate: 2023-01-22
 hero: thumbnail/2020/entry369.jpg
 pageType: blog
 cateId: 'career'

@@ -1,7 +1,7 @@
 ---
 title: 外部フォームブロックでお問い合わせフォーム作成
 date: 2015-12-01
-modifieddate: 2022-04-18
+modifiedDate: 2022-04-18
 hero: thumbnail/2014/entry175.jpg
 pageType: blog
 cateId: 'cms'

@@ -1,7 +1,7 @@
 ---
 title: Looker Studio で GAS で出力したサイトマップを Search Console を統合する
 date: 2022-05-21
-modifieddate: 2025-02-10
+modifiedDate: 2025-02-10
 pageType: blog
 cateId: seo
 hero: thumbnail/2022/entry500.png

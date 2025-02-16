@@ -1,7 +1,7 @@
 ---
 title: セブ島からNew Normalの帰国の仕方教えます（VISA手続き編）
 date: 2020-12-23
-modifieddate: 2021-01-12
+modifiedDate: 2021-01-12
 hero: thumbnail/2020/entry422.jpg
 pageType: blog
 cateId: 'overseas-freelancing'

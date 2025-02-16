@@ -1,7 +1,7 @@
 ---
 title: VS Codeでカンタン！正規表現置換のためのチートシート
 date: 2019-07-21
-modifieddate: 2023-01-21
+modifiedDate: 2023-01-21
 hero: thumbnail/2019/entry336.jpg
 pageType: blog
 cateId: 'web-developer'

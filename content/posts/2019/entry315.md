@@ -1,7 +1,7 @@
 ---
 title: CSS アニメーションで軽量アコーディオンメニュー（コードサンプルあり）
 date: 2019-02-11
-modifieddate: 2022-07-04
+modifiedDate: 2022-07-04
 hero: thumbnail/2019/entry315.jpg
 pageType: blog
 cateId: web-developer

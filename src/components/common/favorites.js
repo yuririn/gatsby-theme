@@ -55,7 +55,7 @@ const Faves = ({ type }) => {
                 date(formatString: "YYYY.MM.DD")
                 title
                 tags
-                pagetype
+                pageType
               }
             }
           }

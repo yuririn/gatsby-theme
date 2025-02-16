@@ -1,7 +1,7 @@
 ---
 title: Gatsbyブログサイト移行物語~個別ページテンプレート作成~
 date: 2020-12-14
-modifieddate: 2022-01-01
+modifiedDate: 2022-01-01
 hero: thumbnail/2020/entry401-v4.jpg
 pageType: blog
 cateId: web-developer

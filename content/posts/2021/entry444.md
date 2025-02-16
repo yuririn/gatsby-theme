@@ -1,7 +1,7 @@
 ---
 title: 【ブログ・SEO対策】リライト記事の選び方
 date: 2021-03-13
-modifieddate: 2022-06-23
+modifiedDate: 2022-06-23
 hero: thumbnail/2021/entry444.png
 pageType: blog
 cateId: 'seo'

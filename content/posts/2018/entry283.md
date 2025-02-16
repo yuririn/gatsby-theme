@@ -1,7 +1,7 @@
 ---
 title: WordPress で自作した機能を plugin 化してまとめると幸せになれた
 date: 2018-08-14
-modifieddate: 2023-01-22
+modifiedDate: 2023-01-22
 hero: thumbnail/2015/entry235.png
 pageType: blog
 cateId: cms

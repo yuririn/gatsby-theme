@@ -1,7 +1,7 @@
 ---
 title: 実務で使える！グローバルメニューホバーアニメーションスニペット集
 date: 2021-03-26
-modifieddate: 2022-05-24
+modifiedDate: 2022-05-24
 hero: thumbnail/2021/entry449.jpg
 pageType: blog
 cateId: 'web-developer'

@@ -1,7 +1,7 @@
 ---
 title: 豚の脳？！セブ島ストリートフードTuslob Buwa（トゥスロブワ）が食べれるレストランに行ってきた
 date: 2021-03-01
-modifieddate: 2023-01-22
+modifiedDate: 2023-01-22
 hero: thumbnail/2021/entry441.jpg
 pageType: blog
 cateId: 'overseas-freelancing'

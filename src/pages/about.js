@@ -21,7 +21,7 @@ const aboutMeta = {
     description:
         "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。",
     date: "2021-05-05",
-    modifieddate: "2021-05-05"
+    modifiedDate: "2021-05-05"
 }
 
 const aboutPost = () => {

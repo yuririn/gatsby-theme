@@ -1,7 +1,7 @@
 ---
 title: CSSの変な仕様あるあるを力一杯列挙してみた
 date: 2019-07-20
-modifieddate: 2023-01-22
+modifiedDate: 2023-01-22
 hero: thumbnail/2019/entry335.png
 pageType: blog
 cateId: web-developer

@@ -1,7 +1,7 @@
 ---
 title: 便利なのに使ってないの？！CSSプロパティ5選
 date: 2020-11-03
-modifieddate: 2022-07-05
+modifiedDate: 2022-07-05
 hero: thumbnail/2020/entry390.jpg
 pageType: blog
 cateId: 'web-developer'

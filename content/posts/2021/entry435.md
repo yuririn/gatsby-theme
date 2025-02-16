@@ -1,7 +1,7 @@
 ---
 title: URL引数を使ってWordPress MWWPフォームの値を自動入力する
 date: 2021-01-24
-modifieddate: 2022-05-24
+modifiedDate: 2022-05-24
 hero: thumbnail/2021/entry435.jpg
 pageType: blog
 cateId: cms

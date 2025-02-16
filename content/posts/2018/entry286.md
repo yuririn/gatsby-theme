@@ -1,7 +1,7 @@
 ---
 title: 脱 jQuery！軽量のスクロール JS・MoveTo が便利
 date: 2018-12-14
-modifieddate: 2022-12-17
+modifiedDate: 2022-12-17
 hero: thumbnail/2018/entry267.png
 pageType: blog
 cateId: 'web-developer'
