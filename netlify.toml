@@ -1,12 +1,3 @@
 [build]
   publish = "public"
   command = "npm run build"
-
-[context.master]
-  NODE_ENV = "production"
-
-[context.deploy]
-  NODE_ENV = "development"
-
-[context.branch-deploy]
-  NODE_ENV = "development"
