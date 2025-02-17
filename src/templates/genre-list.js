@@ -27,7 +27,7 @@ const genre = ({ pageContext, data, location }) => {
     <Layout location={location} title={siteMetadata.title}>
       <div className="p-pageHeader">
         <div className="p-pageHeader__main">
-          <h1 className="p-pageHeader__heading">{cateName}</h1>
+            <h1 className="p-pageHeader__heading" id="keyvisual">{cateName}</h1>
           <p>{cateDescription}</p>
         </div>
         <Img

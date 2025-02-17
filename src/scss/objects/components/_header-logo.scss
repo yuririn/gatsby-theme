@@ -1,0 +1,13 @@
+.c-header-logo{
+    font-size: 1rem;
+    color: var(--header-color);
+    a {
+        color: var(--header-color);
+        text-decoration: none;
+    }
+    svg {
+        margin-top: 4px;
+        display: block;
+        fill: var(--header-color);
+    }
+}

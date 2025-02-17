@@ -86,7 +86,7 @@ const Faves = ({ type }) => {
             return (
               <List
                 item={item.node.frontmatter}
-                url={item.node.fields.slug}
+                url={`/blogs/${item.node.fields.slug}`}
                 key={item.node.fields.slug}
               />
             )

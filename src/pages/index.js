@@ -22,7 +22,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <FirstView />
-      <div className="p-section l-container">
+          <div className="p-section l-container">
         <h2 className="c-heading--lg">最新の記事</h2>
         <ol className="c-grid">
           {posts.map((post, i) => {
