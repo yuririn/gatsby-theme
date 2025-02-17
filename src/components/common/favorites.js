@@ -67,9 +67,10 @@ const Faves = ({ type }) => {
   let posts = []
 
   for (const item of items) {
+
     if (item) {
       const post = allMarkdownRemark.edges.filter(post => {
-        return post.node.fields.slug === `/blogs/entry${item}/`
+        return post.node.fields.slug === `entry${item}`
       })
       // 配列を結合
       posts = [...posts, ...post]
