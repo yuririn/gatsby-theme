@@ -87,7 +87,7 @@ const BlogPostTemplate = ({ data, location }) => {
             data-clarity-region="article"
           >
             <header>
-              <h1 itemProp="headline" className="c-article__heading">
+                <h1 itemProp="headline" className="c-article__heading" id="keyvisual">
                 {post.frontmatter.title}
               </h1>
               <dl className="c-article__date">
