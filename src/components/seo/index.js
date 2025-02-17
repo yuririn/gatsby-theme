@@ -61,6 +61,7 @@ const Seo = ({ data, location }) => {
         )
     }
     const isDev = process.env.NODE_ENV === 'development';
+    console.log(`isDev: ${isDev}`, process.env.NODE_ENV)
     return (
         <>
             {isDev && <meta name="robots" content="noindex, nofollow" />}
