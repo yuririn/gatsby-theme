@@ -309,6 +309,9 @@ const fs = require('fs');
  * 開発環境では記事にNoindexをつける
  * 不具合:Basic認証がかけれない。暫定でNoindexで対応
  */
+const fs = require('fs');
+const path = require('path');
+
 exports.onPostBuild = () => {
 
     const nodeEnv = process.env.NODE_ENV || 'production';
@@ -324,7 +327,7 @@ exports.onPostBuild = () => {
         console.log('Basic Auth ID:', basicAuthId);
         console.log('Basic Auth Pass:', basicAuthPass);
 
-        const headersPath = path.join(__dirname, '/opt/build/repo/public/', '_headers');
+        const headersPath = path.join('/opt/build/repo/public/', '_headers');
         console.log('Headers Path:', headersPath); // デバッグ用
 
         const basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\n*/\n';
@@ -339,7 +342,7 @@ exports.onPostBuild = () => {
             console.log('Headers content:', headersContent); // デバッグ用
 
             // 開発環境でのrobots.txt設定
-            const robotsPath = path.join(__dirname, 'public', 'robots.txt');
+            const robotsPath = path.join('/opt/build/repo/public/', 'robots.txt');
             const robotsContent = 'User-agent: *\nDisallow: /\n';
             fs.writeFileSync(robotsPath, robotsContent, 'utf8');
             console.log('robots.txt file updated');
@@ -349,14 +352,16 @@ exports.onPostBuild = () => {
             console.log('Robots content:', robotsFileContent); // デバッグ用
         } catch (error) {
             if (error.code === 'ENOENT') {
-                // ファイルが存在しない場合は新規作成
+                // ディレクトリが存在しない場合はディレクトリを作成
+                fs.mkdirSync(path.dirname(headersPath), { recursive: true });
                 fs.writeFileSync(headersPath, headersContent, 'utf8');
                 console.log('Created new headers file');
                 console.log('Headers content:', headersContent); // デバッグ用
 
                 // 開発環境でのrobots.txt設定
-                const robotsPath = path.join(__dirname, '/opt/build/repo/public/', 'robots.txt');
+                const robotsPath = path.join('/opt/build/repo/public/', 'robots.txt');
                 const robotsContent = 'User-agent: *\nDisallow: /\n';
+                fs.mkdirSync(path.dirname(robotsPath), { recursive: true });
                 fs.writeFileSync(robotsPath, robotsContent, 'utf8');
                 console.log('robots.txt file updated');
 
