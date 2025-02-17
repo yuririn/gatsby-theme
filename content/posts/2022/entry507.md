@@ -1,7 +1,7 @@
 ---
 title: ステージング(add)取り消したい！コミット終わらない…救済 GIT コマンドまとめ
 date: 2022-06-12
-modifiedDate: 2023-02-04
+modifiedDate: 2025-02-18
 pageType: blog
 cateId: web-developer
 hero: thumbnail/2022/entry507.png
@@ -28,8 +28,12 @@ Gitのコミットやステージングでの取り消し、打ち消し、上�
 
 前提条件として Mac と VS Code、 gitHub を使っています。
 
+ぶっちゃけると一般的に git の操作は Source Tree などの GUI（グラフィカルインターフェイス）を使った方が簡単です。
+
+私はむしろ GUI での操作方法を覚える方がめんどいので基本的にコマンドで git 操作しています。
+
 ## 初心者に一番怖いコンフリクト解決の仕方
-git といえば初心者に一番怖いものはコンフリクトです。
+git といえば初心者に一番怖いものはコンフリクト（競合）です。
 
 コンフリクトしないために初心者が気をつけないといけないことがあります。
 
@@ -68,6 +72,33 @@ VS Codeなどではコンフリクトすると、以下のようにファイル�
 
 <ad location="/blogs/entry507/"></ad>
 
+### まとめてコンフリクト解消（file別も紹介）
+盛大にコンフリクトしてしまった場合、たくさんのコンフリクトを一度に手動で解消するのは面倒です。
+
+<msg txt="そんなのいちいち手動でやってたら寿命も尽きます。<br/>人生は短い、命と落とし恋せよ乙女。"></msg>
+
+大抵は *Accept incoming change(リモートなどから受け入れた変更)* を受け入れたいはず。
+
+なので、まとめてすべて受け入れたい場合は以下コマンドを叩きます。
+
+```bash:title=コマンド
+git checkout --theirs .
+```
+個別file別だったらこんな感じ。
+```bash:title=コマンド
+git checkout --theirs <file>
+```
+
+逆にやっちまって、すべての変更を受け入れたくない場合。
+```bash:title=コマンド
+git checkout --ours .
+```
+
+もちろん個別file別のこともあると思うので
+
+```bash
+git checkout --ours <file>
+```
 ### 【pull request】がリジェクトされた場合
 プルリク送って、リジェクトされた場合の対処法です。
 
@@ -174,6 +205,40 @@ git log --graph --oneline
 
 戻してもファイルのファイルの変更等はそのまま残ります。落ち着いて不要なファイルを削除したり軽いものに差し替えて `git add`  `git commit` と順次行います。
 
+#### 「いつ何をしたか」が大事！いつ、何をしたかをもっと詳しく知りたい場合
+
+`git log --graph --oneline` ではいつの変更か日時が表示されません。なので日時をオプションを付けて表示させます。
+
+```bash:title=コマンド
+git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h%Creset %C(green)(%ad)%Creset %C(auto)%d%Creset %s %C(blue)<%an>%Creset'
+```
+
+ぐおぉおお、コマンドが長い。。。いちいち叩けるか笑<br />
+私は基本的に、npm や node を取り扱う package.json がある環境下で作業しているので以下のとおり登録していおきます。
+
+```bash:title=package.json
+{
+  "scripts": {
+    "graphlog": "git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h%Creset %C(green)(%ad)%Creset %C(auto)%d%Creset %s %C(blue)<%an>%Creset'"
+  }
+  ...
+}
+```
+使い回すなら面倒なので、もしくは ~/bin など、どこかにbash用のコードを保管しておきましょう。
+
+```bash:title=\~/bin/graphlog.sh
+#!/bin/bash
+git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h%Creset %C(green)(%ad)%Creset %C(auto)%d%Creset %s %C(blue)<%an>%Creset'
+```
+パスを通す。
+```bash:title=コマンド
+export PATH=$PATH:~/bin
+source ~/.bashrc
+```
+実行。
+```bash:title=コマンド
+git-graphlog
+```
 ### 【git revert】履歴を残してやり直す
 ```bash:title=コマンド
 git revert ［ハッシュ］
@@ -236,6 +301,12 @@ stash@{0}: WIP on [ブランチ]: ［HEADのコミットハッシュとコミッ
 
 `stash` を戻します。
 
+事前の変更を戻したい場合
+```bash:title=コマンド
+git stash apply
+```
+特定の stash を戻したい場合。
+
 ```bash:title=コマンド
 git stash apply stash@{0}
 ```
@@ -262,6 +333,26 @@ git rebase a-branch
 <h3>分岐したブランチ、トピックブランチについて</h3>
 git ではあるブランチを起点にしてそれをコピーして新しいブランチを作っていきます。この枝分かれしたブランチのことをトピックブランチといいます。
 </div> -->
+### リソース対策：一旦削除した特定のfileやフォルダ を戻したい場合
+このサイトは Gatsby という React 製のSSGサイトで、ページ数が多い状態で、 開発環境モード（`gatsby develop`）を実行するとページ生成が止まる問題が起こりがち。
+
+<msg txt="この状況に長い間沼りましたが、git の機能で解決します。みんな、Git作った人足向けて寝るなよ！"></msg>
+
+Gatsby の develop mode で一番リソース食っているのは MarkDown ファイルの画像生成。コマンド時に、画像をリンクしたを MarkDown ファイルがない状態で開発環境コマンドを叩き、後ほど MarkDown を追加すると問題が起きないハックを最近発見しました。
+
+<msg txt="git で特定のfileやディレクトリを戻すだけです。"></msg>
+
+```bash:title=コマンド
+git checkout <ブランチ名> -- <戻したいfileやディレクトリのパス>
+```
+
+そもそも単に特定箇所の機能追加や記事を更新したいだけならすべてのページに `gatsby develop` を実行する必要はないので、不要fileを一時的に適宜削除して記事を書いています。
+
+
+記事を書き終わったら、一旦削除した記事を戻して push。もしくはあらかじめすべての不要fileを削除し、記事を書き始める前に先程のコマンドで戻す。
+
+
+特定のfileをコミットで用で管理できればいいんですが、以前何やってたか忘れちゃうんで私は基本的にコミット時に全体像を見るため完璧な状態に戻すようにしています。
 
 ## まとめ・Gitコマンドはチートシートを作っておくといざとなると困らない
 今回、git で私が個人的に困って使うコマンドをまとめました。
