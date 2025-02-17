@@ -309,8 +309,6 @@ const fs = require('fs');
  * 開発環境では記事にNoindexをつける
  * 不具合:Basic認証がかけれない。暫定でNoindexで対応
  */
-const fs = require('fs');
-const path = require('path');
 
 exports.onPostBuild = () => {
 
