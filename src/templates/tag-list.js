@@ -18,7 +18,7 @@ const tags = ({ pageContext, data, location }) => {
   return (
     <Layout location={location} title="銀ねこアトリエ">
       <div className="p-pageHeader">
-        <div className="p-pageHeader__main">
+              <div className="p-pageHeader__main" id="keyvisual">
           <h1 className="p-pageHeader__heading">{tag}</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
         </div>

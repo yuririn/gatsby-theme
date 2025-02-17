@@ -1,74 +1,43 @@
-import * as React from "react"
-
-import Logo from "./logo"
-import { Link } from "gatsby"
-import GNav from "./../nav"
+import React, { useEffect } from "react"
 import '../../scss/header.scss'
+import Logo from "../common/svg/logo"
+import Nav from "./global-nav"
 
-import styled from "styled-components"
+const Header = ({ isRoot }) => {
+    useEffect(() => {
+        if (document.getElementById("keyvisual") === null) return
+        const headerElement = document.querySelector(".l-header");
+        const keyvisualElement = document.getElementById("keyvisual");
+        headerElement.classList.add("is-white");
+        const handleScroll = () => {
 
-const Header = ({ title, location }) => {
+            if (!keyvisualElement || !headerElement) return;
+
+            const keyvisualBottom = keyvisualElement.getBoundingClientRect().bottom;
+
+            if (keyvisualBottom <= 0) {
+                headerElement.classList.remove("is-white");
+            } else {
+                headerElement.classList.add("is-white");
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
   return (
-    <HeaderWrapper>
-      {location === "/" ? (
-        <h1 id="header-logo">
-          セブ島海外ノマドエンジニアの日記
-          <Logo />
-        </h1>
-      ) : (
-        <Link to="/" id="header-logo">
-          セブ島海外ノマドエンジニアの日記
-          <Logo />
-        </Link>
-      )}
-      <GNav></GNav>
-    </HeaderWrapper>
+    <header className="l-header is-white">
+        {isRoot ?
+            (<h1 className="c-header-logo"><span>セブ島海外ノマドエンジニアの日記</span><Logo></Logo></h1>)
+            :
+              (<p className="c-header-logo"><a href="/"><span>セブ島海外ノマドエンジニアの日記</span><Logo></Logo></a></p>)
+        }
+          <Nav></Nav>
+    </header>
   )
 }
 
 export default Header
-
-const HeaderWrapper = styled.header`
-    color: #232a41;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    height: 60px;
-    width: 100%;
-    background: var(--header-background);
-    box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
-    padding: 0 20px;
-      backdrop-filter: blur(3px);
-
-    #header-logo {
-    text-decoration: none;
-    color: #264785;
-    display: block;
-    line-height: 1;
-    font-size: 1rem;
-    white-space: nowrap;
-  }
-  #header-logo svg {
-    height: 34px;
-    transition: 0.3s;
-    fill: #264785;
-    display: block;
-    margin-top: 3px;
-  }
-  a#header-logo {
-    display: inline-block;
-      @media screen and (min-width: 768px) {
-        &:hover svg {
-          fill: #1231b8;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-`

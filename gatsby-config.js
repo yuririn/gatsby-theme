@@ -143,7 +143,7 @@ module.exports = {
                 {
                     allSitePage(filter: {
                         path: {
-                            nin: ["/404/", "/404.html", "/dev-404-page/"]
+                            nin: ["/404/", "/404.html", "/dev-404-page/", "/contact/thanks/"]
                         }
                     }) {
                         nodes {

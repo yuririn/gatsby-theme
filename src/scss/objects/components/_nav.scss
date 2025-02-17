@@ -13,9 +13,6 @@
     & > ul >li > span {
             font-family: var( --font-alphabet);
     }
-    &__child a {
-        font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Sans", メイリオ, sans-serif;
-    }
 
     & > ul {
         margin: 0;
@@ -43,7 +40,15 @@
             height: calc(100dvh - 64px);
            flex-direction: column;
             align-items: center;
-            justify-content:space-evenly;
+            justify-content:center;
+            gap: 32px;
+            & > li > a,
+            & > li > span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+            }
             ul {
                 margin: 0;
                 padding: 0;

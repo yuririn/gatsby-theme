@@ -17,7 +17,7 @@ const blogs = ({ pageContext, data, location }) => {
   const posts = data.allMarkdownRemark.nodes
   return (
     <Layout location={location} title="ノマドブログ">
-      <div className="p-pageHeader">
+          <div className="p-pageHeader" id="keyvisual">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">ノマドブログ</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>

@@ -31,7 +31,7 @@ const aboutPost = () => {
   return (
     <Layout location="about" title="銀ねこアトリエ">
       <div className="p-pageHeader">
-        <div className="p-pageHeader__main">
+              <div className="p-pageHeader__main" id="keyvisual">
           <h1 className="p-pageHeader__heading">About Me</h1>
           <p className="p-pageHeader__content">かみーゆってどんな人？</p>
         </div>
