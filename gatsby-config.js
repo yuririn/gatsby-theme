@@ -111,6 +111,7 @@ module.exports = {
         ],
     },
     plugins: [
+        `gatsby-plugin-sass`,
         {
             resolve: `gatsby-plugin-google-tagmanager`,
             options: {

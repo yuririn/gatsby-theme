@@ -1,0 +1,71 @@
+@use '../../utils';
+.c-related-post-card{
+    display: block;
+            margin-bottom: 24px;
+        margin-top: 24px;
+
+        text-decoration: none;
+
+    section {
+            border-radius: 10px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 15px;
+    background: var(--background);
+    overflow: hidden;
+    border: 1px solid var(--color-blue);
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+
+    &__img {
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    &::before {
+        z-index: -1;
+        position: absolute;
+        left: -20px;
+        top: -20px;
+        content: "";
+        display: block;
+        border-color: var(--color-blue) transparent transparent var(--color-blue);
+        border-style: solid;
+        border-width: 50px;
+        transition: 0.3s;
+    }
+    &::after {
+        bottom: 10px;
+        right: 10px;
+        position: absolute;
+        font-size: 1.4rem;
+        letter-spacing: 0.2em;
+        transition: 0.3s;
+        color: var(--color-link);
+        content: "Read More";
+        font-family: var(--font-alphabet);
+        }
+        @include utils.mq(md){
+        &:hover::before {
+            left: 0px;
+            top: 0px;
+        }//media query
+        }//media query
+    }
+    &__main {
+        &__title {
+            font-weight: bold;
+        }
+        time {
+            font-weight: 700;
+        color: var(--color-blue);
+    
+        }
+    }
+    &__description{
+        font-size: 1.4rem;
+    }
+}

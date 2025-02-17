@@ -1,0 +1,104 @@
+@use '../../utils';
+.c-sns-btns {
+    
+    position: relative;
+    @include utils.mqd(md){
+        bottom: 0;
+        position: sticky;
+        z-index: 100;
+        dl {
+            margin-bottom: 8px;
+        }
+        dt {
+            display: none;
+        }
+    }
+    dd {
+        margin-left: 0;
+        display: flex;
+        
+        gap: 16px;
+        @include utils.mq(md){
+            padding: 0 16px;
+            justify-content: center;
+
+        }
+    }
+    @include utils.mq(md){
+        dl {
+            top: 76px;
+            position: sticky;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 24px;
+            
+        }//media query
+        dt {
+                letter-spacing: 0.15em;
+                font-size:2rem;
+        font-family: var(--font-alphabet);
+                white-space: pre;
+            writing-mode: vertical-rl;
+        }
+        dd {
+            padding-left: 0;
+            margin-left: 0;
+            flex-direction: column;
+        }
+    }
+    a {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: #fff;
+        @include utils.mq(md){
+            transition: background-color .3s;
+        }
+
+    }
+    &__fb {
+        border: 1px solid rgb(59, 89, 152);
+        @include utils.mq(md){
+            &:hover {
+                background: rgb(59, 89, 152);
+                svg {
+                filter: invert(100%) brightness(200%) hue-rotate(180deg)
+              }
+            }
+        }
+    }
+    &__tw {
+        border: 1px solid #000;
+        @include utils.mq(md){
+        &:hover {
+            background: #000;
+              svg {
+                filter: invert(100%) brightness(200%) hue-rotate(180deg)
+              }
+
+            }
+            }
+    }
+    &__hateb {
+        border: 1px solid #00a4de;
+        @include utils.mq(md){
+            &:hover {
+                background: #00a4de;
+                svg {
+                    filter: none;
+                    .white{
+                        fill: #00a4de;
+                    }
+                    :not(.white) {
+                        
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -237,7 +237,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (node.internal.type === `MarkdownRemark`) {
         const pageType = node.frontmatter.pageType;
         const value = createFilePath({ node, getNode, basePath: 'content/posts' })
-        console.log(`Pagetyep :${pageType}`)
         if (pageType === 'blog') {
             createNodeField({
                 name: `slug`,

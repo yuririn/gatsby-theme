@@ -1,0 +1,65 @@
+@use './../utils';
+.l-header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    justify-content: space-between;
+    display: flex;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 64px;
+    align-items: center;
+    z-index: 200;
+    transition: background-color .3s;
+    &::before {
+        content: '';
+        height: 64px;
+        box-shadow: var(--shadow);
+        background: var(--header-background);
+        backdrop-filter: blur(3px);
+        width: 100%;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+    @include utils.mq(md){
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    &.is-white {
+        &::before {
+            background: linear-gradient(to top, rgb(0 0 0 /0) 20%, rgb(0 0 0 /.4)80%);
+            box-shadow: none;
+        }
+        @include utils.mq(md){
+            .c-nav span,
+            .c-nav a {
+                color: #fff;
+            }
+        }
+        .c-nav__btn,
+        .c-header-logo {
+            fill: #fff;
+            color: #fff;
+            a {
+                color: #fff;
+            }
+        }
+    }
+}
+body.is-fixed  .l-header.is-white {
+    @include utils.mqd(md){
+        &::before {
+            background: var(--header-background);
+            box-shadow: var(--shadow);
+        }
+        .c-nav__btn.is-active,
+        .c-header-logo {
+            fill: rgb(38, 71, 133);
+            color: rgb(38, 71, 133);
+        }
+    }
+}

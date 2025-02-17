@@ -3,6 +3,7 @@ import * as React from "react"
 import Logo from "./logo"
 import { Link } from "gatsby"
 import GNav from "./../nav"
+import '../../scss/header.scss'
 
 import styled from "styled-components"
 
