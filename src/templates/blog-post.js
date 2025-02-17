@@ -97,13 +97,13 @@ const BlogPostTemplate = ({ data, location }) => {
                     {post.frontmatter.date}
                   </time>
                 </dd>
-                {post.frontmatter.modifieddate ? <dt>メンテナンス日</dt> : ""}
-                {post.frontmatter.modifieddate ? (
+                {post.frontmatter.modifiedDate ? <dt>メンテナンス日</dt> : ""}
+                {post.frontmatter.modifiedDate ? (
                   <dd>
                     <time
-                      date={post.frontmatter.modifieddate.replace(/\./g, "-")}
+                      date={post.frontmatter.modifiedDate.replace(/\./g, "-")}
                     >
-                      {post.frontmatter.modifieddate}
+                      {post.frontmatter.modifiedDate}
                     </time>
                   </dd>
                 ) : (
@@ -219,7 +219,7 @@ export const Head = ({ data, location }) => {
         ogp: ogpSrc,
         thumbnail: thumbnailSrc,
         date: post.frontmatter.date,
-        modifieddate: post.frontmatter.modifieddate,
+        modifiedDate: post.frontmatter.modifiedDate,
         template: 'blog',
         list: list,
         faq: post.frontmatter.faq,
@@ -292,9 +292,9 @@ export const pageQuery = graphql`
         hero
         cateId
         tags
-        pagetype
+        pageType
         faq
-        modifieddate(formatString: "YYYY.MM.DD")
+        modifiedDate(formatString: "YYYY.MM.DD")
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

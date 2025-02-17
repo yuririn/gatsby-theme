@@ -1,3 +1,31 @@
+
+
+const headersConfig = {
+    '/*.html': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/page-data/app-data.json': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/page-data/*': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/static/*': [
+        'cache-control: public, max-age=31536000, immutable'
+    ],
+    '/fonts/*': [
+        'cache-control: public, max-age=31536000, immutable'
+    ],
+    '/sw.js': [
+        'cache-control: public, max-age=0, must-revalidate'
+    ],
+    '/**/*.js': [
+        'cache-control: public, max-age=31536000, immutable'
+    ],
+    '/**/*.css': [
+        'cache-control: public, max-age=31536000, immutable'
+    ]
+};
 module.exports = {
     siteMetadata: {
         ad: {
@@ -95,37 +123,18 @@ module.exports = {
                 disabledFeatures: [`shorthands`, `cloning`],
             },
         },
-        {
-            resolve: 'gatsby-plugin-netlify',
-            options: {
-                headers: {
-                    '/*.html': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/page-data/app-data.json': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/page-data/*': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/static/*': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                    '/fonts/*': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                    '/sw.js': [
-                        'cache-control: public, max-age=0, must-revalidate'
-                    ],
-                    '/**/*.js': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                    '/**/*.css': [
-                        'cache-control: public, max-age=31536000, immutable'
-                    ],
-                }
-            }
-        },
+        process.env.BRANCH === 'develop' ?
+            null : {
+                resolve: 'gatsby-plugin-netlify',
+                options: {
+                    headers: headersConfig,
+                    allPageHeaders: [],
+                    mergeSecurityHeaders: true,
+                    mergeCachingHeaders: true,
+                    transformHeaders: (headers, path) => headers,
+                    generateMatchPathRewrites: true,
+                },
+            },
         {
             resolve: `gatsby-plugin-sitemap`,
             options: {
@@ -182,8 +191,8 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/content/blog`,
-                name: `blog`,
+                path: `${__dirname}/content/posts/`,
+                name: `blogs`,
             },
         },
         {
@@ -322,5 +331,5 @@ module.exports = {
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
-    ],
+    ].filter(Boolean)
 }

@@ -3,9 +3,7 @@ import * as React from "react"
 import Logo from "./logo"
 import { Link } from "gatsby"
 import GNav from "./../nav"
-import '../../scss/embed-header.scss';
 
-// import Search from "../../search/"
 import styled from "styled-components"
 
 const Header = ({ title, location }) => {

@@ -1,3 +1,16 @@
+exports.onPreBuild = ({ reporter }) => {
+    const branch = process.env.BRANCH || 'unknown';
+    let nodeEnv = 'production';
+
+    if (branch === 'develop') {
+        nodeEnv = 'development';
+    }
+
+    // `NODE_ENV`を設定
+    process.env.NODE_ENV = nodeEnv;
+    reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+};
+
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -34,7 +47,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               tags
               cateId
               hero
-              pagetype
+              pageType
               noindex
               faq
             }
@@ -59,44 +72,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
-    const blogPosts = posts.filter(post => post.frontmatter.pagetype === "blog")
+    const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog")
 
-    const adPosts = posts.filter(post => post.frontmatter.pagetype === "ad")
-
+     // 個々のブログ記事生成
     blogPosts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : blogPosts[index - 1].id
-      const nextPostId =
-        index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
+        
+        
+        const previousPostId = index === 0 ? null : blogPosts[index - 1].id
+        const nextPostId =
+            index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
+        createPage({
+            path: `/blogs/${post.fields.slug}/`,
+            component: blogPost,
+            context: {
+                id: post.id,
+                previousPostId,
+                nextPostId,
 
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-          hero: post.frontmatter.hero
-            ? post.frontmatter.hero
-            : "common/dummy.png",
-        },
-      })
-    })
-
-    adPosts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : adPosts[index - 1].id
-      const nextPostId =
-        index === adPosts.length - 1 ? null : adPosts[index + 1].id
-
-      createPage({
-        path: post.fields.slug,
-        component: adPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-          hero: post.frontmatter.hero ? post.frontmatter.hero : "ad/dummy.png",
-        },
-      })
+                hero: post.frontmatter.hero
+                    ? post.frontmatter.hero
+                    : "common/dummy.png",
+            },
+        })
     })
 
     // 記事の分割数
@@ -168,12 +165,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // 重複削除
     tags = [...new Set(tags)]
 
-    let adTags = adPosts.reduce((tags, edge) => {
-      const edgeTags = edge.frontmatter.tags
-      return edgeTags ? tags.concat(edgeTags) : tags
-    }, [])
-    adTags = [...new Set(adTags)]
-
     // タグ
     tags.forEach(item => {
       const tag = item
@@ -201,38 +192,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     })
 
-    // タグ
-    adTags.forEach(item => {
-      const tag = item
-      const tagsCount = adPosts.filter(post =>
-        post.frontmatter.tags.includes(item)
-      ).length
-      const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
-      for (let index = 0; index < numPages; index++) {
-        const pageNumber = index + 1
-        const withPrefix = pageNumber =>
-          pageNumber === 1
-            ? `/choco-blog/tags/${tag}/`
-            : `/choco-blog/tags/${tag}/page/${pageNumber}/`
-        createPage({
-          path: withPrefix(pageNumber),
-          component: adTagList,
-          context: {
-            limit: postsPerPage, //追加
-            skip: index * postsPerPage, //追加
-            current: pageNumber, //追加
-            page: numPages, //追加
-            tag,
-          },
-        })
-      }
-    })
-
     // 個別ページの生成
     const pagePosts = posts.filter(
       post =>
-        post.frontmatter.pagetype !== "blog" &&
-        post.frontmatter.pagetype !== "ad"
+        post.frontmatter.pageType !== "blog"
     )
 
     pagePosts.forEach(post => {
@@ -264,18 +227,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 }
 
+/**
+ * @type {import('gatsby').GatsbyNode['onCreateNode']}
+ * 年代別に投稿を整理する
+ */
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+    const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
+    if (node.internal.type === `MarkdownRemark`) {
+        const pageType = node.frontmatter.pageType;
+        const value = createFilePath({ node, getNode, basePath: 'content/posts' })
+        console.log(`Pagetyep :${pageType}`)
+        if (pageType === 'blog') {
+            createNodeField({
+                name: `slug`,
+                node,
+                value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1'),
+            })
+        } else {
+            createNodeField({
+                name: `slug`,
+                node,
+                value,
+            })
+        }
+    }
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
@@ -312,10 +288,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-      modifieddate: Date @dateformat
+      modifiedDate: Date @dateformat
       tags: [String]
       noindex: Boolean
-      pagetype: String
+      pageType: String
       cateId: String
       hero: String
       faq:[[String]]
@@ -326,3 +302,71 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
   `)
 }
+
+const fs = require('fs');
+
+/**
+ * onPostBuild > 記事ビルド後の処理
+ * 開発環境では記事にNoindexをつける
+ * 不具合:Basic認証がかけれない。暫定でNoindexで対応
+ */
+exports.onPostBuild = () => {
+
+    const nodeEnv = process.env.NODE_ENV || 'production';
+
+    // 環境を確認
+    console.log('Node Environment:', nodeEnv);
+
+    if (nodeEnv === 'development') {
+        const basicAuthId = process.env.BASIC_AUTH_ID || '';
+        const basicAuthPass = process.env.BASIC_AUTH_PASS || '';
+
+        // デバッグ用ログ
+        console.log('Basic Auth ID:', basicAuthId);
+        console.log('Basic Auth Pass:', basicAuthPass);
+
+        const headersPath = path.join(__dirname, 'public', '_headers');
+        console.log('Headers Path:', headersPath); // デバッグ用
+
+        const basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\n*/\n';
+
+        // `_headers` ファイルの内容を全て削除し、Basic認証のみを追加
+        const headersContent = basicAuthHeader;
+
+        try {
+            // 新しい内容を書き戻す
+            fs.writeFileSync(headersPath, headersContent, 'utf8');
+            console.log('Headers file updated');
+            console.log('Headers content:', headersContent); // デバッグ用
+
+            // 開発環境でのrobots.txt設定
+            const robotsPath = path.join(__dirname, 'public', 'robots.txt');
+            const robotsContent = 'User-agent: *\nDisallow: /\n';
+            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+            console.log('robots.txt file updated');
+
+            // デバッグ用にrobots.txtの内容を出力
+            const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
+            console.log('Robots content:', robotsFileContent); // デバッグ用
+        } catch (error) {
+            if (error.code === 'ENOENT') {
+                // ファイルが存在しない場合は新規作成
+                fs.writeFileSync(headersPath, headersContent, 'utf8');
+                console.log('Created new headers file');
+                console.log('Headers content:', headersContent); // デバッグ用
+
+                // 開発環境でのrobots.txt設定
+                const robotsPath = path.join(__dirname, 'public', 'robots.txt');
+                const robotsContent = 'User-agent: *\nDisallow: /\n';
+                fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+                console.log('robots.txt file updated');
+
+                // デバッグ用にrobots.txtの内容を出力
+                const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
+                console.log('Robots content:', robotsFileContent); // デバッグ用
+            } else {
+                console.error('Error updating headers file:', error);
+            }
+        }
+    }
+};

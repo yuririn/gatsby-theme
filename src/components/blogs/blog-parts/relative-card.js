@@ -17,7 +17,7 @@ const RelativeCard = data => {
                 description
                 hero
                 date(formatString: "YYYY.MM.DD")
-                modifieddate(formatString: "YYYY.MM.DD")
+                modifiedDate(formatString: "YYYY.MM.DD")
                 title
               }
             }
@@ -36,7 +36,7 @@ const RelativeCard = data => {
       article.frontmatter.description.length > 60
         ? article.frontmatter.description.substr(0, 60) + "..."
         : article.frontmatter.description
-      const date = article.frontmatter.modifieddate ? article.frontmatter.modifieddate : article.frontmatter.date
+      const date = article.frontmatter.modifiedDate ? article.frontmatter.modifiedDate : article.frontmatter.date
     return (
       <a href={article.fields.slug} className="article-link">
         <section>

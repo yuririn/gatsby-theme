@@ -2,22 +2,13 @@ import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import {siteMetadata} from "../../../gatsby-config"
-import Ad from '../../templates/ad-post';
 
 const BreadCrumbList = ({ type, current = '', cate = '', tag='' }) => {
-  const {ad} = siteMetadata
-  const thisClass = type === `blog` ? 'blog': (type === `ad` ||type === `ad-tag` ? `ad`: '')
   return (
-    <BreadCrumb className={thisClass}>
-      {type === `ad` || type === `ad-tag` ? (
-          <li>
-          <Link to="/choco-blog/">{ad.title}</Link>
-          </li>
-        ) : (
+    <BreadCrumb className="blog">
           <li>
           <Link to="/">銀ねこアトリエ</Link>
           </li>
-        )}
 
         {type === `blog` && (
           <li>
