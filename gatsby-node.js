@@ -324,7 +324,7 @@ exports.onPostBuild = () => {
         console.log('Basic Auth ID:', basicAuthId);
         console.log('Basic Auth Pass:', basicAuthPass);
 
-        const headersPath = path.join(__dirname, 'public', '_headers');
+        const headersPath = path.join(__dirname, '/opt/build/repo/public/', '_headers');
         console.log('Headers Path:', headersPath); // デバッグ用
 
         const basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\n*/\n';
@@ -355,7 +355,7 @@ exports.onPostBuild = () => {
                 console.log('Headers content:', headersContent); // デバッグ用
 
                 // 開発環境でのrobots.txt設定
-                const robotsPath = path.join(__dirname, 'public', 'robots.txt');
+                const robotsPath = path.join(__dirname, '/opt/build/repo/public/', 'robots.txt');
                 const robotsContent = 'User-agent: *\nDisallow: /\n';
                 fs.writeFileSync(robotsPath, robotsContent, 'utf8');
                 console.log('robots.txt file updated');
