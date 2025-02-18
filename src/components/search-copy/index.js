@@ -1,33 +1,39 @@
 import React, { useState, useRef } from "react";
-import SearchInput from "./search-input";
 import SearchResult from "./search-result";
+import SearchInput from './search-input';
 
-const Search = props => {
+const Search = (props) => {
     const [focus, setFocus] = useState(false);
     const [value, setValue] = useState("");
-    const [mode, setMode] = useState("inactive");
     const resultInputRef = useRef(null);
 
     // SearchResultを閉じるハンドラ
     const handleClose = () => {
         setFocus(false);
         setValue("");
-        setMode("inactive");
     };
 
     return (
         <div focus={focus.toString()} className="c-search">
             <SearchInput
+                focus={focus}
+                setFocus={setFocus}
                 value={value}
                 setValue={setValue}
-                setMode={setMode} // setModeを追加
-                getClass="c-search__input"
                 resultInputRef={resultInputRef}
+                getClass="c-search__input"
             />
-            {mode === 'active' && (
-                    <SearchResult></SearchResult>
-                )
-            }
+            {focus && value !== "" && (
+                <SearchResult
+                    focus={focus}
+                    value={value}
+                    setFocus={setFocus}
+                    setValue={setValue}
+                    pageType={props.type}
+                    resultInputRef={resultInputRef}
+                    onClose={handleClose} // 閉じるハンドラを渡す
+                />
+            )}
         </div>
     );
 };

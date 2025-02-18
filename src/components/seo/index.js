@@ -78,9 +78,9 @@ const Seo = ({ data, location }) => {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
             {template &&
                 (<>
-                <link rel="stylesheet" href={`/${template + '-' || '/blog-'}style.css`} />
+                <link rel="stylesheet" href={`/${template + '-'}style.css`} />
                     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" type='text/css'/>
-                    <link rel="preload" href={`/${template + '-' || '/blog-'}style.css`} as="style" />
+                    <link rel="preload" href={`/${template}style.css`} as="style" />
                 </>)
             }
             <meta name="twitter:title" content={pageTitle} />

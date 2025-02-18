@@ -75,9 +75,9 @@
         
         position: fixed;
         left: 0;
-        top: 64px;
+        top: 48px;
         width: 100%;
-        height: calc(100% - 64px);
+        height: calc(100% - 48px);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -100,7 +100,7 @@
                 height: 70dvh;
                 padding: 32px;
                 border-radius: 16px;
-                width: calc(100% - 64px);
+                width: calc(100% - 48px);
             }
             ul {
                 display: flex;
