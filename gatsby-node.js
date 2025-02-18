@@ -44,6 +44,18 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
+    const branchName = process.env.BRANCH || 'unknown-branch';
+
+    if (branchName !== 'master') {
+
+        const authPage = path.resolve('./src/templates/auth.js')
+        // ログインページの生成
+        createPage({
+            path: '/login',
+            component: authPage,
+        });
+    }
+
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const adPost = path.resolve(`./src/templates/ad-post.js`)
@@ -252,17 +264,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     component: contact,
     context: {},
   })
-    const branchName = process.env.BRANCH || 'unknown-branch';
-
-    if (branchName !== 'master') {
-        
-        const authPage = path.resolve('./src/templates/auth.js')
-        // ログインページの生成
-        createPage({
-            path: '/login',
-            component: authPage,
-        });
-    }
 
 }
 

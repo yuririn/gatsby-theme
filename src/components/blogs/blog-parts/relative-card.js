@@ -27,7 +27,7 @@ const RelativeCard = data => {
     `
   )
   let article = allMarkdownRemark.edges.filter(
-    item => item.node.fields.slug === data.id
+    item => item.node.fields.slug === data.slug
   )
 
   if (article.length !== 0) {

@@ -9,8 +9,8 @@ export const AuthPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`process.env.BASIC_AUTH_ID: ${process.env.BASIC_AUTH_ID}`)
-        console.log(`process.env.BASIC_AUTH_PASS: ${process.env.BASIC_AUTH_PASS}`)
+        console.log(`BASIC_AUTH_ID: ${process.env.BASIC_AUTH_ID}`)
+        console.log(`BASIC_AUTH_PASS: ${process.env.BASIC_AUTH_PASS}`)
         const storedUsername = process.env.BASIC_AUTH_ID || 'user'; // ダミーのユーザー名
         const storedPassword = process.env.BASIC_AUTH_PASS || 'pass'; // ダミーのパスワード
         if (username === storedUsername && password === storedPassword) {
