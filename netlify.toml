@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "npm run build && npm run update-headers"
+  command = "npm run build"
 
 [context.master]
   NODE_ENV = "production"

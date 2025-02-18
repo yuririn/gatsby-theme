@@ -14,12 +14,28 @@ exports.onPreBuild = ({ reporter }) => {
     process.env.NODE_ENV = nodeEnv;
     reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
 
-    // 開発環境用の robots.txt の作成
-    if (nodeEnv === 'development') {
-        const robotsPath = path.join('./static/', 'robots.txt');
-        const robotsContent = 'User-agent: *\nDisallow: /\n';
-        fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-        reporter.info('Created robots.txt for development environment');
+    const robotsPath = path.join('./static/', 'robots.txt');
+
+    // ファイルが存在するか確認し、ログを出力
+    if (fs.existsSync(robotsPath)) {
+        // ファイルが存在する場合、その内容を読み取ってログに出力
+        const existingContent = fs.readFileSync(robotsPath, 'utf8');
+        reporter.info('Existing robots.txt content:');
+        reporter.info(existingContent);
+
+        // 上書き確認と処理
+        if (nodeEnv === 'development') {
+            const robotsContent = 'User-agent: *\nDisallow: /\n';
+            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+            reporter.info('Updated robots.txt for development environment');
+        }
+    } else {
+        // ファイルが存在しない場合、新規作成
+        if (nodeEnv === 'development') {
+            const robotsContent = 'User-agent: *\nDisallow: /\n';
+            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+            reporter.info('Created robots.txt for development environment');
+        }
     }
 };
 
