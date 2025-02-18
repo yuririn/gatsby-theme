@@ -21,7 +21,7 @@ const BlogIndex = ({ data, location }) => {
                 <div className="l-container--blog__main">
                     <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
                     <PickUpPosts></PickUpPosts>
-                    <Ad location={location}></Ad>
+                    <Ad location={location} adClass={`u-my--lg`}></Ad>
                     <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
                     <ul className="l-card-container">{
                         posts.map((post, key) => {
@@ -30,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
                         )}
                     </ul>
                     <p className="u-center"><a href="/blogs/" className="c-btn--detail">もっとブログを読む</a></p>
-                    <Ad location={location}></Ad>
+                    <Ad location={location} adClass={`u-my--lg`}></Ad>
                 </div>
                 <SideBar location={location}></SideBar>
             </div>

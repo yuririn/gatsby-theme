@@ -3,7 +3,6 @@
     font-family: var(--font-alphabet);
 }
 .c-heading{
-    
     &--lg{
         text-align: center;
         padding: 16px 16px;
@@ -17,7 +16,9 @@
         border-image: linear-gradient(0deg,var(--font-color) 100%, #0000 0) fill 0 SLASH 0 100vw 0 100vw;
         
         color: var(--background);
+        margin-top: 32px;
         @include utils.mq(md){
+            margin-top: 32px;
             margin-bottom: 32px;
             h2 {
                 font-size: 5.6rem;
@@ -30,7 +31,6 @@
             padding: 16px 32px 16px 0;
             gap: 16px;
             /* または */
-            
         }
         
     }

@@ -51,6 +51,7 @@
   margin-bottom: 24px;
   border-image: linear-gradient(0deg, var(--font-color) 100%, rgba(0, 0, 0, 0) 0) fill 0 // 0 100vw 0 100vw;
   color: var(--background);
+  margin-top: 32px;
 }
 .c-heading--lg h2 {
   line-height: 1;
@@ -59,6 +60,7 @@
 }
 @media screen and (min-width: 768px) {
   .c-heading--lg {
+    margin-top: 32px;
     margin-bottom: 32px;
     border-image: linear-gradient(0deg, var(--font-color) 100%, rgba(0, 0, 0, 0) 0) fill 0 // 0 0 0 100vw;
     width: max-content;
@@ -150,66 +152,6 @@
 }
 .c-footer-nav--sns svg, .c-footer-nav--sns path {
   fill: #fff;
-}
-
-.c-btn--detail {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  line-height: 1;
-  text-align: center;
-  width: 100%;
-  padding: 20px 0px;
-  border: 1px solid var(--color-blue);
-  color: var(--color-blue);
-  border-radius: 5px;
-  letter-spacing: 0.15em;
-  font-size: 1.6rem;
-  overflow: hidden;
-  text-decoration: none;
-  background: var(--background);
-  max-width: 400px;
-}
-@media screen and (min-width: 768px) {
-  .c-btn--detail:hover {
-    color: var(--background);
-  }
-  .c-btn--detail:hover::before {
-    left: 0px;
-  }
-}
-.c-btn--detail::before {
-  transform: skew(-45deg);
-  z-index: -1;
-  transition: 0.3s;
-  position: absolute;
-  content: "";
-  display: block;
-  left: -120%;
-  top: 0px;
-  width: 120%;
-  height: 100%;
-  background: var(--color-blue);
-}
-.c-btn--switch-mode {
-  position: fixed;
-  right: 16px;
-  bottom: 8px;
-  border-radius: 50px;
-  border: 1px solid var(--color-blue);
-  background: linear-gradient(to right, var(--background) 50%, var(--color-blue) 50%);
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  justify-content: space-between;
-  z-index: 100;
-}
-.c-btn--switch-mode svg {
-  fill: var(--color-blue);
-}
-.c-btn--switch-mode svg + svg {
-  fill: var(--background);
 }
 
 .l-sidebar {

@@ -53,8 +53,14 @@
         gap: 16px;
         justify-content: space-between;
         z-index: 100;
+        @include utils.mqd(md){
+            padding: 4px 16px;
+        }
         svg {
             fill: var(--color-blue);
+            @include utils.mqd(md){
+                width: 20px;
+            }
             & + svg {
                 fill: var(--background);
             }

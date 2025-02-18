@@ -5,6 +5,7 @@ import { createGlobalStyle } from "styled-components"
 
 import Header from "./header"
 import Footer from "./footer"
+import ToggleThemeButton from './common/toggle-theme-btn';
 
 
 const Layout = ({ location, title, children }) => {
@@ -12,36 +13,49 @@ const Layout = ({ location, title, children }) => {
   const isRootPath = location.pathname === rootPath
   const isRoot = location.pathname === '/'
 
-  if( typeof window !== "undefined") {
-    const setTheme = newTheme => (document.body.className = newTheme)
-    const mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
-    setTheme(mode)
-  }
-    useEffect(() => {
-    const handleLinkClick = (event) => {
-        const link = event.target.closest('a[href^="#"]:not([href="#"])');
-        if (!link) return;
-
-        event.preventDefault();
-        const targetId = decodeURIComponent(link.getAttribute('href').substring(1)); // URLデコード
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            window.scrollTo({
-                // top: targetElement.getBoundingClientRect().top + window.scrollY - 70, // オフセットを調整
-                top: targetElement.getBoundingClientRect().top + window.scrollY, // オフセットを調整
-                behavior: 'smooth'
-            });
+    const [theme, setTheme] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                return storedTheme;
+            }
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            return prefersDark ? 'dark' : 'light';
         }
+        return 'light'; // デフォルトのテーマ
+    });
+    useEffect(() => {
+        document.body.className = theme;
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    useEffect(() => {
+        const handleLinkClick = (event) => {
+            const link = event.target.closest('a[href^="#"]:not([href="#"])');
+            if (!link) return;
+
+            event.preventDefault();
+            const targetId = decodeURIComponent(link.getAttribute('href').substring(1)); // URLデコード
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.getBoundingClientRect().top + window.scrollY - 70, // オフセットを調整
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        document.addEventListener('click', handleLinkClick);
+
+        return () => {
+            document.removeEventListener('click', handleLinkClick);
+        };
+    }, []);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
     };
-
-    document.addEventListener('click', handleLinkClick);
-
-    return () => {
-        document.removeEventListener('click', handleLinkClick);
-    };
-},[])
-
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
         {!isRoot &&
@@ -53,6 +67,7 @@ const Layout = ({ location, title, children }) => {
         }
         <Header isRoot={isRoot}/>
       <main>{children}</main>
+          <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} /> 
       <Footer title={title} />
     </div>
   )

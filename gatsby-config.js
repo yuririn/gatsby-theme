@@ -97,20 +97,21 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-sass`,
-        {
-            resolve: `gatsby-plugin-google-tagmanager`,
-            options: {
-                id: `GTM-KPH3R92`,
+        process.env.BRANCH !== 'master' ?
+            null :
+            {
+                resolve: `gatsby-plugin-google-tagmanager`,
+                options: {
+                    id: process.env.GTM_ID,
+                },
             },
-        },
         {
             resolve: `gatsby-plugin-lodash`,
             options: {
                 disabledFeatures: [`shorthands`, `cloning`],
             },
         },
-        process.env.BRANCH === 'develop' ?
-            null : {
+        {
                 resolve: 'gatsby-plugin-netlify',
                 options: {
                     headers: headersConfig,
@@ -121,9 +122,11 @@ module.exports = {
                     generateMatchPathRewrites: true,
                 },
             },
-        {
-            resolve: `gatsby-plugin-sitemap`,
-            options: {
+            process.env.BRANCH !== 'master' ?
+            null : {
+         
+                resolve: `gatsby-plugin-sitemap`,
+                options: {
                 query: `
                 {
                     allSitePage(filter: {
@@ -146,6 +149,7 @@ module.exports = {
                 `,
                 resolveSiteUrl: ({ site }) => {
                     return 'https://ginneko-atelier.com';
+                    
                 },
                 resolvePages: ({
                     allSitePage: { nodes: allSitePage },
@@ -171,8 +175,8 @@ module.exports = {
                         priority: priority,
                     }
                 },
+                },
             },
-        },
         `gatsby-plugin-image`,
         {
             resolve: `gatsby-source-filesystem`,
