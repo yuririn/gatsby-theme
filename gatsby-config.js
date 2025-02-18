@@ -149,6 +149,7 @@ module.exports = {
                 `,
                 resolveSiteUrl: ({ site }) => {
                     return 'https://ginneko-atelier.com';
+                    
                 },
                 resolvePages: ({
                     allSitePage: { nodes: allSitePage },
