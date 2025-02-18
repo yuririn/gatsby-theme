@@ -225,6 +225,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     component: contact,
     context: {},
   })
+    const branchName = process.env.BRANCH || 'unknown-branch';
+
+    if (branchName !== 'master') {
+        
+        const authPage = path.resolve('./src/templates/auth.js')
+        // ログインページの生成
+        createPage({
+            path: '/login',
+            component: authPage,
+        });
+    }
+
 }
 
 /**

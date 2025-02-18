@@ -61,7 +61,7 @@ const Seo = ({ data, location }) => {
             <>
                 <title>{pageTitle}</title>
                 <meta name="description" content={pageDescription} />
-                <meta name="robots" content="noindex" />
+                <meta name="robots" content="noindex, nofollow" />
                 {/* {<link href={`/${template + '-' || 'blog-'}style.css`} rel="stylesheet" />} */}
             </>
         )

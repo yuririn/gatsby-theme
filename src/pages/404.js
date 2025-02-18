@@ -70,7 +70,7 @@ const list = [
 return <Seo
     location={location.pathname}
     data={{
-        template: 'page',
+        // template: 'page',
         title: title,
         description: description,
         list: list,

@@ -12,7 +12,7 @@ import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 import { siteMetadata } from "../../gatsby-config"
 
-const blogs = ({ pageContext, data, location }) => {
+const Blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
   const posts = data.allMarkdownRemark.nodes
   return (
@@ -84,7 +84,7 @@ const blogs = ({ pageContext, data, location }) => {
   );
 }
 
-export default blogs
+export default Blogs
 
 export const Head = ({ data, location }) => {
     const list = [

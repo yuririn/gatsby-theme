@@ -515,7 +515,7 @@ export const Head = ({ location }) => {
     return <Seo
         location={location.pathname}
         data={{
-            template: 'blog',
+            // template: 'blog',
             title: title,
             description: description,
             list: list
