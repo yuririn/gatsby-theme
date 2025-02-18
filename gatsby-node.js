@@ -325,8 +325,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 
-const fs = require('fs');
-
 /**
  * onPostBuild > ビルド後の確認。
  */
