@@ -1,5 +1,5 @@
 import * as React from "react";
-import Img from "../img";
+import Img from "../common/img";
 import { Link } from "gatsby"
 import dateReplace from "../../utils/datereplace";
 

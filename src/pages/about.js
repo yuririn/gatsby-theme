@@ -7,7 +7,7 @@ import { Edit } from "../styles/blog-styles/edit"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Img from "../components/img"
+import Img from "../components/common/img"
 import FovoriteList from "../components/common/favorites"
 import { siteMetadata } from "../../gatsby-config"
 

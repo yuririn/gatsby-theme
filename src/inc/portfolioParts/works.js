@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Img from "../../components/img"
+import Img from "../../components/common/img"
 
 import styled from "styled-components"
 

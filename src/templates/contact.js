@@ -4,7 +4,7 @@ import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Img from "../components/img"
+import Img from "../components/common/img"
 import BreadCrumbList from "../components/common/bread-crumb-list"
 
 const contactMeta = {

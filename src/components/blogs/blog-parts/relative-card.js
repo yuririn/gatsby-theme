@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "../../img"
+import Img from "../../common/img"
 import dateReplace from "../../../utils/datereplace"
 const RelativeCard = data => {
   const { allMarkdownRemark } = useStaticQuery(

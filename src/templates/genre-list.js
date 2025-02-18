@@ -1,7 +1,7 @@
 import React from "react"
 
 // Components
-import Img from "../components/img"
+import Img from "../components/common/img"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import AddTagLink from "../components/common/add-tag-link"
