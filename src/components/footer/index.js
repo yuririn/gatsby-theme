@@ -12,7 +12,6 @@ const Footer = ({ title }) => {
             <small>(C) {title}</small>
           </p>
         </div>
-      <a aria-label="戻るボタン" href="#top"></a>
     </FooterWrapper>
   );
 };

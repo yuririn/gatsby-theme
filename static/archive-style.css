@@ -253,8 +253,18 @@
   justify-content: space-between;
   z-index: 100;
 }
+@media screen and (max-width: 767px) {
+  .c-btn--switch-mode {
+    padding: 4px 16px;
+  }
+}
 .c-btn--switch-mode svg {
   fill: var(--color-blue);
+}
+@media screen and (max-width: 767px) {
+  .c-btn--switch-mode svg {
+    width: 20px;
+  }
 }
 .c-btn--switch-mode svg + svg {
   fill: var(--background);
