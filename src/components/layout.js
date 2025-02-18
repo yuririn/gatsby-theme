@@ -10,6 +10,7 @@ import Footer from "./footer"
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
+  const isRoot = location.pathname === '/'
 
   if( typeof window !== "undefined") {
     const setTheme = newTheme => (document.body.className = newTheme)
@@ -43,10 +44,14 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath} id="top">
-      <BaseStyle />
-      <CommonStyle />
-      <GlobalStyle />
-      <Header title={title} location={location.pathname} />
+        {!isRoot &&
+          <>
+            <BaseStyle />
+            <CommonStyle />
+            <GlobalStyle />
+            </>
+        }
+        <Header isRoot={isRoot}/>
       <main>{children}</main>
       <Footer title={title} />
     </div>

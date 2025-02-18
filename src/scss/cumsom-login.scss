@@ -1,0 +1,39 @@
+@use './foundations/foundations';
+@use './layouts/layouts';
+
+.p-custom-login-page {
+    display: grid;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+}
+.p-custom-login-page h2{
+    text-align: center;
+    margin-bottom: 16px;
+}
+.p-custom-login-page section form{
+    gap: 16px;
+    display: grid;
+    text-align: center;
+    align-items: center;
+}
+.p-custom-login-page section form label {
+    display: flex;
+    gap: 16px;
+    font-weight: bold;
+}
+.p-custom-login-page section form input {
+    border: 2px solid #ccc;
+    padding: 4px;
+    font-weight: normal;
+}
+.p-custom-login-page section form button {
+    display: inline-flex;
+    background: orange;
+    font-weight: bold;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    border: none;
+}

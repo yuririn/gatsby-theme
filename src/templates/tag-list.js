@@ -18,7 +18,7 @@ const tags = ({ pageContext, data, location }) => {
   return (
     <Layout location={location} title="銀ねこアトリエ">
       <div className="p-pageHeader">
-        <div className="p-pageHeader__main">
+              <div className="p-pageHeader__main" id="keyvisual">
           <h1 className="p-pageHeader__heading">{tag}</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
         </div>
@@ -30,7 +30,7 @@ const tags = ({ pageContext, data, location }) => {
       </div>
       <BreadCrumbList type="archive" current={tag} />
       <section className="p-section l-container">
-          <h2 className="c-heading--lg">最新記事</h2>
+          <h2 className="p-heading--lg">最新記事</h2>
           <ol className="c-grid">
             {posts.map((post, index) => {
                 const { fields, frontmatter } = post
@@ -84,7 +84,7 @@ const tags = ({ pageContext, data, location }) => {
       </section>
       <aside className="l-container">
         <section className="p-section u-text-center">
-          <h2 className="c-heading--lg">人気のジャンル</h2>
+          <h2 className="p-heading--lg">人気のジャンル</h2>
           <Genre />
         </section>
         <Prof />

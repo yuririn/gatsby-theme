@@ -1,0 +1,113 @@
+@use "../utils";
+
+$md: 250px;
+$lg: 300px;
+$xl: 350px;
+
+.l-container {
+    max-width: #{utils.$u-container}px;
+    padding-left: utils.$u-margin-y;
+    padding-right: utils.$u-margin-y;
+    margin-inline: auto;
+    @include utils.mq(md){
+        padding-left: utils.$u-margin-y-pc;
+        padding-right: utils.$u-margin-y-pc;
+      
+    }//media query
+    &--blog {
+        &__aside {
+            position: relative;
+            &__inner {
+
+                @include utils.mq(md){
+                    position: sticky;
+                    right: 0;
+                    top: 76px;
+                }
+            }
+        }
+        @include utils.mq(md){
+            position: relative;
+            display: grid;
+            gap: 32px;
+            grid-template-columns: 1fr $md;
+        }
+        @include utils.mq(lg){
+            gap: 56px;
+            display: grid;
+            grid-template-columns: 1fr $lg;
+        }
+        @include utils.mq(xl){
+            gap: 56px;
+            display: grid;
+            grid-template-columns: 1fr $xl;
+        }
+    }
+    &-archive {
+        position: relative;
+        &__sticky-area {
+            position: sticky;
+            bottom: 0;
+            background: var(--background);
+            left: 0;
+            padding: 16px;
+            margin-left: -16px;
+            margin-right: -16px;
+            @include utils.mqd(md){
+                padding-right: 160px;
+            }
+            @include utils.mq(md){
+                margin-left: -40px;
+                margin-right: -40px;
+            }
+        }
+    }
+    &--article {
+        @include utils.mqd(md){
+            display: flex;
+            flex-direction: column;
+        .c-article {
+            order: 1;
+        }
+        .c-sns-btns {
+            order: 2;
+        }
+        .l-container--blog__aside {
+            order: 3;
+        }
+    }
+         @include utils.mq(md){
+            justify-content: center;
+            position: relative;
+            display: grid;
+            gap: 32px;
+            margin-inline: auto;
+            grid-template-columns: auto minmax(0, 800px) 250px;
+        }
+         @include utils.mq(lg){
+            grid-template-columns:auto  minmax(0, 800px) $lg;
+        
+        }
+         @include utils.mq(xl){
+            grid-template-columns:auto  minmax(0, 800px) $xl;
+        }
+
+    }
+    &--page {
+         @include utils.mq(md){
+            justify-content: center;
+            position: relative;
+            display: grid;
+            gap: 32px;
+            margin-inline: auto;
+            grid-template-columns: minmax(0, 800px) 250px;
+        }
+         @include utils.mq(lg){
+            grid-template-columns:  minmax(0, 800px) $lg;
+        
+        }
+         @include utils.mq(xl){
+            grid-template-columns: minmax(0, 800px) $xl;
+        }
+    }
+}

@@ -64,7 +64,7 @@ const Lists = ({ category, slug, tags }) => {
   }
   return (
     <RelativeList>
-      <h2 className="c-heading--lg">関連記事</h2>
+      <h2 className="p-heading--lg">関連記事</h2>
       <ol>
         {result.map((item, index) => {
             const slug = `/blogs/${item.node.fields.slug}`

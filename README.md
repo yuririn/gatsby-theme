@@ -9,6 +9,13 @@ issue(追加したい機能ごと) ごとにローカルでブランチを切り
 ブランチの命名ルール
 dev/issue-#(issue番号)-概要
 ex.) dev/issue-7-fixed-image-component
+
+各ラベル
+* Bug ソフトウェアのバグや不具合
+* Feature Request 新しい機能のリクエスト
+* Documentation ドキュメントの追加や修正
+* Enhancement 既存の機能の改善
+* Question 質問や疑問点
   
 ### 記事更新
 ブランチ posting-articles で作成し、リモートの master に pull request でマージ。deploy preview が走るので、止める（記事投稿のみ master で行ってもいいかもしれない。今後運用方法は要検討）。

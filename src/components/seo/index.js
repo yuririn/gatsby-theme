@@ -10,6 +10,12 @@ import React, { useEffect } from 'react'
 import { siteMetadata } from "../../../gatsby-config"
 import JsonLD from "./jsonld"
 
+/**
+ * 
+ * @param {Object} data ページ情報
+ * @param {Object} location　ページスラッグ
+ * @returns ヘッド内二出力するSEO情報
+ */
 const Seo = ({ data, location }) => {
     const { title, description, template, ogp, thumbnail, noindex } = data
     const { siteUrl } = siteMetadata
@@ -55,8 +61,8 @@ const Seo = ({ data, location }) => {
             <>
                 <title>{pageTitle}</title>
                 <meta name="description" content={pageDescription} />
-                <meta name="robots" content="noindex" />
-                {/* <link href={`/${template + '-' || 'blog-'}style.css`} rel="stylesheet" /> */}
+                <meta name="robots" content="noindex, nofollow" />
+                {/* {<link href={`/${template + '-' || 'blog-'}style.css`} rel="stylesheet" />} */}
             </>
         )
     }
@@ -84,10 +90,15 @@ const Seo = ({ data, location }) => {
                 content={siteMetadata?.social?.twitter || ``}
                 />
             {noindex && (<meta name="robots" content="noindex" />)}
-            {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" /> */}
-            {/* <link rel="preload" href={`/${template + '-' || 'blog-'}style.css`} as="style" /> */}
+            {template &&
+                (<>
+                <link rel="stylesheet" href={`/${template + '-' || 'blog-'}style.css`} />
+                    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" type='text/css'/>
+                    <link rel="preload" href={`/${template + '-' || 'blog-'}style.css`} as="style" />
+                </>)
+            }
             <meta name="twitter:title" content={pageTitle} />
             <meta name="twitter:description" content={pageDescription} />
         </>

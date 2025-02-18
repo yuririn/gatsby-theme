@@ -1,17 +1,44 @@
+const fs = require('fs');
+const path = require('path');
+
 exports.onPreBuild = ({ reporter }) => {
     const branch = process.env.BRANCH || 'unknown';
     let nodeEnv = 'production';
 
-    if (branch === 'develop') {
+    // ブランチが master 以外はすべて development とする
+    if (branch !== 'master') {
         nodeEnv = 'development';
     }
 
     // `NODE_ENV`を設定
     process.env.NODE_ENV = nodeEnv;
     reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+
+    const robotsPath = path.join('./static/', 'robots.txt');
+
+    // ファイルが存在するか確認し、ログを出力
+    if (fs.existsSync(robotsPath)) {
+        // ファイルが存在する場合、その内容を読み取ってログに出力
+        const existingContent = fs.readFileSync(robotsPath, 'utf8');
+        reporter.info('Existing robots.txt content:');
+        reporter.info(existingContent);
+
+        // 上書き確認と処理
+        if (nodeEnv === 'development') {
+            const robotsContent = 'User-agent: *\nDisallow: /\n';
+            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+            reporter.info('Updated robots.txt for development environment');
+        }
+    } else {
+        // ファイルが存在しない場合、新規作成
+        if (nodeEnv === 'development') {
+            const robotsContent = 'User-agent: *\nDisallow: /\n';
+            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+            reporter.info('Created robots.txt for development environment');
+        }
+    }
 };
 
-const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -225,6 +252,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     component: contact,
     context: {},
   })
+    const branchName = process.env.BRANCH || 'unknown-branch';
+
+    if (branchName !== 'master') {
+        
+        const authPage = path.resolve('./src/templates/auth.js')
+        // ログインページの生成
+        createPage({
+            path: '/login',
+            component: authPage,
+        });
+    }
+
 }
 
 /**
@@ -237,7 +276,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (node.internal.type === `MarkdownRemark`) {
         const pageType = node.frontmatter.pageType;
         const value = createFilePath({ node, getNode, basePath: 'content/posts' })
-        console.log(`Pagetyep :${pageType}`)
         if (pageType === 'blog') {
             createNodeField({
                 name: `slug`,
@@ -303,70 +341,22 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 
-const fs = require('fs');
-
 /**
- * onPostBuild > 記事ビルド後の処理
- * 開発環境では記事にNoindexをつける
- * 不具合:Basic認証がかけれない。暫定でNoindexで対応
+ * onPostBuild > ビルド後の確認。
  */
+
 exports.onPostBuild = () => {
-
     const nodeEnv = process.env.NODE_ENV || 'production';
-
-    // 環境を確認
     console.log('Node Environment:', nodeEnv);
 
+    // 開発環境の場合に robots.txt の内容をデバッグ出力
     if (nodeEnv === 'development') {
-        const basicAuthId = process.env.BASIC_AUTH_ID || '';
-        const basicAuthPass = process.env.BASIC_AUTH_PASS || '';
-
-        // デバッグ用ログ
-        console.log('Basic Auth ID:', basicAuthId);
-        console.log('Basic Auth Pass:', basicAuthPass);
-
-        const headersPath = path.join(__dirname, 'public', '_headers');
-        console.log('Headers Path:', headersPath); // デバッグ用
-
-        const basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\n*/\n';
-
-        // `_headers` ファイルの内容を全て削除し、Basic認証のみを追加
-        const headersContent = basicAuthHeader;
-
         try {
-            // 新しい内容を書き戻す
-            fs.writeFileSync(headersPath, headersContent, 'utf8');
-            console.log('Headers file updated');
-            console.log('Headers content:', headersContent); // デバッグ用
-
-            // 開発環境でのrobots.txt設定
-            const robotsPath = path.join(__dirname, 'public', 'robots.txt');
-            const robotsContent = 'User-agent: *\nDisallow: /\n';
-            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-            console.log('robots.txt file updated');
-
-            // デバッグ用にrobots.txtの内容を出力
+            const robotsPath = path.join('./public/', 'robots.txt');
             const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
             console.log('Robots content:', robotsFileContent); // デバッグ用
         } catch (error) {
-            if (error.code === 'ENOENT') {
-                // ファイルが存在しない場合は新規作成
-                fs.writeFileSync(headersPath, headersContent, 'utf8');
-                console.log('Created new headers file');
-                console.log('Headers content:', headersContent); // デバッグ用
-
-                // 開発環境でのrobots.txt設定
-                const robotsPath = path.join(__dirname, 'public', 'robots.txt');
-                const robotsContent = 'User-agent: *\nDisallow: /\n';
-                fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-                console.log('robots.txt file updated');
-
-                // デバッグ用にrobots.txtの内容を出力
-                const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
-                console.log('Robots content:', robotsFileContent); // デバッグ用
-            } else {
-                console.error('Error updating headers file:', error);
-            }
+            console.error('Error reading robots.txt file:', error);
         }
     }
 };

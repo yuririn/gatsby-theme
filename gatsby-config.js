@@ -28,21 +28,6 @@ const headersConfig = {
 };
 module.exports = {
     siteMetadata: {
-        ad: {
-            title: `CHOCOっとBLOG`,
-            author: {
-                name: `かみーゆ`,
-                summary: `世界最長ロックダウンをサバイブ後、資金ゼロからフィリピンで起業した海外ノマドエンジニア。Web制作・運用10年以上。手掛けたWebサイトは無数。CHOCOっとBLOGではプログラミングとはあまり関係ないことを綴っていきます。愛するチョコボ（黒ネコ）と4年も離れ、寂しいのでたまには日本に戻りたいです笑。`,
-            },
-            description: `斜め上のお役立ち情報を発信しています。`,
-            siteUrl: `https://ginneko-atelier.com/ad`,
-            image: `https://ginneko-atelier.com/images/newogp.png`,
-            social: {
-                twitter: `lirioL`,
-                instagram: `yurico.k`,
-                youtube: `https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw`,
-            },
-        },
         pickup: ["entry514", "entry521"],
         title: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
         shortName: `銀ねこアトリエ`,
@@ -111,6 +96,7 @@ module.exports = {
         ],
     },
     plugins: [
+        `gatsby-plugin-sass`,
         {
             resolve: `gatsby-plugin-google-tagmanager`,
             options: {
@@ -142,7 +128,7 @@ module.exports = {
                 {
                     allSitePage(filter: {
                         path: {
-                            nin: ["/404/", "/404.html", "/dev-404-page/"]
+                            nin: ["/404/", "/404.html", "/dev-404-page/", "/contact/thanks/", "/login/"]
                         }
                     }) {
                         nodes {
