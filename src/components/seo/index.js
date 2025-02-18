@@ -17,9 +17,12 @@ import JsonLD from "./jsonld"
  * @returns ヘッド内二出力するSEO情報
  */
 const Seo = ({ data, location }) => {
+    // localStorage.removeItem("authenticated");
+    const isDev = process.env.NODE_ENV === 'development';
+    console.log(`isDev: ${isDev}`, process.env.NODE_ENV)
     const { title, description, template, ogp, thumbnail, noindex } = data
     const { siteUrl } = siteMetadata
-    const isRoot = location === '/' || location === '/choco-blog/' ? true : false
+    const isRoot = location === '/' ? true : false
     //タイトルとディスクリプション
     let pageTitle = isRoot ? siteMetadata.title : `${title} - ${siteMetadata.title}`
     let pageDescription = isRoot ? siteMetadata.description : description
@@ -28,30 +31,12 @@ const Seo = ({ data, location }) => {
     const thumbnailImageSrc = thumbnail !== undefined ? `${siteUrl}${thumbnail}` : `${siteUrl}/images/thumbnail.png`
 
     useEffect(() => {
+        if (isDev && typeof window !== "undefined") {
+            checkAuthenticationAndRedirect(location);
+        }
+
         if (typeof window !== 'undefined') {
-            let lazyloadads = false;
-
-            const handleScroll = () => {
-                if (
-                    (document.documentElement.scrollTop !== 0 && lazyloadads === false) ||
-                    (document.body.scrollTop !== 0 && lazyloadads === false)
-                ) {
-                    const ad = document.createElement('script');
-                    ad.setAttribute('data-ad-client', 'ca-pub-2820767970621854');
-                    ad.async = true;
-                    ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-                    const sc = document.getElementsByTagName('script')[0];
-                    sc.parentNode.insertBefore(ad, sc);
-
-                    lazyloadads = true;
-                }
-            };
-
-            window.addEventListener('scroll', handleScroll, true);
-
-            return () => {
-                window.removeEventListener('scroll', handleScroll, true);
-            };
+            setupLazyLoadAds();
         }
     }, []);
 
@@ -66,8 +51,7 @@ const Seo = ({ data, location }) => {
             </>
         )
     }
-    const isDev = process.env.NODE_ENV === 'development';
-    console.log(`isDev: ${isDev}`, process.env.NODE_ENV)
+    
     return (
         <>
             {isDev && <meta name="robots" content="noindex, nofollow" />}
@@ -105,4 +89,58 @@ const Seo = ({ data, location }) => {
     )
 }
 
+// 認証情報の有効期限を確認し、リダイレクトを行う関数
+const checkAuthenticationAndRedirect = (locationPath) => {
+    const checkAuthenticationExpiry = () => {
+        const authData = JSON.parse(localStorage.getItem("authenticated"));
+        if (authData) {
+            const currentTime = new Date().getTime();
+            const expiryTime = 24 * 60 * 60 * 1000; // 24時間 (ミリ秒)
+            if (currentTime - authData.timestamp > expiryTime) {
+                localStorage.removeItem("authenticated");
+                return false; // 認証情報が期限切れ
+            }
+            return true; // 認証情報が有効
+        }
+        return false; // 認証情報が存在しない
+    };
+
+    const isAuthenticated = checkAuthenticationExpiry();
+    const isOnLoginPage = locationPath === '/login/';
+
+    if (!isAuthenticated && !isOnLoginPage) {
+        window.location.href = "/login/";
+    }
+
+    if (isAuthenticated && isOnLoginPage) {
+        window.location.href = "/";
+    }
+};
+
+// 広告の遅延読み込みを設定する関数
+const setupLazyLoadAds = () => {
+    let lazyloadads = false;
+
+    const handleScroll = () => {
+        if (
+            (document.documentElement.scrollTop !== 0 && lazyloadads === false) ||
+            (document.body.scrollTop !== 0 && lazyloadads === false)
+        ) {
+            const ad = document.createElement('script');
+            ad.setAttribute('data-ad-client', 'ca-pub-2820767970621854');
+            ad.async = true;
+            ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+            const sc = document.getElementsByTagName('script')[0];
+            sc.parentNode.insertBefore(ad, sc);
+
+            lazyloadads = true;
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll, true);
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll, true);
+    };
+};
 export default Seo
