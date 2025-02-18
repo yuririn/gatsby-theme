@@ -435,7 +435,7 @@ const aboutPost = () => {
 
         <Sidebar>
           <section className="p-section">
-            <h2 className="c-heading--lg--side">ジャンル</h2>
+            <h2 className="p-heading--lg--side">ジャンル</h2>
             <ul className="sideCateList">
               {siteMetadata.category.map(item => {
                 return (

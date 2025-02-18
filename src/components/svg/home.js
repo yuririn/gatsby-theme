@@ -2,6 +2,10 @@
 
 import * as React from "react";
 
+/**
+ * 
+ * @returns 家のアイコン
+ */
 const HomeLogo = () => (<svg
     aria-hidden="true"
     focusable="false"

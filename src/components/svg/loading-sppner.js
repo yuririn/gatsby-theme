@@ -1,4 +1,8 @@
 import * as React from "react"
+/**
+ * 
+ * @returns ローディングアイコン
+ */
 const LoadingSpinner = () => (
     <svg width="58" height="58" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fill-rule="evenodd">

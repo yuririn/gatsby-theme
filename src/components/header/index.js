@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import '../../scss/header.scss'
-import Logo from "../common/svg/logo"
+import Logo from "../svg/logo"
 import Nav from "./global-nav"
 
 const Header = ({ isRoot }) => {

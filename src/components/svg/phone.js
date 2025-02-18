@@ -1,4 +1,8 @@
 import * as React from "react"
+/**
+ * 
+ * @returns 拡声器のアイコン
+ */
 const Phone = () => (<svg
     aria-hidden="true"
     focusable="false"

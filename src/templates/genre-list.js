@@ -37,7 +37,7 @@ const genre = ({ pageContext, data, location }) => {
       </div>
       <BreadCrumbList type="blog" current={cateName}/>
         <section className="p-section l-container">
-          <h2 className="c-heading--lg">最新記事</h2>
+          <h2 className="p-heading--lg">最新記事</h2>
           <ol className="c-grid">
             {edges.map(({ node }) => {
                 const path = `/blogs/${node.fields.slug}`
@@ -82,7 +82,7 @@ const genre = ({ pageContext, data, location }) => {
         </section>
         <aside className="l-container">
         <section className="p-section u-text-center">
-          <h2 className="c-heading--lg">人気のジャンル</h2>
+          <h2 className="p-heading--lg">人気のジャンル</h2>
           <Genre />
         </section>
         <Prof />
