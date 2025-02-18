@@ -8,6 +8,7 @@ import FirstView from "../components/top-first-view"
 import Post from "../components/posts/posts"
 import PickUpPosts from "../components/pickup-posts"
 import SideBar from "../components/sidebar"
+import Ad from "../components/common/ad"
 
 const BlogIndex = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -18,10 +19,10 @@ const BlogIndex = ({ data, location }) => {
             <FirstView></FirstView>
             <div className="l-section l-container--blog">
                 <div className="l-container--blog__main">
-                    <header className="p-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
+                    <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
                     <PickUpPosts></PickUpPosts>
-                    {/* <Ad location={location}></Ad> */}
-                    <header className="p-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
+                    <Ad location={location}></Ad>
+                    <header className="c-heading--lg"><h2>Latest</h2><p>新着記事</p></header>
                     <ul className="l-card-container">{
                         posts.map((post, key) => {
                             return <Post post={post} key={key}></Post>
@@ -29,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
                         )}
                     </ul>
                     <p className="u-center"><a href="/blogs/" className="c-btn--detail">もっとブログを読む</a></p>
-                    {/* <Ad location={location}></Ad> */}
+                    <Ad location={location}></Ad>
                 </div>
                 <SideBar location={location}></SideBar>
             </div>
