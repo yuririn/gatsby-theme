@@ -12,7 +12,8 @@ export const AuthPage = () => {
         const storedUsername = process.env.BASIC_AUTH_ID || 'user'; // ダミーのユーザー名
         const storedPassword = process.env.BASIC_AUTH_PASS || 'pass'; // ダミーのパスワード
         if (username === storedUsername && password === storedPassword) {
-            localStorage.setItem("authenticated", "true");
+            const timestamp = new Date().getTime(); // 現在のタイムスタンプを取得
+            localStorage.setItem("authenticated", JSON.stringify({ value: "true", timestamp: timestamp }));
             navigate('/');
         } else {
             alert("Invalid credentials");

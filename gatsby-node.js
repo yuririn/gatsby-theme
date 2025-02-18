@@ -1,18 +1,19 @@
 const fs = require('fs');
 const path = require('path');
-
 exports.onPreBuild = ({ reporter }) => {
     const branch = process.env.BRANCH || 'unknown';
     let nodeEnv = 'production';
-
+    
     // ブランチが master 以外はすべて development とする
     if (branch !== 'master') {
         nodeEnv = 'development';
     }
-
+    
     // `NODE_ENV`を設定
     process.env.NODE_ENV = nodeEnv;
     reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+    console.log(`BASIC_AUTH_ID: ${process.env.BASIC_AUTH_ID}`)
+    console.log(`BASIC_AUTH_PASS: ${process.env.BASIC_AUTH_PASS}`)
 
     const robotsPath = path.join('./static/', 'robots.txt');
 
@@ -43,6 +44,18 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
+
+    const branchName = process.env.BRANCH || 'unknown-branch';
+
+    if (branchName !== 'master') {
+
+        const authPage = path.resolve('./src/templates/auth.js')
+        // ログインページの生成
+        createPage({
+            path: '/login',
+            component: authPage,
+        });
+    }
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
@@ -252,17 +265,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     component: contact,
     context: {},
   })
-    const branchName = process.env.BRANCH || 'unknown-branch';
-
-    if (branchName !== 'master') {
-        
-        const authPage = path.resolve('./src/templates/auth.js')
-        // ログインページの生成
-        createPage({
-            path: '/login',
-            component: authPage,
-        });
-    }
 
 }
 
@@ -349,14 +351,11 @@ exports.onPostBuild = () => {
     const nodeEnv = process.env.NODE_ENV || 'production';
     console.log('Node Environment:', nodeEnv);
 
-    // 開発環境の場合に robots.txt の内容をデバッグ出力
-    if (nodeEnv === 'development') {
-        try {
-            const robotsPath = path.join('./public/', 'robots.txt');
-            const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
-            console.log('Robots content:', robotsFileContent); // デバッグ用
-        } catch (error) {
-            console.error('Error reading robots.txt file:', error);
-        }
+    try {
+        const robotsPath = path.join('./public/', 'robots.txt');
+        const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
+        console.log('Robots content:', robotsFileContent); // デバッグ用
+    } catch (error) {
+        console.error('Error reading robots.txt file:', error);
     }
 };
