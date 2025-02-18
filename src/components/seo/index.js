@@ -91,30 +91,30 @@ const Seo = ({ data, location }) => {
 
 // 認証情報の有効期限を確認し、リダイレクトを行う関数
 const checkAuthenticationAndRedirect = (locationPath) => {
-    // const checkAuthenticationExpiry = () => {
-    //     const authData = JSON.parse(localStorage.getItem("authenticated"));
-    //     if (authData) {
-    //         const currentTime = new Date().getTime();
-    //         const expiryTime = 24 * 60 * 60 * 1000; // 24時間 (ミリ秒)
-    //         if (currentTime - authData.timestamp > expiryTime) {
-    //             localStorage.removeItem("authenticated");
-    //             return false; // 認証情報が期限切れ
-    //         }
-    //         return true; // 認証情報が有効
-    //     }
-    //     return false; // 認証情報が存在しない
-    // };
+    const checkAuthenticationExpiry = () => {
+        const authData = JSON.parse(localStorage.getItem("authenticated"));
+        if (authData) {
+            const currentTime = new Date().getTime();
+            const expiryTime = 24 * 60 * 60 * 1000; // 24時間 (ミリ秒)
+            if (currentTime - authData.timestamp > expiryTime) {
+                localStorage.removeItem("authenticated");
+                return false; // 認証情報が期限切れ
+            }
+            return true; // 認証情報が有効
+        }
+        return false; // 認証情報が存在しない
+    };
 
-    // const isAuthenticated = checkAuthenticationExpiry();
-    // const isOnLoginPage = locationPath === '/login/';
+    const isAuthenticated = checkAuthenticationExpiry();
+    const isOnLoginPage = locationPath === '/login/';
 
-    // if (!isAuthenticated && !isOnLoginPage) {
-    //     window.location.href = "/login/";
-    // }
+    if (!isAuthenticated && !isOnLoginPage) {
+        window.location.href = "/login/";
+    }
 
-    // if (isAuthenticated && isOnLoginPage) {
-    //     window.location.href = "/";
-    // }
+    if (isAuthenticated && isOnLoginPage) {
+        window.location.href = "/";
+    }
 };
 
 // 広告の遅延読み込みを設定する関数
