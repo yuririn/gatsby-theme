@@ -14,12 +14,15 @@ const Layout = ({ location, title, children }) => {
   const isRoot = location.pathname === '/'
 
     const [theme, setTheme] = useState(() => {
-        const storedTheme = localStorage.getItem('theme');
-        if (storedTheme) {
-            return storedTheme;
+        if (typeof window !== 'undefined') {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                return storedTheme;
+            }
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            return prefersDark ? 'dark' : 'light';
         }
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
+        return 'light'; // デフォルトのテーマ
     });
 
     useEffect(() => {
