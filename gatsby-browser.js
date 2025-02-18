@@ -19,25 +19,25 @@ export const onRouteUpdate = ({ location }) => {
 };
 
 export const onInitialClientRender = () => {
-    // localStorage.removeItem("authenticated");
-    const branchName = process.env.BRANCH || 'unknown-branch';
+    // // localStorage.removeItem("authenticated");
+    // const branchName = process.env.BRANCH || 'unknown-branch';
     
-    if (branchName !== 'master') {
-        if (typeof window !== "undefined") {
-            const isAuthenticated = localStorage.getItem("authenticated") === "true";
-            const isOnLoginPage = window.location.pathname === "/login/";
+    // if (branchName !== 'master') {
+    //     if (typeof window !== "undefined") {
+    //         const isAuthenticated = localStorage.getItem("authenticated") === "true";
+    //         const isOnLoginPage = window.location.pathname === "/login/";
 
-            // 認証されていない場合にリダイレクト
-            if (!isAuthenticated && !isOnLoginPage) {
-                window.location.href = "/login/";
-            }
+    //         // 認証されていない場合にリダイレクト
+    //         if (!isAuthenticated && !isOnLoginPage) {
+    //             window.location.href = "/login/";
+    //         }
 
-            // 認証されている場合にホームページにリダイレクト
-            if (isAuthenticated && isOnLoginPage) {
-                window.location.href = "/";
-            }
-        }
-    }
+    //         // 認証されている場合にホームページにリダイレクト
+    //         if (isAuthenticated && isOnLoginPage) {
+    //             window.location.href = "/";
+    //         }
+    //     }
+    // }
 };
 
 

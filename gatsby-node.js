@@ -1,17 +1,28 @@
+const fs = require('fs');
+const path = require('path');
+
 exports.onPreBuild = ({ reporter }) => {
     const branch = process.env.BRANCH || 'unknown';
     let nodeEnv = 'production';
 
-    if (branch === 'develop') {
+    // ブランチが master 以外はすべて development とする
+    if (branch !== 'master') {
         nodeEnv = 'development';
     }
 
     // `NODE_ENV`を設定
     process.env.NODE_ENV = nodeEnv;
     reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+
+    // 開発環境用の robots.txt の作成
+    if (nodeEnv === 'development') {
+        const robotsPath = path.join('./static/', 'robots.txt');
+        const robotsContent = 'User-agent: *\nDisallow: /\n';
+        fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+        reporter.info('Created robots.txt for development environment');
+    }
 };
 
-const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -317,70 +328,21 @@ exports.createSchemaCustomization = ({ actions }) => {
 const fs = require('fs');
 
 /**
- * onPostBuild > 記事ビルド後の処理
- * 開発環境では記事にNoindexをつける
- * 不具合:Basic認証がかけれない。暫定でNoindexで対応
+ * onPostBuild > ビルド後の確認。
  */
 
 exports.onPostBuild = () => {
-
     const nodeEnv = process.env.NODE_ENV || 'production';
-
-    // 環境を確認
     console.log('Node Environment:', nodeEnv);
 
+    // 開発環境の場合に robots.txt の内容をデバッグ出力
     if (nodeEnv === 'development') {
-        const basicAuthId = process.env.BASIC_AUTH_ID || '';
-        const basicAuthPass = process.env.BASIC_AUTH_PASS || '';
-
-        // デバッグ用ログ
-        console.log('Basic Auth ID:', basicAuthId);
-        console.log('Basic Auth Pass:', basicAuthPass);
-
-        const headersPath = path.join('/opt/build/repo/public/', '_headers');
-        console.log('Headers Path:', headersPath); // デバッグ用
-
-        const basicAuthHeader = '/*\nBasic-Auth: ' + basicAuthId + ':' + basicAuthPass + '\n*/\n';
-
-        // `_headers` ファイルの内容を全て削除し、Basic認証のみを追加
-        const headersContent = basicAuthHeader;
-
         try {
-            // 新しい内容を書き戻す
-            fs.writeFileSync(headersPath, headersContent, 'utf8');
-            console.log('Headers file updated');
-            console.log('Headers content:', headersContent); // デバッグ用
-
-            // 開発環境でのrobots.txt設定
-            const robotsPath = path.join('/opt/build/repo/public/', 'robots.txt');
-            const robotsContent = 'User-agent: *\nDisallow: /\n';
-            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-            console.log('robots.txt file updated');
-
-            // デバッグ用にrobots.txtの内容を出力
+            const robotsPath = path.join('./public/', 'robots.txt');
             const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
             console.log('Robots content:', robotsFileContent); // デバッグ用
         } catch (error) {
-            if (error.code === 'ENOENT') {
-                // ディレクトリが存在しない場合はディレクトリを作成
-                fs.mkdirSync(path.dirname(headersPath), { recursive: true });
-                fs.writeFileSync(headersPath, headersContent, 'utf8');
-                console.log('Created new headers file');
-                console.log('Headers content:', headersContent); // デバッグ用
-
-                // 開発環境でのrobots.txt設定
-                const robotsPath = path.join('/opt/build/repo/public/', 'robots.txt');
-                const robotsContent = 'User-agent: *\nDisallow: /\n';
-                fs.mkdirSync(path.dirname(robotsPath), { recursive: true });
-                fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-                console.log('robots.txt file updated');
-
-                // デバッグ用にrobots.txtの内容を出力
-                const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
-                console.log('Robots content:', robotsFileContent); // デバッグ用
-            } else {
-                console.error('Error updating headers file:', error);
-            }
+            console.error('Error reading robots.txt file:', error);
         }
     }
 };
