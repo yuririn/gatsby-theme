@@ -30,12 +30,14 @@ export const onRenderBody = ({ setHeadComponents }) => {
               };
 
               const isAuthenticated = checkAuthenticationExpiry();
-              const isOnLoginPage = window.location.pathname === "/login/";
+              const isOnLoginPage = window.location.pathname.includes("/login");
 
+              // 認証されていない場合にリダイレクト
               if (!isAuthenticated && !isOnLoginPage) {
                 window.location.href = "/login/";
               }
 
+              // 認証されている場合にホームページにリダイレクト
               if (isAuthenticated && isOnLoginPage) {
                 window.location.href = "/";
               }
