@@ -18,7 +18,7 @@ const PagePostTemplate = ({ data, location }) => {
           <BreadCrumbList current={post.frontmatter.title} />
         </div>
         <article className="l-container--md">
-          <header>
+        <header id="keyvisual">
             <div>
               <h1 className="c-article__heading">{post.frontmatter.title}</h1>
             </div>

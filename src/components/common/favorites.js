@@ -79,14 +79,14 @@ const Faves = ({ type }) => {
 
   return (
     <section className="p-section">
-      <h2 className="c-heading--lg">{title}</h2>
+      <h2 className="p-heading--lg">{title}</h2>
       <Favorite>
         <ol className="c-grid add-numbering">
           {posts.map(item => {
             return (
               <List
                 item={item.node.frontmatter}
-                url={item.node.fields.slug}
+                url={`/blogs/${item.node.fields.slug}`}
                 key={item.node.fields.slug}
               />
             )

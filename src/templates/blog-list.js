@@ -12,12 +12,12 @@ import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
 import { siteMetadata } from "../../gatsby-config"
 
-const blogs = ({ pageContext, data, location }) => {
+const Blogs = ({ pageContext, data, location }) => {
   const { current, page } = pageContext
   const posts = data.allMarkdownRemark.nodes
   return (
     <Layout location={location} title="ノマドブログ">
-      <div className="p-pageHeader">
+          <div className="p-pageHeader" id="keyvisual">
         <div className="p-pageHeader__main">
           <h1 className="p-pageHeader__heading">ノマドブログ</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
@@ -30,7 +30,7 @@ const blogs = ({ pageContext, data, location }) => {
       </div>
       <BreadCrumbList type="blogs" current="ノマドブログ" />
       <section className="p-section l-container">
-        <h2 className="c-heading--lg">最新記事</h2>
+        <h2 className="p-heading--lg">最新記事</h2>
         <ol className="c-grid">
           {posts.map((post, index) => {
               const { fields, frontmatter } = post
@@ -75,7 +75,7 @@ const blogs = ({ pageContext, data, location }) => {
       </section>
       <aside className="l-container">
         <section className="p-section u-text-center">
-          <h2 className="c-heading--lg">人気のジャンル</h2>
+          <h2 className="p-heading--lg">人気のジャンル</h2>
           <Genre />
         </section>
         <Prof />
@@ -84,7 +84,7 @@ const blogs = ({ pageContext, data, location }) => {
   );
 }
 
-export default blogs
+export default Blogs
 
 export const Head = ({ data, location }) => {
     const list = [

@@ -16,7 +16,7 @@ import Sns from "../components/blogs/sns"
 import Prof from "../components/blogs/small-prof"
 import Toc from "../components/blogs/topic"
 import Kyle from "../components/blogs/blog-parts/kyle"
-import Sidebar from "../components/blogs/sidebar"
+import Sidebar from "../components/sidebar"
 import Genre from "../components/common/genre"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
@@ -87,7 +87,7 @@ const BlogPostTemplate = ({ data, location }) => {
             data-clarity-region="article"
           >
             <header>
-              <h1 itemProp="headline" className="c-article__heading">
+                <h1 itemProp="headline" className="c-article__heading" id="keyvisual">
                 {post.frontmatter.title}
               </h1>
               <dl className="c-article__date">
@@ -168,7 +168,7 @@ const BlogPostTemplate = ({ data, location }) => {
           ></RelatedList>
           <Ad location={location.pathname}></Ad>
           <section className="p-section u-text-center">
-            <h2 className="c-heading--lg">人気のジャンル</h2>
+            <h2 className="p-heading--lg">人気のジャンル</h2>
             <Genre />
           </section>
         </aside>

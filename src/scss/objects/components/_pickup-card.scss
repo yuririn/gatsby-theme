@@ -1,0 +1,82 @@
+@use './../../utils';
+.c-pickup-card {
+    display: flex;
+        gap: 16px;
+        flex-direction: column;
+    @include utils.mq(md){
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+      
+    }//media query
+    a {
+        color: var(--color-blue);
+        text-decoration: none;
+    }
+    &__sub-title {
+        width: 100%;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto auto 1fr;
+        font-size: 1.4rem;
+        gap: 8px;
+        @include utils.mq(md){
+            gap: 16px;
+            font-size: 1.6rem;
+        }
+        span {
+            font-size: 1.8rem;
+            font-family: var(--font-alphabet);
+            @include utils.mq(md){
+                font-size: 3rem;
+            }
+        }
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 100%;
+            background: var(--font-color);
+        }
+    }
+    &__img {
+        @include utils.mq(md){
+        width: 40%;
+        }
+        .gatsby-image-wrapper {
+            @include utils.cardimg()
+        }
+        
+        
+    }
+    @include utils.mq(md){
+        &:hover {
+            .gatsby-image-wrapper {
+               @include utils.cardimg-hover();
+            }
+        }
+    }
+    &__heading {
+        margin-bottom: 8px;
+        @include utils.mq(lg){
+            font-size: var(--font-lg);
+        }
+    }
+    &__date {
+        font-family: var(--font-alphabet);
+        margin-bottom: 6px;
+        display: block;
+        text-align: right;
+    }
+    &__main {
+        @include utils.mqd(md){
+        font-size: 1.4rem;
+        }
+        @include utils.mq(md){
+        width: calc(59% - 16px);
+            display: grid;
+            grid-template-rows: 1fr auto;
+        }
+    }
+}

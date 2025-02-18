@@ -245,7 +245,7 @@ const contactTemplate = ({ data, location }) => {
       <div className="l-main_contents">
         <div className="p-pageHeader">
           <div className="p-pageHeader__main">
-            <h1 className="p-pageHeader__heading">Contact</h1>
+                <h1 className="p-pageHeader__heading" id="keyvisual">Contact</h1>
             <p className="p-pageHeader__content">お問い合わせ</p>
           </div>
           <Img source="common/contact.jpg" className="p-pageHeader__img" />

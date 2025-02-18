@@ -1,0 +1,56 @@
+@use "sass:map";
+
+// font-family
+$f-basic-font: "Noto Sans JP", sans-serif;
+
+//ユニット
+$unit: 8px;
+$u-margin-y: 24px;
+$u-margin-y-pc: $unit*5;
+$u-container: 1080;
+
+
+$line-height: 2;
+$breakpoints: (
+  "sm": 425,
+  "md": 768,
+  "lg": $u-container,
+  "xl": 1366,
+);
+
+@mixin mq($breakpoint: "md") {
+  @media screen and (min-width: #{map.get($breakpoints, $breakpoint)}px) {
+    @content;
+  }
+}
+@mixin mqd($breakpoint: "md") {
+  @media screen and (max-width: #{map.get($breakpoints, $breakpoint) - 1}px) {
+    @content;
+  }
+}
+
+// medium 500,bold 700
+@mixin font($weight: 400) {
+  font-family: $f-basic-font;
+  font-weight: $weight;
+}
+
+@mixin cardimg(){
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 6px rgb(0 0 0 / .3);
+    transition: .3s;
+    display: block;
+    img {
+        transition: .5s;
+    }
+
+}
+@mixin cardimg-hover(){
+    img {
+        opacity: 0.5!important;
+        scale: 1.2;
+        rotate: -5deg;
+    }
+}

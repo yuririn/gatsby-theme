@@ -177,7 +177,7 @@ export const CommonStyle = createGlobalStyle`
     text-align: center;
   }
 
-  .c-heading--lg, .c-heading--xl__sub {
+  .p-heading--lg, .c-heading--xl__sub {
     font-weight: 700;
     text-align: center;
     margin-bottom: 30px;

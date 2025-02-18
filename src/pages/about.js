@@ -31,7 +31,7 @@ const aboutPost = () => {
   return (
     <Layout location="about" title="銀ねこアトリエ">
       <div className="p-pageHeader">
-        <div className="p-pageHeader__main">
+              <div className="p-pageHeader__main" id="keyvisual">
           <h1 className="p-pageHeader__heading">About Me</h1>
           <p className="p-pageHeader__content">かみーゆってどんな人？</p>
         </div>
@@ -435,7 +435,7 @@ const aboutPost = () => {
 
         <Sidebar>
           <section className="p-section">
-            <h2 className="c-heading--lg--side">ジャンル</h2>
+            <h2 className="p-heading--lg--side">ジャンル</h2>
             <ul className="sideCateList">
               {siteMetadata.category.map(item => {
                 return (
@@ -515,7 +515,7 @@ export const Head = ({ location }) => {
     return <Seo
         location={location.pathname}
         data={{
-            template: 'blog',
+            // template: 'blog',
             title: title,
             description: description,
             list: list
