@@ -24,7 +24,6 @@ const Layout = ({ location, title, children }) => {
         }
         return 'light'; // デフォルトのテーマ
     });
-
     useEffect(() => {
         document.body.className = theme;
         localStorage.setItem('theme', theme);
