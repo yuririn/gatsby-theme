@@ -182,7 +182,7 @@ replace(/\sid\=\"(.*?)\"/gmi, ``)
 
 HTML 変換します。EJS の詳しい記事はこちら。
 
-<card slug="entry459"></card>"
+<card slug="entry459"></card>
 
 ```js:title=gulpfile.js
 ...

@@ -1,12 +1,14 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "../../img"
-
+import dateReplace from "../../../utils/datereplace"
 const RelativeCard = data => {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       query {
-        allMarkdownRemark {
+        allMarkdownRemark(
+          filter: { frontmatter: { pageType: { eq: "blog" } } }
+        ) {
           edges {
             node {
               fields {
@@ -27,8 +29,8 @@ const RelativeCard = data => {
     `
   )
   let article = allMarkdownRemark.edges.filter(
-    item => item.node.fields.slug === data.slug
-  )
+      item =>  item.node.fields.slug === data.slug
+    )
 
   if (article.length !== 0) {
     article = article[0].node
@@ -38,7 +40,7 @@ const RelativeCard = data => {
         : article.frontmatter.description
       const date = article.frontmatter.modifiedDate ? article.frontmatter.modifiedDate : article.frontmatter.date
     return (
-      <a href={article.fields.slug} className="article-link">
+      <a href={`/blogs/${article.fields.slug}/`} className="article-link">
         <section>
           <div className="article-link__img">
             <Img
@@ -51,7 +53,7 @@ const RelativeCard = data => {
               {article.frontmatter.title}
             </div>
             <p className="description">{description}</p>
-            <time dateTime={date.replace(/\./g, "-")}>
+                    <time dateTime={dateReplace(date)}>
               {date}
             </time>
           </div>

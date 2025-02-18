@@ -37,7 +37,6 @@ const renderAst = new rehypeReact({
 }).Compiler
 
 const BlogPostTemplate = ({ data, location }) => {
-    console.log(location)
   const post = data.markdownRemark
   const faq = post?.frontmatter.faq
     const siteTitle = siteMetadata.title || `Title`

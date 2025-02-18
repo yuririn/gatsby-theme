@@ -68,7 +68,6 @@ const Lists = ({ category, slug, tags }) => {
       <ol>
         {result.map((item, index) => {
             const slug = `/blogs/${item.node.fields.slug}`
-            console.log(item.node.frontmatter.hero)
           return (
             <li className="p-entryCard is-small" key={`relative${index}`} role="article">
               <Link to={slug} className="p-entryCard__img">
