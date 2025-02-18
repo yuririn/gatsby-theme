@@ -1,18 +1,19 @@
 const fs = require('fs');
 const path = require('path');
-
 exports.onPreBuild = ({ reporter }) => {
     const branch = process.env.BRANCH || 'unknown';
     let nodeEnv = 'production';
-
+    
     // ブランチが master 以外はすべて development とする
     if (branch !== 'master') {
         nodeEnv = 'development';
     }
-
+    
     // `NODE_ENV`を設定
     process.env.NODE_ENV = nodeEnv;
     reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+    console.log(`BASIC_AUTH_ID: ${process.env.BASIC_AUTH_ID}`)
+    console.log(`BASIC_AUTH_PASS: ${process.env.BASIC_AUTH_PASS}`)
 
     const robotsPath = path.join('./static/', 'robots.txt');
 
