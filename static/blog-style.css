@@ -51,6 +51,7 @@
   margin-bottom: 24px;
   border-image: linear-gradient(0deg, var(--font-color) 100%, rgba(0, 0, 0, 0) 0) fill 0 // 0 100vw 0 100vw;
   color: var(--background);
+  margin-top: 32px;
 }
 .c-heading--lg h2 {
   line-height: 1;
@@ -59,6 +60,7 @@
 }
 @media screen and (min-width: 768px) {
   .c-heading--lg {
+    margin-top: 32px;
     margin-bottom: 32px;
     border-image: linear-gradient(0deg, var(--font-color) 100%, rgba(0, 0, 0, 0) 0) fill 0 // 0 0 0 100vw;
     width: max-content;

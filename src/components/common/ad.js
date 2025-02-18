@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Ad = ({type='display', location="", style=null}) => {
+const Ad = ({type='display', location="", style=null, adClass=""}) => {
     useEffect(() => {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
@@ -15,7 +15,7 @@ const Ad = ({type='display', location="", style=null}) => {
   const ad = ads[type]
 
   return (
-    <div className={`ads ${type}`}>
+      <div className={`ads ${type} ${adClass}`}>
       <ins className={`adsbygoogle`}
       style={style === null ? {display:`block`, minWidth:`250px`} : style}
       data-ad-client="ca-pub-2820767970621854"
