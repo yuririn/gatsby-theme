@@ -120,7 +120,8 @@ const BlogPostTemplate = ({ data, location }) => {
                     return (
                       <dl className="p-faq__item" key={`faq${index}`}>
                         <dt>{item[0]}</dt>
-                        <dd>{item[1]}</dd>
+                        <dd
+                            dangerouslySetInnerHTML={{ __html: item[1] }}/>
                       </dl>
                     )
                   })}

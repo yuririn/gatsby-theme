@@ -9,6 +9,8 @@ import Post from "../components/posts/posts"
 import PickUpPosts from "../components/pickup-posts"
 import SideBar from "../components/sidebar"
 import Ad from "../components/common/ad"
+import "../scss/layouts/_card-container.scss"
+import "../scss/objects/components/_pickup-card.scss"
 
 const BlogIndex = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `Title`
