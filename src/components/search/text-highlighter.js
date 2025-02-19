@@ -8,9 +8,9 @@ const TextHighlighter = props => {
   const item = str.slice(start, end)
   const res = str.replace(
     item,
-    `<span style="color: var(--color-accent)">${item}</span>`
+    `<span style="color: var(--accent-color)">${item}</span>`
   )
-  return <span dangerouslySetInnerHTML={{ __html: res }} />
+    return item === '' ? str : <span dangerouslySetInnerHTML={{ __html: res }} />
 }
 
 export default TextHighlighter
