@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
-import Img from "./img"
+import Img from "./common/img"
 
 const PickUpPosts = () => {
     const data = useStaticQuery(graphql`

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Sidebar = styled.div`
+z-index: 1000;
 
  & > div:nth-child(2),
   & > div:first-child {

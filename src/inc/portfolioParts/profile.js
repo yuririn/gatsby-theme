@@ -3,7 +3,7 @@ import React from "react"
 import Feature from "./feature"
 import History from "./history"
 import Faq from "./faq"
-import Img from "./../../components/img"
+import Img from "./../../components/common/img"
 import styled from "styled-components"
 
 const Profile = () => (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Img from "./img"
+import Img from "./common/img"
 import { Sidebar } from "../styles/blog-styles/sidebar"
 import { Link } from "gatsby"
 import Search from "./search"

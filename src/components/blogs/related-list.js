@@ -1,6 +1,6 @@
 import React, { useMemo } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import Img from "../img"
+import Img from "../common/img"
 import styled from "styled-components"
 
 const Lists = ({ category, slug, tags }) => {

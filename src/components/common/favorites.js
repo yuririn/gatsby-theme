@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import styled from "styled-components"
 
-import Img from "../img"
+import Img from "../common/img"
 
 const favoritesList = {
   web: {
