@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import Img from "./common/img"
-import { Sidebar } from "../styles/blog-styles/sidebar"
+import React from "react"
+import Img from "./img"
+import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { Link } from "gatsby"
-import Search from "./search"
-import Ad from "./common/ad"
+import Search from "../search"
+import Ad from "./ad"
 
-const SideBar = ({ topic, location }) => {
+const SideBar = ({ topic, location, children }) => {
   return (
     <Sidebar>
       <Ad
@@ -13,6 +13,7 @@ const SideBar = ({ topic, location }) => {
         style={{ display: `block`, minWidth: `250px` }}
       ></Ad>
       <div className="inner">
+        {children}
         {topic && (<div
           className="side-topic"
           dangerouslySetInnerHTML={{
