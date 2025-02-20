@@ -1,0 +1,12 @@
+{
+    "rules": {
+        "preset-ja-technical-writing": true,
+        "textlint-rule-no-doubled-joshi": true,
+        "no-fullwidth-punctuation": {
+            "severity": 2
+        }
+    },
+    "filters": {
+        "comments": true
+    }
+}

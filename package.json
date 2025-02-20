@@ -51,6 +51,8 @@
         "rehype-react": "^7.1.2",
         "sharp": "^0.33.5",
         "styled-components": "^5.3.6",
+        "textlint-filter-rule-comments": "^1.2.2",
+        "textlint-rule-no-doubled-joshi": "^5.1.0",
         "typeface-merriweather": "^1.1.13",
         "typeface-montserrat": "^1.1.13"
     },
@@ -72,6 +74,8 @@
         "sass": "^1.85.0",
         "sass-loader": "^16.0.5",
         "style-loader": "^4.0.0",
+        "textlint": "^14.4.2",
+        "textlint-rule-preset-ja-technical-writing": "^12.0.2",
         "unified": "^10.1.2"
     },
     "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -96,8 +100,7 @@
         "gulp": "gulp",
         "m-serve": "gatsby develop -H 192.168.254.100 -p 8000",
         "imagemin": "node imagemin.mjs",
-        "graphlog": "git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h%Creset %C(green)(%ad)%Creset %C(auto)%d%Creset %s %C(blue)<%an>%Creset'",
-        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+        "graphlog": "git log --graph --oneline --decorate --date=short --pretty=format:'%C(yellow)%h%Creset %C(green)(%ad)%Creset %C(auto)%d%Creset %s %C(blue)<%an>%Creset'"
     },
     "engines": {
         "node": ">=18.0.0"
