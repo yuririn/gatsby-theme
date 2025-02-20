@@ -50,7 +50,7 @@ const Toc = ({ slug }) => {
             if (isMobile()) {
                 const link = event.target.closest('.c-toc a');
                 if (!link) return;
-
+                document.querySelector('.c-nav__btn').removeAttribute('style');
                 document.body.classList.remove("is-fixed");
                 setIsOpen(false);
             }

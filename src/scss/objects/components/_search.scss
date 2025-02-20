@@ -3,6 +3,7 @@
     position: relative;
     z-index: 1000;
     &__input {
+        font-size: 1.6rem;
         color: var(--font-color);
         border: none;
         border-bottom: 2px solid var(--color-blue);
