@@ -295,6 +295,30 @@
   animation: fadeIn 0.5s ease-in-out;
 }
 
+@media screen and (max-width: 767px) {
+  .c-toc__wrapper {
+    transition: opacity 0.3s;
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
+    width: 100%;
+    position: fixed;
+    top: 48px;
+    left: 0;
+    backdrop-filter: blur(3px);
+    z-index: 5000;
+    background: var(--header-background);
+    padding: 16px 16px 80px;
+  }
+  .c-toc__wrapper.is-open {
+    height: calc(100dvh - 48px);
+    opacity: 1;
+  }
+  .c-toc__wrapper .c-toc {
+    height: calc(100% - 64px);
+    overflow: auto;
+  }
+}
 @media screen and (min-width: 768px) {
   .c-toc {
     max-height: 40dvh;
@@ -338,6 +362,12 @@
   border: 1px solid var(--color-blue);
   background: var(--color-blue);
 }
+@media screen and (max-width: 767px) {
+  .c-toc a {
+    font-size: 1.6rem;
+    padding: 6px 4px 6px 2.3em;
+  }
+}
 .c-toc a::before {
   font-size: 1rem;
   position: absolute;
@@ -363,6 +393,13 @@
   }
   .c-toc a:hover {
     opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .l-header.is-white + main .c-toc__wrapper.is-open {
+    top: 58px;
+    height: calc(100dvh - 58px);
   }
 }
 
