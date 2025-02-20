@@ -1,6 +1,30 @@
 
 @use './../../utils';
 .c-toc {
+    @include utils.mqd(md){
+    &__wrapper {
+        &.is-open {
+            height: calc(100dvh - 48px);
+            opacity: 1;
+        }
+        transition: opacity .3s;
+        opacity: 0;
+        overflow: hidden;
+        height: 0;
+        width: 100%;
+        position: fixed;
+        top: 48px;
+        left: 0;
+        backdrop-filter: blur(3px);
+        z-index: 5000;
+        background: var(--header-background);
+        padding: 16px 16px 80px;
+        .c-toc {
+            height: calc(100% - 64px);
+            overflow: auto;
+        }
+    }
+    }
     @include utils.mq(md){
         max-height: 40dvh;
         overflow: auto;
@@ -19,9 +43,9 @@
             ul {
                 a {
                     padding: 4px 4px 4px 3.6em;
-                &::before {
-                    width: 3.9em;
-                }
+                    &::before {
+                        width: 3.9em;
+                    }
                 }
                  ul {
                     a {
@@ -45,6 +69,10 @@
         text-decoration: none;
         border: 1px solid var(--color-blue);
         background: var(--color-blue);
+        @include utils.mqd(md){
+            font-size: 1.6rem;
+            padding: 6px 4px 6px 2.3em;
+        }
         &::before {
             font-size: 1rem;
             position: absolute;
@@ -61,8 +89,9 @@
             justify-content: center;
             align-items: center;
         }
-        &.active {
-            opacity: 0.7;
+        &.active::before {
+            background: var(--pale-gray);
+             color: var(--accent-color);   
         }
         
         @include utils.mq(md){
@@ -71,5 +100,11 @@
             opacity: 0.7;
           }
         }//media query
+    }
+}
+.l-header.is-white + main .c-toc__wrapper.is-open {
+    @include utils.mqd(md){
+        top: 58px;
+        height: calc(100dvh - 58px);
     }
 }

@@ -14,9 +14,9 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 import TagsList from "../components/blogs/tags-blog"
 import Sns from "../components/blogs/sns"
 import Prof from "../components/blogs/small-prof"
-import Toc from "../components/blogs/topic"
+import Toc from "../components/common/table-of-contents"
 import Kyle from "../components/blogs/blog-parts/kyle"
-import Sidebar from "../components/sidebar"
+import Sidebar from "../components/common/sidebar"
 import Genre from "../components/common/genre"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
@@ -37,6 +37,7 @@ const renderAst = new rehypeReact({
 }).Compiler
 
 const BlogPostTemplate = ({ data, location }) => {
+    const { slug } = data.markdownRemark.fields
   const post = data.markdownRemark
   const faq = post?.frontmatter.faq
     const siteTitle = siteMetadata.title || `Title`
@@ -120,7 +121,8 @@ const BlogPostTemplate = ({ data, location }) => {
                     return (
                       <dl className="p-faq__item" key={`faq${index}`}>
                         <dt>{item[0]}</dt>
-                        <dd>{item[1]}</dd>
+                        <dd
+                            dangerouslySetInnerHTML={{ __html: item[1] }}/>
                       </dl>
                     )
                   })}
@@ -155,10 +157,9 @@ const BlogPostTemplate = ({ data, location }) => {
         </Article>
         <Sidebar
           title={post.frontmatter.title}
-          topic={post.tableOfContents}
           slug={post.fields.slug}
           location={location.pathname}
-        />
+              ><Toc slug={slug}></Toc></Sidebar>
         <aside className="l-container">
           <RelatedList
             category={post.frontmatter.cateId}
