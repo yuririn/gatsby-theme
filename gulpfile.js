@@ -5,9 +5,14 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const postcssPresetEnv = require('postcss-preset-env');
 const replace = require('gulp-replace');
+const plumber = require('gulp-plumber')
+const notify = require('gulp-notify');
 
 const sassTask = (done) => {
     src(['src/scss/*-style.scss'])
+        .pipe(plumber({
+            errorHandler: notify.onError('Error: <%= error.message %>'),
+        }))
         .pipe(sass().on('error', sass.logError))
         .pipe(replace(/SLASH/g, '//'))
         .pipe(dest('static'))
@@ -16,7 +21,9 @@ const sassTask = (done) => {
 
 const postcssTask = (done) => {
     src(['static/*-style.css'], { allowEmpty: true })
-        
+        .pipe(plumber({
+            errorHandler: notify.onError('Error: <%= error.message %>'),
+        }))
         .pipe(postcss([
             autoprefixer(),
             cssnano(),
