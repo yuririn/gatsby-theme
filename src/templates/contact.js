@@ -239,20 +239,21 @@ const contactTemplate = ({ data, location }) => {
       date : "2021-06-03",
       location : location
   }
+  const breadCrumbList = {
+    current: yourData.title
+  }
+
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location="about" title="銀ねこアトリエ">
+      <header className={`c-page-header--common`} id="keyvisual">
+        <div>
+          <h1 className="en"><span>Contact</span>お問い合わせ</h1>
+        </div>
+        <BreadCrumbList list={breadCrumbList} />
+      </header>
 
       <div className="l-main_contents">
-        <div className="p-pageHeader">
-          <div className="p-pageHeader__main">
-                <h1 className="p-pageHeader__heading" id="keyvisual">Contact</h1>
-            <p className="p-pageHeader__content">お問い合わせ</p>
-          </div>
-          <Img source="common/contact.jpg" className="p-pageHeader__img" />
-        </div>
         <section>
-
-           <BreadCrumbList current="お問い合わせ"  className="mb-Md mt-Xs" />
           <div className="l-container">
             {location.pathname === `/contact/thanks/` ? (
               <Thanks />
@@ -284,6 +285,7 @@ export const Head = ({ location }) => {
         type: "WebPage",
         template: 'page',
         list: list,
+        headerType: 'common',
         noindex: location.pathname === `/contact/thanks/` && true
     }
 

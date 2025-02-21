@@ -11,6 +11,17 @@ $u-container: 1080;
 
 
 $line-height: 2;
+$genre: (
+  'common',
+  'seo',
+  'web-developer',
+  'overseas-freelancing',
+  'career',
+  'ginneko-tsuredure',
+  "cms",
+  "about"
+);
+
 $breakpoints: (
   "sm": 425,
   "md": 768,

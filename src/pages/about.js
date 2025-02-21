@@ -17,27 +17,29 @@ import Card from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 
 const aboutMeta = {
-    title: '【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します',
-    description:
-        "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。",
-    date: "2021-05-05",
-    modifiedDate: "2021-05-05"
+  title: '【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します',
+  description:
+    "海外ノマドって何？エンジニアってどんな人でもなれるの？プログラマーって子どもいてもバツイチでも30歳過ぎていてもなれるの？生きていれば逆境なんて跳ね除けることはできます。",
+  date: "2021-05-05",
+  modifiedDate: "2021-05-05"
 }
 
 const aboutPost = () => {
-  const pageTitle =
-    "【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します"
+  const pageTitle = aboutMeta.title
+
+  const breadCrumbList = {
+    current: aboutMeta.title
+  }
 
   return (
     <Layout location="about" title="銀ねこアトリエ">
-      <div className="p-pageHeader">
-              <div className="p-pageHeader__main" id="keyvisual">
-          <h1 className="p-pageHeader__heading">About Me</h1>
-          <p className="p-pageHeader__content">かみーゆってどんな人？</p>
+      <header className={`c-page-header--common blog`} id="keyvisual">
+        <div className="c-page-header__img">
+          <Img source="common/about.jpg" className="p-pageHeader__img" />
         </div>
-        <Img source="common/about.jpg" className="p-pageHeader__img" />
-      </div>
-      <BreadCrumbList type="blog" />
+        <BreadCrumbList list={breadCrumbList} />
+      </header>
+
       <Body>
         <Article>
           <article className="p-section">
@@ -504,23 +506,24 @@ export default aboutPost
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
 export const Head = ({ location }) => {
-    const { title, description } = aboutMeta
-    const list = [
-        {
-            name: title,
-            path: '/about/',
-            type: `WebPage`
-        }
-    ]
-    return <Seo
-        location={location.pathname}
-        data={{
-            // template: 'blog',
-            title: title,
-            description: description,
-            list: list
-        }}
-    />
+  const { title, description } = aboutMeta
+  const list = [
+    {
+      name: title,
+      path: '/about/',
+      type: `WebPage`
+    }
+  ]
+  return <Seo
+    location={location.pathname}
+    data={{
+      // template: 'blog',
+      title: title,
+      description: description,
+      list: list,
+      headerType: 'common'
+    }}
+  />
 }
 
 

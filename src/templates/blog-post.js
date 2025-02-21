@@ -51,33 +51,26 @@ const BlogPostTemplate = ({ data, location }) => {
       return post.frontmatter.cateId === item.slug ? item.name : ""
     })[0].name,
   }
+  const breadCrumbList = {
+    parents: [
+      { path: '/blogs/', name: siteMetadata.blogName },
+      { path: `/blogs/${post.frontmatter.cateId}/`, name: category.name },
+      { path: `/blogs/tags/${post.frontmatter.tags[0]}/`, name: post.frontmatter.tags[0] }
+    ],
+    current: post.frontmatter.title
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Header>
-        <div
-          className={
-            `c-article__mainvisual c-article__mainvisual--` +
-            post.frontmatter.cateId
-          }
-        >
-          <div className="c-article__img">
-            {/* <Category
-              name={post.frontmatter.categoryId}
-              id={post.frontmatter.cateId}
-            /> */}
-            <GatsbyImage
-              image={getImage(data.dogImage)}
-              alt={post.frontmatter.title}
-            />
-          </div>
+      <header className={`c-page-header--${post.frontmatter.cateId} blog`} id="keyvisual">
+        <div className="c-page-header__img">
+          <GatsbyImage
+            image={getImage(data.dogImage)}
+            alt={post.frontmatter.title}
+          />
         </div>
-      </Header>
-      <BreadCrumbList
-        type="blog"
-        cate={category}
-        tag={post.frontmatter.tags[0]}
-      />
+        <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
+      </header>
       <Body>
         <Article>
           <article
