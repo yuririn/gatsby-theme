@@ -10,25 +10,31 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 // import Tags from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
+import "../scss/objects/components/_page-header.scss"
+
+const {  blogName } = siteMetadata
+
 
 const tags = ({ pageContext, data, location }) => {
   const { current, page, tag } = pageContext
 
+  const breadCrumbList = {
+    parents: [
+      { path: '/blogs/', name: blogName },
+    ],
+    current: tag
+  }
+
   const posts = data.allMarkdownRemark.nodes
   return (
     <Layout location={location} title="銀ねこアトリエ">
-      <div className="p-pageHeader">
-              <div className="p-pageHeader__main" id="keyvisual">
-          <h1 className="p-pageHeader__heading">{tag}</h1>
+      <header className={`c-page-header--common`} id="keyvisual">
+        <div>
+          <h1><span>{blogName}</span>{tag}</h1>
           <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
         </div>
-        <Img
-          source="common/ganre_common.jpg"
-          className="p-pageHeader__img"
-          alt={tag}
-        ></Img>
-      </div>
-      <BreadCrumbList type="archive" current={tag} />
+        <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
+      </header>
       <section className="p-section l-container">
           <h2 className="p-heading--lg">最新記事</h2>
           <ol className="c-grid">
@@ -118,6 +124,7 @@ export const Head = ({ location, pageContext }) => {
             template: 'archive',
             description: `${tag} に関する記事。${blogDescription}`,
             list: list,
+            headerType: 'common'
         }}
     />
 }
@@ -149,7 +156,7 @@ export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag
         cateId
         hero
         tags
-      }
+      } 
     }
   }
 }`

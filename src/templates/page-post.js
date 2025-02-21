@@ -11,18 +11,21 @@ const PagePostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const { title } = siteMetadata
   const siteTitle = `${post.frontmatter.title} | ${title}`
+  const breadCrumbList = {
+    current: post.frontmatter.title
+  }
+
   return (
-    <Layout location={location} title={siteTitle}>
-      <div className="l-main_contents is-page">
-        <div className="l-container--md mt-Md">
-          <BreadCrumbList current={post.frontmatter.title} />
+    <Layout location="about" title="銀ねこアトリエ">
+      <header className={`c-page-header--common`} id="keyvisual">
+        <div>
+          <h1 className="en"><span>Policies</span>{post.frontmatter.title}</h1>
         </div>
+        <BreadCrumbList list={breadCrumbList} />
+      </header>
+      <div className="l-main_contents">
         <article className="l-container--md">
-        <header id="keyvisual">
-            <div>
               <h1 className="c-article__heading">{post.frontmatter.title}</h1>
-            </div>
-          </header>
           <Edit>
             <section
               className="c-editArea"

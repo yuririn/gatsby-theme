@@ -1,7 +1,9 @@
 @use './../../utils';
+
+
 %blog-header {
     position: relative;
-    background: url(/images/genre-common.webp) center / cover no-repeat;
+    background: url(/images/genre-common-sp@1x.webp) center center / cover no-repeat;
     padding: 100px 16px 0px  32px;
     display: grid;
     grid-template-rows: 1fr max-content;
@@ -11,19 +13,38 @@
     text-align: center;
     color: #fff;
     text-shadow:0px 0px 2px rgba(0, 0, 0, 0.6) ,0px 0px 4px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    margin-bottom: 32px;
+    &.blog {
+      padding: 78px 16px 0 16px;
+      height: auto;
+    }
+    
+
+    &::before {
+      width: 100%;
+      position: absolute;
+      display: block;
+      content: '';
+      height: 30px;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+      background: linear-gradient(to top, rgb(0 0 0 /.5) 0%,rgb(0 0 0 / 0) 100%);
+    }
     @include utils.mq(md){
-        height: 280px;
-        
-        padding: 100px 32px 0px 32px;
+      background: url(/images/genre-common.webp) center / cover no-repeat;
+      height: 280px;       
+      padding: 100px 32px 0px 32px;
     }
     & > div,
     & > h1 {
         display: grid;
         align-self: center;
         
-        font-size: 2.2rem;
+        font-size: 2rem;
         @include utils.mq(md){
-            font-size: 2.8rem;
+            font-size: 2.4rem;
         }
         span {
             margin-bottom: 8px;
@@ -56,29 +77,39 @@
     }
 }
 .c-page-header {
-    @extend %blog-header;
-    &--web-developer {
-        background-image: url(/images/genre-web-developer.webp);
-        @extend %blog-header;
+  &__img {
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 460px;
+    display: block;
+    margin-inline: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 16px rgb(0 0 0 / .5);
+  }
+  @each $item in utils.$genre {
+    &--#{$item} {
+      background-image: url("/images/genre-#{$item}.webp");
+      @extend %blog-header;
     }
-    &--cms {
-        background-image: url(/images/genre-cms.webp);
-        @extend %blog-header;
+  }
+}
+@include utils.mqd(md){
+  @supports (background-image: image-set(url("/images/genre-common-sp@1x.webp") type("image/webp") 1x)){
+    .c-page-header {
+      background-image: image-set(
+        url("/images/genre-common-sp@1x.webp") type("image/webp") 1x,
+        url("/images/genre-common-sp@2x.webp") type("image/webp") 2x,
+      );
     }
-    &--seo {
-        background-image: url(/images/genre-seo.webp);
-        @extend %blog-header;
+  }
+  @each $item in utils.$genre {
+    @supports (background-image: image-set(url("/images/genre-#{$item}-sp@1x.webp") type("image/webp") 1x)){
+      .c-page-header--#{$item} {
+        background-image: image-set(
+          url("/images/genre-#{$item}-sp@1x.webp") type("image/webp") 1x,
+          url("/images/genre-#{$item}-sp@2x.webp") type("image/webp") 2x,
+        );
+      }
     }
-    &--overseas-freelancing {
-        background-image: url(/images/genre-overseas-freelancing.webp);
-        @extend %blog-header;
-    }
-    &--career {
-        background-image: url(/images/genre-career.webp);
-        @extend %blog-header;
-    }
-    &--ginneko-tsuredure {
-        background-image: url(/images/genre-ginneko-tsuredure.webp);
-        @extend %blog-header;
-    }
+  }
 }

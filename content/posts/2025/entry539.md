@@ -7,9 +7,9 @@ cateId: web-developer
 tags: ["WordPress", 'GAS']
 description: WordPress で Ajax でやり取り。スプシをAPI化して更新するデータをJSONで取得しDBに格納します。
 ---
-スプシとGASで作ったデータをPHPで取り込んできましたが、ローディング時間が長くサイトが重くなってしまうのがネックでした。
+今までスプシとGASで作ったデータをPHPで取り込み、ローディング時間も長くなりサイトが重くなってしまうのがネックでした。
 
-JSで呼び出すにせよ、ロード時間も長い。。。
+JSで呼び出すにせよ、ロード時間も長い…。
 
 月に数度とか更新頻度の低いものであれば、データベースに格納してそれを使ったほうがいい。
 
@@ -26,7 +26,7 @@ json の作り方はこちらを参照してください。今回は説明は省
 ## 更新用のボタンを Admin Bar に実装
 まずは更新用のボタンを実装します。
 
-このボタンをクリックしたら、データを更新するようにします。Admin Bar にボタンを追加します。今回はクリックイベント用のボタンなので特にリンクなどは実装しません。
+このボタンをクリックしたら、データを更新するようにします。Admin Bar にボタンを追加します。クリックイベント用のボタンなので特にリンクなどは実装しません。
 ```PHP:title=function.php
 function create_admin_bar_menu( $wp_admin_bar ) {
 	$wp_admin_bar->add_node( array(
@@ -54,7 +54,7 @@ function register_script() {
 add_action( 'wp_enqueue_scripts', 'register_script' );
 ```
 
-続けてサーバー側のデータをどうファイルに渡せるようにします。ポイントは`ajax-reflesh-js`でこのIDが一致したJSに値が渡せます。
+続けてサーバー側のデータをファイルへ渡せるようにします。ポイントは`ajax-reflesh-js`でこのIDが一致したJSにのみ、値を渡せます。
 ```PHP:title=function.php
 function create_localize_script() {
 	if( is_user_logged_in() ) {

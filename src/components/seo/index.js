@@ -20,7 +20,7 @@ const Seo = ({ data, location }) => {
     // localStorage.removeItem("authenticated");
     const isDev = process.env.NODE_ENV === 'development';
     console.log(`isDev: ${isDev}`, process.env.NODE_ENV)
-    const { title, description, template, ogp, thumbnail, noindex } = data
+  const { title, description, template, ogp, thumbnail, noindex, headerType } = data
     const { siteUrl } = siteMetadata
     const isRoot = location === '/' ? true : false
     //タイトルとディスクリプション
@@ -76,6 +76,9 @@ const Seo = ({ data, location }) => {
             {noindex && (<meta name="robots" content="noindex" />)}
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            {headerType && (
+              <PreloadLink type={headerType}/>
+            )}
             {template &&
                 (<>
                 <link rel="stylesheet" href={`/${template + '-'}style.css`} />
@@ -144,3 +147,31 @@ const setupLazyLoadAds = () => {
     };
 };
 export default Seo
+
+const PreloadLink = ({ type }) => {
+  return (
+    <>
+      {/* スマホ向けの 1x 画像 */}
+      <link
+        rel="preload"
+        href={`/images/genre-${type}-sp@1x.webp`}
+        as="image"
+        media="(max-width: 768px) and (-webkit-min-device-pixel-ratio: 1), (max-width: 768px) and (min-resolution: 96dpi)"
+      />
+      {/* スマホ向けの 2x 画像 */}
+      <link
+        rel="preload"
+        href={`/images/genre-${type}-sp@2x.webp`}
+        as="image"
+        media="(max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 768px) and (min-resolution: 192dpi)"
+      />
+      {/* デスクトップ向けの画像 */}
+      <link
+        rel="preload"
+        href={`/images/genre-${type}.webp`}
+        as="image"
+        media="(min-width: 769px)"
+      />
+    </>
+  );
+};

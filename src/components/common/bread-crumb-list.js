@@ -3,34 +3,28 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import {siteMetadata} from "../../../gatsby-config"
 
-const BreadCrumbList = ({ type, current = '', cate = '', tag='' }) => {
+const BreadCrumbList = ({ list }) => {
+  const { shortName } = siteMetadata
+  const { parents, current } = list
+  console.log(current)
+  const trimText = (text, maxLength) => {
+    if (!text) {
+      return '';
+    }
+    if (text.length <= maxLength) {
+      return text;
+    }
+    return text.slice(0, maxLength) + '…';
+  };
   return (
-    <BreadCrumb className="blog">
-          <li>
-          <Link to="/">銀ねこアトリエ</Link>
-          </li>
-
-        {type === `blog` && (
-          <li>
-            <Link to="/blogs/">ノマドブログ</Link>
-          </li>
-        )}
-        {cate !== '' && (
-          <li>
-            <Link to={cate.url}>{cate.name}</Link>
-          </li>
-        )}
-        {tag !== '' && (
-          <li>
-              <Link to={`/blogs/tags/${tag}`}>{tag}</Link>
-          </li>
-        )}
-
-        {current !== '' && (
-          <li>{current}</li>
-        )}
-    </BreadCrumb>
-  );
+    <ol className="c-breadcrumb-list">
+      <li>
+        <Link to="/">{shortName}</Link>
+      </li>
+      {parents && parents.map(item => <li><Link to={item.path}>{item.name}</Link></li>)}
+      <li>{trimText(current, 20)}</li>
+    </ol>
+  )
 };
 
 export default BreadCrumbList;

@@ -12,30 +12,39 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 // import TagsList from "../components/blogs/tag-list"
 import Genre from "../components/common/genre"
 import Prof from "../components/common/profile"
-const { category } = siteMetadata
+import "../scss/objects/components/_page-header.scss"
+const { category, blogName } = siteMetadata
 
 const genre = ({ pageContext, data, location }) => {
   const { cateSlug, current, page } = pageContext
   const { edges } = data.allMarkdownRemark
 
   const cateMeta = siteMetadata.category.filter(cate => cate.slug === cateSlug)
+  
 
-  let cateName = cateMeta[0].name
-  let cateDescription = cateMeta[0].summary
+  const cateName = cateMeta[0].name
+  const cateDescription = cateMeta[0].summary
+  const slug = cateMeta[0].slug
+  const enName = cateMeta[0].enName
+
+  // console.log(`slug ${slug}`)
+
+  const breadCrumbList = {
+    parents: [
+      { path: '/blogs/', name: blogName },
+    ],
+    current: cateName
+  }
 
   return (
     <Layout location={location} title={siteMetadata.title}>
-      <div className="p-pageHeader">
-        <div className="p-pageHeader__main">
-            <h1 className="p-pageHeader__heading" id="keyvisual">{cateName}</h1>
+      <header className={`c-page-header--${slug}`} id="keyvisual">
+        <div>
+          <h1 className="en"><span>{enName}</span>{cateName}</h1>
           <p>{cateDescription}</p>
         </div>
-        <Img
-          source={`common/genre-${cateSlug}.jpg`}
-          className="p-pageHeader__img"
-        ></Img>
-      </div>
-      <BreadCrumbList type="blog" current={cateName}/>
+        <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
+      </header>
         <section className="p-section l-container">
           <h2 className="p-heading--lg">最新記事</h2>
           <ol className="c-grid">
@@ -125,7 +134,8 @@ export const Head = ({ location, pageContext }) => {
             title: cateItem.name,
             template: 'archive',
             description: cateItem.description,
-            list: list
+            list: list,
+            headerType: cateItem.slug
         }}
     />
 }

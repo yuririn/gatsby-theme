@@ -7,7 +7,10 @@ cateId: web-developer
 tags: ["npm", "Gulp",'JavaScript']
 description: babel + browserify でローカルの普通の JS でも、npm module 経由でインストールしたファイルや外部ファイルを読み込んだり async/fetch のコードをトランスパイル。この記事は npm や node がすでに使えることを前提。Swiper/lodashなども使えます。
 ---
-今回やりたかったことは、babel + browserify でローカルの普通の JS でも、npm module 経由でインストールしたファイルや外部ファイルを読み込んだり async/fetch のコードをトランスパイルするというもの。
+今回やりたかったことです。
+
+* babel + browserify でローカルの普通の JS で、npm module 経由でインストール
+* ファイルや外部ファイルを読み込んだり async/fetch のコードをトランスパイルする
 
 どうしても訳合ってこの環境を作りたくてサンプルコードを探して、実際やったらコケる。
 
@@ -15,9 +18,9 @@ description: babel + browserify でローカルの普通の JS でも、npm modu
 
 上記 designsupply さんのコードを参考にしつつ修正しました。
 
-まずは必要なモジュールはこちら。バージョンが古いままになってるかもしれないので適宜新しいものを入れてください。
+まずは必要なモジュールはこちら。バージョンが古いままになってる可能性があるので、適宜新しいモジュールを入れてください。
 
-この記事は npm や node がすでに使えることを前提に書かれています。メモ程度の記事なので、必要に応じて参考にする程度にしていただければと思います。
+この記事は npm や node が使えることを前提に執筆しています。メモ程度の記事なので、必要に応じて参考にする程度にしていただければ幸いです。
 
 ## package.json / 各種モジュールをインストール
 ```json:title=package.json
@@ -131,7 +134,7 @@ $ npm start
 $ npm run prod
 ```
 ## Swiper や lodash を読み込む
-これで npm 経由でインストールしたモジュールも直接使えます。
+次のコマンドで npm 経由でインストールしたモジュールを直接使うこともできます。
 ```shell:title=コマンド
 npm i swiper -D
 ```

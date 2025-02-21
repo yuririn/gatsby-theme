@@ -120,59 +120,6 @@ export const CommonStyle = createGlobalStyle`
       }
     }
   }
-
-  .p-pageHeader {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    text-shadow: 0 0 5px rgb(0 0 0 / 60%), 0 0 12px rgb(0 0 0 / 40%);
-    background: var(--color-blue);
-    font-weight: bold;
-
-    &__img{
-      opacity: 0.6;
-      height: 100%;
-      width: 100%;
-      filter:blur(2px);
-
-      img {
-        object-fit: cover;
-      }
-    }
-
-    &__main {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      height: 100%;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      text-align: center;
-  }
-    &__heading {
-      padding-top: 50px;
-      letter-spacing: .1em;
-      font-size: 2rem;
-      font-weight: 700;
-      @media screen and (min-width: 768px) {
-        font-size: 3.2rem;
-      }
-        &::after {
-          content: "";
-          height: 2px;
-          width: 30px;
-          display: block;
-          margin: 15px auto 15px;
-          background: #c03363;
-      }
-    }
-  }
   .u-text-center {
     text-align: center;
   }
