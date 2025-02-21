@@ -84,6 +84,7 @@
     display: block;
     margin-inline: auto;
     border-radius: 8px;
+    box-shadow: 0 0 16px rgb(0 0 0 / .5);
   }
   @each $item in utils.$genre {
     &--#{$item} {

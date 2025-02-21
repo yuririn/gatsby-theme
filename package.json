@@ -52,11 +52,13 @@
         "sharp": "^0.33.5",
         "styled-components": "^5.3.6",
         "textlint-filter-rule-comments": "^1.2.2",
+        "textlint-rule-ja-hiraku": "^1.2.0",
         "textlint-rule-no-doubled-joshi": "^5.1.0",
         "typeface-merriweather": "^1.1.13",
         "typeface-montserrat": "^1.1.13"
     },
     "devDependencies": {
+        "@proofdict/textlint-rule-proofdict": "^3.1.2",
         "css-loader": "^7.1.2",
         "fs": "^0.0.1-security",
         "gatsby-plugin-lodash": "^6.5.0",
