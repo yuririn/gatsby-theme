@@ -23,6 +23,7 @@ import Msg from "../components/blogs/blog-parts/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Ad from "../components/common/ad"
 import { siteMetadata } from "./../../gatsby-config";
+import "../scss/objects/components/_page-header.scss"
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -215,6 +216,7 @@ export const Head = ({ data, location }) => {
         modifiedDate: post.frontmatter.modifiedDate,
         template: 'blog',
         list: list,
+        
         faq: post.frontmatter.faq,
         noindex: post.frontmatter.noindex
     }

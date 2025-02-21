@@ -15,6 +15,7 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 import CvArea from "../components/common/cv-area"
 import Card from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
+import "../scss/objects/components/_page-header.scss"
 
 const aboutMeta = {
   title: '【セブ島海外ノマド】フロントエンドエンジニアかみーゆを力一杯紹介します',
