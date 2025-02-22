@@ -1,5 +1,5 @@
 ---
-title: Docker でサーバー側のエラーログ(PHP Warning)を出力（前半）
+title: Docker でサーバー側のエラーログ(PHP Warning)を出力
 date: 2025-02-22
 pageType: blog
 hero: thumbnail/2025/entry544.jpg

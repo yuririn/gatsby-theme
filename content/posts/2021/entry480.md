@@ -4,16 +4,19 @@ date: 2021-12-22
 modifiedDate: 2025-01-28
 hero: thumbnail/2021/entry480.jpg
 pageType: blog
-cateId: 'cms'
+cateId: web-developer
 tags: ["Docker","WordPress"]
 description: 最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さはVagrantより良い気がし、乗り換えました。今回はDockerでWordPress環境を構築する方法をまとめます。phpやwordpressの古いバージョンにも対応しています。
 ---
-最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さはVagrantより良い気がし、乗り換えました。今回はDockerでWordPress環境を構築する方法をまとめます。
-
-ちなみに、私の住む、フィリピン・セブは現在台風直撃し大被害でエライコッチャでまとめるのやっとなので、誤字脱字は大目にみてください。
+最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さは Vagrant から乗り換えました。今回は Docker で WordPress 環境を構築する方法をまとめます。
 
 <prof></prof>
 
+こちらの記事も参考にしてください。
+
+<card slug="entry543"></card>
+
+<card slug="entry544"></card>
 
 ## Dockerインストール
 Dockerをインストールしていない方は、Docker公式サイトよりアカウントを作成し、インストールします。
@@ -48,6 +51,8 @@ docker -v
 
 ### compose.yml 作成
 `compose.yml` を作成します。
+
+ファイル名は compose.yml でも docker-compose.yml でもどっちでもかまいません。
 
 ```yaml:title=compose.yml
 version: '3.7'
@@ -309,7 +314,7 @@ docker-compose down --rmi all --volumes --remove-orphans
 これで気軽に破壊したりできます。
 
 ## まとめ・Dockerやってみたらカンタンだった
-imageも用意されていて `compose.yml`にカンタンなコードを書くだけなのでDockerでWordPressを構築するのは楽勝でした。
+イメージも用意されていて `compose.yml`にカンタンなコードを書くだけなのでDockerでWordPressを構築するのは楽勝でした。
 
 <msg txt="個人的には管理もメンテナンスもVagrantよりカンタンです"></msg>
 
