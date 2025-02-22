@@ -31,7 +31,6 @@ const RelativeCard = data => {
   let article = allMarkdownRemark.edges.filter(
       item =>  item.node.fields.slug === data.slug
     )
-
   if (article.length !== 0) {
     article = article[0].node
     const description =
@@ -40,7 +39,7 @@ const RelativeCard = data => {
         : article.frontmatter.description
       const date = article.frontmatter.modifiedDate ? article.frontmatter.modifiedDate : article.frontmatter.date
     return (
-      <a href={`/blogs/${article.fields.slug}/`} className="article-link">
+      <a href={`/blogs/${article.fields.slug}/${data.anchor ? '#' + encodeURI(data.anchor) : ''}`} className="article-link">
         <section>
           <div className="article-link__img">
             <Img
