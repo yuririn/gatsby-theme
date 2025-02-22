@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, {useEffect} from "react"
 import { Link, graphql } from "gatsby"
 
 import { Article } from "./../styles/blog-styles/article"
@@ -60,6 +60,29 @@ const BlogPostTemplate = ({ data, location }) => {
     ],
     current: post.frontmatter.title
   }
+
+  useEffect(() => {
+    const titles = document.querySelectorAll(".gatsby-code-title");
+    titles.forEach((title) => {
+      if (!title.querySelector(".gatsby-code--copy")) {
+        const button = document.createElement("span");
+        button.innerText = "COPY";
+        button.className = "gatsby-code--copy";
+        button.onclick = () => {
+          const codeBlock = title.nextElementSibling.querySelector('pre[class*="language-"]');
+          if (codeBlock) {
+            const code = codeBlock.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+              alert("コードをコピーしました!");
+            }).catch((err) => {
+              console.error("Failed to copy code: ", err);
+            });
+          }
+        };
+        title.appendChild(button);
+      }
+    });
+  }, []);
 
   return (
     <Layout location={location} title={siteTitle}>

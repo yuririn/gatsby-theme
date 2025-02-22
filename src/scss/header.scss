@@ -9,3 +9,22 @@
 @use './objects/util/util';
 @use './objects/components/breadcrumb-list';
 @use './objects/components/btn';
+
+.gatsby-code-title {
+  height: 48px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex!important;
+}
+.gatsby-code-title + .gatsby-highlight pre[class*="language-"] {
+ border-top-right-radius: 0!important;
+}
+
+.gatsby-code-title .gatsby-code--copy {
+  border-radius: 4px;
+  background: rgba(#fff, .5);
+  padding: 8px 16px;
+  &:hover {
+    cursor: pointer;
+  }
+}
