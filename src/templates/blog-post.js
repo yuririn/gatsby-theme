@@ -73,7 +73,10 @@ const BlogPostTemplate = ({ data, location }) => {
           if (codeBlock) {
             const code = codeBlock.textContent;
             navigator.clipboard.writeText(code).then(() => {
-              alert("コードをコピーしました!");
+              button.innerText = "COPIED!";
+              setTimeout(() => {
+                button.innerText = "COPY";
+              }, 2000);
             }).catch((err) => {
               console.error("Failed to copy code: ", err);
             });
@@ -158,14 +161,14 @@ const BlogPostTemplate = ({ data, location }) => {
           <ol className="c-pager--article p-section l-container">
             <li className="c-pager--article__prev">
               {previous && (
-                <Link to={previous.fields.slug} rel="prev">
+                <Link to={`/blogs/${previous.fields.slug}/`} rel="prev">
                   {previous.frontmatter.title}
                 </Link>
               )}
             </li>
             <li className="c-pager--article__next">
               {next && (
-                <Link to={next.fields.slug} rel="next">
+                <Link to={`/blogs/${next.fields.slug}/`} rel="next">
                   {next.frontmatter.title}
                 </Link>
               )}

@@ -1,25 +1,45 @@
 ---
 title: DockerでシンプルなWordPress環境を作る
 date: 2021-12-22
-modifiedDate: 2025-01-28
+modifiedDate: 2025-02-24
 hero: thumbnail/2021/entry480.jpg
 pageType: blog
 cateId: web-developer
 tags: ["Docker","WordPress"]
 description: 最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さはVagrantより良い気がし、乗り換えました。今回はDockerでWordPress環境を構築する方法をまとめます。phpやwordpressの古いバージョンにも対応しています。
 ---
-最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さは Vagrant から乗り換えました。今回は Docker で WordPress 環境を構築する方法をまとめます。
+最近Docker(2021年時点。現在は完全Docker User)を使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さは Vagrant から乗り換えました。今回は Docker で WordPress 環境を構築する方法をまとめます。
+
+> Dockerは、アプリケーションをコンテナと呼ばれる軽量な仮想環境で実行するためのプラットフォームです。これにより、開発環境と本番環境の違いを最小限に抑え、一貫した動作を保証することができます。
+
+*Dockerの基本要素*
+1. *Dockerエンジン*: コンテナの作成、管理、実行するコア部分。
+2. *Dockerイメージ*: アプリケーションとその必要なすべてのファイル、設定、および依存関係を含むテンプレートのようなもの。
+3. *Dockerコンテナ*: Dockerイメージから作成される軽量な実行環境。
+4. *DockerHub*: Dockerイメージを共有するためのリポジトリ。
+
+*Dockerのメリット*
+* *一貫性*: 開発環境と本番環境の違いを最小限に抑え、一貫した動作を保証。
+* *効率性*: 軽量なコンテナを使用することで、リソースの消費を抑える。
+* *移植性*: Dockerイメージを使用することで、異なる環境間での移植が容易。
+
+この記事の対象者です。
+* Dockerを触ってみたい
+* WordPressの環境を気軽に試してみたい
+* Dockerの構築を順を追ってやってみたい
 
 <prof></prof>
 
-こちらの記事も参考にしてください。
+こちらの記事では主に基本操作までを紹介しています。
+
+もっと詳しくカスタマイズしたDockerを作成したい人は、こちらの記事も参考にしてください。
 
 <card slug="entry543"></card>
 
 <card slug="entry544"></card>
 
 ## Dockerインストール
-Dockerをインストールしていない方は、Docker公式サイトよりアカウントを作成し、インストールします。
+Dockerをインストールしていない人は、Docker公式サイトよりアカウントを作成し、インストールします。
 
 ![Docker公式サイト](./images/12/entry480-1.jpg)
 
@@ -30,11 +50,11 @@ Docker Desktop をインストールします。
 
 ![Docker Desktop をインストール](./images/12/entry480-2.jpg)
 
-Docker Desktop のメニューから About Docker Disctopからでも、以下コマンドでバージョンも確認できます。
+Docker Desktop のメニュー **About Docker Disctop** からでも、以下コマンドでバージョンも確認できます。
 
 ![Docker Desktop をインストール](./images/12/entry480-3.jpg)
 
-```
+```shell:title=コマンド
 docker -v
 ```
 
@@ -42,24 +62,25 @@ docker -v
 インストールしたい場所にフォルダを作ります。
 
 ```
-/wordpress
-├ compose.yml
-└ .env
+/mywordpress
+  ├-- docker-compose.yml
+  └-- .env
 ```
 
-ここでは仮にWordPressをインストールしたいディレクトリ名を`wordpress`とします。
+ここでは仮にWordPressをインストールしたいディレクトリ名を`mywordpress`とします。
 
-### compose.yml 作成
-`compose.yml` を作成します。
+## docker-compose.yml で MySQL と WordPress のコンテナ作成
+`docker-compose.yml` を作成します。
 
-ファイル名は compose.yml でも docker-compose.yml でもどっちでもかまいません。
+ファイル名は `docker-compose.yml` でも `compose.yml` でもどちらでもかまいません。
 
-```yaml:title=compose.yml
-version: '3.7'
+```yaml:title=docker-compose.yml
+version: '3.7' #バージョンは適宜ご自身の環境に合わせてください
 
 services:
   wordpress:
     image: wordpress:latest
+    container_name: mywordpress #あとでたたくコマンドで必要になる
     ports:
       - "3000:80" # ポート番号
     depends_on:
@@ -67,27 +88,85 @@ services:
     env_file: .env
     volumes:
         - ./public:/var/www/html/ # マウントするディレクトリ
+        # wp-contentやthemesだけでいいのであれば適宜書き換える
+        # 例:
+        # - ./wp-content:/var/www/html/wp-content
+        # - ./themes:/var/www/html/wp-content/themes
 
   mysql:
     image: mysql:8.0
     env_file: .env
+    container_name: mywordpress_mysql #あとで叩くコマンドで必要になる
+    command: --default-authentication-plugin=mysql_native_password
     ports:
       - "3306:3306" #ポート番号の設定
+
 ```
-止むを得ず古いバージョンの物をインストールしたい場合は、以下のdockerhubからwordpressのイメージを探してみてください。
-
-[dockerhub|wordpress](https://hub.docker.com/_/wordpress)
-
 マウントするディレクトリは`wp-content`や`themes`だけでいいのであれば適宜書き換えてください。
 
-#### mysql8でデータベースの接続ができなくなる問題
-mysql8を試そうとしたところ、データベースが接続できなくなりました。
+それぞれのコンテナに `container_name` を明示的に付与しておくと、後々コマンドを叩くときに困りません。私はプロジェクト名、サービス名にすることが多いです。
 
-その場合は、`default-authentication-plugin`の設定を変える必要があります。
+<msg txt="マウントとは、外部のストレージやディレクトリをシステム内の特定の場所に接続し、データを読み書きできる状態にすることです！"></msg>
+<div class="box">
+<h4>サービス名に気をつける</h4>
+<p>docker-composeファイルで定義されたサービス名が他のプロジェクトのサービス名と重複しないようにすることが重要。これにより、他のコンテナが不意に立ち上がることを防ぐことができます。</p>
+</div>
 
-```yaml:title=compose.yml
+### Dockerイメージ「wordpress」
+wordpressイメージはWordPress本体（最新）、PHP、サーバー、WordPressに必要なPHP拡張機能が梱包されています。latestを指定すると最新で汎用的なものがコンテナに格納されます。
+
+[DockerHub|wordpress](https://hub.docker.com/_/wordpress)
+
+古いWordPressをインストールしたい場合。
+```yaml:title=docker-compose.yml
+services:
+  wordpress:
+    image: wordpress:5.8 #イメージを指定
+    ...
+```
+
+本番環境と合わせたPHPをインストールしたい場合は、[DockerHub](https://hub.docker.com/_/wordpress) から wordpress のDockerイメージを探してみてください。
+
+たとえば、php8.1のイメージを使いたい場合。
+```yaml:title=docker-compose.yml
+services:
+  wordpress:
+    image: wordpress:php8.1 #イメージを指定
+    ...
+```
+
+DockerHubに必要なイメージがない場合は、`Dockerfile` で独自カスタマイズする必要があります。
+
+詳しいやり方を知りたいかたは[Docker で本番環境に忠実な開発環境を作る（nginx、PHP-FPM、MariaDB）](/blogs/entry543/)をご確認ください。
+
+```Dockerfile:title=Dockerfile
+# ベースイメージとしてWordPress 5.8を使用
+FROM wordpress:5.8
+
+# 必要なPHPバージョンをインストール
+RUN apt-get update && apt-get install -y php8.1 php8.1-mysqli
+
+# 必要なPHPバージョンに切り替える
+RUN update-alternatives --set php /usr/bin/php8.1 \ #各必要なモジュールインストール
+```
+<!-- textlint-disable -->
+### Dockerイメージ「mysql」
+mysqlイメージはMySQLサーバー、MySQLの操作に必要なツール、デフォルトの設定ファイル、ySQLの動作に必要なライブラリや依存関係が含まれています。
+<!-- textlint-anable -->
+
+#### Dockerイメージ「mysql:8.0」でデータベースの接続ができなくなる場合
+Dockerイメージ mysql:8.0を試そうとしたところ、データベースが接続できなくなりました。
+
+MySQL 8.0以降ではデフォルトの認証プラグインが `caching_sha2_password` に変更されました。これが古いクライアントやライブラリとの互換性の問題を引き起こすことがあります。
+
+その場合はMySQLの認証方式を設定するためのオプション、`default-authentication-plugin`の設定を変え、使用する認証プラグインを指定することで回避します。
+
+```yaml:title=docker-compose.yml
+  ...
   mysql:
     image: mysql:8.0
+    container_name: mywordpress_mysql
+    # 以下追記
     command: --default-authentication-plugin=mysql_native_password
     env_file: .env
     ports:
@@ -95,9 +174,7 @@ mysql8を試そうとしたところ、データベースが接続できなく�
 ```
 
 ### .envファイルを作成
-.envファイルに定数を定義します。
-
-`compose.yml` で設定した wordpress と mysql の env_file に読み込まれます。
+`.env` ファイルに定数を定義します。このファイルは、Docker Composeの `docker-compose.yml` で設定した`env_file` オプションによって、WordPressとMySQLのコンテナに読み込まれます。
 
 ```env:title=.env
 WORDPRESS_DB_NAME=wordpress
@@ -109,76 +186,131 @@ MYSQL_DATABASE=wordpress
 MYSQL_USER=wp_user
 MYSQL_PASSWORD=hogehoge
 ```
-## dockerを立ち上げる
-dockerを立ち上げます。
+
+<div class="box">
+<h4>.envファイルの役割</h4>
+<p>.envファイルは環境変数を定義するためのファイルです。これにより、設定値をコードから分離し、セキュリティとメンテナンス性を向上させることができます。環境変数はコンテナ内で使用され、データベース名、ユーザー名、パスワードなどの機密情報を設定するために使われます。</p>
+</div>
+
+Dockerイメージによって環境変数がすでに設定されているので、これを活用します。
+
+*WordPress のイメージの環境変数*
+| 環境変数             | 説明                                               |
+|---------------------|----------------------------------------------------|
+| WORDPRESS_DB_NAME   | WordPressが使用するデータベースの名前。             |
+| WORDPRESS_DB_USER   | WordPressがデータベースに接続するためのユーザー名。 |
+| WORDPRESS_DB_PASSWORD | WordPressがデータベースに接続するためのパスワード。 |
+
+*MySQL のイメージの環境変数*
+| 環境変数                | 説明                                                        |
+|------------------------|-------------------------------------------------------------|
+| WORDPRESS_DB_NAME      | WordPressが使用するデータベースの名前。                      |
+| WORDPRESS_DB_USER      | WordPressがデータベースに接続するためのユーザー名。          |
+| WORDPRESS_DB_PASSWORD  | WordPressがデータベースに接続するためのパスワード。          |
+| MYSQL_RANDOM_ROOT_PASSWORD | yesに設定すると、MySQLのrootパスワードがランダムに生成。 |
+| MYSQL_DATABASE         | MySQLに作成されるデータベースの名前。                        |
+| MYSQL_USER             | MySQLに作成されるユーザー名。                                |
+| MYSQL_PASSWORD         | MySQLユーザーのパスワード。                                  |
+
+## Docker を立ちあげる
+docker を立ちあげます。
 
 ```bash:title=コマンド
 docker-compose up -d
 ```
 以下は`docker-compose up`のオプションです。
 
-|オプション| |
-|-|-|
-|*-d*|デタッチド・モード: バックグラウンドでコンテナを実行し、新しいコンテナ名を表示<br>`--abort-on-container-exit` と同時に使えない|
-|*--no-color*|白黒で画面に表示|
-|*--no-deps*|リンクしたサービスを起動しない|
-|*--force-recreate*|設定やイメージに変更がなくても、コンテナを再作成する<br>`--no-recreate` と同時に使えません||
-|*--no-recreate*|コンテナが既に存在していれば、再作成しない<br>`--force-recreate` と同時に使えない|
-|*--no-build*|イメージが見つからなくても構築しない|
-|*--build*|コンテナを開始前にイメージを構築する|
-|*--abort-on-container-exit*|コンテナが１つでも停止したら全てのコンテナを停止<br>`-d` と同時に使えない|
-|*-t, --timeout TIMEOUT*|アタッチしている、あるいは既に実行中のコンテナを停止する時のタイムアウト秒数を指定 (デフォルト:10 )|
-|*--remove-orphans*|Compose ファイルで定義されていないサービス用のコンテナを削除|
-|*--exit-code-from SERVICE*|指定されたサービスコンテナの終了コードを返す<br>`--abort-on-container-exit` の指定を暗に含む|
-|*--scale SERVICE=NUM*|SERVICE のインスタンス以下リンクからアクセス可能です。
+| オプション               | 説明                                                                                          |
+|-------------------------|---------------------------------------------------------------------------------------------|
+| *-d*                    | デタッチド・モード: バックグラウンドでコンテナを実行し、新しいコンテナ名を表示<br>`--abort-on-container-exit` と同時に使えない |
+| *--no-color*            | 白黒で画面に表示                                                                               |
+| *--no-deps*             | リンクしたサービスを起動しない                                                                 |
+| *--force-recreate*      | 設定やイメージに変更がなくても、コンテナを再作成する<br>`--no-recreate` と同時に使えません         |
+| *--no-recreate*         | コンテナが既に存在していれば、再作成しない<br>`--force-recreate` と同時に使えない                 |
+| *--no-build*            | イメージが見つからなくても構築しない                                                           |
+| *--build*               | コンテナを開始前にイメージを構築する                                                            |
+| *--abort-on-container-exit* | コンテナが１つでも停止したら全てのコンテナを停止<br>`-d` と同時に使えない                        |
+| *-t, --timeout TIMEOUT* | アタッチしている、あるいは既に実行中のコンテナを停止する時のタイムアウト秒数を指定 (デフォルト:10)   |
+| *--remove-orphans*      | Compose ファイルで定義されていないサービス用のコンテナを削除                                    |
+| *--exit-code-from SERVICE* | 指定されたサービスコンテナの終了コードを返す<br>`--abort-on-container-exit` の指定を暗に含む            |
+| *--scale SERVICE=NUM*   | SERVICE のインスタンス数を指定する                                                           |
+| *--follow-log*          | 指定されたサービスのログをフォローし続ける                                                     |
+| *-p, --project-name NAME* | プロジェクト名を指定する<br>デフォルトはディレクトリ名                                         |
+| *--profile PROFILE*     | 指定されたプロファイルを使用してサービスを起動する                                             |
+| *-f, --file FILE*       | Docker Compose ファイルを指定する<br>複数のファイルを使用する場合に便利                          |
 
-無事に立ち上がったら、アクセスしてみましょう。<br>
+無事に起動したら、アクセスしてみましょう。<br>
 [http://localhost:3000](http://localhost:3000)
 
-フォルダ構成は以下のようになっています。
+フォルダ構成は次のようになっています。
 ```
 /wordpress
-├ compose.yml
-├ public
-└ .env
+    ├-- docker-compose.yml
+    ├-- public ←新規追加
+    └-- .env
 ```
 
 ## dockerを終了
 
 ```bash:title=コマンド
-docker-compose down -v
+docker-compose down
 ```
-オプションなしで `docker-compose down`を実行すると`docker-compose up`で作成したコンテナ・ネットワーク・ボリューム・イメージ全て削除されてしまいます。
-なので `-v`オプションつけます。
-|オプション| |
-|-|-|
-|*--rmi type*|イメージの削除。type は次のいずれか:<br>'all': あらゆるサービスで使う全イメージを削除<br>'local': image フィールドにカスタム・タグのないイメージだけ削除|
-|*-v, --volumes*|Compose ファイルの `volumes` セクションの名前付きボリュームを削除<br>また、コンテナがアタッチしたアノニマス・ボリュームも削除|
-|*--remove-orphans*|Compose ファイルで定義していないサービス用のコンテナも削除|
+
+オプションなしで `docker-compose down` を実行すると、`docker-compose up` で作成したコンテナとネットワークが削除されます。
+
+ボリュームも削除したい場合は、`-v` オプションをつけます。
+
+| オプション               | 説明                                                                                          |
+|-------------------------|---------------------------------------------------------------------------------------------|
+| *-d*                    | デタッチド・モード: バックグラウンドでコンテナを実行し、新しいコンテナ名を表示<br>`--abort-on-container-exit` と同時に使えない |
+| *--no-color*            | 白黒で画面に表示                                                                               |
+| *--no-deps*             | リンクしたサービスを起動しない                                                                 |
+| *--force-recreate*      | 設定やイメージに変更がなくても、コンテナを再作成する<br>`--no-recreate` と同時に使えません         |
+| *--no-recreate*         | コンテナが既に存在していれば、再作成しない<br>`--force-recreate` と同時に使えない                 |
+| *--no-build*            | イメージが見つからなくても構築しない                                                           |
+| *--build*               | コンテナを開始前にイメージを構築する                                                            |
+| *--abort-on-container-exit* | コンテナが１つでも停止したら全てのコンテナを停止<br>`-d` と同時に使えない                        |
+| *-t, --timeout TIMEOUT* | アタッチしている、あるいは既に実行中のコンテナを停止する時のタイムアウト秒数を指定 (デフォルト:10)   |
+| *--remove-orphans*      | Compose ファイルで定義されていないサービス用のコンテナを削除                                    |
+| *--exit-code-from SERVICE* | 指定されたサービスコンテナの終了コードを返す<br>`--abort-on-container-exit` の指定を暗に含む            |
+| *--scale SERVICE=NUM*   | SERVICE のインスタンス数を指定する                                                           |
+| *--follow-log*          | 指定されたサービスのログをフォローし続ける                                                     |
+| *-p, --project-name NAME* | プロジェクト名を指定する<br>デフォルトはディレクトリ名                                         |
+| *--profile PROFILE*     | 指定されたプロファイルを使用してサービスを起動する                                             |
+| *-f, --file FILE*       | Docker Compose ファイルを指定する<br>複数のファイルを使用する場合に便利                          |
+| *--rmi type*            | イメージの削除。type は次のいずれか:<br>'all': あらゆるサービスで使う全イメージを削除<br>'local': image フィールドにカスタム・タグのないイメージだけ削除 |
+| *-v, --volumes*         | Compose ファイルの `volumes` セクションの名前付きボリュームを削除<br>また、コンテナがアタッチしたアノニマス・ボリュームも削除 |
+
 
 オプションを駆使して[dockerを完全に削除](#dockerを完全に削除)もあります！
 
-## データベースをエントリポイントにおいて更新
-あらかじめSQLのデータを挿入したい場合は、以下のようにSQLを格納しておくディレクトリを置きます。
+## ダンプしてきたデータベースをエントリポイントにおく
+ダンプしてきた（サーバーからダウンロード）MySQLなどのファイルを用意します。
+
+
+あらかじめSQLのデータを挿入したい場合は MySQL をエントリポイントとして指定するディレクトリを置きます。
+<msg txt="エントリポイントとは、プログラムやアプリケーションが実行される際に最初に実行される場所や関数のことです。Dockerでは、コンテナが起動する際に実行されるコマンドやスクリプトを指します!"></msg>
+
 ```
 /wordpress
-├ compose.yml
-├ public
-├ mysql/data/xx.sql
-└ .env
+    ├-- docker-compose.yml
+    ├-- public
+    ├-- mysql/
+    |    └-- data/ (エントリポイント)
+    |        └-- xx.sql
+    └-- .env
 ```
 
-```yaml:title=compose.yml
+```yaml:title=docker-compose.yml
   mysql:
     image: mysql:8.0
     ...
     volumes:
-      - ./mysql/data:/docker-entrypoint-initdb.d
+      - ./mysql/data:/docker-entrypoint-initdb.d #./mysql/dataをエントリポイントとして実行
 ```
+ダンプしてきたMySQLファイルのURLをDocker環境に合わせて `http://localhost:3000` に変えておきます。
 
-SQLファイルのURLをDocker環境に合わせて `http://localhost:3000` に変えておきます。
-
-その他、データベースの接頭辞等環境に応じて適宜変更しておきましょう。
+その他、データベースの接頭辞（通常は `wp_`）等環境に応じて適宜変更しておきましょう。
 
 ```sql:title=xx.sql
 -- Host: localhost    Database: wordpress
@@ -187,52 +319,51 @@ SQLファイルのURLをDocker環境に合わせて `http://localhost:3000` に�
 ## データベースのリストア・ダンプ
 今回は実にシンプルな方法をご紹介します。
 
-他ブログでは自動で〜、という記事が散見されましたが、逆に自由度が低く不便でした。
+手動でリストア（取り込み）するケースもあります。
+* エントリポイントで、MySQLデータのリストア失敗
+* MySQLデータのリストアやり直したい
 
+データのダンプ（MySQLコンテナからダウンロード）するケースももちろん発生します。
 
-`exec`でコンテナにコマンドを実行してデータベースの操作をします。
+ここでは、個々のコンテナに接続するため、`Docker` コマンドを使ってアプローチします。
 
-|オプション| |
-|-|-|
-|*-d, --detach=false*|デタッチド・モード: コマンドをバックグラウンドで実行|
-|*--detach-keys*|デタッチド・コンテナに特定のエスケープ・キー・シーケンスを設定|
-|*--help=false*|使い方の表示|
-|*-i, --interactive=false*|アタッチしていなくても STDIN をオープンにし続ける|
-|*--privileged=false*|コマンドに拡張 Linux ケーパビリティの追加|
-|*-t, --tty=false*|疑似ターミナル (pseudo-TTY) の割り当て|
-|*-u, --user=*|ユーザ名か UID (書式: <名前|uid>[:<グループ|gid>])|
+`exec` でコンテナにコマンドを実行(executeは英語で実行という意味)してデータベースの操作をします。
+
+*Docker exec コマンドのオプション*
+| オプション                | 説明                                           |
+|-------------------------|------------------------------------------------|
+| *-d, --detach=false*    | デタッチド・モード: コマンドをバックグラウンドで実行 |
+| *--detach-keys*         | デタッチド・コンテナに特定のエスケープ・キー・シーケンスを設定 |
+| *--help=false*          | 使い方の表示                                       |
+| *-i, --interactive=false* | アタッチしていなくても STDIN をオープンにし続ける       |
+| *--privileged=false*    | コマンドに拡張 Linux ケーパビリティの追加               |
+| *-t, --tty=false*       | 疑似ターミナル (pseudo-TTY) の割り当て                |
+| *-u, --user=*           | ユーザ名か UID (書式: <名前|uid>[:<グループ|gid>])     |
 
 
 ### データベースのリストア
-sqlファイルがあった場合のデータベースのリストア方法です。
+本番などからダンプしてきたデータベースをリストアする方法です。
+
+前述したように、URLなど適宜書き換えてください。今回はSQLファイルをルートディレクトリに直置きします。
 
 ```
 /wordpress
-├ compose.yml
-├ public
-├ dump.sql
-└ .env
+  ├-- docker-compose.yml
+  ├-- public
+  ├-- dump.sql
+  └-- .env
 ```
 
-`dump.sql` というファイルをリストアしたい場合、ルートディレクトリに直置きしてコマンドを叩きます。
-
-```bash:title=コマンド
-docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】' < dump.sql
-```
-.env で設定した定数をはめるとこんな感じです。
+`dump.sql` というファイルをリストアしたい場合、次のようなコマンドを叩きます。
 
 ```bash:title=コマンド
-docker exec -i wordpress_mysql_1 sh -c 'mysql wordpress -u wp_user -phogehoge' < wordpress.sql
+docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】' < xxx.sql
 ```
-コンテナー名をあらかじめつけておいたほうが理想的です。
-```yaml:title=compose.yml
-version: '3.7'
-services:
-  wordpress:
-    image: wordpress:latest
-    container_name: web-container
-```
+`.env` で設定した定数をはめるとこんな感じです。
 
+```bash:title=コマンド
+docker exec -i mywordpress_mysql sh -c 'mysql wordpress -u wp_user -phogehoge' < dump.sql
+```
 
 ### データベースのダンプ
 ダンプ方法です。
@@ -243,16 +374,16 @@ docker exec -i 【コンテナ名】 sh -c 'mysqldump 【データベース名�
 .env で設定した定数をはめるとこんな感じです。
 
 ```bash:title=コマンド
-docker exec -i wordpress_mysql_1 sh -c 'mysqldump wordpress -u wp_user -phogehoge' > latest.sql
+docker exec -i mywordpress_mysql sh -c 'mysqldump wordpress -u wp_user -phogehoge' > latest.sql
 ```
 
-以下のようなDBができているはずです。
+ルート直下にlatest.sqlというDBファイルが追加されます。
 ```
 /wordpress
-├ compose.yml
-├ public
-├ latest.sql(←これ)
-└ .env
+    ├-- docker-compose.yml
+    ├-- public
+    ├-- latest.sql  ←これ
+    └-- .env
 ```
 
 ### データベースの確認や削除
@@ -265,7 +396,7 @@ docker exec -it 【データベース名】 mysql -u【ユーザー名】 -p
 実際のコマンドはこんな感じ。パスワードを聞かれたら入力します。
 
 ```bash:title=コマンド
-docker exec -it wordpress_mysql_1 mysql -uwp_user -p
+docker exec -it wordpress mysql -uwp_user -p
 ```
 データベースを確認します。
 
@@ -314,7 +445,7 @@ docker-compose down --rmi all --volumes --remove-orphans
 これで気軽に破壊したりできます。
 
 ## まとめ・Dockerやってみたらカンタンだった
-イメージも用意されていて `compose.yml`にカンタンなコードを書くだけなのでDockerでWordPressを構築するのは楽勝でした。
+イメージも用意されていて `docker-compose.yml`にカンタンなコードを書くだけなのでDockerでWordPressを構築するのは楽勝でした。
 
 <msg txt="個人的には管理もメンテナンスもVagrantよりカンタンです"></msg>
 
@@ -326,14 +457,39 @@ docker-compose down --rmi all --volumes --remove-orphans
 
 ### おまけ・よく使うコマンド
 
-```bash
+すべてのコンテナを強制終了。
+```bash:title=コマンド
 docker-compose kill
 ```
-ネットワーク一覧を取得
-```bash
+ネットワーク一覧を取得。
+```bash:title=コマンド
 docker network list
 ```
-指定したネットワークを削除
-```bash
+現在起動中のコンテナの一覧を表示 。
+```bash:title=コマンド
+docker ps
+```
+特定のコンテナに接続してコマンドを実行。
+```bash:title=コマンド
+docker exec -it CONTAINER_NAME bash
+```
+特定のコンテナのログを表示。
+```bash:title=コマンド
+docker logs CONTAINER_NAME
+```
+実行中のコンテナのリソース使用状況（CPU、メモリなど）をリアルタイムで表示。
+```bash:title=コマンド
+docker stats
+```
+ローカルに保存されているDockerイメージの一覧を表示。
+```bash:title=コマンド
+docker images
+```
+ローカルに保存されているDockerイメージの一覧を表示 。
+```bash:title=コマンド
+docker volume ls
+```
+指定したネットワークを削除。
+```bash:title=コマンド
 docker network rm ID
 ```
