@@ -73,7 +73,10 @@ const BlogPostTemplate = ({ data, location }) => {
           if (codeBlock) {
             const code = codeBlock.textContent;
             navigator.clipboard.writeText(code).then(() => {
-              alert("コードをコピーしました!");
+              button.innerText = "COPIED!";
+              setTimeout(() => {
+                button.innerText = "COPY";
+              }, 2000);
             }).catch((err) => {
               console.error("Failed to copy code: ", err);
             });

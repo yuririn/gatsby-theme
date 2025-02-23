@@ -14,13 +14,15 @@ faq:
 ---
 この記事は、[Docker で本番環境に忠実な開発環境を作る（nginx、PHP-FPM、MariaDB）](/blogs/entry543/)の続きです。運用しているWebサイトの本番環境で PHP Warning が発生してしまいました。そのエラーを修正したいのにエラーを見ることができず、修正できたかわからない状況に陥りました。
 
-> PHP Warning（警告）　は、スクリプトの実行中に *非* 致命的なエラーが発生したときに表示されるメッセージ
+> PHP Warning（警告）　は、スクリプトの実行中に ***非*致命的** なエラーが発生したときに表示されるメッセージ
 次はよく起こる *PHP Warning（警告）* です。
 
 * *未定義変数の使用*: 作っていない変数を使おうとする場合
 * *配列でないものへのアクセス*: 配列ではないにも関わらず、配列のようにアクセスした場合
+* *配列のインデックスが存在しない*: 配列のインデックスが存在しない場合に発生
 
-この記事を試すためには Docker 環境が必要です。先に「 *Docker で本番環境に忠実な開発環境を作る（nginx、PHP-FPM、MariaDB）* 」を参考にしてください。
+この記事を試すためには Docker 環境が必要です。先に「 **Docker で本番環境に忠実な開発環境を作る（nginx、PHP-FPM、MariaDB）** 」を参考にしてください。
+
 <card slug="entry543"></card>
 
 <prof></prof>
@@ -69,13 +71,10 @@ echo $undefined_variable;
 
 | PHP Warning                                              | 説明                                                                                 |
 |----------------------------------------------------------|--------------------------------------------------------------------------------------|
-| Division by zero                                         | 0で割ろうとした場合。                                                      |
-| Invalid argument supplied for foreach()                  | `foreach` ループに対して無効な引数が渡された場合に。                             |
-| array_merge(): Argument #x is not an array               | `array_merge` 関数に配列でない引数が渡された場合に。                              |
-| include_once(): Failed opening 'file' for inclusion      | `include_once` で存在しないファイルを読み込もうとした場合。                   |
-| require(): Failed opening required 'file' for inclusion  | `require` で存在しないファイルを読み込もうとした場合。                          |
-| Cannot modify header information - headers already sent  | `header` 関数が呼び出される前に出力が行われた場合。                              |
-
+| Division by zero                                         | 0で割ろうとした場合。                                                               |
+| Invalid argument supplied for foreach()                  | `foreach` ループに対して無効な引数が渡された場合。                                  |
+| array_merge(): Argument #x is not an array               | `array_merge` 関数に配列でない引数が渡された場合。                                  |
+| Cannot modify header information - headers already sent  | `header` 関数が呼び出される前に出力が行われた場合。                                |
 
 ### リアルタイムでモニタリングしながらエラーを監視する
 リアルタイムでモニターしながらも開発できます。
