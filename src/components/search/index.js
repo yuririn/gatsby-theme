@@ -8,8 +8,8 @@ const Search = () => {
     const resultInputRef = useRef(null);
 
     const handleActive = (e) => {
-        setValue(e.target.value);
-        setActive(e.target.value ? true : false);
+        setValue('');
+        setActive(true);
         document.body.classList.add("is-fixed")
     };
 
@@ -17,8 +17,7 @@ const Search = () => {
         <div className="c-search">
             <input
                 type="text"
-                onChange={handleActive}
-                value={value}
+                onFocus={handleActive}
                 placeholder="どんな記事を読みたいですか?"
                 className="c-search__input"
             />
@@ -28,6 +27,7 @@ const Search = () => {
                         value={value}
                         setValue={setValue}
                         setActive={setActive}
+                        active={active}
                         resultInputRef={resultInputRef}
                     />
                 </SearchResult>

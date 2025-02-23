@@ -28,7 +28,7 @@ const Blogs = ({ pageContext, data, location }) => {
       <header className='c-page-header--common' id="keyvisual">
         <div>
           <h1>{title}</h1>
-          <p>現在  {posts.length} 記事あります</p>
+          <p>現在  {data.allMarkdownRemark.totalCount} 記事あります</p>
         </div>
         <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
       </header>
