@@ -1,51 +1,43 @@
 const fs = require('fs');
 const path = require('path');
 exports.onPreBuild = ({ reporter }) => {
-  const branch = process.env.BRANCH || 'unknown';
-  let nodeEnv = 'production';
-
-  // ブランチが master 以外はすべて development とする
-  if (branch !== 'master') {
-    nodeEnv = 'development';
-  }
-
-  // `NODE_ENV`を設定
-  process.env.NODE_ENV = nodeEnv;
-  reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
-  console.log(`BASIC_AUTH_ID: ${process.env.BASIC_AUTH_ID}`)
-  console.log(`BASIC_AUTH_PASS: ${process.env.BASIC_AUTH_PASS}`)
-
-  const robotsPath = path.join('./static/', 'robots.txt');
-
-  // ファイルが存在するか確認し、ログを出力
-  if (fs.existsSync(robotsPath)) {
-    // ファイルが存在する場合、その内容を読み取ってログに出力
-    const existingContent = fs.readFileSync(robotsPath, 'utf8');
-    reporter.info('Existing robots.txt content:');
-    reporter.info(existingContent);
-
-    // 上書き確認と処理
-    if (nodeEnv === 'development') {
-      const robotsContent = 'User-agent: *\nDisallow: /\n';
-      fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-      reporter.info('Updated robots.txt for development environment');
-    } else {
-      const robotsContent = 'User-agent: *\nAllow: /\n';
-      fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-      reporter.info('Updated robots.txt for development production');
+    const branch = process.env.BRANCH || 'unknown';
+    let nodeEnv = 'production';
+    
+    // ブランチが master 以外はすべて development とする
+    if (branch !== 'master') {
+        nodeEnv = 'development';
     }
-  } else {
-    // ファイルが存在しない場合、新規作成
-    if (nodeEnv === 'development') {
-      const robotsContent = 'User-agent: *\nDisallow: /\n';
-      fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-      reporter.info('Created robots.txt for development environment');
+    
+    // `NODE_ENV`を設定
+    process.env.NODE_ENV = nodeEnv;
+    reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
+    console.log(`BASIC_AUTH_ID: ${process.env.BASIC_AUTH_ID}`)
+    console.log(`BASIC_AUTH_PASS: ${process.env.BASIC_AUTH_PASS}`)
+
+    const robotsPath = path.join('./static/', 'robots.txt');
+
+    // ファイルが存在するか確認し、ログを出力
+    if (fs.existsSync(robotsPath)) {
+        // ファイルが存在する場合、その内容を読み取ってログに出力
+        const existingContent = fs.readFileSync(robotsPath, 'utf8');
+        reporter.info('Existing robots.txt content:');
+        reporter.info(existingContent);
+
+        // 上書き確認と処理
+        if (nodeEnv === 'development') {
+            const robotsContent = 'User-agent: *\nDisallow: /\n';
+            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+            reporter.info('Updated robots.txt for development environment');
+        }
     } else {
-      const robotsContent = 'User-agent: *\nAllow: /\n';
-      fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-      reporter.info('Updated robots.txt for development production');
+        // ファイルが存在しない場合、新規作成
+        if (nodeEnv === 'development') {
+            const robotsContent = 'User-agent: *\nDisallow: /\n';
+            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+            reporter.info('Created robots.txt for development environment');
+        }
     }
-  }
 };
 
 const { createFilePath } = require(`gatsby-source-filesystem`)
@@ -53,17 +45,17 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const branchName = process.env.BRANCH || 'unknown-branch';
+    const branchName = process.env.BRANCH || 'unknown-branch';
 
-  if (branchName !== 'master') {
+    if (branchName !== 'master') {
 
-    const authPage = path.resolve('./src/templates/auth.js')
-    // ログインページの生成
-    createPage({
-      path: '/login',
-      component: authPage,
-    });
-  }
+        const authPage = path.resolve('./src/templates/auth.js')
+        // ログインページの生成
+        createPage({
+            path: '/login',
+            component: authPage,
+        });
+    }
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
@@ -122,26 +114,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog")
 
-    // 個々のブログ記事生成
+     // 個々のブログ記事生成
     blogPosts.forEach((post, index) => {
+        
+        
+        const previousPostId = index === 0 ? null : blogPosts[index - 1].id
+        const nextPostId =
+            index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
+        createPage({
+            path: `/blogs/${post.fields.slug}/`,
+            component: blogPost,
+            context: {
+                id: post.id,
+                previousPostId,
+                nextPostId,
 
-
-      const previousPostId = index === 0 ? null : blogPosts[index - 1].id
-      const nextPostId =
-        index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
-      createPage({
-        path: `/blogs/${post.fields.slug}/`,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-
-          hero: post.frontmatter.hero
-            ? post.frontmatter.hero
-            : "common/dummy.png",
-        },
-      })
+                hero: post.frontmatter.hero
+                    ? post.frontmatter.hero
+                    : "common/dummy.png",
+            },
+        })
     })
 
     // 記事の分割数
@@ -281,25 +273,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
  * 年代別に投稿を整理する
  */
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+    const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const pageType = node.frontmatter.pageType;
-    const value = createFilePath({ node, getNode, basePath: 'content/posts' })
-    if (pageType === 'blog') {
-      createNodeField({
-        name: `slug`,
-        node,
-        value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1'),
-      })
-    } else {
-      createNodeField({
-        name: `slug`,
-        node,
-        value,
-      })
+    if (node.internal.type === `MarkdownRemark`) {
+        const pageType = node.frontmatter.pageType;
+        const value = createFilePath({ node, getNode, basePath: 'content/posts' })
+        if (pageType === 'blog') {
+            createNodeField({
+                name: `slug`,
+                node,
+                value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1'),
+            })
+        } else {
+            createNodeField({
+                name: `slug`,
+                node,
+                value,
+            })
+        }
     }
-  }
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
@@ -356,14 +348,14 @@ exports.createSchemaCustomization = ({ actions }) => {
  */
 
 exports.onPostBuild = () => {
-  const nodeEnv = process.env.NODE_ENV || 'production';
-  console.log('Node Environment:', nodeEnv);
+    const nodeEnv = process.env.NODE_ENV || 'production';
+    console.log('Node Environment:', nodeEnv);
 
-  try {
-    const robotsPath = path.join('./public/', 'robots.txt');
-    const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
-    console.log('Robots content:', robotsFileContent); // デバッグ用
-  } catch (error) {
-    console.error('Error reading robots.txt file:', error);
-  }
+    try {
+        const robotsPath = path.join('./public/', 'robots.txt');
+        const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
+        console.log('Robots content:', robotsFileContent); // デバッグ用
+    } catch (error) {
+        console.error('Error reading robots.txt file:', error);
+    }
 };
