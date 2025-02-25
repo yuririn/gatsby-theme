@@ -350,6 +350,7 @@ export const Edit = styled.section`
     box-shadow: none;
     border: none;
     background: var(--color-d-blue);
+    color: var(--background);
     padding: 2px 6px;
   }
   .gatsby-code-title {

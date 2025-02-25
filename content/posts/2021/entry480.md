@@ -62,7 +62,7 @@ docker -v
 インストールしたい場所にフォルダを作ります。
 
 ```
-/mywordpress
+/myproject
   ├-- docker-compose.yml
   └-- .env
 ```
@@ -75,12 +75,10 @@ docker -v
 ファイル名は `docker-compose.yml` でも `compose.yml` でもどちらでもかまいません。
 
 ```yaml:title=docker-compose.yml
-version: '3.7' #バージョンは適宜ご自身の環境に合わせてください
-
 services:
-  wordpress:
+  myproject_wp:
     image: wordpress:latest
-    container_name: mywordpress #あとでたたくコマンドで必要になる
+    container_name: myproject_wop #あとでたたくコマンドで必要になる
     ports:
       - "3000:80" # ポート番号
     depends_on:
@@ -92,16 +90,28 @@ services:
         # 例:
         # - ./wp-content:/var/www/html/wp-content
         # - ./themes:/var/www/html/wp-content/themes
+    networks:
+      - myproject_network
 
-  mysql:
+  myproject_db:
     image: mysql:8.0
     env_file: .env
-    container_name: mywordpress_mysql #あとで叩くコマンドで必要になる
+    myproject_db #あとで叩くコマンドで必要になる
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - "3306:3306" #ポート番号の設定
+    networks:
+      - myproject_network
 
+# Dockerのネットワークを明示的に追加
+networks:
+  myproject_network:
+
+volumes:
+  db_data:
 ```
+<msg txt="Dockerのネットワークを明示的に追加することでサービス間の通信をより制御しやすくなります。"></msg>
+
 マウントするディレクトリは`wp-content`や`themes`だけでいいのであれば適宜書き換えてください。
 
 それぞれのコンテナに `container_name` を明示的に付与しておくと、後々コマンドを叩くときに困りません。私はプロジェクト名、サービス名にすることが多いです。
@@ -110,6 +120,7 @@ services:
 <div class="box">
 <h4>サービス名に気をつける</h4>
 <p>docker-composeファイルで定義されたサービス名が他のプロジェクトのサービス名と重複しないようにすることが重要。これにより、他のコンテナが不意に立ち上がることを防ぐことができます。</p>
+<p>例）project名_php </p>
 </div>
 
 ### Dockerイメージ「wordpress」
@@ -165,7 +176,7 @@ MySQL 8.0以降ではデフォルトの認証プラグインが `caching_sha2_pa
   ...
   mysql:
     image: mysql:8.0
-    container_name: mywordpress_mysql
+    container_name: myproject_db
     # 以下追記
     command: --default-authentication-plugin=mysql_native_password
     env_file: .env
@@ -181,10 +192,10 @@ WORDPRESS_DB_NAME=wordpress
 WORDPRESS_DB_USER=wp_user
 WORDPRESS_DB_PASSWORD=hogehoge
 
-MYSQL_RANDOM_ROOT_PASSWORD=yes
+MYSQL_ROOT_PASSWORD=rootpass
 MYSQL_DATABASE=wordpress
 MYSQL_USER=wp_user
-MYSQL_PASSWORD=hogehoge
+MYSQL_PASSWORD=password
 ```
 
 <div class="box">
@@ -244,7 +255,7 @@ docker-compose up -d
 
 フォルダ構成は次のようになっています。
 ```
-/wordpress
+/myproject
     ├-- docker-compose.yml
     ├-- public ←新規追加
     └-- .env
@@ -292,7 +303,7 @@ docker-compose down
 <msg txt="エントリポイントとは、プログラムやアプリケーションが実行される際に最初に実行される場所や関数のことです。Dockerでは、コンテナが起動する際に実行されるコマンドやスクリプトを指します!"></msg>
 
 ```
-/wordpress
+/myproject
     ├-- docker-compose.yml
     ├-- public
     ├-- mysql/
@@ -347,7 +358,7 @@ docker-compose down
 前述したように、URLなど適宜書き換えてください。今回はSQLファイルをルートディレクトリに直置きします。
 
 ```
-/wordpress
+/myproject
   ├-- docker-compose.yml
   ├-- public
   ├-- dump.sql
@@ -357,12 +368,23 @@ docker-compose down
 `dump.sql` というファイルをリストアしたい場合、次のようなコマンドを叩きます。
 
 ```bash:title=コマンド
+docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u root -p【ルートパスワード】' < xxx.sql
+# うまく行かない場合はRootで実行
 docker exec -i 【コンテナ名】 sh -c 'mysql 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】' < xxx.sql
 ```
-`.env` で設定した定数をはめるとこんな感じです。
+`.env` で設定した環境変数をはめるとこんな感じです。
 
+環境変数で実行。
 ```bash:title=コマンド
-docker exec -i mywordpress_mysql sh -c 'mysql wordpress -u wp_user -phogehoge' < dump.sql
+docker exec -i myproject_db sh -c 'mysql $MYSQL_DATABASE -u $MYSQL_USER -p$MYSQL_PASSWORD' < dump.sql
+# うまく行かない場合はRootで実行
+docker exec -i myproject_db sh -c 'mysql $MYSQL_DATABASE -u root -p$MYSQL_ROOT_PASSWORD' < dump.sql
+```
+直打ちでもOK。
+```bash:title=コマンド
+docker exec -i myproject_db sh -c 'mysql wordpress -u wp_user -ppassword' < dump.sql
+# うまく行かない場合はRootで実行
+docker exec -i myproject_db sh -c 'mysql wordpress -u root -prootpass' < dump.sql
 ```
 
 ### データベースのダンプ
@@ -370,16 +392,27 @@ docker exec -i mywordpress_mysql sh -c 'mysql wordpress -u wp_user -phogehoge' <
 
 ```bash:title=コマンド
 docker exec -i 【コンテナ名】 sh -c 'mysqldump 【データベース名】 -u 【sqlユーザー名】 -p【sqlパスワード】'> latest.sql
+# うまく行かない場合はRootで実行
+docker exec -i 【コンテナ名】 sh -c 'mysqldump 【データベース名】 -u root -p【ルートパスワード】'> latest.sql
 ```
-.env で設定した定数をはめるとこんな感じです。
+.env で設定した環境変数をはめるとこんな感じです。
+
+環境変数で実行。
+```bash:title=コマンド
+source .env && docker exec -i myproject_db sh -c "mysql -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE" < dump.sql
+# うまく行かない場合はRootで実行
+source .env && docker exec -i myproject_db sh -c "mysql -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE" < dump.sql
+```
 
 ```bash:title=コマンド
-docker exec -i mywordpress_mysql sh -c 'mysqldump wordpress -u wp_user -phogehoge' > latest.sql
+source .env && docker exec -i myproject_db sh -c "mysql -u wp_user -ppassword wordpress" < dump.sql
+# うまく行かない場合はRootで実行
+source .env && docker exec -i myproject_db sh -c "mysql -u root -pprootpass wordpress" < dump.sql
 ```
 
 ルート直下にlatest.sqlというDBファイルが追加されます。
 ```
-/wordpress
+/myproject
     ├-- docker-compose.yml
     ├-- public
     ├-- latest.sql  ←これ
@@ -390,13 +423,13 @@ docker exec -i mywordpress_mysql sh -c 'mysqldump wordpress -u wp_user -phogehog
 Dockerからデータベースの確認をします。
 
 ```bash:title=コマンド
-docker exec -it 【データベース名】 mysql -u【ユーザー名】 -p
+docker exec -it 【コンテナ名】 mysql -u【ユーザー名】 -p
 ```
 
 実際のコマンドはこんな感じ。パスワードを聞かれたら入力します。
 
 ```bash:title=コマンド
-docker exec -it wordpress mysql -uwp_user -p
+docker exec -it myproject_db mysql -u $MYSQL_USER -p
 ```
 データベースを確認します。
 
@@ -416,9 +449,14 @@ mysql> use wordpress;
 ```sql:title=sql
 mysql> show tables;
 ```
-削除したい場合はデータベース名を指定して`drop`。
+データベース削除したい場合はデータベース名を指定して `drop`。
 ```sql:title=sql
 mysql> drop wordpress;
+```
+
+テーブルだけ削除したい場合は削除したい場合はテーブル名を,(カンマ)で区切って `drop`。
+```sql:title=sql
+mysql> drop wp_users, wp_posts,....;
 ```
 
 sqlの終了。

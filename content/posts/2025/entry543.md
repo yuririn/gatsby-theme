@@ -41,7 +41,6 @@ myproject/
 ```
 コンテナの構成です。
 ```yml:title=docker-compose.yml
-version: '3.8'
 
 services: # コンテナサービスの定義
   nginx: # ウェブサーバー（Nginx）
@@ -69,11 +68,11 @@ myproject/
 
 ```
 ```yml:title=docker-compose.yml
-version: '3.8'
 services:
-  nginx:
+  myproject_nginx:
     image: nginx:1.25.5
     #他のコンテナ名と被らないように接頭辞にプロジェクト名をつけておく
+    #サービス名とコンテナ名が一緒だと後々便利
     container_name: myproject_nginx
     platform: linux/amd64
     ports:
@@ -85,11 +84,24 @@ services:
       - ./docker/nginx/:/etc/nginx/conf.d
     environment:
       TZ: Asia/Manila #日本にしたい場合はAsia/Tokyoに
+    networks:
+     - mynetwrok #後ほど作成するコンテナとネットワークを統一する
 volumes:
   db_data: {}
+
+networks:
+  mynetwrok:
+    driver: bridge
 ```
 
 他のバージョンが使いたい人は、[Nginx - Official Image | Docker Hub](http://hub.docker.com/_/nginx)を参考に。
+
+Dockerのネットワークは、コンテナ同士や外部ネットワークとの通信を管理するための仕組み。ここでは、Bridgeネットワークをセットし、同じホスト内のコンテナ間通信を可能にしておきます。
+```yml:title=docker-compose.yml
+networks:
+  mynetwrok:
+    driver: bridge
+```
 
 サーバーの設定ファイルを作ります。
 
@@ -126,8 +138,27 @@ http {
 }
 ```
 
-コンテナに入りちゃんと設定が反映しているか確認します。
+`nginx.conf` は Apache でいう `httpd.conf` に相当します。そして、 Nginx では `.htaccess` は使わないので、リダイレクトの設定などある場合はすべて`nginx.conf` に記載します。
 
+*Nginx (nginx.conf)*
+* グローバル設定
+* イベント設定
+* HTTPサーバーブロック
+* リバースプロキシ設定
+* 各仮想ホストやサービスの設定ファイルのインクルード
+
+*Apache (httpd.conf)*
+* グローバル設定
+* モジュールのロード
+* ディレクトリとファイルの設定
+* 各仮想ホストやドメインの設定
+
+コンテナを起動。
+
+```bash:title=コマンド
+docker-compose up -d
+```
+コンテナに入りちゃんと設定が反映しているか確認します。
 ```bash:title=コマンド
 docker exec -it myproject_nginx /bin/bash
 ```
@@ -160,7 +191,8 @@ myproject/
     ├-- docker/
     │   ├-- nginx/
     │   │   └-- nginx.conf
-    │   ├-- errors/  ← 自動生成される
+    │   ├-- errors/
+    │   │   └-- php_errors.log  ← 追加
     │   └-- php/
     │        ├-- Dockerfile  ← 追加
     │        └-- php.ini  ← 追加
@@ -168,14 +200,13 @@ myproject/
 ```
 PHP用のコンテナーの設定。
 ```yml:title=docker-compose.yml
-version: '3.8'
 services:
   nginx:
   ...
     depends_on:
-      - php #依存関係の追加
+      - myproject_php #依存関係の追加
   ...
-  php:
+  myproject_php:
     build:
       context: ./docker/php  # カスタムのPHPイメージをビルドするためのディレクトリ
     container_name: myproject_php
@@ -186,6 +217,7 @@ services:
       # php.iniをコンテナ内の/usr/local/etc/php/conf.dにマウント
       - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
       # エラーログ用のディレクトリをコンテナ内の/var/logにマウント
+      # あらかじめ同名のファイルを置いておく
       - ./docker/errors/php_errors.log:/var/log/php_errors.log
     environment:
       TZ: Asia/Manila  # タイムゾーンを設定
@@ -193,6 +225,8 @@ services:
       PHP_MAX_EXECUTION_TIME: 300  # PHPの最大実行時間を設定
       PHP_UPLOAD_MAX_FILESIZE: 16M  # アップロードファイルの最大サイズを設定
       PHP_POST_MAX_SIZE: 16M  # POSTデータの最大サイズを設定
+    networks:
+     - mynetwrok
 ...
 ```
 Dockerfile で必要なモジュールをインストールします。
@@ -263,7 +297,7 @@ Dockerfile 経由でPHPモジュールの vim と imagick をインストール�
 # php -mですべてのモジュールが確認できる
 # grep で imagick だけに絞り込んで確認
 php -m | grep imagick
-# はPHPモジュールとして認識されないので version の確認でインストールを確認する。
+# はPHPモジュールとして認識されないので version でインストールの確認をする
 vi --version
 ```
 `cat` コマンドで php.ini が反映されいるか確認。
@@ -290,31 +324,31 @@ public/ ディレクトリに `index.php` を置いてみましょう。http://l
 
 ```
 myproject/
-   ├-- public/
-   │   ├-- index.html
-   │   └-- index.php
-   ├-- docker/
-   │   ├-- nginx/
-   │   │   └-- nginx.conf
-   │   ├-- errors/
-   │   ├--php/
-   │   │    ├-- Dockerfile
-   │   │    └-- php.ini
-   │   └-- db/
-   │        └-- init.sql ← 追加
-   └-- docker-compose.yml  ← 修正
+  ├-- public/
+  │   ├-- index.html
+  │   └-- index.php
+  ├-- docker/
+  │   ├-- nginx/
+  │   │   └-- nginx.conf
+  │   ├-- errors/
+  │   │   └-- php_errors.log
+  │   ├--php/
+  │   │    ├-- Dockerfile
+  │   │    └-- php.ini
+  │   └-- db/
+  │        └-- init.sql ← 追加
+  └-- docker-compose.yml  ← 修正
 ```
 
 ```yml:title=docker-compose.yml
-version: '3.8'
 services:
   nginx:
   ...
     depends_on:
-      - php
-      - db #依存関係を追加
+      - myproject_php
+      - myproject_db #依存関係を追加
   ...
-  db:
+  myproject_db:
     image: mariadb:10.5.24  # 使用するMariaDBのイメージ
     container_name: myproject_db  # コンテナ名を指定
     platform: linux/amd64  # プラットフォームの指定
