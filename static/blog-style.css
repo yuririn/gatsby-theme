@@ -384,6 +384,9 @@
   justify-content: center;
   align-items: center;
 }
+.c-toc a.active {
+  font-weight: bold;
+}
 .c-toc a.active::before {
   background: var(--pale-gray);
   color: var(--accent-color);

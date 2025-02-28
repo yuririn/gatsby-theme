@@ -89,9 +89,12 @@
             justify-content: center;
             align-items: center;
         }
+        &.active{
+          font-weight: bold; 
+        }
         &.active::before {
             background: var(--pale-gray);
-             color: var(--accent-color);   
+            color: var(--accent-color);
         }
         
         @include utils.mq(md){

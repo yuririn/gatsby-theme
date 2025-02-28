@@ -284,7 +284,7 @@ docker-compose up -d
 docker exec -it myproject_php /bin/bash
 ```
 
-PHP（PHP-FPM）もバージョン確認。./docker/php/Dockerfile で設定した 8.2型が入ったことを確認できました。
+PHP（PHP-FPM）もバージョン確認。./docker/php/Dockerfile で設定した PHP 8.2.27 が入ったことを確認できました。
 
 ```bash:title=コマンド
 php-fpm -v

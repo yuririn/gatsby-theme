@@ -399,15 +399,15 @@ docker exec -i 【コンテナ名】 sh -c 'mysqldump 【データベース名�
 
 環境変数で実行。
 ```bash:title=コマンド
-source .env && docker exec -i myproject_db sh -c "mysql -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE" < dump.sql
+docker exec -i myproject_db sh -c "mysql -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE" < dump.sql
 # うまく行かない場合はRootで実行
-source .env && docker exec -i myproject_db sh -c "mysql -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE" < dump.sql
+docker exec -i myproject_db sh -c "mysql -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE" < dump.sql
 ```
 
 ```bash:title=コマンド
-source .env && docker exec -i myproject_db sh -c "mysql -u wp_user -ppassword wordpress" < dump.sql
+docker exec -i myproject_db sh -c "mysql -u wp_user -ppassword wordpress" < dump.sql
 # うまく行かない場合はRootで実行
-source .env && docker exec -i myproject_db sh -c "mysql -u root -pprootpass wordpress" < dump.sql
+docker exec -i myproject_db sh -c "mysql -u root -pprootpass wordpress" < dump.sql
 ```
 
 ルート直下にlatest.sqlというDBファイルが追加されます。

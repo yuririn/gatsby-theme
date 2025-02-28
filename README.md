@@ -19,4 +19,14 @@ ex.) dev/issue-7-fixed-image-component
   
 ### 記事更新
 ブランチ posting-articles で作成し、リモートの master に pull request でマージ。deploy preview が走るので、止める（記事投稿のみ master で行ってもいい。今後運用方法は要検討）。
- 
+
+### よく使うGit Command
+```bash
+source ~/.bashrc
+```
+```bash
+git.sh log
+```
+```bash
+git.sh show
+```
