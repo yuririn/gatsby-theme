@@ -1,6 +1,6 @@
 ---
 title: use / forword / 組み込み関数 Dart Sass 便機能徹底ガイド（Gulp タスクサンプルコード(postCSS)付）
-date: 2025-03-01
+date: 2025-02-26
 pageType: blog
 hero: thumbnail/2025/entry545.jpg
 cateId: web-developer
@@ -20,6 +20,8 @@ CSS も入れ子で書けるようになり、コーディングも昔では考�
 * Dart Sass は、Sass の公式が推奨している実装方法。新規プロジェクトではその使用が推奨(2020 年 10 月に LibSass の利用が非推奨になったため)。
 * Node-sass（Node.js で Sass をコンパイルするためのツール）の開発が停止
 * @import が廃止され、@use や @forword が推奨
+
+<prof></prof>
 
 今回やりたいこと。
 * `@use` や `@forword` のなどの Dart Sass の使用方法のおさらい

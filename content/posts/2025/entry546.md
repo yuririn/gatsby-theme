@@ -1,11 +1,11 @@
 ---
-title: 始めるならどれ？2025年人気フレームワークBootstrap、Tailwind CSS、Foundationを比較
-date: 2025-03-02
+title: 始めるならどれ？2025年人気 CSS フレームワークBootstrap、Tailwind CSS、Foundationを比較
+date: 2025-02-27
 pageType: blog
 hero: thumbnail/2025/entry546.jpg
 cateId: web-developer
 tags: ["CSS"]
-description: 2025年の最新CSSフレームワーク比較！Bootstrap、Tailwind CSS、Foundationの使い方やおすすめポイントを詳しく解説。初学者からプロフェッショナルまで、効果的なフレームワーク選びのヒントを提供します。実際のコード例や経験談も紹介。
+description: 2025年の人気のCSSフレームワーク比較！Bootstrap、Tailwind CSS、Foundationの使い方やおすすめポイントを詳しく解説。初学者からプロフェッショナルまで、効果的なフレームワーク選びのヒントを提供します。実際のコード例や経験談も紹介。
 ---
 CSS はややこい!!!
 
@@ -14,6 +14,8 @@ CSS はややこい!!!
 <msg txt="CSSフレームワークと一言で言っても40個以上あって、全部比較していたら私の寿命尽きちゃう笑"></msg>
 
 今回、特に人気のフレームワーク3つほど厳選し、使い方を徹底的に比較してみました。
+
+<prof></prof>
 
 ## まずはおさらい: なぜ CSS はややこいのか？
 
