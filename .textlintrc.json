@@ -11,7 +11,6 @@
     "@proofdict/proofdict": {
       "dictURL": "https://azu.github.io/proof-dictionary/"
     },
-    "ja-hiraku": true,
-    "/Users/yurikokamimori/Documents/gatsby-theme/custom-rules/ignore-fullwidth-exclamations-questionmarks": true
+    "ja-hiraku": true
   }
 }

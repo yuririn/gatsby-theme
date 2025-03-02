@@ -1,4 +1,7 @@
 {
   "editor.tabSize": 2,
-  "editor.insertSpaces": true
+  "editor.insertSpaces": true,
+  "textlint.run": "onSave",
+  "textlint.configPath": ".textlintrc.json",
+  "textlint.nodePath": "node_modules"
 }
