@@ -1,5 +1,5 @@
 ---
-title: use forword 組み込み関数 Dart Sass 便機能徹底ガイド（Gulp タスクサンプルコード(postCSS)付）
+title: use / forword / 組み込み関数 Dart Sass 便機能徹底ガイド（Gulp タスクサンプルコード(postCSS)付）
 date: 2025-03-01
 pageType: blog
 hero: thumbnail/2025/entry545.jpg
@@ -7,19 +7,21 @@ cateId: web-developer
 tags: ["SASS","CSS","Gulp"]
 description: CSSが進化し、コーディングがかつてないほど便利になった現在。Sass(SCSS)を活用し、パーツをコンポーネントとして管理するのに重宝。5年以上前からSassを愛用し、Gulpを仕事に取り入れることで作業スピードが劇的に向上。このガイドでは、Dart SassとpostCSSの環境設定や、@use と @forword の使用方法をまとめ、テキストフォーマッターの実装について解説。Dart Sassは公式が推奨する実装方法で、LibSassの利用が非推奨となったため新規プロジェクトには必須のツール。Node-sassの開発停止を受け、最新のSassの使用方法をおさらい。
 ---
-CSS も入れ子で書けるようになりコーディングも昔では考えられないくらい便利になりました。
+CSS も入れ子で書けるようになり、コーディングも昔では考えられないくらい便利になりました。
 
-とはいえ、私にとっては SASS(SCSS) もまだ現役でパーツをコンポーネントとして管理する際に便利なので現役で使っています。
+とはいえ、私にとっては SASS(SCSS) もパーツをコンポーネントとして管理する際に便利なので、まだ現役で使っています。
 
-私は5年以上前 SASS が出回り始めた頃からの愛用者で、Gulp を仕事に取り入れることで作業スピードが爆上がりしたのでとても思い入れがあります。
+私は 10 年くらい前から SASS が出回り始めた頃からの愛用者で、Gulp を仕事に取り入れることで作業スピードが爆上がりしました。なので、とても思い入れがあります。
 
-そして、コードの見通しが良くなります。
+そして SASS(SCSS) を使えば、コードの見通しが良くなります。
+
+そんな SASS(SCSS) も提供側の都合（良い意味でも）で、仕様変更が起こりました。
 
 * Dart Sass は、Sass の公式が推奨している実装方法。新規プロジェクトではその使用が推奨(2020 年 10 月に LibSass の利用が非推奨になったため)。
 * Node-sass（Node.js で Sass をコンパイルするためのツール）の開発が停止
 * @import が廃止され、@use や @forword が推奨
 
-やりたいこと
+今回やりたいこと。
 * `@use` や `@forword` のなどの Dart Sass の使用方法のおさらい
 * Dart Sass と postCSS の環境作成まとめ
 * テキストフォーマッター実装
@@ -39,7 +41,7 @@ CSS も入れ子で書けるようになりコーディングも昔では考え�
 * `@use` : 他のファイルの内容を使う
 * `@forward`: 他のファイルの内容をさらに別の場所で使う
 
-たとえばこんなfile構造だった場合。
+たとえばこんなファイル構造だった場合。
 ```
 your-project/
 ├── styles/
@@ -50,29 +52,33 @@ your-project/
 │   │   └── _variables.scss
 ```
 ### Dart Sass @use の使い方
-`@use` で `_mixins.scsss` （mixinをまとめたfile）や `_variables.scss` （変数をまとめたfile）をそれぞれ読み込んで使う方法をご紹介します。
+`@use` で `_mixins.scsss` （mixinをまとめたファイル）や `_variables.scss` （変数をまとめたファイル）をそれぞれ読み込んで使う方法をご紹介します。
 
-Node Sass（またはLibSass）では一回序盤でこれらの file を `@import` で読みこめばけばよかったですが、Dart Sass では React のように毎度使うfileのトップレベルに `@use` で読み込む必要があります。
+Node Sass（またはLibSass）ではファイルに、たった一回これらのファイルを `@import` で読みこめばけばどこでも使い回すことができました。
 
-<msg txt="React のfile構造を想像したら理解がしやすいです"></msg>
+Dart Sass では React のように毎度使うファイルのトップレベルに `@use` で読み込む必要があります。
 
-Dart Sass の場合、読み込んだfile内の mixin や変数を使いたい場合は *file名* + *変数* or *mixin* となります。
+<msg txt="React のファイル構造を想像したら理解がしやすいです"></msg>
+
+Dart Sass の場合、`@use` で呼び出したファイルの mixin や変数を使いたい場合は *file名* + *変数* or *mixin* となります。
 
 ```scss:title=main.scss
 @use './utils/_variables';
 @use './utils/_mixins';
 
 p {
+  //variables + $color
   color: variables.$color;
 }
 
 section {
+  //mixins + mq(md)
   @include mixins.mq(md) {
     color: variables.$color;
   }
 }
 ```
-moduleJS（JavaScript） のように `as` を使ってさらに記述を簡素化できます。たとえば、`_utils.scss`に変数やmixinをまとめたfileをそれぞれ呼び出します。
+moduleJS（JavaScript） のように `as` を使ってさらに記述を簡素化できます。たとえば、`_utils.scss`に変数やmixinをまとめたファイルをそれぞれ呼び出します。
 
 ```scss:title=_utils.scss
 @use 'mixins';
@@ -109,7 +115,7 @@ your-project/
 ```
 `@forward` を使ってコンポーネントをまとめることで、各ファイルで簡単に再利用できますし、スタイルを拡張する（たとえばボーダー追加など）もカンタンになります。
 
-またfile構造もまとまり、コードも見通しが良くなります。
+またファイル構造もまとまり、コードも見通しが良くなります。
 
 <msg txt="保守性が爆上がり!!"></msg>
 
@@ -296,7 +302,7 @@ $breakpoints: (
   }
 }
 ```
-厳格ではありませんがここでは 768px 以上をPC（タッチディバイスではない）とみな、hoverアニメーションをさせてみます。
+厳格ではありませんがここでは 768px 以上をPC（タッチディバイスではない）とみなし、hoverアニメーションをさせます。
 
 サンプルコードはこちら。
 
@@ -325,7 +331,7 @@ $button-bg-color: #3498db;
 ### 組み込み関数「IF」を扱う
 マップで紹介したメディアクエリのコードを改造して逆に `max-width`の処理を追加してみます。`if`も標準組み込み関数のため、呼び出す必要ではありません。
 
-これで一つの `mixin` で、`max-width` 、 `min-width` しかも4つのメディアクエリサイズを処理できます。
+これで一つの `mixin` で、`max-width` 、 `min-width` しかも4つのメディアクエリサイズの切り替えコードを実装できます。
 
 ```scss:title=utils/_mixin.scss
 @use 'sass:map';
@@ -340,7 +346,7 @@ $button-bg-color: #3498db;
 }
 ```
 ### 'sass:selector'（組み込み関数）を使ってselector操作を行いたい場合
-JS で class を付与&スタイルを操作したい場合コードが煩雑になるのが悩みのタネでした。
+JavaScript で class を付与&スタイルを操作したい場合コードが煩雑になるのが悩みのタネでした。
 
 しかし、`@use 'sass:selector'`を使えば簡潔に書けます。
 
@@ -362,7 +368,7 @@ $root: '.c-header';
     background: #fff;
     transition: bacground-color 1s ease-in;
   }
-  // JSなどで別の設定をしたい場合
+  // JavaScriptなどで別の設定をしたい場合
   #{selector.nest('&', '.is-transparent', $inner)} {
     background: transparent;
   }
@@ -379,11 +385,11 @@ $root: '.c-header';
   background: transparent;
 }
 ```
-またこんなカレンダーのラベルなどで、種類がいくつもあるなどで色分けを行いたい時、スタイルを量産するときがありますよね？
+またこんなカレンダーのラベルなどで色分けを行いたい時、スタイルの量産が必要な場合があります。
 
-![カレンダーのラベルなどで、種類がいくつもあるなどで色分けを行いたい時](./images/03/entry545-1.jpg)
+![カレンダーのラベルなどで色分けを行いたい時](./images/03/entry545-1.jpg)
 
-`selector.append` で特定のセレクタに更にクラスを足して、ループでまとめて色分けしたスタイルを作ります。
+`selector.append` で特定のセレクタにクラスを追加して、ループでまとめて色分けしたスタイルを作ります。
 
 ベースは *プレースホルダーセレクタ（%）* を使います。
 ```scss:title=utils/_header.scss
@@ -431,13 +437,13 @@ $labels: (
   background: #008000;
 ```
 
-`selector.nest`（セレクターをネスト）と`selector.append`（セレクターを追加）は記述方法がちょっと違う程度でできることは一緒です。セレクタを動的に生成するための強力なツールであることは間違いありません。
-### @use のコンフィギュレーション（use + with xx）
-Dart Sass では `@use` で呼び立ちた変数のデフォルトを上書きできます。
+`selector.nest`（セレクターをネスト）と`selector.append`（セレクターを追加）は記述方法がちょっと違う程度でできることは一緒です。
+### Use のコンフィギュレーション（@use + with でデフォルト変数を上書き）
+Dart Sass では `@use` で呼び出した変数のデフォルトを上書きできます。
 
-JS や PHP でも使える、クラスに仕様が非常によく似ていて、Dart Sassに特有の機能です。
+`@use` のコンフィギュレーションは JavaScript や PHP でも使える Class に仕様が非常によく似ている、*Dart Sass 特有の機能* です。
 
-たとえばスタイルが全く同じだけど色が違ったり、マイナーチェンジしたスタイルを作りたい時に使えます。
+たとえばスタイルが全く同じだけど色が違ったり、マイナーチェンジしたスタイルを作りたい場合に使えます。
 
 ```scss:title=mixin/_box.scss
 $primary-color: blue !default;
@@ -468,7 +474,7 @@ $font-size: 16px !default;
 
 @include box.box;
 ```
-`mixin` で引数を渡すより変更箇所がわかりやすく、より可読性が上がります。
+`mixin` で引数を渡すより変更箇所がわかりやすく可読性も上がり、コンポーネントを保守しやすくなります。
 
 ## Gulp で Dart Sass と postCSS の環境作成を作る
 
@@ -548,7 +554,7 @@ const sassCompiler = gulpSass(dartSass);
 // パス設定
 const paths = {
   srcDir: 'src/', //開発ディレクトリ
-  rootDir: 'public/', //コンパイルしたfile格納するディレクトリ
+  rootDir: 'public/', //コンパイルしたファイル格納するディレクトリ
 };
 
 // 開発環境のパス
@@ -605,7 +611,7 @@ npm start
 ```
 コマンド実行（プロダクションモード）。
 ```shell:title=コマンド
-npm run produciton
+npm run prod
 ```
 
 ## SASS テキストをフォーマットする
@@ -639,7 +645,7 @@ npm install --save-dev prettier
   ]
 }
 ```
-エディターが VScode であればプロジェクト用の `setting.json` にも設定しておけば、視覚的にも正しいインデントが分かります。
+エディターが VScode であればプロジェクト用の `setting.json` にも設定しておけば、作業中正しいインデントが可視化できます。
 ```json:title=.vscode/setting.json
 {
   "editor.tabSize": 2,
@@ -678,7 +684,7 @@ npm run lint:scss
 ## まとめ・Dart Sass も仕様を知れば怖くない
 今回は Dart Sass を、かなり深堀りして解説させていただきました。
 
-いくつかサンプルを書いていて感じましたが、SASS記法は単純に作業を楽にするだけでなく、*コードの見通しをする（可読性アップ）のため* に非常に役立ちます。
+いくつかサンプルを書いていて感じましたが、SASS記法は単純に作業を楽にするだけでなく、*コードの見通しをする（可読性アップ）のため* 、*コンポーネントの保守* にまだまだ非常に役立ちます。
 
 多少学習コストはかかりますがまだまだ需要があると改めて認識しました。
 
