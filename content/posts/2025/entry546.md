@@ -201,7 +201,7 @@ CSSのコンポーネント（部品化）からユーティリティ（実用�
 
 ひたすらブロックを積み上げるかのようにユーティリティを組み合わせスタイルを構築します。
 
-<msg txt="Bootstapなどのコンポーネントが主体なCSSフレームワークだとどうしても、そのフレームワークの特徴が隠しきれない。そんな時は、ユーティリティクラスを使うことでオリジナリティが欠く欠点をカバーできます。"></msg>
+<msg txt="Bootstapなどのコンポーネントが主体なCSSフレームワークだとどうしても、そのフレームワークの特徴が隠しきれない。そんな時は、ユーティリティクラスを使うことでオリジナリティの主張を抑えることができます。"></msg>
 
 ユーティリティクラスを例えるならもんじゃ焼きが近いかも。もんじゃ具材を追加することにより、味変をカスタマイズできますよね？
 
@@ -262,9 +262,9 @@ CSSのコンポーネント（部品化）からユーティリティ（実用�
     Primary Button
 </button>
 ```
-はぁ……、これは流石に付与するクラスが長い涙。
+はぁ……、これは流石に付与するクラスが多すぎ涙。
 
-`@apply` ディレクティブ（ディレクティブとはプログラミングにおける小さな命令みたいなもの）を使えば、カスタムクラスやスタイルを再利用できます。付与するクラスも短くなり、可読性も上がり、クラスが長い問題も解決できます。
+`@apply` ディレクティブ（ディレクティブとはプログラミングにおける小さな命令みたいなもの）を使えば、カスタムクラスやスタイルを再利用できます。HTMLへの付与するクラスも短くなり（クラスが多すぎ問題も解決👍️）、可読性も上がります。
 
 ```html:title=CSSを動的に読み込む
 <!-- スタイル -->
@@ -331,7 +331,7 @@ npm init -y
 ```bash:title=コマンド
 npm install tailwindcss postcss autoprefixer
 ```
-Tailwind CSSの設定ファイル（tailwind.config.js）を生成。普通にコマンド叩かなくてもプロジェクト直下に`tailwind.config.js`を追加してもいい。
+Tailwind CSSの設定ファイル（tailwind.config.js）を生成。コマンド叩かなくてもプロジェクト直下に`tailwind.config.js`ファイルを追加してもいい。
 ```bash:title=コマンド
 npx tailwindcss init
 ```
@@ -363,7 +363,7 @@ Tailwind CSSのエントリーポイントの作成。必要なものだけ追�
 npm run build
 ```
 
-## Foundation のおすすめポイント: 有名サービスがこぞって使うプロ並みのサイトを構築できる
+## 有名サービスがこぞって使うプロ並みのサイトを構築できる Foundation
 プロ顔負けのデザインを構築したいなら、Foundation がオススメです。
 
 Foundation は、日本語で「土台」や「基盤」という意味でウェブ開発の基盤となる強力で柔軟なフレームワークを提供するというコンセプトで開発されてきました。
@@ -533,7 +533,7 @@ https://placehold.in
 ### Foundation おすすめポイント: Building Blocksからお好きな部品（コンポーネント）をちょい足しする
 Building Blocksとは、FoundationのUIコンポーネントのライブラリです。
 
-[Foundation Templates](https://get.foundation/building-blocks/)
+[Building Blocks](https://get.foundation/building-blocks/)
 
 これらのHTML、CSS、JSスニペットは、Foundationのプロジェクトにカンタンに組み込むことができます。
 

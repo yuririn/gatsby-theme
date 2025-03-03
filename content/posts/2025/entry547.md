@@ -1,5 +1,5 @@
 ---
-title: BPI のキャッシュカードがロックされたので Cardless Withdrawal でお金を引き出した話
+title: BPI（フィリピン銀行） のキャッシュカードがロックされたので Cardless Withdrawal でお金を引き出した話
 date: 2025-03-02
 pageType: blog
 hero: thumbnail/2025/entry547.jpg
@@ -90,7 +90,7 @@ BPI の公式サイトで改めて銀行名を確認し、検索。Google Map �
 
 ### Cardless Withdrawal が使えるATMを使う必要がある
 
-もう一度 「Cardlress Withdrawal BPI bank」 などのキーワードで検索したら、BPI Euronet ATM なら Cardlress Withdrawal と検索結果が。
+もう一度 「Cardlress Withdrawal BPI bank」 などのキーワードで検索したら、BPI Euronet ATM なら Cardlress Withdrawal できると検索結果が。
 
 <msg txt="あ、そうやった。BPI Euronet ATM なら Cardlress Withdrawal できるってさっきも言うとったわ。"></msg>
 
@@ -102,7 +102,7 @@ BPI の公式サイトで改めて銀行名を確認し、検索。Google Map �
 
 ![さっきも変なところにマップのピン刺さってたしこんなことイチイチ気にしていたらノイローゼになっちゃうので、とりあえず GO](./images/03/entry547-7.jpg)
 
-<msg txt="私の住むITパークめっちゃ狭いんだけど、どんだけATMあるん。"></msg>
+<msg txt="私の住むITパークめっちゃ狭いんだけど、どんだけATMあるん？"></msg>
 
 画面をタッチして BPI を選んだら、order ID の入力を求めてきた！！
 
@@ -116,13 +116,13 @@ order ID は SMS 経由でも、BPI アプリ管理画面でもメッセージ�
 
 そして、無事やっとお金が下ろせました。
 
-### GCash と PAYMAYA の項目は他銀行へ移動した
+### GCash と PAYMAYA の項目は他銀行へ移動したんかい
+
+ちなみに 2025年2月、GCash と PAYMAYA は E Wallet から銀行に移ったらしいです。BPI アプリ管理画面でお知らせを確認したときに気が付きました。
 
 ![GCash と PAYMAYA の項目は他銀行へ移動した](./images/03/entry547-10.jpg)
 
 > InstaPayは、フィリピン国内の銀行間で送金や決済を行うことができるサービス
-
-ちなみに 2025年2月、GCash と PAYMAYA は E Wallet から銀行に移ったらしいです。BPI アプリ管理画面でお知らせを確認したときに気が付きました。
 
 ### Cardlress Withdrawal は他の銀行でも使える
 
