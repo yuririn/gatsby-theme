@@ -1,17 +1,17 @@
 import React from "react"
 import Img from "./img"
-import { Sidebar } from "../../styles/blog-styles/sidebar"
 import { Link } from "gatsby"
 import Search from "../search"
 import Ad from "./ad"
 
 const SideBar = ({ topic, location, children }) => {
   return (
-    <Sidebar>
+    <aside className="l-container--blog__aside">
       <Ad
         location={location}
         style={{ display: `block`, minWidth: `250px` }}
       ></Ad>
+      <div className="l-container--blog__aside__inner">
       <div className="inner">
         {children}
         {topic && (<div
@@ -22,12 +22,11 @@ const SideBar = ({ topic, location, children }) => {
               topic.replace(/(<p>|<\/p>)/gi, ""),
           }}
         ></div>)}
-        <section className="p-section search">
-          <h2>記事を探す</h2>
-          <Search></Search>
-        </section>
+        
+          <h2 className="c-heading__aside">記事を探す</h2>
+        <Search></Search>
 
-        <ul className="side-banner">
+          <ul className="c-side-banner">
           <li>
             <Link
               to="https://www.youtube.com/channel/UCbSgjkCIPucux8cFTuQcdcw"
@@ -55,7 +54,7 @@ const SideBar = ({ topic, location, children }) => {
             </Link>
           </li>
         </ul>
-        <h2>お仕事のご依頼</h2>
+        <h2 className="c-heading__aside">お仕事のご依頼</h2>
         <p className="u-text-center">
             {/* 一時的な変更 */}
           <a className="p-btn--detail c-btn--detail" href="/contact/">
@@ -66,7 +65,8 @@ const SideBar = ({ topic, location, children }) => {
           <small>初見の方、30分無料相談承っております。</small>
         </p>
       </div>
-    </Sidebar>
+    </div>
+    </aside>
   )
 }
 

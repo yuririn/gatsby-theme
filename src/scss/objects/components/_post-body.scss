@@ -1,5 +1,13 @@
 @use './../../utils';
 .c-post-body {
+
+code[class*="language-"], pre[class*="language-"] {
+  text-shadow: none;
+  color: #fff;
+}
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  background: none;
+}
     ul:not([class]), ol:not([class]), p:not([class]), .gatsby-resp-image-wrapper {
         margin-top: 1em;
         margin-bottom: 1em;
@@ -289,4 +297,39 @@
 .msg-baloon--right .msg-baloon--img__wrapper .msg-baloon--img {
     border-radius: 50%;
     margin-bottom: 15px;
+}
+
+.c-about-profile{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  &__name {
+    font-weight: bold;
+    margin-bottom: 16px;
+    span {
+      font-size: 1.1em;
+
+    }
+  }
+  &__roll {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 32px;
+  }
+  .prfImg {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+}
+&__sns {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  svg path,
+  svg{
+    fill:  var(--color-link);
+  }
+}
 }

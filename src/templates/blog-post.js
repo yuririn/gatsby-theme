@@ -1,28 +1,25 @@
 import React, {useEffect} from "react"
 import { Link, graphql } from "gatsby"
 
-import { Article } from "./../styles/blog-styles/article"
-import { Header } from "./../styles/blog-styles/header"
-import { Edit } from "./../styles/blog-styles/edit"
-import styled from "styled-components"
 import rehypeReact from "rehype-react"
 import RelatedList from "./../components/blogs/related-list"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import BreadCrumbList from "../components/common/bread-crumb-list"
-import TagsList from "../components/blogs/tags-blog"
+import dateReplace from "../utils/datereplace"
 import Sns from "../components/blogs/sns"
 import Prof from "../components/blogs/small-prof"
 import Toc from "../components/common/table-of-contents"
 import Kyle from "../components/blogs/blog-parts/kyle"
 import Sidebar from "../components/common/sidebar"
-import Genre from "../components/common/genre"
 import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Ad from "../components/common/ad"
 import { siteMetadata } from "./../../gatsby-config";
+import PrevAndNextNav from "../components/blogs/prev-next-nav"
+import RelatedPosts from "./../components/blogs/related-list"
 import "../scss/objects/components/_page-header.scss"
 
 const renderAst = new rehypeReact({
@@ -43,7 +40,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const faq = post?.frontmatter.faq
     const siteTitle = siteMetadata.title || `Title`
   const { previous, next } = data
-  const perfectUrl = `https://ginneko-atelier.com${location.pathname}`
+  const perfectUrl = `${siteMetadata.siteUrl}${location.pathname}`;
   const perfectTitle = encodeURI(post.frontmatter.title + "|" + siteTitle)
 
   const category = {
@@ -98,101 +95,31 @@ const BlogPostTemplate = ({ data, location }) => {
         </div>
         <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
       </header>
-      <Body>
-        <Article>
-          <article
-            className="blog-post l-container"
-            itemScope
-            itemType="http://schema.org/Article"
-            data-clarity-region="article"
-          >
-            <header>
-                <h1 itemProp="headline" className="c-article__heading" id="keyvisual">
-                {post.frontmatter.title}
-              </h1>
-              <dl className="c-article__date">
-                <dt>公開日</dt>
-                <dd>
-                  <time date={post.frontmatter.date.replace(/\./g, "-")}>
-                    {post.frontmatter.date}
-                  </time>
-                </dd>
-                {post.frontmatter.modifiedDate ? <dt>メンテナンス日</dt> : ""}
-                {post.frontmatter.modifiedDate ? (
-                  <dd>
-                    <time
-                      date={post.frontmatter.modifiedDate.replace(/\./g, "-")}
-                    >
-                      {post.frontmatter.modifiedDate}
-                    </time>
-                  </dd>
-                ) : (
-                  ""
-                )}
-              </dl>
-              <TagsList tags={post.frontmatter.tags} />
-            </header>
-            <Edit>
-              <section itemProp="articleBody">
-                {renderAst(post.htmlAst)}
-                {faq && <h2>FAQ</h2>}
-                {faq &&
-                  faq.map((item, index) => {
-                    return (
-                      <dl className="p-faq__item" key={`faq${index}`}>
-                        <dt>{item[0]}</dt>
-                        <dd
-                            dangerouslySetInnerHTML={{ __html: item[1] }}/>
-                      </dl>
-                    )
-                  })}
-              </section>
-            </Edit>
-
-            <Sns url={perfectUrl} title={perfectTitle} />
-            <Ad location={location.pathname}></Ad>
-            <dl className="c-article__tags">
-              <dt>Category</dt>
-              <dd className="cate">
-                <Link to={category.url}>{category.name}</Link>
-              </dd>
-            </dl>
+      <div className="l-section l-container--article">
+        <Sns url={perfectUrl} title={perfectTitle}></Sns>
+        <div>
+          <article className="c-article">
+            <h1 className="c-article__heading">{post.frontmatter.title}</h1>
+            <Date date={post.frontmatter.date} modifiedDate={post.frontmatter.modifieddate}></Date>
+            <Tags tags={post.frontmatter.tags}></Tags>
+            <section itemProp="articleBody" className="c-post-body">
+              {renderAst(post.htmlAst)}
+            </section>
+            <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
           </article>
-          <ol className="c-pager--article p-section l-container">
-            <li className="c-pager--article__prev">
-              {previous && (
-                <Link to={`/blogs/${previous.fields.slug}/`} rel="prev">
-                  {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li className="c-pager--article__next">
-              {next && (
-                <Link to={`/blogs/${next.fields.slug}/`} rel="next">
-                  {next.frontmatter.title}
-                </Link>
-              )}
-            </li>
-          </ol>
-        </Article>
+          <aside>
+            <Ad location={location.pathname}></Ad>
+            <h2 className="c-heading__aside" style={{marginTop:`32px`}}>関連記事</h2>
+            <RelatedPosts id={slug} category={post.cateId} tags={post.tags}></RelatedPosts>
+          </aside>
+        </div>
         <Sidebar
           title={post.frontmatter.title}
           slug={post.fields.slug}
           location={location.pathname}
-              ><Toc slug={slug}></Toc></Sidebar>
-        <aside className="l-container">
-          <RelatedList
-            category={post.frontmatter.cateId}
-            tags={post.frontmatter.tags}
-            slug={post.fields.slug}
-          ></RelatedList>
-          <Ad location={location.pathname}></Ad>
-          <section className="p-section u-text-center">
-            <h2 className="p-heading--lg">人気のジャンル</h2>
-            <Genre />
-          </section>
-        </aside>
-      </Body>
+              ><Toc slug={slug}></Toc>
+        </Sidebar>
+      </div>
     </Layout>
   )
 }
@@ -242,7 +169,6 @@ export const Head = ({ data, location }) => {
         modifiedDate: post.frontmatter.modifiedDate,
         template: 'blog',
         list: list,
-        
         faq: post.frontmatter.faq,
         noindex: post.frontmatter.noindex
     }
@@ -336,49 +262,36 @@ export const pageQuery = graphql`
     }
   }
 `
-const Body = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    position: relative;
-    max-width: 1120px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-  aside.l-container .display {
-    margin-bottom: 50px;
-  }
-`
 
-// const Feedly = styled.div`
-//   height: 150px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background: #eee;
-//   // border:1px solid #6cc655;
-//   flex-direction: column;
-//   margin: 0 15px;
-//   @media screen and (min-width: 768px) {
-//     margin-left: 0;
-//     margin-right: 0;
-//   }
-//   h2 {
-//     margin-bottom: 20px;
-//   }
-//   a {
-//     background: #6cc655;
-//     font-weight: bold;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 40px;
-//     padding: 0 20px;
-//     color: #fff;
-//     border-radius: 20px;
-//     text-decoration: none;
-//     svg {
-//       margin-right: 10px;
-//     }
-// https://react-mdx-prism-lighter.site/article/625ac3bc-9e19-5e5e-8519-5af935e47523/
-//   }
-// `
+const Date = ({ date, modifiedDate }) => {
+  return (<dl className="c-article__date">
+    <dt>公開日</dt>
+    <dd>
+      <time date={dateReplace(date)}>
+        {date}
+      </time>
+    </dd>
+    {modifiedDate ? <dt>メンテナンス日</dt> : ""}
+    {modifiedDate ? (
+      <dd>
+        <time
+          date={dateReplace(modifiedDate)}
+        >
+          {modifiedDate}
+        </time>
+      </dd>
+    ) : (
+      ""
+    )}
+  </dl>)
+}
+
+const Tags = ({ tags }) => {
+  return (
+    <ul className="c-article__tags">
+      {tags.length > 0 && tags.map((item) => {
+        return <li><Link to={`/blogs/tags/${item}`}>{item}</Link></li>
+      })}
+    </ul>
+  )
+}

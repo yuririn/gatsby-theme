@@ -16,7 +16,7 @@ const PagePostTemplate = ({ data, location }) => {
   }
 
   return (
-    <Layout location="about" title="銀ねこアトリエ">
+    <Layout location={location} title="銀ねこアトリエ">
       <header className={`c-page-header--common`} id="keyvisual">
         <div>
           <h1 className="en"><span>Policies</span>{post.frontmatter.title}</h1>

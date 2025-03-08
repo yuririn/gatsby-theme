@@ -1,9 +1,8 @@
 import React, { useMemo } from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import Img from "../common/img"
-import styled from "styled-components"
+import { useStaticQuery, graphql } from "gatsby"
+import Post from "./../common/post";
 
-const Lists = ({ category, slug, tags }) => {
+const RelatedPosts = ({ category, slug, tags }) => {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       query {
@@ -22,7 +21,6 @@ const Lists = ({ category, slug, tags }) => {
                 date(formatString: "YYYY.MM.DD")
                 title
                 tags
-                pageType
               }
             }
           }
@@ -41,7 +39,6 @@ const Lists = ({ category, slug, tags }) => {
     }
     return false
   })
-
   const result = useMemo(() => {
     if (!posts) return;
     if (posts.length > 5) {
@@ -49,92 +46,25 @@ const Lists = ({ category, slug, tags }) => {
     }
     return posts.slice(0, 6)
   }, []);
-
-  function shuffle(list) {
-    var i = list.length
-
-    while (--i) {
-      var j = Math.floor(Math.random() * (i + 1))
-      if (i === j) continue
-      var k = list[i]
-      list[i] = list[j]
-      list[j] = k
-    }
-    return list
-  }
   return (
-    <RelativeList>
-      <h2 className="p-heading--lg">関連記事</h2>
-      <ol>
-        {result.map((item, index) => {
-            const slug = `/blogs/${item.node.fields.slug}`
-          return (
-            <li className="p-entryCard is-small" key={`relative${index}`} role="article">
-              <Link to={slug} className="p-entryCard__img">
-              {item.node.frontmatter.hero ? (
-                <Img
-                    source={item.node.frontmatter.hero}
-                    alt={item.node.frontmatter.title}
-                  />
-                ) : (
-                  <Img
-                    source="common/dummy.png"
-                    alt={item.node.frontmatter.title}
-                  />
-                )}
-              </Link>
-                  <Link to={slug} className="p-entryCard__body">
-                <h3 className="p-entryCard__heading">
-                  {item.node.frontmatter.title}
-                </h3>
-              </Link>
-            </li>
-          )
-        })}
-      </ol>
-    </RelativeList>
+    <ol className="l-card-container--related-posts">
+      {result.map((post, key) => {
+        return <Post post={post.node} key={key} hasTag={false} image={[300, 225, 30]} />
+      })}
+    </ol>
   )
 }
-export default Lists
+export default RelatedPosts
 
+const shuffle = (list) => {
+  var i = list.length
 
-const RelativeList = styled.div`
-@media screen and (min-width: 768px) {
-        .p-entryCard {
-            width: calc(33.333% - 16px);
-        }
-      ol {
-        display: flex;
-        flex-wrap: wrap;
-        gap:24px;
-      }
-    .p-entryCard:hover .gatsby-Img-wrapper {
-      transform: none;
-      opacity: 0.8;
-    }
-
-    // .p-entryCard.is-small {
-    //   margin-left: 0;
-    //   margin-right: 0;
-    //   position: relative;
-    //   margin-bottom: 10px;
-    //   padding-bottom: 10px;
-    //     flex-wrap: wrap;
-    //     display: flex;
-    //     align-items: flex-start;
-    //   .p-entryCard__img {
-    //     width: 30%;
-    //     border-radius: 5px;
-    //     margin-bottom: 0;
-    //   }
-    //   .p-entryCard__body {
-    //     width: 70%;
-    //     box-sizing: border-box;
-    //     padding-left: 10px;
-    //     .p-entryCard__heading {
-    //       font-size: 1.4rem;
-    //     }
-    //   }
-    // }
+  while (--i) {
+    var j = Math.floor(Math.random() * (i + 1))
+    if (i === j) continue
+    var k = list[i]
+    list[i] = list[j]
+    list[j] = k
   }
-`
+  return list
+}

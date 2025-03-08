@@ -525,6 +525,13 @@
   }
 }
 
+.c-post-body code[class*=language-], .c-post-body pre[class*=language-] {
+  text-shadow: none;
+  color: #fff;
+}
+.c-post-body .token.operator, .c-post-body .token.entity, .c-post-body .token.url, .c-post-body .language-css .token.string, .c-post-body .style .token.string {
+  background: none;
+}
 .c-post-body ul:not([class]), .c-post-body ol:not([class]), .c-post-body p:not([class]), .c-post-body .gatsby-resp-image-wrapper {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -828,6 +835,40 @@
   margin-bottom: 15px;
 }
 
+.c-about-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.c-about-profile__name {
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.c-about-profile__name span {
+  font-size: 1.1em;
+}
+.c-about-profile__roll {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+.c-about-profile .prfImg {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+}
+.c-about-profile__sns {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.c-about-profile__sns svg path,
+.c-about-profile__sns svg {
+  fill: var(--color-link);
+}
+
 .c-pager {
   display: grid;
   grid-template-rows: auto auto;
@@ -963,10 +1004,15 @@
 }
 .c-related-post-card__main__title {
   font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 1.1em;
 }
 .c-related-post-card__main time {
+  margin-bottom: 6px;
   font-weight: 700;
   color: var(--color-blue);
+  text-align: right;
+  display: block;
 }
 .c-related-post-card__description {
   font-size: 1.4rem;

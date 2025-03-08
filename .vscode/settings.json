@@ -3,5 +3,17 @@
   "editor.insertSpaces": true,
   "textlint.run": "onSave",
   "textlint.configPath": ".textlintrc.json",
-  "textlint.nodePath": "node_modules"
+  "textlint.nodePath": "node_modules",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[html]": {
+    "editor.tabSize": 2
+  },
+  "[scss]": {
+    "editor.tabSize": 2
+  },
+  "[js]": {
+    "editor.tabSize": 2
+  } 
 }
