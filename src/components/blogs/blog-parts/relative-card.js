@@ -39,22 +39,22 @@ const RelativeCard = data => {
         : article.frontmatter.description
       const date = article.frontmatter.modifiedDate ? article.frontmatter.modifiedDate : article.frontmatter.date
     return (
-      <a href={`/blogs/${article.fields.slug}/${data.anchor ? '#' + encodeURI(data.anchor) : ''}`} className="article-link">
+      <a href={`/blogs/${article.fields.slug}/${data.anchor ? '#' + encodeURI(data.anchor) : ''}`} className="c-related-post-card">
         <section>
-          <div className="article-link__img">
+          <div className="c-related-post-card__img">
             <Img
               source={article.frontmatter.hero}
               alt={article.frontmatter.title}
             />
           </div>
-          <div className="article-link__main">
-            <div className="article-link__main__title">
+          <div className="c-related-post-card__main">
+            <p className="c-related-post-card__main__title">
               {article.frontmatter.title}
-            </div>
-            <p className="description">{description}</p>
-                    <time dateTime={dateReplace(date)}>
+            </p>
+            <time dateTime={dateReplace(date)}>
               {date}
             </time>
+            <p className="c-related-post-card__description">{description}</p>
           </div>
         </section>
       </a>

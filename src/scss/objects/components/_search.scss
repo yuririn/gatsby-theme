@@ -1,7 +1,7 @@
 @use './../../utils';
 .c-search {
     position: relative;
-    z-index: 1000;
+    z-index: 99999;
     &__input {
         font-size: 1.6rem;
         color: var(--font-color);
@@ -138,16 +138,16 @@
             max-width: 1080px;
             min-height: 500px;
             background: var(--background);
-            width: calc(100% - 32px);
-            padding: 16px;
-            box-shadow: var(--shadow);
+            width: 100%;
             border-radius: 8px;
-            height: calc(100dvh - 80px);
+            height: 100dvh;
+            padding: 16px;
             @include utils.mq(md){
-                height: 70dvh;
-                padding: 32px;
-                border-radius: 16px;
-                width: calc(100% - 48px);
+              box-shadow: var(--shadow);
+              height: 70dvh;
+              padding: 32px;
+              border-radius: 16px;
+              width: calc(100% - 48px);
             }
             ul {
                 display: flex;

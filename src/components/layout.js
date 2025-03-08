@@ -67,7 +67,7 @@ const Layout = ({ location, title, children }) => {
         }
         <Header isRoot={isRoot}/>
       <main>{children}</main>
-          <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} /> 
+      <ToggleThemeButton theme={theme} toggleTheme={toggleTheme} location={location}/> 
       <Footer title={title} />
     </div>
   )

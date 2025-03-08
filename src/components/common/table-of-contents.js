@@ -146,7 +146,7 @@ const Toc = ({ slug }) => {
     return (
         <>
             <div className={isOpen && isMobile() ? "c-toc__wrapper is-open" : "c-toc__wrapper"}>
-                <h2 className="c-heading__assluge">この記事のサマリー</h2>
+            <h2 className="c-heading__aside">この記事のサマリー</h2>
                 <div
                     className="c-toc"
                     dangerouslySetInnerHTML={{

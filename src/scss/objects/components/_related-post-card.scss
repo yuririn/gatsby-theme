@@ -58,10 +58,15 @@
     &__main {
         &__title {
             font-weight: bold;
-        }
-        time {
+            margin-bottom: 4px;
+            font-size: 1.1em; 
+          }
+          time {
+          margin-bottom: 6px;
             font-weight: 700;
-        color: var(--color-blue);
+          color: var(--color-blue);
+          text-align: right;
+          display: block;
     
         }
     }
