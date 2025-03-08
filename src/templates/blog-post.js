@@ -100,7 +100,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <div>
           <article className="c-article">
             <h1 className="c-article__heading">{post.frontmatter.title}</h1>
-            <Date date={post.frontmatter.date} modifiedDate={post.frontmatter.modifieddate}></Date>
+            <Date date={post.frontmatter.date} modifiedDate={post.frontmatter.modifiedDate}></Date>
             <Tags tags={post.frontmatter.tags}></Tags>
             <section itemProp="articleBody" className="c-post-body">
               {renderAst(post.htmlAst)}
