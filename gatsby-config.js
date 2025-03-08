@@ -209,7 +209,7 @@ module.exports = {
                         resolve: `gatsby-remark-images`,
                         options: {
                             maxWidth: 640,
-                            quarity: 70,
+                            quality: 70,
                             withWebp: true,
                             linkImagesToOriginal: false,
                         },
@@ -240,7 +240,7 @@ module.exports = {
                         options: {
                             rel: "noopener noreferrer",
                         },
-                    },
+                    }
                 ],
             },
         },

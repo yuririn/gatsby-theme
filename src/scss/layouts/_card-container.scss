@@ -27,9 +27,14 @@
     &--related-posts {
         margin-top: 32px;
         gap: 16px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 56px;
+
         @include utils.mq(md){
             display: grid;
             gap: 24px;
+            margin-bottom: 0;
             grid-template-columns: 1fr 1fr 1fr;
             .c-card__title {
                 font-size: 1.8rem;
