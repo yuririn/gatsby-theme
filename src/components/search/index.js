@@ -8,7 +8,10 @@ const Search = () => {
     const resultInputRef = useRef(null);
 
     const handleActive = (e) => {
+<<<<<<< HEAD
       if (e.target.value === '') return;
+=======
+>>>>>>> develop
         setValue(e.target.value);
         setActive(true);
         document.body.classList.add("is-fixed")
@@ -19,7 +22,10 @@ const Search = () => {
             <input
                 type="text"
                 onKeyUp={handleActive}
+<<<<<<< HEAD
                 // onFocus={handleActive}
+=======
+>>>>>>> develop
                 placeholder="どんな記事を読みたいですか?"
                 className="c-search__input"
             />

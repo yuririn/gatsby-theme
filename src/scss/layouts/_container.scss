@@ -20,6 +20,7 @@ $xl: 350px;
             &__inner {
 
                 @include utils.mq(md){
+                  z-index: 1;
                     position: sticky;
                     right: 0;
                     top: 76px;
@@ -54,7 +55,7 @@ $xl: 350px;
             margin-left: -16px;
             margin-right: -16px;
             @include utils.mqd(md){
-                padding-right: 160px;
+                padding-left: 130px;
             }
             @include utils.mq(md){
                 margin-left: -40px;

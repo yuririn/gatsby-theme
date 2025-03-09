@@ -1,100 +1,37 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { siteMetadata } from "./../../gatsby-config"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Img from "../components/common/img"
-import AddTagLink from "../components/common/add-tag-link"
-import Pagination from "../components/blogList/pagination"
 import BreadCrumbList from "../components/common/bread-crumb-list"
-// import Tags from "../components/blogs/tag-list"
-import Genre from "../components/common/genre"
-import Prof from "../components/common/profile"
+import InfiniteScrollComponent from "../components/common/infinite-scroll"
 import "../scss/objects/components/_page-header.scss"
-
+import { siteMetadata } from "./../../gatsby-config"
 const {  blogName } = siteMetadata
 
 
-const tags = ({ pageContext, data, location }) => {
-  const { current, page, tag } = pageContext
-
+const tags = ({ data, location, pageContext }) => {
+  const { title, totalCount } = pageContext
+  const blogName = siteMetadata.blogName
+  const posts = data.allMarkdownRemark.nodes
   const breadCrumbList = {
     parents: [
       { path: '/blogs/', name: blogName },
     ],
-    current: tag
+    current: title
   }
 
-  const posts = data.allMarkdownRemark.nodes
   return (
-    <Layout location={location} title="銀ねこアトリエ">
+    <Layout location={location} title={title}>
       <header className={`c-page-header--common`} id="keyvisual">
         <div>
-          <h1><span>{blogName}</span>{tag}</h1>
-          <p>現在 {data.allMarkdownRemark.totalCount} 記事あります</p>
+          <h1><span>{blogName}</span>{title}</h1>
+          <p>現在 {totalCount} 記事あります</p>
         </div>
         <BreadCrumbList list={breadCrumbList}></BreadCrumbList>
       </header>
-      <section className="p-section l-container">
-          <h2 className="p-heading--lg">最新記事</h2>
-          <ol className="c-grid">
-            {posts.map((post, index) => {
-                const { fields, frontmatter } = post
-                const path = `/blogs/${fields.slug}`
-              return (
-                <li
-                  className="p-entryCard c-grid__item--md6 c-grid__item--lg4 is-small"
-                  key={`article-${index}`}
-                  role="article"
-                >
-
-                    <Link to={path} className="p-entryCard__img">
-                      {frontmatter.hero ? (
-                        <Img
-                          source={frontmatter.hero}
-                          alt={frontmatter.title}
-                        />
-                      ) : (
-                        <Img
-                          source="common/dummy.png"
-                          alt={frontmatter.title}
-                        />
-                      )}
-                      <div className="p-entryCard__date">
-                        <time date={frontmatter.date.replace(/\./g, "-")}>
-                          {frontmatter.date}
-                        </time>
-                      </div>
-                    </Link>
-                    <Link to={path} className="p-entryCard__body">
-                      <h3 className="p-entryCard__heading">
-                        {frontmatter.title}
-                      </h3>
-                    </Link>
-                    <div className="p-entryCard__footer">
-                      <AddTagLink tags={frontmatter.tags} />
-                    </div>
-                </li>
-              );
-            })}
-          </ol>
-          {page !== 1 ? (
-            <Pagination
-              num={page}
-              current={current}
-              type={`tags/${tag}/`}
-            ></Pagination>
-          ) : (
-            ""
-          )}
-      </section>
-      <aside className="l-container">
-        <section className="p-section u-text-center">
-          <h2 className="p-heading--lg">人気のジャンル</h2>
-          <Genre />
-        </section>
-        <Prof />
-      </aside>
+      <div className="l-section l-container-archive">
+        <InfiniteScrollComponent posts={posts} />
+      </div>
     </Layout>
   );
 }
@@ -102,7 +39,7 @@ const tags = ({ pageContext, data, location }) => {
 export default tags
 
 export const Head = ({ location, pageContext }) => {
-    const { tag } = pageContext
+  const { title, totalCount } = pageContext
     const blogName = siteMetadata.blogName
     const blogDescription = siteMetadata.blogDescription
     const list = [
@@ -112,17 +49,17 @@ export const Head = ({ location, pageContext }) => {
             type: `WebPage`
         },
         {
-            name: tag,
-            path: `/blogs/tags/${tag}`,
+            name: title,
+            path: `/blogs/tags/${title}`,
             type: `WebPage`
         }
     ]
     return <Seo
         location={location?.pathname.replace(/page\/([0-9])+\//, "")}
         data={{
-            title: `${tag} ${blogName}`,
+            title: `${title} ${blogName}`,
             template: 'archive',
-            description: `${tag} に関する記事。${blogDescription}`,
+            description: `${title} に関する記事。${blogDescription}`,
             list: list,
             headerType: 'common'
         }}
@@ -130,33 +67,27 @@ export const Head = ({ location, pageContext }) => {
 }
 
 
-export const pageQuery = graphql`query tagsQyery($limit: Int!, $skip: Int!, $tag: [String]) {
-  site {
-    siteMetadata {
-      title
-      description
-    }
-  }
-  allMarkdownRemark(
-    limit: $limit
-    skip: $skip
-    sort: {frontmatter: {date: DESC}}
-    filter: {frontmatter: {pageType: {eq: "blog"}, tags: {in: $tag}}}
+export const query = graphql`
+  query TagListBySlug(
+    $slug: [String]
   ) {
-    totalCount
-    nodes {
-      excerpt
-      fields {
-        slug
+    allMarkdownRemark(
+      sort: {frontmatter: {date: DESC}}
+      filter: {frontmatter: {pageType: {eq: "blog"}, tags: {in: $slug}}}
+    ) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "YYYY.MM.DD")
+          title
+          tags
+          cateId
+          hero
+        }
       }
-      frontmatter {
-        title
-        date(formatString: "YYYY.MM.DD")
-        description
-        cateId
-        hero
-        tags
-      } 
     }
   }
-}`
+`;
