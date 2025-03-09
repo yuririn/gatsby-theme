@@ -6,10 +6,20 @@
     display: flex;
     flex-direction: column;
     @include utils.mq(md){
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      flex-direction: row;
+      flex-wrap: wrap;
+      & > li {
+        width: 300px;
+      }
+      &:has( > li:nth-child(4)) {
         gap: 24px;
         margin-bottom: 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        & > li {
+          width: inherit;
+        }
+      }
         
     }
     &--pickup {

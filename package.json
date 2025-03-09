@@ -48,6 +48,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-helmet": "^6.1.0",
+        "react-infinite-scroll-component": "^6.1.0",
         "rehype-react": "^7.1.2",
         "rehype-wrap-all": "^1.1.0",
         "sharp": "^0.33.5",

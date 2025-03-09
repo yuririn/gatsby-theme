@@ -40,38 +40,36 @@ exports.onPreBuild = ({ reporter }) => {
     }
 };
 
+// Define a template for blog post
+const blogPost = path.resolve(`./src/templates/blog-post.js`)
+
+const blogList = path.resolve(`./src/pages/blogs.js`)
+
+const tagList = path.resolve(`./src/templates/tag-list.js`)
+
+const genreList = path.resolve(`./src/templates/genre-list.js`)
+
+const pagePost = path.resolve(`./src/templates/page-post.js`)
+
+const contact = path.resolve(`./src/templates/contact.js`)
+
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { siteMetadata } = require('./gatsby-config')
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-    const branchName = process.env.BRANCH || 'unknown-branch';
+  const branchName = process.env.BRANCH || 'unknown-branch';
 
-    if (branchName !== 'master') {
+  if (branchName !== 'master') {
 
-        const authPage = path.resolve('./src/templates/auth.js')
-        // ログインページの生成
-        createPage({
-            path: '/login',
-            component: authPage,
-        });
-    }
-
-  // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const adPost = path.resolve(`./src/templates/ad-post.js`)
-
-  const blogList = path.resolve(`./src/templates/blog-list.js`)
-
-  const tagList = path.resolve(`./src/templates/tag-list.js`)
-
-  const adTagList = path.resolve(`./src/templates/ad-tag-list.js`)
-
-  const genreList = path.resolve(`./src/templates/genre-list.js`)
-
-  const pagePost = path.resolve(`./src/templates/page-post.js`)
-
-  const contact = path.resolve(`./src/templates/contact.js`)
+      const authPage = path.resolve('./src/templates/auth.js')
+      // ログインページの生成
+      createPage({
+          path: '/login',
+          component: authPage,
+      });
+  }
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -139,97 +137,64 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // 記事の分割数
     const postsPerPage = 12
 
-    // 一覧記事生成
-    let numPages = Math.ceil(blogPosts.length / postsPerPage)
+    // ブログ一覧出力
+    createPage({
+      path: '/blogs/',
+      component: blogList,
+      context: {
+        title: siteMetadata.blogName || "Default Blog Name",
+        totalCount: blogPosts.length,
+        prefix: "blogs",
+        slug: "blogs",
+      },
+    });
 
-    for (let index = 0; index < numPages; index++) {
-      const withPrefix = pageNumber =>
-        pageNumber === 1 ? `/blogs/` : `/blogs/page/${pageNumber}/`
-      const pageNumber = index + 1
+    
+    //  カテゴリー一覧出力
+    siteMetadata.category.forEach((category) => {
+      const count = blogPosts.filter(post => category.slug === post.frontmatter.cateId).length;
       createPage({
-        path: withPrefix(pageNumber),
-        // 上で作成したblogPostList変数を使用します。
-        component: blogList,
+        path: `/blogs/${category.slug}/`,
+        component: genreList,
         context: {
-          limit: postsPerPage,
-          skip: index * postsPerPage,
-          current: pageNumber,
-          page: numPages,
+          title: `${category.name}`,
+          totalCount: count,
+          prefix: "catetory",
+          slug: category.slug,
         },
-      })
-    }
+      });
+    });
 
-    //重複を排除し、カテゴリーの配列を作成
-    //カテゴリーのリスト取得
-    let cates = posts.reduce((cates, edge) => {
-      const edgeCates = edge.frontmatter.cateId
-      return edgeCates ? cates.concat(edgeCates) : cates
-    }, [])
-    // 重複削除
-    cates = [...new Set(cates)]
-
-    // カテゴリー分ページを作成
-    cates.forEach(cate => {
-      const cateSlug = cate
-      const cateCount = posts.filter(
-        post => post.frontmatter.cateId === cate
-      ).length
-      const numPages = Math.ceil(cateCount / postsPerPage) //分割されるページの数
-
-      for (let index = 0; index < numPages; index++) {
-        const pageNumber = index + 1
-        const withPrefix = pageNumber =>
-          pageNumber === 1
-            ? `/blogs/${cate}/`
-            : `/blogs/${cate}/page/${pageNumber}/`
-
-        createPage({
-          path: withPrefix(pageNumber),
-          component: genreList,
-          context: {
-            limit: postsPerPage, //追加
-            skip: index * postsPerPage, //追加
-            current: pageNumber, //追加
-            page: numPages, //追加
-            cateSlug,
-          },
-        })
-      }
-    })
-
-    //タグの一覧作成
+    // タグの一覧作成とカウント
     let tags = blogPosts.reduce((tags, edge) => {
-      const edgeTags = edge.frontmatter.tags
-      return edgeTags ? tags.concat(edgeTags) : tags
-    }, [])
-    // 重複削除
-    tags = [...new Set(tags)]
-
-    // タグ
-    tags.forEach(item => {
-      const tag = item
-      const tagsCount = blogPosts.filter(post =>
-        post.frontmatter.tags.includes(item)
-      ).length
-      const numPages = Math.ceil(tagsCount / postsPerPage) //分割されるページの数
-      for (let index = 0; index < numPages; index++) {
-        const pageNumber = index + 1
-        const withPrefix = pageNumber =>
-          pageNumber === 1
-            ? `/blogs/tags/${tag}/`
-            : `/blogs/tags/${tag}/page/${pageNumber}/`
-        createPage({
-          path: withPrefix(pageNumber),
-          component: tagList,
-          context: {
-            limit: postsPerPage, //追加
-            skip: index * postsPerPage, //追加
-            current: pageNumber, //追加
-            page: numPages, //追加
-            tag,
-          },
-        })
+      const edgeTags = edge.frontmatter.tags;
+      if (edgeTags) {
+        edgeTags.forEach(tag => {
+          const existingTag = tags.find(t => t.name === tag);
+          if (existingTag) {
+            existingTag.count += 1;
+          } else {
+            tags.push({ name: tag, count: 1 });
+          }
+        });
       }
+      return tags;
+    }, []);
+
+    //  List 出力
+    tags = [...tags];
+    tags.forEach((list) => {
+      const count = list.count
+      createPage({
+        path: `/blogs/tags/${list.name}/`,
+        component: tagList,
+        context: {
+          title: list.name,
+          totalCount: count,
+          prefix: list.name,
+          slug: list.name
+        },
+      });
     })
 
     // 個別ページの生成
