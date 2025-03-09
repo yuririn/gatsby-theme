@@ -22,6 +22,11 @@ import PrevAndNextNav from "../components/blogs/prev-next-nav"
 import RelatedPosts from "./../components/blogs/related-list"
 import "../scss/objects/components/_page-header.scss"
 
+// カスタムコンポーネントを作成
+const TableWrapper = ({ children }) => (
+  <div className="table-wrapper"><table>{children}</table></div>
+);
+
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
@@ -31,6 +36,7 @@ const renderAst = new rehypeReact({
     ad: Ad,
     kyle: Kyle,
     toc: Toc,
+    table: TableWrapper,
   },
 }).Compiler
 

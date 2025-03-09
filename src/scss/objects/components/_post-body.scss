@@ -206,7 +206,17 @@ code[class*="language-"], pre[class*="language-"] {
         background: var(--color-d-blue);
         padding: 2px 6px;
     }
+    .table-wrapper {
+      overflow: auto;
+      @include utils.mqd(md){
+        padding-right: 16px;
+        margin-right: -16px;
+      width: calc(100% + 16px);
+      }
+    }
     table {
+      width: 100%;
+        max-width: 600px;
         border-collapse: collapse;
         border-spacing: 0px;
     }

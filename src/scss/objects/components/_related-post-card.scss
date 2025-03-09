@@ -1,4 +1,4 @@
-@use '../../utils';
+@use '../../utils' as *;
 .c-related-post-card{
     display: block;
             margin-bottom: 24px;
@@ -12,7 +12,7 @@
     grid-template-columns: 150px 1fr;
     gap: 14px;
     align-items: flex-start;
-    padding: 15px;
+    padding: 15px 15px 30px 15px;
     background: var(--background);
     overflow: hidden;
     border: 1px solid var(--color-blue);
@@ -48,7 +48,7 @@
         content: "Read More";
         font-family: var(--font-alphabet);
         }
-        @include utils.mq(md){
+        @include mq(md){
         &:hover::before {
             left: 0px;
             top: 0px;
@@ -72,5 +72,8 @@
     }
     &__description{
         font-size: 1.4rem;
+        @include mqd(md){
+          display: none;
+        }//media query
     }
 }

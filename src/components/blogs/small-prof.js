@@ -53,7 +53,6 @@ const smallProf = () => {
           >
           <SlideShare/>
         </Link>
-        <br></br>
         <Link to="/about/">Read More</Link>
       </p>
     </div>

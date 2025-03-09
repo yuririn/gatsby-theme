@@ -46,6 +46,14 @@ $xl: 350px;
     }
     &-archive {
         position: relative;
+        padding-left: 0!important;
+        padding-right: 0!important;
+        @include utils.mqd(md){
+          .infinite-scroll-component{
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
         &__sticky-area {
             position: sticky;
             bottom: 0;

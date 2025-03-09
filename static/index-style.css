@@ -7,10 +7,20 @@
 }
 @media screen and (min-width: 768px) {
   .l-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .l-card-container > li {
+    width: 300px;
+  }
+  .l-card-container:has(> li:nth-child(4)) {
     gap: 24px;
     margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .l-card-container:has(> li:nth-child(4)) > li {
+    width: inherit;
   }
 }
 .l-card-container--pickup {
