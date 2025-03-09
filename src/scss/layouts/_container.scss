@@ -48,10 +48,12 @@ $xl: 350px;
         position: relative;
         padding-left: 0!important;
         padding-right: 0!important;
-        @include utils.mqd(md){
-          .infinite-scroll-component{
-            padding-left: 16px;
-            padding-right: 16px;
+        .infinite-scroll-component{
+          padding-left: 16px;
+          padding-right: 16px;
+          @include utils.mq(md){
+            padding-left: 40px;
+            padding-right: 40px;
           }
         }
         &__sticky-area {

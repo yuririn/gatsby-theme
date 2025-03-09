@@ -6,7 +6,6 @@ import BreadCrumbList from "../components/common/bread-crumb-list"
 import InfiniteScrollComponent from "../components/common/infinite-scroll"
 import "../scss/objects/components/_page-header.scss"
 import { siteMetadata } from "./../../gatsby-config"
-const {  blogName } = siteMetadata
 
 
 const tags = ({ data, location, pageContext }) => {

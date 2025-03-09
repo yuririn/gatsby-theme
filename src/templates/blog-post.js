@@ -2,7 +2,6 @@ import React, {useEffect} from "react"
 import { Link, graphql } from "gatsby"
 
 import rehypeReact from "rehype-react"
-import RelatedList from "./../components/blogs/related-list"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -17,6 +16,7 @@ import RelativeCard from "../components/blogs/blog-parts/relative-card"
 import Msg from "../components/blogs/blog-parts/msg"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Ad from "../components/common/ad"
+import Faq from "../components/blogs/faq";
 import { siteMetadata } from "./../../gatsby-config";
 import PrevAndNextNav from "../components/blogs/prev-next-nav"
 import RelatedPosts from "./../components/blogs/related-list"
@@ -110,6 +110,7 @@ const BlogPostTemplate = ({ data, location }) => {
             <Tags tags={post.frontmatter.tags}></Tags>
             <section itemProp="articleBody" className="c-post-body">
               {renderAst(post.htmlAst)}
+              {post.frontmatter.faq && <Faq data={post.frontmatter.faq}></Faq>}
             </section>
             <PrevAndNextNav prev={previous} next={next}></PrevAndNextNav>
           </article>
