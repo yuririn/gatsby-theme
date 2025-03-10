@@ -6,3 +6,19 @@
 @use './layouts/sidebar';
 @use './objects/components/pickup-card';
 @use './objects/components/card';
+
+@use '_utils' as *;
+.c-greeting {
+  .gatsby-image-wrapper {
+    max-width: 200px;
+    border-radius: 50%;
+    @include mq(md){
+      margin-right: 16px;
+      float: left;
+    }//media query
+  }
+  p {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+  }
+}
