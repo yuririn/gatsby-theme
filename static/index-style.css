@@ -404,3 +404,18 @@
 .fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
+
+.c-greeting .gatsby-image-wrapper {
+  max-width: 200px;
+  border-radius: 50%;
+}
+@media screen and (min-width: 768px) {
+  .c-greeting .gatsby-image-wrapper {
+    margin-right: 16px;
+    float: left;
+  }
+}
+.c-greeting p {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
