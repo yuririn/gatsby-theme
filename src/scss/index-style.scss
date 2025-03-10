@@ -12,6 +12,8 @@
   .gatsby-image-wrapper {
     max-width: 200px;
     border-radius: 50%;
+    display: block;
+    margin: 0 auto 16px;
     @include mq(md){
       margin-right: 16px;
       float: left;

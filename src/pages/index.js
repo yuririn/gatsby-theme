@@ -23,15 +23,6 @@ const BlogIndex = ({ data, location }) => {
             <FirstView></FirstView>
             <div className="l-section l-container--blog">
                 <div className="l-container--blog__main">
-                  <header className="c-heading--lg"><h2>Greeting</h2><p>セブから学んだこと</p></header>
-                  <div className="c-greeting">
-                  <Img source="common/camille-pic.jpg"/>
-                    <p>こんにちは、海外ノマドエンジニアかみーゆです。セブで一念発起し、資金0で会社を設立しました。</p>
-                    <p>私はフィリピンに来て以来、人付き合いも物欲も減りました。</p>
-                    <p>この国では日本に比べ、手を伸ばせばすぐ欲しいものは手に入らないです。</p>
-                    <p>2020年のパンデミック世界最長ロックダウンを経て、多少の不便じゃ困らないし、死なないことも学びました。<br />結果、節約できるようになりました。わずかだけど親にもサポートもしています。</p>
-                    <p>これが1番フィリピンに感謝していることです。この「銀ねこアトリエ」ではそんなライフスタイルも含めて発信しています。</p>
-                  </div>
                     <header className="c-heading--lg"><h2>Pick up</h2><p>おすすめ記事</p></header>
                     <PickUpPosts></PickUpPosts>
                     <Ad location={location} adClass={`u-my--lg`}></Ad>
@@ -44,6 +35,17 @@ const BlogIndex = ({ data, location }) => {
                     </ul>
                     <p className="u-center"><a href="/blogs/" className="c-btn--detail">もっとブログを読む</a></p>
                     <Ad location={location} adClass={`u-my--lg`}></Ad>
+                    <header className="c-heading--lg"><h2>Greeting</h2><p>セブから学んだこと</p></header>
+                    <div className="c-greeting">
+                      <Img source="common/camille-pic.jpg" />
+                      <p>こんにちは、海外ノマドエンジニアかみーゆです。<br />私はセブで資金0で会社を設立しました。</p>
+                      <p>2019年、私はセブ島2移住しました。</p>
+                      <p>2020年のパンデミックや世界最長ロックダウンを経験し、私の人生は大きく変わりました。</p>
+                      <p>人付き合いも物欲も減りました。</p>
+                      <p>この国では日本に比べ、手を伸ばせばすぐ欲しいものは手に入りません。</p>
+                      <p>だからといって、多少の不便じゃ困らないし、死ぬこともありません。<br />結果、節約できるようになりました。わずかですが親へもサポートできるようになりました。</p>
+                      <p>これが1番フィリピンに感謝していることです。この「銀ねこアトリエ」ではそんなライフスタイルも含めて発信しています。</p>
+                    </div>
                 </div>
                 <SideBar location={location}></SideBar>
             </div>

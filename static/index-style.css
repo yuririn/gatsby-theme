@@ -408,6 +408,8 @@
 .c-greeting .gatsby-image-wrapper {
   max-width: 200px;
   border-radius: 50%;
+  display: block;
+  margin: 0 auto 16px;
 }
 @media screen and (min-width: 768px) {
   .c-greeting .gatsby-image-wrapper {
