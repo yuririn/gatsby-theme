@@ -239,6 +239,7 @@ code[class*="language-"], pre[class*="language-"] {
         text-shadow: none;
     color: var(--light-color);
 }
+
 }
 .msg-baloon {
     display: flex;
@@ -342,4 +343,10 @@ code[class*="language-"], pre[class*="language-"] {
     fill:  var(--color-link);
   }
 }
+}
+
+.c-post-body {
+    .gatsby-highlight-code-line {
+      background: rgb(255 255 255 / .5)!important;
+    }
 }
