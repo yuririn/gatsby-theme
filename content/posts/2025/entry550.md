@@ -27,6 +27,8 @@ https://www.slimframework.com/
 * Dockerでしっかり環境を作ってテストしたい
 * FetchAPI で非同期で送信したい
 
+<prof></prof>
+
 コードが長くなってしまったので、目次（この記事のサマリー）を辿ってください。
 
 ## 環境構築
@@ -489,7 +491,7 @@ return $response->withHeader('Content-Type', 'application/json');
 ![mailhog](./images/04//entry550-4.jpg)
 
 ### バリデーションを追加する
-フォームといえばバリデーションなので、Slimとの相性がよく、広範なルールを提供するシンプルなバリデーションライブラリの`Respect\Validation`を導入します。
+フォームといえばバリデーション対応が書かせませんね。Slimとの相性がよく、広範なルールを提供するシンプルなバリデーションライブラリの`Respect\Validation`を導入します。
 
 ```shell:title=コマンド
 cd slim_app
@@ -703,7 +705,7 @@ myproject/
     <span class="error-all"></span>
   </form>
 ```
-フォームのコードです。今回はSlimの解説なので細かいことは割愛します。
+フォームをJavaScriptで非同期で送信するためのコードです。今回はSlimの解説なので細かいことは割愛します。
 ```js:title=JavaScript
   const form = document.querySelector('[name="form"]');
   const submitBtn = document.querySelector('.submit-btn');
@@ -728,7 +730,7 @@ myproject/
         }
         submitBtn.disabled = false;
       } else {
-        const redirectUrl = result.redirect_url || '/thanks';
+        const redirectUrl = '/thanks';
         location.href = redirectUrl; // 成功時にリダイレクト
       }
     } else {
@@ -754,7 +756,7 @@ Thanksページのテンプレを追加。
 
 </html>
 ```
-thanksのルートを追加。
+`routes.php`にthanksのルートを追加。
 ```php:title=slim_app/app/routes.php
   ...
   $app->post('/submit', [FormController::class, 'submit']);
@@ -766,16 +768,16 @@ thanksのルートを追加。
     return $response;
 });
 ```
-.htaccessを編集。
+`thanks.html`にアクセスさせないよう`.htaccess`を編集。
 ```shell:title=public_html/.htaccess
 RewriteRule ^thanks\.html$ /thanks [R=301,L]
 ```
 ## セキュリティ対策：CSRFを追加する
 セキュリティ対策にCSRFも追加しておきます。
 
-> クロスサイトリクエストフォージェリ は、Webアプリケーションの脆弱性の一つもしくはそれを利用した攻撃。略称はCSRF、またはXSRF。
+> クロスサイトリクエストフォージェリ（forgery：偽造） は、Webアプリケーションの脆弱性の一つもしくはそれを利用した攻撃。略称はCSRF、またはXSRF。
 
-最初から、blade や Twig などで書いておいてもいいんですが今回は本来のソースコードを徹底的に活かすため、CSRF トークンも Fetch で取得します。
+最初から、blade や Twig などのテンプレートで書いてもいいんですが今回は本来のソースコードを徹底的に活かすため、CSRF トークンも Fetch で取得します。
 
 ```shell:title=コマンド
 cd slim_app
