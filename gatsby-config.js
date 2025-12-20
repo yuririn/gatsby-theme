@@ -96,7 +96,6 @@ module.exports = {
         ],
     },
     plugins: [
-        `gatsby-plugin-instagram-embed`,
         `gatsby-plugin-sass`,
         process.env.BRANCH !== 'master' ?
             null :
