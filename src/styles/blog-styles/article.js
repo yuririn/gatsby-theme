@@ -8,6 +8,7 @@ export const Article = styled.div`
   @media screen and (min-width: 1020px) {
     width: calc(100% - 300px);
   }
+    
   .cstmreba {
     .kaerebalink-box {
       border: 1px solid #ccc;

@@ -20,6 +20,7 @@ import Faq from "../components/blogs/faq";
 import { siteMetadata } from "./../../gatsby-config";
 import PrevAndNextNav from "../components/blogs/prev-next-nav"
 import RelatedPosts from "./../components/blogs/related-list"
+import InstaEmbedCard from "../components/blogs/insta-embed-card"
 import "../scss/objects/components/_page-header.scss"
 
 // カスタムコンポーネントを作成
@@ -37,6 +38,7 @@ const renderAst = new rehypeReact({
     kyle: Kyle,
     toc: Toc,
     table: TableWrapper,
+    insta: InstaEmbedCard
   },
 }).Compiler
 

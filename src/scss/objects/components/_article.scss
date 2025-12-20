@@ -1,6 +1,17 @@
 @use '../../utils';
 .c-article{
     margin-right: 0;
+    .instagram-embed {
+    border:1px solid #ddd;
+     padding: 16px 12px;
+     border-radius: 8px;
+     max-width: max-content;
+     margin: 16px auto;
+     iframe {
+        max-width: 100%;
+        width: 100%;
+     }
+    }
     &__heading {
         color: var(--color-d-blue);
         font-size: 2rem;
