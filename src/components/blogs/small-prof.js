@@ -17,7 +17,7 @@ const smallProf = () => {
         <Img source="common/camille-pic.jpg" className="c-bio__img"></Img>
         <p className="c-bio__name">{author.name}/フロントエンドエンジニア</p>
 
-        <p className="c-bio__message">資金ゼロからフィリピンで起業した海外ノマドエンジニア。IT業界10年以上でテクニカルディレクター（技術責任者）・エンジニア講師・ブリッジSEを経て<a href="https://lenz-ph.com" target="_blank" rel="noopener nofollow">LenzTechnologies Inc.</a>を設立し、代表を務める。CMS concreteCMSエバンジェリスト。テックブログ以外も「磨耗しない人生」や「海外ノマド」のライフスタイルについて発信。好きなものは肉とハイボール。
+        <p className="c-bio__message">資金ゼロからフィリピンで起業したアラフィフ海外ノマドエンジニア。最近は「フィリピンお役立ち情報」「ナチュラルアンチエイジング」「人生から得た哲学」など実体験を発信。最近AIの発達でテックブログはお休みしているけど、IT業界10年以上でテクニカルディレクター（技術責任者）・エンジニア講師・ブリッジSEを経て<a href="https://lenz-ph.com" target="_blank" rel="noopener nofollow">LenzTechnologies Inc.</a>を設立し、代表を務める。
       </p>
         <p className="c-bio__footer">
         <Link
