@@ -1,7 +1,7 @@
 ---
 title: 過食とストレスの悪循環を断ち切る、マインドフルな食習慣（マインドフルイーティング）
 date: 2026-01-04
-hero: thumbnail/2025/entry558.jpg
+hero: thumbnail/2026/entry558.jpg
 pageType: blog
 cateId: ginneko-tsuredure
 tags: ["食生活","セブ島生活"]
