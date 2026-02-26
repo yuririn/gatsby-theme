@@ -1,6 +1,7 @@
 [build]
   publish = "public"
   command = "npm run build"
+  node_version = "18"
 
 [context.master]
   NODE_ENV = "production"
