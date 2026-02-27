@@ -63,19 +63,27 @@
   text-align: center;
   padding: 16px 16px;
   margin-bottom: 24px;
-  border-image: linear-gradient(0deg, var(--font-color) 100%, rgba(0, 0, 0, 0) 0) fill 0 // 0 100vw 0 100vw;
-  color: var(--background);
-  margin-top: 32px;
 }
 .c-heading--lg h2 {
   line-height: 1;
   font-size: var(--font-xl);
   margin-bottom: 8px;
 }
+.c-heading--lg {
+  border-image: linear-gradient(0deg, var(--font-color) 100%, rgba(0, 0, 0, 0) 0) fill 0 // 0 100vw 0 100vw;
+  color: var(--background);
+  margin-top: 32px;
+}
 @media screen and (min-width: 768px) {
   .c-heading--lg {
     margin-top: 32px;
     margin-bottom: 32px;
+  }
+  .c-heading--lg h2 {
+    font-size: 5.6rem;
+    margin-bottom: 0;
+  }
+  .c-heading--lg {
     border-image: linear-gradient(0deg, var(--font-color) 100%, rgba(0, 0, 0, 0) 0) fill 0 // 0 0 0 100vw;
     width: max-content;
     display: flex;
@@ -83,10 +91,6 @@
     padding: 16px 32px 16px 0;
     gap: 16px;
     /* または */
-  }
-  .c-heading--lg h2 {
-    font-size: 5.6rem;
-    margin-bottom: 0;
   }
 }
 .c-heading__aside {
@@ -310,6 +314,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .c-toc__wrapper.is-open {
+    height: calc(100dvh - 48px);
+    opacity: 1;
+  }
   .c-toc__wrapper {
     transition: opacity 0.3s;
     opacity: 0;
@@ -323,10 +331,6 @@
     z-index: 5000;
     background: var(--header-background);
     padding: 16px 16px 80px;
-  }
-  .c-toc__wrapper.is-open {
-    height: calc(100dvh - 48px);
-    opacity: 1;
   }
   .c-toc__wrapper .c-toc {
     height: calc(100% - 64px);
@@ -585,6 +589,7 @@
 .c-post-body ul:not([class]), .c-post-body ol:not([class]), .c-post-body p:not([class]), .c-post-body .gatsby-resp-image-wrapper {
   margin-top: 1em;
   margin-bottom: 1em;
+  font-size: 1.6rem;
 }
 @media screen and (min-width: 768px) {
   .c-post-body ul:not([class]), .c-post-body ol:not([class]), .c-post-body p:not([class]), .c-post-body .gatsby-resp-image-wrapper {
@@ -662,6 +667,10 @@
     padding: 20px 30px;
     border-radius: 15px;
   }
+}
+.c-post-body h2, .c-post-body h3 {
+  margin-top: 32px;
+  margin-bottom: 18px;
 }
 @media screen and (min-width: 768px) {
   .c-post-body h2, .c-post-body h3 {
@@ -931,6 +940,10 @@
   fill: var(--color-link);
 }
 
+.c-post-body .gatsby-highlight-code-line {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
 .c-pager {
   display: grid;
   grid-template-rows: auto auto;
@@ -1083,10 +1096,4 @@
   .c-related-post-card__description {
     display: none;
   }
-}
-
-.c-post-body {
-    .gatsby-highlight-code-line {
-      background: rgb(255 255 255 / .3)!important;
-    }
 }
