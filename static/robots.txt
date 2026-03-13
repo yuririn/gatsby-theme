@@ -1,22 +1,20 @@
-# 1. Google様には引き続き全力でインデックスしてもらう
+# 1. Search Engines
 User-agent: Googlebot
 Allow: /
-
-# 2. Bing監査官（AI検索の裏側）も一応通す
 User-agent: Bingbot
 Allow: /
 
-# 3. AI検索（回答として引用してほしいボット）を明示的に歓迎
+# 2. Welcome AI Bots
 User-agent: GPTBot
 User-agent: PerplexityBot
 User-agent: GrokBot
-Allow: /
-
-# 4. AppleのAI（iPhoneの要約など）も許可
 User-agent: Applebot-Extended
 Allow: /
 
-# 5. 学習用データセット（Common Crawl）など、
-# 引用元を明記せずにデータだけ持っていく奴らは弾く
+# 3. Block Data Crawlers
 User-agent: CCBot
 Disallow: /
+
+# 4. Global Settings
+User-agent: *
+Allow: /
