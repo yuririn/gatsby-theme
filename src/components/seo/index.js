@@ -54,6 +54,17 @@ const Seo = ({ data, location }) => {
     
     return (
         <>
+            {/* --- ここから OneSignal --- */}
+            <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+            <script>{`
+                    window.OneSignalDeferred = window.OneSignalDeferred || [];
+                    OneSignalDeferred.push(async function(OneSignal) {
+                        await OneSignal.init({
+                            appId: "476f721d-521b-45f0-8963-f209993fc8c8",
+                        });
+                    });
+                `}</script>
+            {/* --- ここまで OneSignal --- */}
             {isDev && <meta name="robots" content="noindex, nofollow" />}
             {/* Basic SEO Setting */}
             <title>{pageTitle}</title>
