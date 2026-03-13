@@ -54,6 +54,7 @@ const Seo = ({ data, location }) => {
     
     return (
         <>
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
             {/* --- ここから OneSignal --- */}
             <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
             <script>{`
@@ -99,7 +100,6 @@ const Seo = ({ data, location }) => {
             }
             <meta name="twitter:title" content={pageTitle} />
             <meta name="twitter:description" content={pageDescription} />
-        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
         </>
     )
 }

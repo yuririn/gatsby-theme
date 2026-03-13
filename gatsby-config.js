@@ -318,6 +318,8 @@ module.exports = {
               },
               include_favicon: true,
               cache_busting_mode: `query`,
+              include_favicon: true,
+              legacy: false,
             },
         },
         // this (optional) plugin enables Progressive Web App + Offline functionality
