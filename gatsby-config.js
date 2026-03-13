@@ -307,15 +307,17 @@ module.exports = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `銀ねこアトリエ | セブ島在住海外ノマド フロントエンジニアの日記`,
-                short_name: `銀ねこアトリエ`,
-                start_url: `/`,
-                background_color: `#ffffff`,
-                // This will impact how browsers show your PWA/website
-                // https://css-tricks.com/meta-theme-color-and-trickery/
-                // theme_color: `#663399`,
-                display: `minimal-ui`,
-                icon: `src/images/icon.png`, // This path is relative to the root of the site.
+              name: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
+              short_name: `銀ねこアトリエ`,
+              start_url: `/`,
+              background_color: `#ffffff`,
+              display: `minimal-ui`,
+              icon: `src/images/icon.png`,
+              icon_options: {
+                purpose: `any`,
+              },
+              include_favicon: true,
+              cache_busting_mode: `query`,
             },
         },
         // this (optional) plugin enables Progressive Web App + Offline functionality
