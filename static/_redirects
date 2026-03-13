@@ -1,17 +1,16 @@
-https://ginneko-blog.netlify.app/* https://ginneko-atelier.com/:splat 301!
+# --- 1. Content Redirects (個別記事の書き換えを優先) ---
+/blogs/entry524/           /choco-blog/online-english-freetalk/ 301
+/blogs/entry278/           /choco-blog/cat-food-poisoning/      301
+/blogs/entry388/           /choco-blog/nukaduke/               301
 
-/blogs/entry524/ /choco-blog/online-english-freetalk/ 301
+# --- 2. Flattened Chains (Sugbo Museo関連：直通化済み) ---
+/blogs/entry472/           /blogs/entry442/ 301
+/choco-blog/sugbo-museo/   /blogs/entry442/ 301
 
-/blogs/entry278/ /choco-blog/cat-food-poisoning/ 301
-
-/blogs/entry388/ /choco-blog/nukaduke/ 301
-
-/blogs/entry472/ /choco-blog/sugbo-museo/ 301
-
+# --- 3. Path Normalization (集約) ---
 /choco-blog/overseas-digital-normad/ /blogs/entry453/ 301
+/overseas-digital-normad/            /blogs/entry446/ 301
+/choco-blog/vocational-school/       /blogs/entry447/ 301
 
-/overseas-digital-normad/ /blogs/entry446/ 301
-
-/choco-blog/vocational-school/ /blogs/entry447/ 301
-
-/choco-blog/sugbo-museo/  /blogs/entry442/ 301 
+# --- 4. Domain Redirect (最後に網を張る) ---
+https://ginneko-blog.netlify.app/* https://ginneko-atelier.com/:splat 301!

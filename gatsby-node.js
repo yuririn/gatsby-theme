@@ -1,156 +1,149 @@
 const fs = require('fs');
 const path = require('path');
+
+/**
+ * 1. PreBuild: 開発/本番の環境切り分けとrobots.txtの制御
+ */
 exports.onPreBuild = ({ reporter }) => {
-    const branch = process.env.BRANCH || 'unknown';
-    let nodeEnv = 'production';
-    
-    // ブランチが master 以外はすべて development とする
-    if (branch !== 'master') {
-        nodeEnv = 'development';
-    }
-    
-    // `NODE_ENV`を設定
-    process.env.NODE_ENV = nodeEnv;
-    reporter.info(`Setting NODE_ENV to ${nodeEnv} for branch ${branch}`);
-    console.log(`BASIC_AUTH_ID: ${process.env.BASIC_AUTH_ID}`)
-    console.log(`BASIC_AUTH_PASS: ${process.env.BASIC_AUTH_PASS}`)
+  // Netlify等の環境変数 BRANCH を参照。なければ production 扱い
+  const branch = process.env.BRANCH || 'master';
+  let nodeEnv = 'production';
 
-    const robotsPath = path.join('./static/', 'robots.txt');
+  // master ブランチ以外はすべて開発用として扱う
+  if (branch !== 'master') {
+    nodeEnv = 'development';
+  }
 
-    // ファイルが存在するか確認し、ログを出力
-    if (fs.existsSync(robotsPath)) {
-        // ファイルが存在する場合、その内容を読み取ってログに出力
-        const existingContent = fs.readFileSync(robotsPath, 'utf8');
-        reporter.info('Existing robots.txt content:');
-        reporter.info(existingContent);
+  process.env.NODE_ENV = nodeEnv;
+  reporter.info(`[Build Strategy] Branch: ${branch} -> Setting NODE_ENV to ${nodeEnv}`);
 
-        // 上書き確認と処理
-        if (nodeEnv === 'development') {
-            const robotsContent = 'User-agent: *\nDisallow: /\n';
-            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-            reporter.info('Updated robots.txt for development environment');
-        }
-    } else {
-        // ファイルが存在しない場合、新規作成
-        if (nodeEnv === 'development') {
-            const robotsContent = 'User-agent: *\nDisallow: /\n';
-            fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-            reporter.info('Created robots.txt for development environment');
-        }
-    }
+  // robots.txt の生成パス（Gatsbyはビルド時に static を public にコピーする）
+  const robotsPath = path.join('./static/', 'robots.txt');
+
+  let robotsContent = '';
+
+  if (nodeEnv === 'development') {
+    // 開発環境：検索エンジンを完全にブロック
+    robotsContent = 'User-agent: *\nDisallow: /\n';
+    reporter.info('Development mode: Protecting site with Disallow: /');
+  } else {
+    // 本番環境：戦略的 AI-Friendly robots.txt
+    robotsContent = `# 1. Search Engines
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+# 2. Welcome AI Bots (引用・回答用)
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: GrokBot
+User-agent: Applebot-Extended
+Allow: /
+
+# 3. Block Data Crawlers (学習データ収集のみのボット)
+User-agent: CCBot
+Disallow: /
+
+# 4. Global Settings
+User-agent: *
+Allow: /
+`;
+    reporter.info('Production mode: Applying Strategic AI-Friendly robots.txt');
+  }
+
+  try {
+    fs.writeFileSync(robotsPath, robotsContent, 'utf8');
+  } catch (err) {
+    reporter.error('Failed to write robots.txt', err);
+  }
 };
 
-// Define a template for blog post
+// テンプレートパスの定義
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
-
 const blogList = path.resolve(`./src/pages/blogs.js`)
-
 const tagList = path.resolve(`./src/templates/tag-list.js`)
-
 const genreList = path.resolve(`./src/templates/genre-list.js`)
-
 const pagePost = path.resolve(`./src/templates/page-post.js`)
-
 const contact = path.resolve(`./src/templates/contact.js`)
 
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { siteMetadata } = require('./gatsby-config')
 
+/**
+ * 2. CreatePages: ページの動的生成
+ */
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
+  const branchName = process.env.BRANCH || 'master';
 
-  const branchName = process.env.BRANCH || 'unknown-branch';
-
+  // masterブランチ以外（プレビュー環境等）のみログインページを生成
   if (branchName !== 'master') {
-
-      const authPage = path.resolve('./src/templates/auth.js')
-      // ログインページの生成
-      createPage({
-          path: '/login',
-          component: authPage,
-      });
+    const authPage = path.resolve('./src/templates/auth.js')
+    createPage({
+      path: '/login',
+      component: authPage,
+    });
   }
 
-  // Get all markdown blog posts sorted by date
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
-          nodes {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              tags
-              cateId
-              hero
-              pageType
-              noindex
-              faq
-            }
+  const result = await graphql(`
+    {
+      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+        nodes {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            tags
+            cateId
+            hero
+            pageType
+            noindex
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result.errors
-    )
+    reporter.panicOnBuild(`Error loading blog posts`, result.errors)
     return
   }
 
   const posts = result.data.allMarkdownRemark.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
   if (posts.length > 0) {
     const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog")
 
-     // 個々のブログ記事生成
+    // ブログ個別記事
     blogPosts.forEach((post, index) => {
-        
-        
-        const previousPostId = index === 0 ? null : blogPosts[index - 1].id
-        const nextPostId =
-            index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
-        createPage({
-            path: `/blogs/${post.fields.slug}/`,
-            component: blogPost,
-            context: {
-                id: post.id,
-                previousPostId,
-                nextPostId,
-
-                hero: post.frontmatter.hero
-                    ? post.frontmatter.hero
-                    : "common/dummy.png",
-            },
-        })
+      const previousPostId = index === 0 ? null : blogPosts[index - 1].id
+      const nextPostId = index === blogPosts.length - 1 ? null : blogPosts[index + 1].id
+      createPage({
+        path: `/blogs/${post.fields.slug}/`,
+        component: blogPost,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+          hero: post.frontmatter.hero || "common/dummy.png",
+        },
+      })
     })
 
-    // 記事の分割数
-    const postsPerPage = 12
-
-    // ブログ一覧出力
+    // ブログ一覧
     createPage({
       path: '/blogs/',
       component: blogList,
       context: {
-        title: siteMetadata.blogName || "Default Blog Name",
+        title: siteMetadata.blogName || "銀ねこアトリエ",
         totalCount: blogPosts.length,
         prefix: "blogs",
         slug: "blogs",
       },
     });
 
-    
-    //  カテゴリー一覧出力
+    // カテゴリー別一覧
     siteMetadata.category.forEach((category) => {
       const count = blogPosts.filter(post => category.slug === post.frontmatter.cateId).length;
       createPage({
@@ -165,131 +158,93 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
 
-    // タグの一覧作成とカウント
-    let tags = blogPosts.reduce((tags, edge) => {
-      const edgeTags = edge.frontmatter.tags;
-      if (edgeTags) {
-        edgeTags.forEach(tag => {
-          const existingTag = tags.find(t => t.name === tag);
-          if (existingTag) {
-            existingTag.count += 1;
-          } else {
-            tags.push({ name: tag, count: 1 });
-          }
+    // タグ別一覧
+    let tags = blogPosts.reduce((acc, node) => {
+      const nodeTags = node.frontmatter.tags;
+      if (nodeTags) {
+        nodeTags.forEach(tag => {
+          const found = acc.find(t => t.name === tag);
+          if (found) found.count += 1;
+          else acc.push({ name: tag, count: 1 });
         });
       }
-      return tags;
+      return acc;
     }, []);
 
-    //  List 出力
-    tags = [...tags];
-    tags.forEach((list) => {
-      const count = list.count
+    tags.forEach((tag) => {
       createPage({
-        path: `/blogs/tags/${list.name}/`,
+        path: `/blogs/tags/${tag.name}/`,
         component: tagList,
         context: {
-          title: list.name,
-          totalCount: count,
-          prefix: list.name,
-          slug: list.name
+          title: tag.name,
+          totalCount: tag.count,
+          prefix: tag.name,
+          slug: tag.name
         },
       });
     })
 
-    // 個別ページの生成
-    const pagePosts = posts.filter(
-      post =>
-        post.frontmatter.pageType !== "blog"
-    )
-
-    pagePosts.forEach(post => {
+    // 固定ページ
+    posts.filter(p => p.frontmatter.pageType !== "blog").forEach(post => {
       createPage({
         path: post.fields.slug,
         component: pagePost,
         context: {
           id: post.id,
-          hero: post.frontmatter.hero
-            ? post.frontmatter.hero
-            : "common/dummy.png",
+          hero: post.frontmatter.hero || "common/dummy.png",
         },
       })
     })
   }
 
-  //お問い合わせ
-  createPage({
-    path: "/contact/",
-    component: contact,
-    context: {},
-  })
-
-  //サンクス
-  createPage({
-    path: "/contact/thanks/",
-    component: contact,
-    context: {},
-  })
-
+  // お問い合わせ・サンクス
+  const staticPages = ["/contact/", "/contact/thanks/"];
+  staticPages.forEach(p => createPage({ path: p, component: contact, context: {} }));
 }
 
 /**
- * @type {import('gatsby').GatsbyNode['onCreateNode']}
- * 年代別に投稿を整理する
+ * 3. onCreateNode: スラッグの正規化
  */
 exports.onCreateNode = ({ node, actions, getNode }) => {
-    const { createNodeField } = actions
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const pageType = node.frontmatter.pageType;
+    const value = createFilePath({ node, getNode, basePath: 'content/posts' })
 
-    if (node.internal.type === `MarkdownRemark`) {
-        const pageType = node.frontmatter.pageType;
-        const value = createFilePath({ node, getNode, basePath: 'content/posts' })
-        if (pageType === 'blog') {
-            createNodeField({
-                name: `slug`,
-                node,
-                value: value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1'),
-            })
-        } else {
-            createNodeField({
-                name: `slug`,
-                node,
-                value,
-            })
-        }
+    // blogタイプの場合はスラッグから日付/entryプレフィックスを調整
+    let slugValue = value;
+    if (pageType === 'blog') {
+      slugValue = value.replace(/\/\d{4}\/entry(\d+)\//, 'entry$1');
     }
+
+    createNodeField({ name: `slug`, node, value: slugValue })
+  }
 }
 
+/**
+ * 4. createSchemaCustomization: 型定義
+ */
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
-
-  // Explicitly define the siteMetadata {} object
-  // This way those will always be defined even if removed from gatsby-config.js
-
-  // Also explicitly define the Markdown frontmatter
-  // This way the "MarkdownRemark" queries will return `null` even when no
-  // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
       social: Social
+      blogName: String
+      category: [Category]
     }
-
-    type Author {
+    type Category {
       name: String
-      summary: String
+      slug: String
     }
-
-    type Social {
-      twitter: String
-    }
-
+    type Author { name: String; summary: String }
+    type Social { twitter: String }
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
       fields: Fields
     }
-
-     type Frontmatter {
+    type Frontmatter {
       title: String
       description: String
       date: Date @dateformat
@@ -299,28 +254,26 @@ exports.createSchemaCustomization = ({ actions }) => {
       pageType: String
       cateId: String
       hero: String
-      faq:[[String]]
+      faq: [[String]]
     }
-
-    type Fields {
-      slug: String
-    }
+    type Fields { slug: String }
   `)
 }
 
 /**
- * onPostBuild > ビルド後の確認。
+ * 5. PostBuild: ビルド結果の最終確認
  */
+exports.onPostBuild = ({ reporter }) => {
+  const nodeEnv = process.env.NODE_ENV || 'production';
+  reporter.info(`Post-Build Check: Environment is ${nodeEnv}`);
 
-exports.onPostBuild = () => {
-    const nodeEnv = process.env.NODE_ENV || 'production';
-    console.log('Node Environment:', nodeEnv);
-
-    try {
-        const robotsPath = path.join('./public/', 'robots.txt');
-        const robotsFileContent = fs.readFileSync(robotsPath, 'utf8');
-        console.log('Robots content:', robotsFileContent); // デバッグ用
-    } catch (error) {
-        console.error('Error reading robots.txt file:', error);
+  try {
+    const robotsPath = path.join('./public/', 'robots.txt');
+    if (fs.existsSync(robotsPath)) {
+      const content = fs.readFileSync(robotsPath, 'utf8');
+      reporter.info(`Final robots.txt content:\n${content}`);
     }
+  } catch (error) {
+    reporter.warn('Could not verify robots.txt in public folder');
+  }
 };
