@@ -99,6 +99,7 @@ const Seo = ({ data, location }) => {
             }
             <meta name="twitter:title" content={pageTitle} />
             <meta name="twitter:description" content={pageDescription} />
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
         </>
     )
 }
