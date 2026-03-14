@@ -1,11 +1,12 @@
 ---
-title: WordPress インスタ表示用ブロックを作る（axios、GraphAPI）
+title: Instagram投稿をWPブロックで埋め込む｜Graph API連携の自作ブロック実装
 date: 2022-01-16
+modifiedDate: 2026-03-15
 hero: thumbnail/2022/entry490.jpg
 pageType: blog
 cateId: web-developer
 tags: ["WordPress","React",'ブロックエディタ']
-description: インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！インスタのアクセストークンとビジネスアカウントIDを用意しておく必要があります。一覧は useEffect と axios を使って非同期処理で表示。サンプルコードあり。
+description: Instagram Graph APIで取得した投稿一覧を、WordPressのブロックエディター（Gutenberg）で手軽に呼び出せるようカスタムブロック化しました。API連携からエディター側の表示制御まで、実務で使える「自作ブロック」の構築手順を2026年版として再整理。
 ---
 インスタ一覧出力用のブロックを @wordpress/scripts（React、Webpack） を使って作ってみました！
 

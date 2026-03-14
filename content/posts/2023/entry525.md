@@ -1,11 +1,12 @@
 ---
-title: Intersection Observer API の使ってQiita風目次を作ってみる
+title: Intersection Observer でQiita風目次｜スクロール連動ハイライトの実装
 date: 2023-03-23
+modifiedDate: 2026-03-15
 pageType: blog
 hero: thumbnail/2023/entry525.png
 cateId: web-developer
 tags: ["JavaScript"]
-description: 要素の監視ができる、Intersection Observer APIの使い方をご紹介。もう、scroll量に応じて処理する必要はありません。Qiita風目次のサンプルコード。モダンブラウザでは使用可能。オプションやメソッドの解説、コードサンプルあり。
+description: 読者が今どこを読んでいるか一目でわかる「Qiita風の動く目次」を、Intersection Observer APIを使って実装する方法を解説。ライブラリ不要で軽量、かつスクロールにピタリと追従するハイライト機能のロジックを2026年の最新JSで整理しました。
 ---
 
 JavaScript の 要素の監視ができる Intersection Observer API の使い方をご紹介します。
