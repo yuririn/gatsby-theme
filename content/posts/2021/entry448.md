@@ -1,14 +1,15 @@
 ---
-title: 2025年版！GraphAPIでインスタグラム投稿一覧を出力（JS/PHPサンプルコードあり）
+title: Instagram Graph API 2025｜インスタ投稿一覧をJS/PHPで出力
 date: 2021-03-25
-modifiedDate: 2025-01-27
+modifiedDate: 2026-03-14
 hero: thumbnail/2021/entry448.jpg
 pageType: blog
 cateId: 'web-developer'
 tags: ["JavaScript","PHP"]
-description: 2025年版にリライト済み。最近インスタ投稿一覧をWebサイトに埋め込みました。コード書くより、インスタとFacebookを連携させてアクセストークンを取得するまでがスーパーめんどくさかったです。しかも一年前と少しやり方が変わっていて戸惑いました。ということで、2022年版のGraphAPIで一覧を取得する手順をJS・PHP両方紹介します。難易度はJSやPHPを少し書けSNSなどのサービスを普段から使っている人向けです。
+description: インスタ投稿一覧の埋め込みで一番の難所は、コードよりも「Facebook連携とトークン取得」の複雑な仕様です。頻繁にUIが変わるMetaの開発者画面で、どこを触ればいいのか。当時私が戸惑いながらも解決したJS/PHPの実装手順を詳しくまとめています。※仕様変更の多いAPIのため、ハマりポイントの予習にどうぞ。
 ---
-*【この記事は2025年版にリライト済みです】* 
+*【この記事は2025年版にリライト済みです】*   
+2026年現在も通用するCSSの基本テクニックです。最新のブラウザ環境に合わせて内容を再確認しました。
 
 [FetchAPIとasync/awaitで記述するサンプルコード](#jsコードサンプルfetchapiawaitasync)
 

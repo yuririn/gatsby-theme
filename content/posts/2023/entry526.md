@@ -1,11 +1,12 @@
 ---
-title: Mutation Observer を使ってiframe内の要素を監視する
+title: MutationObserver でiframe内を監視｜DOMの変化を検知して処理を実行する方法
 date: 2023-03-24
+modifiedDate: 2026-03-15
 pageType: blog
 hero: thumbnail/2023/entry525.png
 cateId: web-developer
 tags: ["JavaScript"]
-description: 要素の監視ができる、Mutation Observer APIの使い方をご紹介。iframe内の変化を感知して、親要素の高さを変えるという処理をしました。オプションやメソッドの解説、コードサンプルあり。
+description: iframe内のコンテンツが書き換わったタイミングで処理を動かしたい。そんな難題を「MutationObserver」で解決する実装方法を解説。loadイベントだけでは追いきれない動的なDOM変化をスマートに監視するコツを、2026年現在のブラウザ仕様に合わせて整理しました。
 ---
 
 JavaScript の 要素の監視ができる Mutation Observer を使う機会があったので使い方をご紹介します。

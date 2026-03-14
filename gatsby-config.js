@@ -305,22 +305,25 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-manifest`,
-            options: {
-              name: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
-              short_name: `銀ねこアトリエ`,
-              start_url: `/`,
-              background_color: `#ffffff`,
-              display: `minimal-ui`,
-              icon: `src/images/icon.png`,
-              icon_options: {
-                purpose: `any`,
-              },
-              include_favicon: true,
-              cache_busting_mode: `query`,
-              include_favicon: true,
-              legacy: false,
+          resolve: `gatsby-plugin-manifest`,
+          options: {
+            name: `セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】`,
+            short_name: `銀ねこアトリエ`,
+            start_url: `/`,
+            background_color: `#ffffff`, // Androidのスプラッシュ画面やアイコンの背景色
+            theme_color: `#ffffff`,      // ブラウザのツールバーの色
+            display: `minimal-ui`,
+            icon: `src/images/icon.png`, // 透過のマスター画像（ファビコン用）
+            icon_options: {
+              // maskableを追加することで、Androidで透過部分をbackground_colorで綺麗に補完させます
+              purpose: `any maskable`,
             },
+            include_favicon: true,
+            cache_busting_mode: `query`,
+            // legacy: false により、プラグインが作る「白丸の原因」となる古いApple用タグ出力を停止します
+            // これにより、手動で書いた <link rel="apple-touch-icon" ...> が最優先されます
+            legacy: false,
+          },
         },
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline

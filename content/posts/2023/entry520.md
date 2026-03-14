@@ -1,11 +1,12 @@
 ---
-title: Vue.js で絞込み＆ソート機能を部分的に組み込む
+title: Vue.jsで絞り込み＆ソート｜Composition APIで動的機能を部分導入する
+modifiedDate: 2026-03-15
 date: 2023-02-05
 pageType: blog
 hero: thumbnail/2023/entry520.png
 cateId: web-developer
 tags: ["Vue.js","JavaScript"]
-description: Vue.js はちょっとした動的機能をHTMLやPHPに組み込むのに最適。Vanilla JS に比べると簡潔に書けるし、React に比べ気軽に導入可能。日付による昇順、降順に並べ替え、更にカテゴリー・タグで絞り込み等導入方法を詳しく解説し、Compostion APIのサンプルコードをご紹介。
+description: 既存のHTMLやPHPサイトに、Vue.js 3（Composition API）で「絞り込み・ソート機能」を部分導入する方法を徹底解説。Vanilla JSより簡潔に、Reactより手軽に。日付順の並べ替えやカテゴリー検索の実装手順を、2026年の開発環境に合わせたモダンなコード構成で紹介します。
 ---
 最近 WordPress で部分的に Vue.js を組み込みました。最初は React を組み込もうとしましたが、大規模になりそうだったので Vue.js に切り替えました。やってみると驚くほど手軽でした。
 

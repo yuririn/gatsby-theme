@@ -1,14 +1,17 @@
 ---
-title: DockerでシンプルなWordPress環境を作る
+title: DockerでWordPress構築｜シンプル＆軽量な開発環境の作成手順
 date: 2021-12-22
-modifiedDate: 2025-02-24
+modifiedDate: 2026-03-14
 hero: thumbnail/2021/entry480.jpg
 pageType: blog
 cateId: web-developer
 tags: ["Docker","WordPress"]
-description: 最近Dockerを使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さはVagrantより良い気がし、乗り換えました。今回はDockerでWordPress環境を構築する方法をまとめます。phpやwordpressの古いバージョンにも対応しています。
+description: 2026年最新メンテ済み。 VagrantからDockerに乗り換えて感じた「爆速な立ち上げ」の感動をそのままに、最もシンプルで軽量なWordPress開発環境の構築手順をまとめました。複雑な設定を削ぎ落とし、docker-compose.yml をコピペするだけで動く構成を紹介。PHPやWPの旧バージョンが必要な際のリファレンスとしても活用してください。
 ---
-最近Docker(2021年時点。現在は完全Docker User)を使う機会が増え、自分でも構築する機会が増えました。以前はVagrantユーザーだったのですが、インストール後の立ち上げの速さは Vagrant から乗り換えました。今回は Docker で WordPress 環境を構築する方法をまとめます。
+【2026年3月 追記】  
+この記事を書いた当時はVagrantから移行したばかりの「Docker初心者」でしたが、今では完全にDocker（Docker Compose）一本になりました。
+
+振り返ると、Vagrantの起動を待っていた時間は一体何だったのか……。現在は、より「軽量・シンプル」で、かつApple Silicon (M1/M2/M3) 環境でも爆速で動く構成に記事内容を微調整しています。Docker Desktopだけでなく、OrbStack等のモダンな環境でもそのまま動く「最小構成」をぜひ活用してください。
 
 > Dockerは、アプリケーションをコンテナと呼ばれる軽量な仮想環境で実行するためのプラットフォームです。これにより、開発環境と本番環境の違いを最小限に抑え、一貫した動作を保証することができます。
 

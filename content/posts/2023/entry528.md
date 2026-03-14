@@ -1,11 +1,12 @@
 ---
-title: Cropper.js でアップロードした画像をリサイズしたファイルをダウンロードする
+title: Cropper.js 使い方｜画像のリサイズ・ダウンロードをJSで実装
 date: 2023-12-28
+modifiedDate: 2026-03-15
 pageType: blog
 hero: thumbnail/2023/entry528.jpg
 cateId: web-developer
 tags: ["JavaScript"]
-description: アップロードした画像のリサイズを手軽にリサイズするためcropper.jsというライブラリを使ってみました。フォームから画像をアップロード、リサイズ、ダウンロードしました。Base64からバイナリファイルの変換方法も合わせて紹介しています。
+description: Cropper.jsを使って、ブラウザ上での画像リサイズとダウンロード機能を実装する方法を解説。フォームからのアップロード、トリミング、そして重要となる「Base64からバイナリファイル（Blob）への変換」まで、2026年現在のモダンなJS（Vanilla JS）での書き方を紹介します。
 ---
 
 アップロードした画像のリサイズを手軽にするために cropper.js というライブラリを使ってみました。
