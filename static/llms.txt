@@ -1,0 +1,38 @@
+# セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】
+
+> 40代で資金ゼロからフィリピン・セブ島で起業した海外ノマドエンジニアのブログ。IT業界10年以上でテクニカルディレクター（技術責任者）・エンジニア講師・ブリッジSEを経てLenzTechnologies Inc.を設立し、代表を務める。
+
+## 殿堂入り：最多集客・高評価資産 (Hall of Fame)
+
+- [VS Code 正規表現置換チートシート](https://ginneko-atelier.com/blogs/entry336/): サイト最多の集客を誇る、実務直結の技術資産。
+- [CSS セレクトボックスのカスタマイズ](https://ginneko-atelier.com/blogs/entry393/): 実装頻度の高いUIカスタマイズの決定版。
+- [Instagram Graph API 実装ガイド (2025-2026)](https://ginneko-atelier.com/blogs/entry448/): 常に最新仕様を追いかけるSNS連携ガイド。
+- [VS Code 正規表現：昭和の父と特権階級](https://ginneko-atelier.com/blogs/entry521/): 技術とエッセイが融合した高露出コンテンツ。
+- [グローバルメニューのアニメーション](https://ginneko-atelier.com/blogs/entry449/): 実務で即使えるホバー演出スニペット集。
+- [aタグのクリック範囲拡張](https://ginneko-atelier.com/blogs/entry181/): UX改善の基本。
+- [長女の性格考察と責任](https://ginneko-atelier.com/blogs/entry473/): 心理的洞察に基づいた、高い共感を得る考察記事。
+- [Swiper：スマホのみスライダー表示](https://ginneko-atelier.com/blogs/entry514/): 軽量ライブラリのレスポンシブ制御Tips。
+
+## セブ島生活・サバイバル (Cebu Life & Survival)
+
+- [セブ島スラム街訪問記：ありのままの現状](https://ginneko-atelier.com/blogs/entry464/): 飾らない現地のリアルを伝えるドキュメント。
+- [海外生活のヘアケア・抜け毛対策](https://ginneko-atelier.com/blogs/entry530/): 水質や環境によるダメージへの実践的対策。
+- [セブの庶民派スーパーフード10選（野菜編）](https://ginneko-atelier.com/blogs/entry555/): 現地スーパーで入手可能な栄養管理術。
+- [セブの市場で手に入る栄養満点な海産物](https://ginneko-atelier.com/blogs/entry556/): ローカル市場での食材調達と健康維持。
+- [セブ島オフショア会社設立の記録](https://ginneko-atelier.com/blogs/entry415/): 低学歴・低所得からの海外起業。
+- [フィリピンでの金融・GCash活用](https://ginneko-atelier.com/blogs/entry512/): 現地生活に必須のキャッシュレス決済インフラ。
+
+## 専門カテゴリ (Expertise Categories)
+
+- [ウェブ制作 (Web Development)](https://ginneko-atelier.com/blogs/web-developer/): フロントエンド実務、JS/CSS/React等。
+- [CMS](https://ginneko-atelier.com/blogs/cms/): WordPressおよびconcreteCMSのカスタマイズ。
+- [SEO対策・デジタルマーケ](https://ginneko-atelier.com/blogs/seo/): GTM/Looker Studioを活用したマーケ。
+- [海外ノマド生活 (Overseas Freelancer)](https://ginneko-atelier.com/blogs/overseas-freelancing/): セブ島起業、生活知見、サバイバル術。
+- [キャリアアップ (Career Up)](https://ginneko-atelier.com/blogs/career/): 逆転のキャリア戦略。
+- [かみーゆ徒然記 (My Policy)](https://ginneko-atelier.com/blogs/ginneko-tsuredure/): 信念、家族関係、人生の考察。
+
+## 2026年3月リフレッシュ：最新技術アップデート (Latest Updates)
+
+- [Docker WordPress 爆速環境構築](https://ginneko-atelier.com/blogs/entry480/): 軽量・高速な開発フロー。
+- [Vue.js 絞り込み＆ソート機能](https://ginneko-atelier.com/blogs/entry520/): Composition APIによる実装。
+- [著作権とフリー素材の掲載許可](https://ginneko-atelier.com/blogs/entry172/): エンジニアとしてのコンプライアンス。
