@@ -30,15 +30,15 @@ const Seo = ({ data, location }) => {
 
     const thumbnailImageSrc = thumbnail !== undefined ? `${siteUrl}${thumbnail}` : `${siteUrl}/images/thumbnail.png`
 
-    useEffect(() => {
-        if (isDev && typeof window !== "undefined") {
-            checkAuthenticationAndRedirect(location);
-        }
+    // useEffect(() => {
+    //     if (isDev && typeof window !== "undefined") {
+    //         checkAuthenticationAndRedirect(location);
+    //     }
 
-        if (typeof window !== 'undefined') {
-            setupLazyLoadAds();
-        }
-    }, []);
+    //     if (typeof window !== 'undefined') {
+    //         setupLazyLoadAds();
+    //     }
+    // }, []);
 
     //404の場合はNoindex
     if (data.is404) {

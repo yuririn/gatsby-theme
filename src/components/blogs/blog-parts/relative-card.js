@@ -2,12 +2,15 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "../../common/img"
 import dateReplace from "../../../utils/datereplace"
+
 const RelativeCard = data => {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       query {
+        # limit: 2000 を追加して、全記事が取得対象に入るように修正
         allMarkdownRemark(
           filter: { frontmatter: { pageType: { eq: "blog" } } }
+          limit: 2000
         ) {
           edges {
             node {
@@ -28,18 +31,33 @@ const RelativeCard = data => {
       }
     `
   )
-  let article = allMarkdownRemark.edges.filter(
-      item =>  item.node.fields.slug === data.slug
-    )
-  if (article.length !== 0) {
-    article = article[0].node
+
+  // 1. スラッグを正規化して対象の記事を探す (findを使用)
+  const targetSlug = data.slug ? data.slug.replace(/^\/|\/$/g, '') : '';
+
+  const foundEdge = allMarkdownRemark.edges.find(item => {
+    const nodeSlug = item.node.fields.slug.replace(/^\/|\/$/g, '');
+    return nodeSlug === targetSlug;
+  });
+
+  // 2. 記事が見つかった場合の処理
+  if (foundEdge) {
+    const article = foundEdge.node;
+
+    // 説明文のトリミング
     const description =
-      article.frontmatter.description.length > 60
+      article.frontmatter.description && article.frontmatter.description.length > 60
         ? article.frontmatter.description.substr(0, 60) + "..."
-        : article.frontmatter.description
-      const date = article.frontmatter.modifiedDate ? article.frontmatter.modifiedDate : article.frontmatter.date
+        : article.frontmatter.description;
+
+    // 日付の優先順位（更新日 > 投稿日）
+    const date = article.frontmatter.modifiedDate || article.frontmatter.date;
+
     return (
-      <a href={`/blogs/${article.fields.slug}/${data.anchor ? '#' + encodeURI(data.anchor) : ''}`} className="c-related-post-card">
+      <a
+        href={`/blogs/${article.fields.slug}/${data.anchor ? '#' + encodeURI(data.anchor) : ''}`}
+        className="c-related-post-card"
+      >
         <section>
           <div className="c-related-post-card__img">
             <Img
@@ -58,9 +76,11 @@ const RelativeCard = data => {
           </div>
         </section>
       </a>
-    )
+    );
   } else {
-    return ""
+    // 記事が見つからない場合は何も表示しない
+    return null;
   }
 }
-export default RelativeCard
+
+export default RelativeCard;
