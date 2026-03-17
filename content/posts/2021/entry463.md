@@ -1,16 +1,21 @@
 ---
 title: カウントダウンタイマーをバニラJS（JavaScript/CommonJS）でシンプルに実装
 date: 2021-05-22
-modifiedDate: 2025-02-19
+modifiedDate: 2026-03-20
 hero: thumbnail/2021/entry463.jpg
 pageType: blog
 cateId: 'web-developer'
 tags: ["JavaScript"]
 description: jQueryなし！バニラJS（プレーンなJavaScript）のカウントダウンタイマーを作ってみたのでそのコードを紹介します。日、時間、分、秒を取得する方法やsetTimeout&clearTimeoutについて解説。さらに、requestAnimationFrameでの実装方法も紹介。サンプルコードもあるので参考にしてください。ライブラリ（Luxon）を使って、正確なタイムゾーンに対応した、カウントダウンタイマーのコードも紹介しています。
 faq:
-  - ["タイマーの更新には requestAnimationFrame と setTimeout どちらを使うべきですか？","カウントダウンタイマーの場合、正確な時間間隔での更新が重要なため、 setTimeout が適しています。アニメーションを伴う場合は、 requestAnimationFrame も検討してください。","タイマーの終了処理を入れる"]
-  - ["時間がずれて正確な日時が取得できません。日本時間で確実に日時を取得するためにはどうすればいいですか？"," Luxon や date-fns-tz 、 Day.js 、 js-Joda などのライブラリを使用することで、日本時間を正確に取得することができます。例えば、以下のように使用します：<br> Luxon ：<br/> const DateTime = require('luxon') <br/> const japanTime = DateTime.now().setZone('Asia/Tokyo') <br/> console.log(japanTime.toString()) <br/>","ライブラリで正確な時間を取得（2025年2月追記）"]
-  - ["Moment.js の使い方について教えてください"," Moment.js は開発が終了しているため、 Luxon や date-fns-tz 、 Day.js 、 js-Joda などの代替ライブラリを使用することをお勧めします。これらのライブラリは軽量でモダンな API を提供し、引き続きメンテナンスが行われています。"]
+  - q: "JavaScriptでカウントダウンタイマーを作る際、時間のズレを防ぐには？"
+    a: "標準の `new Date()` は実行環境の端末時間に依存するため、キャンペーン等では [Luxonなどのライブラリ](#ライブラリで正確な時間を取得2025年2月追記) を使用してタイムゾーン（Asia/Tokyo等）を明示的に指定するのがベストです。また、長時間動作させる場合は誤差が蓄積するため、1秒ごとに現在時刻と目標時刻の差分を再計算するロジックが必要です。"
+  - q: "タイマー更新に setTimeout と requestAnimationFrame どちらを使うべき？"
+    a: "正確な「1秒ごと」のカウントが必要なタイマーには、指定した間隔で実行できる `setTimeout` が適しています。一方で、ミリ秒単位の滑らかなプログレスバーなどのアニメーションを伴う場合は、ブラウザの描画に同期する `requestAnimationFrame` が推奨されます。詳細は [タイマー処理の比較表](#タイマーの終了処理を入れる) をご覧ください。"
+  - q: "タイマーが終了した時に処理を止める方法は？"
+    a: "タイマーのIDを保持しておき、`clearTimeout(timerId)` を実行することで停止できます。本記事の [タイマーの終了処理](#タイマーの終了処理を入れる) セクションでは、残り時間がゼロになった瞬間に自動でタイマーを破棄し、ブラウザの負荷を抑える実装方法を解説しています。"
+  - q: "Moment.js 以外で現在推奨される日付ライブラリは？"
+    a: "Moment.js は非推奨（メンテナンスモード）となったため、現在は **Luxon**, **date-fns**, **Day.js** などが主流です。特にタイムゾーンを扱う場合は、本記事でも紹介している [Luxon](#ライブラリで正確な時間を取得2025年2月追記) がモダンで使いやすく、バニラJSとの相性も抜群です。"
 ---
 jQuery なし！バニラJS（JavaScript/CommonJS）のカウントダウンタイマーを作ってみたのでそのコードを紹介します。
 

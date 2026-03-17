@@ -1,16 +1,21 @@
 ---
 title: 次世代CSSは論理プロパティ！margin-block、margin-inlineを徹底解剖！
 date: 2021-01-28
-modifiedDate: 2023-01-21
+modifiedDate: 2026-03-20
 hero: thumbnail/2021/entry436.jpg
 pageType: blog
 cateId: web-developer
 tags: ["CSS"]
 description: CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今今回は次世代の余白の考え方、margin-block、margin-inline、padding-block、padding-inlineを徹底解剖してみます！
 faq:
-  - ['margin の数値が設定したものと違う','縦方向に積み重ねられた要素同士でおこる現象です。この現象を「折りたたみマージン」と言い、余白は少ない方の値が相殺されます。','']
-  - ['marginとpaddingの違いがわからない','要素と要素の距離をmargin、要素の内側の余白をpaddingといます。','わりと難しいのでmarginとpaddingのおさらい']
-  - ['Webサイトに縦書きを実装したい！','CSSプロパティmargin-blockを使うと縦書きを実装できます。詳しい実装方法は当ブログで紹介しています。']
+  - q: "margin-block と margin-top/bottom の違いは何ですか？"
+    a: "物理的な「上・下」を指定する `margin-top/bottom` に対し、`margin-block` は**書字方向（縦書き・横書き）に連動**して余白を制御する「論理プロパティ」です。横書きなら上下、縦書きなら左右の余白として機能するため、多言語対応や縦書きデザインで威力を発揮します。詳細は [論理プロパティの概念](#本題論理プロパティとは) をご覧ください。"
+  - q: "margin-inline を使って要素を中央寄せ（センタリング）できますか？"
+    a: "はい、可能です。`margin-inline: auto;` と記述するだけで、従来の `margin-left: auto; margin-right: auto;` と同じ効果を**たった一行**で得られます。モダンなコーディングでは [margin-inlineによるセンタリング](#要素をたった一行でセンタリングできる) が推奨されています。"
+  - q: "margin-block-start など、特定の方向だけ指定することは可能？"
+    a: "可能です。`margin-block-start`（先頭）や `margin-block-end`（末尾）を使えば、特定の方向のみ論理的に指定できます。物理プロパティとの対応表は、記事内の [margin-blockの使いどころ](#margin-blockを使ってみる) にまとめています。"
+  - q: "折りたたみマージン（相殺）は論理プロパティでも発生しますか？"
+    a: "はい、物理プロパティと同様に **block方向（要素の積み重なる方向）** の余白が隣接した場合にはマージンの相殺が発生します。この挙動については [折りたたみマージンの解説](#marginはソーシャルディスタンスみたいなもの) で詳しくおさらいできます。"
 ---
 CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今回は次世代の余白の考え方、margin-block、margin-inlineを徹底解剖してみます！
 
