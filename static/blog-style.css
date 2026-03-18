@@ -452,6 +452,10 @@
   padding: 16px 16px 16px 60px;
   margin: 0;
 }
+.c-faq dd p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 .c-faq dd::before {
   color: var(--accent-color);
   top: 6px;

@@ -1,16 +1,21 @@
 ---
 title: Docker で本番環境に忠実な開発環境を作る（nginx、PHP-FPM、MariaDB）
 date: 2025-02-20
+modifiedDate: 2026-03-20
 pageType: blog
 hero: thumbnail/2025/entry543.jpg
 cateId: web-developer
 tags: ["Docker","PHP","コマンド"]
 description: サーバー・インフラの知識がなくても、Dockerを使用して本番環境に忠実に作成する手順を解説。docker-compose.yml のコードを中心に、サーバー（nginx）、PHP（PHP-FPM）、データベース（MariaDB）のコンテナを順を追って作成。この記事は PHP Warning を修正したいのにエラーを見ることができず、修正できたかわからない状況に陥ったことをきっかけに執筆。
 faq:
- - ["Dockerでの開発環境で PHP エラーログを記録できるようにしたい","PHPのインストールされているコンテナに入り php.ini ファイルを編集します。log_errors を On にし、error_log にログファイルのパスを設定します。"]
- - ["wordpress:latest を使って Docker 環境を構築したら本番で心当たりのないエラーが表示される",
-   "DockerでImageMagickなどの必要なモジュールをインストールし、本番に近づけてカスタマイズしたDockerコンテナを作ることで解決できます。","PHP（PHP-FPM） のコンテナを作る"]
- - ["Dockerで作った環境でエラーが表示されない","wordpress:latest などで作った環境にはエラー表示の設定がない場合があります。設定を変更する必要があります。"]
+  - q: "docker-compose up した際、Nginxコンテナが「Connection Refused」で起動しません。"
+    a: "PHPコンテナが完全に起動する前にNginxが接続を試みている可能性があります。`docker-compose.yml` 内で **`depends_on: - myproject_php`** が正しく設定されているか、また [nginx.conf 内の fastcgi_pass](#サーバーnginx-のコンテナを作る) のコンテナ名が間違っていないか確認してください。"
+  - q: "PHPコンテナ内で作成したファイル（index.php等）がブラウザで 404 や 403 になります。"
+    a: "ホスト側（Mac/Windows）とコンテナ側のディレクトリ同期（Volumes）の設定ミスが考えられます。特に **`/var/www/html` へのマウントパス** が正しいか、[docker-compose.yml の volumes 設定](#サーバーnginx-のコンテナを作る) を見直してください。パーミッションの問題であれば、コンテナ内で `chown -R www-data:www-data /var/www/html` を試すと解決することがあります。"
+  - q: "MariaDBコンテナを再起動しても init.sql のデータが反映（初期化）されません。"
+    a: "MariaDB（MySQL）の初期化スクリプトは、**データベースが空（ボリュームが新規作成された時）**にしか実行されません。一度 `docker-compose down -v` でボリュームを削除してから再度立ち上げるか、[データベースのコンテナを作る](#データベースmariadb-のコンテナを作る) の手順でボリュームを手動でクリアする必要があります。"
+  - q: "Docker Desktop の設定を変えたのに PHP の memory_limit が反映されません。"
+    a: "Docker自体のリソース制限とは別に、PHP側の設定が必要です。[php.ini の設定](#phpphp-fpm-のコンテナを作る) で `memory_limit` を記述し、それを Dockerfile や volumes で正しくコンテナ内の `/usr/local/etc/php/conf.d/` に反映させているか確認しましょう。"
 ---
 せっかくローカル環境で開発したのに、本番環境のサーバー、PHP、データベースバージョンや種類が違うため使えていたメソッドが突然使えずエラーはいて、結構困ることがあります。
 

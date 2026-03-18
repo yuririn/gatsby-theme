@@ -4,25 +4,23 @@ import Topic from "../svg/topic";
 
 /**
  * Table of Contents (TOC) コンポーネント
- *
- * @param {Object} props - コンポーネントのプロパティ
- * @param {string} props.slug - 現在のページのスラッグ
- * @returns {JSX.Element} TOCコンポーネント
+ * * @param {string} slug - 表示中ページの識別子（entryXXXを含む文字列）
  */
 const Toc = ({ slug }) => {
-    // TOCの開閉状態を管理するためのステート
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    /**
-     * 現在の表示がモバイルデバイスかどうかをチェックする関数
-     * @returns {boolean} モバイルデバイスの場合はtrue、それ以外はfalse
-     */
-    const isMobile = () => {
-        return typeof window !== 'undefined' && window.matchMedia("(max-width: 767px)").matches;
-    }
+  // 文字列から "entry+数字" の部分だけを抽出するユーティリティ
+  const getEntryId = (str) => {
+    if (!str) return null;
+    const match = str.match(/entry\d+/);
+    return match ? match[0] : null;
+  };
 
-    // 現在のスラッグに対応する目次データを取得
-    const tocArray = useStaticQuery(graphql`
+  const isMobile = () => {
+    return typeof window !== 'undefined' && window.matchMedia("(max-width: 767px)").matches;
+  };
+
+  const data = useStaticQuery(graphql`
         query {
             allMarkdownRemark(
                 filter: { frontmatter: { pageType: { eq: "blog" } } }
@@ -39,124 +37,124 @@ const Toc = ({ slug }) => {
         }
     `);
 
-    useEffect(() => {
-        /**
-         * リンククリックイベントを処理する関数
-         * モバイルデバイスの場合にTOCを閉じる
-         * @param {Event} event - クリックイベント
-         */
-        
-        const handleLinkClick = (event) => {
-            if (isMobile()) {
-                const link = event.target.closest('.c-toc a');
-                if (!link) return;
-                document.querySelector('.c-nav__btn').removeAttribute('style');
-                document.body.classList.remove("is-fixed");
-                setIsOpen(false);
-            }
-        };
+  // 1. 比較用のターゲットIDを取得 (例: entry563)
+  const targetId = getEntryId(slug);
 
-        document.addEventListener('click', handleLinkClick);
+  // 2. データの照合 (GraphQL側のslugも同様にID抽出して比較)
+  const tocElement = data.allMarkdownRemark.edges.find((post) => {
+    return getEntryId(post.node.fields.slug) === targetId;
+  });
 
-        /**
-         * コンテンツ読み込み時にインターセクションオブザーバーを設定する関数
-         */
-        const handleContentLoaded = () => {
-            if (isMobile()) return;
+  useEffect(() => {
+    // 該当する目次データがない場合はイベント登録不要
+    if (!tocElement) return;
 
-            const headings = document.querySelectorAll("article section h2, article section h3, article section h4");
-            const options = {
-                root: null,
-                rootMargin: "0px 0px -50% 0px",
-                threshold: 0
-            };
+    const handleLinkClick = (event) => {
+      if (isMobile()) {
+        const link = event.target.closest('.c-toc a');
+        if (!link) return;
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const encodedslug = encodeURIComponent(entry.target.id);
-                    const targetLink = document.querySelector(`.c-toc a[href="#${encodedslug}"]`);
-                    if (!targetLink) return;
-
-                    if (entry.isIntersecting) {
-                        const activeLink = document.querySelector('.c-toc .active');
-                        if (activeLink && activeLink !== targetLink) {
-                            activeLink.classList.remove("active");
-                        }
-
-                        const firstHeadingLink = document.querySelector(`.c-toc a[href="#${encodeURIComponent(headings[0].id)}"]`);
-                        if (firstHeadingLink && firstHeadingLink.classList.contains("active")) return;
-
-                        targetLink.classList.add("active");
-                        const parent = document.querySelector(".c-toc");
-                        parent.scrollTop = targetLink.offsetTop - parent.offsetTop;
-                    }
-                });
-            }, options);
-
-            headings.forEach(heading => {
-                observer.observe(heading);
-            });
-
-            return () => {
-                headings.forEach(heading => {
-                    observer.unobserve(heading);
-                });
-            };
-        };
-
-        handleContentLoaded();
-
-        /**
-         * ウィンドウリサイズ時にモバイルビューの変更を管理する関数
-         */
-        const handleResize = () => {
-            
-            if (document.body.classList.contains("is-fixed") && isMobile()) {
-                document.body.classList.remove("is-fixed");
-                setIsOpen(false);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            if (isMobile()) {
-                document.removeEventListener('click', handleLinkClick);
-            }
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [slug]); // 依存配列からisMobileを削除
-
-    const tocElement = tocArray.allMarkdownRemark.edges.find(post => post.node.fields.slug === slug);
-
-    /**
-     * TOCの開閉状態をトグルする関数
-     */
-    const toggleControll = () => {
-        if (isOpen) {
-            document.querySelector('.c-nav__btn').removeAttribute('style');
-            document.body.classList.remove("is-fixed");
-        } else {
-            document.querySelector('.c-nav__btn').setAttribute('style', 'display:none');
-            document.body.classList.add("is-fixed");
-        }
-        setIsOpen(!isOpen);
+        const navBtn = document.querySelector('.c-nav__btn');
+        if (navBtn) navBtn.removeAttribute('style');
+        document.body.classList.remove("is-fixed");
+        setIsOpen(false);
+      }
     };
 
-    return (
-        <>
-            <div className={isOpen && isMobile() ? "c-toc__wrapper is-open" : "c-toc__wrapper"}>
-            <h2 className="c-heading__aside">この記事のサマリー</h2>
-                <div
-                    className="c-toc"
-                    dangerouslySetInnerHTML={{
-                        __html: tocElement.node.tableOfContents
-                    }}
-                ></div>
-            </div>
-            <button type="button" aria-label="目次" className="c-btn--toc" onClick={toggleControll}><Topic /></button>
-        </>
-    );
+    const setupIntersectionObserver = () => {
+      if (isMobile()) return null;
+
+      const headings = document.querySelectorAll("article section h2, article section h3, article section h4");
+      if (headings.length === 0) return null;
+
+      const options = {
+        root: null,
+        rootMargin: "0px 0px -50% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const encodedId = encodeURIComponent(entry.target.id);
+            const targetLink = document.querySelector(`.c-toc a[href="#${encodedId}"]`);
+            if (!targetLink) return;
+
+            const activeLink = document.querySelector('.c-toc .active');
+            if (activeLink) activeLink.classList.remove("active");
+
+            targetLink.classList.add("active");
+
+            const parent = document.querySelector(".c-toc");
+            if (parent) {
+              parent.scrollTop = targetLink.offsetTop - parent.offsetTop;
+            }
+          }
+        });
+      }, options);
+
+      headings.forEach(heading => observer.observe(heading));
+      return observer;
+    };
+
+    const handleResize = () => {
+      if (document.body.classList.contains("is-fixed") && !isMobile()) {
+        document.body.classList.remove("is-fixed");
+        setIsOpen(false);
+      }
+    };
+
+    // リスナー登録
+    document.addEventListener('click', handleLinkClick);
+    window.addEventListener('resize', handleResize);
+    const observer = setupIntersectionObserver();
+
+    // クリーンアップ
+    return () => {
+      document.removeEventListener('click', handleLinkClick);
+      window.removeEventListener('resize', handleResize);
+      if (observer) observer.disconnect();
+    };
+  }, [slug, tocElement]);
+
+  // 目次が見つからない、または中身が空の場合は何も表示しない
+  if (!tocElement || !tocElement.node.tableOfContents) {
+    return null;
+  }
+
+  const toggleControll = () => {
+    const navBtn = document.querySelector('.c-nav__btn');
+    if (isOpen) {
+      if (navBtn) navBtn.removeAttribute('style');
+      document.body.classList.remove("is-fixed");
+    } else {
+      if (navBtn) navBtn.setAttribute('style', 'display:none');
+      document.body.classList.add("is-fixed");
+    }
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      <div className={isOpen && isMobile() ? "c-toc__wrapper is-open" : "c-toc__wrapper"}>
+        <h2 className="c-heading__aside">この記事のサマリー</h2>
+        <div
+          className="c-toc"
+          dangerouslySetInnerHTML={{
+            __html: tocElement.node.tableOfContents
+          }}
+        ></div>
+      </div>
+      <button
+        type="button"
+        aria-label="目次"
+        className="c-btn--toc"
+        onClick={toggleControll}
+      >
+        <Topic />
+      </button>
+    </>
+  );
 };
 
 export default Toc;

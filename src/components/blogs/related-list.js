@@ -7,7 +7,11 @@ const RelatedPosts = ({ category, slug, tags }) => {
     graphql`
       query {
         allMarkdownRemark(
-          filter: { frontmatter: { pageType: { eq: "blog" } } }
+          filter: { 
+            frontmatter: { pageType: { eq: "blog" } },
+            fields: { slug: { ne: "entry415" } }
+          }
+          limit: 2000
         ) {
           edges {
             node {
@@ -29,14 +33,13 @@ const RelatedPosts = ({ category, slug, tags }) => {
     `
   )
   let posts = allMarkdownRemark.edges.filter(post => {
-    if (post.node.fields.slug !== slug) {
       // カテゴリーの一致出力
       if (post.node.frontmatter.cate === category) return true
       // タグの一致出力
       for (const tag of tags) {
         if (post.node.frontmatter.tags.includes(tag)) return true
       }
-    }
+
     return false
   })
   const result = useMemo(() => {

@@ -58,7 +58,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const { siteMetadata } = require('./gatsby-config');
 
-  // master以外のブランチでのみログインページを生成
   if ((process.env.BRANCH || 'master') !== 'master') {
     createPage({
       path: '/login',
@@ -68,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 2000) {
         nodes {
           id
           fields {
@@ -95,7 +94,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     const blogPosts = posts.filter(post => post.frontmatter.pageType === "blog");
 
-    // ブログ記事個別ページ
     blogPosts.forEach((post, index) => {
       createPage({
         path: `/blogs/${post.fields.slug}/`,
@@ -109,7 +107,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
 
-    // ブログ一覧ページ
     createPage({
       path: '/blogs/',
       component: path.resolve(`./src/pages/blogs.js`),
@@ -121,7 +118,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
 
-    // カテゴリー一覧ページ
     siteMetadata.category.forEach((category) => {
       const count = blogPosts.filter(post => category.slug === post.frontmatter.cateId).length;
       createPage({
@@ -136,7 +132,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
 
-    // タグ一覧ページ
     const tagCounts = blogPosts.reduce((acc, node) => {
       const tags = node.frontmatter.tags || [];
       tags.forEach(tag => {
@@ -158,7 +153,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
 
-    // 固定ページ
     posts.filter(p => p.frontmatter.pageType !== "blog").forEach(post => {
       createPage({
         path: post.fields.slug,
@@ -171,7 +165,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 
-  // お問い合わせ関連
   ["/contact/", "/contact/thanks/"].forEach(p => {
     createPage({
       path: p,
@@ -197,10 +190,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 };
 
 /**
- * 4. createSchemaCustomization: スキーマ定義（セミコロンなし版）
+ * 4. createSchemaCustomization: スキーマ定義
  */
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
+
   createTypes(`
     type SiteSiteMetadata {
       author: Author
@@ -229,6 +223,12 @@ exports.createSchemaCustomization = ({ actions }) => {
       fields: Fields
     }
 
+    # FAQの各項目用の型を定義
+    type FaqItem {
+      q: String
+      a: String
+    }
+
     type Frontmatter {
       title: String
       description: String
@@ -239,7 +239,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       pageType: String
       cateId: String
       hero: String
-      faq: [[String]]
+      # データの構造に合わせて型を変更
+      faq: [FaqItem]
     }
 
     type Fields {
@@ -249,7 +250,33 @@ exports.createSchemaCustomization = ({ actions }) => {
 };
 
 /**
- * 5. onPostBuild: ビルド後の最終確認
+ * 5. createResolvers: フィールドの値を強制変換
+ */
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    Frontmatter: {
+      tags: {
+        resolve(source) {
+          return Array.isArray(source.tags) ? source.tags : [];
+        },
+      },
+      faq: {
+        resolve(source) {
+          // faqがない場合は空配列を返す
+          if (!source.faq || !Array.isArray(source.faq)) {
+            return [];
+          }
+          // source.faq はすでにオブジェクトの配列なので、そのまま返す
+          // （不正な要素が混じるのを防ぐためフィルタリングを維持）
+          return source.faq.filter(item => item && (item.q || item.a));
+        },
+      },
+    },
+  });
+};
+
+/**
+ * 6. onPostBuild
  */
 exports.onPostBuild = ({ reporter }) => {
   const nodeEnv = process.env.NODE_ENV || 'production';
@@ -257,9 +284,9 @@ exports.onPostBuild = ({ reporter }) => {
     const robotsPath = path.join('./public/', 'robots.txt');
     if (fs.existsSync(robotsPath)) {
       const content = fs.readFileSync(robotsPath, 'utf8');
-      reporter.info(`Final robots.txt check:\n${content}`);
+      reporter.info(`最終的な robots.txt の確認:\n${content}`);
     }
   } catch (error) {
-    reporter.warn('Could not verify robots.txt in public folder');
+    reporter.warn('public フォルダ内の robots.txt を確認できませんでした');
   }
 };

@@ -249,8 +249,11 @@ export const pageQuery = graphql`
         cateId
         tags
         pageType
-        faq
         modifiedDate(formatString: "YYYY.MM.DD")
+        faq {
+          q
+          a
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

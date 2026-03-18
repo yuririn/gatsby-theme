@@ -7,6 +7,13 @@ hero: thumbnail/2023/entry520.png
 cateId: web-developer
 tags: ["Vue.js","JavaScript"]
 description: 既存のHTMLやPHPサイトに、Vue.js 3（Composition API）で「絞り込み・ソート機能」を部分導入する方法を徹底解説。Vanilla JSより簡潔に、Reactより手軽に。日付順の並べ替えやカテゴリー検索の実装手順を、2026年の開発環境に合わせたモダンなコード構成で紹介します。
+faq:
+  - q: "なぜReactではなくVue.jsを部分導入に選ぶのですか？"
+    a: "Vue.jsは**CDN経由で1ファイルから導入可能**であり、既存のHTML構造を大きく変えずに「特定のエリアだけ動的にする」という使い方がReactより圧倒的に手軽だからです。"
+  - q: "Vue.js 3のComposition APIを使うメリットは何ですか？"
+    a: "従来のOptions APIに比べ、**関連するデータとロジックを1箇所にまとめられる**ため、絞り込みやソートといった複雑な機能をメンテナンスしやすくなるメリットがあります。詳細は[Composition APIの書き方](#vuejs-compostion-api-基本の書き方options-api-と比較)をご覧ください。"
+  - q: "大量のデータをソートする際のパフォーマンスは問題ありませんか？"
+    a: "数千件程度であればブラウザ上のJavaScript処理で十分高速に動作します。本記事では **`ref` と `computed` のようなリアクティブな仕組み**を使い、[効率的にデータを再計算する手法](#記事を新しい古い順でソート並べ替えする)を解説しています。"
 ---
 最近 WordPress で部分的に Vue.js を組み込みました。最初は React を組み込もうとしましたが、大規模になりそうだったので Vue.js に切り替えました。やってみると驚くほど手軽でした。
 
