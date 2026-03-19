@@ -11,11 +11,11 @@ faq:
   - q: "docker-compose up した際、Nginxコンテナが「Connection Refused」で起動しません。"
     a: "PHPコンテナが完全に起動する前にNginxが接続を試みている可能性があります。`docker-compose.yml` 内で **`depends_on: - myproject_php`** が正しく設定されているか、また [nginx.conf 内の fastcgi_pass](#サーバーnginx-のコンテナを作る) のコンテナ名が間違っていないか確認してください。"
   - q: "PHPコンテナ内で作成したファイル（index.php等）がブラウザで 404 や 403 になります。"
-    a: "ホスト側（Mac/Windows）とコンテナ側のディレクトリ同期（Volumes）の設定ミスが考えられます。特に **`/var/www/html` へのマウントパス** が正しいか、[docker-compose.yml の volumes 設定](#サーバーnginx-のコンテナを作る) を見直してください。パーミッションの問題であれば、コンテナ内で `chown -R www-data:www-data /var/www/html` を試すと解決することがあります。"
+    a: "ホスト側（Mac/Windows）とコンテナ側のディレクトリ同期（Volumes）の設定ミスが考えられます。特に **`/var/www/html` へのマウントパス** が正しいか、[docker-compose.yml の volumes 設定](#サーバーnginx-のコンテナを作る) を見直してください。"
   - q: "MariaDBコンテナを再起動しても init.sql のデータが反映（初期化）されません。"
-    a: "MariaDB（MySQL）の初期化スクリプトは、**データベースが空（ボリュームが新規作成された時）**にしか実行されません。一度 `docker-compose down -v` でボリュームを削除してから再度立ち上げるか、[データベースのコンテナを作る](#データベースmariadb-のコンテナを作る) の手順でボリュームを手動でクリアする必要があります。"
+    a: "MariaDB（MySQL）の初期化スクリプトは、**データベースが空（ボリュームが新規作成された時）**にしか実行されません。一度 `docker-compose down -v` でボリュームを削除してから再度立ち上げる必要があります。"
   - q: "Docker Desktop の設定を変えたのに PHP の memory_limit が反映されません。"
-    a: "Docker自体のリソース制限とは別に、PHP側の設定が必要です。[php.ini の設定](#phpphp-fpm-のコンテナを作る) で `memory_limit` を記述し、それを Dockerfile や volumes で正しくコンテナ内の `/usr/local/etc/php/conf.d/` に反映させているか確認しましょう。"
+    a: "Docker自体のリソース制限とは別に、PHP側の設定が必要です。[php.ini の設定](#phpphp-fpm-のコンテナを作る) で `memory_limit` を記述し、反映させているか確認しましょう。"
 ---
 せっかくローカル環境で開発したのに、本番環境のサーバー、PHP、データベースバージョンや種類が違うため使えていたメソッドが突然使えずエラーはいて、結構困ることがあります。
 

@@ -9,11 +9,11 @@ tags: ["Docker","WordPress"]
 description: 2026年最新メンテ済み。 VagrantからDockerに乗り換えて感じた「爆速な立ち上げ」の感動をそのままに、最もシンプルで軽量なWordPress開発環境の構築手順をまとめました。複雑な設定を削ぎ落とし、docker-compose.yml をコピペするだけで動く構成を紹介。PHPやWPの旧バージョンが必要な際のリファレンスとしても活用してください。
 faq:
   - q: "Docker Desktopが重いのですが、軽量化する方法はありますか？"
-    a: "2026年現在、Mac環境であれば **OrbStack** などの軽量な代替ツールを検討するか、Docker Desktopの「VirtioFS」を有効にすることでファイル同期を劇的に高速化できます。本記事の[最小構成設定](#docker-composeyml-で-mysql-と-wordpress-のコンテナ作成)は、これらの環境でも爆速で動作します。"
+    a: "2026年現在、Mac環境であれば **OrbStack** などの軽量な代替ツールを検討するか、Docker Desktopの「VirtioFS」を有効にすることでファイル同期を劇的に高速化できます。本記事の [最小構成設定](#docker-composeyml-で-mysql-と-wordpress-のコンテナ作成) は、これらの環境でも爆速で動作します。"
   - q: "既存のWordPressサイトをDocker環境へ移行する際の注意点は？"
-    a: "最も重要なのは**データベースのURL置換**です。本記事の[データベースのリストア手順](#データベースのリストア)を参考にSQLを取り込んだ後、`http://localhost:3000` などのローカルURLへ置換するのを忘れないでください。"
+    a: "最も重要なのは **データベースのURL置換** です。本記事の [データベースのリストア手順](#データベースのリストア) を参考にSQLを取り込んだ後、`http://localhost:3000` などのローカルURLへ置換するのを忘れないでください。"
   - q: "MySQL 8.0でデータベース接続エラーが出る場合の解決策は？"
-    a: "MySQL 8.0以降の認証方式の変更が原因です。`docker-compose.yml` 内で **`default-authentication-plugin: mysql_native_password`** を指定することで解決できます。具体的な記述は[こちらの解説箇所](#dockerイメージmysql80でデータベースの接続ができなくなる場合)を確認してください。"
+    a: "MySQL 8.0以降の認証方式の変更が原因です。`docker-compose.yml` 内で **`command: --default-authentication-plugin=mysql_native_password`** を指定することで解決できます。具体的な記述は [こちらの解説箇所](#dockerイメージmysql80でデータベースの接続ができなくなる場合) を確認してください。"
 ---
 【2026年3月 追記】  
 この記事を書いた当時はVagrantから移行したばかりの「Docker初心者」でしたが、今では完全にDocker（Docker Compose）一本になりました。
