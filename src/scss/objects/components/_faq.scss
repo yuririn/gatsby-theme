@@ -8,6 +8,7 @@
     font-weight: bold;
     position: relative;
     border-bottom: 1px solid var(--background);
+        line-height: 1.4;
     &::before {
         font-family: var(--font-alphabet);
             color: var(--color-blue);
