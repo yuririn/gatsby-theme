@@ -1,6 +1,7 @@
 ---
 title: Docker でサーバー側のエラーログ(PHP Warning)を出力
 date: 2025-02-22
+modifiedDate: 2026-03-20
 pageType: blog
 hero: thumbnail/2025/entry544.jpg
 cateId: web-developer

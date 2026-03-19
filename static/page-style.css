@@ -452,6 +452,9 @@
   margin-top: 40px;
   border-radius: 15px;
 }
+.c-post-body blockquote h3, .c-post-body blockquote h2, .c-post-body blockquote h4 {
+  margin-top: 0;
+}
 .c-post-body blockquote::after, .c-post-body blockquote::before {
   left: 8px;
   height: 30px;

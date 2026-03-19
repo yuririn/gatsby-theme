@@ -148,6 +148,9 @@ code[class*="language-"], pre[class*="language-"] {
         position: relative;
         margin-top: 40px;
         border-radius: 15px;
+        h3, h2, h4 {
+          margin-top: 0;
+        }
         &::after,
         &::before {
             left: 8px;

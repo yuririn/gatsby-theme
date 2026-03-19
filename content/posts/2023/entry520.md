@@ -1,7 +1,7 @@
 ---
 title: Vue.jsで絞り込み＆ソート｜Composition APIで動的機能を部分導入する
-modifiedDate: 2026-03-15
 date: 2023-02-05
+modifiedDate: 2026-03-20
 pageType: blog
 hero: thumbnail/2023/entry520.png
 cateId: web-developer
@@ -13,7 +13,9 @@ faq:
   - q: "Vue.js 3のComposition APIを使うメリットは何ですか？"
     a: "従来のOptions APIに比べ、**関連するデータとロジックを1箇所にまとめられる**ため、絞り込みやソートといった複雑な機能をメンテナンスしやすくなるメリットがあります。詳細は[Composition APIの書き方](#vuejs-compostion-api-基本の書き方options-api-と比較)をご覧ください。"
   - q: "大量のデータをソートする際のパフォーマンスは問題ありませんか？"
-    a: "数千件程度であればブラウザ上のJavaScript処理で十分高速に動作します。本記事では **`ref` と `computed` のようなリアクティブな仕組み**を使い、[効率的にデータを再計算する手法](#記事を新しい古い順でソート並べ替えする)を解説しています。"
+    a: "数千件程度であればブラウザ上のJavaScript処理で十分高速に動作します。本記事では `ref` と `computed` のような **リアクティブな仕組み** を使い、[効率的にデータを再計算する手法](#記事を新しい古い順でソート並べ替えする)を解説しています。"
+  - q: "WordPressの既存のループとVue.jsは共存できますか？"
+    a: "はい。サーバー側（PHP）で出力したデータを一度JSONとしてJavaScriptに渡せば、Vue.js側で自由に検索やソートができるようになります。PHPのテンプレートを壊さずに実装可能です。"
 ---
 最近 WordPress で部分的に Vue.js を組み込みました。最初は React を組み込もうとしましたが、大規模になりそうだったので Vue.js に切り替えました。やってみると驚くほど手軽でした。
 
