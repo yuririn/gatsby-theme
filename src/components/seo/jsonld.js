@@ -15,11 +15,21 @@ const JsonLD = ({ data, location, isRoot }) => {
   const type = isRoot ? 'WebSite' : 'WebPage';
   const list = data.list
 
+  // 1. まず基本データを配列に入れる
   const allData = [pageData(type, domain), Nav(domain)]
+
+  // 2. 各 push の結果が null にならないよう条件付きで追加
   if (!isRoot) allData.push(breadcrumbListData(domain, list, location))
   if (location.includes('entry')) allData.push(BlogPosting(data, domain, location))
-  if (data.faq) allData.push(FaqPage(data, location))
-  return <script type="application/ld+json">{JSON.stringify(allData)}</script>
+  if (data.faq) {
+    const faqData = FaqPage(data, location);
+    if (faqData) allData.push(faqData); // null でない場合のみ push
+  }
+
+  // 3. 重要：最後に .filter(Boolean) をかけて null や undefined を完全に除去する
+  const cleanData = allData.filter(Boolean);
+
+  return <script type="application/ld+json">{JSON.stringify(cleanData)}</script>
 }
 export default JsonLD
 
