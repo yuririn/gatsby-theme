@@ -252,58 +252,74 @@ module.exports = {
         //     trackingId: `ADD YOUR TRACKING ID HERE`,
         //   },
         // },
+      {
+        resolve: `gatsby-plugin-feed`,
+        options: {
+          query: `
+      {
+        site {
+          siteMetadata {
+            title
+            description
+            siteUrl
+            site_url: siteUrl
+          }
+        }
+      }
+    `,
+          feeds: [
+            {
+              serialize: ({ query: { site, allMarkdownRemark } }) => {
+                const siteUrl = site.siteMetadata.siteUrl.replace(/\/$/, '');
 
-        `gatsby-plugin-styled-components`,
+                return allMarkdownRemark.nodes
+                  .filter(node => node.fields && node.fields.slug)
+                  .map(node => {
+                    // スラッシュの重複を防ぎつつ、末尾に必ず "/" を付与する
+                    const slug = node.fields.slug.replace(/^\/|\/$/g, '');
+                    const postUrl = `${siteUrl}/${slug}/`; // ここで末尾スラッシュを強制
 
-        {
-            resolve: `gatsby-plugin-feed`,
-            options: {
-                query: `
+                    return Object.assign({}, node.frontmatter, {
+                      description: node.frontmatter.description || node.excerpt,
+                      date: node.frontmatter.date ? new Date(node.frontmatter.date).toUTCString() : new Date().toUTCString(),
+                      url: postUrl,
+                      guid: postUrl,
+                      enclosure: node.frontmatter.hero ? {
+                        url: `${siteUrl}/${node.frontmatter.hero.replace(/^\//, '')}`,
+                        type: 'image/jpeg'
+                      } : undefined,
+                      custom_elements: [{ "content:encoded": node.html || "" }],
+                    });
+                  });
+              },
+              query: `
           {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
+            allMarkdownRemark(
+              sort: { frontmatter: { date: DESC } },
+              limit: 20
+            ) {
+              nodes {
+                excerpt(pruneLength: 160)
+                html
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                  date
+                  description
+                  hero
+                }
               }
             }
           }
         `,
-                feeds: [
-                    {
-                        serialize: ({ query: { site, allMarkdownRemark } }) => {
-                            return allMarkdownRemark.nodes.map(node => {
-                                return Object.assign({}, node.frontmatter, {
-                                    description: node.excerpt,
-                                    date: node.frontmatter.date,
-                                    url: site.siteMetadata.siteUrl + node.fields.slug,
-                                    guid: site.siteMetadata.siteUrl + node.fields.slug,
-                                    custom_elements: [{ "content:encoded": node.html }],
-                                })
-                            })
-                        },
-                        query: `{
-  allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
-    nodes {
-      excerpt
-      html
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        date
-      }
-    }
-  }
-}`,
-                        output: "/rss.xml",
-                        title: "Gatsby Starter Blog RSS Feed",
-                    },
-                ],
+              output: "/rss.xml",
+              title: "セブ島海外ノマドエンジニアの日記【銀ねこアトリエ】RSS Feed",
             },
+          ],
         },
+      },
         {
           resolve: `gatsby-plugin-manifest`,
           options: {
