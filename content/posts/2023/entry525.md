@@ -7,6 +7,7 @@ hero: thumbnail/2023/entry525.png
 cateId: web-developer
 tags: ["JavaScript"]
 description: 読者が今どこを読んでいるか一目でわかる「Qiita風の動く目次」を、Intersection Observer APIを使って実装する方法を解説。ライブラリ不要で軽量、かつスクロールにピタリと追従するハイライト機能のロジックを2026年の最新JSで整理しました。
+memo: メタ情報修正, FAQ追加
 faq:
   - q: "scrollイベントではなくIntersection Observerを使うメリットは何ですか？"
     a: "最大のメリットは**パフォーマンス**です。scrollイベントはスクロールの度に頻繁に発火するため負荷が高いですが、Intersection Observerはブラウザ側で最適化されたタイミングで「交差した瞬間」だけ通知をくれるため、動作が非常に軽量です。"

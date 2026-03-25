@@ -7,6 +7,7 @@ hero: thumbnail/2023/entry520.png
 cateId: web-developer
 tags: ["Vue.js","JavaScript"]
 description: 既存のHTMLやPHPサイトに、Vue.js 3（Composition API）で「絞り込み・ソート機能」を部分導入する方法を徹底解説。Vanilla JSより簡潔に、Reactより手軽に。日付順の並べ替えやカテゴリー検索の実装手順を、2026年の開発環境に合わせたモダンなコード構成で紹介します。
+memo: メタ情報修正, FAQ追加
 faq:
   - q: "なぜReactではなくVue.jsを部分導入に選ぶのですか？"
     a: "Vue.jsは**CDN経由で1ファイルから導入可能**であり、既存のHTML構造を大きく変えずに「特定のエリアだけ動的にする」という使い方がReactより圧倒的に手軽だからです。"

@@ -6,6 +6,7 @@ hero: thumbnail/2021/entry480.jpg
 pageType: blog
 cateId: web-developer
 tags: ["Docker","WordPress"]
+memo: メタ情報修正, FAQ追加
 description: 2026年最新メンテ済み。 VagrantからDockerに乗り換えて感じた「爆速な立ち上げ」の感動をそのままに、最もシンプルで軽量なWordPress開発環境の構築手順をまとめました。複雑な設定を削ぎ落とし、docker-compose.yml をコピペするだけで動く構成を紹介。PHPやWPの旧バージョンが必要な際のリファレンスとしても活用してください。
 faq:
   - q: "Docker Desktopが重いのですが、軽量化する方法はありますか？"

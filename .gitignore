@@ -72,3 +72,10 @@ yarn-error.log
 .md_
 
 for-develop/*
+
+test.task.js
+seo.task.js
+seo-log/*
+seo-log/
+
+result**.txt

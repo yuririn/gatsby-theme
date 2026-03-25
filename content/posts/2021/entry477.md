@@ -7,6 +7,7 @@ pageType: blog
 cateId: 'web-developer'
 tags: ["Gatsby","React","JavaScript"]
 description: ウェブサイトのリニューアルがようやく終わりました。WebP対応しつつv3にアップグレードする予定たったのですが、Gatsby cliでのインストールのエラーでハマってできませんでした。v2からv4にアップグレードでハマって困っている人へ私が解決できた方法をご紹介します。
+memo: FAQ修正
 faq:
   - q: "Gatsby v4/v5 アップグレード時に 'gatsby new' がエラーで失敗します。"
     a: "原因の多くは **Node.jsのバージョン不足** です。v4ならNode 14.15以上、v5ならNode 18以上が必須です。インストール前に `node -v` でバージョンを確認し、公式の [Minimal Node.js version](#単純にnpmのバージョンが足りなかったことが発覚) を満たしているかチェックしてください。npmのバージョンも8以上が推奨されます。"

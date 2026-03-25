@@ -7,6 +7,7 @@ pageType: blog
 cateId: web-developer
 tags: ["Gulp","npm"]
 description: pug（Jade）の特徴やメリット、基本的な使い方、導入方法（pug-cliとgulp）。とくに記述方法はif（分岐）やfor・each（ループ処理）など解説。テンプレート化したい場合に使う記述方法の解説と具体的なテンプレートの作り方なども紹介。
+memo: FAQ修正
 faq:
   - q: "Pugでの連想配列（オブジェクト）の書き方は？"
     a: "PugではJavaScriptの記法がそのまま使えます。 `- var menu = { key: 'value' }` のように変数を宣言し、 `each val, key in menu` でループ処理するのが一般的です。具体的な [連想配列のループ処理パターン](#foreachwhile文などのループ処理) を本記事で解説しています。"

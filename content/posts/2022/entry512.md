@@ -6,6 +6,7 @@ pageType: blog
 cateId: overseas-freelancing
 hero: thumbnail/2022/entry512.jpg
 tags: ["セブ島", '海外移住']
+memo: FAQ修正
 description: フィリピン現地の銀行がなくても ATM で現金引き出しする方法をご存知ですか？GCash Card の入手方法とアクティベートの仕方を中心にご紹介。GCash はQRコード決済アプリの一種。決済だけじゃなく光熱費の支払いや送金など、とても重宝。語学留学で長期滞在する方、フィリピンに住んでいている方必見。
 faq:
   - q: "GCashは日本国内（フィリピン国外）でも使うことができますか？"

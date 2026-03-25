@@ -1,6 +1,7 @@
 ---
 title: 「同じだ」なんて到底言えない。セブ島最貧困層のママたちに教わった、日本人が持っている「選べる幸運」
 date: 2026-03-20
+modifiedDate: 2026-03-20
 hero: thumbnail/2026/entry563.jpg
 pageType: blog
 cateId: ginneko-tsuredure

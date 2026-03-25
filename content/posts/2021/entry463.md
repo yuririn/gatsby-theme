@@ -5,6 +5,7 @@ modifiedDate: 2026-03-20
 hero: thumbnail/2021/entry463.jpg
 pageType: blog
 cateId: 'web-developer'
+memo: FAQ修正
 tags: ["JavaScript"]
 description: jQueryなし！バニラJS（プレーンなJavaScript）のカウントダウンタイマーを作ってみたのでそのコードを紹介します。日、時間、分、秒を取得する方法やsetTimeout&clearTimeoutについて解説。さらに、requestAnimationFrameでの実装方法も紹介。サンプルコードもあるので参考にしてください。ライブラリ（Luxon）を使って、正確なタイムゾーンに対応した、カウントダウンタイマーのコードも紹介しています。
 faq:

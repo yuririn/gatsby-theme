@@ -6,6 +6,7 @@ hero: thumbnail/2021/entry462.jpg
 pageType: blog
 cateId: 'web-developer'
 tags: ["CSS"]
+memo: FAQ修正
 description: CSSって関数があるのをご存知ですか？気づかず使っている人多いはずです。2022年6月15日にIEがいなくなるので、大手を振って使えるCSS関数がたくさんあります！私が普段使っている関数と今後バンバン使っていきたい関数を事例とともに12選紹介します！関数は目次にあるので、お好きなものだけ飛ばし読みしてください。
 faq:
   - q: "Sass（SCSS）の変数で calc() を使うとエラーが出るのはなぜ？"

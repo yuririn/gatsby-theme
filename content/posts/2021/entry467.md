@@ -6,6 +6,7 @@ hero: thumbnail/2021/entry467.jpg
 pageType: blog
 cateId: 'ginneko-tsuredure'
 tags: ["おもしろ"]
+memo: FAQ修正
 description: IT業界。この業界にいると横文字をはじめとする【ヘンテコなIT用語】を使うことが多いです。最近お客さんと話していて、「本当に使う必要ある？」って思うものも多いです。そこで【かぶれた用語】10コ厳選し、意味や必要性をまとめてみました。
 faq:
   - q: "IT業界で「サチコ」という女性の名前を耳にしますが誰のことですか？"
