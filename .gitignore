@@ -77,5 +77,6 @@ test.task.js
 seo.task.js
 seo-log/*
 seo-log/
-
-result**.txt
+full_rewrite*.json
+light_rewrite*.json
+no_index*.json
