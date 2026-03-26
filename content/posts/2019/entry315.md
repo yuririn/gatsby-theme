@@ -6,6 +6,7 @@ hero: thumbnail/2019/entry315.jpg
 pageType: blog
 cateId: web-developer
 tags: ["CSS"]
+memo: FAQ修正
 description: 2022-01-04メンテナンス済。CSS アニメーションはjQueryに依存しないと軽量になります。今回は「detailsとsummaryタグを使う新方法（追加）」「labelとinputタグを使う旧方法」「JavaScript（jQuery不使用）も使ってなめらかなアニメ-ションをリッチに実装する方法（レスポンシブ対応のため修正）」の3パターン（高さ可変に対応したコードもあり）をご紹介します。原理を理解したい方は順を追った解説をまず読み進めてみてください。
 faq:
   - q: "JSを一切使わずに、アクセシビリティに配慮したアコーディオンを作れますか？"

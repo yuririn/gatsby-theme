@@ -6,6 +6,7 @@ pageType: blog
 cateId: web-developer
 hero: thumbnail/2022/entry514.png
 tags: ["JavaScript","html"]
+memo: FAQ修正
 description: jQuery不要軽量Swiper。レスポンシブでスライダー画像をスマホだけで表示したい場合の対応方法を綴ります。複数のスライダーに対応した方法のご紹介。2025年1月にメンテナンスしました。
 faq:
   - q: "Swiperをスマホだけで有効にし、PCでは普通のリスト表示（横並び）にするには？"

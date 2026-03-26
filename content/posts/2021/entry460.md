@@ -6,6 +6,7 @@ hero: thumbnail/2021/entry460.jpg
 pageType: blog
 cateId: 'career'
 tags: ["便利ツール"]
+memo: FAQ修正
 description: 仕事でSlackを使わないといけなくなった！多機能すぎて何から覚えればいいかわからない。カスタムレスポンスを始めとした私がよく使う「Slack7つの活用法」をまとめました。よろしければ参考にしてみてください。
 faq:
   - q: "Slackのカスタムレスポンスで「面白い使い方」はありますか？"

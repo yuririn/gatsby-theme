@@ -1,6 +1,7 @@
 ---
 title: 本当に怖いDNS（ネームサーバー）変更。予想外のトラブルに備えよう！
 date: 2020-12-08
+date: 2020-12-08
 hero: thumbnail/2020/entry412.jpg
 pageType: blog
 cateId: web-developer

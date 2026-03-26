@@ -5,6 +5,7 @@ modifiedDate: 2026-03-20
 pageType: blog
 hero: thumbnail/2025/entry543.jpg
 cateId: web-developer
+memo: FAQ修正
 tags: ["Docker","PHP","コマンド"]
 description: サーバー・インフラの知識がなくても、Dockerを使用して本番環境に忠実に作成する手順を解説。docker-compose.yml のコードを中心に、サーバー（nginx）、PHP（PHP-FPM）、データベース（MariaDB）のコンテナを順を追って作成。この記事は PHP Warning を修正したいのにエラーを見ることができず、修正できたかわからない状況に陥ったことをきっかけに執筆。
 faq:

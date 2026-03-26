@@ -7,6 +7,7 @@ pageType: blog
 cateId: web-developer
 tags: ["CSS"]
 description: CSSのプロパティの進化、めまぐるしいですね。Webサイトの多言語化で文字の縦書き横書きなどでWebサイトのCSSをたくさん作るのは面倒！そこで今今回は次世代の余白の考え方、margin-block、margin-inline、padding-block、padding-inlineを徹底解剖してみます！
+memo: FAQ修正
 faq:
   - q: "margin-block と margin-top/bottom の違いは何ですか？"
     a: "物理的な「上・下」を指定する `margin-top/bottom` に対し、 `margin-block` は **書字方向（縦書き・横書き）に連動** して余白を制御する「論理プロパティ」です。横書きなら上下、縦書きなら左右の余白として機能するため、多言語対応や縦書きデザインで威力を発揮します。詳細は [論理プロパティの概念](#本題論理プロパティとは) をご覧ください。"

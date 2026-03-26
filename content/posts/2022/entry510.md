@@ -6,6 +6,7 @@ pageType: blog
 cateId: seo
 hero: thumbnail/2022/entry510.jpg
 tags: ["Web解析","便利ツール"]
+memo: FAQ修正
 description: Microsoft Clarity は、Webサイト上のユーザーの操作を「見える化」する無料のヒートマップ解析ツール。導入方法、使い方を画像30枚と表を使って掘り下げて解説しました。マスキング、IPブロック、URLのフィルターの使い方、Content Insights の設定方法なども紹介。2022年12月ヒートマップがうまく表示されないときの対処法を追記。改善に役立ててください。
 faq:
   - q: "Microsoft Clarity を導入するとサイトの表示速度は遅くなりますか？"

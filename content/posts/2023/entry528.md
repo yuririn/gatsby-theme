@@ -7,6 +7,7 @@ hero: thumbnail/2023/entry528.jpg
 cateId: web-developer
 tags: ["JavaScript"]
 description: Cropper.jsを使って、ブラウザ上での画像リサイズとダウンロード機能を実装する方法を解説。フォームからのアップロード、トリミング、そして重要となる「Base64からバイナリファイル（Blob）への変換」まで、2026年現在のモダンなJS（Vanilla JS）での書き方を紹介します。
+memo: メタ情報修正, FAQ追加
 faq:
   - q: "Cropper.jsでトリミングした画像をサーバーに送信するにはどうすればいいですか？"
     a: "本記事で作成した **Blobオブジェクト** を、`FormData` に追加して `fetch` や `axios` で送信するのが一般的です。詳細は[バイナリ化のセクション](#base64-データをバイナリ化して自動ダウンロード)を参考にしてください。"

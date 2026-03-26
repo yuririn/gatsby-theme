@@ -6,6 +6,7 @@ pageType: blog
 cateId: web-developer
 hero: thumbnail/2022/entry507.png
 tags: ["git"]
+memo: FAQ修正
 description: Git コミット(git commmit)やステージング(git add)での取り消し、打ち消し、上書き、push できないときの対処法など、よくあるお困りごとの対処法をケース別にまとめました。
 faq:
   - q: "git add で間違えてファイルをステージングしてしまいました。元に戻せますか？"

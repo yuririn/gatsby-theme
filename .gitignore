@@ -72,3 +72,11 @@ yarn-error.log
 .md_
 
 for-develop/*
+
+rewrite.task.js
+seo.task.js
+seo-log/*
+seo-log/
+light_rewrite_*.json
+no_index_*.json
+full_rewrite_*.json

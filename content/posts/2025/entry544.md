@@ -7,6 +7,7 @@ hero: thumbnail/2025/entry544.jpg
 cateId: web-developer
 tags: ["Docker","PHP","コマンド"]
 description: Dockerを使用して自分のコードのエラーが確認できる環境を構築する手順を紹介。Nginx、PHP-FPM、MariaDBのコンテナ作成、エラーログの設定と出力確認、リアルタイムでのエラー監視方法を解説。HPにおける典型的なエラーを理解し修正する方法を丁寧に解説します。サーバー・インフラの知識がなくても、Dockerを使用してコードのエラーが確認できる環境を構築する手順を解説。
+memo: FAQ修正
 faq:
   - q: "PHP Warning が画面には表示されず、ログファイルにだけ記録されるのはなぜですか？"
     a: "php.ini の設定で `display_errors = Off` かつ `log_errors = On` になっているためです。開発環境では [php.ini の設定](#phpエラーログが出力できるか確認してみる) を一時的に `display_errors = On` にすると画面上でも即座に確認できますが、本番環境ではセキュリティ上、Offのままログで監視するのが鉄則です。"
