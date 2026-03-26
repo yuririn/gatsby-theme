@@ -73,10 +73,10 @@ yarn-error.log
 
 for-develop/*
 
-test.task.js
+rewrite.task.js
 seo.task.js
 seo-log/*
 seo-log/
-full_rewrite*.json
 light_rewrite*.json
 no_index*.json
+light_rewrite*.json
