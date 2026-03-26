@@ -1,12 +1,14 @@
 ---
 title: CSSの変な仕様あるあるを力一杯列挙してみた
 date: 2019-07-20
-modifiedDate: 2023-01-22
+modifiedDate: 2026-03-26
 hero: thumbnail/2019/entry335.png
 pageType: blog
 cateId: web-developer
 tags: ["CSS"]
 description: CSSってムズくないですか？マジで。多分初心者がつまづくであろう、なんでこーなるの？！をまとめます。思い出したら随時更新しようと思います。
+noindex: true
+memo: 2026-03-26 Imp 5以下 1000日以上過ぎているため、indexから外す。
 ---
 CSSってムズくないですか？たくさんつまづく初心者を見てきました。
 

@@ -77,6 +77,6 @@ rewrite.task.js
 seo.task.js
 seo-log/*
 seo-log/
-light_rewrite*.json
-no_index*.json
-light_rewrite*.json
+light_rewrite_*.json
+no_index_*.json
+full_rewrite_*.json

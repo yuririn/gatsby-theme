@@ -5,6 +5,7 @@ hero: thumbnail/2014/entry192.jpg
 pageType: blog
 cateId: 'web-developer'
 tags: [XAMPP]
+memo: 2026-02-26 imp 5 以下、1000日修正していないため
 description: Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。
 ---
 Windows10にXAMPPをインストール、MySQLの初期パスワード設定の仕方ではまったので、やり方についてまとめておきます。
