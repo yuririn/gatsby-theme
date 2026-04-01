@@ -218,7 +218,7 @@ const FaqPage = (data, location) => {
       .replace(/<p>/gi, '')
       .replace(/<\/p>\s*$/gi, '')
       .replace(/<\/p>/gi, '')
-      .replace(/href="#([^"]*)"/gi, `href="${basePageUrl}?utm_source=faq#$1"`)
+      .replace(/href="#([^"]*)"/gi, `href="${basePageUrl}?data_structure=faq#$1"`)
       .replace(/<(?!a|b|i|strong|em|br|\/a|\/b|\/i|\/strong|\/em|\/br)[^>]*>/gi, '')
       .trim();
 

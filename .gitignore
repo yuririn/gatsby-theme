@@ -80,3 +80,5 @@ seo-log/
 light_rewrite_*.json
 no_index_*.json
 full_rewrite_*.json
+analytics-key.json
+review_*.json
