@@ -40,13 +40,13 @@ faq:
 
 ![最強のマザー入りお酢BRAGG](./images/04/entry564-1.jpg)
 
-[利久](https://www.facebook.com/100093482852645/mentions/)
-
 探した結果、最強のマザー入りお酢 *BRAGG* というメーカーが、低確率で近所の *Super Metro* に売っていることが発覚。早速購入しましたが、 946ml で **800ペソ前後（約2,000円超）** と地味におサイフ直撃。
 
 セブ島でお馴染みの居酒屋「利久」の飲み放題（ 〜499ペソ ）より高い……。
 
 ![居酒屋「利久」の飲み放題](./images/04/entry564-28.jpg)
+
+[利久 - Re-Q Japanese Restaurant](https://www.facebook.com/100093482852645/mentions/)
 
 これは毎日使うには死活問題ですよね。とはいえ、 *Heinz* も *BRAGG* もやっぱり美味しいんですよね。
 
